@@ -1,9 +1,10 @@
 # CAD repository CI design
 
-**Target architecture** — same released mechanisms and branch topology as
-`lib.py.solidcraft.forge`, with only CAD-specific producer and site content
-remaining here. This document does not claim the old pipeline has already been
-replaced.
+**Target architecture** — Forge remains the central reusable CAD library. This
+repository is a product-CAD consumer that uses the same released supporting
+CAD-CI/verification/runtime mechanisms already proven by Forge, while keeping
+product-model registration, model-specific production/checks and site content
+here. This document does not make Forge the owner of generic CI behavior.
 
 ## Reference stack
 
@@ -64,10 +65,12 @@ one Git/CAD-CI scan
     -> optional complete build/Pages publication from accepted results
 ```
 
-The library remains the sole authority for `process`, changed-path
+`lib.py.cad.ci` remains the sole authority for `process`, changed-path
 selection, dependency closure and target freshness. The CAD consumer may
-provide a catalog-to-build-source adapter and per-model expected results,
-but **not** a parallel planning mechanism or manually extended root item list.
+provide a product-catalog-to-build-source adapter and per-model expected
+results, but **not** a parallel planning mechanism or manually extended root
+item list. The product catalog is domain registration; distributed `ci.yml`
+items are the generic CI discovery boundary.
 
 ### Efficiency and correctness acceptance
 
@@ -86,10 +89,11 @@ but **not** a parallel planning mechanism or manually extended root item list.
 - Measure actual selected/build counts, single-pull/container-start count,
   runtime and stored evidence. Do not infer success from a green workflow
   without each model's own saved result.
-- Forge's current batch has a granularity trade-off: an input change may
+- The shared batch currently has a granularity trade-off: an input change may
   invalidate the whole batch. Measure it; if per-model selectivity is needed,
-  improve the **released generic ownership layer** first rather than
-  embedding another change planner in CAD-specific Python.
+  improve the **released generic CAD-CI owner layer** first rather than
+  embedding another change planner in CAD-specific Python. Forge #661 can
+  provide consumer evidence but is not the normative owner.
 - The site remains a separate consumer of complete build evidence; no
   redesign or URL change is authorized by this correction.
 
@@ -104,8 +108,9 @@ onboarding the remaining models.
 ## Model item shape
 
 Current repository discovery has **16** physical `models/**/ci.yml` roots.
-The website/catalog has **18** model variants. Preserve that mapping; do not
-create a second catalog just for generic CI.
+The website/product catalog has **18** model variants. Preserve that mapping.
+One physical `ci.yml` root may own multiple variants. Do not make the product
+catalog a generic CI registry and do not create a second catalog just for CI.
 
 Desired item contract:
 
