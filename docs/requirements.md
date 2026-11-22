@@ -159,3 +159,27 @@ single-model execution; full-model execution on promotion/version upgrade;
 matching output/verification provenance; independent stable/dev scopes;
 and website appearance/content/link parity acceptance. Do not change model geometry to disguise a
 missing generic CI feature.
+
+## Model-owned content and website data
+
+- Every one of the 16 physical model roots owns a `model.yml`, following
+  the established Forge example metadata vocabulary: section, priority,
+  title, tagline, description, parameters, and stages. CAD-specific source,
+  diagram, warning, and optional variant/reused-component fields live there
+  too.
+- The two physical model roots with multiple catalog variants (GuideRail and
+  Simple MFT) declare those variants **inside one local `model.yml`**.
+- `scripts/ci/model_catalog.py` validates/discovers the local YAML; it
+  must not maintain a competing handwritten list of models.
+- `ci.yml` declares build execution only, while `verification/verify.py`
+  declares physical checks. The static site renderer consumes model-owned
+  metadata, build results, source code and verification evidence.
+- A presentation-only metadata change must not change SolidCraft geometry
+  fingerprints or trigger a SolidCraft rebuild. Metadata must still select
+  site refresh when publishing from the accepted build output.
+- Common page/layout rendering remains shared. Model-specific supplementary
+  views are described in `model.yml` and rendered generically, not in
+  slug-specific branches inside the HTML generator.
+- Do not change the existing website design, routes, warnings, published
+  assets, or source/download behavior without a separate explicit decision.
+

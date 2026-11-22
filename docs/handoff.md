@@ -21,3 +21,13 @@ Algemene CI-wensen en architectuurbesluiten lopen **via Forge-issues** (momentee
 - Daarna pas de overige modellen migreren, de bouwresultaten/Pages per ontwikkelbranch inrichten en oude Python-planners/publicatiescripts opruimen. Voor de publicatie de bestaande CAD-website vergelijken met de nieuwe.
 
 Werk in logische PR's, vermijd veel kleine commits of extra CI-runs, en documenteer werkelijk uitgevoerde stappen/resultaten in `docs/plan.md`. **Doe de werkzaamheden in de huidige reactie; beloof geen achtergrondwerk.**
+
+## Website-metadata audit (#189)
+
+Er ontbreken in de oude CAD-opzet alle 16 model.yml-bestanden: de pagina
+werd uit een grote Python-catalogus gegenereerd. Werk aan #189 migreert
+de 18 beschrijvingen naar lokale model.yml-bestanden, maakt de Python-
+catalogus een validator/lezer en haalt model-specifieke weergavelogica uit
+de HTML-generator. De website en de openbare main/Pages blijven visueel
+gelijk tot de afzonderlijke publicatieacceptatie. Controleer bij hervatten
+de actuele PR-status en tests; claim nog geen openbare cut-over.

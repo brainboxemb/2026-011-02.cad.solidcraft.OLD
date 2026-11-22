@@ -145,6 +145,51 @@ class IncrementalSiteGenerationTests(unittest.TestCase):
             ).exists()
         )
 
+    def test_model_yaml_is_published_with_existing_model_pages(self):
+        self.build()
+        for slug, meta in MODELS.items():
+            with self.subTest(slug=slug):
+                root = ROOT.joinpath(*Path(meta["source"]).parts[:3])
+                metadata = self.site / "models" / slug / "model.yml"
+                self.assertEqual(
+                    metadata.read_bytes(), (root / "model.yml").read_bytes(),
+                )
+                html = (
+                    self.site / "models" / slug / "index.html"
+                ).read_text(encoding="utf-8")
+                self.assertIn('href="model.yml">Model metadata</a>', html)
+                self.assertIn(meta["title"], html)
+
+    def test_extra_views_are_driven_by_model_metadata(self):
+        self.build()
+        mft = (
+            self.site / "models/simple-mft/index.html"
+        ).read_text(encoding="utf-8")
+        self.assertIn("Reference and 2D expectation", mft)
+        self.assertIn("CRAFTMAKER ProStation S30", mft)
+        self.assertTrue(
+            (self.site / "models/simple-mft/expected-top-view.svg").is_file()
+        )
+
+        # The HUB75 face views require a matching, verified SolidCraft model,
+        # just as in the accepted public site.
+        pending = (
+            self.site / "models/hub75-panel/index.html"
+        ).read_text(encoding="utf-8")
+        self.assertNotIn("Front and rear of the same local component", pending)
+
+        self.make_verified_store_model("hub75-panel")
+        native = self.store / model_build_path("hub75-panel") / "native"
+        (native / "front.png").write_bytes(b"front-png")
+        (native / "rear.png").write_bytes(b"rear-png")
+        self.build()
+        ready = (
+            self.site / "models/hub75-panel/index.html"
+        ).read_text(encoding="utf-8")
+        self.assertIn("Front and rear of the same local component", ready)
+        self.assertTrue((self.site / "models/hub75-panel/front.png").is_file())
+        self.assertTrue((self.site / "models/hub75-panel/rear.png").is_file())
+
     def test_category_pages_list_all_models_and_home_honours_featured(self):
         original = MODELS["bolted-flange"].get("featured")
         had_key = "featured" in MODELS["bolted-flange"]

@@ -1,0 +1,17 @@
+# Model-owned content. Editing this file updates the website; it does not rebuild geometry.
+section: basic
+priority: 50
+title: "Bracket"
+tagline: "An L-shaped extrusion with two mounting holes"
+description: "An XZ polygon extruded along Y with an edge fillet and two native SolidCraft Hole features."
+parameters: "60 mm wide; 6 mm wall; two Ø8 mm holes"
+diagram: "bracket"
+stages:
+  - "Draw the L profile"
+  - "Extrude its width"
+  - "Round an exposed edge"
+  - "Sketch mounting holes"
+  - "Cut through the flange"
+source: "scpf/model.py"
+build: true
+snapshot_required: true
