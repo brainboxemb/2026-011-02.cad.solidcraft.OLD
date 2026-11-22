@@ -41,6 +41,15 @@ This repository contains product and project CAD models built with SCPF/SCPC.
 Forge itself belongs in `brainboxemb/lib.py.solidcraft.forge`; do not work
 around a Forge API/compiler problem in a product model.
 
+## Handoff
+
+The canonical session handoff is `docs/handoff.md`, following the shared
+`brainboxemb/meta.cad.solidcraft/templates/docs/handoff.md` structure.
+Treat it only as an entrypoint: inspect current GitHub state, then read
+`AGENTS.md` and `docs/plan.md`. Keep volatile SHAs, release/runtime pins and
+active issue/PR state in the plan/GitHub rather than duplicating them in the
+handoff.
+
 ## Write simply
 
 Use normal engineering language. Use the names that exist in the code and in
