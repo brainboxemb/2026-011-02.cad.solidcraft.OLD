@@ -80,58 +80,6 @@
       </aside>
     </div>
 
-    {{ with .Resources.Get "model.sc" }}<a href="{{ .RelPermalink }}" download>SolidCraft .sc</a>{{ end }}
-          {{ with .Resources.Get "model.step" }}<a href="{{ .RelPermalink }}">STEP</a>{{ end }}
-        </div>
-        <p class="cad-muted">Command JSON describes the generated SolidCraft operations; the .sc file is the editable SolidCraft model.</p>
-
-        <h3>Construction stages</h3>
-        <ol class="cad-stages">{{ range index $m "stages" }}<li>{{ . }}</li>{{ end }}</ol>
-      </aside>
-    </div>
-
-    <section class="cad-panel cad-source-panel">
-      <p class="cad-panel-label">Source</p>
-      <h2>SCPF source</h2>
-      <p class="cad-muted">This is the SCPF Python source declared by this model. It generates the SolidCraft command sequence shown below.</p>
-      {{ with .Resources.Get "scpf-source.py" }}
-        {{ partial "cad/codeblock.html" (dict "lang" "python" "content" .Content "label" (index $m "source")) }}
-      {{ else }}
-        <p class="cad-muted">The declared SCPF source is not available in this site build.</p>
-      {{ end }}
-    </section>
-
-    {{ with .Resources.Get "solidcraft.json" }}
-      {{ $commandsDoc := .Content | transform.Unmarshal }}
-      {{ with index $commandsDoc "commands" }}
-        <section class="cad-panel cad-commands-panel">
-          <p class="cad-panel-label">Generated output</p>
-          <h2>SolidCraft commands</h2>
-          <p class="cad-muted">These are the SolidCraft operations generated from the SCPF source.</p>
-          <ol class="cad-command-list">
-            {{ range . }}
-              <li>
-                <strong><code>{{ index . "command" }}</code></strong>
-                {{ with index . "params" }}<pre><code>{{ . | transform.Remarshal "json" }}</code></pre>{{ end }}
-              </li>
-            {{ end }}
-          </ol>
-        </section>
-      {{ end }}
-    {{ end }}
-
-    {{ with .Resources.Get "scpc-source.py" }}
-      <section class="cad-panel cad-scpc-panel">
-        <p class="cad-panel-label">Independent comparison</p>
-        <h2>SCPC command source</h2>
-        <p class="cad-muted">This is a separate explicit-command implementation. It does not call SCPF or reuse the generated SCPF command JSON.</p>
-        {{ partial "cad/codeblock.html" (dict "lang" "python" "content" .Content "label" (index $m "scpc_source")) }}
-        <div class="cad-links">
-          {{ with $.Resources.Get "scpc-solidcraft.json" }}<a href="{{ .RelPermalink }}">SCPC command JSON</a>{{ end }}
-        </div>
-      </section>
-    {{ end }}
-
     {{ with .Resources.Get "model.sc" }}
       {{ $nativeURL := .Permalink }}
       <section class="cad-panel cad-web-open">
