@@ -72,7 +72,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run exact Forge-qualified CAD-CI release
-        uses: brainboxemb/tool.cad.ci@b62f9d0b169aa201a3c66c3166f364396b2d71bc
+        uses: brainboxemb/tool.cad.ci@b1474f6be66dc0236f2a5c2555af07a100447255
         with:
           source_sha: ${{ github.event.pull_request.head.sha }}
           base_sha: ${{ github.event.pull_request.base.sha }}
@@ -100,7 +100,7 @@ jobs:
           esac
       - name: Run and publish durable CAD-CI scope
         id: cad_ci
-        uses: brainboxemb/tool.cad.ci@b62f9d0b169aa201a3c66c3166f364396b2d71bc
+        uses: brainboxemb/tool.cad.ci@b1474f6be66dc0236f2a5c2555af07a100447255
         with:
           source_sha: ${{ github.sha }}
           durable_scope: ${{ github.ref_name }}
