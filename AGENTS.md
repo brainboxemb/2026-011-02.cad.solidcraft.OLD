@@ -19,13 +19,14 @@
 > Use the released CAD-CI changed/dependency planner: do not invent a second
 > selection engine. See `docs/design.md` and `docs/plan.md`.
 >
-> **Generic CAD-CI requests go through Forge first:** track the common
-> scan/plan/build-batch requirement under
-> `brainboxemb/lib.py.solidcraft.forge#661`. Forge decides shared behavior
-> and acceptance; the generic CI owner implements/releases it; Forge
-> qualifies the release; only then does this repository adopt it. Do not
-> change `lib.py.cad.ci` directly as a workaround for this CAD repository,
-> and do not create another CI planner here.
+> **Ownership boundary:** Forge is the central reusable CAD library, not the
+> owner of generic CAD-CI. Generic discovery/selection/execution belongs in
+> `lib.py.cad.ci` / `tool.cad.ci`; generic verification belongs in
+> `lib.py.cad.verification`; runtime packaging belongs in
+> `docker.cad.solidcraft`. Forge #661 is only Forge-side consumer evidence for
+> batch selectivity. If this repository exposes a generic gap, record the
+> consumer need and open the normative change in the actual owner repository.
+> Do not implement a local planner/workaround here.
 >
 This repository contains product and project CAD models built with SCPF/SCPC.
 Forge itself belongs in `brainboxemb/lib.py.solidcraft.forge`; do not work
@@ -81,8 +82,10 @@ below before opening or merging the PR.
    - Add one record to `scripts/ci/model_catalog.py:MODELS`.
    - Put the source path, section, site metadata, native flags and optional
      component/SCPC metadata in that record.
-   - Do not create a second model list elsewhere. The derived source mappings,
-     site sections and CI selections come from `MODELS`.
+   - Do not create a second **product-model catalog** elsewhere. `MODELS` owns
+     model identity, variants, model dependencies and site/presentation metadata.
+   - Generic CAD-CI discovery/selection does **not** come from `MODELS`; it comes
+     from distributed model-root `ci.yml` items and released CAD-CI semantics.
 
 3. **Regression tests**
    - Add a focused test file under `tests/` for the important geometry and
@@ -93,8 +96,10 @@ below before opening or merging the PR.
      assert that constants exist in the source.
 
 4. **Normal CAD CI**
-   - Models are compiled from the central catalog; do not add a slug to the
-     workflow YAML.
+   - Give the physical model root one small `ci.yml`; root globs discover it.
+   - Do not add the model slug to workflow YAML or a second CI registry.
+   - A physical root may map to multiple product catalog variants; that mapping
+     stays in `model_catalog.py`.
    - The normal model regression and static-site smoke tests must pass.
 
 5. **Native SolidCraft verification**
@@ -157,10 +162,11 @@ Normal CAD CI uses the released runtime owned by
 
 - Normal model work uses targeted builds. A change to one model should compile,
   test and native-build that model only.
-- Model selection comes from the central catalog and the shared selector under
-  `scripts/ci/`; do not reimplement path filtering in workflow YAML.
-- Shared component dependencies must be declared in the catalog so a component
-  change selects its actual dependants.
+- Generic CI item selection comes from released CAD-CI over distributed `ci.yml`
+  items; do not reimplement path filtering in workflow YAML or `model_catalog.py`.
+- Product-model dependencies and variant relationships remain catalog-owned data;
+  the CAD-owned batch adapter translates the selected physical item into the
+  correct product variants/results without becoming a second planner.
 - Adding a new model should normally build only that model.
 - Changing `dependencies.repos` or the configured SolidCraft version does not
   automatically mean "build the whole catalog".
