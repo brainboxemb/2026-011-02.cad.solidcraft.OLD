@@ -73,6 +73,22 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn(".cad-model-grid,.cad-reference-grid{grid-template-columns:1fr}", css)
 
 
+    def test_model_detail_typography_does_not_inherit_hextra_prose_tracking(self):
+        css = (SITE / "assets/css/custom.css").read_text()
+        self.assertNotIn(".content h1{letter-spacing:-.025em}", css)
+        self.assertNotIn(".content h2{letter-spacing:-.016em}", css)
+        self.assertNotIn(".content h3{letter-spacing:-.01em}", css)
+        self.assertIn(".cad-panel h2{margin:0 0 .6rem;font-size:1.6rem;line-height:1.3;font-weight:600;letter-spacing:0}", css)
+        self.assertIn(".cad-model-detail h2,", css)
+        self.assertIn("font-weight:400;\n  letter-spacing:0;", css)
+
+    def test_background_markdown_uses_the_same_quiet_cad_typography(self):
+        css = (SITE / "assets/css/custom.css").read_text()
+        self.assertIn(".cad-rich-text{max-width:78ch;font-size:1rem;line-height:1.52}", css)
+        self.assertIn("font-size:1.05rem;\n  line-height:1.35;\n  font-weight:600;\n  letter-spacing:0;", css)
+        self.assertIn(".cad-rich-text li::marker{color:var(--cad-accent)}", css)
+        self.assertIn(".cad-background .subheading-anchor{display:none}", css)
+
     def test_cad_typography_matches_the_accepted_visual_baseline(self):
         css = (SITE / "assets/css/custom.css").read_text()
         self.assertIn(".cad-page-shell{", css)
