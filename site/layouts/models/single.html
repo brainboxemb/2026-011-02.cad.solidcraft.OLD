@@ -80,7 +80,55 @@
       </aside>
     </div>
 
-    <section class="cad-panel cad-source-panel">
+    {{ with .Resources.Get "model.sc" }}
+      {{ $nativeURL := .Permalink }}
+      <section class="cad-panel cad-web-open">
+        <p class="cad-panel-label">SolidCraft model</p>
+        <h2>Open in SolidCraft Web</h2>
+        <p>The editable <code>.sc</code> model can be opened in SolidCraft's official web application at <strong>docs.solidcraft.io</strong>.</p>
+        <p class="cad-muted">This is an external website. The SolidCraft web application is downloaded from SolidCraft's servers; the model file remains hosted on this GitHub Pages site.</p>
+        <div class="cad-links">
+          <a href="https://docs.solidcraft.io/app/?open={{ urlquery $nativeURL }}" target="_blank" rel="noopener noreferrer">Open in SolidCraft Web ↗</a>
+          <a href="{{ .RelPermalink }}" download>Download model .sc</a>
+        </div>
+      </section>
+    {{ end }}
+
+    {{ with .Resources.Get "page.md" }}
+      <section class="cad-panel cad-background">
+        <p class="cad-panel-label">Background</p>
+        <div class="cad-rich-text">{{ $.RenderString .Content }}</div>
+      </section>
+    {{ end }}
+
+    {{ with $views := index $m "extra_views" }}
+      {{ $show := true }}
+      {{ if and (index $views "verified_only") (ne $semantic "pass") }}{{ $show = false }}{{ end }}
+      {{ if $show }}
+        <section class="cad-panel">
+          <h2>{{ index $views "title" }}</h2>{{ with index $views "note" }}<p>{{ . }}</p>{{ end }}
+          <div class="cad-reference-grid">
+            {{ range $view := index $views "items" }}
+              {{ $kind := index $view "kind" }}{{ $src := index $view "src" }}
+              <article class="cad-reference"><strong>{{ index $view "caption" }}</strong>
+                {{ if eq $kind "url" }}
+                  {{ $lower := lower $src }}
+                  {{ $isImage := or (strings.HasSuffix $lower ".jpg") (strings.HasSuffix $lower ".jpeg") (strings.HasSuffix $lower ".png") (strings.HasSuffix $lower ".webp") (strings.HasSuffix $lower ".svg") }}
+                  {{ if $isImage }}
+                    <a href="{{ $src }}" class="cad-external-image"><img src="{{ $src }}" alt="{{ index $view "alt" }}"></a>
+                    <p class="cad-reference-source">External reference · <a href="{{ $src }}">open original</a></p>
+                  {{ else }}
+                    <p><a href="{{ $src }}">Open external reference</a></p>
+                  {{ end }}
+                {{ else }}{{ with $.Resources.Get $src }}<a href="{{ .RelPermalink }}"><img src="{{ .RelPermalink }}" alt="{{ index $view "alt" }}"></a>
+                {{ else }}<p class="cad-muted">This declared view is not present in the current build scope.</p>{{ end }}{{ end }}
+              </article>
+            {{ end }}
+          </div>
+        </section>
+      {{ end }}
+    {{ end }}
+    <section class="cad-code-section cad-source-section">
       <p class="cad-panel-label">Source</p>
       <h2>SCPF source</h2>
       <p class="cad-muted">This is the SCPF Python source declared by this model. It generates the SolidCraft command sequence shown below.</p>
@@ -92,46 +140,33 @@
     </section>
 
     {{ with .Resources.Get "solidcraft.json" }}
+      {{ $commandsResource := . }}
       {{ $commandsDoc := .Content | transform.Unmarshal }}
       {{ with index $commandsDoc "commands" }}
-        <section class="cad-panel cad-commands-panel">
-          <p class="cad-panel-label">Generated output</p>
-          <h2>SolidCraft commands</h2>
-          <p class="cad-muted">These are the SolidCraft operations generated from the SCPF source.</p>
-          <ol class="cad-command-list">
-            {{ range . }}
-              <li>
-                <strong><code>{{ index . "command" }}</code></strong>
-                {{ with index . "params" }}<pre><code>{{ . | transform.Remarshal "json" }}</code></pre>{{ end }}
-              </li>
-            {{ end }}
-          </ol>
-        </section>
+        <details class="cad-code-section cad-commands-section cad-collapsible">
+          <summary>
+            <span class="cad-collapsible-summary">
+              <span class="cad-panel-label">Generated output</span>
+              <span class="cad-collapsible-title">SolidCraft commands</span>
+              <span class="cad-muted">{{ len . }} generated operations · expand to inspect</span>
+            </span>
+          </summary>
+          <div class="cad-collapsible-body">
+            <p class="cad-muted">Generated SolidCraft command sequence from the SCPF source.</p>
+            {{ partial "cad/codeblock.html" (dict "lang" "json" "content" $commandsResource.Content "label" "solidcraft.json") }}
+          </div>
+        </details>
       {{ end }}
     {{ end }}
 
     {{ with .Resources.Get "scpc-source.py" }}
-      <section class="cad-panel cad-scpc-panel">
+      <section class="cad-code-section cad-scpc-section">
         <p class="cad-panel-label">Independent comparison</p>
         <h2>SCPC command source</h2>
         <p class="cad-muted">This is a separate explicit-command implementation. It does not call SCPF or reuse the generated SCPF command JSON.</p>
         {{ partial "cad/codeblock.html" (dict "lang" "python" "content" .Content "label" (index $m "scpc_source")) }}
         <div class="cad-links">
           {{ with $.Resources.Get "scpc-solidcraft.json" }}<a href="{{ .RelPermalink }}">SCPC command JSON</a>{{ end }}
-        </div>
-      </section>
-    {{ end }}
-
-    {{ with .Resources.Get "model.sc" }}
-      {{ $nativeURL := .Permalink }}
-      <section class="cad-panel cad-web-open">
-        <p class="cad-panel-label">SolidCraft model</p>
-        <h2>Open in SolidCraft Web</h2>
-        <p>The editable <code>.sc</code> model can be opened in SolidCraft's official web application at <strong>docs.solidcraft.io</strong>.</p>
-        <p class="cad-muted">This is an external website. The SolidCraft web application is downloaded from SolidCraft's servers; the model file remains hosted on this GitHub Pages site.</p>
-        <div class="cad-links">
-          <a href="https://docs.solidcraft.io/app/?open={{ urlquery $nativeURL }}" target="_blank" rel="noopener noreferrer">Open in SolidCraft Web ↗</a>
-          <a href="{{ .RelPermalink }}" download>Download model .sc</a>
         </div>
       </section>
     {{ end }}
@@ -171,40 +206,6 @@
       <p class="cad-muted">Source {{ site.Params.sourceRef }} · build scope {{ site.Params.buildScope }}{{ with site.Params.buildCommit }} · build {{ . }}{{ end }}</p>
     </section>
 
-    {{ with .Resources.Get "page.md" }}
-      <section class="cad-panel cad-background">
-        <p class="cad-panel-label">Background</p>
-        <div class="cad-rich-text">{{ $.RenderString .Content }}</div>
-      </section>
-    {{ end }}
-
-    {{ with $views := index $m "extra_views" }}
-      {{ $show := true }}
-      {{ if and (index $views "verified_only") (ne $semantic "pass") }}{{ $show = false }}{{ end }}
-      {{ if $show }}
-        <section class="cad-panel">
-          <h2>{{ index $views "title" }}</h2>{{ with index $views "note" }}<p>{{ . }}</p>{{ end }}
-          <div class="cad-reference-grid">
-            {{ range $view := index $views "items" }}
-              {{ $kind := index $view "kind" }}{{ $src := index $view "src" }}
-              <article class="cad-reference"><strong>{{ index $view "caption" }}</strong>
-                {{ if eq $kind "url" }}
-                  {{ $lower := lower $src }}
-                  {{ $isImage := or (strings.HasSuffix $lower ".jpg") (strings.HasSuffix $lower ".jpeg") (strings.HasSuffix $lower ".png") (strings.HasSuffix $lower ".webp") (strings.HasSuffix $lower ".svg") }}
-                  {{ if $isImage }}
-                    <a href="{{ $src }}" class="cad-external-image"><img src="{{ $src }}" alt="{{ index $view "alt" }}"></a>
-                    <p class="cad-reference-source">External reference · <a href="{{ $src }}">open original</a></p>
-                  {{ else }}
-                    <p><a href="{{ $src }}">Open external reference</a></p>
-                  {{ end }}
-                {{ else }}{{ with $.Resources.Get $src }}<a href="{{ .RelPermalink }}"><img src="{{ .RelPermalink }}" alt="{{ index $view "alt" }}"></a>
-                {{ else }}<p class="cad-muted">This declared view is not present in the current build scope.</p>{{ end }}{{ end }}
-              </article>
-            {{ end }}
-          </div>
-        </section>
-      {{ end }}
-    {{ end }}
     <p><a href="{{ "models/" | relURL }}">← Back to all models</a></p>
   </article>
 {{ end }}

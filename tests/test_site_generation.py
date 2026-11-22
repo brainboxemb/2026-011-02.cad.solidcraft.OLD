@@ -173,6 +173,33 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn('{{ $commandCount }} commands', page)
         self.assertNotIn("scpc_command_count", page)
 
+    def test_model_page_prioritizes_use_and_context_before_technical_depth(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertLess(page.index("cad-web-open"), page.index("cad-source-section"))
+        self.assertLess(page.index("cad-background"), page.index("cad-source-section"))
+        self.assertLess(page.index('index $m "extra_views"'), page.index("cad-source-section"))
+
+    def test_generated_solidcraft_commands_are_collapsed_by_default(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn('<details class="cad-code-section cad-commands-section cad-collapsible">', page)
+        self.assertIn("<summary>", page)
+        self.assertIn("Generated output", page)
+        self.assertIn("SolidCraft commands", page)
+        self.assertIn("generated operations · expand to inspect", page)
+        self.assertNotIn('<details class="cad-code-section cad-commands-section cad-collapsible" open', page)
+        self.assertIn('"label" "solidcraft.json"', page)
+        self.assertNotIn('class="cad-command-list"', page)
+
+    def test_model_overview_uses_balanced_columns_and_compact_preview(self):
+        css = (SITE / "assets/css/custom.css").read_text()
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn("grid-template-columns:repeat(2,minmax(0,1fr))", css)
+        self.assertIn(".cad-preview-panel .cad-preview{\n  min-height:330px;", css)
+        self.assertIn(".cad-preview-panel .cad-preview-link{\n  min-height:330px;", css)
+        self.assertIn(".cad-collapsible[open]>summary:after{content:\"Collapse\"}", css)
+        self.assertNotIn(".cad-command-list", css)
+        self.assertNotIn("cad-panel cad-commands-panel", page)
+
     def test_model_page_keeps_expected_public_content(self):
         page = (SITE / "layouts/models/single.html").read_text()
         for value in ("SCPF source","SolidCraft commands","Construction stages","Python source","model.yml","Forge commands","SolidCraft model","STEP","Build provenance","No accepted build evidence","extra_views"):
