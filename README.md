@@ -152,8 +152,9 @@ The Models website shows **Basic Models → Components → Advanced Models**.
   the shared component definitions; **no duplicate geometry**.
 - `models/advanced/`: complete projects with private `parts/` and
   `assemblies/` next to their model script.
-- `scripts/ci/model_catalog.py`: canonical source paths and website
-  categories for every qualified model.
+- `models/*/*/model.yml`: model-owned website metadata and variant relations.
+- `scripts/ci/model_catalog.py`: validator/adapter for those files; no second
+  handwritten catalog.
 
 The API cheatsheet lives only on the
 [SCPF library site](https://brainboxemb.github.io/lib.py.solidcraft.forge/cheatsheet/);
@@ -165,9 +166,12 @@ the old CAD cheatsheet URL redirects there.
 - `models/<category>/<name>/README.md` — model design notes and geometry references.
 - `models/<category>/<name>/source/` — original SolidCraft command/document references where available.
 - `examples/` — small retained API qualification fixtures; reusable API tests live in the library.
-- `scripts/ci/` and `site/` — source-matched result pages and checks.
-- `.github/workflows/cad-models.yml` — Python package install, command-plan qualification and site smoke tests.
-- `.github/workflows/native-cad.yml` — native CLI model qualification, STEP/native documents, screenshots and Pages branch publication.
+- `scripts/ci/` — the small CAD-owned adapters documented in
+  `scripts/ci/README.md`.
+- `ci/` — declarative items for the released CAD-CI graph.
+- `site/` — Hugo/Blowfish presentation reading model.yml + accepted evidence.
+- `.github/workflows/cad.yml` — thin released-CAD-CI and Hugo/Pages integration.
+- `.github/workflows/merge-policy.yml` — repository merge governance only.
 
 ## Main models
 
@@ -185,11 +189,10 @@ All ten existing Forge models use a pinned SCPF revision. The first two parallel
 
 Legacy library Pages and files must **remain** until the new URL is verified. Migration and cutover tracking: [library issue #25](https://github.com/brainboxemb/lib.py.solidcraft/issues/25). The SCPF version used for qualification is controlled by the exact `dependencies.repos` commit, not the library's moving `main`.
 
-## Build selection and cache planning
+## Build selection and publication
 
-Current CI **still recompiles and native-verifies every model** for every PR
-and merge to `main`. We will not skip independent model verification or
-publish old snapshots without a validated fingerprint. Impact-aware builds,
-shared component dependencies, native runtime versions, and a cache-invalidating
-SCPF revision pin are specified in [issue #14](https://github.com/brainboxemb/2026-011-02.cad.solidcraft/issues/14).
-Moonrepo is an option once individual model rebuild time justifies its setup.
+The exact released CAD-CI stack owns changed-item selection, dependency closure,
+SCons freshness/reuse and durable build scopes. CAD model production uses one
+shared SolidCraft batch rather than a Docker start per model. Development lanes
+publish isolated `build/<lane>` and Pages `/<lane>/` scopes; stable
+`main` is not replaced until #174 cut-over acceptance.

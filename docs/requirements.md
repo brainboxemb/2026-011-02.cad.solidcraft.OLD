@@ -61,6 +61,9 @@ Permanent source branches: `main`, `dev-cad`, `dev-ci`.
 
 - The workflow invokes the **exact released** `tool.cad.ci` root action,
   as Forge does, including a tested bounded `jobs` value.
+- Repository-level Python regressions run as one declarative
+  `ci/repository-tests` item in that same graph; they do not justify a
+  second planner or orchestration wrapper.
 - Root `cad-ci.yml` declares runtime variables, templates and item discovery.
 - Each model-root `ci.yml` stays small (identity, template, participation and
   genuinely local overrides). Common dependency/build/output policy belongs

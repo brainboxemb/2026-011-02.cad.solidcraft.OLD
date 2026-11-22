@@ -253,21 +253,14 @@ Stable `main` remains unchanged until dev-ci acceptance.
 
 ### M4 — Durable build and Pages scopes
 
-Status: **dev-ci durable build publication is proven; Pages asset handoff fix in progress**. PR #194 is merged and its
+Status: **accepted on dev-ci: durable build scope and Pages subtree publication proven without changing stable Pages**. PR #194 is merged and its
 PR-side Hugo + released-CAD-CI checks are green. Main PR #195 restored the
-Forge-style explicit post-merge workflow dispatch. PR #197 then proved the
-policy dispatch and durable `build/dev-ci` publication. Its Hugo render
-completed successfully, but the post-build asset contract exposed that native
-`.sc`/STEP downloads were copied from global resources inside the page
-template instead of being attached as page resources. Pages publication was
-correctly skipped. The first asset follow-up then exposed Hugo extension
-detection treating SolidCraft `.sc` as Scala (`text/x-scala`). Native
-`.sc` and STEP resources are therefore published explicitly as opaque binary
-downloads. The next durable attempt showed a second Hugo handoff detail:
-`AddResource` was given existing global Resource objects, so declared
-`/models/<slug>/...` resources such as `model.yml` were not materialized
-at their page paths. The adapter now supplies resource content to create true
-page resources before retrying `/dev-ci/`; stable Pages remains untouched.
+Forge-style explicit post-merge workflow dispatch. PR #197 proved policy dispatch and durable `build/dev-ci` publication.
+Hugo handoff fixes #198-#200 corrected binary/page-resource materialization.
+The final #200 integration run built and published `/dev-ci/` successfully.
+Comparison against `backup/gh-pages-before-174-2026-11-22` showed 150 added
+files, all below `dev-ci/`, with **zero** stable-root additions, removals or
+changes.
 
 - Publish complete accepted build scopes at `main`, `dev-cad`,
   `dev-ci` using released build-store CLI, preserving siblings.
@@ -283,7 +276,8 @@ page resources before retrying `/dev-ci/`; stable Pages remains untouched.
 
 ### M5 — End-to-end qualification and cutover
 
-Status: **not started**.
+Status: **cleanup/qualification in progress** — dev-ci durable publication is
+accepted; legacy local orchestration is being removed before lane promotion.
 
 - Run one selected model, one cross-model dependency, SCPC comparison,
   the full 16-item/18-variant model set, and all required native checks.
@@ -295,9 +289,10 @@ Status: **not started**.
 - Verify existing `/models/<slug>/` links and category URLs; visually compare
   homepage/category/model examples on desktop and narrow screens. Reject a
   visible website regression even if the CI/build checks are green.
-- Retire obsolete CAD selectors, wrapped generic execution and publisher
-  only after acceptance; update tests, AGENTS and documentation to the
-  new active architecture.
+- Retire obsolete CAD selectors, wrapped generic execution, publisher and
+  Python HTML renderer now that dev-ci durable build/Pages publication is
+  accepted. Preserve broad model regressions as `ci/repository-tests` and
+  document every retained CI directory/script.
 - Merge the migration into `main` only after source and generated scopes
   have been checked. Close #174 only at completion.
 

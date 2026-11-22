@@ -16,24 +16,18 @@
 >
 # CAD repository instructions
 
-> **CI migration in progress:** Issue #174 and
-> `docs/requirements.md`, `docs/design.md`, and `docs/plan.md` define the
-> intended Forge-compatible CI architecture. The permanent `dev-cad` and
-> `dev-ci` source branches now exist. M0 guard tests run on development PRs,
-> but these checks are **not** native CAD validation. Existing `cad.yml`,
-> `pipeline_ci.py`, and publication rules below describe the **current
-> implementation**, not the target. Do not extend the old selectors or
-> publication framework to address runtime upgrade coverage. Migrate in
-> reviewed stages; keep accepted `main` build/Pages output intact until cutover.
+> **Active CI architecture (issue #174):** `dev-ci` uses the exact released
+> `tool.cad.ci` action, one SCons graph, one shared SolidCraft model-build
+> batch and Hugo/Blowfish publication from the prepared durable scope.
+> `build/dev-ci` and Pages `/dev-ci/` are proven while stable Pages remains
+> unchanged. Do not recreate the retired local planner, selector, build store,
+> publisher or Python HTML generator.
 >
-> **Build architecture gate (issue #174):** Do not add further model
-> roots to the current per-model `model_verify.py` execution route. Although
-> the released CAD-CI scans/plans the repository, that route still starts
-> Docker separately for each model and uses a manually extended root item
-> list. Match Forge's shared build-batch item with one SolidCraft runtime
-> start, data-only per-model `ci.yml`, and results copied from the batch.
-> Use the released CAD-CI changed/dependency planner: do not invent a second
-> selection engine. See `docs/design.md` and `docs/plan.md`.
+> **Model build gate:** 14 physical roots / 16 variants currently build in the
+> shared runtime. `hub75-display2` and `hub75-wood-frame` stay disabled only
+> for Forge #679. Do not add CAD-local naming workarounds. Semantic
+> `verification/verify.py` is optional; a processed model must at least build
+> and produce the required saved outputs.
 >
 > **Generic CAD-CI requests go through Forge first:** track the common
 > scan/plan/build-batch requirement under
@@ -113,18 +107,14 @@ below before opening or merging the PR.
      workflow YAML.
    - The normal model regression and static-site smoke tests must pass.
 
-5. **Native SolidCraft verification**
-   - Set the model's native flags in the central catalog.
-   - Put model-specific native evidence checks with that model or in the shared
-     native-check runner when the check is genuinely cross-model. Do not add jq
-     assertions or model semantics to workflow YAML.
-   - Declare saved-design parameter mutations in
-     `scripts/ci/native_cases.py`; `run_native_mutations.py` executes them.
-   - Prefer checking the actual saved SolidCraft body rather than only generated
-     command JSON.
-   - Native verification runs inside the single `.github/workflows/cad.yml`
-     pipeline; do not add a second user-facing native workflow or another model
-     list in YAML.
+5. **SolidCraft build and optional semantic verification**
+   - Every processed model must build in the shared SolidCraft batch and
+     produce its required saved model, STEP and preview outputs.
+   - Add `verification/verify.py` only when a stable physical/semantic
+     expectation is useful; do not invent checks merely to satisfy CI.
+   - Optional snapshot camera and extra-view settings belong in the physical
+     model-root `check.py`; verification logic does not.
+   - Do not add model semantics or per-model execution loops to workflow YAML.
 
 6. **Results site**
    - Site title, description, parameters, stages and section belong in local
@@ -175,8 +165,9 @@ Normal CAD CI uses the released runtime owned by
 
 - Normal model work uses targeted builds. A change to one model should compile,
   test and native-build that model only.
-- Model selection comes from the central catalog and the shared selector under
-  `scripts/ci/`; do not reimplement path filtering in workflow YAML.
+- Model/item selection and dependency closure come from released CAD-CI using
+  `cad-ci.yml` + item `ci.yml`; do not reimplement them in CAD Python or
+  workflow YAML.
 - Shared component dependencies must be declared in the catalog so a component
   change selects its actual dependants.
 - Adding a new model should normally build only that model.
@@ -300,15 +291,14 @@ local image-build workflow. Do not split normal CAD operation into separate
 native, publish or cleanup workflows merely because those are separate
 implementation phases.
 
-Workflow YAML owns triggers, permissions, checkout, image pull/login and calls
-into tested Python. Git diff logic, model selection, model loops, JSON policy,
-model-specific checks, publication decisions and branch mutation policy belong
-in tested Python modules under `scripts/ci/` or with the model that owns the
-check.
+Workflow YAML owns triggers, permissions and the thin released-action/Hugo
+handoff. Released CAD-CI owns generic checkout, selection, dependency closure,
+SCons execution and durable publication. CAD Python below `scripts/ci/` is
+limited to the adapters documented in `scripts/ci/README.md`.
 
 The normal development flow is:
 
-`source change -> build plan -> selected cheap checks -> selected native checks -> candidate output -> publish/promote`
+`source change -> released CAD-CI plan/SCons -> repository tests + shared model batch -> durable build scope -> Hugo -> released Pages publisher`
 
 A deliberate full-library run uses the same commands with explicit `all`
 selection; it is not a separate CI implementation.
