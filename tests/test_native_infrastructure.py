@@ -35,7 +35,16 @@ class NativeInfrastructureTests(unittest.TestCase):
             path.name
             for path in (ROOT / ".github/workflows").glob("*.yml")
         }
-        self.assertEqual(workflows, {"cad.yml"})
+        # cad.yml remains the only CAD execution/publication workflow.
+        # merge-policy.yml is repository governance and must not duplicate
+        # CAD runtime/build behavior.
+        self.assertEqual(workflows, {"cad.yml", "merge-policy.yml"})
+        merge_policy = (
+            ROOT / ".github/workflows/merge-policy.yml"
+        ).read_text(encoding="utf-8")
+        self.assertIn("name: Merge policy", merge_policy)
+        self.assertNotIn("docker pull", merge_policy)
+        self.assertNotIn("scripts/ci/pipeline_ci.py", merge_policy)
 
         cad = (ROOT / ".github/workflows/cad.yml").read_text(encoding="utf-8")
         self.assertIn("name: CAD", cad)
