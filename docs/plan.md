@@ -31,6 +31,38 @@ Permanent target requirements/design are in `docs/requirements.md` and
 **Do not claim the Forge CI migration is completed by the successful runtime
 upgrade or by a green selected-model run.**
 
+## Architecture review gate — NO-GO on current per-model execution
+
+**Status: blocking M1/M2/M3 until replaced and measured.** The nine model
+roots already built successfully on `dev-ci` establish valid input models,
+but **not** the intended efficient architecture. The current run performs a
+separate Docker pull/start for every model, selects all configured model
+roots on each development PR, and manually lists those roots in
+`cad-ci.yml`. This differs materially from Forge's single shared
+model-verification batch and declarative discovery.
+
+Before further model onboarding:
+
+1. Use Forge's released `tool.cad.ci` scan/plan/SCons approach without a
+   second CAD-specific planner.
+2. Replace per-model Docker starts with one shared model-build batch,
+   including the existing independent SCPC comparisons, and expose results
+   through released `copy: dependency` semantics.
+3. Replace the hand-maintained selected-model list by category globs
+   and `process` settings; prevent unused old `ci.yml` steps from
+   accidentally becoming active during staged transition.
+4. Make normal dev-PR runs selective; retain full builds for deliberate
+   promotion and Forge/SolidCraft upgrade checks.
+5. Demonstrate two-model change, no-op change, full-catalog trigger,
+   independent geometry check, and one runtime startup per batch. Record
+   timing and actual model result files.
+6. Keep the existing CAD website/publication untouched until complete
+   source, result, route and page comparison passes.
+
+The unmerged `ci/174-component-models-batch` is **not** a completed
+migration step. No further model onboarding should be merged on the old
+per-model runner. Refer to issue #174 for the detailed audit.
+
 ## Work order
 
 ### M0 — Inventory and safe starting point
@@ -56,7 +88,8 @@ comparison remains outstanding.
 
 ### M1 — Released tooling and declarative model graph
 
-Status: **five models accepted; next four-model batch in progress**.
+Status: **nine model roots experimentally built and checked, architecture
+correction required before further onboarding**.
 PR #178 at `a4329d0791803572184b8ebf163adea737f7a372`
 passed a real Plate build with released tool.cad.ci 0.17.0 /
 lib.py.cad.ci 0.9.3, verification 0.15.0, Forge 0.11.0 and central
@@ -77,7 +110,8 @@ all other roots remain outside the staged graph until checked. This is not full-
 
 ### M2 — Native verification and consumer step migration
 
-Status: **five models built and checked; four further models in trial**.
+Status: **nine model roots built using per-model Docker; not the accepted
+Forge-style batch architecture**.
 The Plate model was built successfully by released CAD-CI. The next
 stage converts Plate and Vent Plate to one model-independent producer, builds
 and checks Forge and independent SCPC SolidCraft models and checks that their body
@@ -87,7 +121,8 @@ bounds and volume agree. Other model roots remain on the old main pipeline.
   verification and released `lib.py.cad.verification`, including native
   SolidCraft output and accurate provenance.
 - Cover a model with independent SCPC output and a complex assembly.
-- Convert the remaining model roots in reviewable groups, preserving
+- Only after the shared-batch architecture gate is green, convert the
+  remaining model roots in reviewable groups, preserving
   geometry and current accepted result details.
 - Keep model-specific expected outcomes and optional snapshots in CAD;
   remove generic JSON/schema/mutation/checker duplication only when parity

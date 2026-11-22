@@ -47,9 +47,9 @@ Permanent source branches: `main`, `dev-cad`, `dev-ci`.
 - The workflow invokes the **exact released** `tool.cad.ci` root action,
   as Forge does, including a tested bounded `jobs` value.
 - Root `cad-ci.yml` declares runtime variables, templates and item discovery.
-- Each model-root `ci.yml` declares participation, source watches, dependency
-  edges, steps and expected outputs. One physical model root may own multiple
-  website/catalog variants.
+- Each model-root `ci.yml` stays small (identity, template, participation and
+  genuinely local overrides). Common dependency/build/output policy belongs
+  in the root template; one physical root may own multiple catalog variants.
 - A model-specific change selects only the affected model and its declared
   dependants; SCons decides whether a selected action needs to run.
 - A source-level change to Forge/SCPC/verifier/runtime that changes model
@@ -63,6 +63,26 @@ Permanent source branches: `main`, `dev-cad`, `dev-ci`.
 - A model is reported as built against a new toolchain only when its own
   saved native design, STEP/results and checks were produced under that
   toolchain. Merely refreshing the website or command JSON does not count.
+
+## Build batch and scan contract
+
+- Reuse the **Forge pattern**: CAD-CI discovers all items and owns the
+  changed-path/dependency plan; one released SCons run executes the plan.
+- Prepare shared Forge/SCPC/checker dependencies once. One shared build-batch
+  item collects the affected model commands and runs SolidCraft with **one
+  container startup**, writing separate verification evidence per model.
+- Model items use the existing released `copy: dependency` mechanism to
+  expose their own results; they do not each launch Docker.
+- Item discovery uses category globs and declarative `process`, not a
+  growing manually edited list of model paths.
+- Ordinary development PRs remain selective. A complete model check is
+  required for toolchain upgrades and deliberate lane-to-main promotion.
+- Measure plan count, model-build count, shared dependency runs, image pulls,
+  container starts and total elapsed time. Do not claim the architecture is
+  completed just because isolated model builds succeed.
+- If the released batch model cannot preserve the required selectivity,
+  resolve that with Forge/CAD-CI's published generic architecture first,
+  not a new second scheduler within the CAD repository.
 
 ## Verification and results
 
