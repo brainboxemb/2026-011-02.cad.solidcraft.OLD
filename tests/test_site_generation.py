@@ -158,7 +158,7 @@ class HugoSiteContractTests(unittest.TestCase):
 
     def test_model_page_prioritizes_use_and_context_before_technical_depth(self):
         page = (SITE / "layouts/models/single.html").read_text()
-        self.assertLess(page.index("cad-web-open"), page.index("cad-source-panel"))
+        self.assertLess(page.index("cad-web-open"), page.index("cad-source-section"))
         self.assertLess(page.index("cad-background"), page.index('class="cad-source-panel"'))
         self.assertLess(page.index('index $m "extra_views"'), page.index('class="cad-source-panel"'))
 
