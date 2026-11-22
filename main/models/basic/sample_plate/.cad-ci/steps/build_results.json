@@ -1,0 +1,39 @@
+{
+  "action_executed": true,
+  "action_type": "copy",
+  "bundle_sha256": "5a19529fc7d74a4f7c64d4a19c9dd6609a1b3d345eb74b5f0fd9d6fd2f2e21a4",
+  "duration_seconds": 0.051,
+  "engine": "scons",
+  "engine_schema": 3,
+  "error": null,
+  "exit_code": null,
+  "finished_at": "2026-11-22T13:10:33.038Z",
+  "item": "sample-plate",
+  "outcome": "BUILT",
+  "output_state": "RESTORED",
+  "outputs": {
+    "generated": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "4c5efa90364c59778ad17a077bd66fcee160ccac3f2eae9e2c016d10da933c01"
+    },
+    "manifest.json": {
+      "kind": "file",
+      "mode": 420,
+      "sha256": "4d2baa3bc44587f1f9f08a40dc40348b249a9098c40b69c1488a00156baecfc1"
+    },
+    "models": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "101569c007a5c94836e6828214f466b8ef053dc7a93bcc4b73ab878105154b81"
+    }
+  },
+  "run_finished_at": "2026-11-22T13:10:33.375Z",
+  "run_started_at": "2026-11-22T13:09:38.152Z",
+  "schema": 4,
+  "started_at": "2026-11-22T13:10:32.987Z",
+  "status": "pass",
+  "step": "build_results",
+  "target_spec_digest": "b5297c9cb9fe6e42f249dabc053cac2806b61a394145062e62a25940276b189a",
+  "timeout_seconds": null
+}

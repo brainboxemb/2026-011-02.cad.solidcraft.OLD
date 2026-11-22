@@ -1,0 +1,34 @@
+{
+  "action_executed": true,
+  "action_type": "command",
+  "bundle_sha256": "de48acb663927c99e27e5d89105a5389f232d0e298aef29b6dc799ba5b925c95",
+  "duration_seconds": 1.833,
+  "engine": "scons",
+  "engine_schema": 3,
+  "error": null,
+  "exit_code": 0,
+  "finished_at": "2026-11-22T13:09:43.395Z",
+  "item": "scpc-package",
+  "outcome": "BUILT",
+  "output_state": "UNCHANGED",
+  "outputs": {
+    "dist": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "5c4f8c0a3ea23bc5a3492d491d0fb1334d19690a0c79419e87390a34732f57c1"
+    },
+    "provenance.json": {
+      "kind": "file",
+      "mode": 420,
+      "sha256": "91a706d4693ff7c1c043780efb7f811f265afc8fc5e5837367393b0b6a95c2bf"
+    }
+  },
+  "run_finished_at": "2026-11-22T13:10:33.375Z",
+  "run_started_at": "2026-11-22T13:09:38.152Z",
+  "schema": 4,
+  "started_at": "2026-11-22T13:09:41.563Z",
+  "status": "pass",
+  "step": "wheel",
+  "target_spec_digest": "b380d1610614f6fee398e222bdd22cd325cd1536ef314912826ee782fc5d18d1",
+  "timeout_seconds": null
+}

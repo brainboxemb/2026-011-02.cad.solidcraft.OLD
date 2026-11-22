@@ -1,0 +1,134 @@
+[
+  {
+    "attachment": "exact_face",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "name": "Holes",
+    "projected": null,
+    "sketch": 4
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "c1"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1"
+      ]
+    },
+    "curves": [
+      "c1"
+    ],
+    "sketch": {
+      "dof": 1,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 4
+  },
+  {
+    "bodies": [
+      "SamplePlate"
+    ],
+    "changed_bodies": [
+      "SamplePlate"
+    ],
+    "created_bodies": [],
+    "feature": 5,
+    "ms": 12.079002000000001,
+    "name": "Holes",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "SamplePlate"
+    ],
+    "changed_bodies": [
+      "SamplePlate"
+    ],
+    "created_bodies": [],
+    "feature": 6,
+    "ms": 21.136791,
+    "name": "RectangularPattern1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "SamplePlate"
+    ],
+    "changed_bodies": [
+      "SamplePlate"
+    ],
+    "created_bodies": [],
+    "feature": 7,
+    "ms": 16.734097,
+    "name": "Cylinder1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "name": "Bore",
+    "projected": null,
+    "sketch": 8
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "c1"
+      ],
+      "dimensions": [],
+      "points": [
+        "c1.center"
+      ]
+    },
+    "curves": [
+      "c1"
+    ],
+    "sketch": {
+      "dof": 1,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 8
+  },
+  {
+    "bodies": [
+      "SamplePlate"
+    ],
+    "changed_bodies": [
+      "SamplePlate"
+    ],
+    "created_bodies": [],
+    "feature": 9,
+    "ms": 15.102587,
+    "name": "Bore",
+    "removed_bodies": [],
+    "warning": null
+  }
+]

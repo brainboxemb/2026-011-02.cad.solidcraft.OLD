@@ -1,0 +1,139 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 9215.30970943744,
+      "bbox": {
+        "max": [
+          40.0,
+          0.0,
+          1.1102230246251575e-16
+        ],
+        "min": [
+          0.0,
+          -60.0,
+          -30.0
+        ]
+      },
+      "center_of_mass": [
+        13.258837584385354,
+        -30.0,
+        -8.78363654070619
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 27,
+      "face_types": {
+        "cylinder": 3,
+        "plane": 8
+      },
+      "faces": 11,
+      "kernel": {
+        "edges": 27,
+        "faces": 11,
+        "shells": 1,
+        "vertices": 18
+      },
+      "mass_g": 28.877049602946734,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "Bracket",
+      "notes": [],
+      "vertices": 18,
+      "volume_mm3": 22385.309769726147
+    }
+  ],
+  "body_count": 1,
+  "params": [
+    {
+      "comment": "",
+      "error": null,
+      "expression": "60",
+      "model": false,
+      "name": "width",
+      "unit": "mm",
+      "value": 60.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "6",
+      "model": false,
+      "name": "thickness",
+      "unit": "mm",
+      "value": 6.0
+    }
+  ],
+  "sketches": [
+    {
+      "curves": 6,
+      "dof": 4,
+      "id": 1,
+      "name": "Profile",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false,
+      "wires_ok": true
+    }
+  ],
+  "timeline": [
+    {
+      "error": null,
+      "id": 1,
+      "ms": 0.23184,
+      "name": "Profile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 2,
+      "ms": 2.591801,
+      "name": "Extrude1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 3,
+      "ms": 13.598251000000001,
+      "name": "Fillet1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 4,
+      "ms": 22.972970999999998,
+      "name": "Hole1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 5,
+      "ms": 28.070864,
+      "name": "Hole2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    }
+  ],
+  "total": {
+    "area_mm2": 9215.30970943744,
+    "edges": 27,
+    "faces": 11,
+    "mass_g": 28.877049602946734,
+    "open_bodies_skipped": 0,
+    "vertices": 18,
+    "volume_mm3": 22385.309769726147
+  }
+}

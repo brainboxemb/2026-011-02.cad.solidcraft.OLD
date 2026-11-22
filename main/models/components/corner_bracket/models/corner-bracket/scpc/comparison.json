@@ -1,0 +1,54 @@
+{
+  "body_count": {
+    "actual": 1,
+    "expected": 1,
+    "label": "Forge/SCPC body count",
+    "pass": true
+  },
+  "bounds": {
+    "actual_max": [
+      60.0,
+      12.0,
+      12.000000000000004
+    ],
+    "actual_min": [
+      -12.000000000000002,
+      -12.0,
+      -60.00000000000001
+    ],
+    "deltas": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "expected_max": [
+      60.0,
+      12.0,
+      12.000000000000004
+    ],
+    "expected_min": [
+      -12.000000000000002,
+      -12.0,
+      -60.00000000000001
+    ],
+    "kind": "bounds",
+    "label": "Forge/SCPC bounds",
+    "max_delta": 0.0,
+    "pass": true,
+    "tolerance": 0.005
+  },
+  "schema": 1,
+  "status": "pass",
+  "volume": {
+    "actual": 36771.03664421131,
+    "delta": 0.0,
+    "expected": 36771.03664421131,
+    "kind": "scalar",
+    "label": "Forge/SCPC volume (mm\u00b3)",
+    "pass": true,
+    "tolerance": 0.05
+  }
+}

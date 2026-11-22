@@ -1,0 +1,149 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 23049.86529938832,
+      "bbox": {
+        "max": [
+          50.0,
+          50.0,
+          26.000000000000004
+        ],
+        "min": [
+          -50.0,
+          -50.0,
+          0.0
+        ]
+      },
+      "center_of_mass": [
+        -3.217451948230191e-15,
+        -2.8499444037324775e-15,
+        7.545258232859453
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 27,
+      "face_types": {
+        "cylinder": 9,
+        "plane": 3
+      },
+      "faces": 12,
+      "kernel": {
+        "edges": 27,
+        "faces": 12,
+        "shells": 1,
+        "vertices": 18
+      },
+      "mass_g": 112.60300592519016,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "Flange",
+      "notes": [],
+      "vertices": 18,
+      "volume_mm3": 87289.15187999237
+    }
+  ],
+  "body_count": 1,
+  "params": [],
+  "sketches": [],
+  "timeline": [
+    {
+      "error": null,
+      "id": 1,
+      "ms": 2.995301,
+      "name": "Cylinder1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 2,
+      "ms": 16.036769999999997,
+      "name": "Cylinder2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 3,
+      "ms": 21.716641,
+      "name": "Hole1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 4,
+      "ms": 39.848289,
+      "name": "Hole2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 5,
+      "ms": 42.431848,
+      "name": "Hole3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 6,
+      "ms": 48.03274,
+      "name": "Hole4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 7,
+      "ms": 53.493041,
+      "name": "Hole5",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 8,
+      "ms": 60.596565999999996,
+      "name": "Hole6",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 9,
+      "ms": 64.61111899999999,
+      "name": "Hole7",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    }
+  ],
+  "total": {
+    "area_mm2": 23049.86529938832,
+    "edges": 27,
+    "faces": 12,
+    "mass_g": 112.60300592519016,
+    "open_bodies_skipped": 0,
+    "vertices": 18,
+    "volume_mm3": 87289.15187999237
+  }
+}

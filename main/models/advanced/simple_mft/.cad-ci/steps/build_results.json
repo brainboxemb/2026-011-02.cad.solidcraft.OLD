@@ -1,0 +1,39 @@
+{
+  "action_executed": true,
+  "action_type": "copy",
+  "bundle_sha256": "d1c0a64a8b6ca9ff56214ed59ac4e53e661729fa02c49ec5712cc32979e8a152",
+  "duration_seconds": 0.107,
+  "engine": "scons",
+  "engine_schema": 3,
+  "error": null,
+  "exit_code": null,
+  "finished_at": "2026-11-22T13:10:32.884Z",
+  "item": "simple-mft",
+  "outcome": "BUILT",
+  "output_state": "RESTORED",
+  "outputs": {
+    "generated": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "01aa6e5e6614b7e603a206714516051724fe8aa5a92bc5ec679995bd4841b332"
+    },
+    "manifest.json": {
+      "kind": "file",
+      "mode": 420,
+      "sha256": "7e6b357ad356e2f10a729544c68cc02316154ec7b903ee0fc20b655310a1f08a"
+    },
+    "models": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "e30e2dc47b662300159b31d3c9e0e33f1d37fa99d85080591196dcf6d088880d"
+    }
+  },
+  "run_finished_at": "2026-11-22T13:10:33.375Z",
+  "run_started_at": "2026-11-22T13:09:38.152Z",
+  "schema": 4,
+  "started_at": "2026-11-22T13:10:32.777Z",
+  "status": "pass",
+  "step": "build_results",
+  "target_spec_digest": "f5ee198f4fe5d55f281cb90d5298a98e8645e20db0bcdc541a40b990cc1230d3",
+  "timeout_seconds": null
+}

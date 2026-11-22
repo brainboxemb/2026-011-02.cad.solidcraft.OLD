@@ -1,0 +1,143 @@
+[
+  {
+    "display_value": 6.0,
+    "name": "cols",
+    "unit": "",
+    "value": 6.0
+  },
+  {
+    "display_value": 16.0,
+    "name": "pitch",
+    "unit": "mm",
+    "value": 16.0
+  },
+  {
+    "display_value": 3.0,
+    "name": "rows",
+    "unit": "",
+    "value": 3.0
+  },
+  {
+    "bodies": [
+      "Plate"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [
+      "Plate"
+    ],
+    "feature": 1,
+    "ms": 2.28592,
+    "name": "Box1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Plate"
+    ],
+    "changed_bodies": [
+      "Plate"
+    ],
+    "created_bodies": [],
+    "feature": 2,
+    "ms": 42.368515,
+    "name": "Fillet1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "name": "Vent",
+    "projected": null,
+    "sketch": 3
+  },
+  {
+    "constraints": [
+      "k1",
+      "k2",
+      "k3",
+      "k4"
+    ],
+    "corners": {
+      "bottom_left": "p1",
+      "bottom_right": "p2",
+      "top_left": "p4",
+      "top_right": "p3"
+    },
+    "created": {
+      "constraints": [
+        "k1",
+        "k2",
+        "k3",
+        "k4"
+      ],
+      "curves": [
+        "l1",
+        "l2",
+        "l3",
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ]
+    },
+    "curves": [
+      "l1",
+      "l2",
+      "l3",
+      "l4"
+    ],
+    "sides": {
+      "bottom": "l1",
+      "left": "l4",
+      "right": "l2",
+      "top": "l3"
+    },
+    "sketch": {
+      "dof": 4,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 3
+  },
+  {
+    "bodies": [
+      "Plate"
+    ],
+    "changed_bodies": [
+      "Plate"
+    ],
+    "created_bodies": [],
+    "feature": 4,
+    "ms": 9.116027,
+    "name": "Vent",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Plate"
+    ],
+    "changed_bodies": [
+      "Plate"
+    ],
+    "created_bodies": [],
+    "feature": 5,
+    "ms": 66.30296,
+    "name": "RectangularPattern1",
+    "removed_bodies": [],
+    "warning": null
+  }
+]

@@ -1,0 +1,152 @@
+{
+  "forge_sha": "9258d54079981604b6dd777a4c4face897c190fe",
+  "models": [
+    {
+      "compile_error": null,
+      "definition": null,
+      "forge_commands": "/output/items/models/advanced/hub75_screen/generated/hub75-screen/scpf/solidcraft.json",
+      "item_path": "models/advanced/hub75_screen",
+      "scpc_commands": null,
+      "scpc_sha": null,
+      "slug": "hub75-screen"
+    },
+    {
+      "compile_error": null,
+      "definition": null,
+      "forge_commands": "/output/items/models/advanced/simple_mft/generated/simple-mft/scpf/solidcraft.json",
+      "item_path": "models/advanced/simple_mft",
+      "scpc_commands": null,
+      "scpc_sha": null,
+      "slug": "simple-mft"
+    },
+    {
+      "compile_error": null,
+      "definition": null,
+      "forge_commands": "/output/items/models/advanced/simple_mft/generated/simple-mft-assembly/scpf/solidcraft.json",
+      "item_path": "models/advanced/simple_mft",
+      "scpc_commands": null,
+      "scpc_sha": null,
+      "slug": "simple-mft-assembly"
+    },
+    {
+      "compile_error": null,
+      "definition": "models/basic/bolted_flange/verification/verify.py",
+      "forge_commands": "/output/items/models/basic/bolted_flange/generated/bolted-flange/scpf/solidcraft.json",
+      "item_path": "models/basic/bolted_flange",
+      "scpc_commands": "/output/items/models/basic/bolted_flange/generated/bolted-flange/scpc/solidcraft.json",
+      "scpc_sha": "fcaa6f9fc8388bc715fcd2fbb149ce6b979566a7",
+      "slug": "bolted-flange"
+    },
+    {
+      "compile_error": null,
+      "definition": "models/basic/bracket/verification/verify.py",
+      "forge_commands": "/output/items/models/basic/bracket/generated/bracket/scpf/solidcraft.json",
+      "item_path": "models/basic/bracket",
+      "scpc_commands": null,
+      "scpc_sha": null,
+      "slug": "bracket"
+    },
+    {
+      "compile_error": null,
+      "definition": "models/basic/csg_cube/verification/verify.py",
+      "forge_commands": "/output/items/models/basic/csg_cube/generated/csg-cube/scpf/solidcraft.json",
+      "item_path": "models/basic/csg_cube",
+      "scpc_commands": null,
+      "scpc_sha": null,
+      "slug": "csg-cube"
+    },
+    {
+      "compile_error": null,
+      "definition": "models/basic/plastic_enclosure/verification/verify.py",
+      "forge_commands": "/output/items/models/basic/plastic_enclosure/generated/plastic-enclosure/scpf/solidcraft.json",
+      "item_path": "models/basic/plastic_enclosure",
+      "scpc_commands": null,
+      "scpc_sha": null,
+      "slug": "plastic-enclosure"
+    },
+    {
+      "compile_error": null,
+      "definition": "models/basic/plastic_enclosure_pi/verification/verify.py",
+      "forge_commands": "/output/items/models/basic/plastic_enclosure_pi/generated/plastic-enclosure-pi/scpf/solidcraft.json",
+      "item_path": "models/basic/plastic_enclosure_pi",
+      "scpc_commands": null,
+      "scpc_sha": null,
+      "slug": "plastic-enclosure-pi"
+    },
+    {
+      "compile_error": null,
+      "definition": "models/basic/plate/verification/verify.py",
+      "forge_commands": "/output/items/models/basic/plate/generated/plate/scpf/solidcraft.json",
+      "item_path": "models/basic/plate",
+      "scpc_commands": "/output/items/models/basic/plate/generated/plate/scpc/solidcraft.json",
+      "scpc_sha": "fcaa6f9fc8388bc715fcd2fbb149ce6b979566a7",
+      "slug": "plate"
+    },
+    {
+      "compile_error": null,
+      "definition": "models/basic/sample_plate/verification/verify.py",
+      "forge_commands": "/output/items/models/basic/sample_plate/generated/sample-plate/scpf/solidcraft.json",
+      "item_path": "models/basic/sample_plate",
+      "scpc_commands": null,
+      "scpc_sha": null,
+      "slug": "sample-plate"
+    },
+    {
+      "compile_error": null,
+      "definition": "models/basic/vent_plate/verification/verify.py",
+      "forge_commands": "/output/items/models/basic/vent_plate/generated/vent-plate/scpf/solidcraft.json",
+      "item_path": "models/basic/vent_plate",
+      "scpc_commands": "/output/items/models/basic/vent_plate/generated/vent-plate/scpc/solidcraft.json",
+      "scpc_sha": "fcaa6f9fc8388bc715fcd2fbb149ce6b979566a7",
+      "slug": "vent-plate"
+    },
+    {
+      "compile_error": null,
+      "definition": "models/components/corner_bracket/verification/verify.py",
+      "forge_commands": "/output/items/models/components/corner_bracket/generated/corner-bracket/scpf/solidcraft.json",
+      "item_path": "models/components/corner_bracket",
+      "scpc_commands": "/output/items/models/components/corner_bracket/generated/corner-bracket/scpc/solidcraft.json",
+      "scpc_sha": "fcaa6f9fc8388bc715fcd2fbb149ce6b979566a7",
+      "slug": "corner-bracket"
+    },
+    {
+      "compile_error": null,
+      "definition": "models/components/flex_bench_dog/verification/verify.py",
+      "forge_commands": "/output/items/models/components/flex_bench_dog/generated/flex-bench-dog/scpf/solidcraft.json",
+      "item_path": "models/components/flex_bench_dog",
+      "scpc_commands": "/output/items/models/components/flex_bench_dog/generated/flex-bench-dog/scpc/solidcraft.json",
+      "scpc_sha": "fcaa6f9fc8388bc715fcd2fbb149ce6b979566a7",
+      "slug": "flex-bench-dog"
+    },
+    {
+      "compile_error": null,
+      "definition": "models/components/guide_rail/verification/verify.py",
+      "forge_commands": "/output/items/models/components/guide_rail/generated/guide-rail/scpf/solidcraft.json",
+      "item_path": "models/components/guide_rail",
+      "scpc_commands": null,
+      "scpc_sha": null,
+      "slug": "guide-rail"
+    },
+    {
+      "compile_error": null,
+      "definition": "models/components/guide_rail/verification/verify.py",
+      "forge_commands": "/output/items/models/components/guide_rail/generated/guide-rail-makita/scpf/solidcraft.json",
+      "item_path": "models/components/guide_rail",
+      "scpc_commands": null,
+      "scpc_sha": null,
+      "slug": "guide-rail-makita"
+    },
+    {
+      "compile_error": null,
+      "definition": null,
+      "forge_commands": "/output/items/models/components/hub75_panel/generated/hub75-panel/scpf/solidcraft.json",
+      "item_path": "models/components/hub75_panel",
+      "scpc_commands": null,
+      "scpc_sha": null,
+      "slug": "hub75-panel"
+    }
+  ],
+  "runtime_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
+  "schema": 1,
+  "source_sha": "66afc43b8fa2d24860b2faaedf6df1f1a93a036b"
+}

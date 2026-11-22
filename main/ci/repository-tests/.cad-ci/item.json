@@ -1,0 +1,12 @@
+{
+  "engine": "scons",
+  "engine_schema": 3,
+  "final_bundle_sha256": "be3e0e7e8aaa129f8d9070a8c5cad112bd939bd10da00311d3cd107db09a8a63",
+  "final_step": "unittest",
+  "final_target_spec_digest": "f54f0ffe84c9cee9c1e9217857e3ffa542a6761fe32e2dbd6239ff966caad172",
+  "item": "repository-tests",
+  "run_finished_at": "2026-11-22T13:14:15.251Z",
+  "run_started_at": "2026-11-22T13:14:07.487Z",
+  "schema": 2,
+  "status": "pass"
+}

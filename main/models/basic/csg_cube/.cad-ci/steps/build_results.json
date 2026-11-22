@@ -1,0 +1,39 @@
+{
+  "action_executed": true,
+  "action_type": "copy",
+  "bundle_sha256": "31f2988839897954176dbd61071c62f5b1b1aee8e645746222ce0c4a3bc74528",
+  "duration_seconds": 0.032,
+  "engine": "scons",
+  "engine_schema": 3,
+  "error": null,
+  "exit_code": null,
+  "finished_at": "2026-11-22T13:10:32.986Z",
+  "item": "csg-cube",
+  "outcome": "BUILT",
+  "output_state": "RESTORED",
+  "outputs": {
+    "generated": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "8acfc22d23d382d14b7869ea0e4c09feb0996fce5cf7945e0bcc026ea4357069"
+    },
+    "manifest.json": {
+      "kind": "file",
+      "mode": 420,
+      "sha256": "2e477cff86e00c4ea350277e8934bd5825869a4d8aa3fe12cf28d30438fce508"
+    },
+    "models": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "b0d17c7f0a9b035179d94f85f2e85c1933b9b57668ddcc70a9321430793730cc"
+    }
+  },
+  "run_finished_at": "2026-11-22T13:10:33.375Z",
+  "run_started_at": "2026-11-22T13:09:38.152Z",
+  "schema": 4,
+  "started_at": "2026-11-22T13:10:32.954Z",
+  "status": "pass",
+  "step": "build_results",
+  "target_spec_digest": "9623772021952b77e784d3ec5a81a38a848390e0888fdf11708d59f1cf917657",
+  "timeout_seconds": null
+}

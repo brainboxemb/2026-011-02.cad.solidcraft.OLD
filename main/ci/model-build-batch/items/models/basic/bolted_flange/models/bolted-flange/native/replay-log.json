@@ -1,0 +1,190 @@
+{
+  "format": "scpf-replay-log",
+  "version": 1,
+  "replay_sha256": "52a307fbf86ebb16e7293be660b8fc78880ed17bc2bca736c6e774d8a02b91a7",
+  "variables": {},
+  "commands": [
+    {
+      "index": 0,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 10,
+        "diameter": 100,
+        "base": [
+          0,
+          0,
+          0.0
+        ],
+        "axis": "Z",
+        "operation": "new",
+        "body_name": "Flange"
+      }
+    },
+    {
+      "index": 1,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 16,
+        "diameter": 44,
+        "base": [
+          0,
+          0,
+          10.0
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Flange"
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          0,
+          0,
+          26
+        ],
+        "targets": [
+          "Flange"
+        ],
+        "diameter": 24,
+        "depth": 26,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          35.0,
+          0.0,
+          10
+        ],
+        "targets": [
+          "Flange"
+        ],
+        "diameter": 9,
+        "depth": 10,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          17.500000000000004,
+          30.31088913245535,
+          10
+        ],
+        "targets": [
+          "Flange"
+        ],
+        "diameter": 9,
+        "depth": 10,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -17.499999999999993,
+          30.310889132455355,
+          10
+        ],
+        "targets": [
+          "Flange"
+        ],
+        "diameter": 9,
+        "depth": 10,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -35.0,
+          4.2862637970157365e-15,
+          10
+        ],
+        "targets": [
+          "Flange"
+        ],
+        "diameter": 9,
+        "depth": 10,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 7,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -17.500000000000014,
+          -30.310889132455344,
+          10
+        ],
+        "targets": [
+          "Flange"
+        ],
+        "diameter": 9,
+        "depth": 10,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 8,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          17.500000000000004,
+          -30.31088913245535,
+          10
+        ],
+        "targets": [
+          "Flange"
+        ],
+        "diameter": 9,
+        "depth": 10,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    }
+  ],
+  "completed": 9
+}

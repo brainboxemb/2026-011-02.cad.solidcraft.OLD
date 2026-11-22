@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": {
+          "face": [
+            -211.38904671714621,
+            -86.38904671714624,
+            18.0
+          ],
+          "body": "SimpleMFT",
+          "index": 0
+        },
+        "project_edges": false,
+        "name": "Dog holes"
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          "(d1_SimpleMFT_hole_pitch * -4)",
+          "(d1_SimpleMFT_hole_pitch * -3)"
+        ],
+        "diameter": "d1_SimpleMFT_hole_diameter"
+      }
+    }
+  ]
+}

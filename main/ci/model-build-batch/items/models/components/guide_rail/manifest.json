@@ -1,0 +1,8 @@
+{
+  "item_path": "models/components/guide_rail",
+  "models": [
+    "guide-rail",
+    "guide-rail-makita"
+  ],
+  "schema": 1
+}
