@@ -10,6 +10,15 @@
 > publication framework to address runtime upgrade coverage. Migrate in
 > reviewed stages; keep accepted `main` build/Pages output intact until cutover.
 >
+> **Build architecture gate (issue #174):** Do not add further model
+> roots to the current per-model `model_verify.py` execution route. Although
+> the released CAD-CI scans/plans the repository, that route still starts
+> Docker separately for each model and uses a manually extended root item
+> list. Match Forge's shared build-batch item with one SolidCraft runtime
+> start, data-only per-model `ci.yml`, and results copied from the batch.
+> Use the released CAD-CI changed/dependency planner: do not invent a second
+> selection engine. See `docs/design.md` and `docs/plan.md`.
+>
 This repository contains product and project CAD models built with SCPF/SCPC.
 Forge itself belongs in `brainboxemb/lib.py.solidcraft.forge`; do not work
 around a Forge API/compiler problem in a product model.

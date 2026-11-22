@@ -40,9 +40,66 @@ source-lane push only
     -> released Pages publisher (scope-preserving)
 ```
 
-The host launches the immutable SolidCraft runtime only for selected native
-model actions. Python dependencies and model-specific scripts are separate
-inputs. A change to a test or model does not rebuild a Docker image.
+The host launches the immutable SolidCraft runtime once per model-build
+batch, not once per model item. Python dependencies and model-specific
+scripts remain separate inputs. A change to a test or model does not rebuild a Docker image.
+
+## Shared scan → plan → build execution
+
+The accepted reference is Forge's `ci/model-verification-batch/ci.yml`,
+`scripts/model_verification_batch.py` and the `copy: dependency` step in
+`forge-model-declarative`. The CAD repository must follow that **existing
+pattern**, not create its own selector, scheduler or per-model Docker runner.
+
+```text
+one Git/CAD-CI scan
+    -> discover all model items from category globs
+    -> released tool.cad.ci plans changed items and dependencies
+    -> ONE SCons graph
+        -> prepare pinned Forge, SCPC and verification packages once
+        -> one model-build batch: gather commands before starting runtime
+        -> one SolidCraft runtime startup for the batch
+        -> build/check each selected model, keep per-model evidence
+        -> model items copy their outputs from the batch dependency
+    -> optional complete build/Pages publication from accepted results
+```
+
+The library remains the sole authority for `process`, changed-path
+selection, dependency closure and target freshness. The CAD consumer may
+provide a catalog-to-build-source adapter and per-model expected results,
+but **not** a parallel planning mechanism or manually extended root item list.
+
+### Efficiency and correctness acceptance
+
+- Root `cad-ci.yml` uses generic discovery globs, not a list amended every
+  time another model is migrated. Keep the existing 16 physical roots and 18
+  catalog variants accounted for. Individual `ci.yml` files stay minimal.
+- Do not start Docker in a model-item action. A shared batch prepares all
+  selected commands and starts the released SolidCraft runtime **once** for
+  that batch; the batch reports success/failure separately for each model.
+- Model items use released CAD-CI `copy: dependency` to materialize their
+  own outputs from the batch, as Forge does.
+- Preserve the independent SCPC geometry comparison for the five applicable
+  catalog variants; do not build its dependency wheel per model.
+- Regular development PRs use the released selective planner. A full run
+  is reserved for explicit full checks or promotion into `main`.
+- Measure actual selected/build counts, single-pull/container-start count,
+  runtime and stored evidence. Do not infer success from a green workflow
+  without each model's own saved result.
+- Forge's current batch has a granularity trade-off: an input change may
+  invalidate the whole batch. Measure it; if per-model selectivity is needed,
+  improve the **released generic ownership layer** first rather than
+  embedding another change planner in CAD-specific Python.
+- The site remains a separate consumer of complete build evidence; no
+  redesign or URL change is authorized by this correction.
+
+**Current implementation is not accepted as the target.** On `dev-ci`
+the present `cad-model-build` runs `scripts/ci/model_verify.py` once per
+model, doing a `docker pull` and `docker run` for every model. The
+development PR also uses `full_run: true`, and root `cad-ci.yml` grows
+one manual item path at a time. These choices are a performance and
+ownership regression compared with Forge and must be replaced before
+onboarding the remaining models.
 
 ## Model item shape
 
@@ -54,7 +111,7 @@ Desired item contract:
 
 ```yaml
 id: sample-plate
-template: cad-model-native
+template: cad-model-build
 process: true
 # model-local source/tests/verification inputs plus declared cross-model needs
 ```
