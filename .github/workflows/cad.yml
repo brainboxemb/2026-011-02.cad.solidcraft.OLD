@@ -52,7 +52,7 @@ jobs:
         run: |
           mkdir -p prepared-scope
           cd site
-          hugo mod graph | grep -F "github.com/nunocoracao/blowfish/v3@v3.10.0"
+          hugo mod graph | grep -F "github.com/imfing/hextra@v0.13.0"
           hugo --minify --printPathWarnings --destination "$GITHUB_WORKSPACE/generated-site"
           cd "$GITHUB_WORKSPACE"
           test -s generated-site/models/plate/index.html
@@ -136,10 +136,10 @@ jobs:
           export HUGO_PARAMS_BUILDSCOPE="$SCOPE"
           export HUGO_PARAMS_BUILDCOMMIT="$BUILD_COMMIT"
           cd site
-          hugo mod graph | grep -F "github.com/nunocoracao/blowfish/v3@v3.10.0"
+          hugo mod graph | grep -F "github.com/imfing/hextra@v0.13.0"
           hugo --minify --printPathWarnings --destination "$GITHUB_WORKSPACE/generated-site"
           cd "$GITHUB_WORKSPACE"
-          jq -n --arg source "$SOURCE_SHA" --arg build "$BUILD_COMMIT" --arg scope "$SCOPE"             '{schema:1,generator:"hugo+blowfish",source_commit:$source,build_commit:$build,build_scope:$scope}'             > generated-site/provenance.json
+          jq -n --arg source "$SOURCE_SHA" --arg build "$BUILD_COMMIT" --arg scope "$SCOPE"             '{schema:1,generator:"hugo+hextra",source_commit:$source,build_commit:$build,build_scope:$scope}'             > generated-site/provenance.json
           require_file() {
             if [ ! -s "$1" ]; then
               echo "missing generated Pages file: $1" >&2

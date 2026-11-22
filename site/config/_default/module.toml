@@ -1,5 +1,5 @@
 [[imports]]
-path = "github.com/nunocoracao/blowfish/v3"
+path = "github.com/imfing/hextra"
 
 # Custom project mounts replace Hugo's defaults, so retain every ordinary
 # project component explicitly.

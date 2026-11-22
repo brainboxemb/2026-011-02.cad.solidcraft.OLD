@@ -1,4 +1,4 @@
-"""Hugo/Blowfish site ownership and route contracts."""
+"""Hugo/Hextra site ownership and route contracts."""
 from pathlib import Path
 import unittest
 
@@ -7,11 +7,13 @@ SITE = ROOT / "site"
 
 class HugoSiteContractTests(unittest.TestCase):
     def test_theme_and_hugo_version_are_explicitly_pinned(self):
-        self.assertIn("github.com/nunocoracao/blowfish/v3 v3.10.0", (SITE / "go.mod").read_text())
+        self.assertIn("github.com/imfing/hextra v0.13.0", (SITE / "go.mod").read_text())
         self.assertIn('hugo-version: "0.169.0"', (ROOT / ".github/workflows/cad.yml").read_text())
 
     def test_model_yaml_is_mounted_without_python_sources(self):
         mounts = (SITE / "config/_default/module.toml").read_text()
+        self.assertIn('path = "github.com/imfing/hextra"', mounts)
+        self.assertNotIn("blowfish", mounts.lower())
         self.assertIn('source = "../models"', mounts)
         self.assertIn('target = "data/cad/models"', mounts)
         self.assertIn('files = ["**/model.yml"]', mounts)
@@ -58,11 +60,10 @@ class HugoSiteContractTests(unittest.TestCase):
 
     def test_cad_typography_is_centralized_and_compact(self):
         css = (SITE / "assets/css/custom.css").read_text()
-        self.assertIn("#main-content{", css)
-        self.assertIn("font-size:1rem", css)
-        self.assertIn(".cad-model-card{gap:.32rem", css)
-        self.assertIn(".cad-panel{padding:1rem 1.1rem", css)
-        self.assertIn(".cad-hero{margin:1.5rem 0 1.8rem", css)
+        self.assertIn(".content{font-size:.96rem", css)
+        self.assertIn(".cad-model-card{display:flex", css)
+        self.assertIn(".cad-panel{padding:1rem 1.05rem", css)
+        self.assertIn(".cad-hero{margin:2rem 0 2.3rem", css)
 
     def test_model_page_keeps_expected_public_content(self):
         page = (SITE / "layouts/models/single.html").read_text()
