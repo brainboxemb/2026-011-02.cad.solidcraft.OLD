@@ -50,6 +50,11 @@ class ModelHistoryTests(unittest.TestCase):
                 lastmod_resolver=lambda model_root, root: "2026-11-01T00:00:00+00:00",
             )
 
+    def test_model_yml_does_not_gain_hand_maintained_updated_field(self):
+        for path in ROOT.glob("models/*/*/model.yml"):
+            text = path.read_text(encoding="utf-8")
+            self.assertNotRegex(text, r"(?m)^updated\s*:")
+
     def test_manifest_writer_creates_hugo_data_file(self):
         manifest = {
             "schema": 1,
