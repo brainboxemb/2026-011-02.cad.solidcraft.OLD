@@ -260,8 +260,10 @@ policy dispatch and durable `build/dev-ci` publication. Its Hugo render
 completed successfully, but the post-build asset contract exposed that native
 `.sc`/STEP downloads were copied from global resources inside the page
 template instead of being attached as page resources. Pages publication was
-correctly skipped. The follow-up fixes only that asset handoff before retrying
-`/dev-ci/`; stable Pages remains untouched.
+correctly skipped. The first asset follow-up then exposed Hugo extension
+detection treating SolidCraft `.sc` as Scala (`text/x-scala`). Native
+`.sc` and STEP resources are therefore published explicitly as opaque binary
+downloads before retrying `/dev-ci/`; stable Pages remains untouched.
 
 - Publish complete accepted build scopes at `main`, `dev-cad`,
   `dev-ci` using released build-store CLI, preserving siblings.

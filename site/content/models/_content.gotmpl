@@ -78,8 +78,11 @@ CAD, selects CI items, or infers successful build/verification evidence.
           (dict "source" (printf "%s/native/model.step" $buildRoot) "target" "model.step")
         }}
           {{ with resources.Get (index $resource "source") }}
+            {{/* .sc is a SolidCraft binary container, not Scala source.
+                 Keep native downloads opaque so Hugo never interprets their
+                 extension as a text/source media type. */}}
             {{ $.AddResource (dict
-              "content" (dict "mediaType" .MediaType.Type "value" .)
+              "content" (dict "mediaType" "application/octet-stream" "value" .)
               "path" (printf "%s/%s" $slug (index $resource "target"))
             ) }}
           {{ end }}
