@@ -43,8 +43,10 @@ Accepted repository state:
 - Stable `main`, `build/main` and public Pages are source-matched to
   `70dcdaac1163ffeacdb70d14320b228255a4e257`; public Pages report generator
   `hugo+hextra`.
-- `dev-ci` remains at the earlier accepted promotion state and must be
-  synchronized from final `main` before new CI/site work.
+- `dev-ci` has one intentional post-Hextra CI change: PR #254 adopted the
+  externally accepted `tool.cad.ci 0.21.0` / `lib.py.cad.ci 0.11.1` stack at
+  lane commit `ad2ccba2afbd7bda757756167ba401620dd4bbf1`; after durable lane
+  acceptance it must be combined with final `main` and promoted back to stable.
 - `dev-cad` still has unique product-CAD history and is behind current
   `main`; it must be synchronized by a real permanent-ref merge, not rebased
   or recreated.
@@ -82,20 +84,27 @@ Current evidence:
 - Durable main run 45045896176 succeeded for
   `70dcdaac1163ffeacdb70d14320b228255a4e257`; `build/main` and public Pages
   both record that exact source commit.
-- `dev-ci` has no intended independent work after the completed site migration
-  and must be synchronized from final `main`.
+- PR #254 has merged the externally accepted CAD-CI 0.21.0 stack into
+  `dev-ci`; this is intentional independent lane work and must reach `main`
+  through the normal synchronize-then-promote path.
 - `dev-cad` still has unique product-CAD history and is behind stable `main`;
   it must be synchronized by a normal permanent-ref merge before its parked
   feature PRs are reassessed.
 Required order:
 
-1. #253 — reconcile this plan after #191/#251 completion.
-2. Open exact `main -> dev-ci`, require a green PR run and merge only through
+1. #253 — reconcile this plan after #191/#251 completion and the concurrent
+   accepted #254 CI-lane adoption.
+2. Require the durable `dev-ci` integration for PR #254 to be green and
+   source-matched to its accepted lane head.
+3. Open exact `main -> dev-ci`, require a green PR run and merge only through
    `/merge` as a normal history-preserving synchronization; verify durable
-   `build/dev-ci` and Pages `/dev-ci/` at the resulting lane head.
-3. Open exact `main -> dev-cad`, require a green PR run and merge only through
+   `build/dev-ci` and Pages `/dev-ci/`.
+4. Promote exact `dev-ci -> main` so the accepted `tool.cad.ci 0.21.0` stack
+   reaches stable source; require full promotion validation, normal `/merge`
+   and stable build/Pages provenance.
+5. Open exact `main -> dev-cad`, require a green PR run and merge only through
    `/merge`; verify durable `build/dev-cad` and Pages `/dev-cad/`.
-4. Reassess PRs #141, #156 and #169 against the synchronized `dev-cad` head
+6. Reassess PRs #141, #156 and #169 against the synchronized `dev-cad` head
    and update the plan before resuming one focused product work item.
 
 Do not start another site migration or several product-model changes in
@@ -131,7 +140,8 @@ Choose one coherent product work item at a time after the lane is current.
 
 | Issue | Lane/owner | Status | Next action |
 | --- | --- | --- | --- |
-| #253 Reconcile post-Hextra plan | governance/main | **now** | Record completed #191/#251 and make exact dev-lane synchronization the next gate. |
+| #253 Reconcile post-Hextra plan | governance/main | **now** | Record completed #191/#251 plus PR #254, then execute the final dev-ci synchronize/promote cycle before dev-cad. |
+| #250 Shared changelog template/history | documentation | **later** | Reassess after permanent lanes are coherent; do not interrupt the current synchronization/promotion sequence. |
 | #206 Remove Forge reference implementations | dev-cad | **next** | After lane sync, remove local cross-CAD reference sources and their assumptions without changing product geometry. |
 | #205 Canonical shared model.yml contract | shared + dev-cad | **blocked** | Wait for the Forge-owned canonical contract to be released/adoptable, then migrate without a copied CAD schema. |
 | #204 Remove SCPC command counts from model.yml | dev-cad | **next** | After lane sync, remove the hand-maintained counts and derive any displayed/check count from generated evidence. |
@@ -151,6 +161,7 @@ Choose one coherent product work item at a time after the lane is current.
 
 ## Recently completed
 
+- PR #254 adopted externally accepted `tool.cad.ci 0.21.0` at `b1474f6be66dc0236f2a5c2555af07a100447255` and `lib.py.cad.ci 0.11.1` at `fa6bf244381dde609a0b04de673d774911c52fea` on `dev-ci`; released-stack acceptance run 45045346481 is green.
 - #251/PR #252 finalized the accepted Hugo 0.169.0 + Hextra v0.13.0 architecture documentation; durable main run 45045896176 and stable build/Pages source-match `70dcdaac1163ffeacdb70d14320b228255a4e257`.
 - #191 is closed: the custom Python HTML site migration is complete, the Hextra implementation is stably promoted, and child issues #211-#217/#227 are complete.
 - PR #249 promoted the complete accepted Hextra lane to stable `main` as merge `b2f7cac32ebc045a3ec25e9e4d4988d76aaaf680`; `main`/`dev-ci` refs and both durable build/Page scopes now match it.
@@ -176,6 +187,7 @@ Choose one coherent product work item at a time after the lane is current.
 
 ## Next checkpoint
 
-Synchronize final stable `main` into `dev-ci` and then `dev-cad`, verifying
-each durable build/Page scope. After `dev-cad` is coherent, reassess its
-parked feature PRs and choose one focused next work item.
+Complete durable acceptance of the `dev-ci` 0.21.0 adoption, synchronize final
+`main` into that lane and promote the combined lane back to stable `main`.
+Then synchronize `main -> dev-cad`, verify its durable scope and reassess the
+parked product PRs.
