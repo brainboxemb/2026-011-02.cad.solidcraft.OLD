@@ -4,7 +4,7 @@
 > omschrijving, parameteruitleg, bouwstap, waarschuwing, bron-/variantrelatie
 > en extra afbeelding naast het model in `models/<groep>/<model>/model.yml`.
 > De Python `model_catalog.py` is uitsluitend een lezer/validator.
-> Hugo + Blowfish onder `site/` leest dezelfde `model.yml` direct via een
+> Hugo + Hextra onder `site/` leest dezelfde `model.yml` direct via een
 > content adapter; voeg geen gegenereerde Markdown-catalogus of Python
 > HTML-renderer toe.
 > `ci.yml` is alleen voor uitvoering; `verification/verify.py` is optioneel en
@@ -16,12 +16,12 @@
 >
 # CAD repository instructions
 
-> **Active CI architecture (issue #174):** `dev-ci` uses the exact released
-> `tool.cad.ci` action, one SCons graph, one shared SolidCraft model-build
-> batch and Hugo/Blowfish publication from the prepared durable scope.
-> `build/dev-ci` and Pages `/dev-ci/` are proven while stable Pages remains
-> unchanged. Do not recreate the retired local planner, selector, build store,
-> publisher or Python HTML generator.
+> **Active CI architecture (issue #174):** the repository uses the exact
+> released `tool.cad.ci` action, one SCons graph, one shared SolidCraft
+> model-build batch and Hugo/Hextra publication from prepared durable scopes.
+> `build/main`, `build/dev-cad`, `build/dev-ci` and their matching Pages scopes
+> are source-lane-owned. Do not recreate the retired local planner, selector,
+> build store, publisher or Python HTML generator.
 >
 > **Model build gate:** 14 physical roots / 16 variants currently build in the
 > shared runtime. `hub75-display2` and `hub75-wood-frame` stay disabled only
@@ -132,7 +132,7 @@ below before opening or merging the PR.
      `site/content/models/_content.gotmpl`.
    - Accepted build evidence is read-only input from the prepared
      `tool.cad.ci` scope; missing evidence must remain missing/pending.
-   - Keep presentation in Hugo/Blowfish templates and CSS, not Python HTML.
+   - Keep presentation in Hugo/Hextra layouts and CAD-owned CSS, not Python HTML.
 
 7. **Repository model index**
    - Add a concise entry to `models/README.md` when the model is a reusable
@@ -263,9 +263,10 @@ SolidCraft or CAD revision merely because another model was rebuilt.
 - Model pages stay at `/models/<slug>/`.
 - Generate category pages from the central catalog, for example
   `/models/basic/`, `/models/components/` and `/models/advanced/`.
-- The home page is a curated view, not an eventual list of every model.
-- Use one catalog flag such as `featured`/`show_on_home`; do not maintain a
-  second hand-written home-page list.
+- The home page is a compact view of the six most recently changed model
+  roots, derived from Git history at site-build time.
+- Do not maintain a second hand-written home-page list or a hand-maintained
+  `updated` field in `model.yml`.
 - Category pages, home page and navigation may be regenerated cheaply even when
   no model geometry needs rebuilding.
 

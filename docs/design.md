@@ -1,16 +1,17 @@
 # CAD repository CI design
 
-**Target architecture** — same released mechanisms and branch topology as
-`lib.py.solidcraft.forge`, with only CAD-specific producer and site content
-remaining here. This document does not claim the old pipeline has already been
-replaced.
+**Accepted architecture** — reuse the released generic CAD-CI mechanisms and
+permanent branch topology, with only CAD-specific model producers, repository
+contracts and site content remaining here. The legacy local generic pipeline
+and Python HTML site renderer are retired.
 
 ## Reference stack
 
-- `tool.cad.ci 0.17.0`:
-  `d88d6e189c12edb5a30158c068145c099c17a019`;
-- its exact `lib.py.cad.ci 0.9.3`:
-  `74486c441f1f2b170ff3dc06e0edcaf662fbec6b`;
+- CAD execution/publication and repository merge policy use released
+  `tool.cad.ci 0.21.0` at exact commit
+  `b1474f6be66dc0236f2a5c2555af07a100447255`;
+- that tool revision pins `lib.py.cad.ci 0.11.1` at exact commit
+  `fa6bf244381dde609a0b04de673d774911c52fea`;
 - central `cad-solidcraft:v0.3.4` (SolidCraft 0.45.0);
 - Forge `v0.11.0` at exact source
   `9258d54079981604b6dd777a4c4face897c190fe`;
@@ -93,7 +94,7 @@ but **not** a parallel planning mechanism or manually extended root item list.
 - The site remains a separate consumer of complete build evidence; no
   redesign or URL change is authorized by this correction.
 
-**Current dev-ci implementation:** released CAD-CI scans/plans one SCons
+**Accepted implementation:** released CAD-CI scans/plans one SCons
 graph; `model-build-batch` launches the SolidCraft runtime once and model
 items project their output with released `copy: dependency`. Fourteen
 physical roots / sixteen variants are active. The two remaining advanced
@@ -179,15 +180,20 @@ cannot be used to claim execution if SCons reused valid results.
 
 ## Website preservation boundary
 
-The CAD website uses Hugo **0.169.0** with Hextra **v0.13.0** as the shared
-documentation shell. The repository retains its own CAD presentation in
-`site/assets/css/custom.css`; it does not adopt Forge's renderer or copy
-Forge's page templates. `site/results.css` is retained only as a historical
-pre-Hugo comparison baseline and is not a second active style authority.
+The accepted public presentation layer uses Hugo **0.169.0** with Hextra **v0.13.0**.
+Hextra supplies the common documentation shell and theme primitives. The CAD
+repository owns its product-specific page composition, navigation choices,
+layouts/partials and engineering visual treatment.
 
-Hugo reads local `model.yml` files directly for model content and reads
-accepted build/verification results only from the prepared complete build
-scope. Existing model routes at `/models/<slug>/` remain the public contract.
+Active styling is maintained in `site/assets/css/custom.css`.
+`site/results.css` is retained only as the pre-Hugo visual comparison
+baseline and is not loaded as the current styling contract.
+
+Existing model pages at `/models/<slug>/` keep the accepted information
+hierarchy: identity/status, preview and files, construction stages, SCPF source,
+generated SolidCraft commands, optional SCPC comparison, SolidCraft Web/native
+actions, verification/provenance and optional background/reference content.
+The homepage and Basic / Components / Advanced category routes remain stable.
 
 ### CAD visual component contract
 
@@ -218,39 +224,43 @@ pages, including desktop/narrow layouts, source/command blocks, preview/files,
 Background, verification and downloads. Retained screenshots must never be
 presented as newly verified output.
 
+Forge's site renderer is not adopted merely because Forge and CAD share
+infrastructure. A deliberate public-site redesign is separate product work and
+must not be hidden inside CI, metadata or evidence changes.
+
 ## Retirement boundary
 
-Currently the CAD repository still has local orchestration in
-`build_plan.py`, `select_models.py`, `pipeline_ci.py`, `cad_ci.py`,
-`native_ci.py` and `publish_ci.py`. Model-specific build adapters remain. The custom Python site renderer does
-not: after the accepted Hugo/Hextra cut-over it was removed with the obsolete
-planner/runtime/publisher code.
+The legacy custom Python HTML generator and the old CAD-local generic
+planner/selector/build-store/publisher are retired. Generic planning, SCons
+execution, durable build-scope handling and Pages publication belong to the
+released CAD-CI stack.
 
-No rewrite of the CAD website's layout or content is authorized merely to
-match Forge's CI design.
+This repository retains only CAD-owned responsibilities such as model source,
+model-local expectations/adapters, catalog validation, model presentation data,
+Hugo layouts/content and CAD-specific styling. Do not restore complete page
+HTML in Python strings or create a second site renderer beside Hugo.
 
-## Website data flow: model.yml → validated catalog → shared renderer
+## Website data flow: model.yml -> Hugo/Hextra -> Pages
 
-The original CAD website was generated directly from an approximately
-28 KB handwritten Python `MODELS` dictionary. Forge already uses
-`examples/<model>/model.yml` for model titles, descriptions and stages.
-
-The CAD version is:
+The accepted site data flow is:
 
 ```text
-models/<category>/<root>/model.yml  (source of website model content)
-models/<category>/<root>/ci.yml     (build identity and participation)
-models/<category>/<root>/verification/verify.py (optional semantic expectations)
+models/<category>/<root>/model.yml
+models/<category>/<root>/page.md                 (optional)
+accepted prepared build-scope evidence
         |
         v
-scripts/ci/model_catalog.py (load/validate; no hard-coded model list)
+scripts/ci/model_catalog.py                      (load/validate; no second catalog)
         |
-        +-- existing build selectors / model dependencies (compatible API)
-        +-- site/content/models/_content.gotmpl
-        +-- site/layouts/models/* + Hextra
-                |
-                v
-homepage + category pages + /models/<slug>/ + model/build downloads
+        v
+Hugo 0.169.0 content adapter + CAD layouts/partials
+Hextra v0.13.0 + site/assets/css/custom.css
+        |
+        v
+homepage + category pages + /models/<slug>/ + downloads/actions
+        |
+        v
+released CAD-CI Pages publisher
 ```
 
 The landing page's "Recently updated models" ordering is presentation data
@@ -262,20 +272,24 @@ physical root therefore share that timestamp. `model.yml` remains the sole
 model-description/catalog source and must not gain a hand-maintained
 `updated` field.
 
-A model's optional `extra_views` declaration contains a title, a
-caption, and view items of kinds `url` (external HTTPS reference),
-`asset` (checked-in model asset), or `build` (saved SolidCraft
-screenshot). The shared renderer checks availability and verification,
-copies assets, and uses the original `panel-views` layout. No model slug
-should appear in dedicated view-generation conditionals.
+`model.yml` owns model/page metadata. Optional `page.md` owns additional
+background/reference prose without redefining identity, build state or
+verification facts. Build provenance, generated commands, saved native output
+and verification state come only from the accepted prepared build scope.
 
-The loader verifies local source paths, section, page ordering, duplicate
-YAML keys, optional SCPC/component sources, referenced CAD dependencies,
-required public text, and multi-variant ownership. Source SHA/verification
-evidence is **not** inferred from YAML. The existing geometry-only
-fingerprint excludes `model.yml`, while site selection includes it.
+A model's optional supplementary views remain declarative model metadata and
+are rendered generically. Shared Hugo code must not grow model-slug-specific
+branches for normal model presentation.
 
-The site stays static HTML/CSS. PyYAML is a **build-time dependency**,
-not a browser dependency or a new general-purpose CI subsystem. Accepted
-Pages baselines must be compared before any public cut-over.
+The catalog loader validates local source paths, ordering, duplicate YAML keys,
+optional SCPC/component sources, declared dependencies and multi-variant
+ownership. It does not infer source SHA or verification state from YAML.
 
+Presentation-only metadata/content changes must not invalidate unchanged
+SolidCraft geometry. They may select a site refresh while the accepted CAD
+output is reused. The final Pages provenance must still identify the exact
+source lane and source commit that produced the published site.
+
+Historical change record `0023-hugo-blowfish-site.md` remains historical
+evidence of the earlier Hugo/Blowfish migration stage; the accepted Hextra
+architecture is recorded by change record 0026.
