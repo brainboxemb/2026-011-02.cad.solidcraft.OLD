@@ -84,8 +84,9 @@ Current evidence:
 - Stable build and Pages provenance for both scopes record that same source
   commit.
 - #211-#217 and #227 are closed from the stable promotion evidence.
-- AGENTS, requirements and design still contain stale Blowfish-era wording;
-  #251 owns the final durable Hextra documentation correction.
+- #251 owns the final durable documentation correction that replaces the
+  remaining Blowfish-era active-contract wording with the accepted Hextra
+  architecture.
 Required order:
 
 1. #251 — record the accepted Hugo 0.169.0 + Hextra v0.13.0 architecture in
