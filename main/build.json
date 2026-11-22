@@ -45,12 +45,12 @@
       "engine_schema": 3,
       "final_bundle_sha256": "be3e0e7e8aaa129f8d9070a8c5cad112bd939bd10da00311d3cd107db09a8a63",
       "final_step": "unittest",
-      "final_target_spec_digest": "35b7207a62d759881584ee289ee3f3b4cfa9758ea6d563becf8124a736f011ca",
+      "final_target_spec_digest": "23ced0645d3e98ddbe2a4b98c452daf68fc962f8406a22f65bb920d592c0554c",
       "item_id": "repository-tests",
       "outputs": [
         "result.json"
       ],
-      "source_commit": "4509cdad06176b6d4ad0f4435ce0dfaabf4f23cf"
+      "source_commit": "b2f7cac32ebc045a3ec25e9e4d4988d76aaaf680"
     },
     "ci/scpc-package": {
       "engine": "scons",
@@ -264,5 +264,5 @@
   },
   "schema": 1,
   "scope": "main",
-  "source_commit": "4509cdad06176b6d4ad0f4435ce0dfaabf4f23cf"
+  "source_commit": "b2f7cac32ebc045a3ec25e9e4d4988d76aaaf680"
 }
