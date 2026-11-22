@@ -23,7 +23,21 @@ from model_catalog import (  # noqa: E402
     dependency_closure,
     model_slugs,
 )
-from model_item import catalog_root, item_id_for_slug, item_members  # noqa: E402
+
+def catalog_root(slug):
+    source = Path(MODELS[slug]["source"])
+    return Path(*source.parts[:3])
+
+
+def item_members(root):
+    relative = root.resolve().relative_to(ROOT.resolve())
+    return tuple(slug for slug in MODELS if catalog_root(slug) == relative)
+
+
+def item_id_for_slug(slug):
+    root = catalog_root(slug)
+    return next(candidate for candidate in MODELS if catalog_root(candidate) == root)
+
 
 
 class MigrationCatalogContractTests(unittest.TestCase):
@@ -101,6 +115,11 @@ class MigrationCatalogContractTests(unittest.TestCase):
         self.assertIn("models/advanced/*", config)
         self.assertIn("models/components/*", config)
         self.assertIn("models/basic/*", config)
+        self.assertIn("ci/*", config)
+
+        repository_tests = (ROOT / "ci/repository-tests/ci.yml").read_text()
+        self.assertIn("id: repository-tests", repository_tests)
+        self.assertIn("scripts/ci/repository_tests.py", repository_tests)
 
         shared = (ROOT / "ci/model-build-batch/ci.yml").read_text()
         self.assertIn("forge-package", shared)

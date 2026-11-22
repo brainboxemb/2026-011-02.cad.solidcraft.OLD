@@ -1,4 +1,10 @@
-"""Discover and run checks owned by each CAD model directory."""
+"""Load optional model-owned snapshot presentation settings.
+
+CI selection and CAD verification do not live here. A physical model root may
+provide check.py solely for snapshot camera/extra-view metadata. Semantic
+geometry checks belong in verification/verify.py when they are useful.
+"""
+
 from __future__ import annotations
 
 import importlib.util
@@ -9,21 +15,24 @@ from model_catalog import MODELS
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def model_root(slug):
+def model_root(slug: str) -> Path:
+    """Return models/<section>/<folder> for one catalog variant."""
+
     source = Path(MODELS[slug]["source"])
-    parts = source.parts
-    try:
-        index = parts.index("scpf")
-    except ValueError as exc:
-        raise ValueError(f"{slug}: source path has no scpf directory") from exc
-    return ROOT.joinpath(*parts[:index])
+    if len(source.parts) < 3 or source.parts[0] != "models":
+        raise ValueError(f"{slug}: invalid model source path {source}")
+    return ROOT.joinpath(*source.parts[:3])
 
 
-def check_path(slug):
+def check_path(slug: str) -> Path:
+    """Return the optional presentation-settings module for a model root."""
+
     return model_root(slug) / "check.py"
 
 
-def load_check(slug):
+def load_check(slug: str):
+    """Load model-root check.py, returning None when no settings are needed."""
+
     path = check_path(slug)
     if not path.is_file():
         return None
@@ -38,45 +47,20 @@ def load_check(slug):
     return module
 
 
-def command_check(slug, command_file):
-    module = load_check(slug)
-    if module is not None and hasattr(module, "check_commands"):
-        module.check_commands(Path(command_file), slug)
+def snapshot_camera(slug: str) -> dict | None:
+    """Return one optional SolidCraft snapshot camera."""
 
-
-def native_check(slug, native_root):
-    module = load_check(slug)
-    if module is not None and hasattr(module, "check_native"):
-        module.check_native(Path(native_root), slug)
-
-
-def mutations(slug):
-    module = load_check(slug)
-    if module is None:
-        return ()
-    value = getattr(module, "MUTATIONS", ())
-    if isinstance(value, dict):
-        return tuple(value.get(slug, ()))
-    return tuple(value)
-
-
-def snapshot_camera(slug):
     module = load_check(slug)
     if module is None:
         return None
     value = getattr(module, "SNAPSHOT_CAMERA", None)
-    if isinstance(value, dict) and slug in value and isinstance(value[slug], dict):
-        return value[slug]
-    if isinstance(value, dict) and "target" in value:
-        return value
-    return None
+    return value if isinstance(value, dict) else None
 
 
-def extra_snapshots(slug):
+def extra_snapshots(slug: str) -> tuple[dict, ...]:
+    """Return optional additional named snapshots for the website."""
+
     module = load_check(slug)
     if module is None:
         return ()
-    value = getattr(module, "EXTRA_SNAPSHOTS", ())
-    if isinstance(value, dict):
-        return tuple(value.get(slug, ()))
-    return tuple(value)
+    return tuple(getattr(module, "EXTRA_SNAPSHOTS", ()))

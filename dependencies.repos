@@ -1,9 +1,6 @@
-# Exact revisions used by the CAD repository.
-# SCPF and SCPC are installed as Python libraries locally by bootstrap.ps1.
-# CAD CI checks out their exact sources and mounts them into the released
-# central SolidCraft runtime without building an image or pip-installing them.
-# tool.cad.ci is checked out and installed on the host for publication.
-# The central runtime is independent from these consumer dependency pins.
+# Exact Python-library revisions consumed by CAD model source.
+# Generic CAD-CI tooling is pinned separately at the workflow action call; it
+# must not be duplicated here as another source checkout.
 repositories:
   scpf:
     type: git
@@ -13,7 +10,3 @@ repositories:
     type: git
     url: https://github.com/brainboxemb/lib.py.solidcraft.cmd.git
     version: fcaa6f9fc8388bc715fcd2fbb149ce6b979566a7
-  cad-ci:
-    type: git
-    url: https://github.com/brainboxemb/tool.cad.ci.git
-    version: 556e8d43dde9218b28a8d991ab9f2021232e76ab
