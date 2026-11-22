@@ -156,6 +156,29 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn('{{ $commandCount }} commands', page)
         self.assertNotIn("scpc_command_count", page)
 
+    def test_model_page_prioritizes_use_and_context_before_technical_depth(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertLess(page.index('class="cad-web-open"'), page.index('class="cad-source-panel"'))
+        self.assertLess(page.index('class="cad-background"'), page.index('class="cad-source-panel"'))
+        self.assertLess(page.index('index $m "extra_views"'), page.index('class="cad-source-panel"'))
+
+    def test_generated_solidcraft_commands_are_collapsed_by_default(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn('<details class="cad-panel cad-commands-panel cad-collapsible">', page)
+        self.assertIn("<summary>", page)
+        self.assertIn("Generated output", page)
+        self.assertIn("SolidCraft commands", page)
+        self.assertIn("generated operations · expand to inspect", page)
+        self.assertNotIn('<details class="cad-panel cad-commands-panel cad-collapsible" open', page)
+        self.assertLess(page.index("SolidCraft commands"), page.index('class="cad-command-list"'))
+
+    def test_model_overview_uses_balanced_columns_and_compact_preview(self):
+        css = (SITE / "assets/css/custom.css").read_text()
+        self.assertIn("grid-template-columns:repeat(2,minmax(0,1fr))", css)
+        self.assertIn(".cad-preview-panel .cad-preview{\n  min-height:330px;", css)
+        self.assertIn(".cad-preview-panel .cad-preview-link{\n  min-height:330px;", css)
+        self.assertIn(".cad-collapsible[open]>summary:after{content:\"Collapse\"}", css)
+
     def test_model_page_keeps_expected_public_content(self):
         page = (SITE / "layouts/models/single.html").read_text()
         for value in ("SCPF source","SolidCraft commands","Construction stages","Python source","model.yml","Forge commands","SolidCraft model","STEP","Build provenance","No accepted build evidence","extra_views"):
