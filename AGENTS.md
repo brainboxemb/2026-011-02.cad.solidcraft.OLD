@@ -294,6 +294,8 @@ PR head after all current checks are green:
 - `main`, `dev-cad`, `dev-ci`, `build`, `gh-pages` and backup refs
   are never cleanup targets.
 
+Because policy merges run with `GITHUB_TOKEN`, the policy explicitly dispatches `cad.yml` for the accepted durable base ref; direct lane-to-main promotions also dispatch the retained lane. Do not rely on an implicit push-triggered integration run.
+
 Do not use GitHub's merge buttons or auto-merge as an alternative. Repository
 settings must permit both merge methods because the correct method depends on
 the PR head/base pair; the policy workflow is the supported merge entrypoint.
