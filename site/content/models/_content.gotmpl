@@ -86,6 +86,17 @@ identity and does not produce /models/<slug>/<resource>.
           ) }}
         {{ end }}
 
+        {{/* SCPC is an optional independent implementation and stays secondary
+             to the SCPF source. */}}
+        {{ with $scpcSource := index $model "scpc_source" }}
+          {{ with resources.Get (printf "cad-source/%s/%s/%s" $section $rootName $scpcSource) }}
+            {{ $.AddResource (dict
+              "content" (dict "mediaType" "text/plain" "value" .Content)
+              "path" (printf "%s/scpc-source.py" $slug)
+            ) }}
+          {{ end }}
+        {{ end }}
+
         {{ with resources.Get (printf "%s/model.png" $buildRoot) }}
           {{ $.AddResource (dict
             "content" (dict "mediaType" .MediaType.Type "value" .Content)
