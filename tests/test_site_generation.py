@@ -65,6 +65,31 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn(".cad-panel{padding:1rem 1.05rem", css)
         self.assertIn(".cad-hero{margin:2rem 0 2.3rem", css)
 
+    def test_optional_page_markdown_is_generic_model_content(self):
+        mounts = (SITE / "config/_default/module.toml").read_text()
+        adapter = (SITE / "content/models/_content.gotmpl").read_text()
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn('"**/page.md"', mounts)
+        self.assertIn('cad-source/%s/%s/page.md', adapter)
+        self.assertIn('page.md', adapter)
+        self.assertIn('.Resources.Get "page.md"', page)
+        self.assertIn('$.RenderString .Content', page)
+        self.assertNotIn('if eq .Params.cadSlug "simple-mft"', page)
+
+    def test_external_reference_images_render_as_images(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn('strings.HasSuffix $lower ".jpg"', page)
+        self.assertIn('class="cad-external-image"', page)
+        self.assertIn('External reference', page)
+
+    def test_simple_mft_background_has_one_public_source(self):
+        background = (ROOT / "models/advanced/simple_mft/page.md").read_text()
+        readme = (ROOT / "models/advanced/simple_mft/README.md").read_text()
+        self.assertIn("CRAFTMAKER ProStation S30", background)
+        self.assertIn("photo-derived", background)
+        self.assertIn("[page.md](page.md)", readme)
+        self.assertNotIn("## Photo-based slot estimate", readme)
+
     def test_model_page_keeps_expected_public_content(self):
         page = (SITE / "layouts/models/single.html").read_text()
         for value in ("SCPF source","SolidCraft commands","Construction stages","Python source","model.yml","Forge commands","SolidCraft model","STEP","Build provenance","No build evidence in this scope","extra_views"):

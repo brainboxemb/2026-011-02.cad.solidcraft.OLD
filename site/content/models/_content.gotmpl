@@ -68,6 +68,15 @@ identity and does not produce /models/<slug>/<resource>.
           ) }}
         {{ end }}
 
+        {{/* Optional model-owned background text. It adds prose only; model
+             identity/build state continue to come from model.yml and evidence. */}}
+        {{ with resources.Get (printf "cad-source/%s/%s/page.md" $section $rootName) }}
+          {{ $.AddResource (dict
+            "content" (dict "mediaType" "text/markdown" "value" .Content)
+            "path" (printf "%s/page.md" $slug)
+          ) }}
+        {{ end }}
+
         {{/* Show the exact SCPF source declared by this model. */}}
         {{ $sourcePath := index $model "source" }}
         {{ with resources.Get (printf "cad-source/%s/%s/%s" $section $rootName $sourcePath) }}
