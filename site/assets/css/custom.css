@@ -523,6 +523,32 @@ html:not(.dark) .hextra-search-trigger{font-size:.9rem}
 .cad-document-section .cad-links{margin-top:.9rem}
 .cad-back-link{margin-top:1.4rem}
 
+.cad-source-card{
+  margin:1.35rem 0;
+  padding:1.35rem 1.45rem 1.5rem;
+  border:1px solid var(--cad-line);
+  border-radius:12px;
+  background:var(--cad-card);
+  box-shadow:0 2px 8px rgba(27,56,99,.035);
+}
+.dark .cad-source-card{
+  border-color:#29384d;
+  background:#101827;
+}
+.cad-source-card h2{
+  margin:0 0 .55rem;
+  color:var(--cad-ink);
+  font-size:1.35rem;
+  line-height:1.3;
+  font-weight:600;
+}
+.cad-source-card .cad-section-help{
+  margin:0 0 .8rem;
+}
+.cad-source-card .cad-code-frame{
+  margin-top:.75rem;
+}
+
 .cad-rich-text{
   max-width:78ch;
   color:var(--cad-ink);
