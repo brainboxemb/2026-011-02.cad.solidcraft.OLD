@@ -4,8 +4,10 @@
 > omschrijving, parameteruitleg, bouwstap, waarschuwing, bron-/variantrelatie
 > en extra afbeelding naast het model in `models/<groep>/<model>/model.yml`.
 > De Python `model_catalog.py` is uitsluitend een lezer/validator.
-> `ci.yml` is alleen voor uitvoering; `verification/verify.py` is alleen
-> voor geometrische controles. Voeg niet opnieuw een Python-dictionary met
+> `ci.yml` is alleen voor uitvoering; `verification/verify.py` is optioneel en
+> alleen voor zinvolle geometrische/semantische controles. Een model moet wel
+> echt in SolidCraft bouwen; voeg geen kunstmatige verificatie toe om CI groen
+> te krijgen. Voeg niet opnieuw een Python-dictionary met
 > modelbeschrijvingen of model-specifieke HTML-condities toe. Bewaak de
 > huidige website en URLs; wijzig metadata zonder geometrische herbouw.
 >

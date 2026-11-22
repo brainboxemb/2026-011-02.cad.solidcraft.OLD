@@ -111,7 +111,12 @@ A compact new-chat handoff is available at `docs/handoff.md`.
   FlexBenchDog's independent SCPC comparison. 15/15 SCons targets passed;
   the shared batch total was 31.760 seconds, of which 7.434 seconds
   came from pulling the image.
-- The remaining five roots stay disabled until separately checked.
+- #186 deliberately left five roots disabled. PR #193 proves three of those
+  roots can join the same shared batch without invented semantic checks:
+  `hub75-screen`, both Simple MFT variants and `hub75-panel` build
+  successfully. `hub75-display2` and `hub75-wood-frame` remain disabled
+  only because Forge #679 must namespace repeated component-local feature
+  names for SolidCraft 0.45.
 - Docs-only PR #185 demonstrated **zero selected CAD targets**; no model
   build, Docker pull or SolidCraft runtime startup occurred.
 - No change to the public CAD website or the accepted `main` pipeline.
@@ -171,8 +176,11 @@ comparison remains outstanding.
 
 ### M1 — Released tooling and declarative model graph
 
-Status: **nine model roots pass the shared build-batch, seven remain disabled;
-detailed check parity and website/build publication remain outstanding**.
+Status: **11 model roots / 12 variants were previously accepted. PR #193
+extends the same batch to 14 physical roots / 16 variants. The two remaining
+advanced assemblies are blocked by Forge #679, not by CAD-CI. Semantic
+verification is required only where a useful model-owned contract exists;
+website/build publication remains outstanding**.
 PR #178 at `a4329d0791803572184b8ebf163adea737f7a372`
 passed a real Plate build with released tool.cad.ci 0.17.0 /
 lib.py.cad.ci 0.9.3, verification 0.15.0, Forge 0.11.0 and central
@@ -194,8 +202,11 @@ all other roots remain outside the staged graph until checked. This is not full-
 
 ### M2 — Native verification and consumer step migration
 
-Status: **nine model roots pass one SolidCraft build batch; remaining
-seven physical model roots still require migration and checks**.
+Status: **PR #193 exercises 14 buildable physical roots / 16 variants in one
+SolidCraft batch. `hub75-display2` and `hub75-wood-frame` stay
+`process:false` while Forge #679 is unresolved. Every processed model must
+build in SolidCraft; detailed semantic verification remains optional and
+model-owned**.
 The Plate model was built successfully by released CAD-CI. The next
 stage converts Plate and Vent Plate to one model-independent producer, builds
 and checks Forge and independent SCPC SolidCraft models and checks that their body

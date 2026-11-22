@@ -80,6 +80,10 @@ def write_manifest(batch_output: Path, forge_wheel: Path, scpc_wheel: Path) -> P
             scpc_sha = None
             command_file = item_output / "generated" / slug / "scpf" / "solidcraft.json"
             scpc_file = item_output / "generated" / slug / "scpc" / "solidcraft.json"
+            # Building a model is the common acceptance floor. A local
+            # verification definition is deliberately optional: only models
+            # with useful semantic expectations should own one.
+            verification = model_root / "verification" / "verify.py"
             try:
                 command_file.parent.mkdir(parents=True, exist_ok=True)
                 document = run_script(source_path(ROOT, slug))
@@ -93,11 +97,6 @@ def write_manifest(batch_output: Path, forge_wheel: Path, scpc_wheel: Path) -> P
 
                 if slug in COMMAND_SOURCES:
                     scpc_sha = compile_scpc(slug, scpc_file, scpc_wheel)
-                verification = ROOT / model_root / "verification" / "verify.py"
-                if not verification.is_file():
-                    raise RuntimeError(
-                        f"{slug}: missing model-local verification/verify.py"
-                    )
             except Exception as exc:
                 error = "".join(
                     traceback.format_exception_only(type(exc), exc)
@@ -116,8 +115,10 @@ def write_manifest(batch_output: Path, forge_wheel: Path, scpc_wheel: Path) -> P
                     if slug in COMMAND_SOURCES else None
                 ),
                 "definition": (
-                    model_root / "verification" / "verify.py"
-                ).as_posix(),
+                    verification.as_posix()
+                    if (ROOT / verification).is_file()
+                    else None
+                ),
                 "scpc_sha": scpc_sha,
                 "compile_error": error,
             }
@@ -153,9 +154,11 @@ def write_manifest(batch_output: Path, forge_wheel: Path, scpc_wheel: Path) -> P
         json.dumps(batch, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
+    semantic_count = sum(row["definition"] is not None for row in rows)
     print(
         f"SolidCraft batch prepared: {len(roots_summary(rows))} model roots, "
-        f"{len(rows)} model variants",
+        f"{len(rows)} model variants, "
+        f"{semantic_count} with semantic verification",
         flush=True,
     )
     return path
