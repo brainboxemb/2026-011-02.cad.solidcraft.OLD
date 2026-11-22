@@ -34,7 +34,7 @@
       </div>
       <div class="cad-model-grid">
         {{ range sort $featured "Params.model.priority" }}
-          {{ partial "cad/model-card.html" . }}
+          {{ partial "cad/model-card.html" (dict "page" . "showSection" true) }}
         {{ end }}
       </div>
       <p class="cad-category-more"><a href="{{ $category.RelPermalink }}">Browse all {{ $category.Title }} →</a></p>
