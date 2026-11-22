@@ -71,7 +71,7 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn('hugo.Data.cad.model_history', adapter)
         self.assertIn('class="cad-card-updated"', card)
         self.assertIn('fetch-depth: 0', workflow)
-        self.assertGreaterEqual(workflow.count("scripts/ci/model_history.py"), 2)
+        self.assertEqual(workflow.count("scripts/ci/model_history.py"), 2)
 
     def test_homepage_links_scpf_and_scpc_libraries(self):
         home = (SITE / "layouts/home.html").read_text()
