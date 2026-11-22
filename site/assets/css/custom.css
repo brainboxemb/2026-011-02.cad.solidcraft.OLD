@@ -291,95 +291,11 @@ samp{
   .cad-verification-grid dd{margin-bottom:.5rem}
 }
 
-/* Model overview: restore the strong pre-Hugo information order while keeping
- * Hextra as the shared shell. */
-.cad-model-hero{
-  margin:1rem 0 1.1rem;
-  padding:40px 44px;
-  border-radius:17px;
-  background:linear-gradient(130deg,#102d57,#244f80);
-  color:#fff;
-}
-.cad-model-kicker{
-  margin:0 0 .45rem;
-  color:#b8d9ff;
-  text-transform:uppercase;
-  letter-spacing:.11em;
-  font-size:.78rem;
-  font-weight:800;
-}
-.cad-model-hero h1{
-  margin:4px 0 15px;
-  color:#fff;
-  font-size:clamp(2rem,4.5vw,3rem);
-  line-height:1.14;
-  font-weight:600;
-  letter-spacing:0;
-}
-.cad-model-hero>p:last-child{
-  margin:.3rem 0;
-  color:#dce9fa;
-  font-size:1.08rem;
-  line-height:1.52;
-}
-.cad-model-statusbar{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin:15px 0 24px;
-}
-.cad-model-statusbar .cad-status{
-  margin:0;
-}
-.cad-model-overview{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:1rem;
-  align-items:stretch;
-  margin:0 0 1rem;
-}
-.cad-preview-panel,
-.cad-files-panel{
-  margin:0;
-  min-width:0;
-  height:100%;
-}
-.cad-preview-panel h2,
-.cad-preview-panel .cad-preview{
-  min-height:330px;
-}
-.cad-preview-panel .cad-preview-link{
-  min-height:330px;
-}
-.cad-preview-note{
-  margin:.65rem 0 0;
-  color:var(--cad-muted);
-  font-size:.86rem;
-  line-height:1.52;
-}
-.cad-file-links{
-  align-items:flex-start;
-  margin:.55rem 0 .75rem;
-}
-.cad-file-links a{
-  margin:0;
-}
-.cad-file-links .cad-file-primary{
-  background:#1b67c2;
-  color:#fff;
-}
-.cad-file-links .cad-file-primary:hover{
-  background:#15539c;
-}
-@media(max-width:840px){
-  .cad-model-overview{grid-template-columns:1fr}
-  .cad-preview-panel .cad-preview,
-  .cad-preview-panel .cad-preview-link{min-height:300px}
-}
-
-
-/* Accepted Hextra CAD baseline: keep every CAD route aligned to the same shell
- * and retain the pre-Hugo CAD typography while Hextra owns the shared header. */
+/* Accepted calm Hextra CAD model-detail baseline (#278 / change 0027).
+ *
+ * Hextra owns the shell. CAD owns one quiet model-detail hierarchy. Keep this
+ * block authoritative: do not append per-model corrective selectors below it.
+ */
 html:not(.dark) body{background:#f6f8fb}
 html:not(.dark) .hextra-nav-container-blur{
   background:#fff!important;
@@ -407,42 +323,318 @@ html:not(.dark) .hextra-max-navbar-width>a:not(:first-of-type){
   line-height:1.52!important;
 }
 html:not(.dark) .hextra-max-navbar-width>a:not(:first-of-type):hover{color:var(--cad-accent)!important}
-html:not(.dark) .hextra-search-trigger{
-  font-size:.9rem;
-}
+html:not(.dark) .hextra-search-trigger{font-size:.9rem}
 
 .cad-page-shell{
   width:min(1080px,calc(100% - 44px));
   margin:0 auto;
   padding:1.1rem 0 4rem;
+  color:var(--cad-ink);
+  font-family:var(--cad-font-sans);
   font-size:1rem;
   line-height:1.52;
-  color:var(--cad-ink);
 }
-.cad-page-shell p,.cad-page-shell li{
+.cad-page-shell p,
+.cad-page-shell li,
+.cad-page-shell dt,
+.cad-page-shell dd,
+.cad-page-shell summary,
+.cad-page-shell a{
+  font-family:var(--cad-font-sans);
   line-height:1.52;
-  font-weight:400;
   letter-spacing:0;
 }
+.cad-page-shell p,
+.cad-page-shell li{font-weight:400}
 .cad-model-detail h1,
 .cad-model-detail h2,
 .cad-model-detail h3{
+  font-family:var(--cad-font-sans);
   letter-spacing:0;
 }
 .cad-model-detail h2,
-.cad-model-detail h3{
-  font-weight:600;
-}
+.cad-model-detail h3{font-weight:600}
 .cad-home>.cad-hero{margin-top:1rem}
 .cad-catalog-page>.cad-model-hero{margin-top:1rem}
-.cad-model-detail>.cad-model-hero{margin-top:1rem}
+
+.cad-model-hero{
+  margin:1rem 0 1.1rem;
+  padding:40px 44px;
+  border-radius:17px;
+  background:linear-gradient(130deg,#102d57,#244f80);
+  color:#fff;
+}
+.cad-model-kicker{
+  margin:0 0 .45rem;
+  color:#b8d9ff;
+  text-transform:uppercase;
+  letter-spacing:.11em!important;
+  font-size:.78rem;
+  font-weight:800;
+}
+.cad-model-hero h1{
+  margin:4px 0 15px;
+  color:#fff;
+  font-size:clamp(2rem,4.5vw,3rem);
+  line-height:1.14;
+  font-weight:600;
+}
+.cad-model-hero>p:last-child{
+  margin:.3rem 0;
+  color:#dce9fa;
+  font-size:1.08rem;
+  line-height:1.52;
+}
 .cad-model-hero-small{padding:30px 36px}
 .cad-model-hero-small h1{margin-bottom:.4rem}
 .cad-model-hero-small>p:last-child{font-size:1rem}
 
+.cad-model-facts{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.35rem .7rem;
+  margin:.75rem 0 1.35rem;
+  color:var(--cad-muted);
+  font-size:.82rem;
+  line-height:1.45;
+}
+.cad-model-facts span+span::before{
+  content:"·";
+  margin-right:.7rem;
+  color:#8a98aa;
+}
+
+.cad-model-overview{
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);
+  gap:1rem;
+  align-items:stretch;
+  margin:0 0 1.35rem;
+}
+.cad-preview-panel,
+.cad-files-panel{
+  min-width:0;
+  height:100%;
+  margin:0;
+}
+.cad-preview-panel h2,
+.cad-files-panel h2,
+.cad-document-section h2{
+  margin:0 0 .65rem;
+  color:var(--cad-ink);
+  font-size:1.35rem;
+  line-height:1.3;
+  font-weight:600;
+}
+.cad-overview-block+.cad-overview-block{margin-top:1.35rem}
+
+.cad-preview{
+  display:grid;
+  place-items:center;
+  aspect-ratio:3/2;
+  min-height:0;
+  border:1px solid var(--cad-line);
+  border-radius:9px;
+  overflow:hidden;
+  background:linear-gradient(180deg,#f4f7fb 0,#e7edf5 15%,#cfd9e6 100%);
+}
+.dark .cad-preview{border-color:#29384d;background:#0c1420}
+.cad-preview-link{
+  display:flex;
+  width:100%;
+  height:100%;
+  min-height:0;
+  align-items:center;
+  justify-content:center;
+}
+.cad-preview img{
+  width:100%;
+  height:100%;
+  max-height:none;
+  object-fit:contain;
+}
+.cad-preview-empty{
+  min-height:0;
+  display:grid;
+  place-items:center;
+  padding:2rem;
+  color:var(--cad-muted);
+  text-align:center;
+}
+.cad-preview-note{
+  margin:.65rem 0 0;
+  color:var(--cad-muted);
+  font-size:.86rem;
+}
+.cad-model-description{
+  margin:.8rem 0 0;
+  max-width:70ch;
+}
+
+.cad-file-links{
+  align-items:flex-start;
+  margin:.55rem 0 .75rem;
+}
+.cad-file-links a{margin:0}
+.cad-links .cad-file-primary{
+  background:#1b67c2;
+  color:#fff;
+}
+.cad-links .cad-file-primary:hover{
+  background:#15539c;
+  color:#fff;
+}
+.cad-section-help{
+  margin:.45rem 0 .75rem;
+  color:var(--cad-muted);
+  font-size:.86rem;
+  line-height:1.52;
+  font-weight:400;
+}
+.cad-stages{
+  margin:.45rem 0 0;
+  padding-left:1.2rem;
+  list-style:disc;
+  color:var(--cad-ink);
+  font-family:var(--cad-font-sans)!important;
+  font-size:1rem;
+  line-height:1.52;
+  font-weight:400;
+}
+.cad-stages li{
+  margin:.28rem 0;
+  color:var(--cad-ink);
+  font-family:var(--cad-font-sans)!important;
+  font-size:1rem;
+  line-height:1.52;
+  font-weight:400;
+}
+.cad-stages li::marker{color:var(--cad-accent)}
+
+.cad-document-section{
+  margin:0;
+  padding:1.7rem 0;
+  border-top:1px solid var(--cad-line);
+  background:transparent;
+  box-shadow:none;
+}
+.dark .cad-document-section{border-color:#29384d}
+.cad-document-section>p{max-width:78ch}
+.cad-document-section .cad-links{margin-top:.9rem}
+.cad-back-link{margin-top:1.4rem}
+
+.cad-rich-text{
+  max-width:78ch;
+  color:var(--cad-ink);
+  font-family:var(--cad-font-sans);
+  font-size:1rem;
+  line-height:1.52;
+}
+.cad-rich-text>h2:first-child,
+.cad-rich-text>h3:first-child{margin-top:.15rem}
+.cad-rich-text h2,
+.cad-rich-text h3,
+.cad-rich-text h4{
+  margin:1rem 0 .35rem;
+  color:var(--cad-ink);
+  font-family:var(--cad-font-sans)!important;
+  font-size:1rem;
+  line-height:1.35;
+  font-weight:600;
+  letter-spacing:0;
+}
+.cad-rich-text p,
+.cad-rich-text li{
+  margin-top:.45rem;
+  margin-bottom:.45rem;
+  color:var(--cad-ink);
+  font-family:var(--cad-font-sans)!important;
+  font-size:1rem;
+  line-height:1.52;
+  font-weight:400;
+  letter-spacing:0;
+}
+.cad-rich-text ul,
+.cad-rich-text ol{margin:.45rem 0 .7rem;padding-left:1.25rem}
+.cad-rich-text li::marker{color:var(--cad-accent)}
+.cad-background .subheading-anchor{display:none}
+
+.cad-reference-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.9rem;
+  margin-top:1rem;
+}
+.cad-reference{
+  min-width:0;
+  padding:0;
+  overflow:hidden;
+  border:1px solid var(--cad-line);
+  border-radius:9px;
+  background:var(--cad-card);
+  box-shadow:0 2px 7px rgba(27,56,99,.025);
+}
+.dark .cad-reference{border-color:#29384d;background:#101827}
+.cad-reference>a{
+  display:flex;
+  width:100%;
+  aspect-ratio:16/9;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border-bottom:1px solid var(--cad-line);
+  background:#eef3fa;
+}
+.dark .cad-reference>a{border-color:#29384d;background:#0c1420}
+.cad-reference img{
+  width:100%;
+  height:100%;
+  max-height:none;
+  margin:0;
+  object-fit:contain;
+  background:transparent;
+}
+.cad-reference-copy{padding:.85rem 1rem .95rem}
+.cad-reference-copy strong{
+  display:block;
+  color:var(--cad-ink);
+  font-size:.92rem;
+  line-height:1.45;
+}
+.cad-reference-source{
+  margin:.4rem 0 0;
+  color:var(--cad-muted);
+  font-size:.72rem;
+}
+
+.cad-code-details,
+.cad-command-details{margin-top:.75rem}
+.cad-code-details>summary,
+.cad-command-details>summary{
+  width:fit-content;
+  list-style:none;
+  cursor:pointer;
+}
+.cad-code-details>summary::-webkit-details-marker,
+.cad-command-details>summary::-webkit-details-marker{display:none}
+.cad-code-details[open]>summary,
+.cad-command-details[open]>summary{margin-bottom:.7rem}
+.cad-disclosure-button{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:8px;
+  background:var(--cad-soft);
+  color:#174f91;
+  font-size:.88rem;
+  line-height:1.2;
+  font-weight:700;
+}
+.cad-disclosure-button:hover{background:#dcecff}
+.cad-code-details-body{margin-top:0}
+
 .cad-code-frame{
   overflow:hidden;
-  margin-top:.9rem;
+  margin-top:.75rem;
   border:0;
   border-radius:9px;
   background:#0d1f33;
@@ -457,13 +649,20 @@ html:not(.dark) .hextra-search-trigger{
 }
 .cad-code-block{margin:0!important;border:0!important;background:#0d1f33!important;box-shadow:none!important}
 .cad-code-block>div:first-child{margin:0!important;border:0!important;box-shadow:none!important}
-.cad-code-block .highlight,.cad-code-block pre{
+.cad-code-block .highlight,
+.cad-code-block pre{
   margin:0!important;
   border-radius:0!important;
   background:#0d1f33!important;
 }
-.cad-code-block pre{max-height:44rem;overflow:auto;padding:1rem 5.25rem 1rem 1.05rem!important;scrollbar-gutter:stable}
-.cad-code-block code,.cad-code-block code span{color:#e6eef9!important}
+.cad-code-block pre{
+  max-height:44rem;
+  overflow:auto;
+  padding:1rem 5.25rem 1rem 1.05rem!important;
+  scrollbar-gutter:stable;
+}
+.cad-code-block code,
+.cad-code-block code span{color:#e6eef9!important}
 .cad-code-block code{font:13px/1.55 var(--cad-font-mono)}
 .hextra-code-copy-btn-container{
   top:.55rem!important;
@@ -484,16 +683,96 @@ html:not(.dark) .hextra-search-trigger{
 }
 .hextra-code-copy-btn::after{content:"Copy";font-size:.7rem;font-weight:700}
 .hextra-code-copy-btn.copied::after{content:"Copied"}
-.hextra-copy-icon,.hextra-success-icon{width:14px!important;height:14px!important}
+.hextra-copy-icon,
+.hextra-success-icon{width:14px!important;height:14px!important}
 
-.cad-web-open .cad-links{
-  justify-content:flex-start;
-  margin-top:1rem;
+.cad-command-sequence{
+  margin:.85rem 0 0;
+  padding:0;
+  list-style:none;
+  counter-reset:cad-command;
 }
-.cad-web-open .cad-links a{margin:0}
-.cad-verification-grid dt{font-size:.83rem}
-.cad-verification-grid dd{font-size:.86rem}
+.cad-command-step{
+  position:relative;
+  padding:1rem 0 1.15rem 2rem;
+  border-bottom:1px solid var(--cad-line);
+}
+.cad-command-step:last-child{border-bottom:0}
+.cad-command-step:before{
+  counter-increment:cad-command;
+  content:counter(cad-command);
+  position:absolute;
+  left:0;
+  top:1.03rem;
+  width:1.35rem;
+  height:1.35rem;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--cad-soft);
+  color:var(--cad-accent-strong);
+  font-size:.68rem;
+  font-weight:700;
+}
+.cad-command-name{
+  margin:0 0 .55rem;
+  color:var(--cad-ink);
+  font-size:.92rem;
+  font-weight:700;
+}
+.cad-command-name code{font:600 .9rem/1.35 var(--cad-font-mono)}
+.cad-command-json{
+  margin:0;
+  padding:.85rem 1rem;
+  border:0;
+  border-radius:8px;
+  overflow:auto;
+  background:#0d1f33;
+  color:#e6eef9;
+  font:13px/1.5 var(--cad-font-mono);
+  box-shadow:none;
+}
+.cad-command-json code{color:inherit;font:inherit}
+.dark .cad-command-step{border-color:#29384d}
 
+.cad-quiet-provenance{
+  margin:.75rem 0 0;
+  padding:0;
+}
+.cad-quiet-provenance>div{
+  display:grid;
+  grid-template-columns:minmax(155px,190px) minmax(0,1fr);
+  gap:1rem;
+  padding:.5rem 0;
+  border-bottom:1px solid var(--cad-line);
+}
+.cad-quiet-provenance>div:last-child{border-bottom:0}
+.cad-quiet-provenance dt{
+  color:var(--cad-muted);
+  font-size:.83rem;
+}
+.cad-quiet-provenance dd{
+  min-width:0;
+  margin:0;
+  overflow-wrap:anywhere;
+  font-size:.86rem;
+}
+
+@media(max-width:840px){
+  .cad-model-overview,
+  .cad-reference-grid{grid-template-columns:1fr}
+}
 @media(max-width:800px){
-  .hextra-max-navbar-width,.cad-page-shell{width:min(1080px,calc(100% - 28px))!important}
+  .hextra-max-navbar-width,
+  .cad-page-shell{width:min(1080px,calc(100% - 28px))!important}
+  .cad-model-hero{padding:1.5rem 1.2rem}
+}
+@media(max-width:620px){
+  .cad-model-facts{display:block}
+  .cad-model-facts span{display:block;margin:.2rem 0}
+  .cad-model-facts span+span::before{content:none}
+  .cad-quiet-provenance>div{
+    grid-template-columns:1fr;
+    gap:.12rem;
+  }
 }

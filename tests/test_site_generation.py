@@ -69,40 +69,37 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn(".cad-model-grid,.cad-reference-grid{grid-template-columns:1fr}", css)
 
 
-    def test_model_detail_uses_one_shared_section_typography_system(self):
+
+    def test_model_detail_uses_one_calm_shared_layout_contract(self):
         css = (SITE / "assets/css/custom.css").read_text()
         page = (SITE / "layouts/models/single.html").read_text()
-        self.assertIn("--cad-section-title-size:1.6rem;", css)
-        self.assertIn("--cad-section-subtitle-size:1rem;", css)
-        self.assertIn("--cad-section-help-size:.86rem;", css)
-        self.assertIn(".cad-section-title{", css)
-        self.assertIn(".cad-section-subtitle{", css)
-        self.assertIn(".cad-section-help{", css)
-        self.assertNotIn(".cad-panel h2{", css)
-        self.assertNotIn(".cad-files-panel h2{", css)
-        self.assertNotIn(".cad-files-panel h3{", css)
-        self.assertNotIn(".cad-code-section>h2{", css)
-        self.assertNotIn(".cad-panel-label{", css)
-        self.assertGreaterEqual(page.count('class="cad-section-title"'), 8)
-        self.assertIn('class="cad-section-title cad-collapsible-title"', page)
-        self.assertIn('class="cad-section-subtitle">Construction stages', page)
-        self.assertGreaterEqual(page.count("cad-section-help"), 6)
-        self.assertGreaterEqual(page.count("cad-section-label"), 4)
+        self.assertIn('class="cad-model-facts"', page)
+        self.assertIn('class="cad-model-overview"', page)
+        self.assertGreaterEqual(page.count('class="cad-document-section'), 6)
+        self.assertIn('class="cad-code-details"', page)
+        self.assertIn('class="cad-command-details"', page)
+        self.assertIn('class="cad-quiet-provenance"', page)
+        self.assertNotIn("cad-section-index", page)
+        self.assertNotIn('class="cad-model-statusbar"', page)
+        self.assertIn(".cad-document-section{", css)
+        self.assertIn(".cad-model-facts{", css)
+        self.assertIn(".cad-quiet-provenance{", css)
 
-    def test_model_detail_panel_styles_have_semantic_accent_edges(self):
+
+    def test_model_detail_uses_quiet_overview_and_document_sections(self):
         css = (SITE / "assets/css/custom.css").read_text()
         page = (SITE / "layouts/models/single.html").read_text()
         design = (ROOT / "docs/design.md").read_text()
+        self.assertIn('class="cad-panel cad-preview-panel"', page)
+        self.assertIn('class="cad-panel cad-files-panel"', page)
+        self.assertIn('class="cad-document-section cad-web-open"', page)
+        self.assertIn('class="cad-document-section cad-background"', page)
+        self.assertNotIn('class="cad-panel cad-web-open"', page)
+        self.assertNotIn('class="cad-panel cad-background"', page)
         self.assertNotIn(".cad-background{border-left:", css)
         self.assertNotIn(".cad-panel-emphasis{", css)
-        self.assertIn('class="cad-panel cad-web-open"', page)
-        self.assertNotIn('cad-panel-emphasis', page)
         self.assertIn("border-left:4px solid #d32f2f", css)
-        self.assertIn(".content blockquote{border:1px solid var(--cad-line)", css)
-        self.assertIn("Hugo **0.169.0** with Hextra **v0.13.0**", design)
-        self.assertIn("primary action panel", design)
-        self.assertIn("action emphasis", design)
-        self.assertNotIn("Blowfish v3.10.0", design)
+        self.assertIn("ordinary document sections", design)
 
     def test_site_uses_one_global_sans_and_mono_font_contract(self):
         css = (SITE / "assets/css/custom.css").read_text()
@@ -113,43 +110,41 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertNotIn('font-family:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;', css.replace('--cad-font-sans:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;', ''))
         self.assertNotIn('ui-monospace,SFMono-Regular,Consolas', css)
 
+
     def test_model_detail_typography_does_not_inherit_hextra_prose_tracking(self):
         css = (SITE / "assets/css/custom.css").read_text()
         self.assertNotIn(".content h1{letter-spacing:-.025em}", css)
         self.assertNotIn(".content h2{letter-spacing:-.016em}", css)
         self.assertNotIn(".content h3{letter-spacing:-.01em}", css)
-        self.assertIn(".cad-section-title{", css)
-        self.assertIn("font-size:var(--cad-section-title-size);", css)
-        self.assertIn("font-weight:var(--cad-heading-weight);", css)
         self.assertIn(".cad-model-detail h2,", css)
-        self.assertIn("font-weight:400;\n  letter-spacing:0;", css)
+        self.assertIn("font-weight:600", css)
+        self.assertIn(".cad-stages{", css)
+        self.assertIn("font-family:var(--cad-font-sans)!important", css)
+        self.assertIn("letter-spacing:0", css)
+
 
     def test_background_markdown_uses_the_same_quiet_cad_typography(self):
         css = (SITE / "assets/css/custom.css").read_text()
         page = (SITE / "layouts/models/single.html").read_text()
-        self.assertIn(".cad-rich-text{max-width:78ch;font-size:1rem;line-height:1.52}", css)
-        self.assertIn('<h2 class="cad-section-title">Background</h2>', page)
-        self.assertIn("color:var(--cad-ink);", css)
-        self.assertNotIn(".cad-verification-panel{background:", css)
-        self.assertIn(".cad-rich-text h2,\n.cad-rich-text h3{", css)
-        self.assertIn("font-size:var(--cad-section-subtitle-size);", css)
-        self.assertIn("font-weight:var(--cad-heading-weight);", css)
+        self.assertIn(".cad-rich-text{", css)
+        self.assertIn('<h2>Background</h2>', page)
+        self.assertIn("font-family:var(--cad-font-sans)", css)
+        self.assertIn(".cad-rich-text h2,", css)
+        self.assertIn("font-weight:600", css)
         self.assertIn(".cad-rich-text li::marker{color:var(--cad-accent)}", css)
         self.assertIn(".cad-background .subheading-anchor{display:none}", css)
+
 
     def test_cad_typography_matches_the_accepted_visual_baseline(self):
         css = (SITE / "assets/css/custom.css").read_text()
         self.assertIn(".cad-page-shell{", css)
-        self.assertIn("font-size:1rem", css)
         self.assertIn('--cad-font-sans:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;', css)
-        self.assertIn("font-family:var(--cad-font-sans)!important;", css)
+        self.assertIn('--cad-font-mono:Consolas,"Courier New",monospace;', css)
         self.assertNotIn('font-family:Inter,"Segoe UI",system-ui', css)
-        self.assertIn("font-size:.76rem", css)
-        self.assertIn("padding:4px 11px", css)
-        self.assertIn(".hextra-max-navbar-width", css)
-        self.assertIn("font-size:1.19rem!important", css)
-        self.assertIn(".cad-hero h1{max-width:760px;margin:4px 0 15px;color:#fff;font-size:clamp(2rem,4.5vw,3rem);line-height:1.14;font-weight:600;letter-spacing:0}", css)
-        self.assertIn("font-weight:600;\n  letter-spacing:0;", css)
+        self.assertIn(".cad-model-facts{", css)
+        self.assertIn("grid-template-columns:minmax(0,1.08fr) minmax(0,1fr)", css)
+        self.assertIn("aspect-ratio:3/2", css)
+        self.assertIn(".cad-document-section{", css)
 
     def test_optional_page_markdown_is_generic_model_content(self):
         mounts = (SITE / "config/_default/module.toml").read_text()
@@ -241,10 +236,11 @@ class HugoSiteContractTests(unittest.TestCase):
         for value in ("Native verified", "Verified native", "SCPC native-command source", ">Native .sc<", "Native model", "Download native .sc", "saved native model", "native SolidCraft operations"):
             self.assertNotIn(value, page)
 
-    def test_model_overview_restores_header_status_preview_and_files_layout(self):
+
+    def test_model_overview_restores_header_facts_preview_and_files_layout(self):
         page = (SITE / "layouts/models/single.html").read_text()
         self.assertIn('class="cad-model-hero"', page)
-        self.assertIn('class="cad-model-statusbar"', page)
+        self.assertIn('class="cad-model-facts"', page)
         self.assertIn('class="cad-model-overview"', page)
         self.assertIn(">Model preview<", page)
         self.assertIn(">Files<", page)
@@ -261,35 +257,64 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertLess(page.index("cad-background"), page.index("cad-source-section"))
         self.assertLess(page.index('index $m "extra_views"'), page.index("cad-source-section"))
 
+
     def test_generated_solidcraft_commands_are_collapsed_by_default(self):
         page = (SITE / "layouts/models/single.html").read_text()
-        self.assertIn('<details class="cad-code-section cad-commands-section cad-collapsible">', page)
-        self.assertIn("<summary>", page)
-        self.assertIn("Generated output", page)
+        self.assertIn('<section class="cad-document-section cad-commands-section">', page)
+        self.assertIn('<details class="cad-command-details">', page)
+        self.assertIn("Expand command sequence", page)
         self.assertIn("SolidCraft commands", page)
-        self.assertIn("generated operations · expand to inspect", page)
-        self.assertNotIn('<details class="cad-code-section cad-commands-section cad-collapsible" open', page)
+        self.assertNotIn('<details class="cad-command-details" open', page)
         self.assertIn('class="cad-command-sequence"', page)
         self.assertIn('class="cad-command-step"', page)
         self.assertIn('class="cad-command-json"', page)
         self.assertIn('transform.Remarshal "json"', page)
-        self.assertNotIn('"label" "solidcraft.json"', page)
-        self.assertNotIn('class="cad-command-list"', page)
+
 
     def test_model_overview_uses_balanced_columns_and_compact_preview(self):
         css = (SITE / "assets/css/custom.css").read_text()
         page = (SITE / "layouts/models/single.html").read_text()
-        self.assertIn("grid-template-columns:repeat(2,minmax(0,1fr))", css)
-        self.assertIn(".cad-preview-panel .cad-preview{\n  min-height:330px;", css)
-        self.assertIn(".cad-preview-panel .cad-preview-link{\n  min-height:330px;", css)
-        self.assertIn(".cad-collapsible[open]>summary:after{content:\"Collapse\"}", css)
-        self.assertNotIn(".cad-command-list", css)
+        self.assertIn("grid-template-columns:minmax(0,1.08fr) minmax(0,1fr)", css)
+        self.assertIn("aspect-ratio:3/2", css)
+        self.assertNotIn(".cad-preview-panel h2,\n.cad-preview-panel .cad-preview{\n  min-height", css)
+        self.assertIn(".cad-document-section{", css)
+        self.assertIn(".cad-quiet-provenance{", css)
+        self.assertIn('class="cad-code-details"', page)
+        self.assertIn('class="cad-command-details"', page)
         self.assertIn(".cad-command-sequence{", css)
         self.assertIn(".cad-command-json{", css)
         self.assertIn("right:1.75rem!important", css)
-        self.assertIn("padding:1rem 5.25rem 1rem 1.05rem!important;scrollbar-gutter:stable", css)
-        self.assertIn(".cad-code-frame{\n  overflow:hidden;\n  margin-top:.9rem;\n  border:0;", css)
-        self.assertNotIn("cad-panel cad-commands-panel", page)
+        self.assertIn(".cad-code-frame{", css)
+
+
+    def test_source_sections_are_collapsed_by_default(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn('<details class="cad-code-details">', page)
+        self.assertIn("Show source", page)
+        self.assertIn("Show SCPC source", page)
+        self.assertNotIn('<details class="cad-code-details" open', page)
+
+    def test_rendered_model_layout_capture_is_part_of_durable_publication(self):
+        workflow = (ROOT / ".github/workflows/cad.yml").read_text()
+        script = (ROOT / "scripts/ci/capture_site_layout.sh").read_text()
+        self.assertIn("capture_site_layout.sh generated-site", workflow)
+        self.assertIn("actions/upload-artifact@v4", workflow)
+        self.assertIn("model-layouts-", workflow)
+        self.assertLess(
+            workflow.index("Capture rendered model layouts"),
+            workflow.index("Publish CAD Pages for source scope"),
+        )
+        for route in ("models/plate/", "models/simple-mft/"):
+            self.assertIn(route, script)
+        for image in (
+            "plate-overview.png",
+            "plate-full.png",
+            "simple-mft-overview.png",
+            "simple-mft-full.png",
+        ):
+            self.assertIn(image, script)
+        self.assertIn('404 ', script)
+
 
     def test_model_page_keeps_expected_public_content(self):
         page = (SITE / "layouts/models/single.html").read_text()
