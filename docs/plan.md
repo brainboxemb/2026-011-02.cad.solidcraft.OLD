@@ -62,7 +62,7 @@ The shared plan structure is defined by
 
 ## Active workstreams
 
-### WS1 — finish migration reconciliation and reactivate dev-cad
+### WS1 — migration reconciliation and dev-cad reactivation — complete
 
 Owner/lane: repository-wide governance, then `dev-cad`.
 
@@ -72,27 +72,19 @@ Status:
 - stable `build/main` and stable Pages are green after the new durable-scope
   bootstrap;
 - `dev-ci` has no accepted source work beyond the promoted baseline;
-- `dev-cad` is still behind the current stable main and must be synchronized
-  before product CAD work resumes.
+- #174 is closed from recorded stable build/Pages evidence;
+- stale draft PR #188 is closed without merge;
+- `dev-cad` was fast-forwarded to the accepted main because it had no
+  lane-only commits, and its durable integration is green.
 
-Next gate:
+The migration lane is no longer the active workstream.
 
-1. merge this plan/handoff reconciliation;
-2. close/rewrite migration issues only from recorded acceptance evidence;
-3. synchronize `dev-cad` from current `main` with a normal history-preserving
-   merge;
-4. re-evaluate the existing `dev-cad` feature PRs against the synchronized
-   lane before continuing them.
-
-PR #188 is a stale #174 governance draft and should be reassessed/closed rather
-than merged into the now-promoted `dev-ci` lane.
-
-### WS2 — normalize model-description ownership
+### WS2 — normalize model-description ownership — active
 
 Owner/lane: shared contract in Forge/meta; CAD adoption in `dev-cad` after lane
 reactivation.
 
-- #204 removes the derived SCPC command count from model metadata.
+- #204 removes the derived SCPC command count from model metadata — **now**.
 - #205 adopts the canonical shared `model.yml` contract and is blocked on
   Forge #703/shared contract completion.
 - #206 removes Forge-owned cross-CAD reference implementations from this product
@@ -118,9 +110,8 @@ Existing product work remains parked until WS1 has synchronized the lane.
 | --- | --- | --- | --- |
 | #206 Remove Forge reference implementations | dev-cad | **next** | Remove local CadQuery/MicroCAD/PythonSCAD/VCAD reference sources after lane sync; retain Forge as reference owner. |
 | #205 Canonical shared model.yml contract | shared + dev-cad | **blocked** | Wait for Forge #703/shared contract, then migrate CAD without a copied schema. |
-| #204 Remove SCPC command counts from model.yml | dev-cad | **next** | Remove the five hand-maintained counts and reject the field in CAD metadata. |
+| #204 Remove SCPC command counts from model.yml | dev-cad | **now** | Remove the five hand-maintained counts and reject the field in CAD metadata. |
 | #191 Hugo/Blowfish CAD site migration | repository | **effectively complete but still open** | Reconcile final acceptance evidence against stable Pages and close or rewrite remaining follow-up scope. |
-| #174 Released CAD-CI/publication migration | repository | **effectively complete but still open** | Record final stable build/Pages evidence after this documentation reconciliation, then close. |
 | #189 Per-model model.yml website catalog | repository | **effectively complete but still open** | Keep the completed distributed catalog; track schema correction separately in #205 and then close/rewrite #189. |
 | #172 Full-catalog Forge/SolidCraft qualification | dev-cad | **blocked** | Re-enable and qualify the two remaining models after Forge #679; do not add a local workaround. |
 | #168 Verification terminology cleanup | cross-repo | **later** | Revisit only after current ownership/model-metadata cleanup is stable. |
@@ -155,10 +146,9 @@ The next repository checkpoint is not another CI migration.
 
 It is:
 
-1. close the completed #174 migration from exact stable evidence;
-2. synchronize/reactivate `dev-cad`;
-3. qualify the synchronized lane;
-4. choose one existing product CAD work item as the next active model change.
+1. complete #204 as the first small post-migration metadata correction;
+2. reassess #206 and the shared #205/Forge #703 contract in order;
+3. choose one existing product CAD work item as the next active model change.
 
 Do not start several parked product PRs in parallel before the lane is
 synchronized and their current relevance has been reassessed.
