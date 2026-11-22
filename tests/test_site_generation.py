@@ -38,6 +38,12 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn('target = "assets/build"', mounts)
         self.assertIn('build/models/%s/%s/models/%s', adapter)
         self.assertIn("steps.cad_ci.outputs.prepared_scope", workflow)
+        self.assertIn('"target" "model.sc"', adapter)
+        self.assertIn('"target" "model.step"', adapter)
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn('.Resources.Get "model.sc"', page)
+        self.assertIn('.Resources.Get "model.step"', page)
+        self.assertNotIn("resources.Copy", page)
         self.assertNotIn("scripts/ci/build-results.py", workflow)
 
     def test_stable_visual_baseline_is_retained_for_comparison(self):

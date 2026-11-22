@@ -70,6 +70,21 @@ CAD, selects CI items, or infers successful build/verification evidence.
           ) }}
         {{ end }}
 
+        {{/* Keep downloadable native outputs in the page bundle too.
+             This makes their public path deterministic and avoids relying on
+             resources.Copy side effects inside the presentation template. */}}
+        {{ range $resource := slice
+          (dict "source" (printf "%s/native/model.sc" $buildRoot) "target" "model.sc")
+          (dict "source" (printf "%s/native/model.step" $buildRoot) "target" "model.step")
+        }}
+          {{ with resources.Get (index $resource "source") }}
+            {{ $.AddResource (dict
+              "content" (dict "mediaType" .MediaType.Type "value" .)
+              "path" (printf "%s/%s" $slug (index $resource "target"))
+            ) }}
+          {{ end }}
+        {{ end }}
+
         {{ range $resource := slice
           (dict "source" (printf "%s/provenance.json" $buildRoot) "target" "provenance.json")
           (dict "source" (printf "build/models/%s/%s/generated/%s/scpf/solidcraft.json" $section $rootName $slug) "target" "solidcraft.json")

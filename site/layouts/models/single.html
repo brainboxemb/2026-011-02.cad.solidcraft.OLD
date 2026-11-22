@@ -48,12 +48,8 @@
         {{ with .Resources.Get "model.yml" }}<a href="{{ .RelPermalink }}">model.yml</a>{{ end }}
         {{ with .Resources.Get "solidcraft.json" }}<a href="{{ .RelPermalink }}">Forge commands</a>{{ end }}
         {{ with .Resources.Get "scpc-solidcraft.json" }}<a href="{{ .RelPermalink }}">SCPC commands</a>{{ end }}
-        {{ with resources.Get (printf "%s/native/model.sc" $buildRoot) }}
-          {{ $copy := resources.Copy (printf "models/%s/model.sc" $.Params.cadSlug) . }}<a href="{{ $copy.RelPermalink }}">SolidCraft model</a>
-        {{ end }}
-        {{ with resources.Get (printf "%s/native/model.step" $buildRoot) }}
-          {{ $copy := resources.Copy (printf "models/%s/model.step" $.Params.cadSlug) . }}<a href="{{ $copy.RelPermalink }}">STEP</a>
-        {{ end }}
+        {{ with .Resources.Get "model.sc" }}<a href="{{ .RelPermalink }}">SolidCraft model</a>{{ end }}
+        {{ with .Resources.Get "model.step" }}<a href="{{ .RelPermalink }}">STEP</a>{{ end }}
         {{ with .Resources.Get "provenance.json" }}<a href="{{ .RelPermalink }}">Build provenance</a>{{ end }}
       </div>
       <p class="cad-muted">Source {{ site.Params.sourceRef }} · build scope {{ site.Params.buildScope }}{{ with site.Params.buildCommit }} · build {{ . }}{{ end }}</p>
