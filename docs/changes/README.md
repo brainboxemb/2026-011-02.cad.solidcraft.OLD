@@ -52,3 +52,5 @@ Current records:
 - [0024-retire-legacy-ci-python.md](0024-retire-legacy-ci-python.md) — remove superseded local CI/site orchestration after released dev-ci build/Pages acceptance (#174).
 - [0025-shared-merge-policy.md](0025-shared-merge-policy.md) — consume the released tool.cad.ci merge policy instead of a CAD-local merge engine (#245).
 - [0026-hextra-site.md](0026-hextra-site.md) — record Hugo 0.169.0 + Hextra v0.13.0 as the accepted CAD site architecture after #191 stable promotion (#251).
+
+- [0027-calm-model-detail.md](0027-calm-model-detail.md) — adopt the EXP-proven calm generic model-detail layout and rendered-browser regression proof (#278).
