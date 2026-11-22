@@ -187,7 +187,11 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn("SolidCraft commands", page)
         self.assertIn("generated operations · expand to inspect", page)
         self.assertNotIn('<details class="cad-code-section cad-commands-section cad-collapsible" open', page)
-        self.assertIn('"label" "solidcraft.json"', page)
+        self.assertIn('class="cad-command-sequence"', page)
+        self.assertIn('class="cad-command-step"', page)
+        self.assertIn('class="cad-command-json"', page)
+        self.assertIn('transform.Remarshal "json"', page)
+        self.assertNotIn('"label" "solidcraft.json"', page)
         self.assertNotIn('class="cad-command-list"', page)
 
     def test_model_overview_uses_balanced_columns_and_compact_preview(self):
@@ -198,6 +202,11 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn(".cad-preview-panel .cad-preview-link{\n  min-height:330px;", css)
         self.assertIn(".cad-collapsible[open]>summary:after{content:\"Collapse\"}", css)
         self.assertNotIn(".cad-command-list", css)
+        self.assertIn(".cad-command-sequence{", css)
+        self.assertIn(".cad-command-json{", css)
+        self.assertIn("right:1.75rem!important", css)
+        self.assertIn("padding:1rem 5.25rem 1rem 1.05rem!important;scrollbar-gutter:stable", css)
+        self.assertIn(".cad-code-frame{\n  overflow:hidden;\n  margin-top:.9rem;\n  border:0;", css)
         self.assertNotIn("cad-panel cad-commands-panel", page)
 
     def test_model_page_keeps_expected_public_content(self):
