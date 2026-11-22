@@ -1,5 +1,5 @@
 {
-  "catalog_commit": "9ec471d00b33e34455aa5e70e9f092669888dcb1",
+  "catalog_commit": "ee760bebf45ba565869db840f06b390c94d4824d",
   "models": {
     "bolted-flange": {
       "input_fingerprint": "2552b06aff435562f8bdf96a7bce6ac942a4450860cd109b9c2350184242d702",
@@ -38,10 +38,10 @@
       "scpf_commit": "9258d54079981604b6dd777a4c4face897c190fe",
       "scpf_release": "0.11.0",
       "solidcraft_version": "0.45.0",
-      "source_commit": "9ec471d00b33e34455aa5e70e9f092669888dcb1",
+      "source_commit": "ee760bebf45ba565869db840f06b390c94d4824d",
       "toolchain_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
       "verified": true,
-      "workflow_run": "45005516493"
+      "workflow_run": "45005648506"
     },
     "csg-cube": {
       "input_fingerprint": "35d82765ba80627facdbfdf5a3c016d4b1c0dc863b51a286285e3e5c95056fe1",
@@ -178,10 +178,10 @@
       "scpf_commit": "9258d54079981604b6dd777a4c4face897c190fe",
       "scpf_release": "0.11.0",
       "solidcraft_version": "0.45.0",
-      "source_commit": "9ec471d00b33e34455aa5e70e9f092669888dcb1",
+      "source_commit": "ee760bebf45ba565869db840f06b390c94d4824d",
       "toolchain_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
       "verified": true,
-      "workflow_run": "45005516493"
+      "workflow_run": "45005648506"
     },
     "simple-mft": {
       "input_fingerprint": "f391d926944948b6d6355ae75982aaee1a12b4b33010682c94c43227f6b32967",
@@ -247,5 +247,5 @@
   "schema": 2,
   "scpc_commit": "fcaa6f9fc8388bc715fcd2fbb149ce6b979566a7",
   "scpf_commit": "9258d54079981604b6dd777a4c4face897c190fe",
-  "source_commit": "9ec471d00b33e34455aa5e70e9f092669888dcb1"
+  "source_commit": "ee760bebf45ba565869db840f06b390c94d4824d"
 }
