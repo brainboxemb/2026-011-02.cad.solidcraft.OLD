@@ -98,7 +98,7 @@
 .cad-category-more a{color:var(--cad-accent)}
 
 @media(max-width:1000px) and (min-width:761px){
-  .cad-home .cad-model-grid,
+  .cad-home .cad-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cad-catalog-page .cad-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
