@@ -253,7 +253,7 @@ Stable `main` remains unchanged until dev-ci acceptance.
 
 ### M4 — Durable build and Pages scopes
 
-Status: **dev-ci preview implementation active**. PR #194 is merged and its
+Status: **dev-ci preview implementation active; next merge is the explicit durable publication proof**. PR #194 is merged and its
 PR-side Hugo + released-CAD-CI checks are green. Main PR #195 restored the
 Forge-style explicit post-merge workflow dispatch. This status-only acceptance
 merge is used to prove the first durable `build/dev-ci` + Pages
