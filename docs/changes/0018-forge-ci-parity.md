@@ -63,3 +63,10 @@ Do not close #172 on the basis of an ordinary selected-model run.
   The new shared template is named `cad-model-build`. User-facing text says
   model build/verification/results. Existing saved output folder names remain
   compatible until site migration. See Forge terminology issue #659.
+
+- PR #180: five physical models built and checked by the released CAD-CI
+  runner, with Forge and SCPC comparisons where present (8 targets, all pass).
+- Next batch: Bracket, CSG Cube and two plastic enclosures. Basic shape,
+  body and sketch expectations are checked first. Existing specialized
+  construction-history, material and detailed geometric checks still need
+  equivalent declarative coverage before claiming full check parity.

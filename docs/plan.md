@@ -56,7 +56,7 @@ comparison remains outstanding.
 
 ### M1 — Released tooling and declarative model graph
 
-Status: **Plate and Vent Plate accepted; next three-model batch in progress**.
+Status: **five models accepted; next four-model batch in progress**.
 PR #178 at `a4329d0791803572184b8ebf163adea737f7a372`
 passed a real Plate build with released tool.cad.ci 0.17.0 /
 lib.py.cad.ci 0.9.3, verification 0.15.0, Forge 0.11.0 and central
@@ -77,7 +77,7 @@ all other roots remain outside the staged graph until checked. This is not full-
 
 ### M2 — Native verification and consumer step migration
 
-Status: **two models built and checked; three further models in trial**.
+Status: **five models built and checked; four further models in trial**.
 The Plate model was built successfully by released CAD-CI. The next
 stage converts Plate and Vent Plate to one model-independent producer, builds
 and checks Forge and independent SCPC SolidCraft models and checks that their body
