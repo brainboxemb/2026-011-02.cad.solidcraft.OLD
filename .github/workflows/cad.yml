@@ -3,38 +3,17 @@ name: CAD
 on:
   pull_request:
     branches: [main, dev-cad, dev-ci]
-    types: [opened, synchronize, reopened, closed]
+    types: [opened, synchronize, reopened]
   push:
-    branches: [main]
+    branches: [main, dev-cad, dev-ci]
   workflow_dispatch:
-    inputs:
-      mode:
-        description: Models to check
-        type: choice
-        required: true
-        default: changed
-        options: [changed, models, all]
-      models:
-        description: Model slugs when mode is models
-        type: string
-        required: false
-        default: ""
 
 permissions:
-  contents: write
-  packages: read
-
-concurrency:
-  group: cad-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' && github.event.action != 'closed' }}
+  contents: read
 
 jobs:
-  architecture:
-    if: >-
-      github.event_name == 'pull_request' &&
-      github.event.action != 'closed' &&
-      (github.event.pull_request.base.ref == 'dev-cad' ||
-       github.event.pull_request.base.ref == 'dev-ci')
+  repository_contract:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -43,37 +22,58 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 1
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install model.yml reader for website contract tests
+      - name: Install model.yml reader
         run: python -m pip install -r requirements-site.txt
-      - name: Check model catalog and website route contracts
-        run: python -m unittest discover -s tests -p test_ci_migration_contract.py -v
-      - name: Verify model.yml metadata and preserved page content
-        run: python -m unittest discover -s tests -p test_model_metadata.py -v
-      - name: Check branch merge policy
-        run: python -m unittest discover -s tests -p test_merge_policy.py -v
-      - name: Exercise existing CAD website layout and link generation
-        run: python -m unittest discover -s tests -p test_site_generation.py -v
-      - name: Check generic CAD model producer and model ownership
-        run: python -m unittest discover -s tests -p test_model_verify_runner.py -v
+      - name: Check CAD repository contracts
+        run: |
+          python -m unittest discover -s tests -p test_ci_migration_contract.py -v
+          python -m unittest discover -s tests -p test_model_metadata.py -v
+          python -m unittest discover -s tests -p test_merge_policy.py -v
+          python -m unittest discover -s tests -p test_site_generation.py -v
+          python -m unittest discover -s tests -p test_model_verify_runner.py -v
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.x"
+          cache: false
+      - name: Set up pinned Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.169.0"
+          extended: true
+      - name: Build model.yml site without claiming build evidence
+        env:
+          HUGO_BASEURL: https://brainboxemb.github.io/2026-011-02.cad.solidcraft/previews/pr-${{ github.event.pull_request.number }}/
+          HUGO_PARAMS_SOURCEREF: ${{ github.event.pull_request.head.sha }}
+          HUGO_PARAMS_BUILDSCOPE: pr
+        run: |
+          mkdir -p prepared-scope
+          cd site
+          hugo mod graph | grep -F "github.com/nunocoracao/blowfish/v3@v3.10.0"
+          hugo --minify --printPathWarnings --destination "$GITHUB_WORKSPACE/generated-site"
+          cd "$GITHUB_WORKSPACE"
+          test -s generated-site/models/plate/index.html
+          test -s generated-site/models/guide-rail-makita/index.html
+          test -s generated-site/models/simple-mft-assembly/index.html
+          test -s generated-site/models/basic/index.html
+          test -s generated-site/models/components/index.html
+          test -s generated-site/models/advanced/index.html
+          grep -F "No build evidence in this scope" generated-site/models/plate/index.html
 
-  released_cad_models:
-    # This is a development-branch proof only, with no durable publication.
-    if: >-
-      github.event_name == 'pull_request' &&
-      github.event.action != 'closed' &&
-      github.event.pull_request.base.ref == 'dev-ci'
-    needs: architecture
+  cad_ci_pr:
+    if: github.event_name == 'pull_request'
+    needs: repository_contract
     permissions:
       contents: read
       packages: read
       pull-requests: read
     runs-on: ubuntu-latest
     steps:
-      - name: Build and verify selected SolidCraft models
-        uses: brainboxemb/tool.cad.ci@1012e6a539a2fddd8194124844fe208bf16cf4e4
+      - name: Run exact Forge-qualified CAD-CI release
+        uses: brainboxemb/tool.cad.ci@b62f9d0b169aa201a3c66c3166f364396b2d71bc
         with:
           source_sha: ${{ github.event.pull_request.head.sha }}
           base_sha: ${{ github.event.pull_request.base.sha }}
@@ -81,157 +81,86 @@ jobs:
           jobs: "2"
           github_token: ${{ github.token }}
 
-  cad:
-    # Keep the accepted main CAD pipeline untouched during migration.
-    # Development PRs run only the lightweight structural contract checks
-    # until their Forge-style CAD-CI graph is fully connected.
-    if: >-
-      github.event_name != 'pull_request' ||
-      (github.event.action != 'closed' && github.event.pull_request.base.ref == 'main')
+  cad_ci_push:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    permissions:
+      contents: write
+      packages: read
     runs-on: ubuntu-latest
-    env:
-      BUILD_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'changed' }}
-      BUILD_MODELS: ${{ github.event_name == 'workflow_dispatch' && inputs.models || '' }}
-      BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before || '' }}
-      HEAD_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
-      EVENT_NAME: ${{ github.event_name }}
-      REF_NAME: ${{ github.head_ref || github.ref_name }}
-      PR_NUMBER: ${{ github.event.pull_request.number || 0 }}
-
+    concurrency:
+      group: cad-push-${{ github.repository }}-${{ github.ref_name }}
+      cancel-in-progress: true
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
-        with:
-          # Publication checks the real source commit, not GitHub's temporary
-          # PR merge ref.
-          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
-          fetch-depth: 0
-
-      - name: Checkout verified build output
-        uses: actions/checkout@v4
-        with:
-          ref: build
-          path: generated-build
-          fetch-depth: 0
-
-      - name: Checkout current Pages
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: pages
-          fetch-depth: 0
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Bootstrap pinned CAD dependencies
-        run: python scripts/ci/bootstrap_cad_ci.py
-
-      - name: Install pinned publication tool on host
-        run: python -m pip install -e ext/cad-ci
-
-      - name: Resolve released SolidCraft runtime
-        id: runtime
-        run: python scripts/ci/cad_runtime.py --github-output "$GITHUB_OUTPUT"
-
-      - name: Login to GHCR
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Pull released SolidCraft runtime
-        run: docker pull "${{ steps.runtime.outputs.reference }}"
-
-      - name: Run selected CAD pipeline
+      - name: Validate durable source lane
+        env:
+          SOURCE_SCOPE: ${{ github.ref_name }}
         run: |
-          docker run --rm \
-            -v "$GITHUB_WORKSPACE:/workspace" \
-            -w /workspace \
-            -e BUILD_MODE \
-            -e BUILD_MODELS \
-            -e BASE_SHA \
-            -e HEAD_SHA \
-            -e EVENT_NAME \
-            -e REF_NAME \
-            -e PR_NUMBER \
-            -e GITHUB_RUN_ID \
-            -e PYTHONPATH="/workspace/ext/scpf/scpf:/workspace/ext/scpc/src" \
-            -e SCPF_COMMIT="${{ steps.runtime.outputs.scpf_sha }}" \
-            -e SCPC_COMMIT="${{ steps.runtime.outputs.scpc_sha }}" \
-            -e SCPF_RELEASE="${{ steps.runtime.outputs.scpf_release }}" \
-            "${{ steps.runtime.outputs.reference }}" \
-            python scripts/ci/pipeline_ci.py \
-              --mode "$BUILD_MODE" \
-              --models "$BUILD_MODELS" \
-              --base-sha "$BASE_SHA" \
-              --head-sha "$HEAD_SHA" \
-              --event-name "$EVENT_NAME" \
-              --ref-name "$REF_NAME" \
-              --pull-request "$PR_NUMBER" \
-              --out output \
-              --build-root generated-build \
-              --previous-site pages \
-              --workflow-run "$GITHUB_RUN_ID" \
-              --image-reference "${{ steps.runtime.outputs.reference }}"
-
-      - name: Publish verified build and site
-        if: >-
-          github.event_name != 'pull_request' ||
-          github.event.pull_request.head.repo.full_name == github.repository
+          case "$SOURCE_SCOPE" in
+            main|dev-cad|dev-ci) ;;
+            *) echo "unsupported durable source branch: $SOURCE_SCOPE" >&2; exit 2 ;;
+          esac
+      - name: Run and publish durable CAD-CI scope
+        id: cad_ci
+        uses: brainboxemb/tool.cad.ci@b62f9d0b169aa201a3c66c3166f364396b2d71bc
+        with:
+          source_sha: ${{ github.sha }}
+          durable_scope: ${{ github.ref_name }}
+          source_ref: ${{ github.ref_name }}
+          jobs: "2"
+          github_token: ${{ github.token }}
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.x"
+          cache: false
+      - name: Set up pinned Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.169.0"
+          extended: true
+      - name: Build CAD Pages from the complete accepted scope
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          BUILD_COMMIT: ${{ steps.cad_ci.outputs.build_commit }}
+          SCOPE: ${{ steps.cad_ci.outputs.scope }}
+          PREPARED_SCOPE: ${{ steps.cad_ci.outputs.prepared_scope }}
         run: |
-          python scripts/ci/publish_ci.py \
-            --bundle output \
-            --source-root . \
-            --build-root generated-build \
-            --pages-root pages \
-            --workflow-event "$EVENT_NAME" \
-            --workflow-head-branch "$REF_NAME" \
-            --workflow-head-sha "$HEAD_SHA" \
-            --pull-request "$PR_NUMBER"
-
-      - name: Upload CAD diagnostics
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cad-${{ github.run_id }}
-          path: |
-            output/plan.json
-            output/tool-cad-ci-plan.json
-            output/models/
-            output/native/
-            output/candidate/
-            publication-output/
-            build/models/**
-          if-no-files-found: ignore
-
-  cleanup:
-    if: >-
-      github.event_name == 'pull_request' &&
-      github.event.action == 'closed' &&
-      github.event.pull_request.head.repo.full_name == github.repository
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout trusted cleanup code
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          path: source
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Bootstrap pinned CAD dependencies
-        run: python source/scripts/ci/bootstrap_cad_ci.py
-
-      - name: Install pinned publication tool on host
-        run: python -m pip install -e source/ext/cad-ci
-
-      - name: Remove closed PR output
+          test -d "$PREPARED_SCOPE"
+          test "$(realpath "$PREPARED_SCOPE")" = "$(realpath prepared-scope)"
+          if [ "$SCOPE" = "main" ]; then
+            base_url="https://brainboxemb.github.io/2026-011-02.cad.solidcraft/"
+          else
+            base_url="https://brainboxemb.github.io/2026-011-02.cad.solidcraft/$SCOPE/"
+          fi
+          export HUGO_BASEURL="$base_url"
+          export HUGO_PARAMS_SOURCEREF="$SOURCE_SHA"
+          export HUGO_PARAMS_BUILDSCOPE="$SCOPE"
+          export HUGO_PARAMS_BUILDCOMMIT="$BUILD_COMMIT"
+          cd site
+          hugo mod graph | grep -F "github.com/nunocoracao/blowfish/v3@v3.10.0"
+          hugo --minify --printPathWarnings --destination "$GITHUB_WORKSPACE/generated-site"
+          cd "$GITHUB_WORKSPACE"
+          jq -n --arg source "$SOURCE_SHA" --arg build "$BUILD_COMMIT" --arg scope "$SCOPE"             '{schema:1,generator:"hugo+blowfish",source_commit:$source,build_commit:$build,build_scope:$scope}'             > generated-site/provenance.json
+          test -s generated-site/models/plate/index.html
+          test -s generated-site/models/plate/model.yml
+          test -s generated-site/models/plate/model.png
+          test -s generated-site/models/plate/model.sc
+          test -s generated-site/models/plate/model.step
+          test -s generated-site/models/plate/provenance.json
+          test -s generated-site/models/plate/solidcraft.json
+          test -s generated-site/models/guide-rail-makita/index.html
+          test -s generated-site/models/simple-mft-assembly/index.html
+          jq -e --arg source "$SOURCE_SHA" '.source_commit == $source' generated-site/provenance.json >/dev/null
+          jq -e --arg build "$BUILD_COMMIT" '.build_commit == $build' generated-site/provenance.json >/dev/null
+          jq -e --arg scope "$SCOPE" '.build_scope == $scope' generated-site/provenance.json >/dev/null
+      - name: Publish CAD Pages for source scope
+        env:
+          SOURCE_REF: ${{ github.ref_name }}
+          SOURCE_SHA: ${{ github.sha }}
+          SCOPE: ${{ steps.cad_ci.outputs.scope }}
         run: |
-          python source/scripts/ci/cleanup_ci.py \
-            --source-root source \
-            --pull-request "${{ github.event.pull_request.number }}"
+          if [ "$SCOPE" = "main" ]; then
+            page_args=(--preserve-subtree dev-cad --preserve-subtree dev-ci)
+          else
+            page_args=(--name "$SCOPE")
+          fi
+          python -m cad_ci_tool publish pages             --repo .             --site generated-site             "${page_args[@]}"             --message "pages: $SCOPE $SOURCE_SHA"             --source-ref "$SOURCE_REF"             --expected-source "$SOURCE_SHA"

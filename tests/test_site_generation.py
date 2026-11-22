@@ -1,219 +1,51 @@
-"""Incremental site generation contracts."""
-from __future__ import annotations
-
-import importlib.util
-import json
+"""Hugo/Blowfish site ownership and route contracts."""
 from pathlib import Path
-import sys
-import tempfile
 import unittest
-import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-CI = ROOT / "scripts" / "ci"
-sys.path.insert(0, str(CI))
+SITE = ROOT / "site"
 
-from model_catalog import COMMAND_SOURCES, MODELS, model_build_path  # noqa: E402
-from output_store import input_fingerprint  # noqa: E402
+class HugoSiteContractTests(unittest.TestCase):
+    def test_theme_and_hugo_version_are_explicitly_pinned(self):
+        self.assertIn("github.com/nunocoracao/blowfish/v3 v3.10.0", (SITE / "go.mod").read_text())
+        self.assertIn('hugo-version: "0.169.0"', (ROOT / ".github/workflows/cad.yml").read_text())
 
-spec = importlib.util.spec_from_file_location(
-    "build_results",
-    CI / "build-results.py",
-)
-build_results = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(build_results)
+    def test_model_yaml_is_mounted_without_python_sources(self):
+        mounts = (SITE / "config/_default/module.toml").read_text()
+        self.assertIn('source = "../models"', mounts)
+        self.assertIn('target = "data/cad/models"', mounts)
+        self.assertIn('files = ["**/model.yml"]', mounts)
 
+    def test_content_adapter_owns_routes_without_second_catalog(self):
+        adapter = (SITE / "content/models/_content.gotmpl").read_text()
+        self.assertIn("hugo.Data.cad.models", adapter)
+        self.assertIn("$.AddPage", adapter)
+        self.assertIn('strings.Replace $rootName "_" "-"', adapter)
+        self.assertIn('"path" $slug', adapter)
+        self.assertNotIn('if eq $slug "simple-mft"', adapter)
+        self.assertNotIn('if eq $slug "hub75-panel"', adapter)
 
-class IncrementalSiteGenerationTests(unittest.TestCase):
-    def setUp(self):
-        self.temp = tempfile.TemporaryDirectory()
-        self.root = Path(self.temp.name)
-        self.generated = self.root / "generated"
-        self.store = self.root / "stable"
-        self.site = self.root / "site"
+    def test_model_page_keeps_expected_public_content(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        for value in ("Construction stages","Python source","model.yml","Forge commands","SolidCraft model","STEP","Build provenance","No build evidence in this scope","extra_views"):
+            self.assertIn(value, page)
 
-        for slug in MODELS:
-            target = self.generated / slug / "scpf"
-            target.mkdir(parents=True)
-            (target / "solidcraft.json").write_text(
-                json.dumps({"commands": []}),
-                encoding="utf-8",
-            )
-        for slug in COMMAND_SOURCES:
-            target = self.generated / slug / "scpc"
-            target.mkdir(parents=True, exist_ok=True)
-            (target / "solidcraft.json").write_text(
-                json.dumps({"commands": []}),
-                encoding="utf-8",
-            )
+    def test_site_reads_only_prepared_build_scope(self):
+        mounts = (SITE / "config/_default/module.toml").read_text()
+        adapter = (SITE / "content/models/_content.gotmpl").read_text()
+        workflow = (ROOT / ".github/workflows/cad.yml").read_text()
+        self.assertIn('source = "../prepared-scope"', mounts)
+        self.assertIn('target = "assets/build"', mounts)
+        self.assertIn('build/models/%s/%s/models/%s', adapter)
+        self.assertIn("steps.cad_ci.outputs.prepared_scope", workflow)
+        self.assertNotIn("scripts/ci/build-results.py", workflow)
 
-    def tearDown(self):
-        self.temp.cleanup()
-
-    def make_verified_store_model(self, slug="bolted-flange"):
-        root = self.store / model_build_path(slug)
-        native = root / "native"
-        generated = root / "generated" / "scpf"
-        native.mkdir(parents=True)
-        generated.mkdir(parents=True)
-
-        (native / "model.png").write_bytes(b"png")
-        with zipfile.ZipFile(native / "model.sc", "w") as archive:
-            archive.writestr(
-                "document.json",
-                json.dumps({"format": "solidcraft/1"}),
-            )
-            archive.writestr(
-                "container.json",
-                json.dumps({"format": "solidcraft-container/1"}),
-            )
-
-        (generated / "solidcraft.json").write_text(
-            json.dumps({"commands": []}),
-            encoding="utf-8",
-        )
-        verification = {
-            "schema": 1,
-            "model": slug,
-            "source_commit": "1" * 40,
-            "scpf_commit": "2" * 40,
-            "scpf_release": "0.10.0",
-            "scpc_commit": "3" * 40,
-            "solidcraft_version": "0.42.0",
-            "workflow_run": "123",
-            "verified": True,
-            "native_file_format": "solidcraft/1",
-            "input_fingerprint": input_fingerprint(slug),
-        }
-        (root / "verification.json").write_text(
-            json.dumps(verification),
-            encoding="utf-8",
-        )
-        return verification
-
-    def build(self):
-        build_results.build(
-            self.site,
-            "a" * 40,
-            generated_root=self.generated,
-            stable_store=self.store,
-        )
-
-    def test_matching_stable_model_keeps_its_own_verification(self):
-        expected = self.make_verified_store_model()
-        self.build()
-
-        page_verification = json.loads(
-            (
-                self.site
-                / "models/bolted-flange/verification.json"
-            ).read_text(encoding="utf-8")
-        )
-        self.assertEqual(page_verification, expected)
-
-        catalog = json.loads(
-            (self.site / "provenance.json").read_text(encoding="utf-8")
-        )
-        self.assertEqual(catalog["schema"], 2)
-        self.assertEqual(
-            catalog["models"]["bolted-flange"],
-            expected,
-        )
-        self.assertIn(
-            "Native verified · stored build",
-            (
-                self.site / "models/bolted-flange/index.html"
-            ).read_text(encoding="utf-8"),
-        )
-
-    def test_stale_input_fingerprint_disables_stored_native_output(self):
-        self.make_verified_store_model()
-        manifest = self.store / model_build_path("bolted-flange") / "verification.json"
-        data = json.loads(manifest.read_text(encoding="utf-8"))
-        data["input_fingerprint"] = "0" * 64
-        manifest.write_text(json.dumps(data), encoding="utf-8")
-
-        self.build()
-        catalog = json.loads(
-            (self.site / "provenance.json").read_text(encoding="utf-8")
-        )
-        self.assertNotIn("bolted-flange", catalog["models"])
-        self.assertFalse(
-            (
-                self.site
-                / "models/bolted-flange/verification.json"
-            ).exists()
-        )
-
-    def test_model_yaml_is_published_with_existing_model_pages(self):
-        self.build()
-        for slug, meta in MODELS.items():
-            with self.subTest(slug=slug):
-                root = ROOT.joinpath(*Path(meta["source"]).parts[:3])
-                metadata = self.site / "models" / slug / "model.yml"
-                self.assertEqual(
-                    metadata.read_bytes(), (root / "model.yml").read_bytes(),
-                )
-                html = (
-                    self.site / "models" / slug / "index.html"
-                ).read_text(encoding="utf-8")
-                self.assertIn('href="model.yml">Model metadata</a>', html)
-                self.assertIn(meta["title"], html)
-
-    def test_extra_views_are_driven_by_model_metadata(self):
-        self.build()
-        mft = (
-            self.site / "models/simple-mft/index.html"
-        ).read_text(encoding="utf-8")
-        self.assertIn("Reference and 2D expectation", mft)
-        self.assertIn("CRAFTMAKER ProStation S30", mft)
-        self.assertTrue(
-            (self.site / "models/simple-mft/expected-top-view.svg").is_file()
-        )
-
-        # The HUB75 face views require a matching, verified SolidCraft model,
-        # just as in the accepted public site.
-        pending = (
-            self.site / "models/hub75-panel/index.html"
-        ).read_text(encoding="utf-8")
-        self.assertNotIn("Front and rear of the same local component", pending)
-
-        self.make_verified_store_model("hub75-panel")
-        native = self.store / model_build_path("hub75-panel") / "native"
-        (native / "front.png").write_bytes(b"front-png")
-        (native / "rear.png").write_bytes(b"rear-png")
-        self.build()
-        ready = (
-            self.site / "models/hub75-panel/index.html"
-        ).read_text(encoding="utf-8")
-        self.assertIn("Front and rear of the same local component", ready)
-        self.assertTrue((self.site / "models/hub75-panel/front.png").is_file())
-        self.assertTrue((self.site / "models/hub75-panel/rear.png").is_file())
-
-    def test_category_pages_list_all_models_and_home_honours_featured(self):
-        original = MODELS["bolted-flange"].get("featured")
-        had_key = "featured" in MODELS["bolted-flange"]
-        try:
-            MODELS["bolted-flange"]["featured"] = False
-            self.build()
-        finally:
-            if had_key:
-                MODELS["bolted-flange"]["featured"] = original
-            else:
-                MODELS["bolted-flange"].pop("featured", None)
-
-        home = (self.site / "index.html").read_text(encoding="utf-8")
-        basic = (
-            self.site / "models/basic/index.html"
-        ).read_text(encoding="utf-8")
-        self.assertNotIn('href="models/bolted-flange/"', home)
-        self.assertIn('href="../bolted-flange/"', basic)
-
-        for section in ("basic", "components", "advanced"):
-            self.assertTrue(
-                (self.site / "models" / section / "index.html").is_file()
-            )
-
+    def test_stable_visual_baseline_is_retained_for_comparison(self):
+        baseline = (SITE / "results.css").read_text()
+        current = (SITE / "assets/css/custom.css").read_text()
+        for value in ("#102d57","#244f80","#195eb8","#dbe3ef"):
+            self.assertIn(value, baseline)
+            self.assertIn(value, current)
 
 if __name__ == "__main__":
     unittest.main()

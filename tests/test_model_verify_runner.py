@@ -102,8 +102,10 @@ class SharedModelBatchTests(unittest.TestCase):
 
     def test_development_ci_follows_released_forge_tooling(self):
         workflow = (ROOT / ".github/workflows/cad.yml").read_text(encoding="utf-8")
-        self.assertIn("tool.cad.ci@1012e6a539a2fddd8194124844fe208bf16cf4e4", workflow)
-        self.assertNotIn("full_run: true\n          jobs:", workflow)
+        self.assertIn("tool.cad.ci@b62f9d0b169aa201a3c66c3166f364396b2d71bc", workflow)
+        self.assertIn("durable_scope:", workflow)
+        self.assertIn('jobs: "2"', workflow)
+        self.assertNotIn("pipeline_ci.py", workflow)
 
 
 if __name__ == "__main__":

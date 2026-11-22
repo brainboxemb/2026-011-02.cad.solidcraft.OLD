@@ -81,16 +81,16 @@ class MigrationCatalogContractTests(unittest.TestCase):
         self.assertEqual(tuple(SECTIONS), ("basic", "components", "advanced"))
         self.assertEqual(set(model_slugs()), set(MODELS))
 
-        site_builder = (CI / "build-results.py").read_text(encoding="utf-8")
-        site_smoke = (CI / "test-results.py").read_text(encoding="utf-8")
-        stylesheet = (ROOT / "site/results.css").read_text(encoding="utf-8")
+        adapter = (ROOT / "site/content/models/_content.gotmpl").read_text(encoding="utf-8")
+        page = (ROOT / "site/layouts/models/single.html").read_text(encoding="utf-8")
+        stylesheet = (ROOT / "site/assets/css/custom.css").read_text(encoding="utf-8")
 
-        self.assertIn('"models" / slug', site_smoke)
-        self.assertIn("Construction stages", site_builder)
-        self.assertIn("Native SolidCraft command sequence (SCPF)", site_builder)
-        self.assertIn("model-preview-layout", site_builder)
-        self.assertIn('out / "models" / slug', site_builder)
-        self.assertIn(".model-warning", stylesheet)
+        self.assertIn("hugo.Data.cad.models", adapter)
+        self.assertIn('"path" $slug', adapter)
+        self.assertIn("Construction stages", page)
+        self.assertIn("Forge commands", page)
+        self.assertIn("cad-preview-layout", stylesheet)
+        self.assertIn(".cad-warning", stylesheet)
 
     def test_dev_ci_uses_one_shared_model_build_batch(self):
         config = (ROOT / "cad-ci.yml").read_text(encoding="utf-8")
@@ -115,13 +115,14 @@ class MigrationCatalogContractTests(unittest.TestCase):
         self.assertEqual(pin["version"], "0.15.0")
         self.assertTrue((ROOT / "docs/handoff.md").is_file())
 
-    def test_development_branches_do_not_use_old_preview_publisher(self):
-        workflow = (ROOT / ".github/workflows/cad.yml").read_text(
-            encoding="utf-8"
-        )
-        self.assertIn("dev-cad, dev-ci", workflow)
-        self.assertIn("github.event.pull_request.base.ref == 'main'", workflow)
-        self.assertIn("test_site_generation.py", workflow)
+    def test_development_branches_use_released_scopes_and_pages_publisher(self):
+        workflow = (ROOT / ".github/workflows/cad.yml").read_text(encoding="utf-8")
+        self.assertIn("branches: [main, dev-cad, dev-ci]", workflow)
+        self.assertIn("durable_scope:", workflow)
+        self.assertIn("steps.cad_ci.outputs.prepared_scope", workflow)
+        self.assertIn("python -m cad_ci_tool publish pages", workflow)
+        self.assertNotIn("pipeline_ci.py", workflow)
+        self.assertNotIn("publish_ci.py", workflow)
 
 
 if __name__ == "__main__":

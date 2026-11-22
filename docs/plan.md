@@ -225,8 +225,10 @@ bounds and volume agree. Other model roots remain on the old main pipeline.
 
 ### M3 — Exact Forge workflow and long-lived lanes
 
-Status: **not started** — development branches already exist, but the old
-main workflow and publication path remain accepted until M1/M2 are complete.
+Status: **dev-ci cut-over candidate in progress** — lanes and the owner-only
+merge policy exist. #191/#174 now replaces the hybrid dev-ci route with the
+exact Forge-qualified `tool.cad.ci` action at `b62f9d0b169aa201a3c66c3166f364396b2d71bc`.
+Stable `main` remains unchanged until dev-ci acceptance.
 
 - Use the exact released root `tool.cad.ci` action for PR and integration
   runs, not the existing `pipeline_ci.py` wrapper.
@@ -239,15 +241,18 @@ main workflow and publication path remain accepted until M1/M2 are complete.
 
 ### M4 — Durable build and Pages scopes
 
-Status: **not started**.
+Status: **dev-ci preview implementation in progress**. The isolated Blowfish
+experiment generated 32 pages successfully from the real `model.yml` files.
+The CAD integration consumes the exact prepared scope, builds Hugo/Blowfish on
+the same runner, and publishes only the matching named Pages subtree.
 
 - Publish complete accepted build scopes at `main`, `dev-cad`,
   `dev-ci` using released build-store CLI, preserving siblings.
 - Publish stable Pages root and development subtrees using released Pages
   CLI, with source SHA/provenance checks and no force-push.
-- Site generator consumes exact prepared complete scope without executing CAD.
-  Reuse the existing CAD website layout/style/source presentation; do not swap
-  in Forge's website generator or redesign the model page.
+- Hugo/Blowfish consumes the exact prepared complete scope without executing
+  CAD. Preserve the established CAD routes, information hierarchy, colours,
+  warnings and downloads; do not adopt Forge's website renderer.
 - Generate a site candidate and compare it with the accepted stable CAD site
   for navigation, page structure, model images, source, command sequence,
   downloads, URLs and verification labels before changing stable Pages.

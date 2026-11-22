@@ -177,10 +177,11 @@ cannot be used to claim execution if SCons reused valid results.
 
 ## Website preservation boundary
 
-Unlike the generic CI, the CAD website is **not** being migrated to Forge's
-site design. Keep the existing `scripts/ci/build-results.py`,
-`site/results.css` and model catalog as the baseline presentation, adapting
-only their input-reading boundary to the prepared complete build scope.
+Unlike the generic CI, the CAD website is **not** adopting Forge's renderer
+or visual design. CAD #191 uses Hugo 0.169.0 + Blowfish v3.10.0 as the
+presentation layer. `site/results.css` remains the pre-cut-over visual
+baseline for comparison. Hugo reads local `model.yml` directly and reads
+accepted results only from the prepared complete build scope.
 
 In particular, existing model pages at `/models/<slug>/` must continue
 to show their own title, explanation, construction stages, source and
@@ -209,9 +210,9 @@ migration blocker instead of silently redesigning the site.
 
 Currently the CAD repository still has local orchestration in
 `build_plan.py`, `select_models.py`, `pipeline_ci.py`, `cad_ci.py`,
-`native_ci.py` and `publish_ci.py`. Model-specific tools and the site
-generator can remain, but generic planner/runtime/publisher behavior must
-be retired only after the released replacements are proven.
+`native_ci.py` and `publish_ci.py`. Model-specific build adapters remain. The custom Python site renderer does
+not: after the Hugo/Blowfish dev-ci preview is accepted it is removed with the
+obsolete planner/runtime/publisher code.
 
 No rewrite of the CAD website's layout or content is authorized merely to
 match Forge's CI design.
@@ -233,10 +234,11 @@ models/<category>/<root>/verification/verify.py (optional semantic expectations)
 scripts/ci/model_catalog.py (load/validate; no hard-coded model list)
         |
         +-- existing build selectors / model dependencies (compatible API)
-        +-- scripts/ci/build-results.py (one static page template + views)
+        +-- site/content/models/_content.gotmpl
+        +-- site/layouts/models/* + Blowfish
                 |
                 v
-homepage + category pages + /models/<slug>/ + model.yml downloads
+homepage + category pages + /models/<slug>/ + model/build downloads
 ```
 
 A model's optional `extra_views` declaration contains a title, a

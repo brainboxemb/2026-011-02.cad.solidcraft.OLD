@@ -96,13 +96,15 @@ class ModelMetadataTests(unittest.TestCase):
 
     def test_no_python_catalog_or_model_specific_view_hacks(self):
         catalog = (ROOT / "scripts/ci/model_catalog.py").read_text()
-        generator = (ROOT / "scripts/ci/build-results.py").read_text()
+        adapter = (ROOT / "site/content/models/_content.gotmpl").read_text()
+        page = (ROOT / "site/layouts/models/single.html").read_text()
         self.assertIn("MODELS = load_models()", catalog)
         self.assertNotIn("MODELS = {", catalog)
-        self.assertNotIn('if slug == "simple-mft"', generator)
-        self.assertNotIn('if slug == "hub75-panel"', generator)
-        self.assertIn("supplementary_views(", generator)
-        self.assertIn('href="model.yml"', generator)
+        self.assertIn("hugo.Data.cad.models", adapter)
+        self.assertIn("extra_views", adapter)
+        self.assertIn("extra_views", page)
+        self.assertNotIn('if eq $slug "simple-mft"', adapter)
+        self.assertNotIn('if eq $slug "hub75-panel"', adapter)
 
 
 if __name__ == "__main__":

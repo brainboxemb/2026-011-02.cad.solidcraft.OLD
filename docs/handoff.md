@@ -1,33 +1,59 @@
-# Handoff — CAD-repository (nieuwe chat)
+# Handoff — CAD repository
 
-**Werk uitsluitend in `brainboxemb/2026-011-02.cad.solidcraft`.**
-Hoofdissue: [#174](https://github.com/brainboxemb/2026-011-02.cad.solidcraft/issues/174); volledige 0.45/Forge 0.11 controle: #172.
-Algemene CI-wensen en architectuurbesluiten lopen **via Forge-issues** (momenteel [Forge #661](https://github.com/brainboxemb/lib.py.solidcraft.forge/issues/661)); wijzig generieke libraries niet vanuit deze CAD-chat.
+Work in `brainboxemb/2026-011-02.cad.solidcraft`.
+Primary migration: #174. Website renderer: #191. Full Forge 0.11 /
+SolidCraft 0.45 qualification: #172.
 
-## Afgesproken architectuur
-- Hergebruik Forge's vrijgegeven `tool.cad.ci` + `lib.py.cad.ci`: **eenmalig ontdekken → plannen met SCons → gedeelde SolidCraft-bouwgroep → resultaten per model**.
-- Gebruik één SolidCraft-containerstart voor de bouwgroep; geen Docker-start, eigen selectiemotor of eigen publicatiesysteem **per model**.
-- Eén eenvoudige `ci.yml` per model: `id`, `template`, `process`; root-templates en gedeelde batch regelen de uitvoering.
-- `lib.py.cad.verification` controleert de modellen; onafhankelijke Forge/SCPC-versies blijven vergelijkbaar. Zeg **bouwen**, **controleren**, **bouwresultaten** (Engels `build`, `verify`, `results`), niet het onduidelijke woord dat daarvoor gebruikt werd. Bestaande technische opslagpaden alleen met compatibiliteitscontrole wijzigen.
-- Behoud de bestaande openbare CAD-website qua navigatie, modelpagina's, afbeeldingen, downloads en URL's. **Niet** de website van Forge overnemen.
-- Bronbranches `main`, `dev-cad`, `dev-ci`; ontwikkeling via squash-PR's naar de juiste ontwikkelbranch. `main`/openbare Pages ongewijzigd tot de migratie aantoonbaar werkt.
+## Current state
 
-## Feitelijke status en hervatten
-- De centrale SolidCraft-container is al in gebruik; Forge 0.11 en SolidCraft 0.45 zijn gepind. De oude `main`-workflow werkt maar bouwde bij de upgrade **niet alle modellen**.
-- **PR #184 en #186 zijn met squash gemerged op `dev-ci`** (huidig akkoord: `75ea0fb6db0459872255b7f51e9ae506b9ed7f4c`). Eén gedeelde SolidCraft-bouwgroep volgens Forge's `copy: dependency`-patroon. **11 modelmappen / 12 varianten** zijn in één containerstart gebouwd en gecontroleerd; de resterende 5 mappen blijven `process: false` (16 mappen, 18 catalogusvarianten).
-- Bewijs uit #186: **15/15 SCons-doelen**, 12 modelcontroles, vijf onafhankelijke Forge/SCPC-vergelijkingen geslaagd, `docker_run_count=1`, gezamenlijke bouwgroep **31,760 s** (inclusief 7,434 s image pull). GuideRail bevat Festool én Makita als twee varianten in één CI-item.
-- Root-`cad-ci.yml` ontdekt automatisch `models/basic/*`, `models/components/*` en `models/advanced/*`; model-`ci.yml` bevat alleen `id`, `template`, `process`. De exacte vrijgegeven stack is `tool.cad.ci 0.17.1` / `lib.py.cad.ci 0.10.0`; Forge/SCPC/controleroutines blijven externe afhankelijke pakketten.
-- **Vervolg in CAD:** documentatie-only PR **#185** liet de modelbouw correct achterwege. Controleer nog een enkel gewijzigd model en de invloed op de batch; sluit daarna de vijf resterende modelmappen / zes varianten aan, versterk de individuele modelcontroles, richt build/Pages per bronbranch in en vergelijk de website vóór promotie. Let op: een wijziging aan één actief model kan nu nog de **hele ingeschakelde bouwgroep** opnieuw uitvoeren; selectiviteit *binnen* die bouwgroep is een generieke vraag in Forge #661.
-- Daarna pas de overige modellen migreren, de bouwresultaten/Pages per ontwikkelbranch inrichten en oude Python-planners/publicatiescripts opruimen. Voor de publicatie de bestaande CAD-website vergelijken met de nieuwe.
+- Source lanes: `main`, `dev-cad`, `dev-ci`.
+- Short-lived PRs squash into a dev lane. Direct dev-lane -> main promotion
+  uses a normal merge commit through the owner-only `/merge` policy.
+- Generic execution/publication comes from released `tool.cad.ci` /
+  `lib.py.cad.ci`; do not recreate it in CAD Python.
+- 14 physical roots / 16 variants build through one shared SolidCraft runtime.
+  `hub75-display2` and `hub75-wood-frame` remain `process:false` only
+  because Forge #679 must namespace repeated component-local feature names.
+- Every physical model root owns `model.yml`; it is the human/site metadata
+  source. `model_catalog.py` only validates/adapts it.
 
-Werk in logische PR's, vermijd veel kleine commits of extra CI-runs, en documenteer werkelijk uitgevoerde stappen/resultaten in `docs/plan.md`. **Doe de werkzaamheden in de huidige reactie; beloof geen achtergrondwerk.**
+## Website
 
-## Website-metadata audit (#189)
+#191 selected Hugo + Blowfish. The isolated
+`exp.2026-015.hugo-cad-site` build used the real CAD metadata, generated 32
+pages, and passed route/content checks.
 
-Er ontbreken in de oude CAD-opzet alle 16 model.yml-bestanden: de pagina
-werd uit een grote Python-catalogus gegenereerd. Werk aan #189 migreert
-de 18 beschrijvingen naar lokale model.yml-bestanden, maakt de Python-
-catalogus een validator/lezer en haalt model-specifieke weergavelogica uit
-de HTML-generator. De website en de openbare main/Pages blijven visueel
-gelijk tot de afzonderlijke publicatieacceptatie. Controleer bij hervatten
-de actuele PR-status en tests; claim nog geen openbare cut-over.
+Target data flow:
+
+```text
+models/*/*/model.yml
+    -> Hugo data mount (model.yml only)
+    -> content/models/_content.gotmpl
+    -> /models/<slug>/
+
+prepared tool.cad.ci scope
+    -> Hugo assets/build
+    -> build state, images and downloads
+
+Hugo/Blowfish
+    -> generated-site
+    -> cad_ci_tool publish pages
+```
+
+The pre-cut-over stable Pages tip is backed up permanently:
+`backup/gh-pages-before-174-2026-11-22` =
+`55f5eae59879c6d37bd1b58b0eed0bc8f1a86775`.
+
+## Continue
+
+1. Get the Hugo/Blowfish site green on the existing CAD `/dev-ci/` Pages
+   subtree; do not touch the stable root.
+2. Compare routes, images, downloads, warnings and mobile/desktop structure
+   against the backup/stable site.
+3. Remove unreachable legacy Python planner/selector/publisher/HTML-renderer
+   code immediately after that acceptance.
+4. Do not work around Forge #679 in CAD geometry.
+5. Then return the main workstream to CAD model development.
+
+Forge #674 tracks moving merge/lane governance into shared tooling. Forge #661
+tracks shared CAD-CI architecture/selectivity.
