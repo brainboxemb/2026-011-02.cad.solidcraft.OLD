@@ -1,4 +1,4 @@
-# Shared build configuration; physical checks live in verification/verify.py.
+# Forge and SCPC implementations share one physical result contract.
 id: flex-bench-dog
 template: cad-model-build
-process: false
+process: true
