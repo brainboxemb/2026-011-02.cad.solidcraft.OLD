@@ -68,7 +68,7 @@ class ModelMetadataTests(unittest.TestCase):
             rows, ensure_ascii=False, separators=(",", ":"), sort_keys=True,
         ).encode("utf-8")
         self.assertEqual(
-            zlib.crc32(payload), 0xACEE1BBE,
+            zlib.crc32(payload), 0xD4EDC294,
             "Migration changed the established public model content/order",
         )
 

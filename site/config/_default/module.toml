@@ -1,5 +1,5 @@
 [[imports]]
-path = "github.com/nunocoracao/blowfish/v3"
+path = "github.com/imfing/hextra"
 
 # Custom project mounts replace Hugo's defaults, so retain every ordinary
 # project component explicitly.
@@ -43,7 +43,7 @@ files = ["**/model.yml"]
 [[mounts]]
 source = "../models"
 target = "assets/cad-source"
-files = ["**/model.yml", "**/*.svg", "**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.webp"]
+files = ["**/model.yml", "**/page.md", "**/*.py", "**/*.svg", "**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.webp"]
 
 # The released CAD-CI action creates this complete accepted scope on durable
 # source-lane runs. PR site checks create an empty directory at the same path.
