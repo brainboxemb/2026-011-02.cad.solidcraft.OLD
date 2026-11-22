@@ -2,8 +2,8 @@
   "models": {
     "corner-bracket": {
       "source": "current-run",
-      "source_commit": "9ec471d00b33e34455aa5e70e9f092669888dcb1",
-      "verification_sha256": "498ee7bb0bce28957b0411325d3252d0735fa02ba43451b5f80c113b6aebfdc2"
+      "source_commit": "ee760bebf45ba565869db840f06b390c94d4824d",
+      "verification_sha256": "c2e0820003f9c80f2ff1cb8c38a7c2c43b6e3967c1e35c4d315cb7d4307d23d3"
     }
   },
   "schema": 1,
