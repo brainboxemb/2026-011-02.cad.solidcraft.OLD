@@ -253,11 +253,15 @@ Stable `main` remains unchanged until dev-ci acceptance.
 
 ### M4 — Durable build and Pages scopes
 
-Status: **dev-ci preview implementation active; next merge is the explicit durable publication proof**. PR #194 is merged and its
+Status: **dev-ci durable build publication is proven; Pages asset handoff fix in progress**. PR #194 is merged and its
 PR-side Hugo + released-CAD-CI checks are green. Main PR #195 restored the
-Forge-style explicit post-merge workflow dispatch. This status-only acceptance
-merge is used to prove the first durable `build/dev-ci` + Pages
-`/dev-ci/` publication from the exact prepared scope.
+Forge-style explicit post-merge workflow dispatch. PR #197 then proved the
+policy dispatch and durable `build/dev-ci` publication. Its Hugo render
+completed successfully, but the post-build asset contract exposed that native
+`.sc`/STEP downloads were copied from global resources inside the page
+template instead of being attached as page resources. Pages publication was
+correctly skipped. The follow-up fixes only that asset handoff before retrying
+`/dev-ci/`; stable Pages remains untouched.
 
 - Publish complete accepted build scopes at `main`, `dev-cad`,
   `dev-ci` using released build-store CLI, preserving siblings.
