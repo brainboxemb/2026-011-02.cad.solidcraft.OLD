@@ -153,3 +153,99 @@
   .cad-verification-grid{grid-template-columns:1fr;gap:.1rem}
   .cad-verification-grid dd{margin-bottom:.5rem}
 }
+
+/* Model overview: restore the strong pre-Hugo information order while keeping
+ * Hextra as the shared shell. */
+.cad-model-hero{
+  margin:1.7rem 0 0;
+  padding:1.65rem 1.8rem 1.75rem;
+  border:1px solid #214f83;
+  border-radius:11px;
+  background:linear-gradient(110deg,#183b67,#285785);
+  color:#fff;
+}
+.cad-model-kicker{
+  margin:0 0 .45rem;
+  color:#9ec8f4;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:.68rem;
+  font-weight:800;
+}
+.cad-model-hero h1{
+  margin:0;
+  color:#fff;
+  font-size:clamp(2rem,4vw,2.8rem);
+  line-height:1.04;
+  letter-spacing:-.035em;
+}
+.cad-model-hero>p:last-child{
+  margin:.7rem 0 0;
+  color:#edf5ff;
+  font-size:1rem;
+  line-height:1.45;
+}
+.cad-model-statusbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.45rem;
+  margin:.8rem 0 1rem;
+}
+.cad-model-statusbar .cad-status{
+  margin:0;
+}
+.cad-model-overview{
+  display:grid;
+  grid-template-columns:minmax(0,1.45fr) minmax(310px,.75fr);
+  gap:1rem;
+  align-items:stretch;
+  margin:0 0 1rem;
+}
+.cad-preview-panel,
+.cad-files-panel{
+  margin:0;
+}
+.cad-preview-panel h2,
+.cad-files-panel h2{
+  margin:0 0 .75rem;
+  font-size:1.28rem;
+}
+.cad-preview-panel .cad-preview{
+  min-height:390px;
+}
+.cad-preview-panel .cad-preview-link{
+  min-height:390px;
+}
+.cad-preview-note{
+  margin:.65rem 0 0;
+  color:var(--cad-muted);
+  font-size:.76rem;
+  line-height:1.45;
+}
+.cad-files-panel>p{
+  margin:.15rem 0 .8rem;
+  color:var(--cad-muted);
+}
+.cad-file-links{
+  align-items:flex-start;
+  margin:.55rem 0 .75rem;
+}
+.cad-file-links a{
+  margin:0;
+}
+.cad-file-links .cad-file-primary{
+  background:#1b67c2;
+  color:#fff;
+}
+.cad-file-links .cad-file-primary:hover{
+  background:#15539c;
+}
+.cad-files-panel h3{
+  margin:1.2rem 0 .45rem;
+  font-size:.98rem;
+}
+@media(max-width:840px){
+  .cad-model-overview{grid-template-columns:1fr}
+  .cad-preview-panel .cad-preview,
+  .cad-preview-panel .cad-preview-link{min-height:300px}
+}

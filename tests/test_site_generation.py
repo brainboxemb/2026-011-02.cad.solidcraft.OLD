@@ -117,6 +117,19 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn('index $prov "runtime_image"', page)
         self.assertIn("No accepted build or verification evidence", page)
 
+
+    def test_model_overview_restores_header_status_preview_and_files_layout(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn('class="cad-model-hero"', page)
+        self.assertIn('class="cad-model-statusbar"', page)
+        self.assertIn('class="cad-model-overview"', page)
+        self.assertIn(">Model preview<", page)
+        self.assertIn(">Files<", page)
+        self.assertIn("Construction stages", page)
+        self.assertIn('$commandCount = len .', page)
+        self.assertIn('{{ $commandCount }} commands', page)
+        self.assertNotIn("scpc_command_count", page)
+
     def test_model_page_keeps_expected_public_content(self):
         page = (SITE / "layouts/models/single.html").read_text()
         for value in ("SCPF source","SolidCraft commands","Construction stages","Python source","model.yml","Forge commands","SolidCraft model","STEP","Build provenance","No build evidence in this scope","extra_views"):
