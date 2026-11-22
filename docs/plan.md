@@ -116,7 +116,6 @@ Existing product work remains parked until WS1 has synchronized the lane.
 
 | Issue | Lane/owner | Status | Next action |
 | --- | --- | --- | --- |
-| #230 Normalize docs/handoff.md | governance/main | **now** | Align the handoff with the shared meta convention and remove volatile plan/status duplication. |
 | #206 Remove Forge reference implementations | dev-cad | **next** | Remove local CadQuery/MicroCAD/PythonSCAD/VCAD reference sources after lane sync; retain Forge as reference owner. |
 | #205 Canonical shared model.yml contract | shared + dev-cad | **blocked** | Wait for Forge #703/shared contract, then migrate CAD without a copied schema. |
 | #204 Remove SCPC command counts from model.yml | dev-cad | **next** | Remove the five hand-maintained counts and reject the field in CAD metadata. |
@@ -140,6 +139,7 @@ Existing product work remains parked until WS1 has synchronized the lane.
 
 ## Recently completed
 
+- #230 normalized `docs/handoff.md` against the shared meta template: one copyable handoff message, durable repository boundaries, and no duplicated volatile plan/status snapshot.
 - #201 retired the legacy local CAD-CI Python orchestration.
 - `dev-ci` was synchronized with `main` without flattening lane history.
 - PR #203 promoted `dev-ci -> main` through the repository policy as a normal
