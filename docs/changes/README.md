@@ -31,3 +31,7 @@ Current records:
 - [0010-stable-catalog-growth.md](0010-stable-catalog-growth.md) — support adding a new catalog model to an existing modern stable build (#150).
 - [0011-native-verification-status.md](0011-native-verification-status.md) — separate geometry verification fingerprints from page metadata and explain public verification states (#152).
 - [0012-tool-cad-ci-migration.md](0012-tool-cad-ci-migration.md) — migrate generic CAD CI planning, build-store and Pages lifecycle to released `tool.cad.ci` (#155).
+- [0013-tool-cad-ci-native-packaging.md](0013-tool-cad-ci-native-packaging.md) — package verified native results inside model-root tool.cad.ci items.
+- [0014-tool-cad-ci-publication.md](0014-tool-cad-ci-publication.md) — move durable build and Pages publication to tool.cad.ci.
+- [0015-remove-legacy-publication.md](0015-remove-legacy-publication.md) — remove superseded CAD publication/store code after the cutover.
+- [0016-central-solidcraft-runtime.md](0016-central-solidcraft-runtime.md) — reuse the released central SolidCraft runtime instead of a consumer-owned Docker image (#170).

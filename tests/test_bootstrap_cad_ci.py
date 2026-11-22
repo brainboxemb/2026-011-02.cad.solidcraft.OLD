@@ -1,4 +1,4 @@
-"""Tests for the exact external tool.cad.ci checkout."""
+"""Tests for exact external CAD dependency checkouts."""
 
 from __future__ import annotations
 
@@ -13,8 +13,6 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def load_module():
-    """Load the bootstrap helper without adding scripts/ci to sys.path."""
-
     path = ROOT / "scripts" / "ci" / "bootstrap_cad_ci.py"
     spec = importlib.util.spec_from_file_location("bootstrap_cad_ci", path)
     module = importlib.util.module_from_spec(spec)
@@ -24,28 +22,18 @@ def load_module():
 
 
 def commit(repo: Path, text: str) -> str:
-    """Create one commit in a small local dependency repository."""
-
     (repo / "tool.txt").write_text(text, encoding="utf-8")
     subprocess.run(["git", "add", "."], cwd=repo, check=True)
-    subprocess.run(
-        ["git", "commit", "-qm", text],
-        cwd=repo,
-        check=True,
-    )
+    subprocess.run(["git", "commit", "-qm", text], cwd=repo, check=True)
     return subprocess.check_output(
-        ["git", "rev-parse", "HEAD"],
-        cwd=repo,
-        text=True,
+        ["git", "rev-parse", "HEAD"], cwd=repo, text=True
     ).strip()
 
 
-def manifest(root: Path, url: str, sha: str) -> None:
-    """Write the minimum dependencies.repos data used by the bootstrap helper."""
-
+def manifest(root: Path, name: str, url: str, sha: str) -> None:
     (root / "dependencies.repos").write_text(
         "repositories:\n"
-        "  cad-ci:\n"
+        f"  {name}:\n"
         "    type: git\n"
         f"    url: {url}\n"
         f"    version: {sha}\n",
@@ -57,16 +45,15 @@ class BootstrapCadCiTests(unittest.TestCase):
     def setUp(self):
         self.module = load_module()
 
-    def test_repository_pin_is_exact_released_commit(self):
-        url, sha = self.module.dependency()
-        self.assertEqual(
-            url,
-            "https://github.com/brainboxemb/tool.cad.ci.git",
-        )
-        self.assertEqual(
-            sha,
-            "556e8d43dde9218b28a8d991ab9f2021232e76ab",
-        )
+    def test_repository_pins_are_exact(self):
+        expected = {
+            "scpf": "5b4963f25f76c4e3b09926d691251ed1b1e7173b",
+            "scpc": "fcaa6f9fc8388bc715fcd2fbb149ce6b979566a7",
+            "cad-ci": "556e8d43dde9218b28a8d991ab9f2021232e76ab",
+        }
+        for name, sha in expected.items():
+            _, actual = self.module.dependency(name)
+            self.assertEqual(actual, sha)
 
     def test_checkout_moves_to_new_exact_revision(self):
         with TemporaryDirectory() as temp:
@@ -86,17 +73,17 @@ class BootstrapCadCiTests(unittest.TestCase):
             )
             first = commit(upstream, "first")
             second = commit(upstream, "second")
-            target = root / "ext" / "cad-ci"
+            target = root / "ext" / "scpf"
 
-            manifest(root, str(upstream), first)
+            manifest(root, "scpf", str(upstream), first)
             self.assertEqual(
-                self.module.ensure_checkout(root, target=target),
+                self.module.ensure_checkout("scpf", root, target=target),
                 first,
             )
 
-            manifest(root, str(upstream), second)
+            manifest(root, "scpf", str(upstream), second)
             self.assertEqual(
-                self.module.ensure_checkout(root, target=target),
+                self.module.ensure_checkout("scpf", root, target=target),
                 second,
             )
 
@@ -118,18 +105,15 @@ class BootstrapCadCiTests(unittest.TestCase):
             )
             first = commit(upstream, "first")
             second = commit(upstream, "second")
-            target = root / "ext" / "cad-ci"
+            target = root / "ext" / "scpc"
 
-            manifest(root, str(upstream), first)
-            self.module.ensure_checkout(root, target=target)
+            manifest(root, "scpc", str(upstream), first)
+            self.module.ensure_checkout("scpc", root, target=target)
             (target / "tool.txt").write_text("local edit", encoding="utf-8")
-            manifest(root, str(upstream), second)
+            manifest(root, "scpc", str(upstream), second)
 
-            with self.assertRaisesRegex(
-                RuntimeError,
-                "tracked local changes",
-            ):
-                self.module.ensure_checkout(root, target=target)
+            with self.assertRaisesRegex(RuntimeError, "tracked local changes"):
+                self.module.ensure_checkout("scpc", root, target=target)
 
 
 if __name__ == "__main__":
