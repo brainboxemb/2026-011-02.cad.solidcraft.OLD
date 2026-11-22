@@ -1,0 +1,12 @@
+{
+  "engine": "scons",
+  "engine_schema": 3,
+  "final_bundle_sha256": "64fe21be5473a2e119e03edfffe5008cbeede40ed282e38f7189cf694ccb66cf",
+  "final_step": "build_results",
+  "final_target_spec_digest": "ffc45459bcf45893e86cab171c89db74314ea8ab621c19ae12efbab3282ff0cd",
+  "item": "vent-plate",
+  "run_finished_at": "2026-11-22T12:25:42.329Z",
+  "run_started_at": "2026-11-22T12:24:42.239Z",
+  "schema": 2,
+  "status": "pass"
+}

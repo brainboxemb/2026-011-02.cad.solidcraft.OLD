@@ -1,0 +1,99 @@
+{
+  "checks": [
+    {
+      "artifacts": [
+        {
+          "kind": "file",
+          "path": "baseline/measurements.json",
+          "sha256": "805db89a44387f9ae3986f260f29411d94ef649ba0eedbbfbdf954446e1deb75",
+          "size": 1912
+        }
+      ],
+      "error": null,
+      "evidence": {
+        "body_count": {
+          "actual": 1,
+          "expected": 1,
+          "label": "SolidCraft body count",
+          "pass": true
+        },
+        "body_envelopes": {
+          "actual_count": 1,
+          "expected_count": 1,
+          "kind": "body_envelopes",
+          "matched_pairs": [
+            {
+              "actual": {
+                "label": "GuideRail",
+                "max": [
+                  182.5,
+                  300.0,
+                  10.28
+                ],
+                "min": [
+                  0.0,
+                  -300.0,
+                  0.0
+                ]
+              },
+              "expected": {
+                "label": null,
+                "max": [
+                  182.5,
+                  300.0,
+                  10.28
+                ],
+                "min": [
+                  0.0,
+                  -300.0,
+                  0.0
+                ]
+              },
+              "max_delta": 0.0
+            }
+          ],
+          "pass": true,
+          "tolerance": 0.005,
+          "unmatched_actual": [],
+          "unmatched_expected": []
+        },
+        "named_bodies": [
+          {
+            "body_name": "GuideRail",
+            "closed": {
+              "actual": true,
+              "expected": true,
+              "label": "GuideRail closed",
+              "pass": true
+            },
+            "name_prefix": "GuideRail",
+            "volume": {
+              "actual": 276769.0772999998,
+              "delta": 2.3283064365386963e-10,
+              "expected": 276769.0773,
+              "kind": "scalar",
+              "label": "GuideRail volume",
+              "pass": true,
+              "tolerance": 1.0
+            }
+          }
+        ],
+        "sketch_count": {
+          "actual": 1,
+          "expected": 1,
+          "label": "SolidCraft sketch count",
+          "pass": true
+        }
+      },
+      "id": "baseline",
+      "reason": null,
+      "status": "pass"
+    }
+  ],
+  "input": "/output/items/models/components/guide_rail/models/guide-rail-makita/native/model.sc",
+  "metadata": {},
+  "schema": "cad-verification",
+  "schema_version": 1,
+  "status": "pass",
+  "verification_id": "guide-rail-makita"
+}

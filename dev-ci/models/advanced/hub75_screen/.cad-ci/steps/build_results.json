@@ -1,0 +1,39 @@
+{
+  "action_executed": true,
+  "action_type": "copy",
+  "bundle_sha256": "f6e49fe0be6d071a98f08b8c0cdc66f805b185613acda32afce3710db47bf5bf",
+  "duration_seconds": 0.048,
+  "engine": "scons",
+  "engine_schema": 3,
+  "error": null,
+  "exit_code": null,
+  "finished_at": "2026-11-22T12:25:41.754Z",
+  "item": "hub75-screen",
+  "outcome": "BUILT",
+  "output_state": "RESTORED",
+  "outputs": {
+    "generated": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "4792d86b3bc2823cd1a17720259ab052acdcbcef9c4c976c6bc9f9e73f3b2669"
+    },
+    "manifest.json": {
+      "kind": "file",
+      "mode": 420,
+      "sha256": "20681afc3bc4d0e367d7a468ca3cd6a04cf15e29846ee2c25e32c1dc15130af0"
+    },
+    "models": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "03f1506ff5db08dc5adfa32adca932db0bc2ac11a62d5175cfe2b9c014e0f2c0"
+    }
+  },
+  "run_finished_at": "2026-11-22T12:25:42.329Z",
+  "run_started_at": "2026-11-22T12:24:42.239Z",
+  "schema": 4,
+  "started_at": "2026-11-22T12:25:41.706Z",
+  "status": "pass",
+  "step": "build_results",
+  "target_spec_digest": "402d6ec0967a3b17f9c509ca3c2baa770df6df667320ba24e2157c6f6dd19f0b",
+  "timeout_seconds": null
+}

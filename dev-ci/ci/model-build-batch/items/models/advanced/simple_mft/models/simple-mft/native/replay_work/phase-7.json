@@ -1,0 +1,71 @@
+{
+  "commands": [
+    {
+      "command": "sketch.edit",
+      "params": {
+        "sketch": 4
+      }
+    },
+    {
+      "command": "sketch.mirror",
+      "params": {
+        "entities": [
+          "l7",
+          "a5",
+          "l8",
+          "a6",
+          "l9",
+          "a7",
+          "l10",
+          "a8"
+        ],
+        "line": "x"
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "operation": "cut",
+        "targets": [
+          "SimpleMFT"
+        ],
+        "name": "Clamp slots",
+        "through_all": true,
+        "direction": "negative"
+      }
+    },
+    {
+      "command": "solid.chamfer",
+      "params": {
+        "edges": [
+          [
+            -402.5,
+            -277.5,
+            9.0
+          ],
+          [
+            402.5,
+            -277.5,
+            9.0
+          ],
+          [
+            402.5,
+            277.5,
+            9.0
+          ],
+          [
+            -402.5,
+            277.5,
+            9.0
+          ]
+        ],
+        "distance": "corner_chamfer",
+        "body": "SimpleMFT"
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "action_executed": true,
+  "action_type": "copy",
+  "bundle_sha256": "eb500e1ad5c756012c24de37fb9d2c1b555e2b0f20e67f98f84ad0fcd19f8fc0",
+  "duration_seconds": 0.083,
+  "engine": "scons",
+  "engine_schema": 3,
+  "error": null,
+  "exit_code": null,
+  "finished_at": "2026-11-22T12:25:41.887Z",
+  "item": "bolted-flange",
+  "outcome": "BUILT",
+  "output_state": "RESTORED",
+  "outputs": {
+    "generated": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "4ec4dad60a3cf97b8f521b923b0f57b5d6dc47f9b08ef94ebcd9f9e0e68ab488"
+    },
+    "manifest.json": {
+      "kind": "file",
+      "mode": 420,
+      "sha256": "f5e7124f4c444c6ae348cd5c37912de95df6120a2d39328fe774bd5e2d4cb923"
+    },
+    "models": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "905593d6859d8a44c85bec4842d747c244e83630e1ec9ac4798d37025449ad25"
+    }
+  },
+  "run_finished_at": "2026-11-22T12:25:42.329Z",
+  "run_started_at": "2026-11-22T12:24:42.239Z",
+  "schema": 4,
+  "started_at": "2026-11-22T12:25:41.804Z",
+  "status": "pass",
+  "step": "build_results",
+  "target_spec_digest": "6effd5656ca04fa9714c9e3af82aad46193d4199b49d9bb4f6ce8f934b59eecc",
+  "timeout_seconds": null
+}

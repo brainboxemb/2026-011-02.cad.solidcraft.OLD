@@ -1,0 +1,78 @@
+{
+  "checks": [
+    {
+      "artifacts": [
+        {
+          "kind": "file",
+          "path": "baseline/measurements.json",
+          "sha256": "dd7c8348e872fef5d422eceec273fe3180eeb94ffaa18cf5a244cf590e18b943",
+          "size": 4039
+        }
+      ],
+      "error": null,
+      "evidence": {
+        "body_count": {
+          "actual": 1,
+          "expected": 1,
+          "label": "SolidCraft body count",
+          "pass": true
+        },
+        "body_envelopes": {
+          "actual_count": 1,
+          "expected_count": 1,
+          "kind": "body_envelopes",
+          "matched_pairs": [
+            {
+              "actual": {
+                "label": "SamplePlate",
+                "max": [
+                  40.0,
+                  25.0,
+                  22.000000000000004
+                ],
+                "min": [
+                  -40.0,
+                  -25.0,
+                  -5.382511634968694e-33
+                ]
+              },
+              "expected": {
+                "label": null,
+                "max": [
+                  40.0,
+                  25.0,
+                  22.0
+                ],
+                "min": [
+                  -40.0,
+                  -25.0,
+                  0.0
+                ]
+              },
+              "max_delta": 3.552713678800501e-15
+            }
+          ],
+          "pass": true,
+          "tolerance": 0.001,
+          "unmatched_actual": [],
+          "unmatched_expected": []
+        },
+        "sketch_count": {
+          "actual": 3,
+          "expected": 3,
+          "label": "SolidCraft sketch count",
+          "pass": true
+        }
+      },
+      "id": "baseline",
+      "reason": null,
+      "status": "pass"
+    }
+  ],
+  "input": "/output/items/models/basic/sample_plate/models/sample-plate/native/model.sc",
+  "metadata": {},
+  "schema": "cad-verification",
+  "schema_version": 1,
+  "status": "pass",
+  "verification_id": "sample-plate"
+}

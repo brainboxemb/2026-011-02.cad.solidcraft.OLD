@@ -1,0 +1,12 @@
+{
+  "engine": "scons",
+  "engine_schema": 3,
+  "final_bundle_sha256": "8e55fa2b76b36eacce0f02b0fdfb01ac5cba1eff71a04fe7fe9287c10a45b81c",
+  "final_step": "build_results",
+  "final_target_spec_digest": "a0075cbef4ec76d478eedac47d9590e458a794d4abd509f122ec0372ab5d477d",
+  "item": "bracket",
+  "run_finished_at": "2026-11-22T12:25:42.329Z",
+  "run_started_at": "2026-11-22T12:24:42.239Z",
+  "schema": 2,
+  "status": "pass"
+}

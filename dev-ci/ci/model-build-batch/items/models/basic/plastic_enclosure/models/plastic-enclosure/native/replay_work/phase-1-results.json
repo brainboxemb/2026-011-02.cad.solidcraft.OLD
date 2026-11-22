@@ -1,0 +1,124 @@
+[
+  {
+    "display_value": 80.0,
+    "name": "length",
+    "unit": "mm",
+    "value": 80.0
+  },
+  {
+    "display_value": 50.0,
+    "name": "width",
+    "unit": "mm",
+    "value": 50.0
+  },
+  {
+    "display_value": 30.0,
+    "name": "height",
+    "unit": "mm",
+    "value": 30.0
+  },
+  {
+    "display_value": 2.0,
+    "name": "wall",
+    "unit": "mm",
+    "value": 2.0
+  },
+  {
+    "bodies": [
+      "Enclosure"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [
+      "Enclosure"
+    ],
+    "feature": 1,
+    "ms": 2.703643,
+    "name": "Box1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Enclosure"
+    ],
+    "changed_bodies": [
+      "Enclosure"
+    ],
+    "created_bodies": [],
+    "feature": 2,
+    "ms": 18.474007,
+    "name": "Shell1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Enclosure"
+    ],
+    "changed_bodies": [
+      "Enclosure"
+    ],
+    "created_bodies": [],
+    "feature": 3,
+    "ms": 11.26238,
+    "name": "Lip1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Enclosure"
+    ],
+    "changed_bodies": [
+      "Enclosure"
+    ],
+    "created_bodies": [],
+    "feature": 4,
+    "ms": 11.177391,
+    "name": "SnapFit1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Enclosure"
+    ],
+    "changed_bodies": [
+      "Enclosure"
+    ],
+    "created_bodies": [],
+    "feature": 5,
+    "ms": 35.470226000000004,
+    "name": "Boss1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Enclosure"
+    ],
+    "changed_bodies": [
+      "Enclosure"
+    ],
+    "created_bodies": [],
+    "feature": 6,
+    "ms": 44.567457999999995,
+    "name": "Boss2",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Enclosure"
+    ],
+    "changed_bodies": [
+      "Enclosure"
+    ],
+    "created_bodies": [],
+    "feature": 7,
+    "ms": 18.639803,
+    "name": "Rest1",
+    "removed_bodies": [],
+    "warning": null
+  }
+]

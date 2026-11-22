@@ -1,0 +1,12 @@
+{
+  "engine": "scons",
+  "engine_schema": 3,
+  "final_bundle_sha256": "f6e49fe0be6d071a98f08b8c0cdc66f805b185613acda32afce3710db47bf5bf",
+  "final_step": "build_results",
+  "final_target_spec_digest": "402d6ec0967a3b17f9c509ca3c2baa770df6df667320ba24e2157c6f6dd19f0b",
+  "item": "hub75-screen",
+  "run_finished_at": "2026-11-22T12:25:42.329Z",
+  "run_started_at": "2026-11-22T12:24:42.239Z",
+  "schema": 2,
+  "status": "pass"
+}

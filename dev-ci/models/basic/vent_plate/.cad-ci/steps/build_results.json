@@ -1,0 +1,39 @@
+{
+  "action_executed": true,
+  "action_type": "copy",
+  "bundle_sha256": "64fe21be5473a2e119e03edfffe5008cbeede40ed282e38f7189cf694ccb66cf",
+  "duration_seconds": 0.086,
+  "engine": "scons",
+  "engine_schema": 3,
+  "error": null,
+  "exit_code": null,
+  "finished_at": "2026-11-22T12:25:41.624Z",
+  "item": "vent-plate",
+  "outcome": "BUILT",
+  "output_state": "RESTORED",
+  "outputs": {
+    "generated": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "b2e10c11f5480a05d42bd867ea54326b1ed55e31760067778f20db4dd84c7ac9"
+    },
+    "manifest.json": {
+      "kind": "file",
+      "mode": 420,
+      "sha256": "808dc93ef1cda0d2e74c7453fce4bfade56dd7a903a63b4068abcc11b9ae9638"
+    },
+    "models": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "13af95329c6490c2f19d414f379df482935e235ad5f196b7b862f6c5133d4b33"
+    }
+  },
+  "run_finished_at": "2026-11-22T12:25:42.329Z",
+  "run_started_at": "2026-11-22T12:24:42.239Z",
+  "schema": 4,
+  "started_at": "2026-11-22T12:25:41.539Z",
+  "status": "pass",
+  "step": "build_results",
+  "target_spec_digest": "ffc45459bcf45893e86cab171c89db74314ea8ab621c19ae12efbab3282ff0cd",
+  "timeout_seconds": null
+}

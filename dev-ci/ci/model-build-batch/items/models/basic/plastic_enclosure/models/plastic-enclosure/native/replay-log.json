@@ -1,0 +1,156 @@
+{
+  "format": "scpf-replay-log",
+  "version": 1,
+  "replay_sha256": "3af17e965f7ca27828b9181545b95ee71656ee787764dd5e3ed37c55c7d00d87",
+  "variables": {},
+  "commands": [
+    {
+      "index": 0,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "length",
+        "expression": "80",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 1,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "width",
+        "expression": "50",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 2,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "height",
+        "expression": "30",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 3,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "wall",
+        "expression": "2",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 4,
+      "command": "solid.box",
+      "resolved_params": {
+        "length": "length",
+        "width": "width",
+        "height": "height",
+        "corner": [
+          "-length / 2",
+          "-width / 2",
+          0
+        ],
+        "body_name": "Enclosure"
+      }
+    },
+    {
+      "index": 5,
+      "command": "solid.shell",
+      "resolved_params": {
+        "faces": [
+          [
+            0.0,
+            0.0,
+            30.0
+          ]
+        ],
+        "thickness": "wall",
+        "body": "Enclosure"
+      }
+    },
+    {
+      "index": 6,
+      "command": "plastic.lip",
+      "resolved_params": {
+        "face": [
+          -39.0,
+          0.0,
+          30.0
+        ],
+        "width": 1,
+        "height": 2,
+        "body": "Enclosure"
+      }
+    },
+    {
+      "index": 7,
+      "command": "plastic.snap_fit",
+      "resolved_params": {
+        "position": [
+          0.0,
+          19.0,
+          2.0
+        ],
+        "hook": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "length": 14,
+        "thickness": 1.5,
+        "width": 6,
+        "catch_depth": 1,
+        "catch_length": 2,
+        "body": "Enclosure"
+      }
+    },
+    {
+      "index": 8,
+      "command": "plastic.boss",
+      "resolved_params": {
+        "position": [
+          -30.0,
+          -15.0,
+          2.0
+        ],
+        "diameter": 7,
+        "height": 12,
+        "body": "Enclosure",
+        "hole_diameter": 2.5
+      }
+    },
+    {
+      "index": 9,
+      "command": "plastic.boss",
+      "resolved_params": {
+        "position": [
+          30.0,
+          15.0,
+          2.0
+        ],
+        "diameter": 7,
+        "height": 12,
+        "body": "Enclosure",
+        "hole_diameter": 2.5
+      }
+    },
+    {
+      "index": 10,
+      "command": "plastic.rest",
+      "resolved_params": {
+        "position": [
+          0.0,
+          0.0,
+          2.0
+        ],
+        "width": 16,
+        "height": 3,
+        "body": "Enclosure",
+        "length": 24
+      }
+    }
+  ],
+  "completed": 11
+}

@@ -1,0 +1,79 @@
+{
+  "commands": [
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "d1_SimpleMFT_width",
+        "expression": "805",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "d1_SimpleMFT_depth",
+        "expression": "555",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "worktop_thickness",
+        "expression": "18",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "d1_SimpleMFT_hole_diameter",
+        "expression": "20",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "d1_SimpleMFT_hole_pitch",
+        "expression": "76",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "d1_SimpleMFT_corner_chamfer",
+        "expression": "20",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "component.create",
+      "params": {
+        "name": "SimpleMFT",
+        "grounded": true
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "d1_SimpleMFT_width",
+        "width": "d1_SimpleMFT_depth",
+        "height": "worktop_thickness",
+        "corner": [
+          "-d1_SimpleMFT_width / 2",
+          "-d1_SimpleMFT_depth / 2",
+          0
+        ],
+        "body_name": "SimpleMFT"
+      }
+    },
+    {
+      "command": "model.faces",
+      "params": {
+        "body": "SimpleMFT"
+      }
+    }
+  ]
+}

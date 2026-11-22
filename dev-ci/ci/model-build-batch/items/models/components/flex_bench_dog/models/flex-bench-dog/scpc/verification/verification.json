@@ -1,0 +1,89 @@
+{
+  "checks": [
+    {
+      "artifacts": [
+        {
+          "kind": "file",
+          "path": "baseline/measurements.json",
+          "sha256": "bf3ebd48a935fe90d578f3bcdeb739e33a58ce66d9710705b3b7f71137357c1d",
+          "size": 5001
+        }
+      ],
+      "error": null,
+      "evidence": {
+        "body_count": {
+          "actual": 1,
+          "expected": 1,
+          "label": "SolidCraft body count",
+          "pass": true
+        },
+        "body_envelopes": {
+          "actual_count": 1,
+          "expected_count": 1,
+          "kind": "body_envelopes",
+          "matched_pairs": [
+            {
+              "actual": {
+                "label": "FlexBenchDog",
+                "max": [
+                  12.000000000000002,
+                  12.000000000000002,
+                  20.000000000000018
+                ],
+                "min": [
+                  -12.000000000000002,
+                  -12.000000000000002,
+                  -20.00000000000005
+                ]
+              },
+              "expected": {
+                "label": null,
+                "max": [
+                  12.0,
+                  12.0,
+                  20.0
+                ],
+                "min": [
+                  -12.0,
+                  -12.0,
+                  -20.0
+                ]
+              },
+              "max_delta": 4.973799150320701e-14
+            }
+          ],
+          "pass": true,
+          "tolerance": 0.005,
+          "unmatched_actual": [],
+          "unmatched_expected": []
+        },
+        "named_bodies": [
+          {
+            "closed": {
+              "actual": true,
+              "expected": true,
+              "label": "sole body closed",
+              "pass": true
+            },
+            "selector": "sole"
+          }
+        ],
+        "sketch_count": {
+          "actual": 3,
+          "expected": 3,
+          "label": "SolidCraft sketch count",
+          "pass": true
+        }
+      },
+      "id": "baseline",
+      "reason": null,
+      "status": "pass"
+    }
+  ],
+  "input": "/output/items/models/components/flex_bench_dog/models/flex-bench-dog/scpc/native/model.sc",
+  "metadata": {},
+  "schema": "cad-verification",
+  "schema_version": 1,
+  "status": "pass",
+  "verification_id": "flex-bench-dog"
+}

@@ -1,0 +1,39 @@
+{
+  "action_executed": true,
+  "action_type": "copy",
+  "bundle_sha256": "abd7ccafb199473f1579d3c879d71628f4dcf539da68d480a258349a0d712555",
+  "duration_seconds": 0.089,
+  "engine": "scons",
+  "engine_schema": 3,
+  "error": null,
+  "exit_code": null,
+  "finished_at": "2026-11-22T12:25:41.914Z",
+  "item": "corner-bracket",
+  "outcome": "BUILT",
+  "output_state": "RESTORED",
+  "outputs": {
+    "generated": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "a051eebf657fc1f727b76641a8c3fe16f7a0e1c6254be0efda4581855353f00f"
+    },
+    "manifest.json": {
+      "kind": "file",
+      "mode": 420,
+      "sha256": "a9bcda02856dfda5e5c47080c0e2ace0049b8797f04c9ebdb263f8b26773f061"
+    },
+    "models": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "2fcabe3db85ca21220f3bbdc4d7b760b7fa68bb8b2ed895510cdb0d0a20eef3c"
+    }
+  },
+  "run_finished_at": "2026-11-22T12:25:42.329Z",
+  "run_started_at": "2026-11-22T12:24:42.239Z",
+  "schema": 4,
+  "started_at": "2026-11-22T12:25:41.825Z",
+  "status": "pass",
+  "step": "build_results",
+  "target_spec_digest": "74200b0dcb87d00972e3095c563f1275f82b92df46e43603da803416f84e489d",
+  "timeout_seconds": null
+}

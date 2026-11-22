@@ -1,0 +1,12 @@
+{
+  "engine": "scons",
+  "engine_schema": 3,
+  "final_bundle_sha256": "74b0cf578cfcf72b32c76f55407e1ac9b837e3a0942686ff97aecff1b7a187ce",
+  "final_step": "build_results",
+  "final_target_spec_digest": "b6f7f8b9469bf1ee249bac66ca6fa679b308f1d931639e9ac69ac4a4e9eff51e",
+  "item": "hub75-panel",
+  "run_finished_at": "2026-11-22T12:25:42.329Z",
+  "run_started_at": "2026-11-22T12:24:42.239Z",
+  "schema": 2,
+  "status": "pass"
+}

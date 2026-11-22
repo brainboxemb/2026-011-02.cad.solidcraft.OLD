@@ -1,0 +1,39 @@
+{
+  "action_executed": true,
+  "action_type": "copy",
+  "bundle_sha256": "731d4454f1d501515922ec2b44afb9b55fe825f2c42ba0449892b97f0b937e90",
+  "duration_seconds": 0.039,
+  "engine": "scons",
+  "engine_schema": 3,
+  "error": null,
+  "exit_code": null,
+  "finished_at": "2026-11-22T12:25:42.015Z",
+  "item": "plastic-enclosure-pi",
+  "outcome": "BUILT",
+  "output_state": "RESTORED",
+  "outputs": {
+    "generated": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "c8e27b5c3699f40dfbdea9de2599290b7dd7a9d490718031bbc0207538606134"
+    },
+    "manifest.json": {
+      "kind": "file",
+      "mode": 420,
+      "sha256": "b95f0c9f015ba774810e62a27d85b54fd7a25c79562f71b846e68a4fd6020809"
+    },
+    "models": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "8ebe4e158f5a347e4af5d362978970015d449a9cb8508976aff3d8d297600932"
+    }
+  },
+  "run_finished_at": "2026-11-22T12:25:42.329Z",
+  "run_started_at": "2026-11-22T12:24:42.239Z",
+  "schema": 4,
+  "started_at": "2026-11-22T12:25:41.975Z",
+  "status": "pass",
+  "step": "build_results",
+  "target_spec_digest": "ffae9199faf8e7ba33bb820bb6edb6706162dc0f7402e8e9e3534d96a18cf718",
+  "timeout_seconds": null
+}

@@ -1,0 +1,190 @@
+[
+  {
+    "display_value": 805.0,
+    "name": "d1_SimpleMFT_width",
+    "unit": "mm",
+    "value": 805.0
+  },
+  {
+    "display_value": 555.0,
+    "name": "d1_SimpleMFT_depth",
+    "unit": "mm",
+    "value": 555.0
+  },
+  {
+    "display_value": 18.0,
+    "name": "worktop_thickness",
+    "unit": "mm",
+    "value": 18.0
+  },
+  {
+    "display_value": 20.0,
+    "name": "d1_SimpleMFT_hole_diameter",
+    "unit": "mm",
+    "value": 20.0
+  },
+  {
+    "display_value": 76.0,
+    "name": "d1_SimpleMFT_hole_pitch",
+    "unit": "mm",
+    "value": 76.0
+  },
+  {
+    "display_value": 20.0,
+    "name": "d1_SimpleMFT_corner_chamfer",
+    "unit": "mm",
+    "value": 20.0
+  },
+  {
+    "component": 1,
+    "grounded": true,
+    "name": "SimpleMFT",
+    "occurrence": 2,
+    "parent": 0
+  },
+  {
+    "bodies": [
+      "SimpleMFT"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [
+      "SimpleMFT"
+    ],
+    "feature": 3,
+    "ms": 2.825642,
+    "name": "Box1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "body": "SimpleMFT",
+    "faces": [
+      {
+        "area": 446775.0,
+        "centroid": [
+          0.0,
+          0.0,
+          18.0
+        ],
+        "exact": true,
+        "index": 0,
+        "name": "F3:+z",
+        "plane_normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "point": [
+          -211.38904671714621,
+          -86.38904671714624,
+          18.0
+        ]
+      },
+      {
+        "area": 14490.0,
+        "centroid": [
+          0.0,
+          277.5,
+          9.0
+        ],
+        "exact": true,
+        "index": 1,
+        "name": "F3:+y",
+        "plane_normal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "point": [
+          393.6006085440011,
+          277.5,
+          8.899391455998915
+        ]
+      },
+      {
+        "area": 9990.0,
+        "centroid": [
+          -402.5,
+          0.0,
+          9.0
+        ],
+        "exact": true,
+        "index": 2,
+        "name": "F3:-x",
+        "plane_normal": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "point": [
+          -402.5,
+          268.6459075873441,
+          8.854092412655937
+        ]
+      },
+      {
+        "area": 14490.0,
+        "centroid": [
+          0.0,
+          -277.5,
+          9.0
+        ],
+        "exact": true,
+        "index": 3,
+        "name": "F3:-y",
+        "plane_normal": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "point": [
+          -393.6006085440011,
+          -277.5,
+          8.899391455998915
+        ]
+      },
+      {
+        "area": 9990.0,
+        "centroid": [
+          402.5,
+          0.0,
+          9.0
+        ],
+        "exact": true,
+        "index": 4,
+        "name": "F3:+x",
+        "plane_normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "point": [
+          402.5,
+          -268.6459075873441,
+          8.854092412655937
+        ]
+      },
+      {
+        "area": 446775.0,
+        "centroid": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "exact": true,
+        "index": 5,
+        "name": "F3:-z",
+        "plane_normal": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "point": [
+          -211.3890467171462,
+          -86.38904671714624,
+          0.0
+        ]
+      }
+    ]
+  }
+]

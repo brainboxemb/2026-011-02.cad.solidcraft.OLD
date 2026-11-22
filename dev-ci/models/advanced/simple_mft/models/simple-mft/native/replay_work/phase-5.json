@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "command": "sketch.edit",
+      "params": {
+        "sketch": 4
+      }
+    },
+    {
+      "command": "sketch.pattern.rectangular",
+      "params": {
+        "entities": [
+          "l1",
+          "a1",
+          "l2",
+          "a2"
+        ],
+        "count": 2,
+        "spacing": 134.96046148071045,
+        "dir": [
+          1.0,
+          1.0
+        ]
+      }
+    }
+  ]
+}

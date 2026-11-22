@@ -1,0 +1,34 @@
+{
+  "checks": [
+    {
+      "artifacts": [
+        {
+          "kind": "file",
+          "path": "baseline/measurements.json",
+          "sha256": "66ab10fc0138395b18c44afe1a4058bc0647a8925fb5c500d41644dfab2d9455",
+          "size": 2396
+        }
+      ],
+      "error": null,
+      "evidence": {
+        "body_count": {
+          "actual": 1,
+          "expected": 1,
+          "label": "SolidCraft body count",
+          "pass": true
+        }
+      },
+      "id": "baseline",
+      "reason": null,
+      "status": "pass"
+    }
+  ],
+  "input": "/output/items/models/basic/csg_cube/models/csg-cube/native/model.sc",
+  "metadata": {
+    "follow_up": "Add detailed boolean geometry and volume checks."
+  },
+  "schema": "cad-verification",
+  "schema_version": 1,
+  "status": "pass",
+  "verification_id": "csg-cube"
+}

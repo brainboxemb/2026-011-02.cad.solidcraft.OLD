@@ -1,0 +1,132 @@
+{
+  "commands": [
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": {
+          "face": [
+            -19.948684188300792,
+            4.94868418830112,
+            8.0
+          ],
+          "body": "SamplePlate",
+          "index": 3
+        },
+        "project_edges": false,
+        "name": "Holes"
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          "(-((width - 24 mm) / 2))",
+          0.0
+        ],
+        "diameter": 8
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "operation": "cut",
+        "targets": [
+          "SamplePlate"
+        ],
+        "name": "Holes",
+        "through_all": true,
+        "direction": "negative"
+      }
+    },
+    {
+      "command": "solid.pattern.rectangular",
+      "params": {
+        "features": [
+          "Holes"
+        ],
+        "dir1": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "count1": 2,
+        "spacing1": "width - 24 mm",
+        "alignment": "right",
+        "reversed": false
+      }
+    },
+    {
+      "command": "solid.cylinder",
+      "params": {
+        "height": 14,
+        "diameter": 24,
+        "base": [
+          0.0,
+          0.0,
+          8.0
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "SamplePlate"
+        ],
+        "references": [
+          {
+            "edge": [
+              -40.0,
+              0.0,
+              8.0
+            ],
+            "distance": "(width / 2)"
+          },
+          {
+            "edge": [
+              0.0,
+              -25.0,
+              8.0
+            ],
+            "distance": "(depth / 2)"
+          }
+        ]
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": "XY",
+        "name": "Bore",
+        "offset": "thickness + 14 mm"
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          0.0,
+          0.0
+        ],
+        "diameter": 12
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "distance": "thickness + 14 mm",
+        "direction": "negative",
+        "operation": "cut",
+        "targets": [
+          "SamplePlate"
+        ],
+        "name": "Bore"
+      }
+    }
+  ]
+}

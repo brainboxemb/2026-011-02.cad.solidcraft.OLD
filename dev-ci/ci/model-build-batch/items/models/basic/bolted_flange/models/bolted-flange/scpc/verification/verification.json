@@ -1,0 +1,93 @@
+{
+  "checks": [
+    {
+      "artifacts": [
+        {
+          "kind": "file",
+          "path": "baseline/measurements.json",
+          "sha256": "b5cde849bbcc532e86c1e68b157e347fb3472eef2a6348d4529296d6c23b6b90",
+          "size": 2979
+        }
+      ],
+      "error": null,
+      "evidence": {
+        "body_count": {
+          "actual": 1,
+          "expected": 1,
+          "label": "SolidCraft body count",
+          "pass": true
+        },
+        "body_envelopes": {
+          "actual_count": 1,
+          "expected_count": 1,
+          "kind": "body_envelopes",
+          "matched_pairs": [
+            {
+              "actual": {
+                "label": "Flange",
+                "max": [
+                  50.0,
+                  50.0,
+                  26.000000000000004
+                ],
+                "min": [
+                  -50.0,
+                  -50.0,
+                  0.0
+                ]
+              },
+              "expected": {
+                "label": null,
+                "max": [
+                  50.0,
+                  50.0,
+                  26.0
+                ],
+                "min": [
+                  -50.0,
+                  -50.0,
+                  0.0
+                ]
+              },
+              "max_delta": 3.552713678800501e-15
+            }
+          ],
+          "pass": true,
+          "tolerance": 0.001,
+          "unmatched_actual": [],
+          "unmatched_expected": []
+        },
+        "named_bodies": [
+          {
+            "body_name": "Flange",
+            "closed": {
+              "actual": true,
+              "expected": true,
+              "label": "Flange closed",
+              "pass": true
+            },
+            "name_prefix": "Flange",
+            "volume": {
+              "actual": 87289.15187999237,
+              "delta": 4.3655745685100555e-11,
+              "expected": 87289.15187999241,
+              "kind": "scalar",
+              "label": "Flange volume",
+              "pass": true,
+              "tolerance": 0.01
+            }
+          }
+        ]
+      },
+      "id": "baseline",
+      "reason": null,
+      "status": "pass"
+    }
+  ],
+  "input": "/output/items/models/basic/bolted_flange/models/bolted-flange/scpc/native/model.sc",
+  "metadata": {},
+  "schema": "cad-verification",
+  "schema_version": 1,
+  "status": "pass",
+  "verification_id": "bolted-flange"
+}
