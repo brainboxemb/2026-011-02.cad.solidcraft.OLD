@@ -249,6 +249,16 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertNotIn("resources.Copy", page)
         self.assertNotIn("scripts/ci/build-results.py", workflow)
 
+    def test_footer_uses_hextra_extension_point_for_hugo_and_theme_credit(self):
+        params = (SITE / "config/_default/params.toml").read_text()
+        footer = (SITE / "layouts/_partials/custom/footer.html").read_text()
+        self.assertIn("displayPoweredBy = false", params)
+        self.assertIn("Built with", footer)
+        self.assertIn("https://gohugo.io/", footer)
+        self.assertIn("Theme:", footer)
+        self.assertIn("https://imfing.github.io/hextra/", footer)
+        self.assertNotIn("layouts/_partials/footer.html", footer)
+
     def test_stable_visual_baseline_is_retained_for_comparison(self):
         baseline = (SITE / "results.css").read_text()
         current = (SITE / "assets/css/custom.css").read_text()
