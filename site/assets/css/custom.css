@@ -352,7 +352,7 @@ html:not(.dark) .hextra-nav-container-blur{
   max-width:1080px!important;
   padding-left:0!important;
   padding-right:0!important;
-  font-family:Inter,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  font-family:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
   line-height:1.52;
 }
 .hextra-nav-container{border-bottom:1px solid var(--cad-line)}
@@ -370,7 +370,7 @@ html:not(.dark) .hextra-max-navbar-width>a:not(:first-of-type){
 }
 html:not(.dark) .hextra-max-navbar-width>a:not(:first-of-type):hover{color:var(--cad-accent)!important}
 html:not(.dark) .hextra-search-trigger{
-  font-family:Inter,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  font-family:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
   font-size:.9rem;
 }
 
@@ -378,10 +378,22 @@ html:not(.dark) .hextra-search-trigger{
   width:min(1080px,calc(100% - 44px));
   margin:0 auto;
   padding:1.1rem 0 4rem;
-  font-family:Inter,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  font-family:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
   font-size:1rem;
   line-height:1.52;
   color:var(--cad-ink);
+}
+.cad-page-shell h1,
+.cad-page-shell h2,
+.cad-page-shell h3,
+.cad-page-shell h4,
+.cad-page-shell h5,
+.cad-page-shell h6,
+.cad-page-shell p,
+.cad-page-shell li,
+.cad-page-shell a,
+.cad-page-shell button{
+  font-family:inherit;
 }
 .cad-page-shell p,.cad-page-shell li{line-height:1.52}
 .cad-home>.cad-hero{margin-top:1rem}
