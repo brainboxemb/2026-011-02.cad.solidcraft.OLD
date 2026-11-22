@@ -1,9 +1,10 @@
 {{ define "main" }}
-<header class="cad-heading">
-  <p class="cad-eyebrow">model.yml catalogue</p>
-  <h1>{{ .Title }}</h1>
-  <p>{{ .Description }}</p>
-</header>
+<main class="cad-page-shell cad-catalog-page">
+  <section class="cad-model-hero cad-model-hero-small">
+    <p class="cad-model-kicker">SolidCraft CAD</p>
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Description }}</p>
+  </section>
 <nav class="cad-category-grid" aria-label="Model categories">
   {{ range $key := slice "basic" "components" "advanced" }}
     {{ with site.GetPage (printf "/models/%s" $key) }}
@@ -21,4 +22,5 @@
     </div>
   </section>
 {{ end }}
+</main>
 {{ end }}
