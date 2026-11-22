@@ -1,5 +1,5 @@
 {
-  "catalog_commit": "f615379bb2e8cb44e300dc87f9edf0983c6ea6cb",
+  "catalog_commit": "ecda73518f465adbfb4678fc6a11803d40cabe97",
   "models": {
     "bolted-flange": {
       "input_fingerprint": "2552b06aff435562f8bdf96a7bce6ac942a4450860cd109b9c2350184242d702",
@@ -31,17 +31,17 @@
     },
     "corner-bracket": {
       "input_fingerprint": "38cf30da44ea3bfeb7e38b07f56cfa5872e7123f23ba8bf4de899dbf8e35c2e4",
-      "legacy_migrated": true,
       "model": "corner-bracket",
-      "native_file_format": "solidcraft/57",
+      "native_file_format": "solidcraft/63",
       "schema": 1,
       "scpc_commit": "fcaa6f9fc8388bc715fcd2fbb149ce6b979566a7",
-      "scpf_commit": "5b4963f25f76c4e3b09926d691251ed1b1e7173b",
-      "scpf_release": "0.9.0",
-      "solidcraft_version": "0.42.0",
-      "source_commit": "1b673d0e63499468a9283eade16bb1b9aa8cc110",
+      "scpf_commit": "9258d54079981604b6dd777a4c4face897c190fe",
+      "scpf_release": "0.11.0",
+      "solidcraft_version": "0.45.0",
+      "source_commit": "ecda73518f465adbfb4678fc6a11803d40cabe97",
+      "toolchain_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
       "verified": true,
-      "workflow_run": "44294334784"
+      "workflow_run": "45005747810"
     },
     "csg-cube": {
       "input_fingerprint": "35d82765ba80627facdbfdf5a3c016d4b1c0dc863b51a286285e3e5c95056fe1",
@@ -170,18 +170,18 @@
       "workflow_run": "44407769447"
     },
     "sample-plate": {
-      "input_fingerprint": "dcb87af233668f8d74dd57bb9c1bc61ed1a18406ecab91bc81dc39ee4cdd4347",
-      "legacy_migrated": true,
+      "input_fingerprint": "a6a69e82d213412cc3647bd97f92f54ca456cc9e7e21b2a9608ada30d73299bd",
       "model": "sample-plate",
-      "native_file_format": "solidcraft/57",
+      "native_file_format": "solidcraft/63",
       "schema": 1,
       "scpc_commit": "fcaa6f9fc8388bc715fcd2fbb149ce6b979566a7",
-      "scpf_commit": "5b4963f25f76c4e3b09926d691251ed1b1e7173b",
-      "scpf_release": "0.9.0",
-      "solidcraft_version": "0.42.0",
-      "source_commit": "1b673d0e63499468a9283eade16bb1b9aa8cc110",
+      "scpf_commit": "9258d54079981604b6dd777a4c4face897c190fe",
+      "scpf_release": "0.11.0",
+      "solidcraft_version": "0.45.0",
+      "source_commit": "ecda73518f465adbfb4678fc6a11803d40cabe97",
+      "toolchain_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
       "verified": true,
-      "workflow_run": "44294334784"
+      "workflow_run": "45005747810"
     },
     "simple-mft": {
       "input_fingerprint": "f391d926944948b6d6355ae75982aaee1a12b4b33010682c94c43227f6b32967",
@@ -226,7 +226,6 @@
       "workflow_run": "44294334784"
     }
   },
-  "native_file_format": "solidcraft/57",
   "native_verified_models": [
     "plate",
     "vent-plate",
@@ -247,8 +246,6 @@
   ],
   "schema": 2,
   "scpc_commit": "fcaa6f9fc8388bc715fcd2fbb149ce6b979566a7",
-  "scpf_commit": "5b4963f25f76c4e3b09926d691251ed1b1e7173b",
-  "scpf_release": "0.9.0",
-  "solidcraft_version": "0.42.0",
-  "source_commit": "f615379bb2e8cb44e300dc87f9edf0983c6ea6cb"
+  "scpf_commit": "9258d54079981604b6dd777a4c4face897c190fe",
+  "source_commit": "ecda73518f465adbfb4678fc6a11803d40cabe97"
 }
