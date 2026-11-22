@@ -202,17 +202,16 @@ Model-detail pages use a small semantic presentation system:
 - **standard content panel** — neutral 1 px border, common radius/padding,
   no accent edge; used for ordinary grouped content such as Preview, Files,
   Background and Verification;
-- **primary action panel** — the same standard panel with one blue accent line
-  at the **top**; reserved for the user-facing `Open in SolidCraft Web`
-  action;
+- **primary action panel** — the same neutral standard panel; action emphasis
+  comes from the primary action button/link, not from a decorative panel edge;
 - **semantic notice/warning** — a left accent edge is reserved for notice or
   warning semantics; warnings use the red warning color;
 - **code/generated-output section** — no white outer panel; heading and helper
   text lead directly to the dark code surface, and generated commands may use
   the native collapsed disclosure.
 
-Accent-edge direction therefore has meaning: normal content never gains a blue
-left or top edge merely for decoration.
+Accent edges are reserved for semantic notices/warnings. Normal content and
+primary-action panels do not gain blue top/left edges merely for decoration.
 
 CAD prose uses the accepted sans-serif CAD typography with normal body weight
 and neutral tracking. Ordinary panel/section headings use medium weight and
