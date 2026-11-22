@@ -69,6 +69,26 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn(".cad-model-grid,.cad-reference-grid{grid-template-columns:1fr}", css)
 
 
+    def test_model_detail_uses_one_shared_section_typography_system(self):
+        css = (SITE / "assets/css/custom.css").read_text()
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn("--cad-section-title-size:1.6rem;", css)
+        self.assertIn("--cad-section-subtitle-size:1rem;", css)
+        self.assertIn("--cad-section-help-size:.86rem;", css)
+        self.assertIn(".cad-section-title{", css)
+        self.assertIn(".cad-section-subtitle{", css)
+        self.assertIn(".cad-section-help{", css)
+        self.assertNotIn(".cad-panel h2{", css)
+        self.assertNotIn(".cad-files-panel h2{", css)
+        self.assertNotIn(".cad-files-panel h3{", css)
+        self.assertNotIn(".cad-code-section>h2{", css)
+        self.assertNotIn(".cad-panel-label{", css)
+        self.assertGreaterEqual(page.count('class="cad-section-title"'), 8)
+        self.assertIn('class="cad-section-title cad-collapsible-title"', page)
+        self.assertIn('class="cad-section-subtitle">Construction stages', page)
+        self.assertGreaterEqual(page.count("cad-section-help"), 6)
+        self.assertGreaterEqual(page.count("cad-section-label"), 4)
+
     def test_model_detail_panel_styles_have_semantic_accent_edges(self):
         css = (SITE / "assets/css/custom.css").read_text()
         page = (SITE / "layouts/models/single.html").read_text()
@@ -98,7 +118,9 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertNotIn(".content h1{letter-spacing:-.025em}", css)
         self.assertNotIn(".content h2{letter-spacing:-.016em}", css)
         self.assertNotIn(".content h3{letter-spacing:-.01em}", css)
-        self.assertIn(".cad-panel h2{margin:0 0 .6rem;font-size:1.6rem;line-height:1.3;font-weight:600;letter-spacing:0}", css)
+        self.assertIn(".cad-section-title{", css)
+        self.assertIn("font-size:var(--cad-section-title-size);", css)
+        self.assertIn("font-weight:var(--cad-heading-weight);", css)
         self.assertIn(".cad-model-detail h2,", css)
         self.assertIn("font-weight:400;\n  letter-spacing:0;", css)
 
@@ -106,11 +128,12 @@ class HugoSiteContractTests(unittest.TestCase):
         css = (SITE / "assets/css/custom.css").read_text()
         page = (SITE / "layouts/models/single.html").read_text()
         self.assertIn(".cad-rich-text{max-width:78ch;font-size:1rem;line-height:1.52}", css)
-        self.assertIn("<h2>Background</h2>", page)
+        self.assertIn('<h2 class="cad-section-title">Background</h2>', page)
         self.assertIn("color:var(--cad-ink);", css)
         self.assertNotIn(".cad-verification-panel{background:", css)
-        self.assertIn(".cad-rich-text h2{", css)
-        self.assertIn("font-size:1rem;\n  line-height:1.35;\n  font-weight:600;\n  letter-spacing:0;", css)
+        self.assertIn(".cad-rich-text h2,\n.cad-rich-text h3{", css)
+        self.assertIn("font-size:var(--cad-section-subtitle-size);", css)
+        self.assertIn("font-weight:var(--cad-heading-weight);", css)
         self.assertIn(".cad-rich-text li::marker{color:var(--cad-accent)}", css)
         self.assertIn(".cad-background .subheading-anchor{display:none}", css)
 
