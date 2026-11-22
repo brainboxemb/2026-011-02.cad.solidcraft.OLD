@@ -170,6 +170,19 @@ jobs:
           jq -e --arg source "$SOURCE_SHA" '.source_commit == $source' generated-site/provenance.json >/dev/null
           jq -e --arg build "$BUILD_COMMIT" '.build_commit == $build' generated-site/provenance.json >/dev/null
           jq -e --arg scope "$SCOPE" '.build_scope == $scope' generated-site/provenance.json >/dev/null
+      - name: Capture rendered model layouts
+        env:
+          SCOPE: ${{ steps.cad_ci.outputs.scope }}
+        run: bash scripts/ci/capture_site_layout.sh generated-site "$SCOPE"
+
+      - name: Upload rendered layout evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-layouts-${{ github.ref_name }}
+          path: artifacts/site-layout
+          if-no-files-found: error
+          retention-days: 7
+
       - name: Publish CAD Pages for source scope
         env:
           SOURCE_REF: ${{ github.ref_name }}
