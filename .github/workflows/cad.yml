@@ -53,6 +53,28 @@ jobs:
       - name: Exercise existing CAD website layout and link generation
         run: python -m unittest discover -s tests -p test_site_generation.py -v
 
+  released_cad_pilot:
+    # This is a development-branch proof only, with no durable publication.
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.action != 'closed' &&
+      github.event.pull_request.base.ref == 'dev-ci'
+    needs: architecture
+    permissions:
+      contents: read
+      packages: read
+      pull-requests: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run exact Forge-style CAD-CI stack (Plate pilot)
+        uses: brainboxemb/tool.cad.ci@d88d6e189c12edb5a30158c068145c099c17a019
+        with:
+          source_sha: ${{ github.event.pull_request.head.sha }}
+          base_sha: ${{ github.event.pull_request.base.sha }}
+          full_run: true
+          jobs: "2"
+          github_token: ${{ github.token }}
+
   cad:
     # Keep the accepted main CAD pipeline untouched during migration.
     # Development PRs run only the lightweight structural contract checks

@@ -56,7 +56,11 @@ comparison remains outstanding.
 
 ### M1 — Released tooling and declarative model graph
 
-Status: **not started**.
+Status: **pilot PR underway on dev-ci**. Use exact released tool.cad.ci
+0.17.0 / lib.py.cad.ci 0.9.3, released verification library 0.15.0,
+Forge 0.11.0 and central SolidCraft 0.45.0. Only the Plate item is included
+in staged CAD-CI discovery until further model conversions pass. This is not
+full-catalog acceptance.
 
 - Pin exactly Forge's accepted released
   `tool.cad.ci 0.17.0` /`lib.py.cad.ci 0.9.3` stack.
@@ -70,7 +74,8 @@ Status: **not started**.
 
 ### M2 — Native verification and consumer step migration
 
-Status: **not started**.
+Status: **Plate proof underway**; 15 other physical model roots and SCPC
+comparisons still use the accepted old pipeline until converted.
 
 - Convert one representative basic model to model-local declarative
   verification and released `lib.py.cad.verification`, including native

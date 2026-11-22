@@ -92,6 +92,32 @@ class MigrationCatalogContractTests(unittest.TestCase):
         self.assertIn('out / "models" / slug', site_builder)
         self.assertIn(".model-warning", stylesheet)
 
+    def test_dev_ci_runs_exact_released_pilot_without_touching_main(self):
+        source = (ROOT / "cad-ci.yml").read_text(encoding="utf-8")
+        self.assertIn("cad-solidcraft:v0.3.4", source)
+        self.assertIn("cad-native-pilot", source)
+        self.assertIn("models/basic/plate", source)
+        self.assertNotIn("models/advanced/*", source)
+
+        config = __import__("json").loads(
+            (ROOT / "ci/cad-verification-package/package.json").read_text()
+        )
+        self.assertEqual(config["version"], "0.15.0")
+        self.assertEqual(config["commit"], "9a232798f06254454e6d302bd5f1bac81475194c")
+        self.assertTrue(
+            (ROOT / "models/basic/plate/verification/verify.py").is_file()
+        )
+        package_builder = (
+            ROOT / "scripts/ci/verification_package.py"
+        ).read_text(encoding="utf-8")
+        self.assertIn(
+            "ROOT = Path(__file__).resolve().parents[2]",
+            package_builder,
+        )
+
+        workflow = (ROOT / ".github/workflows/cad.yml").read_text()
+        self.assertIn("tool.cad.ci@d88d6e189c12edb5a30158c068145c099c17a019", workflow)
+
     def test_development_branches_do_not_use_old_preview_publisher(self):
         workflow = (ROOT / ".github/workflows/cad.yml").read_text(
             encoding="utf-8"
