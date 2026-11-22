@@ -3,6 +3,7 @@ section: components
 variants:
   guide-rail:
     priority: 40
+    featured: true
     title: "GuideRail — Festool profile"
     tagline: "Parametric guide rail using the detailed Festool reference extrusion"
     description: >-
