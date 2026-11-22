@@ -172,6 +172,8 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn(">Model preview<", page)
         self.assertIn(">Files<", page)
         self.assertIn("Construction stages", page)
+        self.assertIn('<ul class="cad-stages">', page)
+        self.assertNotIn('<ol class="cad-stages">', page)
         self.assertIn('$commandCount = len .', page)
         self.assertIn('{{ $commandCount }} commands', page)
         self.assertNotIn("scpc_command_count", page)
