@@ -1,8 +1,41 @@
-# Discover every model-root folder that explicitly owns ci.yml.
-# Some roots contain more than one catalog variant; the folder remains the CI
-# item so the repository does not gain a second per-variant directory tree.
+# Development-branch pilot: only the Plate model and its exact dependency wheels.
+# Other 15 model roots remain in the source catalog and existing main pipeline.
+# Expand discovery only as each native model is migrated and verified.
 schema: 1
+
+variables:
+  FORGE_RUNTIME_IMAGE: "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4"
+  SOLIDCRAFT_VERSION: "0.45.0"
+
+templates:
+  cad-native-pilot:
+    kind: model
+    needs:
+      - forge-package
+      - cad-verification-package
+    watch:
+      item:
+        - scpf/**
+        - verification/**
+      repo:
+        - dependencies.repos
+        - ci/toolchain.json
+        - scripts/ci/model_verify_pilot.py
+    strategy:
+      reuse: true
+    steps:
+      - id: model_verify
+        inputs:
+          item:
+            - scpf/**
+            - verification/**
+          repo:
+            - dependencies.repos
+            - ci/toolchain.json
+            - scripts/ci/model_verify_pilot.py
+        run: [python, ../../../scripts/ci/model_verify_pilot.py]
+        outputs: [solidcraft.json, model_verify]
+
 items:
-  - models/basic/*
-  - models/components/*
-  - models/advanced/*
+  - ci/*
+  - models/basic/plate
