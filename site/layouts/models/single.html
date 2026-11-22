@@ -80,6 +80,27 @@
       </aside>
     </div>
 
+    {{ with .Resources.Get "page.md" }}
+      <section class="cad-panel cad-background">
+        <p class="cad-panel-label">Background</p>
+        <div class="cad-rich-text">{{ $.RenderString .Content }}</div>
+      </section>
+    {{ end }}
+
+    {{ with .Resources.Get "model.sc" }}
+      {{ $nativeURL := .Permalink }}
+      <section class="cad-panel cad-web-open">
+        <p class="cad-panel-label">SolidCraft model</p>
+        <h2>Open in SolidCraft Web</h2>
+        <p>The editable <code>.sc</code> model can be opened in SolidCraft's official web application at <strong>docs.solidcraft.io</strong>.</p>
+        <p class="cad-muted">This is an external website. The SolidCraft web application is downloaded from SolidCraft's servers; the model file remains hosted on this GitHub Pages site.</p>
+        <div class="cad-links">
+          <a href="https://docs.solidcraft.io/app/?open={{ urlquery $nativeURL }}" target="_blank" rel="noopener noreferrer">Open in SolidCraft Web ↗</a>
+          <a href="{{ .RelPermalink }}" download>Download model .sc</a>
+        </div>
+      </section>
+    {{ end }}
+
     <section class="cad-panel cad-source-panel">
       <p class="cad-panel-label">Source</p>
       <h2>SCPF source</h2>
@@ -94,10 +115,9 @@
     {{ with .Resources.Get "solidcraft.json" }}
       {{ $commandsDoc := .Content | transform.Unmarshal }}
       {{ with index $commandsDoc "commands" }}
-        <section class="cad-panel cad-commands-panel">
-          <p class="cad-panel-label">Generated output</p>
-          <h2>SolidCraft commands</h2>
-          <p class="cad-muted">These are the SolidCraft operations generated from the SCPF source.</p>
+        <details class="cad-panel cad-commands-panel">
+          <summary><strong>Generated output — SolidCraft commands ({{ len . }})</strong></summary>
+          <p class="cad-muted">These are the SolidCraft operations generated from the Forge/SCPF source. Expand this section when you need the complete command sequence.</p>
           <ol class="cad-command-list">
             {{ range . }}
               <li>
@@ -106,7 +126,7 @@
               </li>
             {{ end }}
           </ol>
-        </section>
+        </details>
       {{ end }}
     {{ end }}
 
@@ -118,20 +138,6 @@
         {{ partial "cad/codeblock.html" (dict "lang" "python" "content" .Content "label" (index $m "scpc_source")) }}
         <div class="cad-links">
           {{ with $.Resources.Get "scpc-solidcraft.json" }}<a href="{{ .RelPermalink }}">SCPC command JSON</a>{{ end }}
-        </div>
-      </section>
-    {{ end }}
-
-    {{ with .Resources.Get "model.sc" }}
-      {{ $nativeURL := .Permalink }}
-      <section class="cad-panel cad-web-open">
-        <p class="cad-panel-label">SolidCraft model</p>
-        <h2>Open in SolidCraft Web</h2>
-        <p>The editable <code>.sc</code> model can be opened in SolidCraft's official web application at <strong>docs.solidcraft.io</strong>.</p>
-        <p class="cad-muted">This is an external website. The SolidCraft web application is downloaded from SolidCraft's servers; the model file remains hosted on this GitHub Pages site.</p>
-        <div class="cad-links">
-          <a href="https://docs.solidcraft.io/app/?open={{ urlquery $nativeURL }}" target="_blank" rel="noopener noreferrer">Open in SolidCraft Web ↗</a>
-          <a href="{{ .RelPermalink }}" download>Download model .sc</a>
         </div>
       </section>
     {{ end }}
@@ -157,6 +163,8 @@
       {{ end }}
     </section>
 
+
+
     <section class="cad-panel">
       <h2>Source and downloads</h2>
       <div class="cad-links">
@@ -170,13 +178,6 @@
       </div>
       <p class="cad-muted">Source {{ site.Params.sourceRef }} · build scope {{ site.Params.buildScope }}{{ with site.Params.buildCommit }} · build {{ . }}{{ end }}</p>
     </section>
-
-    {{ with .Resources.Get "page.md" }}
-      <section class="cad-panel cad-background">
-        <p class="cad-panel-label">Background</p>
-        <div class="cad-rich-text">{{ $.RenderString .Content }}</div>
-      </section>
-    {{ end }}
 
     {{ with $views := index $m "extra_views" }}
       {{ $show := true }}
