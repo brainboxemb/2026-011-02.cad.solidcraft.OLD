@@ -79,12 +79,12 @@ Status:
 
 The migration lane is no longer the active workstream.
 
-### WS2 — normalize model-description ownership — active
+### WS2 — normalize model-description ownership
 
 Owner/lane: shared contract in Forge/meta; CAD adoption in `dev-cad` after lane
 reactivation.
 
-- #204 removes the derived SCPC command count from model metadata — **now**.
+- #204 removed the derived SCPC command count from model metadata — **effectively complete but still open** on `dev-cad` pending promotion to `main`.
 - #205 adopts the canonical shared `model.yml` contract and is blocked on
   Forge #703/shared contract completion.
 - #206 removes Forge-owned cross-CAD reference implementations from this product
@@ -110,7 +110,7 @@ Existing product work remains parked until WS1 has synchronized the lane.
 | --- | --- | --- | --- |
 | #206 Remove Forge reference implementations | dev-cad | **next** | Remove local CadQuery/MicroCAD/PythonSCAD/VCAD reference sources after lane sync; retain Forge as reference owner. |
 | #205 Canonical shared model.yml contract | shared + dev-cad | **blocked** | Wait for Forge #703/shared contract, then migrate CAD without a copied schema. |
-| #204 Remove SCPC command counts from model.yml | dev-cad | **now** | Remove the five hand-maintained counts and reject the field in CAD metadata. |
+| #204 Remove SCPC command counts from model.yml | dev-cad | **effectively complete but still open** | Promote the accepted dev-cad implementation to main with the next coherent CAD batch, then close. |
 | #191 Hugo/Blowfish CAD site migration | repository | **effectively complete but still open** | Reconcile final acceptance evidence against stable Pages and close or rewrite remaining follow-up scope. |
 | #189 Per-model model.yml website catalog | repository | **effectively complete but still open** | Keep the completed distributed catalog; track schema correction separately in #205 and then close/rewrite #189. |
 | #172 Full-catalog Forge/SolidCraft qualification | dev-cad | **blocked** | Re-enable and qualify the two remaining models after Forge #679; do not add a local workaround. |
@@ -139,6 +139,8 @@ Existing product work remains parked until WS1 has synchronized the lane.
 - stable Hugo/Blowfish Pages now publish from the accepted `main` scope.
 - `meta.cad.solidcraft` now owns the shared SolidCraft/CAD plan/template
   convention, and this repository handoff links to it.
+- #204 removed hand-maintained SCPC command counts from model metadata and is
+  accepted on `dev-cad` pending the next lane promotion.
 
 ## Next release/checkpoint
 
@@ -146,9 +148,10 @@ The next repository checkpoint is not another CI migration.
 
 It is:
 
-1. complete #204 as the first small post-migration metadata correction;
-2. reassess #206 and the shared #205/Forge #703 contract in order;
-3. choose one existing product CAD work item as the next active model change.
+1. keep #204 accepted on dev-cad until the next coherent lane promotion;
+2. take #206 as the next independent CAD ownership cleanup;
+3. keep #205 blocked on the shared Forge #703/model.yml contract;
+4. only then choose one existing product CAD work item as the next active model change.
 
 Do not start several parked product PRs in parallel before the lane is
 synchronized and their current relevance has been reassessed.
