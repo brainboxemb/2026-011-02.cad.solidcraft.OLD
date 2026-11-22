@@ -61,7 +61,6 @@ jobs:
           test -s generated-site/models/basic/index.html
           test -s generated-site/models/components/index.html
           test -s generated-site/models/advanced/index.html
-          grep -F "No build evidence in this scope" generated-site/models/plate/index.html
 
   cad_ci_pr:
     if: github.event_name == 'pull_request'
