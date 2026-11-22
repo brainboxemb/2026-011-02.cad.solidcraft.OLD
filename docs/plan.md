@@ -40,10 +40,13 @@ from the CAD consumer, and do not build a second CAD-specific scheduler.
 Forge owns acceptance; the appropriate library/tool makes its own released
 implementation and Forge qualifies that version. Only then adopt it here.
 
-## Architecture correction — shared build-batch migration in progress
+## Architecture correction — shared build-batch accepted for nine models
 
-The correction has a dedicated implementation branch
-`ci/174-shared-build-batch`, based on `dev-ci`:
+**PR #184 passed and was squash-merged into `dev-ci` on 2026-11-22.**
+The resulting source SHA is
+`670960db48c80317a37f72bc1ea0a62a09595090`.
+
+The existing Forge batch/copy design was applied as follows:
 - Reuse the accepted Forge `model-verification-batch` / `copy: dependency`
   architecture with one SolidCraft runtime launch for the batch.
 - Discover model roots through generic globs; each of the 16 model
@@ -58,18 +61,25 @@ The correction has a dedicated implementation branch
   is an existing Forge trade-off and its selectivity is tracked by Forge #661.
 - Do not change stable `main`, generated publication or the CAD website.
 
-**Status: implementation underway, not yet qualified or merged.**
-A compact new-chat handoff is available in `docs/handoff.md`.
+**Proof:** 13/13 SCons targets succeeded; 9/9 SolidCraft models passed
+their checks, including the 4 independent Forge/SCPC comparisons.
+The shared batch used exactly one Docker run, total 29.843 seconds
+(including 8.791 seconds image pull), and CAD-CI copied each model's
+build results through the released `copy: dependency` feature.
+
+**Still open:** docs-only/no-model selective run, detailed checks that were
+deferred in the nine-model proof, remaining 7 roots/2 additional variants,
+full catalog acceptance (#172), independent development build/Pages scopes
+and site comparison. The public CAD website and `main` remain unchanged.
+A compact new-chat handoff is available at `docs/handoff.md`.
 
 ## Previous architecture review — obsolete per-model execution
 
-**Status: blocking M1/M2/M3 until replaced and measured.** The nine model
-roots already built successfully on `dev-ci` establish valid input models,
-but **not** the intended efficient architecture. The current run performs a
-separate Docker pull/start for every model, selects all configured model
-roots on each development PR, and manually lists those roots in
-`cad-ci.yml`. This differs materially from Forge's single shared
-model-verification batch and declarative discovery.
+**Historical reason for #184 (resolved for nine active model roots):**
+The preceding prototype started Docker separately for each model, forced
+a complete run on every development PR and had a manually growing list.
+PR #184 replaced those mechanisms with one shared batch, model globs and
+the released `copy:` feature. Do not reintroduce the old behavior.
 
 Before further model onboarding:
 
@@ -118,8 +128,8 @@ comparison remains outstanding.
 
 ### M1 — Released tooling and declarative model graph
 
-Status: **nine model roots experimentally built and checked, architecture
-correction required before further onboarding**.
+Status: **nine model roots pass the shared build-batch, seven remain disabled;
+detailed check parity and website/build publication remain outstanding**.
 PR #178 at `a4329d0791803572184b8ebf163adea737f7a372`
 passed a real Plate build with released tool.cad.ci 0.17.0 /
 lib.py.cad.ci 0.9.3, verification 0.15.0, Forge 0.11.0 and central
@@ -128,8 +138,9 @@ and compares separate Forge/SCPC SolidCraft results. SCPC is prepared
 once as a shared dependency to prevent simultaneous checkout conflicts;
 all other roots remain outside the staged graph until checked. This is not full-catalog acceptance.
 
-- Pin exactly Forge's accepted released
-  `tool.cad.ci 0.17.0` /`lib.py.cad.ci 0.9.3` stack.
+- Reuse Forge's accepted released
+  `tool.cad.ci 0.17.1` / `lib.py.cad.ci 0.10.0` stack (accepted for
+  shared `copy:` output).
 - Add the released CAD verification package as an **external** separately
   pinned dependency; never add it to the central Docker.
 - Align `cad-ci.yml` runtime variables, templates, item discovery,
@@ -140,8 +151,8 @@ all other roots remain outside the staged graph until checked. This is not full-
 
 ### M2 — Native verification and consumer step migration
 
-Status: **nine model roots built using per-model Docker; not the accepted
-Forge-style batch architecture**.
+Status: **nine model roots pass one SolidCraft build batch; remaining
+seven physical model roots still require migration and checks**.
 The Plate model was built successfully by released CAD-CI. The next
 stage converts Plate and Vent Plate to one model-independent producer, builds
 and checks Forge and independent SCPC SolidCraft models and checks that their body
