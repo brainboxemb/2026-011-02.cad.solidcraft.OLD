@@ -76,7 +76,7 @@ class HugoSiteContractTests(unittest.TestCase):
         page = (SITE / "layouts/models/single.html").read_text()
         self.assertIn('"**/*.py"', mounts)
         self.assertIn('$sourcePath := index $model "source"', adapter)
-        self.assertIn('"scpf-source.py"', adapter)
+        self.assertIn("scpf-source.py", adapter)
         self.assertIn('.Resources.Get "scpf-source.py"', page)
         self.assertIn('transform.Highlight .Content "python"', page)
         self.assertIn('.Resources.Get "solidcraft.json"', page)
