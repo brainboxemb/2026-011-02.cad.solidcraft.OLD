@@ -34,16 +34,15 @@ Accepted repository state:
   (`b62f9d0b169aa201a3c66c3166f364396b2d71bc`) for CAD execution and
   `tool.cad.ci 0.20.1`
   (`eb64a46b243db00e8dbb4b78b6643a2a7efa3fb9`) for merge policy.
-- `dev-ci` is durably accepted at
-  `73d3268b2f3fd647d8c73f52559718f8378440fc`; both `build/dev-ci` and
-  Pages `/dev-ci/` source-match that commit. It consumes released
-  `tool.cad.ci 0.21.0`
-  (`b1474f6be66dc0236f2a5c2555af07a100447255`) for both CAD execution and
-  merge policy.
-- `main` and `dev-ci` are intentionally diverged: stable has a small amount
-  of source history not yet synchronized into the lane, while `dev-ci` owns
-  the accepted 0.21.0/tooling and post-Hextra site work. Preserve both sides
-  with a real permanent-ref merge.
+- `main` and `dev-ci` currently point to the same accepted source commit
+  `86243a7af1c36532631abcd0e37c2d8588d6a5f6`.
+- Durable `build/dev-ci` and Pages `/dev-ci/` both source-match
+  `86243a7af1c36532631abcd0e37c2d8588d6a5f6`; Pages records build commit
+  `1832c3c79d30873c38327fa3f1171d55554693bc`.
+- The synchronized `dev-ci` lane consumes released `tool.cad.ci 0.21.0`
+  (`b1474f6be66dc0236f2a5c2555af07a100447255`) for CAD execution and merge
+  policy. The later tool.cad.ci lifecycle migration is tracked separately in
+  #288 and is not part of the current site presentation work.
 - `dev-cad` is also diverged from `main`, retains unique product-CAD
   history, and still publishes the older Blowfish site. It must not be rebased
   or recreated; synchronize current stable history into it only after the
@@ -78,48 +77,43 @@ The shared plan structure is defined by
 
 ## Active workstreams
 
-### WS1 — synchronize and promote the accepted dev-ci lane
+### WS1 — accept the calm model-detail presentation
 
-Owner/lane: repository governance + `dev-ci`.
+Owner/lane: `dev-ci`.
 
-Status: **now**.
+Status: **now — #278**.
 
-Current evidence:
+The presentation question was resolved first in
+`brainboxemb/exp.2026-015.hugo-cad-site` and recorded here in change 0027.
 
-- stable `main`, `build/main` and public Pages are healthy and
-  source-matched;
-- `dev-ci`, `build/dev-ci` and Pages `/dev-ci/` are healthy and
-  source-matched to the accepted lane head;
-- `dev-ci` contains released `tool.cad.ci 0.21.0` plus the completed
-  post-Hextra catalog/model-page/landing-page refinements;
-- the two permanent refs are diverged, so promotion must not skip an exact
-  stable-to-lane synchronization.
+Current production evidence before the #278 change:
+
+- `main == dev-ci == 86243a7af1c36532631abcd0e37c2d8588d6a5f6`;
+- durable `build/dev-ci` and Pages `/dev-ci/` source-match that commit;
+- no other short-lived PR currently targets `dev-ci`;
+- `backup/gh-pages-before-278-2026-11-22` preserves the pre-change Pages
+  output.
 
 Required order:
 
-1. Open exact `main -> dev-ci`.
-2. Require the PR checks to be green and merge only through `/merge` as a
-   normal history-preserving permanent-ref synchronization.
-3. Verify durable `build/dev-ci` and Pages `/dev-ci/` source-match the new
-   lane head.
-4. Open exact `dev-ci -> main`.
-5. Require full promotion validation and merge only through `/merge` as a
-   normal merge commit.
-6. Verify stable `build/main` and public Pages source-match the promoted
-   `main`.
-7. Reconcile this plan from the resulting live state before starting the
-   `dev-cad` synchronization.
+1. implement #278 on a short-lived branch from current `dev-ci`;
+2. keep Plate and Simple MFT on one generic Hugo model-detail template;
+3. require repository/site tests and normal CAD-CI PR validation to pass;
+4. merge through the repository `/merge` policy into `dev-ci`;
+5. require the durable `dev-ci` run to build the complete accepted site;
+6. inspect the retained Plate/Simple-MFT Chrome screenshots;
+7. verify `build/dev-ci` and Pages `/dev-ci/` source-match the merged lane
+   commit before closing #278.
 
-Do not start another site migration or unrelated CI redesign during this
-sequence.
+Do not mix #288's CAD-CI lifecycle migration into this presentation PR.
 
 ### WS2 — synchronize dev-cad and reassess parked product work
 
 Owner/lane: repository governance + `dev-cad`.
 
-Status: **next after WS1**.
+Status: **next after #278 is durably accepted**.
 
-After stable `main` contains the accepted `dev-ci` work:
+After the accepted #278 site work is reconciled:
 
 1. open exact `main -> dev-cad`;
 2. merge only through `/merge` as a history-preserving permanent-ref merge;
@@ -149,6 +143,8 @@ schema, planner or reference framework.
 
 | Issue | Lane/owner | Status | Next action |
 | --- | --- | --- | --- |
+| #278 Calm generic model-detail presentation | dev-ci | **now** | Port the EXP-proven layout + browser screenshot gate as one coherent change; accept only after durable dev-ci Pages/screenshots. |
+| #288 tool.cad.ci v0.25.0 workflow/config migration | dev-ci / CI | **later / separate** | Do not mix with #278; reassess after the current site presentation checkpoint. |
 | #250 Shared changelog template/history | documentation | **later** | Reassess after permanent lanes are coherent; do not interrupt WS1/WS2. |
 | #206 Remove Forge reference implementations | dev-cad | **next after WS2** | Remove local cross-CAD reference sources/assumptions without changing product geometry. |
 | #205 Canonical shared model.yml contract | shared + dev-cad | **blocked** | Wait for an actually reusable/adoptable shared contract; do not copy Forge's site-local validator. |
@@ -180,8 +176,8 @@ Parked open product PRs:
 - #274 / PR #280 replaced repeated homepage category blocks with six
   Git-derived recently updated model cards; durable `dev-ci` Pages are
   source-matched to `73d3268b2f3fd647d8c73f52559718f8378440fc`.
-- #257/#278 normalized model-detail typography and established one documented
-  semantic panel/accent contract.
+- #257 established the model-detail typography baseline; #278 is reopened to
+  consolidate the final calm generic layout and rendered-browser proof.
 - #273 simplified the all-model catalog so category context is not repeated in
   multiple visual layers.
 - #263/#267/#269 completed the remaining construction-stage typography,
@@ -195,7 +191,7 @@ in this plan.
 
 ## Next checkpoint
 
-Complete exact `main -> dev-ci` synchronization, verify its durable scope,
-then promote exact `dev-ci -> main` and verify stable build/Pages provenance.
-After that, reconcile the plan and synchronize exact `main -> dev-cad` before
-reassessing PRs #141, #156 and #169.
+Complete #278 on `dev-ci`, inspect the retained Plate/Simple-MFT screenshots,
+and verify durable `build/dev-ci` + Pages provenance against the merged lane
+commit. Then reconcile this plan before starting #288 or the next
+`main -> dev-cad` synchronization/product-CAD batch.
