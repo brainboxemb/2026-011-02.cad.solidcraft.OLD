@@ -114,6 +114,38 @@
   border-bottom:1px solid var(--cad-line);
 }
 .cad-command-list>li:last-child{border-bottom:0}
+.cad-collapsible{padding:0;overflow:hidden}
+.cad-collapsible>summary{
+  cursor:pointer;
+  list-style:none;
+  padding:22px;
+}
+.cad-collapsible>summary::-webkit-details-marker{display:none}
+.cad-collapsible>summary:after{
+  content:"Expand";
+  float:right;
+  margin-top:-2.4rem;
+  padding:.22rem .55rem;
+  border-radius:999px;
+  background:var(--cad-soft);
+  color:var(--cad-accent-strong);
+  font-size:.72rem;
+  font-weight:750;
+}
+.cad-collapsible[open]>summary:after{content:"Collapse"}
+.cad-collapsible-title{
+  display:block;
+  margin:.2rem 0 .15rem;
+  font-size:1.6rem;
+  line-height:1.3;
+  font-weight:600;
+}
+.cad-collapsible-body{
+  padding:0 22px 22px;
+  border-top:1px solid var(--cad-line);
+}
+.dark .cad-collapsible-body{border-color:#29384d}
+
 .cad-command-list>li:before{
   counter-increment:cad-command;
   content:counter(cad-command);
@@ -195,7 +227,7 @@
 }
 .cad-model-overview{
   display:grid;
-  grid-template-columns:minmax(0,1.35fr) minmax(300px,.95fr);
+  grid-template-columns:repeat(2,minmax(0,1fr));
   gap:1rem;
   align-items:stretch;
   margin:0 0 1rem;
@@ -203,6 +235,8 @@
 .cad-preview-panel,
 .cad-files-panel{
   margin:0;
+  min-width:0;
+  height:100%;
 }
 .cad-preview-panel h2,
 .cad-files-panel h2{
@@ -211,10 +245,10 @@
   line-height:1.3;
 }
 .cad-preview-panel .cad-preview{
-  min-height:390px;
+  min-height:330px;
 }
 .cad-preview-panel .cad-preview-link{
-  min-height:390px;
+  min-height:330px;
 }
 .cad-preview-note{
   margin:.65rem 0 0;
