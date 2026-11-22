@@ -78,11 +78,49 @@ Permanent source branches: `main`, `dev-cad`, `dev-ci`.
 - Publication consumes a **complete** accepted build scope and produces one
   validated site; it does not regenerate or mutate CAD geometry.
 
+## Public CAD website continuity
+
+The **CI implementation may change, but the visible CAD website must remain
+recognizably the same**. Forge's workflow/tooling architecture is the reference;
+Forge's website layout is **not** a replacement template for this site's UI.
+
+Preserve these user-visible contracts in the stable Pages root:
+
+- Current home-page presentation, visual style and curated model overview.
+- The existing Basic Models, Components and Advanced Models navigation and
+  category pages.
+- The current model page hierarchy: model title and explanation, model
+  preview/screenshots, construction stages, actual Forge/SCPC source (where
+  applicable), native command sequence, downloads/links and verification
+  information.
+- Existing model slugs and public routes, including
+  `/models/<slug>/` and `/models/basic/`, `/models/components/`,
+  `/models/advanced/`; avoid broken external or internal links.
+- Model-specific diagrams, supplementary screenshots, warnings and the
+  distinction between newly checked models and older retained output.
+- The present `site/results.css` visual identity and responsive layout in
+  broad terms. Pixel-perfect equality is not required, but major navigation,
+  information, or layout changes are **not** part of this CI migration.
+
+The existing CAD site generator remains consumer-owned and is adapted only
+where the new build evidence format requires it; it must not be replaced by
+Forge's site generator as a side effect of CI modernization.
+
+Before publishing the new stable site, compare generated old and new versions
+of the homepage, all three category indexes, representative simple and
+advanced model pages, and a model containing both Forge and SCPC sources.
+Check visual structure, source availability, links, native result/downloads
+and meaningful verification labels. A regression in these public behaviours
+blocks publication even when all model builds pass.
+
+Any deliberate website redesign is a separate, explicitly scoped change with
+its own review and acceptance criteria.
+
 ## Adoption gates
 
 Before removing the current working workflow, prove: all 16 current model-root
 CI items and their 18 catalog variants are represented; selective
 single-model execution; full-model execution on promotion/version upgrade;
 matching output/verification provenance; independent stable/dev scopes;
-and site-generation acceptance. Do not change model geometry to disguise a
+and website appearance/content/link parity acceptance. Do not change model geometry to disguise a
 missing generic CI feature.

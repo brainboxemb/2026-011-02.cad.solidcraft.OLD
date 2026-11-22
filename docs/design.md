@@ -116,6 +116,36 @@ An explicit full run must actually execute all model steps whose native
 evidence is missing or invalid for that toolchain. A full *selection* alone
 cannot be used to claim execution if SCons reused valid results.
 
+## Website preservation boundary
+
+Unlike the generic CI, the CAD website is **not** being migrated to Forge's
+site design. Keep the existing `scripts/ci/build-results.py`,
+`site/results.css` and model catalog as the baseline presentation, adapting
+only their input-reading boundary to the prepared complete build scope.
+
+In particular, existing model pages at `/models/<slug>/` must continue
+to show their own title, explanation, construction stages, source and
+commands, visual preview, verification status and relevant downloads. Keep
+home and category pages, their navigation, and the established Basic /
+Components / Advanced grouping.
+
+During the transition, generate an old-site baseline and a new-site candidate
+from equivalent accepted CAD output, then compare:
+
+1. Homepage and the three category index pages, including CSS/layout and
+   navigation on desktop and narrow screens.
+2. A basic model, a complex HUB75 assembly and a model with an independent
+   SCPC source, including preview images, commands, source links and
+   downloads.
+3. All existing `/models/<slug>/` routes and internal links, with the
+   current model catalog as the route authority.
+4. Correct source/version/status information; retained old screenshots must
+   not be presented as newly verified output.
+
+Keep changes to the page's composition minimal. If the new evidence format
+cannot be rendered without a visible layout change, treat that as an explicit
+migration blocker instead of silently redesigning the site.
+
 ## Retirement boundary
 
 Currently the CAD repository still has local orchestration in
@@ -124,5 +154,5 @@ Currently the CAD repository still has local orchestration in
 generator can remain, but generic planner/runtime/publisher behavior must
 be retired only after the released replacements are proven.
 
-No rewrite of the CAD website's content or geometry is required merely to
+No rewrite of the CAD website's layout or content is authorized merely to
 match Forge's CI design.

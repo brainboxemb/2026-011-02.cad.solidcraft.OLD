@@ -21,6 +21,14 @@ Migrate the **infrastructure** to Forge's released architecture; do not
 reimplement it. Keep the product model catalog, SCPF/SCPC sources, model
 expectations, result-page content and renders in this CAD repository.
 
+**Explicit website constraint:** Preserve the current CAD Pages appearance,
+home/category/model navigation, model screenshots and source presentation,
+public model routes, downloads and truthful result labels in broad terms.
+Forge's CI design is being adopted, not Forge's website layout. The existing
+site generator and CSS remain the presentation baseline; comparison of
+representative old/new pages is a cutover requirement. A redesign requires a
+separate change.
+
 Full target: `main`/`dev-cad`/`dev-ci` source lanes with corresponding
 complete build scopes and Pages root/subtrees, exact released tools, SCons
 selection and native verification package ownership.
