@@ -59,9 +59,9 @@ class HugoSiteContractTests(unittest.TestCase):
 
     def test_homepage_links_scpf_and_scpc_libraries(self):
         home = (SITE / "layouts/home.html").read_text()
-        self.assertIn("https://github.com/brainboxemb/lib.py.solidcraft.forge", home)
+        self.assertIn("https://brainboxemb.github.io/lib.py.solidcraft.forge/", home)
         self.assertIn(">Forge / SCPF<", home)
-        self.assertIn("https://github.com/brainboxemb/lib.py.solidcraft.cmd", home)
+        self.assertIn("https://brainboxemb.github.io/lib.py.solidcraft.cmd/", home)
         self.assertIn(">SCPC Commands<", home)
         self.assertNotIn("brainboxemb/tool.cad.ci", home)
 
