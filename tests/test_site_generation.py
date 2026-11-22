@@ -111,6 +111,27 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn('rel="noopener noreferrer"', page)
         self.assertIn("Download model .sc", page)
 
+    def test_model_page_prioritizes_context_and_open_action_before_technical_internals(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        background = page.index('.Resources.Get "page.md"')
+        open_model = page.index(">Open in SolidCraft Web<")
+        scpf = page.index(">SCPF source<")
+        generated = page.index("Generated output — SolidCraft commands")
+        scpc = page.index(">SCPC command source<")
+        verification = page.index(">Build and verification<")
+        self.assertLess(background, open_model)
+        self.assertLess(open_model, scpf)
+        self.assertLess(scpf, generated)
+        self.assertLess(generated, scpc)
+        self.assertLess(scpc, verification)
+
+    def test_generated_solidcraft_commands_are_collapsed_by_default(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn('<details class="cad-panel cad-commands-panel">', page)
+        self.assertIn("<summary><strong>Generated output — SolidCraft commands ({{ len . }})</strong></summary>", page)
+        self.assertNotIn('<details class="cad-panel cad-commands-panel" open>', page)
+        self.assertIn("generated from the Forge/SCPF source", page)
+
     def test_verification_section_uses_only_build_provenance(self):
         page = (SITE / "layouts/models/single.html").read_text()
         self.assertIn("Build and verification", page)
