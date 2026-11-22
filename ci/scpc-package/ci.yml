@@ -1,0 +1,19 @@
+# One reusable SCPC source wheel, shared across all models in this run.
+id: scpc-package
+kind: tool
+watch:
+  - dependencies.repos
+  - scripts/ci/scpc_dependency.py
+  - scripts/ci/bootstrap_cad_ci.py
+strategy:
+  reuse: true
+steps:
+  - id: wheel
+    inputs:
+      - dependencies.repos
+      - scripts/ci/scpc_dependency.py
+      - scripts/ci/bootstrap_cad_ci.py
+    run: [python, ../../scripts/ci/scpc_dependency.py]
+    outputs:
+      - dist
+      - provenance.json
