@@ -190,6 +190,9 @@ missing generic CI feature.
   Simple MFT) declare those variants **inside one local `model.yml`**.
 - `scripts/ci/model_catalog.py` validates/discovers the local YAML; it
   must not maintain a competing handwritten list of models.
+- Homepage "last updated" ordering is derived from Git history at site-build
+  time. Do not add a manually maintained update timestamp to `model.yml` or
+  duplicate model-description data in the derived history manifest.
 - `ci.yml` declares build execution only, while an optional
   `verification/verify.py` declares physical/semantic checks. The static site renderer consumes model-owned
   metadata, build results, source code and verification evidence.
