@@ -69,6 +69,26 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn(".cad-model-grid,.cad-reference-grid{grid-template-columns:1fr}", css)
 
 
+    def test_model_detail_uses_one_shared_section_typography_system(self):
+        css = (SITE / "assets/css/custom.css").read_text()
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn("--cad-section-title-size:1.6rem;", css)
+        self.assertIn("--cad-section-subtitle-size:1rem;", css)
+        self.assertIn("--cad-section-help-size:.86rem;", css)
+        self.assertIn(".cad-section-title{", css)
+        self.assertIn(".cad-section-subtitle{", css)
+        self.assertIn(".cad-section-help{", css)
+        self.assertNotIn(".cad-panel h2{", css)
+        self.assertNotIn(".cad-files-panel h2{", css)
+        self.assertNotIn(".cad-files-panel h3{", css)
+        self.assertNotIn(".cad-code-section>h2{", css)
+        self.assertNotIn(".cad-panel-label{", css)
+        self.assertGreaterEqual(page.count('class="cad-section-title"'), 8)
+        self.assertIn('class="cad-section-title cad-collapsible-title"', page)
+        self.assertIn('class="cad-section-subtitle">Construction stages', page)
+        self.assertGreaterEqual(page.count("cad-section-help"), 6)
+        self.assertGreaterEqual(page.count("cad-section-label"), 4)
+
     def test_model_detail_panel_styles_have_semantic_accent_edges(self):
         css = (SITE / "assets/css/custom.css").read_text()
         page = (SITE / "layouts/models/single.html").read_text()
