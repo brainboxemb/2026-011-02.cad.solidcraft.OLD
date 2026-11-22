@@ -13,6 +13,5 @@ stages:
   - "Holes — six Ø9 holes on a 70 mm PCD"
 source: "scpf/model.py"
 scpc_source: "scpc/model.py"
-scpc_command_count: 9
 build: true
 snapshot_required: true

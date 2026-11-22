@@ -14,6 +14,8 @@ import sys
 import unittest
 import zlib
 
+import yaml
+
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts" / "ci"))
@@ -22,6 +24,7 @@ from model_catalog import (  # noqa: E402
     COMMAND_SOURCES,
     MODELS,
     SECTIONS,
+    _model_entry,
     load_models,
     model_metadata_paths,
     verification_input_paths,
@@ -56,7 +59,7 @@ class ModelMetadataTests(unittest.TestCase):
         previous_fields = {
             "source", "section", "title", "tagline", "description",
             "parameters", "diagram", "stages", "scpc_source",
-            "scpc_command_count", "native", "native_snapshot_required",
+            "native", "native_snapshot_required",
             "component_source", "component_definition_primary",
             "extra_inputs", "dependencies", "warning", "featured",
         }
@@ -67,10 +70,29 @@ class ModelMetadataTests(unittest.TestCase):
         payload = json.dumps(
             rows, ensure_ascii=False, separators=(",", ":"), sort_keys=True,
         ).encode("utf-8")
+        actual_crc = zlib.crc32(payload)
         self.assertEqual(
-            zlib.crc32(payload), 0xACEE1BBE,
-            "Migration changed the established public model content/order",
+            actual_crc, 0xACEE1BBE,
+            "Migration changed the established public model content/order; "
+            f"actual CRC is {actual_crc:#010x}",
         )
+
+    def test_scpc_command_count_is_not_model_metadata(self):
+        path = ROOT / "models/basic/plate/model.yml"
+        document = yaml.safe_load(path.read_text(encoding="utf-8"))
+        info = {key: value for key, value in document.items() if key != "section"}
+        info["scpc_command_count"] = 9
+
+        with self.assertRaisesRegex(
+            ValueError, r"unknown metadata keys .*scpc_command_count"
+        ):
+            _model_entry(
+                "plate",
+                info,
+                "basic",
+                Path("models/basic/plate"),
+                path,
+            )
 
     def test_model_metadata_does_not_change_geometry_fingerprints(self):
         for slug in MODELS:
