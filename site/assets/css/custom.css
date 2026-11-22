@@ -122,6 +122,39 @@
   line-height:1.45;
 }
 
+.cad-collapsible{margin:2rem 0}
+.cad-collapsible>summary{
+  position:relative;
+  cursor:pointer;
+  list-style:none;
+  padding:0 5rem .75rem 0;
+  border-bottom:1px solid var(--cad-line);
+}
+.cad-collapsible>summary::-webkit-details-marker{display:none}
+.cad-collapsible>summary:after{
+  content:"Expand";
+  position:absolute;
+  top:.55rem;
+  right:0;
+  padding:.22rem .55rem;
+  border-radius:999px;
+  background:var(--cad-soft);
+  color:var(--cad-accent-strong);
+  font-size:.72rem;
+  font-weight:750;
+}
+.cad-collapsible[open]>summary:after{content:"Collapse"}
+.cad-collapsible-title{
+  display:block;
+  margin:.2rem 0 .15rem;
+  font-size:1.6rem;
+  line-height:1.3;
+  font-weight:600;
+}
+.cad-collapsible-body{padding-top:.5rem}
+.cad-collapsible-body>.cad-code-frame{margin-top:.75rem}
+.dark .cad-collapsible>summary{border-color:#29384d}
+
 .cad-background{border-left:3px solid var(--cad-accent)}
 .cad-rich-text{max-width:78ch}
 .cad-rich-text>h2:first-child{margin-top:.15rem}
