@@ -103,7 +103,7 @@ class HugoSiteContractTests(unittest.TestCase):
         page = (SITE / "layouts/models/single.html").read_text()
         self.assertIn('.Resources.Get "model.sc"', page)
         self.assertIn("https://docs.solidcraft.io/app/?open=", page)
-        self.assertIn("urls.QueryEscape", page)
+        self.assertIn("urlquery $nativeURL", page)
         self.assertIn('target="_blank"', page)
         self.assertIn('rel="noopener noreferrer"', page)
         self.assertIn("Download native .sc", page)
