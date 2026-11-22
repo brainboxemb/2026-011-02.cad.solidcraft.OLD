@@ -9,7 +9,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "merge-policy.yml"
 LOCAL_POLICY = ROOT / "scripts" / "merge_policy.py"
-ACCEPTED_TOOL_SHA = "eb64a46b243db00e8dbb4b78b6643a2a7efa3fb9"
+ACCEPTED_TOOL_SHA = "b1474f6be66dc0236f2a5c2555af07a100447255"
 
 
 class MergePolicyTests(unittest.TestCase):

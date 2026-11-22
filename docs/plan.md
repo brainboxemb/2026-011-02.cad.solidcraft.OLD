@@ -60,8 +60,10 @@ The shared plan structure is defined by
 - Exact `dev-cad|dev-ci -> main` promotion uses a normal merge commit.
 - Permanent-ref synchronization and promotion are executed only through the
   repository `/merge` policy, which is a thin caller of released
-  `tool.cad.ci 0.20.1` at
-  `eb64a46b243db00e8dbb4b78b6643a2a7efa3fb9`.
+  `tool.cad.ci 0.21.0` at
+  `b1474f6be66dc0236f2a5c2555af07a100447255`.
+- Generic CAD-CI baseline: `lib.py.cad.ci 0.11.1` at
+  `fa6bf244381dde609a0b04de673d774911c52fea`; released-stack acceptance run `45045346481` is green.
 - Generic CI/verification/runtime changes are implemented and released in their
   owner repositories before adoption here.
 
