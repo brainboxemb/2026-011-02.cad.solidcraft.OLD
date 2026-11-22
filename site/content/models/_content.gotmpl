@@ -10,6 +10,9 @@ logical path. Passing the existing Resource object keeps its global publication
 identity and does not produce /models/<slug>/<resource>.
 */}}
 {{ $catalog := hugo.Data.cad.models }}
+{{ $history := hugo.Data.cad.model_history }}
+{{ if not $history }}{{ errorf "missing generated data/cad/model_history.json; run scripts/ci/model_history.py before Hugo" }}{{ end }}
+{{ $historyRoots := index $history "roots" }}
 {{ $categoryTitles := dict
   "basic" "Basic Models"
   "components" "Components"
@@ -47,8 +50,14 @@ identity and does not produce /models/<slug>/<resource>.
           {{ $provenance = . | transform.Unmarshal }}
         {{ end }}
 
+        {{ $historyKey := printf "%s/%s" $section $rootName }}
+        {{ $lastmodRaw := index $historyRoots $historyKey }}
+        {{ if not $lastmodRaw }}{{ errorf "missing model history for %s" $historyKey }}{{ end }}
+        {{ $lastmod := time.AsTime $lastmodRaw }}
+
         {{ $.AddPage (dict
           "content" (dict "mediaType" "text/markdown" "value" (index $model "description"))
+          "dates" (dict "lastmod" $lastmod)
           "kind" "page"
           "path" $slug
           "title" (index $model "title")
