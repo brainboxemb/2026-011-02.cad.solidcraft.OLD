@@ -55,6 +55,15 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertNotIn("Model descriptions come from local", home)
         self.assertNotIn("accepted CAD-CI results", home)
 
+
+    def test_cad_typography_is_centralized_and_compact(self):
+        css = (SITE / "assets/css/custom.css").read_text()
+        self.assertIn("#main-content{", css)
+        self.assertIn("font-size:1rem", css)
+        self.assertIn(".cad-model-card{gap:.32rem", css)
+        self.assertIn(".cad-panel{padding:1rem 1.1rem", css)
+        self.assertIn(".cad-hero{margin:1.5rem 0 1.8rem", css)
+
     def test_model_page_keeps_expected_public_content(self):
         page = (SITE / "layouts/models/single.html").read_text()
         for value in ("Construction stages","Python source","model.yml","Forge commands","SolidCraft model","STEP","Build provenance","No build evidence in this scope","extra_views"):
