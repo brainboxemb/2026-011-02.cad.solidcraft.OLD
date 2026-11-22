@@ -82,6 +82,8 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn("padding:4px 11px", css)
         self.assertIn(".hextra-max-navbar-width", css)
         self.assertIn("font-size:1.19rem!important", css)
+        self.assertIn(".cad-hero h1{max-width:760px;margin:4px 0 15px;color:#fff;font-size:clamp(2rem,4.5vw,3rem);line-height:1.14;font-weight:600;letter-spacing:0}", css)
+        self.assertIn("font-weight:600;\n  letter-spacing:0;", css)
 
     def test_optional_page_markdown_is_generic_model_content(self):
         mounts = (SITE / "config/_default/module.toml").read_text()
