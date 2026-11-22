@@ -175,6 +175,7 @@ class HugoSiteContractTests(unittest.TestCase):
 
     def test_model_overview_uses_balanced_columns_and_compact_preview(self):
         css = (SITE / "assets/css/custom.css").read_text()
+        page = (SITE / "layouts/models/single.html").read_text()
         self.assertIn("grid-template-columns:repeat(2,minmax(0,1fr))", css)
         self.assertIn(".cad-preview-panel .cad-preview{\n  min-height:330px;", css)
         self.assertIn(".cad-preview-panel .cad-preview-link{\n  min-height:330px;", css)
