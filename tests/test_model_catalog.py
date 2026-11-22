@@ -157,10 +157,7 @@ class ModelCatalogTests(unittest.TestCase):
             with self.subTest(slug=slug):
                 if "scpc_source" in model:
                     self.assertTrue((ROOT / model["scpc_source"]).is_file())
-                    self.assertIsInstance(model.get("scpc_command_count"), int)
-                    self.assertGreater(model["scpc_command_count"], 0)
-                else:
-                    self.assertNotIn("scpc_command_count", model)
+                self.assertNotIn("scpc_command_count", model)
 
 
 if __name__ == "__main__":
