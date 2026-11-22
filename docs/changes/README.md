@@ -54,3 +54,5 @@ Current records:
 - [0026-hextra-site.md](0026-hextra-site.md) — record Hugo 0.169.0 + Hextra v0.13.0 as the accepted CAD site architecture after #191 stable promotion (#251).
 
 - [0027-calm-model-detail.md](0027-calm-model-detail.md) — adopt the EXP-proven calm generic model-detail layout and rendered-browser regression proof (#278).
+
+- [0028-interactive-solidcraft-embed.md](0028-interactive-solidcraft-embed.md) — add an opt-in official SolidCraft web embed to published model pages (#21).
