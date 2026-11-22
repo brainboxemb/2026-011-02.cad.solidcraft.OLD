@@ -57,6 +57,21 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertNotIn("Model descriptions come from local", home)
         self.assertNotIn("accepted CAD-CI results", home)
 
+    def test_homepage_links_scpf_and_scpc_libraries(self):
+        home = (SITE / "layouts/home.html").read_text()
+        self.assertIn("https://github.com/brainboxemb/lib.py.solidcraft.forge", home)
+        self.assertIn(">Forge / SCPF<", home)
+        self.assertIn("https://github.com/brainboxemb/lib.py.solidcraft.cmd", home)
+        self.assertIn(">SCPC Commands<", home)
+        self.assertNotIn("brainboxemb/tool.cad.ci", home)
+
+    def test_homepage_featured_grid_uses_three_two_one_columns(self):
+        css = (SITE / "assets/css/custom.css").read_text()
+        self.assertIn(".cad-home .cad-model-grid{grid-template-columns:repeat(3,minmax(0,1fr))}", css)
+        self.assertIn("@media(max-width:1000px) and (min-width:761px)", css)
+        self.assertIn(".cad-home .cad-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}", css)
+        self.assertIn(".cad-model-grid,.cad-reference-grid{grid-template-columns:1fr}", css)
+
 
     def test_cad_typography_matches_the_accepted_visual_baseline(self):
         css = (SITE / "assets/css/custom.css").read_text()
@@ -67,6 +82,8 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn("padding:4px 11px", css)
         self.assertIn(".hextra-max-navbar-width", css)
         self.assertIn("font-size:1.19rem!important", css)
+        self.assertIn(".cad-hero h1{max-width:760px;margin:4px 0 15px;color:#fff;font-size:clamp(2rem,4.5vw,3rem);line-height:1.14;font-weight:600;letter-spacing:0}", css)
+        self.assertIn("font-weight:600;\n  letter-spacing:0;", css)
 
     def test_optional_page_markdown_is_generic_model_content(self):
         mounts = (SITE / "config/_default/module.toml").read_text()
