@@ -44,3 +44,5 @@ Current records:
 - [0020-component-model-builds.md](0020-component-model-builds.md) — shared SolidCraft build for GuideRail variants and FlexBenchDog (#174).
 
 - [0021-model-metadata.md](0021-model-metadata.md) — local model.yml drives CAD website metadata and views (#189).
+
+- [0022-use-hugo.md](0022-use-hugo.md) — standard Hugo static-site generation; retire bespoke HTML rendering only after parity (#191).

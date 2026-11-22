@@ -1,3 +1,15 @@
+> **Websitegenerator — CAD #191:** voeg géén eigen Python/HTML-site-engine,
+> `string.Template`-framework of tweede publicatieprogramma toe. De
+> CAD-website migreert op de ontwikkeltak naar de bestaande Hugo-tool
+> (ook gebruikt voor `brainboxemb/notes`), met Hugo-layouts/partials.
+> De lokale `model.yml`-bestanden blijven eigenaar van modelinhoud;
+> CAD-CI levert uitsluitend geaccepteerde bouwresultaten en de vrijgegeven
+> CAD-CI-publicatietool publiceert Pages. De huidige CAD-layout, URLs,
+> modelafbeeldingen en downloads blijven de acceptatiebaseline.
+> `scripts/ci/build-results.py` is uitsluitend een tijdelijke oude
+> baseline en geen architectuurvoorbeeld. Niet verwijderen voordat een
+> volledige Hugo-outputvergelijking is geslaagd.
+>
 
 > **Website- en modelgegevens (CAD #189):** volg Forge's
 > `examples/*/model.yml`: in CAD staat de bron voor elke titel,

@@ -177,9 +177,36 @@ missing generic CI feature.
 - A presentation-only metadata change must not change SolidCraft geometry
   fingerprints or trigger a SolidCraft rebuild. Metadata must still select
   site refresh when publishing from the accepted build output.
-- Common page/layout rendering remains shared. Model-specific supplementary
-  views are described in `model.yml` and rendered generically, not in
-  slug-specific branches inside the HTML generator.
+- Common page/layout rendering belongs in **Hugo templates and partials**.
+  Model-specific supplementary views are described in `model.yml`, never
+  in slug-specific conditions in a Python HTML generator.
 - Do not change the existing website design, routes, warnings, published
   assets, or source/download behavior without a separate explicit decision.
+
+
+## Static website generator — existing tool, not a custom engine
+
+- Use the existing and established **Hugo** static-site tool (already used
+  by `brainboxemb/notes`). Do not build or expand a custom Python HTML
+  generator or create a Python `string.Template` layer as its replacement.
+- Keep local `model.yml` as the only model-description source and Hugo
+  templates/partials as the only HTML presentation source. Physical checks
+  and build evidence remain separate.
+- Create all 18 established `/models/<slug>/` routes from model-owned data
+  using Hugo's standard content adapter/data mounts where feasible. Avoid a
+  separate handwritten route/catalog table.
+- Use a small evidence/asset preparation adapter **only if needed** to expose
+  complete accepted CAD-CI results to Hugo. It may not render HTML, invoke
+  CAD or duplicate CI planning or Pages publication.
+- The released CAD-CI tool publishes the completed Hugo output into the
+  correct existing main/development Pages scope; Hugo must never publish
+  git branches itself.
+- Preserve the existing CAD website's structure, CSS, navigation, home,
+  sections, model pages, diagrams, warnings, status labels, download names,
+  source references, provenance and external SolidCraft links.
+- Metadata-only changes update the website without SolidCraft model builds
+  or new container images; pin a known-good Hugo version independently.
+- Do not cut over `main` before comparing all routes, representative page
+  HTML, visible layout and download/evidence parity. Remove the old HTML
+  renderer only after the Hugo candidate is accepted.
 

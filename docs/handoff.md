@@ -31,3 +31,16 @@ catalogus een validator/lezer en haalt model-specifieke weergavelogica uit
 de HTML-generator. De website en de openbare main/Pages blijven visueel
 gelijk tot de afzonderlijke publicatieacceptatie. Controleer bij hervatten
 de actuele PR-status en tests; claim nog geen openbare cut-over.
+
+## Statische website — correctie (#191)
+
+Na de geslaagde metadata-PR #190 bestaan 16 lokale `model.yml`-bestanden
+voor 18 modelvarianten. De website gebruikt echter nog de tijdelijke oude
+Python-generator (`scripts/ci/build-results.py`, circa 41 KB). De keuze om
+daar een eigen `string.Template`-engine bovenop te bouwen is verworpen.
+Vervolg de **Hugo**-migratie in CAD-issue #191. Hugo wordt ook gebruikt
+voor de bestaande Notes-site, maar **de CAD-website behoudt de eigen
+vormgeving, categorieën en bestaande routes**. Scheid model.yml, geaccepteerde
+bouwresultaten, Hugo-layouts en de vrijgegeven CAD-CI Pages-publicatie.
+Geen nieuwe HTML-generator bouwen of publieke Pages wijzigen vóór volledige
+vergelijking met de oude site.

@@ -254,3 +254,55 @@ The site stays static HTML/CSS. PyYAML is a **build-time dependency**,
 not a browser dependency or a new general-purpose CI subsystem. Accepted
 Pages baselines must be compared before any public cut-over.
 
+
+## Website rendering decision — Hugo, not a CAD-specific static engine
+
+**Architecture correction #191.** Having local `model.yml` data but still
+composing the entire website in `scripts/ci/build-results.py` (about 41 KB)
+is not an acceptable long-term design. Moving those HTML strings into
+`string.Template` files would merely disguise the bespoke renderer.
+
+Use the standard **Hugo** site generator already in use in the
+`brainboxemb/notes` project. Preserve the CAD website's **existing**
+look and public link structure; Hugo does not imply copying the Notes theme.
+
+```text
+models/*/*/model.yml             existing model-owned descriptions/variants
+build/<source-scope>/...         accepted CAD/verification results
+          |                           |
+          v                           v
+Hugo data mount                 narrow evidence/asset adapter (if needed)
+          +-----------+---------------+
+                      v
+              Hugo content adapter
+              Hugo layouts / partials
+              existing site/results.css
+                      |
+                      v
+              generated static site
+                      |
+                      v
+         released cad_ci_tool publish pages
+```
+
+Hugo's built-in `_content.gotmpl` adapters support generating pages from
+YAML data, while mounts can expose model-owned YAML without copying it to
+another catalog directory. Use these platform features rather than emitting
+separate Markdown per model in Python. Prove the exact version and mount/
+variant behavior in a small isolated candidate before migrating all pages.
+
+There are **two** distinct verification gates:
+
+1. **Content model**: exactly 16 local model files / 18 variants, identical
+   descriptions, category order and warnings, and `/models/<slug>/` routes.
+   PR #190 achieved the first part (model YAML + loader); it does not prove
+   the final site generator.
+2. **Site presentation**: full generated HTML/links/assets comparison with
+   the accepted public CAD site. This is a blocker to retiring the old
+   generator or publishing the new Pages. Preserve the existing layout,
+   theme, model images, download URLs and evidence labels.
+
+The current `build-results.py` remains temporarily as a regression
+baseline. It is **not** the new site engine; no further Python HTML template
+infrastructure should be added to it.
+

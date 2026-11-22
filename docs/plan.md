@@ -1,5 +1,34 @@
 # CAD repository migration plan
 
+## Static site correction — CAD #191 (Hugo)
+
+**Decision:** stop extending the bespoke CAD HTML renderer.
+PR #190 already moved the original 18 descriptions into 16 local
+`model.yml` files, but `scripts/ci/build-results.py` is still a
+roughly 41 KB custom HTML generator. The proposed next `string.Template`
+refactor was **rejected before implementation**: it would leave the same
+self-built website engine.
+
+Next CAD-owned work, without requiring a Forge or generic CI release:
+
+1. Prepare a small Hugo candidate and pin the Hugo tool version.
+2. Mount the local model YAML data and create the 18 existing model routes
+   using Hugo's own content-adapter feature; prove both multi-variant roots.
+3. Move the current CAD page structure into Hugo layouts/partials **without
+   redesigning the site**; keep existing CSS and downloads.
+4. Adapt accepted CAD-CI evidence/assets into Hugo-readable data, without
+   HTML generation or a second CI planner.
+5. Compare route sets, relevant HTML structure, assets, status/provenance,
+   model URLs and screenshots against accepted `main` Pages.
+6. Only after full agreement, connect generated Hugo output to the released
+   Pages publisher on isolated development branches, retire the Python
+   generator and consider main promotion.
+
+**Current gate:** no public Pages cut-over and no retirement of the baseline
+renderer until the Hugo candidate and route/visual parity tests pass.
+
+
+
 Source of truth for the **unfinished** Forge-compatible CI migration:
 [issue #174](https://github.com/brainboxemb/2026-011-02.cad.solidcraft/issues/174).
 Permanent target requirements/design are in `docs/requirements.md` and
@@ -9,7 +38,7 @@ Permanent target requirements/design are in `docs/requirements.md` and
 
 ## Website/catalog architecture correction — CAD #189
 
-**Status: implementation PR being tested on `dev-ci`, no public cut-over.**
+**Status: PR #190 merged into `dev-ci`; metadata migration accepted, public Pages unchanged.**
 
 Audit found **zero** `model.yml` files. All 18 website-model entries were
 embedded in the central `scripts/ci/model_catalog.py` dictionary; the
