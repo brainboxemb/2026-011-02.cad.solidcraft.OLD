@@ -1,16 +1,19 @@
 # CAD repository CI design
 
-**Target architecture** — same released mechanisms and branch topology as
-`lib.py.solidcraft.forge`, with only CAD-specific producer and site content
-remaining here. This document does not claim the old pipeline has already been
-replaced.
+**Accepted architecture** — reuse the released generic CAD-CI mechanisms and
+permanent branch topology, with only CAD-specific model producers, repository
+contracts and site content remaining here. The legacy local generic pipeline
+and Python HTML site renderer are retired.
 
 ## Reference stack
 
-- `tool.cad.ci 0.17.0`:
-  `d88d6e189c12edb5a30158c068145c099c17a019`;
-- its exact `lib.py.cad.ci 0.9.3`:
-  `74486c441f1f2b170ff3dc06e0edcaf662fbec6b`;
+- normal CAD execution/publication uses `tool.cad.ci 0.18.0` at exact commit
+  `b62f9d0b169aa201a3c66c3166f364396b2d71bc`;
+- that tool revision pins `lib.py.cad.ci 0.10.0` at exact commit
+  `397fb04005b46de8d433cb18c091b1e73714b877`;
+- repository merge-policy commands separately use released `tool.cad.ci
+  0.20.1` at exact commit
+  `eb64a46b243db00e8dbb4b78b6643a2a7efa3fb9`;
 - central `cad-solidcraft:v0.3.4` (SolidCraft 0.45.0);
 - Forge `v0.11.0` at exact source
   `9258d54079981604b6dd777a4c4face897c190fe`;
@@ -93,7 +96,7 @@ but **not** a parallel planning mechanism or manually extended root item list.
 - The site remains a separate consumer of complete build evidence; no
   redesign or URL change is authorized by this correction.
 
-**Current dev-ci implementation:** released CAD-CI scans/plans one SCons
+**Accepted implementation:** released CAD-CI scans/plans one SCons
 graph; `model-build-batch` launches the SolidCraft runtime once and model
 items project their output with released `copy: dependency`. Fourteen
 physical roots / sixteen variants are active. The two remaining advanced
