@@ -1,5 +1,13 @@
 # CAD repository instructions
 
+> **CI migration in progress:** Issue #174 and
+> `docs/requirements.md`, `docs/design.md`, and `docs/plan.md` define the
+> intended Forge-compatible CI architecture. Existing `cad.yml`,
+> `pipeline_ci.py`, and publication rules below describe the **current
+> implementation**, not the target. Do not extend the old selectors or
+> publication framework to address runtime upgrade coverage. Migrate in
+> reviewed stages; keep accepted `main` build/Pages output intact until cutover.
+>
 This repository contains product and project CAD models built with SCPF/SCPC.
 Forge itself belongs in `brainboxemb/lib.py.solidcraft.forge`; do not work
 around a Forge API/compiler problem in a product model.
