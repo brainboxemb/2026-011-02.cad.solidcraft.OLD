@@ -46,8 +46,10 @@ The pre-cut-over stable Pages tip is backed up permanently:
 
 ## Continue
 
-1. Get the Hugo/Blowfish site green on the existing CAD `/dev-ci/` Pages
-   subtree; do not touch the stable root.
+1. PR #194 is merged on `dev-ci`; its Hugo and released-CAD-CI PR checks are
+   green. Main #195 now explicitly dispatches the accepted source lane after
+   policy merges. Verify the first durable `build/dev-ci` + `/dev-ci/`
+   publication; do not touch the stable root.
 2. Compare routes, images, downloads, warnings and mobile/desktop structure
    against the backup/stable site.
 3. Remove unreachable legacy Python planner/selector/publisher/HTML-renderer

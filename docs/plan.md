@@ -31,6 +31,18 @@ unchanged until Pages comparison and promotion acceptance.
 
 ## Current accepted state — 2026-11-22
 
+- PR #194 / `a0ce2fc35ab94931a96359c43d5827da74f0513d` replaced the
+  active `dev-ci` hybrid workflow with Hugo/Blowfish plus the exact
+  Forge-qualified released CAD-CI action. Its PR run passed the repository
+  contracts, a real Hugo build from local `model.yml`, and released CAD-CI.
+  Stable `main` and the stable Pages root were not changed.
+- That merge exposed one GitHub mechanics gap: policy merges made with
+  `GITHUB_TOKEN` do not implicitly start another branch workflow.
+  Main PR #195 / `87e957f8cab0752ea1d20aa9407d1a68ef89056a` now mirrors
+  Forge and explicitly dispatches `cad.yml` for every accepted durable
+  source ref after `/merge`. The next accepted dev-ci merge is therefore
+  the first durable build/Pages integration proof.
+
 - PR #171 / commit `f615379bb2e8cb44e300dc87f9edf0983c6ea6cb`:
   CAD Docker moved to released central runtime.
 - PR #173 / commit `ecda73518f465adbfb4678fc6a11803d40cabe97`:
@@ -241,10 +253,11 @@ Stable `main` remains unchanged until dev-ci acceptance.
 
 ### M4 — Durable build and Pages scopes
 
-Status: **dev-ci preview implementation in progress**. The isolated Blowfish
-experiment generated 32 pages successfully from the real `model.yml` files.
-The CAD integration consumes the exact prepared scope, builds Hugo/Blowfish on
-the same runner, and publishes only the matching named Pages subtree.
+Status: **dev-ci preview implementation active**. PR #194 is merged and its
+PR-side Hugo + released-CAD-CI checks are green. Main PR #195 restored the
+Forge-style explicit post-merge workflow dispatch. This status-only acceptance
+merge is used to prove the first durable `build/dev-ci` + Pages
+`/dev-ci/` publication from the exact prepared scope.
 
 - Publish complete accepted build scopes at `main`, `dev-cad`,
   `dev-ci` using released build-store CLI, preserving siblings.
