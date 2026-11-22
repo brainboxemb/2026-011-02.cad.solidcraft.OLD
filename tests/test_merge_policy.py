@@ -1,4 +1,4 @@
-"""Keep the CAD merge-policy wrapper thin and pinned to the accepted owner release."""
+"""Contract for the CAD wrapper around the released shared merge policy."""
 
 from __future__ import annotations
 
@@ -13,8 +13,14 @@ ACCEPTED_TOOL_SHA = "eb64a46b243db00e8dbb4b78b6643a2a7efa3fb9"
 
 
 class MergePolicyTests(unittest.TestCase):
-    def test_wrapper_uses_exact_released_shared_policy(self):
-        workflow = WORKFLOW.read_text()
+    def test_owner_only_merge_command_calls_exact_released_policy(self):
+        workflow = WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn("issue_comment:", workflow)
+        self.assertIn("github.event.comment.body == '/merge'", workflow)
+        self.assertIn("github.actor == github.repository_owner", workflow)
+        self.assertIn("checks: read", workflow)
+        self.assertIn("statuses: read", workflow)
+        self.assertIn("actions: write", workflow)
         self.assertIn(
             "uses: brainboxemb/tool.cad.ci/.github/workflows/"
             f"reusable-merge-policy.yml@{ACCEPTED_TOOL_SHA}",
@@ -27,7 +33,7 @@ class MergePolicyTests(unittest.TestCase):
         )
 
     def test_wrapper_supplies_only_cad_repository_configuration(self):
-        workflow = WORKFLOW.read_text()
+        workflow = WORKFLOW.read_text(encoding="utf-8")
         for value in (
             "stable_ref: main",
             """lane_refs_json: '["dev-cad","dev-ci"]'""",
@@ -39,6 +45,7 @@ class MergePolicyTests(unittest.TestCase):
 
         self.assertNotIn("runs-on:", workflow)
         self.assertNotIn("gh api ", workflow)
+        self.assertNotIn("check-runs?per_page=100", workflow)
         self.assertNotIn("merge_method", workflow)
 
     def test_no_cad_local_merge_policy_engine_remains(self):
