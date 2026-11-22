@@ -35,3 +35,4 @@ Current records:
 - [0014-tool-cad-ci-publication.md](0014-tool-cad-ci-publication.md) — move durable build and Pages publication to tool.cad.ci.
 - [0015-remove-legacy-publication.md](0015-remove-legacy-publication.md) — remove superseded CAD publication/store code after the cutover.
 - [0016-central-solidcraft-runtime.md](0016-central-solidcraft-runtime.md) — reuse the released central SolidCraft runtime instead of a consumer-owned Docker image (#170).
+- [0017-forge-011-solidcraft-045.md](0017-forge-011-solidcraft-045.md) — adopt released Forge 0.11.0 and central SolidCraft 0.45.0 in CAD verification (#172).

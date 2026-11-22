@@ -11,12 +11,21 @@ class SamplePlate:
         plate = sketch.extrude(self.thickness)
         plate = plate.fillet(6, edges=Edges.VERTICAL)
 
-        holes = Hole(d=8, depth=Depth.THROUGH_ALL).repeat_linear(
+        # One source cut, then a real native SolidCraft rectangular pattern.
+        # The first hole and the pitch both keep their width relationship.
+        with Sketch(name="Holes", on=plate, parent=Anchor.TOP) as holes:
+            holes.add(
+                Circle2D(d=8),
+                offset=(-half(self.width - 24), 0),
+            )
+        source_cut = holes.extrude(Depth.THROUGH_ALL)
+        plate = plate - source_cut
+        plate = plate.rectangular_pattern(
+            source_cut,
             count=2,
             spacing=self.width - 24,
-            axis=Axis.X,
-        ).attach(plate, parent=Anchor.TOP)
-        plate = plate + holes
+            direction=Axis.X,
+        )
 
         boss = Cylinder(d=24, h=14).attach(
             plate,

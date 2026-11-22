@@ -47,7 +47,7 @@ class BootstrapCadCiTests(unittest.TestCase):
 
     def test_repository_pins_are_exact(self):
         expected = {
-            "scpf": "5b4963f25f76c4e3b09926d691251ed1b1e7173b",
+            "scpf": "9258d54079981604b6dd777a4c4face897c190fe",
             "scpc": "fcaa6f9fc8388bc715fcd2fbb149ce6b979566a7",
             "cad-ci": "556e8d43dde9218b28a8d991ab9f2021232e76ab",
         }

@@ -181,11 +181,15 @@ class CornerBracketTests(unittest.TestCase):
         )
         self.assertEqual(chamfer["params"]["edges"], [[10, 0, 0], [0, 0, 8]])
 
-    def test_original_reference_kept_separate(self):
-        commands = run_script(REFERENCE)["commands"]
-        holes = [c for c in commands if c["command"] == "solid.hole"]
-        self.assertEqual(len(holes), 16)
-        self.assertEqual(len(commands), 42)
+    def test_historical_reference_remains_original_and_separate(self):
+        # Archived source is retained verbatim: Forge 0.11 removed the legacy
+        # Hole(countersink_*) interface, so this is not a live qualification.
+        reference = REFERENCE.read_text(encoding="utf-8")
+        self.assertIn("class CornerBracket:", reference)
+        self.assertEqual(reference.count("countersink_d=head_d"), 2)
+        self.assertEqual(reference.count("countersink_recess=self.head_recess"), 2)
+        self.assertIn("CornerBracket()", reference)
+        self.assertNotIn("CountersinkHole(", reference)
 
 
 if __name__ == "__main__":

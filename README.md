@@ -2,7 +2,7 @@
 
 CAD projects and native SolidCraft verification. The Python libraries live separately: [SCPF Python Forge](https://github.com/brainboxemb/lib.py.solidcraft.forge) for parametrized models and [SCPC Python Commands](https://github.com/brainboxemb/lib.py.solidcraft.cmd) for explicit native commands.
 
-The current CAD baseline pins **SCPF 0.6.1** by exact release-tag commit after renewed qualification under the corrected Forge gates, and qualifies the models against **SolidCraft 0.42.0**.
+The CAD CI baseline uses **released Forge (SCPF) 0.11.0**, pinned to exact Git commit `9258d54079981604b6dd777a4c4face897c190fe`, with the released central `cad-solidcraft:v0.3.4` runtime containing **SolidCraft 0.45.0**. SCPF and SCPC remain separately pinned consumer Python sources; the CAD repository does not build its own Docker image.
 
 ## Two Python scripts for one CAD design
 
@@ -61,7 +61,7 @@ python -m scpf models/components/hub75-panel/scpf/model.py --connect --new
 python -m scpf models/advanced/hub75_screen/scpf/model.py --connect --new
 ```
 
-`--connect --new` first asks SolidCraft 0.42.0 to replace the active design
+`--connect --new` first asks SolidCraft 0.45.0 to replace the active design
 with a new empty design using its native `file.new` command, then sends the
 compiled model through the authenticated local control channel. It does
 **not** launch or automatically save SolidCraft. Plain `--connect` remains

@@ -1,14 +1,14 @@
 # Exact revisions used by the CAD repository.
-# SCPF and SCPC are installed as Python libraries by bootstrap.ps1 and are
-# baked into the immutable CAD toolchain image.
-# tool.cad.ci is checked out as executable repository tooling under ext/cad-ci.
-# The workflow also installs that exact checkout on the host for generated
-# build/Page publication; the immutable CAD image remains independent of it.
+# SCPF and SCPC are installed as Python libraries locally by bootstrap.ps1.
+# CAD CI checks out their exact sources and mounts them into the released
+# central SolidCraft runtime without building an image or pip-installing them.
+# tool.cad.ci is checked out and installed on the host for publication.
+# The central runtime is independent from these consumer dependency pins.
 repositories:
   scpf:
     type: git
     url: https://github.com/brainboxemb/lib.py.solidcraft.forge.git
-    version: 5b4963f25f76c4e3b09926d691251ed1b1e7173b
+    version: 9258d54079981604b6dd777a4c4face897c190fe
   scpc:
     type: git
     url: https://github.com/brainboxemb/lib.py.solidcraft.cmd.git

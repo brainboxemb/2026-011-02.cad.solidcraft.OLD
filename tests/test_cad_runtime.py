@@ -33,9 +33,9 @@ class CadRuntimeTests(unittest.TestCase):
         data = self.module.load_toolchain()
         self.assertEqual(
             data["runtime_image"],
-            "ghcr.io/brainboxemb/cad-solidcraft:v0.3.2",
+            "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
         )
-        self.assertEqual(data["solidcraft"], "0.42.0")
+        self.assertEqual(data["solidcraft"], "0.45.0")
 
     def test_mutable_runtime_tags_are_rejected(self):
         with TemporaryDirectory() as temp:
