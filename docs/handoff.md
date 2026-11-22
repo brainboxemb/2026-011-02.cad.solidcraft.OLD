@@ -1,45 +1,56 @@
-# Handoff — CAD repository
+# CAD repository handoff
 
 Repository: `brainboxemb/2026-011-02.cad.solidcraft`.
 
-Read `docs/plan.md` first. It is the source of truth for unfinished work.
+This is the normal session entrypoint. It is intentionally kept under
+`docs/handoff.md` so it is easy to find.
 
-Shared SolidCraft/CAD conventions and document templates live in
-`brainboxemb/meta.cad.solidcraft`. Use
-`templates/docs/plan.md` there as the structural reference for this
-repository's plan; keep CAD-specific work and status in this repository.
+The copy block below is deliberately Dutch because it is intended to be pasted
+into the user's Dutch-language ChatGPT session. Repository engineering
+documentation remains English.
 
-## Current state
+## Handoff message
 
-- Stable `main`: `4b4ed80188c0de49cb33d4796e243644a7ae8374`.
-- Permanent source lanes: `main`, `dev-cad`, `dev-ci`.
-- Short-lived work is squash-merged into a dev lane.
-- `dev-cad` / `dev-ci` promotion to `main` uses a normal merge commit
-  through the owner-only `/merge` policy.
-- The #174 `dev-ci -> main` migration promotion is complete.
-- Stable `build/main` and stable Hugo/Blowfish Pages are source-matched to the
-  current stable main.
-- Generic execution/publication is owned by released
-  `tool.cad.ci` / `lib.py.cad.ci`.
-- Runtime baseline is `cad-solidcraft:v0.3.4` with SolidCraft `0.45.0`.
-- 14 physical model roots / 16 variants build through the shared SolidCraft
-  batch; two remain blocked only by Forge #679.
-- Forge and CAD model-description schemas have drifted; #205 / Forge #703 own
-  the correction. Do not extend the CAD-local schema meanwhile.
-- Stable pre-cut-over generated state is retained on the backup build/Pages
-  branches.
+Copy the complete text block below into a new chat.
 
-## Active workstream
+~~~text
+Je werkt verder aan de product-CAD repository
+`brainboxemb/2026-011-02.cad.solidcraft`.
 
-One workstream is active:
+Gebruik deze handoff alleen als ingang. Bepaal de actuele werkzaamheden altijd
+opnieuw uit GitHub en `docs/plan.md`; behandel een gekopieerde handoff nooit
+als actueler dan die bronnen.
 
-1. reconcile/close the completed #174 migration from exact evidence;
-2. synchronize `dev-cad` from current `main` without flattening history;
-3. reassess the existing CAD feature PRs;
-4. then resume one product CAD work item.
+Begin zo:
 
-New model-metadata cleanup (#204/#205/#206) is recorded in the plan but must not
-turn into another parallel migration before the lane is coherent.
+1. inspecteer de actuele issues, PR's en branches;
+2. lees `AGENTS.md` en `docs/plan.md`;
+3. behandel `docs/plan.md` als source of truth voor onafgemaakt werk;
+4. volg de actuele werkvolgorde uit het plan;
+5. maak een issue voordat je een logische wijziging implementeert als die nog
+   geen issue heeft;
+6. houd één logische wijziging bij één issue, branch en PR;
+7. werk `docs/requirements.md` en `docs/design.md` bij als gedrag of
+   architectuur verandert;
+8. reconcileer het plan na merge/release.
 
-PR #188 is an old #174 governance draft and should be reassessed rather than
-merged into the already-promoted CI lane.
+Repositoryrol:
+
+- deze repository bezit product- en project-CAD modellen, model-specifieke
+  verwachtingen, varianten, dependencies en de gepubliceerde CAD-catalogus;
+- Forge (`lib.py.solidcraft.forge`) bezit herbruikbare CAD-API,
+  compiler/lowering en generieke modellering;
+- generieke CAD-CI hoort in `lib.py.cad.ci` / `tool.cad.ci`;
+- generieke verificatie hoort in `lib.py.cad.verification`;
+- runtime/container packaging hoort in `docker.cad.solidcraft`;
+- voeg geen CAD-lokale workaround toe voor een generiek Forge-, CI-,
+  verificatie- of runtimeprobleem.
+
+Permanente lanes, merge/promotion-regels, actuele blockers, exacte versies,
+SHAs en issuevolgorde staan in `AGENTS.md`, `docs/plan.md` en GitHub.
+Dupliceer die actuele status niet in deze handoff.
+
+Gedeelde SolidCraft/CAD documentstructuren staan in
+`brainboxemb/meta.cad.solidcraft`:
+`templates/docs/plan.md` en `templates/docs/handoff.md`.
+~~~

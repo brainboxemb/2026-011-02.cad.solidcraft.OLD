@@ -50,3 +50,4 @@ Current records:
 - [0023-hugo-blowfish-site.md](0023-hugo-blowfish-site.md) — direct model.yml → Hugo/Blowfish site generation with prepared CAD-CI evidence (#191, #174).
 
 - [0024-retire-legacy-ci-python.md](0024-retire-legacy-ci-python.md) — remove superseded local CI/site orchestration after released dev-ci build/Pages acceptance (#174).
+- [0025-shared-merge-policy.md](0025-shared-merge-policy.md) — consume the released tool.cad.ci merge policy instead of a CAD-local merge engine (#245).

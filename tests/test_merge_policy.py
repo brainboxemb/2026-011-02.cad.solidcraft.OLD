@@ -1,59 +1,55 @@
-"""Keep the Forge-style lane and merge discipline executable."""
+"""Contract for the CAD wrapper around the released shared merge policy."""
 
 from __future__ import annotations
 
-import importlib.util
 from pathlib import Path
 import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PATH = ROOT / "scripts" / "merge_policy.py"
-SPEC = importlib.util.spec_from_file_location("cad_merge_policy", PATH)
-policy = importlib.util.module_from_spec(SPEC)
-assert SPEC.loader is not None
-import sys
-sys.modules[SPEC.name] = policy
-SPEC.loader.exec_module(policy)
+WORKFLOW = ROOT / ".github" / "workflows" / "merge-policy.yml"
+LOCAL_POLICY = ROOT / "scripts" / "merge_policy.py"
+ACCEPTED_TOOL_SHA = "eb64a46b243db00e8dbb4b78b6643a2a7efa3fb9"
 
 
 class MergePolicyTests(unittest.TestCase):
-    def test_direct_lane_promotions_use_normal_merge_and_retain_head(self):
-        for lane in ("dev-cad", "dev-ci"):
-            with self.subTest(lane=lane):
-                got = policy.evaluate(base="main", head=lane)
-                self.assertEqual(got.merge_method, "merge")
-                self.assertTrue(got.direct_lane_promotion)
-                self.assertFalse(got.cleanup_head)
-                self.assertTrue(got.integrate_base)
+    def test_owner_only_merge_command_calls_exact_released_policy(self):
+        workflow = WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn("issue_comment:", workflow)
+        self.assertIn("github.event.comment.body == '/merge'", workflow)
+        self.assertIn("github.actor == github.repository_owner", workflow)
+        self.assertIn("checks: read", workflow)
+        self.assertIn("statuses: read", workflow)
+        self.assertIn("actions: write", workflow)
+        self.assertIn(
+            "uses: brainboxemb/tool.cad.ci/.github/workflows/"
+            f"reusable-merge-policy.yml@{ACCEPTED_TOOL_SHA}",
+            workflow,
+        )
+        self.assertIn("command: ${{ github.event.comment.body }}", workflow)
+        self.assertIn(
+            "pull_request_number: ${{ github.event.issue.number }}",
+            workflow,
+        )
 
-    def test_feature_work_is_squashed_into_development_lanes(self):
-        for lane in ("dev-cad", "dev-ci"):
-            with self.subTest(lane=lane):
-                got = policy.evaluate(base=lane, head="feature/abc")
-                self.assertEqual(got.merge_method, "squash")
-                self.assertFalse(got.direct_lane_promotion)
-                self.assertTrue(got.cleanup_head)
-                self.assertTrue(got.integrate_base)
+    def test_wrapper_supplies_only_cad_repository_configuration(self):
+        workflow = WORKFLOW.read_text(encoding="utf-8")
+        for value in (
+            "stable_ref: main",
+            """lane_refs_json: '["dev-cad","dev-ci"]'""",
+            """permanent_refs_json: '["build","gh-pages"]'""",
+            """temporary_prefixes_json: '["issue/","fix/","feature/","accept/","promote/","ci/","docs/","chore/"]'""",
+            "integration_workflow: cad.yml",
+        ):
+            self.assertIn(value, workflow)
 
-    def test_temporary_ci_and_documentation_branches_can_be_cleaned(self):
-        for head in ("ci/174-stage0-lanes-contract", "docs/site", "fix/abc"):
-            got = policy.evaluate(base="dev-ci", head=head)
-            self.assertTrue(got.cleanup_head)
+        self.assertNotIn("runs-on:", workflow)
+        self.assertNotIn("gh api ", workflow)
+        self.assertNotIn("check-runs?per_page=100", workflow)
+        self.assertNotIn("merge_method", workflow)
 
-    def test_permanent_and_backup_branches_never_cleaned(self):
-        for head in ("main", "dev-cad", "dev-ci", "build", "gh-pages", "backup/old-pages"):
-            got = policy.evaluate(base="main", head=head)
-            self.assertFalse(got.cleanup_head)
-
-    def test_non_lane_pr_into_main_is_not_promoted_as_normal_merge(self):
-        got = policy.evaluate(base="main", head="feature/sample")
-        self.assertEqual(got.merge_method, "squash")
-        self.assertFalse(got.direct_lane_promotion)
-
-    def test_unrelated_pr_does_not_require_lane_integration(self):
-        got = policy.evaluate(base="topic", head="feature/sample")
-        self.assertFalse(got.integrate_base)
+    def test_no_cad_local_merge_policy_engine_remains(self):
+        self.assertFalse(LOCAL_POLICY.exists())
 
 
 if __name__ == "__main__":

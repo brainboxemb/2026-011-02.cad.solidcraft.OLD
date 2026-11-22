@@ -137,9 +137,12 @@ dev-cad PR -> main          full processed model and infrastructure checks
 dev-ci PR  -> main          full processed model and infrastructure checks
 ```
 
-Source promotions are made as normal merge commits; feature PRs squash.
-Reuse Forge's owner-controlled merge-policy structure, adjusted only for this
-repository and with a rule against deleting long-lived lanes.
+Permanent-lane promotion and stable-to-lane synchronization are normal merge
+commits; short-lived work squashes. CAD consumes the same exact released
+`tool.cad.ci` reusable merge-policy workflow as Forge and supplies only its
+stable/lane refs, permanent generated refs, temporary cleanup prefixes and
+`cad.yml` integration workflow. Merge mechanics, check filtering and branch
+lifecycle are not reimplemented in this repository.
 
 ## Persistent branch output
 
