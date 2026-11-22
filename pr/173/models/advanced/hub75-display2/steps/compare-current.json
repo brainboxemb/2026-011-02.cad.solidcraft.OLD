@@ -1,0 +1,11 @@
+{
+  "duration_seconds": 0.148,
+  "exit_code": 0,
+  "input_fingerprint": "cfc70445f9939e56f2460fa61100b9c07f4ac59ff5e1604c17092e2a2192c2a3",
+  "outputs": {
+    "checks/current-pipeline.json": "33a33bbb8652713c37117054b503a3ce283bd7a9c2478b21fbc66aad430ffbee"
+  },
+  "result_fingerprint": "7dd7cf9b933a376a04680ef6ae92a1bcbfbec7f4592784ae631ad6af8756bb09",
+  "status": "pass",
+  "step": "compare-current"
+}

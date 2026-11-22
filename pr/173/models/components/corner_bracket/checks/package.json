@@ -1,0 +1,11 @@
+{
+  "models": {
+    "corner-bracket": {
+      "source": "current-run",
+      "source_commit": "9ec471d00b33e34455aa5e70e9f092669888dcb1",
+      "verification_sha256": "498ee7bb0bce28957b0411325d3252d0735fa02ba43451b5f80c113b6aebfdc2"
+    }
+  },
+  "schema": 1,
+  "status": "pass"
+}

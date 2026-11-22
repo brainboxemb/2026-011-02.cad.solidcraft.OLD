@@ -1,0 +1,11 @@
+{
+  "models": {
+    "sample-plate": {
+      "source": "current-run",
+      "source_commit": "9ec471d00b33e34455aa5e70e9f092669888dcb1",
+      "verification_sha256": "e2ca1b9a11750827a724b79dc324f4500ed9c95a366052df5b3dba985f189b04"
+    }
+  },
+  "schema": 1,
+  "status": "pass"
+}
