@@ -40,6 +40,41 @@ from the CAD consumer, and do not build a second CAD-specific scheduler.
 Forge owns acceptance; the appropriate library/tool makes its own released
 implementation and Forge qualifies that version. Only then adopt it here.
 
+## Ownership and registration correction — now
+
+Forge is the central reusable CAD library, not the owner of generic CI architecture.
+
+- Forge owns the reusable CAD API, compiler/lowering, modelling semantics and Forge-owned examples/expectations.
+- `lib.py.cad.ci` / `tool.cad.ci` own generic CAD-CI discovery, selection, execution and durable build/publication mechanics.
+- `lib.py.cad.verification` owns generic CAD/model verification mechanics.
+- `docker.cad.solidcraft` owns the immutable SolidCraft runtime.
+- This product CAD repository owns its product models, model variants, model-to-model dependencies, presentation metadata and product catalog.
+- `scripts/ci/model_catalog.py` may remain the single product-model registration source for the CAD site/domain, but it must not become a second generic CI planner or be required by generic CAD-CI item discovery.
+- Distributed model-root `ci.yml` items are the generic CI participation boundary. Generic discovery/selection must not depend on Forge or on a central product catalog.
+- A product model that exposes missing reusable CAD modelling capability raises a Forge CAD-library requirement; a product-model registration change remains local to this repository.
+
+Forge #661 is therefore only a Forge consumer/selectivity validation. It is not a governance gate for generic CAD-CI and must not block unrelated model onboarding when the released stack already satisfies this repository's requirements.
+
+### Open issue assessment — 2026-11-22
+
+| Issue | Status | Current interpretation |
+| --- | --- | --- |
+| #174 CAD-CI/publication migration | **now** | Continue the staged migration; also remove stale wording that makes Forge the generic CI governor. |
+| #172 full-catalog Forge 0.11 / SolidCraft 0.45 verification | **blocked** | Complete after the remaining model roots are on the shared build path and the full-run gate exists. |
+| #168 verification terminology | **later** | Coordinate with Forge #659 after the active architecture/ownership correction. |
+| #155 tool.cad.ci v0.2.0 migration | **probably obsolete** | Superseded by #174 and much newer released tool/lib versions; preserve useful history, then close or rewrite residual scope. |
+| #154 lower storage compartment | **now** | Independent CAD work; active PR #156 belongs on `dev-cad`, not directly on `main`. |
+| #142 HUB75Display2 parallel model | **effectively complete but still open** | Model/catalog structure exists; final current-runtime/full-catalog evidence is covered by #174/#172. |
+| #135 bolted-flange circular pattern | **blocked** | Explicitly blocked by Forge CAD-library issue #347. |
+| #91 frame wood-thickness regression | **later** | Resume with the relevant frame model verification work. |
+| #77 CornerBracket placement/associativity | **later** | Keep as focused model-quality work; not a CI architecture gate. |
+| #34 SCPC alongside SCPF | **effectively complete but still open** | SCPC library and multiple independent comparisons exist; reconcile remaining acceptance after #174 migration. |
+| #21 interactive SolidCraft viewer | **later** | Presentation feature, independent of current migration. |
+| #20 multiple verified image views | **later** | Presentation/verification enhancement after stable publication cut-over. |
+| #14 incremental builds / Moon evaluation | **probably obsolete** | Released CAD-CI now owns changed/dependency selection, caching and build-store semantics; do not introduce Moon or a second planner. |
+| #8 CornerBracket exact geometry | **later** | CAD geometry refinement, independent of CI migration. |
+| #7 HUB75 screen completion | **later** | Product-model roadmap item, independent of generic CI ownership. |
+
 ## Architecture correction — shared build-batch accepted for nine models
 
 **PR #184 passed and was squash-merged into `dev-ci` on 2026-11-22.**
