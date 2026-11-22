@@ -1,4 +1,4 @@
-# Independent Forge and SCPC native results are checked against one contract.
+# Shared build configuration; physical checks live in verification/verify.py.
 id: vent-plate
 template: cad-model-build
 process: true

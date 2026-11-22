@@ -1,3 +1,4 @@
+# Shared build configuration; physical checks live in verification/verify.py.
 id: plastic-enclosure-pi
 template: cad-model-build
 process: true

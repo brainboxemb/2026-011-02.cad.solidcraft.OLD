@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Produce CAD-owned models; delegate scheduling and checking to released tools.
+"""Check a prepared CAD model batch inside one SolidCraft runtime.
 
-lib.py.cad.ci owns selected items, their dependency graph and output reuse.
-lib.py.cad.verification owns SolidCraft checks. This producer only compiles
-the selected model source and replays it in the released SolidCraft runtime.
+The released CAD-CI library owns discovery and SCons scheduling. The
+consumer-specific batch adapter collects model sources and delegates physical
+checks to the separately released CAD verification library.
 """
 
 from __future__ import annotations
@@ -16,45 +16,10 @@ import subprocess
 import sys
 
 from bootstrap_cad_ci import dependency
-from model_catalog import COMMAND_SOURCES, MODELS, source_path
-from model_checks import command_check
+from model_catalog import COMMAND_SOURCES, source_path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-
-
-def selected_models() -> tuple[str, ...]:
-    """Find source variants from the authoritative catalog, never a CI list."""
-
-    raw = os.environ.get("CAD_CI_ITEM_PATH", "").strip()
-    if not raw:
-        raise RuntimeError("CAD_CI_ITEM_PATH is required")
-    item = Path(raw)
-    if not item.is_absolute():
-        item = ROOT / item
-    relative = item.resolve().relative_to(ROOT.resolve())
-    if len(relative.parts) != 3 or relative.parts[0] != "models":
-        raise RuntimeError(f"not a physical model root: {relative}")
-
-    models = tuple(
-        slug for slug, meta in MODELS.items()
-        if Path(*Path(meta["source"]).parts[:3]) == relative
-    )
-    if not models:
-        raise RuntimeError(f"no catalog variants owned by {relative}")
-    name = os.environ.get("CAD_CI_ITEM", "").strip()
-    if not name or name != models[0]:
-        raise RuntimeError(
-            f"item identity mismatch: expected {models[0]!r}, found {name!r}"
-        )
-    return models
-
-
-def output_root() -> Path:
-    value = os.environ.get("CAD_CI_OUTPUT", "").strip()
-    if not value:
-        raise RuntimeError("CAD_CI_OUTPUT is required")
-    return Path(value).resolve()
 
 
 def dependency_wheel(name: str, pattern: str) -> Path:
@@ -66,133 +31,40 @@ def dependency_wheel(name: str, pattern: str) -> Path:
         raise RuntimeError(f"required dependency missing: {name}")
     files = tuple((Path(entry["output_root"]) / "dist").glob(pattern))
     if len(files) != 1:
-        raise RuntimeError(
-            f"expected exactly one {name} wheel, found {len(files)}"
-        )
+        raise RuntimeError(f"expected one {name} wheel, found {len(files)}")
     return files[0].resolve()
 
 
 def compile_scpc(slug: str, target: Path, scpc_wheel: Path) -> str:
-    """Compile SCPC using the finished shared dependency wheel.
+    """Compile an independent SCPC source from the shared pinned wheel."""
 
-    Model jobs never checkout shared SCPC sources, so parallel builds cannot
-    conflict with one another.
-    """
-
-    _, wanted = dependency("scpc")
-    metadata = json.loads(
+    _, expected = dependency("scpc")
+    evidence = json.loads(
         (scpc_wheel.parent.parent / "provenance.json").read_text(encoding="utf-8")
     )
-    if metadata.get("commit") != wanted:
-        raise RuntimeError("SCPC wheel provenance differs from pinned source")
+    if evidence.get("commit") != expected:
+        raise RuntimeError("SCPC wheel differs from dependencies.repos")
     target.parent.mkdir(parents=True, exist_ok=True)
     env = dict(os.environ)
-    current = env.get("PYTHONPATH", "")
-    source = str(scpc_wheel)
-    env["PYTHONPATH"] = source if not current else source + os.pathsep + current
+    previous = env.get("PYTHONPATH", "")
+    env["PYTHONPATH"] = str(scpc_wheel) + (
+        os.pathsep + previous if previous else ""
+    )
     subprocess.run(
         [
-            sys.executable, "-m", "scpc", str(source_path(ROOT, slug, "scpc")),
-            "--out", str(target),
+            sys.executable, "-m", "scpc",
+            str(source_path(ROOT, slug, "scpc")), "--out", str(target),
         ],
         env=env, cwd=ROOT, check=True,
     )
-    value = json.loads(target.read_text(encoding="utf-8"))
-    if not isinstance(value, dict) or not value.get("commands"):
-        raise RuntimeError(f"{slug}: SCPC produced no commands")
-    return wanted
-
-def run_host() -> int:
-    slugs = selected_models()
-    output = output_root()
-    output.mkdir(parents=True, exist_ok=True)
-
-    forge = dependency_wheel("forge-package", "scpf-*.whl")
-    verifier = dependency_wheel(
-        "cad-verification-package", "brainboxemb_cad_verification_lib-*.whl"
-    )
-    if str(forge) not in sys.path:
-        sys.path.insert(0, str(forge))
-    from scpf.runner import run_script
-
-    scpc_wheel = (
-        dependency_wheel("scpc-package", "scpc-*.whl")
-        if any(slug in COMMAND_SOURCES for slug in slugs)
-        else None
-    )
-    rows = []
-    for slug in slugs:
-        commands = output / "generated" / slug / "scpf" / "solidcraft.json"
-        commands.parent.mkdir(parents=True, exist_ok=True)
-        document = run_script(source_path(ROOT, slug))
-        if not isinstance(document, dict) or not document.get("commands"):
-            raise RuntimeError(f"{slug}: Forge returned no CAD commands")
-        commands.write_text(
-            json.dumps(document, indent=2) + "\n", encoding="utf-8"
-        )
-        command_check(slug, commands)
-
-        verification = ROOT / Path(*Path(MODELS[slug]["source"]).parts[:3])
-        verification = verification / "verification" / "verify.py"
-        if not verification.is_file():
-            raise RuntimeError(f"{slug}: missing model-local verification definition")
-
-        scpc = None
-        scpc_sha = None
-        if slug in COMMAND_SOURCES:
-            scpc = output / "generated" / slug / "scpc" / "solidcraft.json"
-            if scpc_wheel is None:
-                raise RuntimeError("SCPC wheel missing for independent source")
-            scpc_sha = compile_scpc(slug, scpc, scpc_wheel)
-
-        rows.append({
-            "slug": slug,
-            "forge_commands": f"/output/generated/{slug}/scpf/solidcraft.json",
-            "scpc_commands": (
-                f"/output/generated/{slug}/scpc/solidcraft.json" if scpc else None
-            ),
-            "definition": str(verification.relative_to(ROOT)),
-            "scpc_sha": scpc_sha,
-        })
-
-    image = os.environ.get("FORGE_RUNTIME_IMAGE", "").strip()
-    if not image.startswith("ghcr.io/brainboxemb/cad-solidcraft:v"):
-        raise RuntimeError("released central SolidCraft runtime is required")
-    _, forge_sha = dependency("scpf")
-    manifest = {
-        "schema": 1,
-        "item": os.environ["CAD_CI_ITEM"],
-        "runtime_image": image,
-        "forge_sha": forge_sha,
-        "models": rows,
-    }
-    (output / "manifest.json").write_text(
-        json.dumps(manifest, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
-    )
-    subprocess.run(["docker", "pull", image], check=True)
-    subprocess.run(
-        [
-            "docker", "run", "--rm", "--pull=never",
-            "-e", "PYTHONPATH=/verification-wheel/" + verifier.name
-                   + ":/forge-wheel/" + forge.name,
-            "-e", "SOLIDCRAFT_GPU=cpu",
-            "-v", f"{ROOT}:/workspace:ro",
-            "-v", f"{output}:/output",
-            "-v", f"{forge.parent}:/forge-wheel:ro",
-            "-v", f"{verifier.parent}:/verification-wheel:ro",
-            "-w", "/workspace", image,
-            "python", "/workspace/scripts/ci/model_verify.py",
-            "--inside-runtime",
-        ],
-        cwd=ROOT,
-        check=True,
-    )
-    return 0
+    document = json.loads(target.read_text(encoding="utf-8"))
+    if not isinstance(document, dict) or not document.get("commands"):
+        raise RuntimeError(f"{slug}: SCPC produced no SolidCraft commands")
+    return expected
 
 
 def compare_independent_geometry(forge_file: Path, scpc_file: Path) -> dict:
-    """Use released numeric comparisons for two independently built shapes."""
+    """Compare separately built Forge/SCPC models using released checkers."""
 
     from cad_verification import compare_bounds, compare_scalar, require_equal
 
@@ -202,11 +74,10 @@ def compare_independent_geometry(forge_file: Path, scpc_file: Path) -> dict:
         forge["body_count"], scpc["body_count"],
         label="Forge/SCPC body count",
     )
-    left = forge["bodies"]
-    right = scpc["bodies"]
+    left, right = forge["bodies"], scpc["bodies"]
     if len(left) != 1 or len(right) != 1:
         raise RuntimeError(
-            "multi-body independent comparisons require a model-local matcher"
+            "multi-body Forge/SCPC comparison requires a model-specific matcher"
         )
     bounds = compare_bounds(
         left[0]["bbox"]["min"], left[0]["bbox"]["max"],
@@ -226,109 +97,164 @@ def compare_independent_geometry(forge_file: Path, scpc_file: Path) -> dict:
     }
 
 
-def run_inside_runtime() -> int:
+def _build_one(row: dict, batch: dict) -> None:
+    """Save and check one model, preserving previously accepted output paths."""
+
     from cad_verification import SolidCraftVerification, run_solidcraft_verification
     from scpf.headless import run_document
 
-    output = Path("/output")
-    manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
-    if manifest.get("schema") != 1 or not manifest.get("models"):
-        raise RuntimeError("model producer manifest has no selected variants")
+    slug = row["slug"]
+    definitions = runpy.run_path(str(Path("/workspace") / row["definition"]))
+    by_variant = definitions.get("VERIFICATIONS")
+    if by_variant is not None:
+        if not isinstance(by_variant, dict):
+            raise RuntimeError(f"{slug}: VERIFICATIONS must be a mapping")
+        definition = by_variant.get(slug)
+    else:
+        definition = definitions.get("VERIFICATION")
+    if not isinstance(definition, SolidCraftVerification):
+        raise RuntimeError(f"{slug}: missing model verification definition")
+    if definition.verification_id != slug:
+        raise RuntimeError(f"{slug}: verification identity mismatch")
 
-    for row in manifest["models"]:
-        slug = row["slug"]
-        definition = runpy.run_path(
-            str(Path("/workspace") / row["definition"])
-        ).get("VERIFICATION")
-        if not isinstance(definition, SolidCraftVerification):
-            raise RuntimeError(f"{slug}: invalid SolidCraftVerification definition")
-        root = output / "models" / slug
-        native = root / "native"
-        native.mkdir(parents=True, exist_ok=True)
-        saved = native / "model.sc"
-        commands = json.loads(Path(row["forge_commands"]).read_text(encoding="utf-8"))
+    root = Path("/output/items") / row["item_path"] / "models" / slug
+    saved_dir = root / "native"  # Existing output schema; preserve links.
+    saved_dir.mkdir(parents=True, exist_ok=True)
+    saved = saved_dir / "model.sc"
+
+    commands = json.loads(Path(row["forge_commands"]).read_text(encoding="utf-8"))
+    run_document(
+        commands,
+        save=saved,
+        export=saved_dir / "model.step",
+        results_out=saved_dir / "results.json",
+        replay_log_out=saved_dir / "replay-log.json",
+        work_dir=saved_dir / "replay_work",
+    )
+    report = run_solidcraft_verification(
+        saved, root / "verification", definition
+    )
+    if report["status"] != "pass":
+        raise RuntimeError(f"{slug}: SolidCraft checks failed: {report}")
+
+    subprocess.run(
+        [
+            "solidcraft-cli", "snapshot", str(saved),
+            "--out", str(root / "model.png"), "--no-grid", "--no-axes",
+        ],
+        check=True,
+    )
+    for path in (saved, saved_dir / "model.step", root / "model.png"):
+        if not path.is_file() or not path.stat().st_size:
+            raise RuntimeError(f"{slug}: required build result missing: {path}")
+
+    comparison = None
+    if row.get("scpc_commands"):
+        scpc_dir = root / "scpc" / "native"
+        scpc_dir.mkdir(parents=True, exist_ok=True)
+        scpc_saved = scpc_dir / "model.sc"
+        scpc_doc = json.loads(
+            Path(row["scpc_commands"]).read_text(encoding="utf-8")
+        )
         run_document(
-            commands,
-            save=saved,
-            export=native / "model.step",
-            results_out=native / "results.json",
-            replay_log_out=native / "replay-log.json",
-            work_dir=native / "replay_work",
+            scpc_doc,
+            save=scpc_saved,
+            export=scpc_dir / "model.step",
+            results_out=scpc_dir / "results.json",
+            replay_log_out=scpc_dir / "replay-log.json",
+            work_dir=scpc_dir / "replay_work",
         )
-        report = run_solidcraft_verification(saved, root / "verification", definition)
-        if report["status"] != "pass":
-            print(json.dumps(report, indent=2, default=str), flush=True)
-            return 1
-
-        subprocess.run(
-            [
-                "solidcraft-cli", "snapshot", str(saved),
-                "--out", str(root / "model.png"), "--no-grid", "--no-axes",
-            ],
-            check=True,
+        scpc_report = run_solidcraft_verification(
+            scpc_saved, root / "scpc" / "verification", definition
         )
-        for expected in (saved, native / "model.step", root / "model.png"):
-            if not expected.is_file() or not expected.stat().st_size:
-                raise RuntimeError(f"{slug}: missing required artifact {expected}")
-
-        comparison = None
-        if row.get("scpc_commands"):
-            native_scpc = root / "scpc" / "native"
-            native_scpc.mkdir(parents=True, exist_ok=True)
-            scpc_saved = native_scpc / "model.sc"
-            scpc_doc = json.loads(
-                Path(row["scpc_commands"]).read_text(encoding="utf-8")
-            )
-            run_document(
-                scpc_doc,
-                save=scpc_saved,
-                export=native_scpc / "model.step",
-                results_out=native_scpc / "results.json",
-                replay_log_out=native_scpc / "replay-log.json",
-                work_dir=native_scpc / "replay_work",
-            )
-            scpc_report = run_solidcraft_verification(
-                scpc_saved, root / "scpc" / "verification", definition
-            )
-            if scpc_report["status"] != "pass":
-                print(json.dumps(scpc_report, indent=2, default=str), flush=True)
-                return 1
-            comparison = compare_independent_geometry(
-                root / "verification" / "baseline" / "measurements.json",
-                root / "scpc" / "verification" / "baseline" / "measurements.json",
-            )
-            (root / "scpc" / "comparison.json").write_text(
-                json.dumps(comparison, indent=2, sort_keys=True) + "\n",
-                encoding="utf-8",
-            )
-
-        (root / "provenance.json").write_text(
-            json.dumps(
-                {
-                    "schema": 1,
-                    "model": slug,
-                    "runtime_image": manifest["runtime_image"],
-                    "forge_sha": manifest["forge_sha"],
-                    "scpc_sha": row["scpc_sha"],
-                    "solidcraft_verified": True,
-                    "independent_scpc_compared": comparison is not None,
-                },
-                indent=2,
-                sort_keys=True,
-            ) + "\n",
+        if scpc_report["status"] != "pass":
+            raise RuntimeError(f"{slug}: independent SCPC checks failed")
+        comparison = compare_independent_geometry(
+            root / "verification" / "baseline" / "measurements.json",
+            root / "scpc" / "verification" / "baseline" / "measurements.json",
+        )
+        (root / "scpc" / "comparison.json").write_text(
+            json.dumps(comparison, indent=2, sort_keys=True) + "\n",
             encoding="utf-8",
         )
-        print(
-            f"{slug}: SolidCraft model built, STEP/preview saved, checks PASS"
-            + ("; independent SCPC geometry comparison PASS" if comparison else ""),
-            flush=True,
-        )
-    return 0
+
+    (root / "provenance.json").write_text(
+        json.dumps(
+            {
+                "schema": 1,
+                "model": slug,
+                "runtime_image": batch["runtime_image"],
+                "forge_sha": batch["forge_sha"],
+                "scpc_sha": row.get("scpc_sha"),
+                "solidcraft_verified": True,
+                "independent_scpc_compared": comparison is not None,
+                "source_sha": batch["source_sha"],
+            },
+            indent=2,
+            sort_keys=True,
+        ) + "\n", encoding="utf-8",
+    )
+    print(
+        f"{slug}: SolidCraft model built and checked; STEP and image saved"
+        + ("; independent Forge/SCPC geometry agrees" if comparison else ""),
+        flush=True,
+    )
+
+
+def run_inside_runtime(manifest_path: Path) -> int:
+    """Build all prepared models, collecting errors instead of stopping early."""
+
+    import traceback
+
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    rows = manifest.get("models")
+    if not isinstance(rows, list) or not rows:
+        raise RuntimeError("model-build batch has no configured models")
+
+    results = []
+    for row in rows:
+        slug = row["slug"]
+        try:
+            if row.get("compile_error"):
+                raise RuntimeError(
+                    f"SolidCraft command generation failed: {row['compile_error']}"
+                )
+            _build_one(row, manifest)
+            results.append({"model": slug, "status": "pass", "error": None})
+        except Exception as exc:
+            error = "".join(
+                traceback.format_exception_only(type(exc), exc)
+            ).strip()
+            print(f"{slug}: SolidCraft build/check ERROR: {error}", flush=True)
+            results.append({"model": slug, "status": "fail", "error": error})
+
+    failed = any(item["status"] != "pass" for item in results)
+    report = {
+        "schema": 1,
+        "source_sha": manifest["source_sha"],
+        "status": "fail" if failed else "pass",
+        "model_count": len(results),
+        "models": results,
+    }
+    (manifest_path.parent / "batch-report.json").write_text(
+        json.dumps(report, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    print(
+        "SolidCraft build batch: " + ", ".join(
+            f"{item['model']}={item['status']}" for item in results
+        ), flush=True,
+    )
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":
-    if sys.argv[1:] == ["--inside-runtime"]:
-        raise SystemExit(run_inside_runtime())
-    if len(sys.argv) != 1:
-        raise SystemExit("only --inside-runtime is supported")
-    raise SystemExit(run_host())
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--inside-runtime", action="store_true")
+    parser.add_argument("--manifest", type=Path)
+    args = parser.parse_args()
+    if not args.inside_runtime or args.manifest is None:
+        parser.error("--inside-runtime and --manifest are required")
+    raise SystemExit(run_inside_runtime(args.manifest))

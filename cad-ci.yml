@@ -1,68 +1,25 @@
-# Staged released CAD-CI graph. Main still uses the accepted prior workflow.
-# Enable each model root only after a real SolidCraft build with its own checks.
+# Forge-compatible shared model-build graph. Public Pages remain unchanged.
 schema: 1
-
 variables:
   FORGE_RUNTIME_IMAGE: "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4"
   SOLIDCRAFT_VERSION: "0.45.0"
-
 templates:
   cad-model-build:
     kind: model
-    needs:
-      - forge-package
-      - cad-verification-package
-      - scpc-package
+    needs: [model-build-batch]
     watch:
-      item:
-        - ci.yml
-        - scpf/**
-        - scpc/**
-        - verification/**
-        - check.py
-      repo:
-        - dependencies.repos
-        - ci/toolchain.json
-        - ci/cad-verification-package/package.json
-        - ci/scpc-package/ci.yml
-        - scripts/ci/scpc_dependency.py
-        - scripts/ci/model_verify.py
-        - scripts/ci/model_catalog.py
-        - scripts/ci/model_checks.py
+      item: [ci.yml, scpf/**, scpc/**, verification/**, check.py]
+      repo: [dependencies.repos, ci/toolchain.json, scripts/ci/model_build_batch.py, scripts/ci/model_verify.py, scripts/ci/model_catalog.py, scripts/ci/model_checks.py]
     strategy:
       reuse: true
     steps:
-      - id: model_verify
-        inputs:
-          item:
-            - ci.yml
-            - scpf/**
-            - scpc/**
-            - verification/**
-            - check.py
-          repo:
-            - dependencies.repos
-            - ci/toolchain.json
-            - ci/cad-verification-package/package.json
-            - ci/scpc-package/ci.yml
-            - scripts/ci/scpc_dependency.py
-            - scripts/ci/model_verify.py
-            - scripts/ci/model_catalog.py
-            - scripts/ci/model_checks.py
-        run: [python, ../../../scripts/ci/model_verify.py]
-        outputs:
-          - generated
-          - models
-          - manifest.json
-
+      - id: build_results
+        copy:
+          dependency: model-build-batch
+          source: items/{item_path}
+        outputs: [generated, models, manifest.json]
 items:
   - ci/*
-  - models/basic/plate
-  - models/basic/vent_plate
-  - models/basic/bolted_flange
-  - models/basic/sample_plate
-  - models/components/corner_bracket
-  - models/basic/bracket
-  - models/basic/csg_cube
-  - models/basic/plastic_enclosure
-  - models/basic/plastic_enclosure_pi
+  - models/basic/*
+  - models/components/*
+  - models/advanced/*

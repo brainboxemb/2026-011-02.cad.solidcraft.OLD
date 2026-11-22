@@ -1,3 +1,4 @@
+# Shared build configuration; physical checks live in verification/verify.py.
 id: sample-plate
 template: cad-model-build
 process: true

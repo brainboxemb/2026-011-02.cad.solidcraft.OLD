@@ -69,11 +69,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build and verify selected SolidCraft models
-        uses: brainboxemb/tool.cad.ci@d88d6e189c12edb5a30158c068145c099c17a019
+        uses: brainboxemb/tool.cad.ci@1012e6a539a2fddd8194124844fe208bf16cf4e4
         with:
           source_sha: ${{ github.event.pull_request.head.sha }}
           base_sha: ${{ github.event.pull_request.base.sha }}
-          full_run: true
+          full_run: ${{ github.event.pull_request.base.ref == 'main' && (github.event.pull_request.head.ref == 'dev-cad' || github.event.pull_request.head.ref == 'dev-ci') }}
           jobs: "2"
           github_token: ${{ github.token }}
 

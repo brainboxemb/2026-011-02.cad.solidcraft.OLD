@@ -92,48 +92,28 @@ class MigrationCatalogContractTests(unittest.TestCase):
         self.assertIn('out / "models" / slug', site_builder)
         self.assertIn(".model-warning", stylesheet)
 
-    def test_dev_ci_runs_released_model_build_graph_without_touching_main(self):
-        source = (ROOT / "cad-ci.yml").read_text(encoding="utf-8")
-        self.assertIn("cad-solidcraft:v0.3.4", source)
-        self.assertIn("cad-model-build", source)
-        self.assertIn("scpc-package", source)
-        self.assertIn("models/basic/plate", source)
-        self.assertIn("models/basic/vent_plate", source)
-        self.assertIn("models/basic/bolted_flange", source)
-        self.assertIn("models/basic/sample_plate", source)
-        self.assertIn("models/components/corner_bracket", source)
-        self.assertIn("models/basic/bracket", source)
-        self.assertIn("models/basic/csg_cube", source)
-        self.assertIn("models/basic/plastic_enclosure", source)
-        self.assertIn("models/basic/plastic_enclosure_pi", source)
-        self.assertNotIn("models/advanced/*", source)
-        self.assertIn("scripts/ci/model_verify.py", source)
-        self.assertIn("scpc/**", source)
-        self.assertTrue((ROOT / "ci/scpc-package/ci.yml").is_file())
-        self.assertTrue((ROOT / "scripts/ci/scpc_dependency.py").is_file())
+    def test_dev_ci_uses_one_shared_model_build_batch(self):
+        config = (ROOT / "cad-ci.yml").read_text(encoding="utf-8")
+        self.assertIn("cad-model-build", config)
+        self.assertIn("model-build-batch", config)
+        self.assertIn("source: items/{item_path}", config)
+        self.assertNotIn("run: [python, ../../../scripts/ci/model_verify.py]", config)
+        self.assertIn("models/advanced/*", config)
+        self.assertIn("models/components/*", config)
+        self.assertIn("models/basic/*", config)
 
-        config = __import__("json").loads(
+        shared = (ROOT / "ci/model-build-batch/ci.yml").read_text()
+        self.assertIn("forge-package", shared)
+        self.assertIn("scpc-package", shared)
+        self.assertIn("cad-verification-package", shared)
+        self.assertIn("run: [python, ../../scripts/ci/model_build_batch.py]", shared)
+
+        import json
+        pin = json.loads(
             (ROOT / "ci/cad-verification-package/package.json").read_text()
         )
-        self.assertEqual(config["version"], "0.15.0")
-        self.assertEqual(config["commit"], "9a232798f06254454e6d302bd5f1bac81475194c")
-        self.assertTrue(
-            (ROOT / "models/basic/plate/verification/verify.py").is_file()
-        )
-        package_builder = (
-            ROOT / "scripts/ci/verification_package.py"
-        ).read_text(encoding="utf-8")
-        self.assertIn(
-            "ROOT = Path(__file__).resolve().parents[2]",
-            package_builder,
-        )
-
-        workflow = (ROOT / ".github/workflows/cad.yml").read_text()
-        self.assertIn("tool.cad.ci@d88d6e189c12edb5a30158c068145c099c17a019", workflow)
-        self.assertTrue(
-            (ROOT / "models/basic/vent_plate/verification/verify.py").is_file()
-        )
-        self.assertFalse((ROOT / "scripts/ci/model_verify_pilot.py").exists())
+        self.assertEqual(pin["version"], "0.15.0")
+        self.assertTrue((ROOT / "docs/handoff.md").is_file())
 
     def test_development_branches_do_not_use_old_preview_publisher(self):
         workflow = (ROOT / ".github/workflows/cad.yml").read_text(
