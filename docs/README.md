@@ -4,7 +4,7 @@ This directory contains repository-level project and migration documentation.
 
 Start here:
 
-- `handoff.md` — compact current repository handoff and next action.
+- `handoff.md` — durable session entrypoint; derive current work from GitHub and `plan.md`.
 - `plan.md` — source of truth for unfinished work only.
 - `requirements.md` — durable repository requirements.
 - `design.md` — durable implementation/design decisions.
