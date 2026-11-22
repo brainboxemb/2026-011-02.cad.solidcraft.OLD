@@ -2,7 +2,7 @@ name: CAD
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, dev-cad, dev-ci]
     types: [opened, synchronize, reopened, closed]
   push:
     branches: [main]
@@ -29,8 +29,37 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' && github.event.action != 'closed' }}
 
 jobs:
+  architecture:
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.action != 'closed' &&
+      (github.event.pull_request.base.ref == 'dev-cad' ||
+       github.event.pull_request.base.ref == 'dev-ci')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check model catalog and website route contracts
+        run: python -m unittest discover -s tests -p test_ci_migration_contract.py -v
+      - name: Check branch merge policy
+        run: python -m unittest discover -s tests -p test_merge_policy.py -v
+      - name: Exercise existing CAD website layout and link generation
+        run: python -m unittest discover -s tests -p test_site_generation.py -v
+
   cad:
-    if: github.event_name != 'pull_request' || github.event.action != 'closed'
+    # Keep the accepted main CAD pipeline untouched during migration.
+    # Development PRs run only the lightweight structural contract checks
+    # until their Forge-style CAD-CI graph is fully connected.
+    if: >-
+      github.event_name != 'pull_request' ||
+      (github.event.action != 'closed' && github.event.pull_request.base.ref == 'main')
     runs-on: ubuntu-latest
     env:
       BUILD_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'changed' }}

@@ -20,8 +20,10 @@ Permanent target requirements/design are in `docs/requirements.md` and
 - #172 remains open: full-catalog Forge 0.11 / SolidCraft 0.45
   verification is not demonstrated.
 - The repository has 16 physical model-root `ci.yml` items mapping to
-  18 catalog variants. Current source branches have only `main`, not
-  `dev-cad`/`dev-ci`. Build output and Pages are still main/PR oriented.
+  18 catalog variants. Permanent `dev-cad` and `dev-ci` branches were
+  created at source commit `67e635e4bf6b0d3e371cf44d57e0f950255ddb34`.
+  Their generated build/Pages scopes are **not yet published**.
+  Build output and Pages remain main/PR oriented until M4.
 - `cad-ci.yml` already exists, but generic execution is wrapped in
   `scripts/ci/pipeline_ci.py`. The workflow uses an older pinned
   `tool.cad.ci` and has separate project-specific selectors and publisher.
@@ -33,7 +35,9 @@ upgrade or by a green selected-model run.**
 
 ### M0 — Inventory and safe starting point
 
-Status: **in progress**.
+Status: **in progress** — source branches created, initial catalog/route
+contract is being implemented on `dev-ci`; complete old/new Pages visual
+comparison remains outstanding.
 
 - Inventory all model-root items, 18 catalog variants, cross-model geometry
   dependencies, native/SCPC comparison flags and required saved artifacts.
@@ -45,6 +49,10 @@ Status: **in progress**.
 - Keep all active model PRs isolated from the CI migration.
 - Record the old code to retire versus CAD-specific content to retain.
 - Define acceptance tests before any cutover.
+- Enforce the 16-root/18-variant/5-SCPC-source inventory, model-root ownership,
+  branch merge rules and website route/layout source contract with fast
+  pre-cutover tests. Execute the existing site generator tests on development
+  PRs without launching Docker.
 
 ### M1 — Released tooling and declarative model graph
 
@@ -76,7 +84,8 @@ Status: **not started**.
 
 ### M3 — Exact Forge workflow and long-lived lanes
 
-Status: **not started**.
+Status: **not started** — development branches already exist, but the old
+main workflow and publication path remain accepted until M1/M2 are complete.
 
 - Use the exact released root `tool.cad.ci` action for PR and integration
   runs, not the existing `pipeline_ci.py` wrapper.
