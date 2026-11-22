@@ -153,16 +153,11 @@
       {{ end }}
     {{ end }}
 
-    <section class="cad-document-section cad-source-section">
+    <section class="cad-source-card cad-source-section">
       <h2>SCPF source</h2>
-      <p class="cad-section-help">This is the SCPF Python source declared by this model. It generates the SolidCraft command sequence shown below.</p>
+      <p class="cad-section-help">The actual SCPF Python source used by this model.</p>
       {{ with .Resources.Get "scpf-source.py" }}
-        <details class="cad-code-details">
-          <summary class="cad-disclosure-button">Show source</summary>
-          <div class="cad-code-details-body">
-            {{ partial "cad/codeblock.html" (dict "lang" "python" "content" .Content "label" (index $m "source")) }}
-          </div>
-        </details>
+        {{ partial "cad/codeblock.html" (dict "lang" "python" "content" .Content "label" (index $m "source")) }}
       {{ else }}
         <p class="cad-muted">The declared SCPF source is not available in this site build.</p>
       {{ end }}
@@ -192,15 +187,10 @@
     {{ end }}
 
     {{ with .Resources.Get "scpc-source.py" }}
-      <section class="cad-document-section cad-scpc-section">
+      <section class="cad-source-card cad-scpc-section">
         <h2>SCPC command source</h2>
         <p class="cad-section-help">Separate explicit-command implementation for comparison. It does not call SCPF or reuse the generated SCPF command JSON.</p>
-        <details class="cad-code-details">
-          <summary class="cad-disclosure-button">Show SCPC source</summary>
-          <div class="cad-code-details-body">
-            {{ partial "cad/codeblock.html" (dict "lang" "python" "content" .Content "label" (index $m "scpc_source")) }}
-          </div>
-        </details>
+        {{ partial "cad/codeblock.html" (dict "lang" "python" "content" .Content "label" (index $m "scpc_source")) }}
         <div class="cad-links">
           {{ with $.Resources.Get "scpc-solidcraft.json" }}<a href="{{ .RelPermalink }}">SCPC command JSON</a>{{ end }}
         </div>
