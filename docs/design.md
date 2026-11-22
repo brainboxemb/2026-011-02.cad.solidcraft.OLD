@@ -253,6 +253,15 @@ scripts/ci/model_catalog.py (load/validate; no hard-coded model list)
 homepage + category pages + /models/<slug>/ + model/build downloads
 ```
 
+The landing page's "Recently updated models" ordering is presentation data
+derived from Git history, not model metadata. `scripts/ci/model_history.py`
+writes one generated `site/data/cad/model_history.json` containing only the
+source commit and physical model-root timestamps. The Hugo content adapter maps
+each root timestamp to page `dates.lastmod`; variants owned by the same
+physical root therefore share that timestamp. `model.yml` remains the sole
+model-description/catalog source and must not gain a hand-maintained
+`updated` field.
+
 A model's optional `extra_views` declaration contains a title, a
 caption, and view items of kinds `url` (external HTTPS reference),
 `asset` (checked-in model asset), or `build` (saved SolidCraft
