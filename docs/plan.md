@@ -38,11 +38,11 @@ Accepted repository state:
   reaching the CAD-consumed Forge baseline.
 - The website catalog is model-owned: exactly 16 local `model.yml` files
   describe the published catalog; Hugo consumes those files directly.
-- `dev-ci` is history-synchronized from current `main` through exact PR #240;
-  its durable build and Pages provenance are source-matched to the resulting
-  two-parent merge `ed1d909bb6a5760eafd16789ebed77c355322b6f`.
-- `dev-ci` still contains accepted Hextra/model-page work not yet on `main` and
-  is now ready for the final exact promotion before `dev-cad` is reactivated.
+- Exact PR #249 promoted the complete accepted Hextra lane to `main` as normal
+  two-parent merge `b2f7cac32ebc045a3ec25e9e4d4988d76aaaf680`; the shared
+  policy advanced `dev-ci` to that same commit.
+- Stable `build/main`, public Pages, `build/dev-ci` and Pages `/dev-ci/` all
+  source-match `b2f7cac32ebc045a3ec25e9e4d4988d76aaaf680`.
 - `dev-cad` still has unique product-CAD history and is behind current
   `main`; it must be synchronized by a real permanent-ref merge, not rebased
   or recreated.
@@ -67,7 +67,7 @@ The shared plan structure is defined by
 
 ## Active workstreams
 
-### WS1 — finish the accepted Hextra lane and reactivate dev-cad
+### WS1 — finalize Hextra documentation and reactivate dev-cad
 
 Owner/lane: `dev-ci` promotion first, then repository governance and
 `dev-cad`.
@@ -76,26 +76,26 @@ Status: **now**.
 
 Current evidence:
 
-- #174 is closed and the released CAD-CI/publication architecture is live.
-- Public `main` Pages are Hugo + Hextra and have green durable provenance.
-- PRs #218-#225 implemented the current Hextra site work on `dev-ci`; PR
-  #226 promoted the first Hextra baseline to `main`.
-- PR #228 then added the accepted strong model header/status/preview/files
-  layout on `dev-ci`.
-- PR #229 reconciled the accepted Hextra visual baseline on `dev-ci`.
-- `dev-ci` therefore has accepted source work not yet on `main`, while
-  `main` has newer documentation/governance commits not yet in `dev-ci`.
-
+- #174 and the released CAD-CI/publication migration are complete.
+- PR #249 promoted the complete accepted Hextra lane after a `full_run: true`
+  validation that built 19/19 SCons targets with 0 errors.
+- `main` and `dev-ci` both point to promotion merge
+  `b2f7cac32ebc045a3ec25e9e4d4988d76aaaf680`.
+- Stable build and Pages provenance for both scopes record that same source
+  commit.
+- #211-#217 and #227 are closed from the stable promotion evidence.
+- #251 owns the final durable documentation correction that replaces the
+  remaining Blowfish-era active-contract wording with the accepted Hextra
+  architecture.
 Required order:
 
-1. #247 — reconcile this plan on the accepted synchronized `dev-ci` lane.
-2. Open exact `dev-ci -> main`, require the full promotion run, and merge it
-   only through `/merge` as a normal promotion.
-3. Verify stable `build/main` and public Pages against the promoted main
-   source.
-4. Reconcile/close #191 and its completed child issues #211-#217 and #227 from
-   the promoted evidence.
-5. Open exact `main -> dev-cad`, merge it through `/merge`, verify durable
+1. #251 — record the accepted Hugo 0.169.0 + Hextra v0.13.0 architecture in
+   AGENTS, requirements, design, plan and a new change record.
+2. After the documentation-only main PR has a green durable main build/Pages
+   result, close #191 as completed.
+3. Synchronize the resulting current `main` back into `dev-ci` through exact
+   permanent-ref `/merge` so the completed CI lane remains coherent.
+4. Synchronize exact `main -> dev-cad` through `/merge`, verify durable
    `dev-cad`, then reassess PRs #141, #156 and #169 against the synchronized
    lane.
 
@@ -132,16 +132,8 @@ Choose one coherent product work item at a time after the lane is current.
 
 | Issue | Lane/owner | Status | Next action |
 | --- | --- | --- | --- |
-| #247 Reconcile dev-ci plan after sync | dev-ci | **now** | Record accepted #245/#240 evidence, then open exact `dev-ci -> main` promotion. |
-| #191 Hugo/Hextra CAD site migration | dev-ci / repository | **now** | Promote the synchronized accepted Hextra lane to `main`, verify stable Pages, then close/rewrite residual scope. |
-| #227 Restore model-page header/overview | dev-ci | **effectively complete but still open** | PR #228 is accepted on `dev-ci`; close after the lane reaches `main`. |
-| #217 Restore technical model sections | dev-ci | **effectively complete but still open** | PR #224/#225 implementation is accepted; close after final Hextra promotion. |
-| #216 Restore Simple MFT references/background | dev-ci | **effectively complete but still open** | PR #223 implementation is accepted; close after final Hextra promotion. |
-| #215 Optional model-owned page.md content | dev-ci | **effectively complete but still open** | PR #223 implementation is accepted; close after final Hextra promotion. |
-| #214 Make SCPF source primary | dev-ci | **effectively complete but still open** | PR #221 implementation is accepted; close after final Hextra promotion. |
-| #213 Compact engineering typography | dev-ci | **effectively complete but still open** | PR #220 plus accepted Hextra follow-up is on the lane; close after promotion. |
-| #212 Homepage library-purpose copy | dev-ci | **effectively complete but still open** | PR #219 is accepted; close after final Hextra promotion. |
-| #211 Group featured homepage models | dev-ci | **effectively complete but still open** | PR #218 is accepted; close after final Hextra promotion. |
+| #251 Finalize durable Hextra site documentation | governance/main | **now** | Replace stale Blowfish-era contracts with the accepted Hextra architecture, then verify stable main and close #191. |
+| #191 Hugo/Hextra CAD site migration | repository | **blocked on #251** | Close after durable documentation matches the promoted stable Hextra site and the docs-only main integration is green. |
 | #206 Remove Forge reference implementations | dev-cad | **next** | After lane sync, remove local cross-CAD reference sources and their assumptions without changing product geometry. |
 | #205 Canonical shared model.yml contract | shared + dev-cad | **blocked** | Wait for the Forge-owned canonical contract to be released/adoptable, then migrate without a copied CAD schema. |
 | #204 Remove SCPC command counts from model.yml | dev-cad | **next** | After lane sync, remove the hand-maintained counts and derive any displayed/check count from generated evidence. |
@@ -161,6 +153,9 @@ Choose one coherent product work item at a time after the lane is current.
 
 ## Recently completed
 
+- PR #249 promoted the complete accepted Hextra lane to stable `main` as merge `b2f7cac32ebc045a3ec25e9e4d4988d76aaaf680`; `main`/`dev-ci` refs and both durable build/Page scopes now match it.
+- #211-#217 and #227 were closed from the stable promotion evidence.
+- #247 reconciled the synchronized dev-ci plan before final promotion.
 - #245 adopted released `tool.cad.ci 0.20.1` merge policy and retired the CAD-local merge engine; the shared `/merge` command passed the real same-head command-check isolation proof.
 - PR #240 synchronized exact `main -> dev-ci` as two-parent merge `ed1d909bb6a5760eafd16789ebed77c355322b6f`; durable `build/dev-ci` and Pages `/dev-ci/` both record that exact source commit.
 - #238 reconciled this plan from live repository evidence; #189 was closed as
@@ -181,7 +176,6 @@ Choose one coherent product work item at a time after the lane is current.
 
 ## Next checkpoint
 
-Promote the complete synchronized `dev-ci` Hextra state to stable `main`, verify
-stable build/Pages provenance, then synchronize/reactivate `dev-cad`. Only
-after those permanent lanes are coherent should the next focused
-model/metadata change begin.
+Finish #251 and close #191, then synchronize the resulting final `main` into
+both long-lived development lanes. Verify `dev-cad` before choosing the next
+focused product/model-metadata item.
