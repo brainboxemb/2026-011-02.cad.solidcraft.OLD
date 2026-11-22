@@ -26,20 +26,26 @@ implementation to copy into this repository.
 Do not create a second CAD-specific generic selector, SCons scheduler,
 verification engine, build-store implementation or Pages publisher.
 
-## Generic CI requests: Forge owns the decision
+## Generic owner requests and Forge's role
 
-Generic changes requested by this CAD consumer do **not** go directly into
-`lib.py.cad.ci` or `tool.cad.ci`. Start with a Forge issue explaining
-the problem, expected behavior, acceptance tests and performance impact.
-Forge decides the shared requirements and design. The appropriate generic
-owner repository implements and releases the change independently, after
-which Forge qualifies and selects its release. This CAD repository then
-adopts the same released stack.
+Forge is the central reusable CAD library and an important consumer of the
+shared infrastructure, but it does **not** own generic CAD-CI architecture.
 
-The scan → plan → shared model-build-batch requirement is tracked by
-`brainboxemb/lib.py.solidcraft.forge#661`. Do not introduce local
-selection/scheduling/cache logic while waiting for a generic answer.
-Do not move the stable CAD site to Forge's page layout.
+- Generic CAD-CI requirements/implementation belong in `lib.py.cad.ci` /
+  `tool.cad.ci`.
+- Generic verification requirements/implementation belong in
+  `lib.py.cad.verification`.
+- Runtime/image requirements/implementation belong in `docker.cad.solidcraft`.
+- Forge owns reusable CAD API/compiler/lowering capability and qualifies the
+  released supporting layers it consumes.
+
+When this CAD repository exposes a generic infrastructure gap, record the local
+consumer need and open the normative issue/change in the actual owner repository.
+Forge #661 is only Forge-side consumer evidence for shared-batch selectivity; it
+is not a governance gate for unrelated CAD model onboarding.
+
+Do not introduce local selection/scheduling/cache logic while waiting for a
+generic owner change. Do not move the stable CAD site to Forge's page layout.
 
 ## Same source lanes and generated scopes as Forge
 
@@ -62,6 +68,10 @@ Permanent source branches: `main`, `dev-cad`, `dev-ci`.
 - The workflow invokes the **exact released** `tool.cad.ci` root action,
   as Forge does, including a tested bounded `jobs` value.
 - Root `cad-ci.yml` declares runtime variables, templates and item discovery.
+- The product catalog is not the generic CI registry. `model_catalog.py` owns
+  product model identity, variants, domain dependencies and presentation/site
+  metadata; released CAD-CI discovers executable physical items from distributed
+  `ci.yml` declarations.
 - Each model-root `ci.yml` stays small (identity, template, participation and
   genuinely local overrides). Common dependency/build/output policy belongs
   in the root template; one physical root may own multiple catalog variants.
@@ -95,9 +105,10 @@ Permanent source branches: `main`, `dev-cad`, `dev-ci`.
 - Measure plan count, model-build count, shared dependency runs, image pulls,
   container starts and total elapsed time. Do not claim the architecture is
   completed just because isolated model builds succeed.
-- If the released batch model cannot preserve the required selectivity,
-  resolve that with Forge/CAD-CI's published generic architecture first,
-  not a new second scheduler within the CAD repository.
+- If the released batch model cannot preserve the required selectivity, record
+  the consumer evidence and resolve the generic behavior in the owning CAD-CI
+  repository first, not in Forge and not with a second scheduler in this CAD
+  repository.
 
 ## Verification and results
 
