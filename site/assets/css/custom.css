@@ -96,7 +96,21 @@
   font-weight:800;
   color:var(--cad-accent);
 }
-.cad-source-panel{border-top:3px solid var(--cad-accent)}
+.cad-code-section{
+  margin:2rem 0;
+}
+.cad-code-section>.cad-panel-label{
+  margin-bottom:.25rem;
+}
+.cad-code-section>h2{
+  margin:.1rem 0 .45rem;
+  font-size:1.6rem;
+  line-height:1.3;
+  font-weight:600;
+}
+.cad-code-section>.cad-muted{
+  margin:.2rem 0 .75rem;
+}
 .cad-code{margin-top:.75rem}
 .cad-code .highlight{margin:0}
 .cad-code pre,.cad-command-list pre{
@@ -173,7 +187,6 @@
 .cad-reference-source{margin:.45rem 0 0;color:var(--cad-muted);font-size:.72rem}
 .cad-external-image{display:block}
 
-.cad-scpc-panel{border-top:3px solid #66758a}
 .cad-web-open{border-top:3px solid var(--cad-accent);background:linear-gradient(145deg,#f8fbff,#fff)}
 .dark .cad-web-open{background:linear-gradient(145deg,#102036,#101827)}
 .cad-verification-panel{background:var(--cad-soft-2)}
