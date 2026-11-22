@@ -11,7 +11,7 @@
   <section class="cad-section cad-catalog-section">
     <h2>{{ (site.GetPage (printf "/models/%s" $key)).Title }}</h2>
     <div class="cad-model-grid">
-      {{ range sort $models "Params.model.priority" }}{{ partial "cad/model-card.html" . }}{{ end }}
+      {{ range sort $models "Params.model.priority" }}{{ partial "cad/model-card.html" (dict "page" . "showSection" false) }}{{ end }}
     </div>
   </section>
 {{ end }}

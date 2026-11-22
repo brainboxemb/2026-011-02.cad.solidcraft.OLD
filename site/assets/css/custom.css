@@ -90,7 +90,6 @@
   letter-spacing:0;
 }
 .cad-catalog-page .cad-model-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-.cad-catalog-page .cad-card-section{display:none}
 .cad-section-heading{margin-bottom:.7rem}
 .cad-section-heading h2{margin:.1rem 0 .25rem;font-size:1.35rem;letter-spacing:-.02em}
 .cad-section-heading p{margin:0;color:var(--cad-muted);font-size:.9rem}

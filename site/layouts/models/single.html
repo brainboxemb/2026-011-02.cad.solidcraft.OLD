@@ -8,7 +8,7 @@
       <h1>{{ .Title }}</h1>
       <p>{{ len $models }} model variants.</p>
     </section>
-    <div class="cad-model-grid">{{ range sort $models "Params.model.priority" }}{{ partial "cad/model-card.html" . }}{{ end }}</div>
+    <div class="cad-model-grid">{{ range sort $models "Params.model.priority" }}{{ partial "cad/model-card.html" (dict "page" . "showSection" true) }}{{ end }}</div>
   </main>
 {{ else }}
   {{ $m := .Params.model }}
