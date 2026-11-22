@@ -29,13 +29,17 @@ class ModelVerifyRunnerTests(unittest.TestCase):
     def setUp(self):
         self.module = load_module()
 
-    def test_five_model_roots_derive_members_from_catalog(self):
+    def test_selected_model_roots_derive_members_from_catalog(self):
         for item, folder in (
             ("plate", "models/basic/plate"),
             ("vent-plate", "models/basic/vent_plate"),
             ("bolted-flange", "models/basic/bolted_flange"),
             ("sample-plate", "models/basic/sample_plate"),
             ("corner-bracket", "models/components/corner_bracket"),
+            ("bracket", "models/basic/bracket"),
+            ("csg-cube", "models/basic/csg_cube"),
+            ("plastic-enclosure", "models/basic/plastic_enclosure"),
+            ("plastic-enclosure-pi", "models/basic/plastic_enclosure_pi"),
         ):
             with self.subTest(item=item):
                 with patch.dict(os.environ, {

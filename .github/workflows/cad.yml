@@ -68,7 +68,7 @@ jobs:
       pull-requests: read
     runs-on: ubuntu-latest
     steps:
-      - name: Build and verify two SolidCraft models using released CAD-CI
+      - name: Build and verify selected SolidCraft models
         uses: brainboxemb/tool.cad.ci@d88d6e189c12edb5a30158c068145c099c17a019
         with:
           source_sha: ${{ github.event.pull_request.head.sha }}

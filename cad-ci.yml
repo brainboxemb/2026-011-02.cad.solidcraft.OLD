@@ -62,3 +62,7 @@ items:
   - models/basic/bolted_flange
   - models/basic/sample_plate
   - models/components/corner_bracket
+  - models/basic/bracket
+  - models/basic/csg_cube
+  - models/basic/plastic_enclosure
+  - models/basic/plastic_enclosure_pi
