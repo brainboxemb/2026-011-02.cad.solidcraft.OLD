@@ -38,9 +38,11 @@ Accepted repository state:
   reaching the CAD-consumed Forge baseline.
 - The website catalog is model-owned: exactly 16 local `model.yml` files
   describe the published catalog; Hugo consumes those files directly.
-- `dev-ci` currently contains accepted Hextra/model-page work not yet on
-  `main`; it must be synchronized from current `main` and promoted before
-  `dev-cad` is reactivated.
+- `dev-ci` is history-synchronized from current `main` through exact PR #240;
+  its durable build and Pages provenance are source-matched to the resulting
+  two-parent merge `ed1d909bb6a5760eafd16789ebed77c355322b6f`.
+- `dev-ci` still contains accepted Hextra/model-page work not yet on `main` and
+  is now ready for the final exact promotion before `dev-cad` is reactivated.
 - `dev-cad` still has unique product-CAD history and is behind current
   `main`; it must be synchronized by a real permanent-ref merge, not rebased
   or recreated.
@@ -57,7 +59,9 @@ The shared plan structure is defined by
 - Exact `main -> dev-cad|dev-ci` synchronization uses a normal merge commit.
 - Exact `dev-cad|dev-ci -> main` promotion uses a normal merge commit.
 - Permanent-ref synchronization and promotion are executed only through the
-  repository `/merge` policy.
+  repository `/merge` policy, which is a thin caller of released
+  `tool.cad.ci 0.20.1` at
+  `eb64a46b243db00e8dbb4b78b6643a2a7efa3fb9`.
 - Generic CI/verification/runtime changes are implemented and released in their
   owner repositories before adoption here.
 
@@ -84,21 +88,14 @@ Current evidence:
 
 Required order:
 
-1. #245 — replace the stale CAD-local merge engine with the exact released
-   `tool.cad.ci 0.20.1` reusable merge policy already accepted by Forge and
-   `tool.cad.ci.test`.
-2. Revalidate existing exact PR #240 (`main -> dev-ci`) against the resulting
-   main head and merge it only through `/merge` as a normal
-   history-preserving synchronization.
-3. Verify durable `build/dev-ci` and Pages `/dev-ci/` at the synchronized
-   lane head.
-4. Open exact `dev-ci -> main`, require the full promotion run, and merge it
+1. #247 — reconcile this plan on the accepted synchronized `dev-ci` lane.
+2. Open exact `dev-ci -> main`, require the full promotion run, and merge it
    only through `/merge` as a normal promotion.
-5. Verify stable `build/main` and public Pages against the promoted main
+3. Verify stable `build/main` and public Pages against the promoted main
    source.
-6. Reconcile/close #191 and its completed child issues #211-#217 and #227 from
+4. Reconcile/close #191 and its completed child issues #211-#217 and #227 from
    the promoted evidence.
-7. Open exact `main -> dev-cad`, merge it through `/merge`, verify durable
+5. Open exact `main -> dev-cad`, merge it through `/merge`, verify durable
    `dev-cad`, then reassess PRs #141, #156 and #169 against the synchronized
    lane.
 
@@ -135,8 +132,8 @@ Choose one coherent product work item at a time after the lane is current.
 
 | Issue | Lane/owner | Status | Next action |
 | --- | --- | --- | --- |
-| #245 Adopt shared tool.cad.ci 0.20.1 merge policy | governance/main | **now** | Replace the CAD-local merge engine with the exact released reusable workflow, then revalidate #240. |
-| #191 Hugo/Hextra CAD site migration | dev-ci / repository | **blocked on #245** | Resume exact #240 `main -> dev-ci` after shared merge-policy adoption, then promote the accepted Hextra lane to `main`. |
+| #247 Reconcile dev-ci plan after sync | dev-ci | **now** | Record accepted #245/#240 evidence, then open exact `dev-ci -> main` promotion. |
+| #191 Hugo/Hextra CAD site migration | dev-ci / repository | **now** | Promote the synchronized accepted Hextra lane to `main`, verify stable Pages, then close/rewrite residual scope. |
 | #227 Restore model-page header/overview | dev-ci | **effectively complete but still open** | PR #228 is accepted on `dev-ci`; close after the lane reaches `main`. |
 | #217 Restore technical model sections | dev-ci | **effectively complete but still open** | PR #224/#225 implementation is accepted; close after final Hextra promotion. |
 | #216 Restore Simple MFT references/background | dev-ci | **effectively complete but still open** | PR #223 implementation is accepted; close after final Hextra promotion. |
@@ -164,6 +161,8 @@ Choose one coherent product work item at a time after the lane is current.
 
 ## Recently completed
 
+- #245 adopted released `tool.cad.ci 0.20.1` merge policy and retired the CAD-local merge engine; the shared `/merge` command passed the real same-head command-check isolation proof.
+- PR #240 synchronized exact `main -> dev-ci` as two-parent merge `ed1d909bb6a5760eafd16789ebed77c355322b6f`; durable `build/dev-ci` and Pages `/dev-ci/` both record that exact source commit.
 - #238 reconciled this plan from live repository evidence; #189 was closed as
   completed and #155 was closed as superseded by the accepted #174
   architecture.
@@ -182,7 +181,7 @@ Choose one coherent product work item at a time after the lane is current.
 
 ## Next checkpoint
 
-Adopt the released shared merge policy through #245, complete exact #240
-`main -> dev-ci`, then promote the complete accepted `dev-ci` Hextra state
-to stable `main` before synchronizing/reactivating `dev-cad`. Only after those permanent lanes are
-coherent should the next focused model/metadata change begin.
+Promote the complete synchronized `dev-ci` Hextra state to stable `main`, verify
+stable build/Pages provenance, then synchronize/reactivate `dev-cad`. Only
+after those permanent lanes are coherent should the next focused
+model/metadata change begin.
