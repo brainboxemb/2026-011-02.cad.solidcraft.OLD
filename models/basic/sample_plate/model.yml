@@ -1,0 +1,23 @@
+# Model-owned content. Editing this file updates the website; it does not rebuild geometry.
+section: basic
+priority: 60
+title: "SamplePlate"
+tagline: "Three named sketches, a native two-hole pattern and a raised boss"
+description: >-
+  Builds a centered plate with native Base, Holes and Bore sketches. One parameter-driven Ø8
+  hole cut is repeated by a native rectangular pattern, while a Ø24 boss is joined between
+  the two cuts.
+parameters: "80 × 50 × 8 mm; R6; Ø24 × 14 boss"
+diagram: "sample"
+stages:
+  - "Base — sketch XY rectangle (80 × 50)"
+  - "Extrude1 — extrude base by 8 mm"
+  - "Fillet1 — fillet four vertical corners, R6"
+  - "Holes — cut one Ø8 source hole through the plate"
+  - "Pattern — repeat to two Ø8 holes with width-driven pitch"
+  - "Boss — join Ø24 boss above plate, height 14"
+  - "Bore — cut central Ø12 bore through full 22 mm"
+source: "scpf/model.py"
+build: true
+snapshot_required: true
+allow_stale_preview: false

@@ -1,0 +1,11 @@
+# Shared exact CAD-verification wheel; not part of the runtime image.
+id: cad-verification-package
+kind: tool
+watch: [ci/cad-verification-package/package.json, scripts/ci/verification_package.py]
+strategy:
+  reuse: true
+steps:
+  - id: wheel
+    run: [python, ../../scripts/ci/verification_package.py]
+    inputs: [ci/cad-verification-package/package.json, scripts/ci/verification_package.py]
+    outputs: [dist, provenance.json]

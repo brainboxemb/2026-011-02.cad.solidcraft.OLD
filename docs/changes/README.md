@@ -38,3 +38,15 @@ Current records:
 - [0017-forge-011-solidcraft-045.md](0017-forge-011-solidcraft-045.md) — adopt released Forge 0.11.0 and central SolidCraft 0.45.0 in CAD verification (#172).
 
 - [0018-forge-ci-parity.md](0018-forge-ci-parity.md) — migrate CAD CI to Forge's released tooling, source lanes and generated scopes (#174).
+
+- [0019-shared-build-batch.md](0019-shared-build-batch.md) — Forge-compatible shared model-build batch; one runtime start (#174).
+
+- [0020-component-model-builds.md](0020-component-model-builds.md) — shared SolidCraft build for GuideRail variants and FlexBenchDog (#174).
+
+- [0021-model-metadata.md](0021-model-metadata.md) — local model.yml drives CAD website metadata and views (#189).
+
+- [0022-build-vs-semantic-verification.md](0022-build-vs-semantic-verification.md) — require real model builds while keeping semantic verification optional (#174).
+
+- [0023-hugo-blowfish-site.md](0023-hugo-blowfish-site.md) — direct model.yml → Hugo/Blowfish site generation with prepared CAD-CI evidence (#191, #174).
+
+- [0024-retire-legacy-ci-python.md](0024-retire-legacy-ci-python.md) — remove superseded local CI/site orchestration after released dev-ci build/Pages acceptance (#174).

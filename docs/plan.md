@@ -1,135 +1,121 @@
-# CAD repository migration plan
+# CAD repository plan
 
-Source of truth for the **unfinished** Forge-compatible CI migration:
-[issue #174](https://github.com/brainboxemb/2026-011-02.cad.solidcraft/issues/174).
-Permanent target requirements/design are in `docs/requirements.md` and
-`docs/design.md`. Keep implementation history in numbered
-`docs/changes/` records.
+This file is the source of truth for **unfinished work** in
+`2026-011-02.cad.solidcraft`.
 
-## Current accepted state — 2026-11-22
+Detailed implementation history belongs in `docs/changes/` and GitHub issues,
+not in this plan.
 
-- PR #171 / commit `f615379bb2e8cb44e300dc87f9edf0983c6ea6cb`:
-  CAD Docker moved to released central runtime.
-- PR #173 / commit `ecda73518f465adbfb4678fc6a11803d40cabe97`:
-  Forge 0.11.0 and SolidCraft 0.45.0 pins accepted.
-- Main CAD run `45005747810` is green under the **old hybrid CI**.
-- That run completed 184 unit tests, executed native SolidCraft for
-  `sample-plate` and `corner-bracket`, and ran generic item
-  compile/compare/package for two additional HUB75 roots.
-  It did **not** build all CAD models in SolidCraft.
-- #172 remains open: full-catalog Forge 0.11 / SolidCraft 0.45
-  verification is not demonstrated.
-- The repository has 16 physical model-root `ci.yml` items mapping to
-  18 catalog variants. Current source branches have only `main`, not
-  `dev-cad`/`dev-ci`. Build output and Pages are still main/PR oriented.
-- `cad-ci.yml` already exists, but generic execution is wrapped in
-  `scripts/ci/pipeline_ci.py`. The workflow uses an older pinned
-  `tool.cad.ci` and has separate project-specific selectors and publisher.
+## Current focus — stabilize and promote dev-ci
 
-**Do not claim the Forge CI migration is completed by the successful runtime
-upgrade or by a green selected-model run.**
+**There is one active workstream: finish the #174 dev-ci migration and promote
+that accepted lane to main.**
 
-## Work order
+Do not start or expand unrelated work until this section is complete.
 
-### M0 — Inventory and safe starting point
+### 1. Finish the existing cleanup PR
 
-Status: **in progress**.
+Active PR: **#201 — Retire legacy CAD CI Python orchestration**.
 
-- Inventory all model-root items, 18 catalog variants, cross-model geometry
-  dependencies, native/SCPC comparison flags and required saved artifacts.
-- Capture stable build and Pages URLs/provenance before changes.
-- Capture representative current CAD pages/screenshots and navigation:
-  homepage, Basic/Components/Advanced, a simple model, a complex HUB75 model,
-  and a model with independent SCPC; preserve their visual hierarchy,
-  model-specific content and links as the comparison baseline.
-- Keep all active model PRs isolated from the CI migration.
-- Record the old code to retire versus CAD-specific content to retain.
-- Define acceptance tests before any cutover.
+Required outcome:
 
-### M1 — Released tooling and declarative model graph
+- keep only CAD-owned adapters and model-specific checks;
+- remove superseded local planner/selector/publisher/HTML-generation code;
+- retain broad repository regression coverage through the released CAD-CI graph;
+- keep every retained `ci/*` item and `scripts/ci/*` adapter documented;
+- no CAD geometry changes;
+- no stable Pages cut-over in this PR.
 
-Status: **not started**.
+### 2. Qualify the resulting dev-ci lane
 
-- Pin exactly Forge's accepted released
-  `tool.cad.ci 0.17.0` /`lib.py.cad.ci 0.9.3` stack.
-- Add the released CAD verification package as an **external** separately
-  pinned dependency; never add it to the central Docker.
-- Align `cad-ci.yml` runtime variables, templates, item discovery,
-  `process`, watches, dependencies and output contracts with Forge.
-- Test that every current model variant is accounted for and that a single
-  source change selects only its declared affected items.
-- SCons/released library must be the only owners of selection/reuse.
+After #201 is merged into `dev-ci`:
 
-### M2 — Native verification and consumer step migration
+- run the normal durable `dev-ci` workflow;
+- require green released CAD-CI checks;
+- verify `build/dev-ci` is complete and source-matched;
+- verify Pages publication changes only the `/dev-ci/` subtree;
+- compare routes, downloads, warnings, images and representative desktop/mobile
+  pages against the stable-site backup;
+- do not relabel missing or old evidence as current.
 
-Status: **not started**.
+Known external blocker:
 
-- Convert one representative basic model to model-local declarative
-  verification and released `lib.py.cad.verification`, including native
-  SolidCraft output and accurate provenance.
-- Cover a model with independent SCPC output and a complex assembly.
-- Convert the remaining model roots in reviewable groups, preserving
-  geometry and current accepted result details.
-- Keep model-specific expected outcomes and optional snapshots in CAD;
-  remove generic JSON/schema/mutation/checker duplication only when parity
-  has been demonstrated.
+- `hub75-display2` and `hub75-wood-frame` remain `process:false` while
+  Forge #679 is unresolved. Do not add CAD-side naming workarounds.
 
-### M3 — Exact Forge workflow and long-lived lanes
+### 3. Make repository documentation coherent before promotion
 
-Status: **not started**.
+Before `dev-ci -> main`:
 
-- Use the exact released root `tool.cad.ci` action for PR and integration
-  runs, not the existing `pipeline_ci.py` wrapper.
-- Adapt Forge's thin workflow, docs-only PR classifier and explicit
-  `jobs=2` *after* verifying CAD's own runner capacity.
-- Introduce permanent `dev-cad` and `dev-ci`, owner-controlled merge
-  policy, feature squash and lane→main merge discipline.
-- Promotion PRs into main request a complete processed-model run.
-- Keep PR verification-only, without new PR build/Pages publication.
+- `docs/plan.md` must describe only current unfinished work;
+- `docs/handoff.md` is a **repository-level entrypoint**, not a dev-ci-owned
+  document. A lane-only copy is transitional and must not be treated as the
+  canonical handoff;
+- the final promoted main tree must contain the current handoff;
+- add a small `docs/README.md` only if needed to make document roles obvious;
+- do not start a broad documentation reorganization during this stabilization
+  pass.
 
-### M4 — Durable build and Pages scopes
+### 4. Promote dev-ci to main
 
-Status: **not started**.
+Promotion is the exit gate for this workstream.
 
-- Publish complete accepted build scopes at `main`, `dev-cad`,
-  `dev-ci` using released build-store CLI, preserving siblings.
-- Publish stable Pages root and development subtrees using released Pages
-  CLI, with source SHA/provenance checks and no force-push.
-- Site generator consumes exact prepared complete scope without executing CAD.
-  Reuse the existing CAD website layout/style/source presentation; do not swap
-  in Forge's website generator or redesign the model page.
-- Generate a site candidate and compare it with the accepted stable CAD site
-  for navigation, page structure, model images, source, command sequence,
-  downloads, URLs and verification labels before changing stable Pages.
-- Ensure a docs-only Pages update is fast and cannot invalidate native CAD.
+Before promotion:
 
-### M5 — End-to-end qualification and cutover
+- synchronize the long-lived lane with the current `main` without flattening
+  lane history;
+- all required checks must be green on the exact promotion head;
+- use the owner-controlled merge policy;
+- `dev-ci -> main` uses a normal merge commit, not squash;
+- retain the long-lived `dev-ci` branch;
+- verify stable build/Pages output after promotion.
 
-Status: **not started**.
+After promotion:
 
-- Run one selected model, one cross-model dependency, SCPC comparison,
-  the full 16-item/18-variant model set, and all required native checks.
-- Prove a Forge/SolidCraft pin change invalidates every affected native
-  model; validate every model's saved `.sc`, STEP, measurements and
-  screenshots, not just the page update or command compilation.
-- Complete #172 using real result evidence; no relabeling old outputs.
-- Test independent build/Pages publication on both dev lanes and on main.
-- Verify existing `/models/<slug>/` links and category URLs; visually compare
-  homepage/category/model examples on desktop and narrow screens. Reject a
-  visible website regression even if the CI/build checks are green.
-- Retire obsolete CAD selectors, wrapped generic execution and publisher
-  only after acceptance; update tests, AGENTS and documentation to the
-  new active architecture.
-- Merge the migration into `main` only after source and generated scopes
-  have been checked. Close #174 only at completion.
+- `main` must expose the current `model.yml` catalog and repository handoff;
+- `docs/plan.md` on main must match the actual repository state;
+- close or rewrite #174/#172 only from recorded acceptance evidence.
 
-## Git workflow and release discipline
+## Frozen until the dev-ci promotion is complete
 
-While the lane topology is being introduced, documentation-only changes can
-use a short-lived PR to `main` with **squash**. After lanes exist, CI work
-targets `dev-ci` and CAD model work targets `dev-cad`. Promotions use
-normal merge commits by the owner-controlled policy. Avoid many tiny commits;
-finish logical changes as one reviewed PR with tested output.
+Do **not** start or expand these while the current focus is active:
 
-The exact Forge/central Docker versions already exist. This migration does
-not create another Forge release or rebuild the Docker image.
+- new CAD model work or model onboarding;
+- `examples/` cleanup/audit;
+- additional website redesign or theme work;
+- new Forge/CAD-CI enhancements unless an existing external blocker requires
+  owner-repository work;
+- general branch cleanup unrelated to the promotion;
+- terminology refactors;
+- new verification coverage that is not required for the current cut-over.
+
+Existing CAD feature PRs may remain open, but they are not the active workstream.
+
+## Accepted state already proven
+
+The following is background, not active work:
+
+- permanent source lanes `main`, `dev-cad`, `dev-ci` exist;
+- released CAD-CI is the generic planner/executor/publisher;
+- the shared model batch uses one SolidCraft runtime;
+- 14 physical model roots / 16 catalog variants build through the accepted
+  shared path;
+- model metadata is distributed across 16 model-owned `model.yml` files,
+  representing 18 published variants;
+- Hugo/Blowfish reads the model metadata directly;
+- durable `build/dev-ci` and `/dev-ci/` publication have been proven;
+- the stable pre-cut-over Pages tip is backed up at
+  `backup/gh-pages-before-174-2026-11-22`.
+
+Do not reopen these architecture decisions during the stabilization pass unless
+new evidence proves the accepted implementation incorrect.
+
+## Next work after stabilization
+
+Once `dev-ci` is promoted and main is coherent again:
+
+1. synchronize and reactivate `dev-cad`;
+2. reassess the existing CAD feature PRs;
+3. resume product CAD work;
+4. only then audit retained `examples/` and old branches as a separate cleanup
+   task.

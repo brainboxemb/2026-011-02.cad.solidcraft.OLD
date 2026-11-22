@@ -1,8 +1,25 @@
-# Discover every model-root folder that explicitly owns ci.yml.
-# Some roots contain more than one catalog variant; the folder remains the CI
-# item so the repository does not gain a second per-variant directory tree.
+# Forge-compatible shared model-build graph. Public Pages remain unchanged.
 schema: 1
+variables:
+  FORGE_RUNTIME_IMAGE: "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4"
+  SOLIDCRAFT_VERSION: "0.45.0"
+templates:
+  cad-model-build:
+    kind: model
+    needs: [model-build-batch]
+    watch:
+      item: [ci.yml, scpf/**, scpc/**, verification/**, check.py]
+      repo: [dependencies.repos, ci/toolchain.json, scripts/ci/model_build_batch.py, scripts/ci/model_verify.py, scripts/ci/model_catalog.py, scripts/ci/model_checks.py]
+    strategy:
+      reuse: true
+    steps:
+      - id: build_results
+        copy:
+          dependency: model-build-batch
+          source: items/{item_path}
+        outputs: [generated, models, manifest.json]
 items:
+  - ci/*
   - models/basic/*
   - models/components/*
   - models/advanced/*

@@ -1,27 +1,4 @@
-# This folder is one tool.cad.ci item. The shared runner derives its
-# catalog variants from model_catalog.py; this file owns execution policy.
+# Shared SolidCraft build; semantic verification is optional when it adds value.
 id: simple-mft
-kind: qualification
-needs:
-  - guide-rail
-watch:
-  - models/advanced/simple_mft/**
-  - scripts/ci/model_item.py
-strategy:
-  # Durable item output is now owned by tool.cad.ci, so unchanged results may
-  # be reused whenever their inputs and declared outputs still match.
-  reuse: true
-steps:
-  - id: compile
-    run: [python, ../../../scripts/ci/model_item.py, compile]
-    outputs:
-      - checks/compile.json
-  - id: compare-current
-    run: [python, ../../../scripts/ci/model_item.py, compare-current]
-    outputs:
-      - checks/current-pipeline.json
-  - id: package
-    run: [python, ../../../scripts/ci/model_item.py, package]
-    outputs:
-      - results
-      - checks/package.json
+template: cad-model-build
+process: true

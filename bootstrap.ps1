@@ -1,13 +1,11 @@
 <#
 .SYNOPSIS
-    Prepare the pinned CAD Python libraries and tool.cad.ci checkout.
+    Prepare the pinned CAD Python libraries.
 .DESCRIPTION
     Read exact Git commits from dependencies.repos. SCPF and SCPC are checked
     out under ext/ and installed editable into the active Python environment.
-    tool.cad.ci is checked out under ext/cad-ci but is deliberately not
-    installed: the CAD repository already owns scripts/ci/cad_ci.py, so the
-    external tool is invoked through ext/cad-ci/cad-ci.py instead of importing
-    another cad_ci module.
+    CI itself uses the exact released tool.cad.ci action pinned in
+    .github/workflows/cad.yml; bootstrap.ps1 does not clone CI tooling.
 #>
 [CmdletBinding()]
 param([string]$CondaExe) # Old optional argument accepted for compatibility.
@@ -78,8 +76,3 @@ foreach ($name in @('scpf', 'scpc')) {
     Write-Host "Ready: $name at $actual"
 }
 
-# tool.cad.ci remains executable repository tooling, not an installed package.
-& python (Join-Path $root 'scripts/ci/bootstrap_cad_ci.py')
-if ($LASTEXITCODE -ne 0) {
-    throw 'tool.cad.ci bootstrap failed.'
-}

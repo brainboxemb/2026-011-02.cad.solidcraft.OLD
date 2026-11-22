@@ -10,7 +10,7 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "dependencies.repos"
-DEPENDENCIES = ("scpf", "scpc", "cad-ci")
+DEPENDENCIES = ("scpf", "scpc")
 
 
 def dependency(name: str, root: Path = ROOT) -> tuple[str, str]:
@@ -113,7 +113,7 @@ def ensure_dependencies(root: Path = ROOT) -> dict[str, str]:
 
 
 def main() -> int:
-    """Prepare exact source checkouts for host tooling and container mounts."""
+    """Prepare the exact Forge and SCPC source checkouts used by CAD."""
 
     for name, sha in ensure_dependencies().items():
         print(f"Ready: {name} at {sha}")

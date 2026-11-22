@@ -1,0 +1,26 @@
+# Model-owned content. Editing this file updates the website; it does not rebuild geometry.
+section: components
+priority: 30
+title: "FlexBenchDog"
+tagline: "Passive 20 mm MFT bench dog with a four-segment flex stem"
+description: >-
+  A simple printable bench dog inferred from the Mini-MFT reference image: 20 mm above and
+  20 mm below the worktop, with a nominal Ø20 insert and a small Ø20.2 flare only at the
+  free tip. Two perpendicular slots create four flexible legs; a larger bottom chamfer
+  provides an insertion lead-in. There is no screw mechanism.
+parameters: "20.0 mm nominal hole; Ø20.2 mm flared flex tip; Ø24 × 3 mm rim; 20 mm above and 20 mm below worktop"
+diagram: "plate"
+stages:
+  - "Cylinder — Ø24 × 3 mm stop rim at worktop datum"
+  - "Cylinder — join Ø20 × 17 mm working section to Z=20"
+  - "Cylinder — join Ø20 × 20 mm insertion below worktop"
+  - "Cylinder — add Ø20.2 × 2 mm flared free tip"
+  - "Two 1.5 × 16 mm crossing cuts create four flex legs"
+  - "Chamfer top and bottom edges, then cut a recessed square box logo"
+source: "scpf/model.py"
+scpc_source: "scpc/model.py"
+scpc_command_count: 22
+component_source: "scpf/model.py"
+component_definition_primary: true
+build: true
+snapshot_required: true

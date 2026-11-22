@@ -1,12 +1,41 @@
+
+> **Website- en modelgegevens (CAD #189):** volg Forge's
+> `examples/*/model.yml`: in CAD staat de bron voor elke titel,
+> omschrijving, parameteruitleg, bouwstap, waarschuwing, bron-/variantrelatie
+> en extra afbeelding naast het model in `models/<groep>/<model>/model.yml`.
+> De Python `model_catalog.py` is uitsluitend een lezer/validator.
+> Hugo + Blowfish onder `site/` leest dezelfde `model.yml` direct via een
+> content adapter; voeg geen gegenereerde Markdown-catalogus of Python
+> HTML-renderer toe.
+> `ci.yml` is alleen voor uitvoering; `verification/verify.py` is optioneel en
+> alleen voor zinvolle geometrische/semantische controles. Een model moet wel
+> echt in SolidCraft bouwen; voeg geen kunstmatige verificatie toe om CI groen
+> te krijgen. Voeg niet opnieuw een Python-dictionary met
+> modelbeschrijvingen of model-specifieke HTML-condities toe. Bewaak de
+> huidige website en URLs; wijzig metadata zonder geometrische herbouw.
+>
 # CAD repository instructions
 
-> **CI migration in progress:** Issue #174 and
-> `docs/requirements.md`, `docs/design.md`, and `docs/plan.md` define the
-> intended Forge-compatible CI architecture. Existing `cad.yml`,
-> `pipeline_ci.py`, and publication rules below describe the **current
-> implementation**, not the target. Do not extend the old selectors or
-> publication framework to address runtime upgrade coverage. Migrate in
-> reviewed stages; keep accepted `main` build/Pages output intact until cutover.
+> **Active CI architecture (issue #174):** `dev-ci` uses the exact released
+> `tool.cad.ci` action, one SCons graph, one shared SolidCraft model-build
+> batch and Hugo/Blowfish publication from the prepared durable scope.
+> `build/dev-ci` and Pages `/dev-ci/` are proven while stable Pages remains
+> unchanged. Do not recreate the retired local planner, selector, build store,
+> publisher or Python HTML generator.
+>
+> **Model build gate:** 14 physical roots / 16 variants currently build in the
+> shared runtime. `hub75-display2` and `hub75-wood-frame` stay disabled only
+> for Forge #679. Do not add CAD-local naming workarounds. Semantic
+> `verification/verify.py` is optional; a processed model must at least build
+> and produce the required saved outputs.
+>
+> **Generic CAD-CI requests go through Forge first:** track the common
+> scan/plan/build-batch requirement under
+> `brainboxemb/lib.py.solidcraft.forge#661`. Forge decides shared behavior
+> and acceptance; the generic CI owner implements/releases it; Forge
+> qualifies the release; only then does this repository adopt it. Do not
+> change `lib.py.cad.ci` directly as a workaround for this CAD repository,
+> and do not create another CI planner here.
 >
 This repository contains product and project CAD models built with SCPF/SCPC.
 Forge itself belongs in `brainboxemb/lib.py.solidcraft.forge`; do not work
@@ -58,12 +87,12 @@ below before opening or merging the PR.
      need explanation.
    - Keep the model small enough to understand from its own source.
 
-2. **Model catalog**
-   - Add one record to `scripts/ci/model_catalog.py:MODELS`.
-   - Put the source path, section, site metadata, native flags and optional
-     component/SCPC metadata in that record.
-   - Do not create a second model list elsewhere. The derived source mappings,
-     site sections and CI selections come from `MODELS`.
+2. **Model metadata**
+   - Add or update `models/<group>/<model>/model.yml`.
+   - Put title, description, parameters, stages, warnings, source relations,
+     variants and presentation-only extra views there.
+   - `scripts/ci/model_catalog.py` only validates/normalizes these files for
+     CAD-side consumers; do not add a second handwritten model list.
 
 3. **Regression tests**
    - Add a focused test file under `tests/` for the important geometry and
@@ -78,25 +107,23 @@ below before opening or merging the PR.
      workflow YAML.
    - The normal model regression and static-site smoke tests must pass.
 
-5. **Native SolidCraft verification**
-   - Set the model's native flags in the central catalog.
-   - Put model-specific native evidence checks with that model or in the shared
-     native-check runner when the check is genuinely cross-model. Do not add jq
-     assertions or model semantics to workflow YAML.
-   - Declare saved-design parameter mutations in
-     `scripts/ci/native_cases.py`; `run_native_mutations.py` executes them.
-   - Prefer checking the actual saved SolidCraft body rather than only generated
-     command JSON.
-   - Native verification runs inside the single `.github/workflows/cad.yml`
-     pipeline; do not add a second user-facing native workflow or another model
-     list in YAML.
+5. **SolidCraft build and optional semantic verification**
+   - Every processed model must build in the shared SolidCraft batch and
+     produce its required saved model, STEP and preview outputs.
+   - Add `verification/verify.py` only when a stable physical/semantic
+     expectation is useful; do not invent checks merely to satisfy CI.
+   - Optional snapshot camera and extra-view settings belong in the physical
+     model-root `check.py`; verification logic does not.
+   - Do not add model semantics or per-model execution loops to workflow YAML.
 
 6. **Results site**
-   - Site title, description, parameters, stages and section belong in the
-     central model record.
-   - Add only presentation-specific artwork to `build-results.py:DIAGRAMS`
-     when a schematic fallback is useful.
-   - The site builder and smoke tests iterate the central catalog automatically.
+   - Site title, description, parameters, stages and section belong in local
+     `model.yml`.
+   - Hugo creates `/models/<slug>/` from
+     `site/content/models/_content.gotmpl`.
+   - Accepted build evidence is read-only input from the prepared
+     `tool.cad.ci` scope; missing evidence must remain missing/pending.
+   - Keep presentation in Hugo/Blowfish templates and CSS, not Python HTML.
 
 7. **Repository model index**
    - Add a concise entry to `models/README.md` when the model is a reusable
@@ -138,8 +165,9 @@ Normal CAD CI uses the released runtime owned by
 
 - Normal model work uses targeted builds. A change to one model should compile,
   test and native-build that model only.
-- Model selection comes from the central catalog and the shared selector under
-  `scripts/ci/`; do not reimplement path filtering in workflow YAML.
+- Model/item selection and dependency closure come from released CAD-CI using
+  `cad-ci.yml` + item `ci.yml`; do not reimplement them in CAD Python or
+  workflow YAML.
 - Shared component dependencies must be declared in the catalog so a component
   change selects its actual dependants.
 - Adding a new model should normally build only that model.
@@ -263,15 +291,14 @@ local image-build workflow. Do not split normal CAD operation into separate
 native, publish or cleanup workflows merely because those are separate
 implementation phases.
 
-Workflow YAML owns triggers, permissions, checkout, image pull/login and calls
-into tested Python. Git diff logic, model selection, model loops, JSON policy,
-model-specific checks, publication decisions and branch mutation policy belong
-in tested Python modules under `scripts/ci/` or with the model that owns the
-check.
+Workflow YAML owns triggers, permissions and the thin released-action/Hugo
+handoff. Released CAD-CI owns generic checkout, selection, dependency closure,
+SCons execution and durable publication. CAD Python below `scripts/ci/` is
+limited to the adapters documented in `scripts/ci/README.md`.
 
 The normal development flow is:
 
-`source change -> build plan -> selected cheap checks -> selected native checks -> candidate output -> publish/promote`
+`source change -> released CAD-CI plan/SCons -> repository tests + shared model batch -> durable build scope -> Hugo -> released Pages publisher`
 
 A deliberate full-library run uses the same commands with explicit `all`
 selection; it is not a separate CI implementation.
@@ -294,7 +321,10 @@ PR head after all current checks are green:
 - `main`, `dev-cad`, `dev-ci`, `build`, `gh-pages` and backup refs
   are never cleanup targets.
 
-Because policy merges run with `GITHUB_TOKEN`, the policy explicitly dispatches `cad.yml` for the accepted durable base ref; direct lane-to-main promotions also dispatch the retained lane. Do not rely on an implicit push-triggered integration run.
+Because policy merges run with `GITHUB_TOKEN`, the policy explicitly dispatches
+`cad.yml` for the accepted durable base ref; direct lane-to-main promotions
+also dispatch the retained lane. Do not rely on an implicit push-triggered
+integration run.
 
 Do not use GitHub's merge buttons or auto-merge as an alternative. Repository
 settings must permit both merge methods because the correct method depends on

@@ -26,6 +26,21 @@ implementation to copy into this repository.
 Do not create a second CAD-specific generic selector, SCons scheduler,
 verification engine, build-store implementation or Pages publisher.
 
+## Generic CI requests: Forge owns the decision
+
+Generic changes requested by this CAD consumer do **not** go directly into
+`lib.py.cad.ci` or `tool.cad.ci`. Start with a Forge issue explaining
+the problem, expected behavior, acceptance tests and performance impact.
+Forge decides the shared requirements and design. The appropriate generic
+owner repository implements and releases the change independently, after
+which Forge qualifies and selects its release. This CAD repository then
+adopts the same released stack.
+
+The scan → plan → shared model-build-batch requirement is tracked by
+`brainboxemb/lib.py.solidcraft.forge#661`. Do not introduce local
+selection/scheduling/cache logic while waiting for a generic answer.
+Do not move the stable CAD site to Forge's page layout.
+
 ## Same source lanes and generated scopes as Forge
 
 Permanent source branches: `main`, `dev-cad`, `dev-ci`.
@@ -51,10 +66,13 @@ Permanent source branches: `main`, `dev-cad`, `dev-ci`.
 
 - The workflow invokes the **exact released** `tool.cad.ci` root action,
   as Forge does, including a tested bounded `jobs` value.
+- Repository-level Python regressions run as one declarative
+  `ci/repository-tests` item in that same graph; they do not justify a
+  second planner or orchestration wrapper.
 - Root `cad-ci.yml` declares runtime variables, templates and item discovery.
-- Each model-root `ci.yml` declares participation, source watches, dependency
-  edges, steps and expected outputs. One physical model root may own multiple
-  website/catalog variants.
+- Each model-root `ci.yml` stays small (identity, template, participation and
+  genuinely local overrides). Common dependency/build/output policy belongs
+  in the root template; one physical root may own multiple catalog variants.
 - A model-specific change selects only the affected model and its declared
   dependants; SCons decides whether a selected action needs to run.
 - A source-level change to Forge/SCPC/verifier/runtime that changes model
@@ -69,9 +87,34 @@ Permanent source branches: `main`, `dev-cad`, `dev-ci`.
   saved native design, STEP/results and checks were produced under that
   toolchain. Merely refreshing the website or command JSON does not count.
 
+## Build batch and scan contract
+
+- Reuse the **Forge pattern**: CAD-CI discovers all items and owns the
+  changed-path/dependency plan; one released SCons run executes the plan.
+- Prepare shared Forge/SCPC/checker dependencies once. One shared build-batch
+  item collects the affected model commands and runs SolidCraft with **one
+  container startup**, writing separate verification evidence per model.
+- Model items use the existing released `copy: dependency` mechanism to
+  expose their own results; they do not each launch Docker.
+- Item discovery uses category globs and declarative `process`, not a
+  growing manually edited list of model paths.
+- Ordinary development PRs remain selective. A complete model check is
+  required for toolchain upgrades and deliberate lane-to-main promotion.
+- Measure plan count, model-build count, shared dependency runs, image pulls,
+  container starts and total elapsed time. Do not claim the architecture is
+  completed just because isolated model builds succeed.
+- If the released batch model cannot preserve the required selectivity,
+  resolve that with Forge/CAD-CI's published generic architecture first,
+  not a new second scheduler within the CAD repository.
+
 ## Verification and results
 
-- Keep the semantic checks declarative beside their models; do not bury model
+- Every processed model must complete a real SolidCraft build and produce
+  truthful build provenance and the required saved design/build artifacts.
+- Semantic verification is optional. Add `verification/verify.py` only where
+  explicit physical expectations are useful and maintainable; do not invent
+  assertions merely to make migration coverage look complete.
+- Keep semantic checks declarative beside their models; do not bury model
   expectations inside the GitHub workflow, general Python runners or HTML.
 - Preserve SCPC-versus-Forge comparison where the model has an independent
   SCPC source.
@@ -107,9 +150,10 @@ Preserve these user-visible contracts in the stable Pages root:
   broad terms. Pixel-perfect equality is not required, but major navigation,
   information, or layout changes are **not** part of this CI migration.
 
-The existing CAD site generator remains consumer-owned and is adapted only
-where the new build evidence format requires it; it must not be replaced by
-Forge's site generator as a side effect of CI modernization.
+The CAD site remains consumer-owned, but its renderer is Hugo 0.169.0 +
+Blowfish v3.10.0 instead of a custom Python HTML generator. It must not be
+replaced by Forge's site renderer. Hugo consumes the prepared complete build
+scope read-only and does not execute CAD, select build items, or publish Pages.
 
 Before publishing the new stable site, compare generated old and new versions
 of the homepage, all three category indexes, representative simple and
@@ -129,3 +173,27 @@ single-model execution; full-model execution on promotion/version upgrade;
 matching output/verification provenance; independent stable/dev scopes;
 and website appearance/content/link parity acceptance. Do not change model geometry to disguise a
 missing generic CI feature.
+
+## Model-owned content and website data
+
+- Every one of the 16 physical model roots owns a `model.yml`, following
+  the established Forge example metadata vocabulary: section, priority,
+  title, tagline, description, parameters, and stages. CAD-specific source,
+  diagram, warning, and optional variant/reused-component fields live there
+  too.
+- The two physical model roots with multiple catalog variants (GuideRail and
+  Simple MFT) declare those variants **inside one local `model.yml`**.
+- `scripts/ci/model_catalog.py` validates/discovers the local YAML; it
+  must not maintain a competing handwritten list of models.
+- `ci.yml` declares build execution only, while an optional
+  `verification/verify.py` declares physical/semantic checks. The static site renderer consumes model-owned
+  metadata, build results, source code and verification evidence.
+- A presentation-only metadata change must not change SolidCraft geometry
+  fingerprints or trigger a SolidCraft rebuild. Metadata must still select
+  site refresh when publishing from the accepted build output.
+- Common page/layout rendering remains shared. Model-specific supplementary
+  views are described in `model.yml` and rendered generically, not in
+  slug-specific branches inside the Hugo content adapter or templates.
+- Do not change the existing website design, routes, warnings, published
+  assets, or source/download behavior without a separate explicit decision.
+

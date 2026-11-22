@@ -1,0 +1,11 @@
+# Shared exact Forge wheel; released CAD-CI owns scheduling and reuse.
+id: forge-package
+kind: tool
+watch: [dependencies.repos, scripts/ci/forge_dependency.py, scripts/ci/bootstrap_cad_ci.py]
+strategy:
+  reuse: true
+steps:
+  - id: wheel
+    run: [python, ../../scripts/ci/forge_dependency.py]
+    inputs: [dependencies.repos, scripts/ci/forge_dependency.py, scripts/ci/bootstrap_cad_ci.py]
+    outputs: [dist, provenance.json]

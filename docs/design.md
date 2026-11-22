@@ -40,9 +40,65 @@ source-lane push only
     -> released Pages publisher (scope-preserving)
 ```
 
-The host launches the immutable SolidCraft runtime only for selected native
-model actions. Python dependencies and model-specific scripts are separate
-inputs. A change to a test or model does not rebuild a Docker image.
+The host launches the immutable SolidCraft runtime once per model-build
+batch, not once per model item. Python dependencies and model-specific
+scripts remain separate inputs. A change to a test or model does not rebuild a Docker image.
+
+## Shared scan → plan → build execution
+
+The accepted reference is Forge's `ci/model-verification-batch/ci.yml`,
+`scripts/model_verification_batch.py` and the `copy: dependency` step in
+`forge-model-declarative`. The CAD repository must follow that **existing
+pattern**, not create its own selector, scheduler or per-model Docker runner.
+
+```text
+one Git/CAD-CI scan
+    -> discover all model items from category globs
+    -> released tool.cad.ci plans changed items and dependencies
+    -> ONE SCons graph
+        -> prepare pinned Forge, SCPC and verification packages once
+        -> one model-build batch: gather commands before starting runtime
+        -> one SolidCraft runtime startup for the batch
+        -> build/check each selected model, keep per-model evidence
+        -> model items copy their outputs from the batch dependency
+    -> optional complete build/Pages publication from accepted results
+```
+
+The library remains the sole authority for `process`, changed-path
+selection, dependency closure and target freshness. The CAD consumer may
+provide a catalog-to-build-source adapter and per-model expected results,
+but **not** a parallel planning mechanism or manually extended root item list.
+
+### Efficiency and correctness acceptance
+
+- Root `cad-ci.yml` uses generic discovery globs, not a list amended every
+  time another model is migrated. Keep the existing 16 physical roots and 18
+  catalog variants accounted for. Individual `ci.yml` files stay minimal.
+- Do not start Docker in a model-item action. A shared batch prepares all
+  selected commands and starts the released SolidCraft runtime **once** for
+  that batch; the batch reports success/failure separately for each model.
+- Model items use released CAD-CI `copy: dependency` to materialize their
+  own outputs from the batch, as Forge does.
+- Preserve the independent SCPC geometry comparison for the five applicable
+  catalog variants; do not build its dependency wheel per model.
+- Regular development PRs use the released selective planner. A full run
+  is reserved for explicit full checks or promotion into `main`.
+- Measure actual selected/build counts, single-pull/container-start count,
+  runtime and stored evidence. Do not infer success from a green workflow
+  without each model's own saved result.
+- Forge's current batch has a granularity trade-off: an input change may
+  invalidate the whole batch. Measure it; if per-model selectivity is needed,
+  improve the **released generic ownership layer** first rather than
+  embedding another change planner in CAD-specific Python.
+- The site remains a separate consumer of complete build evidence; no
+  redesign or URL change is authorized by this correction.
+
+**Current dev-ci implementation:** released CAD-CI scans/plans one SCons
+graph; `model-build-batch` launches the SolidCraft runtime once and model
+items project their output with released `copy: dependency`. Fourteen
+physical roots / sixteen variants are active. The two remaining advanced
+assemblies are disabled only by Forge #679. Repository regressions are one
+normal CAD-CI item, not a separate orchestration layer.
 
 ## Model item shape
 
@@ -54,17 +110,19 @@ Desired item contract:
 
 ```yaml
 id: sample-plate
-template: cad-model-native
+template: cad-model-build
 process: true
 # model-local source/tests/verification inputs plus declared cross-model needs
 ```
 
 Root `cad-ci.yml` will hold the shared template and explicit runtime
 variables; the exact template syntax must be validated against the released
-tool/library contracts. The model-specific `verification/verify.py` will
-define the expected native outcomes, while the generic verification library
-will apply them and write evidence. SCPC models add an independent comparison
-step with explicit outputs.
+tool/library contracts. A model-specific `verification/verify.py` is optional. Every processed model
+must build successfully in SolidCraft and produce its saved design/build
+artifacts; when useful semantic expectations exist, the released verification
+library applies the local definition and writes separate verification evidence.
+SCPC models keep an independent comparison and therefore require such a
+semantic definition.
 
 This is an illustrative contract, not a ready-to-run YAML drop-in. The
 migration must test it against the pinned released stack before replacing
@@ -118,10 +176,11 @@ cannot be used to claim execution if SCons reused valid results.
 
 ## Website preservation boundary
 
-Unlike the generic CI, the CAD website is **not** being migrated to Forge's
-site design. Keep the existing `scripts/ci/build-results.py`,
-`site/results.css` and model catalog as the baseline presentation, adapting
-only their input-reading boundary to the prepared complete build scope.
+Unlike the generic CI, the CAD website is **not** adopting Forge's renderer
+or visual design. CAD #191 uses Hugo 0.169.0 + Blowfish v3.10.0 as the
+presentation layer. `site/results.css` remains the pre-cut-over visual
+baseline for comparison. Hugo reads local `model.yml` directly and reads
+accepted results only from the prepared complete build scope.
 
 In particular, existing model pages at `/models/<slug>/` must continue
 to show their own title, explanation, construction stages, source and
@@ -150,9 +209,51 @@ migration blocker instead of silently redesigning the site.
 
 Currently the CAD repository still has local orchestration in
 `build_plan.py`, `select_models.py`, `pipeline_ci.py`, `cad_ci.py`,
-`native_ci.py` and `publish_ci.py`. Model-specific tools and the site
-generator can remain, but generic planner/runtime/publisher behavior must
-be retired only after the released replacements are proven.
+`native_ci.py` and `publish_ci.py`. Model-specific build adapters remain. The custom Python site renderer does
+not: after the Hugo/Blowfish dev-ci preview is accepted it is removed with the
+obsolete planner/runtime/publisher code.
 
 No rewrite of the CAD website's layout or content is authorized merely to
 match Forge's CI design.
+
+## Website data flow: model.yml → validated catalog → shared renderer
+
+The original CAD website was generated directly from an approximately
+28 KB handwritten Python `MODELS` dictionary. Forge already uses
+`examples/<model>/model.yml` for model titles, descriptions and stages.
+
+The CAD version is:
+
+```text
+models/<category>/<root>/model.yml  (source of website model content)
+models/<category>/<root>/ci.yml     (build identity and participation)
+models/<category>/<root>/verification/verify.py (optional semantic expectations)
+        |
+        v
+scripts/ci/model_catalog.py (load/validate; no hard-coded model list)
+        |
+        +-- existing build selectors / model dependencies (compatible API)
+        +-- site/content/models/_content.gotmpl
+        +-- site/layouts/models/* + Blowfish
+                |
+                v
+homepage + category pages + /models/<slug>/ + model/build downloads
+```
+
+A model's optional `extra_views` declaration contains a title, a
+caption, and view items of kinds `url` (external HTTPS reference),
+`asset` (checked-in model asset), or `build` (saved SolidCraft
+screenshot). The shared renderer checks availability and verification,
+copies assets, and uses the original `panel-views` layout. No model slug
+should appear in dedicated view-generation conditionals.
+
+The loader verifies local source paths, section, page ordering, duplicate
+YAML keys, optional SCPC/component sources, referenced CAD dependencies,
+required public text, and multi-variant ownership. Source SHA/verification
+evidence is **not** inferred from YAML. The existing geometry-only
+fingerprint excludes `model.yml`, while site selection includes it.
+
+The site stays static HTML/CSS. PyYAML is a **build-time dependency**,
+not a browser dependency or a new general-purpose CI subsystem. Accepted
+Pages baselines must be compared before any public cut-over.
+
