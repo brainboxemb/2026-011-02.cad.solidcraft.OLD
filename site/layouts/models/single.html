@@ -143,7 +143,7 @@
       {{ $commandsResource := . }}
       {{ $commandsDoc := .Content | transform.Unmarshal }}
       {{ with index $commandsDoc "commands" }}
-        <details class="cad-panel cad-commands-panel cad-collapsible">
+        <details class="cad-code-section cad-commands-section cad-collapsible">
           <summary>
             <span class="cad-collapsible-summary">
               <span class="cad-panel-label">Generated output</span>
