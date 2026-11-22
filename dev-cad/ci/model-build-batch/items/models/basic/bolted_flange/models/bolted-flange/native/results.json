@@ -8,7 +8,7 @@
       "Flange"
     ],
     "feature": 1,
-    "ms": 4.42036,
+    "ms": 3.733314,
     "name": "Cylinder1",
     "removed_bodies": [],
     "warning": null
@@ -22,7 +22,7 @@
     ],
     "created_bodies": [],
     "feature": 2,
-    "ms": 24.774396,
+    "ms": 20.266675000000003,
     "name": "Cylinder2",
     "removed_bodies": [],
     "warning": null
@@ -36,7 +36,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 32.247212999999995,
+    "ms": 25.724286999999997,
     "name": "Hole1",
     "removed_bodies": [],
     "warning": null
@@ -50,7 +50,7 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 58.546372,
+    "ms": 50.53899,
     "name": "Hole2",
     "removed_bodies": [],
     "warning": null
@@ -64,7 +64,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 62.763161,
+    "ms": 65.34791299999999,
     "name": "Hole3",
     "removed_bodies": [],
     "warning": null
@@ -78,7 +78,7 @@
     ],
     "created_bodies": [],
     "feature": 6,
-    "ms": 73.8867,
+    "ms": 62.569691,
     "name": "Hole4",
     "removed_bodies": [],
     "warning": null
@@ -92,7 +92,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 80.08600100000001,
+    "ms": 69.083934,
     "name": "Hole5",
     "removed_bodies": [],
     "warning": null
@@ -106,7 +106,7 @@
     ],
     "created_bodies": [],
     "feature": 8,
-    "ms": 90.970316,
+    "ms": 81.35295400000001,
     "name": "Hole6",
     "removed_bodies": [],
     "warning": null
@@ -120,7 +120,7 @@
     ],
     "created_bodies": [],
     "feature": 9,
-    "ms": 95.822787,
+    "ms": 82.64958,
     "name": "Hole7",
     "removed_bodies": [],
     "warning": null

@@ -51,7 +51,7 @@
       "SimpleMFT"
     ],
     "feature": 3,
-    "ms": 2.7763150000000003,
+    "ms": 2.472039,
     "name": "Box1",
     "removed_bodies": [],
     "warning": null
@@ -691,7 +691,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 566.30957,
+    "ms": 472.664046,
     "name": "Dog holes",
     "removed_bodies": [],
     "warning": null
@@ -2937,7 +2937,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 354.362289,
+    "ms": 290.906341,
     "name": "Clamp slots",
     "removed_bodies": [],
     "warning": null
@@ -2951,7 +2951,7 @@
     ],
     "created_bodies": [],
     "feature": 8,
-    "ms": 201.142842,
+    "ms": 169.87607,
     "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null
@@ -3196,7 +3196,7 @@
       "GuideRail"
     ],
     "feature": 12,
-    "ms": 23.949353,
+    "ms": 17.65999,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null

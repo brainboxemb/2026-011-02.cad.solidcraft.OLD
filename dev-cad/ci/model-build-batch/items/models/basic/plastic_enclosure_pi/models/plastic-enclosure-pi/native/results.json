@@ -32,7 +32,7 @@
       "PlasticEnclosurePi"
     ],
     "feature": 1,
-    "ms": 2.799214,
+    "ms": 2.470466,
     "name": "Box1",
     "removed_bodies": [],
     "warning": null
@@ -46,7 +46,7 @@
     ],
     "created_bodies": [],
     "feature": 2,
-    "ms": 68.09012200000001,
+    "ms": 56.085718,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null
@@ -60,7 +60,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 323.46839500000004,
+    "ms": 267.515157,
     "name": "Shell1",
     "removed_bodies": [],
     "warning": null
@@ -74,7 +74,7 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 638.567713,
+    "ms": 524.562735,
     "name": "Fillet2",
     "removed_bodies": [],
     "warning": null
@@ -88,7 +88,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 88.622687,
+    "ms": 71.92305999999999,
     "name": "Boss1",
     "removed_bodies": [],
     "warning": null
@@ -102,7 +102,7 @@
     ],
     "created_bodies": [],
     "feature": 6,
-    "ms": 98.310354,
+    "ms": 76.06154599999999,
     "name": "Boss2",
     "removed_bodies": [],
     "warning": null
@@ -116,7 +116,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 122.21981099999999,
+    "ms": 80.843296,
     "name": "Boss3",
     "removed_bodies": [],
     "warning": null
@@ -130,7 +130,7 @@
     ],
     "created_bodies": [],
     "feature": 8,
-    "ms": 110.89267,
+    "ms": 87.266048,
     "name": "Boss4",
     "removed_bodies": [],
     "warning": null
@@ -314,7 +314,7 @@
     ],
     "created_bodies": [],
     "feature": 10,
-    "ms": 56.923548999999994,
+    "ms": 46.411677999999995,
     "name": "Pi ports",
     "removed_bodies": [],
     "warning": null
@@ -396,7 +396,7 @@
     ],
     "created_bodies": [],
     "feature": 12,
-    "ms": 77.03849,
+    "ms": 62.602790000000006,
     "name": "USB and Ethernet",
     "removed_bodies": [],
     "warning": null
@@ -682,7 +682,7 @@
     ],
     "created_bodies": [],
     "feature": 14,
-    "ms": 85.567427,
+    "ms": 68.27059100000001,
     "name": "Floor vents",
     "removed_bodies": [],
     "warning": null
@@ -849,7 +849,7 @@
     ],
     "created_bodies": [],
     "feature": 16,
-    "ms": 150.190876,
+    "ms": 121.081917,
     "name": "Pi 4 engraving",
     "removed_bodies": [],
     "warning": null
