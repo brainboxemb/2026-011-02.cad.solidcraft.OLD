@@ -90,6 +90,33 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn("[page.md](page.md)", readme)
         self.assertNotIn("## Photo-based slot estimate", readme)
 
+    def test_scpc_is_optional_secondary_comparison_content(self):
+        adapter = (SITE / "content/models/_content.gotmpl").read_text()
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn('index $model "scpc_source"', adapter)
+        self.assertIn('scpc-source.py', adapter)
+        self.assertIn('.Resources.Get "scpc-source.py"', page)
+        self.assertIn("SCPC native-command source", page)
+        self.assertIn("It does not call SCPF", page)
+
+    def test_native_model_can_open_in_external_solidcraft_web(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn('.Resources.Get "model.sc"', page)
+        self.assertIn("https://docs.solidcraft.io/app/?open=", page)
+        self.assertIn("urls.QueryEscape", page)
+        self.assertIn('target="_blank"', page)
+        self.assertIn('rel="noopener noreferrer"', page)
+        self.assertIn("Download native .sc", page)
+
+    def test_verification_section_uses_only_build_provenance(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn("Build and verification", page)
+        self.assertIn('index $prov "solidcraft_built"', page)
+        self.assertIn('index $prov "solidcraft_verified"', page)
+        self.assertIn('index $prov "semantic_verification"', page)
+        self.assertIn('index $prov "runtime_image"', page)
+        self.assertIn("No accepted build or verification evidence", page)
+
     def test_model_page_keeps_expected_public_content(self):
         page = (SITE / "layouts/models/single.html").read_text()
         for value in ("SCPF source","SolidCraft commands","Construction stages","Python source","model.yml","Forge commands","SolidCraft model","STEP","Build provenance","No build evidence in this scope","extra_views"):
