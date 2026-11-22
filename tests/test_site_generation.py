@@ -170,7 +170,8 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn("SolidCraft commands", page)
         self.assertIn("generated operations · expand to inspect", page)
         self.assertNotIn('<details class="cad-panel cad-commands-panel cad-collapsible" open', page)
-        self.assertLess(page.index("SolidCraft commands"), page.index('class="cad-command-list"'))
+        self.assertIn('"label" "solidcraft.json"', page)
+        self.assertNotIn('class="cad-command-list"', page)
 
     def test_model_overview_uses_balanced_columns_and_compact_preview(self):
         css = (SITE / "assets/css/custom.css").read_text()
@@ -178,6 +179,7 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn(".cad-preview-panel .cad-preview{\n  min-height:330px;", css)
         self.assertIn(".cad-preview-panel .cad-preview-link{\n  min-height:330px;", css)
         self.assertIn(".cad-collapsible[open]>summary:after{content:\"Collapse\"}", css)
+        self.assertNotIn(".cad-command-list", css)
 
     def test_model_page_keeps_expected_public_content(self):
         page = (SITE / "layouts/models/single.html").read_text()
