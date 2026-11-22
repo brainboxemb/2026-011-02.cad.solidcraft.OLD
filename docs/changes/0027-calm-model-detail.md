@@ -123,14 +123,32 @@ or provenance checks.
 
 ## Verification
 
-Before #278 closes:
+Accepted production evidence:
 
-- repository tests and Hugo build are green;
-- rendered Plate and Simple MFT screenshots are inspected;
-- the `dev-ci` durable build/Pages scope source-matches the accepted lane
-  commit;
-- the published `/dev-ci/models/plate/` and
-  `/dev-ci/models/simple-mft/` routes reflect the accepted contract.
+- PR #290 repository-contract and CAD-CI validation passed in run #286
+  (`45071139374`);
+- PR #290 was squash-merged through the repository `/merge` policy into
+  `dev-ci` at `74e46ea863cdd0a895cc80b175038c112e3025d4`;
+- durable `dev-ci` run #287 (`45071251972`) completed successfully;
+- the rendered-browser step captured and retained:
+  - `plate-overview.png`;
+  - `plate-full.png`;
+  - `simple-mft-overview.png`;
+  - `simple-mft-full.png`;
+- visual artifact `model-layouts-dev-ci` (artifact 14772843173) was inspected
+  after the durable build and matches the accepted calm hierarchy;
+- `build/dev-ci` source-matches
+  `74e46ea863cdd0a895cc80b175038c112e3025d4`;
+- Pages `/dev-ci/` source-matches the same source commit and records build
+  commit `e39f9bea675e6855af38280af16a9edfdf7bbdc1`;
+- published Plate and Simple MFT HTML both contain the source/command
+  disclosures and quiet provenance list, and neither contains the retired
+  standalone section-index presentation;
+- the published Simple MFT page retains its Reference and 2D expectation
+  section.
 
-Do not port individual EXP CSS patches. Port the generic layout, content
-contract and visual proof together.
+The pre-change Pages state remains preserved at
+`backup/gh-pages-before-278-2026-11-22`.
+
+Do not port individual EXP CSS patches. The accepted unit is the generic
+layout, content contract and rendered-browser proof together.
