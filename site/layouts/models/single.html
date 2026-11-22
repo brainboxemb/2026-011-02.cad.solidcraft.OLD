@@ -140,7 +140,6 @@
     </section>
 
     {{ with .Resources.Get "solidcraft.json" }}
-      {{ $commandsResource := . }}
       {{ $commandsDoc := .Content | transform.Unmarshal }}
       {{ with index $commandsDoc "commands" }}
         <details class="cad-code-section cad-commands-section cad-collapsible">
@@ -153,7 +152,16 @@
           </summary>
           <div class="cad-collapsible-body">
             <p class="cad-muted">Generated SolidCraft command sequence from the SCPF source.</p>
-            {{ partial "cad/codeblock.html" (dict "lang" "json" "content" $commandsResource.Content "label" "solidcraft.json") }}
+            <ol class="cad-command-sequence">
+              {{ range . }}
+                <li class="cad-command-step">
+                  <div class="cad-command-name"><code>{{ index . "command" }}</code></div>
+                  {{ with index . "params" }}
+                    <pre class="cad-command-json"><code>{{ . | transform.Remarshal "json" }}</code></pre>
+                  {{ end }}
+                </li>
+              {{ end }}
+            </ol>
           </div>
         </details>
       {{ end }}
