@@ -38,6 +38,10 @@ Status: **in progress**.
 - Inventory all model-root items, 18 catalog variants, cross-model geometry
   dependencies, native/SCPC comparison flags and required saved artifacts.
 - Capture stable build and Pages URLs/provenance before changes.
+- Capture representative current CAD pages/screenshots and navigation:
+  homepage, Basic/Components/Advanced, a simple model, a complex HUB75 model,
+  and a model with independent SCPC; preserve their visual hierarchy,
+  model-specific content and links as the comparison baseline.
 - Keep all active model PRs isolated from the CI migration.
 - Record the old code to retire versus CAD-specific content to retain.
 - Define acceptance tests before any cutover.
@@ -92,6 +96,11 @@ Status: **not started**.
 - Publish stable Pages root and development subtrees using released Pages
   CLI, with source SHA/provenance checks and no force-push.
 - Site generator consumes exact prepared complete scope without executing CAD.
+  Reuse the existing CAD website layout/style/source presentation; do not swap
+  in Forge's website generator or redesign the model page.
+- Generate a site candidate and compare it with the accepted stable CAD site
+  for navigation, page structure, model images, source, command sequence,
+  downloads, URLs and verification labels before changing stable Pages.
 - Ensure a docs-only Pages update is fast and cannot invalidate native CAD.
 
 ### M5 — End-to-end qualification and cutover
@@ -105,6 +114,9 @@ Status: **not started**.
   screenshots, not just the page update or command compilation.
 - Complete #172 using real result evidence; no relabeling old outputs.
 - Test independent build/Pages publication on both dev lanes and on main.
+- Verify existing `/models/<slug>/` links and category URLs; visually compare
+  homepage/category/model examples on desktop and narrow screens. Reject a
+  visible website regression even if the CI/build checks are green.
 - Retire obsolete CAD selectors, wrapped generic execution and publisher
   only after acceptance; update tests, AGENTS and documentation to the
   new active architecture.
