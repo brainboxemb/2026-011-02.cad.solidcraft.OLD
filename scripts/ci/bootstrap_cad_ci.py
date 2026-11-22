@@ -1,40 +1,33 @@
 #!/usr/bin/env python3
-"""Check out the exact tool.cad.ci revision used by this CAD repository.
-
-SCPF and SCPC are Python libraries and are installed by bootstrap.ps1 or baked
-into the CAD image. tool.cad.ci is different: it remains a repository tool and
-is invoked through ext/cad-ci/cad-ci.py. Keeping that boundary avoids a name
-collision with this repository's existing scripts/ci/cad_ci.py module.
-"""
+"""Check out the exact external repositories used by this CAD repository."""
 
 from __future__ import annotations
 
 from pathlib import Path
 import re
-import shutil
 import subprocess
 
 
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "dependencies.repos"
-TARGET = ROOT / "ext" / "cad-ci"
+DEPENDENCIES = ("scpf", "scpc", "cad-ci")
 
 
-def dependency(root: Path = ROOT) -> tuple[str, str]:
-    """Return the cad-ci Git URL and exact 40-character revision."""
+def dependency(name: str, root: Path = ROOT) -> tuple[str, str]:
+    """Return one exact Git URL and 40-character revision from the manifest."""
 
     text = (root / "dependencies.repos").read_text(encoding="utf-8")
     section = re.search(
-        r"(?ms)^  cad-ci:\s*\n(.*?)(?=^  [\w-]+:|\Z)",
+        rf"(?ms)^  {re.escape(name)}:\s*\n(.*?)(?=^  [\w-]+:|\Z)",
         text,
     )
     if section is None:
-        raise RuntimeError("dependencies.repos has no cad-ci entry")
+        raise RuntimeError(f"dependencies.repos has no {name} entry")
 
     url = re.search(r"(?m)^    url:\s*(\S+)\s*$", section[1])
     sha = re.search(r"(?m)^    version:\s*([0-9a-f]{40})\s*$", section[1])
     if url is None or sha is None:
-        raise RuntimeError("cad-ci requires a Git URL and exact commit SHA")
+        raise RuntimeError(f"{name} requires a Git URL and exact commit SHA")
     return url[1], sha[1]
 
 
@@ -55,18 +48,15 @@ def _git(target: Path, *args: str, check: bool = True) -> str:
 
 
 def ensure_checkout(
+    name: str,
     root: Path = ROOT,
     *,
     target: Path | None = None,
 ) -> str:
-    """Make the external checkout match dependencies.repos exactly.
+    """Make one external checkout match dependencies.repos exactly."""
 
-    Existing tracked changes are never overwritten. Untracked files are left
-    alone because the exact tracked Git tree is what controls tool behaviour.
-    """
-
-    url, wanted = dependency(root)
-    target = target or (root / "ext" / "cad-ci")
+    url, wanted = dependency(name, root)
+    target = target or (root / "ext" / name)
     target.parent.mkdir(parents=True, exist_ok=True)
 
     if (target / ".git").is_dir():
@@ -75,11 +65,18 @@ def ensure_checkout(
             dirty = _git(target, "status", "--porcelain", "--untracked-files=no")
             if dirty:
                 raise RuntimeError(
-                    "ext/cad-ci has tracked local changes; preserve them before updating"
+                    f"{name} has tracked local changes; preserve them before updating"
                 )
             _git(target, "remote", "set-url", "origin", url)
             _git(target, "fetch", "origin", wanted)
-            _git(target, "-c", "advice.detachedHead=false", "checkout", "--detach", wanted)
+            _git(
+                target,
+                "-c",
+                "advice.detachedHead=false",
+                "checkout",
+                "--detach",
+                wanted,
+            )
     else:
         if target.exists():
             raise RuntimeError(
@@ -101,16 +98,25 @@ def ensure_checkout(
     actual = _git(target, "rev-parse", "HEAD")
     if actual != wanted:
         raise RuntimeError(
-            f"cad-ci revision mismatch: expected {wanted}, found {actual}"
+            f"{name} revision mismatch: expected {wanted}, found {actual}"
         )
     return actual
 
 
-def main() -> int:
-    """Bootstrap the pinned tool and print the exact ready revision."""
+def ensure_dependencies(root: Path = ROOT) -> dict[str, str]:
+    """Check out all exact consumer dependencies without installing them."""
 
-    actual = ensure_checkout()
-    print(f"Ready: cad-ci at {actual}")
+    return {
+        name: ensure_checkout(name, root)
+        for name in DEPENDENCIES
+    }
+
+
+def main() -> int:
+    """Prepare exact source checkouts for host tooling and container mounts."""
+
+    for name, sha in ensure_dependencies().items():
+        print(f"Ready: {name} at {sha}")
     return 0
 
 

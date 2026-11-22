@@ -231,8 +231,9 @@ def toolchain_metadata(*, image_reference: str, workflow_run: str) -> dict:
     solidcraft = os.environ.get("SOLIDCRAFT_VERSION", "")
     scpf_commit = os.environ.get("SCPF_COMMIT", "")
     scpc_commit = os.environ.get("SCPC_COMMIT", "")
-    if not solidcraft or not scpf_commit or not scpc_commit:
-        raise RuntimeError("CAD image is missing pinned toolchain metadata")
+    scpf_release = os.environ.get("SCPF_RELEASE", "")
+    if not solidcraft or not scpf_commit or not scpc_commit or not scpf_release:
+        raise RuntimeError("CAD run is missing pinned toolchain metadata")
     if TESTED_SOLIDCRAFT_VERSION != solidcraft:
         raise RuntimeError(
             "Forge/SolidCraft qualification mismatch: "
@@ -241,7 +242,7 @@ def toolchain_metadata(*, image_reference: str, workflow_run: str) -> dict:
     return {
         "schema": 1,
         "scpf_commit": scpf_commit,
-        "scpf_release": version("scpf"),
+        "scpf_release": scpf_release,
         "scpc_commit": scpc_commit,
         "solidcraft_version": solidcraft,
         "workflow_run": str(workflow_run),
