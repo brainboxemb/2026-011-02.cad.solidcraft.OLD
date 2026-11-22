@@ -141,6 +141,18 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn("No accepted build or verification evidence", page)
 
 
+    def test_catalog_uses_sections_without_repeated_category_navigation(self):
+        listing = (SITE / "layouts/models/list.html").read_text()
+        css = (SITE / "assets/css/custom.css").read_text()
+        self.assertNotIn('class="cad-category-grid"', listing)
+        self.assertNotIn('class="cad-category-card"', listing)
+        self.assertIn('class="cad-section cad-catalog-section"', listing)
+        self.assertIn('slice "basic" "components" "advanced"', listing)
+        self.assertIn(".cad-catalog-page .cad-card-section{display:none}", css)
+        self.assertIn(".cad-catalog-page .cad-model-grid{grid-template-columns:repeat(3,minmax(0,1fr))}", css)
+        self.assertIn(".cad-catalog-page .cad-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}", css)
+        self.assertIn("font-weight:600;", css)
+
     def test_cad_routes_use_one_shared_page_shell(self):
         home = (SITE / "layouts/home.html").read_text()
         listing = (SITE / "layouts/models/list.html").read_text()
