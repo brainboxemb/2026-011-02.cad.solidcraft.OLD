@@ -50,6 +50,7 @@
 .cad-model-card strong{font-size:1rem;line-height:1.28;letter-spacing:-.012em}
 .cad-model-card>span:not(.cad-card-picture):not(.cad-card-section){font-size:.82rem;line-height:1.4;color:var(--cad-muted)}
 .cad-model-card small{font-size:.72rem;line-height:1.35;color:var(--cad-muted)}
+.cad-model-card .cad-card-updated{font-size:.7rem;font-weight:600;color:var(--cad-accent-strong)}
 .cad-card-state{align-self:flex-start;margin-top:auto;padding:.17rem .48rem;border-radius:999px;background:#eaf3ff;color:#19518e;font-size:.67rem;font-weight:750}
 .cad-card-ok,.cad-status-ok{background:#e5f6e9!important;color:#166534!important}
 .cad-card-pending,.cad-status-pending{background:#fff1d9!important;color:#915b00!important}
