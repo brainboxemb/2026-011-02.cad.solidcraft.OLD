@@ -6,22 +6,28 @@
   <div class="cad-actions"><a class="cad-button" href="{{ "models/" | relURL }}">Browse all models</a></div>
 </section>
 
-<nav class="cad-category-grid" aria-label="Model categories">
-  {{ range $key := slice "basic" "components" "advanced" }}
-    {{ with site.GetPage (printf "/models/%s" $key) }}
-      <a class="cad-category-card" href="{{ .RelPermalink }}"><strong>{{ .Title }}</strong><span>Browse {{ $key }}</span></a>
+{{ range $key := slice "basic" "components" "advanced" }}
+  {{ $models := where site.RegularPages "Params.cadSection" $key }}
+  {{ $models = where $models "Params.categoryIndex" "!=" true }}
+  {{ $featured := slice }}
+  {{ range $models }}
+    {{ if eq (index .Params.model "featured") true }}
+      {{ $featured = $featured | append . }}
     {{ end }}
   {{ end }}
-</nav>
-
-<section class="cad-section">
-  <div class="cad-section-heading"><h2>Featured models</h2><p>A curated selection; all models remain under Models.</p></div>
-  <div class="cad-model-grid">
-    {{ range site.RegularPages }}
-      {{ if and .Params.cadSlug (ne (index .Params.model "featured") false) }}
-        {{ partial "cad/model-card.html" . }}
-      {{ end }}
-    {{ end }}
-  </div>
-</section>
+  {{ if gt (len $featured) 0 }}
+    {{ $category := site.GetPage (printf "/models/%s" $key) }}
+    <section class="cad-section cad-home-category" data-category="{{ $key }}">
+      <div class="cad-section-heading">
+        <h2>{{ $category.Title }}</h2>
+      </div>
+      <div class="cad-model-grid">
+        {{ range sort $featured "Params.model.priority" }}
+          {{ partial "cad/model-card.html" . }}
+        {{ end }}
+      </div>
+      <p class="cad-category-more"><a href="{{ $category.RelPermalink }}">Browse all {{ $category.Title }} →</a></p>
+    </section>
+  {{ end }}
+{{ end }}
 {{ end }}

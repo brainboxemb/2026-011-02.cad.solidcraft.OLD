@@ -25,6 +25,26 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertNotIn('if eq $slug "simple-mft"', adapter)
         self.assertNotIn('if eq $slug "hub75-panel"', adapter)
 
+
+    def test_homepage_uses_explicit_featured_models_grouped_by_category(self):
+        home = (SITE / "layouts/home.html").read_text()
+        self.assertIn('slice "basic" "components" "advanced"', home)
+        self.assertIn('eq (index .Params.model "featured") true', home)
+        self.assertIn('sort $featured "Params.model.priority"', home)
+        self.assertIn('data-category="{{ $key }}"', home)
+        self.assertNotIn('ne (index .Params.model "featured") false', home)
+
+        featured = {
+            "basic": ["models/basic/plate/model.yml", "models/basic/plastic_enclosure/model.yml"],
+            "components": ["models/components/corner_bracket/model.yml", "models/components/guide_rail/model.yml"],
+            "advanced": ["models/advanced/simple_mft/model.yml", "models/advanced/hub75_screen/model.yml"],
+        }
+        for section, paths in featured.items():
+            with self.subTest(section=section):
+                for relative in paths:
+                    content = (ROOT / relative).read_text()
+                    self.assertIn("featured: true", content)
+
     def test_model_page_keeps_expected_public_content(self):
         page = (SITE / "layouts/models/single.html").read_text()
         for value in ("Construction stages","Python source","model.yml","Forge commands","SolidCraft model","STEP","Build provenance","No build evidence in this scope","extra_views"):
