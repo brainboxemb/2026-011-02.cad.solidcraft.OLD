@@ -50,6 +50,11 @@ Permanent source branches: `main`, `dev-cad`, `dev-ci`.
 - Feature/fix PRs are **squash-merged** into the corresponding dev lane.
 - Lane-to-`main` promotions use a **normal merge commit** through the
   owner-controlled merge policy, not squash; the long-lived lane is retained.
+- The supported merge entrypoint is the owner-only pull-request `/merge`
+  command. It evaluates `scripts/merge_policy.py`, requires the exact current
+  head checks/statuses to be green, supplies that SHA to GitHub's merge API,
+  and advances a promoted long-lived lane to the resulting main merge commit.
+  Manual selection of GitHub's squash/merge/rebase buttons is outside policy.
 - PRs validate without writing durable model output.
 - Pushes to a long-lived branch may publish only their own generated scope:
   `build/main`, `build/dev-cad`, `build/dev-ci` and Pages root,
