@@ -1,11 +1,16 @@
 {{ define "main" }}
 <section class="cad-hero">
   <p class="cad-eyebrow">SolidCraft CAD</p>
-  <h1>Parametric models, reusable components and complete assemblies</h1>
-  <p>Model descriptions come from local <code>model.yml</code> files. Build status and downloads come from accepted CAD-CI results.</p>
+  <h1>SCPF CAD models for SolidCraft</h1>
+  <p>This library contains CAD models built with SCPF for SolidCraft. It ranges from small feature examples to reusable components and complete assemblies. Each model page shows the SCPF code, the generated SolidCraft commands and the resulting geometry, so the repository works as both a CAD library and a practical SCPF reference.</p>
   <div class="cad-actions"><a class="cad-button" href="{{ "models/" | relURL }}">Browse all models</a></div>
 </section>
 
+{{ $categoryDescriptions := dict
+  "basic" "Small models that show individual SCPF modelling techniques and SolidCraft features."
+  "components" "Reusable parts designed to be imported and placed in larger CAD models."
+  "advanced" "Complete designs and assemblies built from reusable SCPF models and components."
+}}
 {{ range $key := slice "basic" "components" "advanced" }}
   {{ $models := where site.RegularPages "Params.cadSection" $key }}
   {{ $models = where $models "Params.categoryIndex" "!=" true }}
@@ -20,6 +25,7 @@
     <section class="cad-section cad-home-category" data-category="{{ $key }}">
       <div class="cad-section-heading">
         <h2>{{ $category.Title }}</h2>
+        <p>{{ index $categoryDescriptions $key }}</p>
       </div>
       <div class="cad-model-grid">
         {{ range sort $featured "Params.model.priority" }}
