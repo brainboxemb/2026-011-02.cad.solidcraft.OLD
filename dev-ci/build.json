@@ -50,7 +50,7 @@
       "outputs": [
         "result.json"
       ],
-      "source_commit": "f8708cce9ede384b5d731298a7807ce6efdf42a8"
+      "source_commit": "00e5ea55b83a693049b24fcbb673cb55b52391df"
     },
     "ci/scpc-package": {
       "engine": "scons",
@@ -265,5 +265,5 @@
   "name": "dev-ci",
   "schema": 1,
   "scope": "named",
-  "source_commit": "f8708cce9ede384b5d731298a7807ce6efdf42a8"
+  "source_commit": "00e5ea55b83a693049b24fcbb673cb55b52391df"
 }
