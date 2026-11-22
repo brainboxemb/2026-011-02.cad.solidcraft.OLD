@@ -39,14 +39,6 @@ jobs:
           python -m unittest discover -s tests -p test_merge_policy.py -v
           python -m unittest discover -s tests -p test_site_generation.py -v
           python -m unittest discover -s tests -p test_model_verify_runner.py -v
-      - name: Prepare model Git history for Hugo
-        env:
-          SOURCE_SHA: ${{ github.sha }}
-        run: |
-          if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
-            git fetch --no-tags --prune --unshallow origin
-          fi
-          python3 scripts/ci/model_history.py --output site/data/cad/model_history.json --expected-source "$SOURCE_SHA"
       - uses: actions/setup-go@v5
         with:
           go-version: "1.25.x"
@@ -119,6 +111,14 @@ jobs:
           source_ref: ${{ github.ref_name }}
           jobs: "2"
           github_token: ${{ github.token }}
+      - name: Prepare model Git history for Hugo
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
+            git fetch --no-tags --prune --unshallow origin
+          fi
+          python3 scripts/ci/model_history.py --output site/data/cad/model_history.json --expected-source "$SOURCE_SHA"
       - uses: actions/setup-go@v5
         with:
           go-version: "1.25.x"
