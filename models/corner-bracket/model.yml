@@ -1,6 +1,7 @@
 # Model-owned content. Editing this file updates the website; it does not rebuild geometry.
 section: components
 priority: 10
+featured: true
 title: "CornerBracket"
 tagline: "24 mm plywood corner bracket without mounting holes"
 description: >-
