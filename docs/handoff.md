@@ -14,10 +14,10 @@ Algemene CI-wensen en architectuurbesluiten lopen **via Forge-issues** (momentee
 
 ## Feitelijke status en hervatten
 - De centrale SolidCraft-container is al in gebruik; Forge 0.11 en SolidCraft 0.45 zijn gepind. De oude `main`-workflow werkt maar bouwde bij de upgrade **niet alle modellen**.
-- Op `dev-ci` zijn **9 van 16 fysieke modelmappen** al met de oude tussentijdse per-modelroute gebouwd en gecontroleerd (18 catalogusvarianten totaal). Dit is **geen** acceptatie van de beoogde efficiënte CI.
-- Forge heeft het referentiepatroon in `cad-ci.yml`, `ci/model-verification-batch/ci.yml`, `scripts/model_verification_batch.py`: één batch en `copy: dependency` voor modelresultaten.
-- **Actieve CAD-werkbranch:** `ci/174-shared-build-batch`, gebaseerd op `dev-ci`. Bouw hier de gezamenlijke batch en modelresultaatprojectie, met globs voor modelmappen; houd de 7 nog niet geteste mappen expliciet `process: false`.
-- Gebruik de geteste gedeelde Forge-/SCPC-/verificatiepakketten. Test echte SolidCraft-bestanden, STEP, afbeeldingen, afzonderlijke modelcontroles, onafhankelijke SCPC-vergelijkingen en **één** Docker-run per batch. Controleer ook selectieve PR tegenover volledige controle; de selectiviteit van Forge's batch is nog een aandachtspunt in Forge #661.
+- **PR #184 is met squash gemerged op `dev-ci`** (`670960db48c80317a37f72bc1ea0a62a09595090`): één gedeelde SolidCraft-bouwgroep volgens Forge's `copy: dependency`-patroon. Alle **9 ingeschakelde modelmappen** zijn in één containerstart gebouwd en gecontroleerd; 7 andere mappen zijn bewust `process: false` (16 mappen, 18 catalogusvarianten).
+- Bewijs uit #184: **13/13 SCons-doelen geslaagd**, negen modelcontroles geslaagd, vier onafhankelijke Forge/SCPC-vergelijkingen geslaagd, `docker_run_count=1`, gezamenlijke bouwgroep **29,843 s** (inclusief 8,791 s image pull).
+- Root-`cad-ci.yml` ontdekt automatisch `models/basic/*`, `models/components/*` en `models/advanced/*`; model-`ci.yml` bevat alleen `id`, `template`, `process`. De exacte vrijgegeven stack is `tool.cad.ci 0.17.1` / `lib.py.cad.ci 0.10.0`; Forge/SCPC/controleroutines blijven externe afhankelijke pakketten.
+- **Vervolg in CAD:** bewijs documentatie-only selectie en een gewijzigde modelbron; sluit daarna de overige zeven modelmappen en twee extra catalogusvarianten aan, controleer STEP/afbeeldingen/vergelijkingen, richt build/Pages per bronbranch in en vergelijk de website vóór promotie. Selectiviteit *binnen* de gezamenlijke batch is nog een generieke vraag in Forge #661.
 - Daarna pas de overige modellen migreren, de bouwresultaten/Pages per ontwikkelbranch inrichten en oude Python-planners/publicatiescripts opruimen. Voor de publicatie de bestaande CAD-website vergelijken met de nieuwe.
 
 Werk in logische PR's, vermijd veel kleine commits of extra CI-runs, en documenteer werkelijk uitgevoerde stappen/resultaten in `docs/plan.md`. **Doe de werkzaamheden in de huidige reactie; beloof geen achtergrondwerk.**

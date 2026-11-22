@@ -33,7 +33,21 @@ newly written human-facing instructions use build/check/results terminology.
 
 ## Acceptance evidence
 
-A PR into `dev-ci` must prove one Docker run per batch, result projection
+**Accepted first shared build: PR #184, squash-merged to `dev-ci` at
+`670960db48c80317a37f72bc1ea0a62a09595090`.**
+
+- 13/13 SCons targets built with zero errors: Forge, SCPC and verification
+  package wheels; the single shared batch; nine model-output copies.
+- All nine enabled SolidCraft models passed their checks; four available
+  independent Forge/SCPC shapes agreed in bounds and volume.
+- Exactly **one** Docker runtime startup for nine models. Batch total
+  **29.843 seconds** (8.791 seconds image pull and 20.721 seconds
+  inside the container).
+- Seven untested physical model roots remain `process: false`; this
+  is deliberately not full-catalog acceptance.
+- `main` and public Pages were not changed by the PR.
+
+Remaining acceptance work: A PR into `dev-ci` must prove one Docker run per batch, result projection
 for each enabled model, separate failure evidence, complete build assets,
 expected geometry and independent comparisons. Selective and full-run
 behavior must be measured; no claim of full migration before tests pass.
