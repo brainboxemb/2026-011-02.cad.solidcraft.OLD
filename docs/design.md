@@ -195,37 +195,103 @@ generated SolidCraft commands, optional SCPC comparison, SolidCraft Web/native
 actions, verification/provenance and optional background/reference content.
 The homepage and Basic / Components / Advanced category routes remain stable.
 
-### CAD visual component contract
+### CAD model-detail presentation contract
 
-Model-detail pages use a small semantic presentation system:
+The accepted presentation reference is the rendered Hextra proof from
+`exp.2026-015.hugo-cad-site` (change record 0027 / issue #278).
 
-- **standard content panel** — neutral 1 px border, common radius/padding,
-  no accent edge; used for ordinary grouped content such as Preview, Files,
-  Background and Verification;
-- **primary action panel** — the same neutral standard panel; action emphasis
-  comes from the primary action button/link, not from a decorative panel edge;
-- **semantic notice/warning** — a left accent edge is reserved for notice or
-  warning semantics; warnings use the red warning color;
-- **code/generated-output section** — no white outer panel; heading and helper
-  text lead directly to the dark code surface, and generated commands may use
-  the native collapsed disclosure.
+The model-detail page deliberately uses a small, calm hierarchy rather than a
+dashboard of independent cards.
 
-Accent edges are reserved for semantic notices/warnings. Normal content and
-primary-action panels do not gain blue top/left edges merely for decoration.
+#### Overview
 
-CAD prose uses the accepted sans-serif CAD typography with normal body weight
-and neutral tracking. Ordinary panel/section headings use medium weight and
-neutral tracking. Markdown-rendered Background content must follow the same
-CAD typography rather than reverting to Hextra prose styling.
+The top of every model page contains:
 
-Regression checks compare representative basic, component and advanced model
-pages, including desktop/narrow layouts, source/command blocks, preview/files,
-Background, verification and downloads. Retained screenshots must never be
-presented as newly verified output.
+- the existing model hero;
+- one compact facts row derived from model metadata and accepted build evidence;
+- two neutral overview panels:
+  - **Model preview**;
+  - **Files + Construction stages**.
 
-Forge's site renderer is not adopted merely because Forge and CAD share
-infrastructure. A deliberate public-site redesign is separate product work and
-must not be hidden inside CI, metadata or evidence changes.
+The preview image owns its own aspect ratio. Heading height never controls
+preview height. Construction stages use the same Segoe UI/system sans body
+typography, weight and line-height as ordinary CAD prose.
+
+#### Ordinary document sections
+
+Below the overview, content is arranged as ordinary document sections with
+subtle horizontal separators rather than another layer of cards.
+
+This applies to:
+
+- Open in SolidCraft Web;
+- optional Background;
+- optional reference/extra views;
+- SCPF source;
+- generated SolidCraft commands;
+- optional SCPC comparison;
+- build and verification evidence;
+- source/download links.
+
+Warnings remain semantic notices and may use the warning-specific left accent.
+Ordinary sections do not gain blue top/left accents merely for decoration.
+
+#### Technical disclosure
+
+Large technical content is collapsed on initial page load:
+
+- SCPF source uses a disclosure;
+- SCPC source uses the same disclosure when present;
+- generated SolidCraft commands use a disclosure;
+- standalone large section ordinals are not part of the page hierarchy;
+- command-step numbering remains inside the expanded command sequence.
+
+Code itself remains on one dark technical surface and uses the CAD monospace
+stack. Hextra's copy control remains available inside code blocks.
+
+#### Build and verification evidence
+
+Build/provenance values use a compact definition list:
+
+- field name on the left;
+- value on the right;
+- subtle row separators;
+- monospace only for technical identifiers;
+- one-column rows on narrow screens.
+
+Build evidence is not a dashboard or a collection of mini-cards.
+
+#### Rich model content
+
+`model.yml` and optional `page.md` remain the model-owned content sources.
+The generic model template renders optional Background and `extra_views`
+without model-slug-specific presentation branches.
+
+External product/reference images may be represented by a publication-safe
+local/cache mapping when a mutable third-party image fetch would make the
+rendered site nondeterministic. Such mapping is presentation input only; it
+does not redefine geometry, source ownership or verification evidence.
+
+#### Rendered visual regression proof
+
+Durable source-lane publication renders representative model pages in real
+headless Chrome/Chromium before Pages publication.
+
+The retained visual artifact includes:
+
+- Plate overview;
+- Plate full page;
+- Simple MFT overview;
+- Simple MFT full page.
+
+Missing local rendered assets fail the screenshot step. The browser screenshots
+complement HTML/content assertions and build/provenance checks; they do not
+replace them.
+
+CAD prose uses the accepted sans-serif CAD typography with body weight 400 and
+neutral tracking. Ordinary section headings use weight 600 and neutral
+tracking. Markdown-rendered Background content follows the same CAD typography
+rather than reverting to a separate Hextra prose style.
 
 ## Retirement boundary
 
