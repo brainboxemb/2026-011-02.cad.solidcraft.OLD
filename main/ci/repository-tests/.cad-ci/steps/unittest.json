@@ -2,12 +2,12 @@
   "action_executed": true,
   "action_type": "command",
   "bundle_sha256": "be3e0e7e8aaa129f8d9070a8c5cad112bd939bd10da00311d3cd107db09a8a63",
-  "duration_seconds": 0.818,
+  "duration_seconds": 1.146,
   "engine": "scons",
   "engine_schema": 3,
   "error": null,
   "exit_code": 0,
-  "finished_at": "2026-11-22T15:07:00.871Z",
+  "finished_at": "2026-11-22T16:33:11.292Z",
   "item": "repository-tests",
   "outcome": "BUILT",
   "output_state": "UNCHANGED",
@@ -18,12 +18,12 @@
       "sha256": "f8858d7d3987e8f15642cf8d51278ee90ef17b39d484c88a257e0d0525db9d3d"
     }
   },
-  "run_finished_at": "2026-11-22T15:07:00.907Z",
-  "run_started_at": "2026-11-22T15:06:53.300Z",
+  "run_finished_at": "2026-11-22T16:33:11.335Z",
+  "run_started_at": "2026-11-22T16:33:03.375Z",
   "schema": 4,
-  "started_at": "2026-11-22T15:07:00.060Z",
+  "started_at": "2026-11-22T16:33:10.158Z",
   "status": "pass",
   "step": "unittest",
-  "target_spec_digest": "6d8fddb77ccdcb34507c293b7e2e6357602d984b46d5e4f58401d82e50c388b5",
+  "target_spec_digest": "35b7207a62d759881584ee289ee3f3b4cfa9758ea6d563becf8124a736f011ca",
   "timeout_seconds": null
 }
