@@ -7,13 +7,11 @@ and Python HTML site renderer are retired.
 
 ## Reference stack
 
-- normal CAD execution/publication uses `tool.cad.ci 0.18.0` at exact commit
-  `b62f9d0b169aa201a3c66c3166f364396b2d71bc`;
-- that tool revision pins `lib.py.cad.ci 0.10.0` at exact commit
-  `397fb04005b46de8d433cb18c091b1e73714b877`;
-- repository merge-policy commands separately use released `tool.cad.ci
-  0.20.1` at exact commit
-  `eb64a46b243db00e8dbb4b78b6643a2a7efa3fb9`;
+- CAD execution/publication and repository merge policy use released
+  `tool.cad.ci 0.21.0` at exact commit
+  `b1474f6be66dc0236f2a5c2555af07a100447255`;
+- that tool revision pins `lib.py.cad.ci 0.11.1` at exact commit
+  `fa6bf244381dde609a0b04de673d774911c52fea`;
 - central `cad-solidcraft:v0.3.4` (SolidCraft 0.45.0);
 - Forge `v0.11.0` at exact source
   `9258d54079981604b6dd777a4c4face897c190fe`;
@@ -182,7 +180,7 @@ cannot be used to claim execution if SCons reused valid results.
 
 ## Website preservation boundary
 
-The accepted public presentation layer is **Hugo 0.169.0 + Hextra v0.13.0**.
+The accepted public presentation layer uses Hugo **0.169.0** with Hextra **v0.13.0**.
 Hextra supplies the common documentation shell and theme primitives. The CAD
 repository owns its product-specific page composition, navigation choices,
 layouts/partials and engineering visual treatment.
@@ -196,6 +194,34 @@ hierarchy: identity/status, preview and files, construction stages, SCPF source,
 generated SolidCraft commands, optional SCPC comparison, SolidCraft Web/native
 actions, verification/provenance and optional background/reference content.
 The homepage and Basic / Components / Advanced category routes remain stable.
+
+### CAD visual component contract
+
+Model-detail pages use a small semantic presentation system:
+
+- **standard content panel** — neutral 1 px border, common radius/padding,
+  no accent edge; used for ordinary grouped content such as Preview, Files,
+  Background and Verification;
+- **primary action panel** — the same neutral standard panel; action emphasis
+  comes from the primary action button/link, not from a decorative panel edge;
+- **semantic notice/warning** — a left accent edge is reserved for notice or
+  warning semantics; warnings use the red warning color;
+- **code/generated-output section** — no white outer panel; heading and helper
+  text lead directly to the dark code surface, and generated commands may use
+  the native collapsed disclosure.
+
+Accent edges are reserved for semantic notices/warnings. Normal content and
+primary-action panels do not gain blue top/left edges merely for decoration.
+
+CAD prose uses the accepted sans-serif CAD typography with normal body weight
+and neutral tracking. Ordinary panel/section headings use medium weight and
+neutral tracking. Markdown-rendered Background content must follow the same
+CAD typography rather than reverting to Hextra prose styling.
+
+Regression checks compare representative basic, component and advanced model
+pages, including desktop/narrow layouts, source/command blocks, preview/files,
+Background, verification and downloads. Retained screenshots must never be
+presented as newly verified output.
 
 Forge's site renderer is not adopted merely because Forge and CAD share
 infrastructure. A deliberate public-site redesign is separate product work and
@@ -235,6 +261,15 @@ homepage + category pages + /models/<slug>/ + downloads/actions
         v
 released CAD-CI Pages publisher
 ```
+
+The landing page's "Recently updated models" ordering is presentation data
+derived from Git history, not model metadata. `scripts/ci/model_history.py`
+writes one generated `site/data/cad/model_history.json` containing only the
+source commit and physical model-root timestamps. The Hugo content adapter maps
+each root timestamp to page `dates.lastmod`; variants owned by the same
+physical root therefore share that timestamp. `model.yml` remains the sole
+model-description/catalog source and must not gain a hand-maintained
+`updated` field.
 
 `model.yml` owns model/page metadata. Optional `page.md` owns additional
 background/reference prose without redefining identity, build state or

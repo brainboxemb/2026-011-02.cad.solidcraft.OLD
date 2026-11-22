@@ -8,7 +8,7 @@
       <h1>{{ .Title }}</h1>
       <p>{{ len $models }} model variants.</p>
     </section>
-    <div class="cad-model-grid">{{ range sort $models "Params.model.priority" }}{{ partial "cad/model-card.html" . }}{{ end }}</div>
+    <div class="cad-model-grid">{{ range sort $models "Params.model.priority" }}{{ partial "cad/model-card.html" (dict "page" . "showSection" true) }}{{ end }}</div>
   </main>
 {{ else }}
   {{ $m := .Params.model }}
@@ -52,7 +52,7 @@
 
     <div class="cad-model-overview">
       <section class="cad-panel cad-preview-panel">
-        <h2>Model preview</h2>
+        <h2 class="cad-section-title">Model preview</h2>
         <div class="cad-preview">
           {{ with .Resources.Get "model.png" }}
             <a href="{{ .RelPermalink }}" class="cad-preview-link"><img src="{{ .RelPermalink }}" alt="{{ $.Title }} SolidCraft build"></a>
@@ -64,7 +64,7 @@
       </section>
 
       <aside class="cad-panel cad-files-panel">
-        <h2>Files</h2>
+        <h2 class="cad-section-title">Files</h2>
         <p>Open the model sources and generated build artifacts.</p>
         <div class="cad-links cad-file-links">
           <a class="cad-file-primary" href="https://github.com/{{ $repo }}/blob/{{ $ref }}/{{ $root }}/{{ index $m "source" }}">SCPF source</a>
@@ -73,62 +73,20 @@
           {{ with .Resources.Get "model.sc" }}<a href="{{ .RelPermalink }}" download>SolidCraft .sc</a>{{ end }}
           {{ with .Resources.Get "model.step" }}<a href="{{ .RelPermalink }}">STEP</a>{{ end }}
         </div>
-        <p class="cad-muted">Command JSON describes the generated SolidCraft operations; the .sc file is the editable SolidCraft model.</p>
+        <p class="cad-section-help">Command JSON describes the generated SolidCraft operations; the .sc file is the editable SolidCraft model.</p>
 
-        <h3>Construction stages</h3>
-        <ol class="cad-stages">{{ range index $m "stages" }}<li>{{ . }}</li>{{ end }}</ol>
+        <h3 class="cad-section-subtitle">Construction stages</h3>
+        <ul class="cad-stages">{{ range index $m "stages" }}<li>{{ . }}</li>{{ end }}</ul>
       </aside>
     </div>
-
-    <section class="cad-panel cad-source-panel">
-      <p class="cad-panel-label">Source</p>
-      <h2>SCPF source</h2>
-      <p class="cad-muted">This is the SCPF Python source declared by this model. It generates the SolidCraft command sequence shown below.</p>
-      {{ with .Resources.Get "scpf-source.py" }}
-        {{ partial "cad/codeblock.html" (dict "lang" "python" "content" .Content "label" (index $m "source")) }}
-      {{ else }}
-        <p class="cad-muted">The declared SCPF source is not available in this site build.</p>
-      {{ end }}
-    </section>
-
-    {{ with .Resources.Get "solidcraft.json" }}
-      {{ $commandsDoc := .Content | transform.Unmarshal }}
-      {{ with index $commandsDoc "commands" }}
-        <section class="cad-panel cad-commands-panel">
-          <p class="cad-panel-label">Generated output</p>
-          <h2>SolidCraft commands</h2>
-          <p class="cad-muted">These are the SolidCraft operations generated from the SCPF source.</p>
-          <ol class="cad-command-list">
-            {{ range . }}
-              <li>
-                <strong><code>{{ index . "command" }}</code></strong>
-                {{ with index . "params" }}<pre><code>{{ . | transform.Remarshal "json" }}</code></pre>{{ end }}
-              </li>
-            {{ end }}
-          </ol>
-        </section>
-      {{ end }}
-    {{ end }}
-
-    {{ with .Resources.Get "scpc-source.py" }}
-      <section class="cad-panel cad-scpc-panel">
-        <p class="cad-panel-label">Independent comparison</p>
-        <h2>SCPC command source</h2>
-        <p class="cad-muted">This is a separate explicit-command implementation. It does not call SCPF or reuse the generated SCPF command JSON.</p>
-        {{ partial "cad/codeblock.html" (dict "lang" "python" "content" .Content "label" (index $m "scpc_source")) }}
-        <div class="cad-links">
-          {{ with $.Resources.Get "scpc-solidcraft.json" }}<a href="{{ .RelPermalink }}">SCPC command JSON</a>{{ end }}
-        </div>
-      </section>
-    {{ end }}
 
     {{ with .Resources.Get "model.sc" }}
       {{ $nativeURL := .Permalink }}
       <section class="cad-panel cad-web-open">
-        <p class="cad-panel-label">SolidCraft model</p>
-        <h2>Open in SolidCraft Web</h2>
+        <p class="cad-section-label">SolidCraft model</p>
+        <h2 class="cad-section-title">Open in SolidCraft Web</h2>
         <p>The editable <code>.sc</code> model can be opened in SolidCraft's official web application at <strong>docs.solidcraft.io</strong>.</p>
-        <p class="cad-muted">This is an external website. The SolidCraft web application is downloaded from SolidCraft's servers; the model file remains hosted on this GitHub Pages site.</p>
+        <p class="cad-section-help">This is an external website. The SolidCraft web application is downloaded from SolidCraft's servers; the model file remains hosted on this GitHub Pages site.</p>
         <div class="cad-links">
           <a href="https://docs.solidcraft.io/app/?open={{ urlquery $nativeURL }}" target="_blank" rel="noopener noreferrer">Open in SolidCraft Web ↗</a>
           <a href="{{ .RelPermalink }}" download>Download model .sc</a>
@@ -136,44 +94,9 @@
       </section>
     {{ end }}
 
-    <section class="cad-panel cad-verification-panel">
-      <p class="cad-panel-label">Accepted build evidence</p>
-      <h2>Build and verification</h2>
-      {{ if $prov }}
-        <p class="cad-muted">These values come from the accepted CAD-CI provenance for this published build scope.</p>
-        <dl class="cad-verification-grid">
-          <dt>SolidCraft built</dt><dd>{{ index $prov "solidcraft_built" }}</dd>
-          <dt>SolidCraft verified</dt><dd>{{ index $prov "solidcraft_verified" }}</dd>
-          <dt>Semantic verification</dt><dd>{{ index $prov "semantic_verification" }}</dd>
-          {{ with index $prov "runtime_image" }}<dt>Runtime</dt><dd><code>{{ . }}</code></dd>{{ end }}
-          {{ with index $prov "forge_sha" }}<dt>Forge</dt><dd><code>{{ . }}</code></dd>{{ end }}
-          {{ with index $prov "scpc_sha" }}<dt>SCPC</dt><dd><code>{{ . }}</code></dd>{{ end }}
-          {{ with index $prov "source_sha" }}<dt>Build source</dt><dd><code>{{ . }}</code></dd>{{ end }}
-          <dt>Published scope</dt><dd><code>{{ site.Params.buildScope }}</code></dd>
-          {{ with site.Params.buildCommit }}<dt>Build commit</dt><dd><code>{{ . }}</code></dd>{{ end }}
-        </dl>
-      {{ else }}
-        <p class="cad-muted">No accepted build or verification evidence is present in this site scope.</p>
-      {{ end }}
-    </section>
-
-    <section class="cad-panel">
-      <h2>Source and downloads</h2>
-      <div class="cad-links">
-        <a href="https://github.com/{{ $repo }}/blob/{{ $ref }}/{{ $root }}/{{ index $m "source" }}">Python source</a>
-        {{ with .Resources.Get "model.yml" }}<a href="{{ .RelPermalink }}">model.yml</a>{{ end }}
-        {{ with .Resources.Get "solidcraft.json" }}<a href="{{ .RelPermalink }}">Forge commands</a>{{ end }}
-        {{ with .Resources.Get "scpc-solidcraft.json" }}<a href="{{ .RelPermalink }}">SCPC commands</a>{{ end }}
-        {{ with .Resources.Get "model.sc" }}<a href="{{ .RelPermalink }}">SolidCraft model</a>{{ end }}
-        {{ with .Resources.Get "model.step" }}<a href="{{ .RelPermalink }}">STEP</a>{{ end }}
-        {{ with .Resources.Get "provenance.json" }}<a href="{{ .RelPermalink }}">Build provenance</a>{{ end }}
-      </div>
-      <p class="cad-muted">Source {{ site.Params.sourceRef }} · build scope {{ site.Params.buildScope }}{{ with site.Params.buildCommit }} · build {{ . }}{{ end }}</p>
-    </section>
-
     {{ with .Resources.Get "page.md" }}
       <section class="cad-panel cad-background">
-        <p class="cad-panel-label">Background</p>
+        <h2 class="cad-section-title">Background</h2>
         <div class="cad-rich-text">{{ $.RenderString .Content }}</div>
       </section>
     {{ end }}
@@ -183,7 +106,7 @@
       {{ if and (index $views "verified_only") (ne $semantic "pass") }}{{ $show = false }}{{ end }}
       {{ if $show }}
         <section class="cad-panel">
-          <h2>{{ index $views "title" }}</h2>{{ with index $views "note" }}<p>{{ . }}</p>{{ end }}
+          <h2 class="cad-section-title">{{ index $views "title" }}</h2>{{ with index $views "note" }}<p>{{ . }}</p>{{ end }}
           <div class="cad-reference-grid">
             {{ range $view := index $views "items" }}
               {{ $kind := index $view "kind" }}{{ $src := index $view "src" }}
@@ -205,6 +128,92 @@
         </section>
       {{ end }}
     {{ end }}
+    <section class="cad-code-section cad-source-section">
+      <p class="cad-section-label">Source</p>
+      <h2 class="cad-section-title">SCPF source</h2>
+      <p class="cad-section-help">This is the SCPF Python source declared by this model. It generates the SolidCraft command sequence shown below.</p>
+      {{ with .Resources.Get "scpf-source.py" }}
+        {{ partial "cad/codeblock.html" (dict "lang" "python" "content" .Content "label" (index $m "source")) }}
+      {{ else }}
+        <p class="cad-muted">The declared SCPF source is not available in this site build.</p>
+      {{ end }}
+    </section>
+
+    {{ with .Resources.Get "solidcraft.json" }}
+      {{ $commandsDoc := .Content | transform.Unmarshal }}
+      {{ with index $commandsDoc "commands" }}
+        <details class="cad-code-section cad-commands-section cad-collapsible">
+          <summary>
+            <span class="cad-collapsible-summary">
+              <span class="cad-section-label">Generated output</span>
+              <span class="cad-section-title cad-collapsible-title">SolidCraft commands</span>
+              <span class="cad-section-help">{{ len . }} generated operations · expand to inspect</span>
+            </span>
+          </summary>
+          <div class="cad-collapsible-body">
+            <p class="cad-section-help">Generated SolidCraft command sequence from the SCPF source.</p>
+            <ol class="cad-command-sequence">
+              {{ range . }}
+                <li class="cad-command-step">
+                  <div class="cad-command-name"><code>{{ index . "command" }}</code></div>
+                  {{ with index . "params" }}
+                    <pre class="cad-command-json"><code>{{ . | transform.Remarshal "json" }}</code></pre>
+                  {{ end }}
+                </li>
+              {{ end }}
+            </ol>
+          </div>
+        </details>
+      {{ end }}
+    {{ end }}
+
+    {{ with .Resources.Get "scpc-source.py" }}
+      <section class="cad-code-section cad-scpc-section">
+        <p class="cad-section-label">Independent comparison</p>
+        <h2 class="cad-section-title">SCPC command source</h2>
+        <p class="cad-section-help">This is a separate explicit-command implementation. It does not call SCPF or reuse the generated SCPF command JSON.</p>
+        {{ partial "cad/codeblock.html" (dict "lang" "python" "content" .Content "label" (index $m "scpc_source")) }}
+        <div class="cad-links">
+          {{ with $.Resources.Get "scpc-solidcraft.json" }}<a href="{{ .RelPermalink }}">SCPC command JSON</a>{{ end }}
+        </div>
+      </section>
+    {{ end }}
+
+    <section class="cad-panel cad-verification-panel">
+      <p class="cad-section-label">Accepted build evidence</p>
+      <h2 class="cad-section-title">Build and verification</h2>
+      {{ if $prov }}
+        <p class="cad-section-help">These values come from the accepted CAD-CI provenance for this published build scope.</p>
+        <dl class="cad-verification-grid">
+          <dt>SolidCraft built</dt><dd>{{ index $prov "solidcraft_built" }}</dd>
+          <dt>SolidCraft verified</dt><dd>{{ index $prov "solidcraft_verified" }}</dd>
+          <dt>Semantic verification</dt><dd>{{ index $prov "semantic_verification" }}</dd>
+          {{ with index $prov "runtime_image" }}<dt>Runtime</dt><dd><code>{{ . }}</code></dd>{{ end }}
+          {{ with index $prov "forge_sha" }}<dt>Forge</dt><dd><code>{{ . }}</code></dd>{{ end }}
+          {{ with index $prov "scpc_sha" }}<dt>SCPC</dt><dd><code>{{ . }}</code></dd>{{ end }}
+          {{ with index $prov "source_sha" }}<dt>Build source</dt><dd><code>{{ . }}</code></dd>{{ end }}
+          <dt>Published scope</dt><dd><code>{{ site.Params.buildScope }}</code></dd>
+          {{ with site.Params.buildCommit }}<dt>Build commit</dt><dd><code>{{ . }}</code></dd>{{ end }}
+        </dl>
+      {{ else }}
+        <p class="cad-muted">No accepted build or verification evidence is present in this site scope.</p>
+      {{ end }}
+    </section>
+
+    <section class="cad-panel">
+      <h2 class="cad-section-title">Source and downloads</h2>
+      <div class="cad-links">
+        <a href="https://github.com/{{ $repo }}/blob/{{ $ref }}/{{ $root }}/{{ index $m "source" }}">Python source</a>
+        {{ with .Resources.Get "model.yml" }}<a href="{{ .RelPermalink }}">model.yml</a>{{ end }}
+        {{ with .Resources.Get "solidcraft.json" }}<a href="{{ .RelPermalink }}">Forge commands</a>{{ end }}
+        {{ with .Resources.Get "scpc-solidcraft.json" }}<a href="{{ .RelPermalink }}">SCPC commands</a>{{ end }}
+        {{ with .Resources.Get "model.sc" }}<a href="{{ .RelPermalink }}">SolidCraft model</a>{{ end }}
+        {{ with .Resources.Get "model.step" }}<a href="{{ .RelPermalink }}">STEP</a>{{ end }}
+        {{ with .Resources.Get "provenance.json" }}<a href="{{ .RelPermalink }}">Build provenance</a>{{ end }}
+      </div>
+      <p class="cad-section-help">Source {{ site.Params.sourceRef }} · build scope {{ site.Params.buildScope }}{{ with site.Params.buildCommit }} · build {{ . }}{{ end }}</p>
+    </section>
+
     <p><a href="{{ "models/" | relURL }}">← Back to all models</a></p>
   </article>
 {{ end }}

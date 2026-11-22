@@ -140,7 +140,7 @@ website renderer or page layout is not a replacement for this site's UI.
 
 Preserve these user-visible contracts in the stable Pages root:
 
-- the current homepage presentation and curated model overview;
+- the current homepage presentation and Git-derived recently updated model overview;
 - the Basic Models, Components and Advanced Models navigation/category pages;
 - the current model-page information order: identity, status, preview/files,
   construction stages, SCPF source, generated SolidCraft commands, optional
@@ -193,6 +193,9 @@ acceptance criteria.
   Simple MFT) declare those variants **inside one local `model.yml`**.
 - `scripts/ci/model_catalog.py` validates/discovers the local YAML; it
   must not maintain a competing handwritten list of models.
+- Homepage "last updated" ordering is derived from Git history at site-build
+  time. Do not add a manually maintained update timestamp to `model.yml` or
+  duplicate model-description data in the derived history manifest.
 - `ci.yml` declares build execution only, while an optional
   `verification/verify.py` declares physical/semantic checks. The static site renderer consumes model-owned
   metadata, build results, source code and verification evidence.

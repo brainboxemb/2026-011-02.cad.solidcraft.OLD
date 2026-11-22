@@ -263,9 +263,10 @@ SolidCraft or CAD revision merely because another model was rebuilt.
 - Model pages stay at `/models/<slug>/`.
 - Generate category pages from the central catalog, for example
   `/models/basic/`, `/models/components/` and `/models/advanced/`.
-- The home page is a curated view, not an eventual list of every model.
-- Use one catalog flag such as `featured`/`show_on_home`; do not maintain a
-  second hand-written home-page list.
+- The home page is a compact view of the six most recently changed model
+  roots, derived from Git history at site-build time.
+- Do not maintain a second hand-written home-page list or a hand-maintained
+  `updated` field in `model.yml`.
 - Category pages, home page and navigation may be regenerated cheaply even when
   no model geometry needs rebuilding.
 

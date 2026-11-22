@@ -4,38 +4,29 @@
   <p class="cad-eyebrow">SolidCraft CAD</p>
   <h1>SCPF CAD models for SolidCraft</h1>
   <p>This library contains CAD models built with SCPF for SolidCraft. It ranges from small feature examples to reusable components and complete assemblies. Each model page shows the SCPF code, the generated SolidCraft commands and the resulting geometry, so the repository works as both a CAD library and a practical SCPF reference.</p>
-  <div class="cad-actions"><a class="cad-button" href="{{ "models/" | relURL }}">Browse all models</a></div>
+  <div class="cad-actions">
+    <a class="cad-button" href="{{ "models/" | relURL }}">Browse all models</a>
+    <a class="cad-button cad-button-secondary" href="https://brainboxemb.github.io/lib.py.solidcraft.forge/" target="_blank" rel="noopener noreferrer">Forge / SCPF</a>
+    <a class="cad-button cad-button-secondary" href="https://brainboxemb.github.io/lib.py.solidcraft.cmd/" target="_blank" rel="noopener noreferrer">SCPC Commands</a>
+  </div>
 </section>
 
-{{ $categoryDescriptions := dict
-  "basic" "Small models that show individual SCPF modelling techniques and SolidCraft features."
-  "components" "Reusable parts designed to be imported and placed in larger CAD models."
-  "advanced" "Complete designs and assemblies built from reusable SCPF models and components."
-}}
-{{ range $key := slice "basic" "components" "advanced" }}
-  {{ $models := where site.RegularPages "Params.cadSection" $key }}
-  {{ $models = where $models "Params.categoryIndex" "!=" true }}
-  {{ $featured := slice }}
-  {{ range $models }}
-    {{ if eq (index .Params.model "featured") true }}
-      {{ $featured = $featured | append . }}
-    {{ end }}
-  {{ end }}
-  {{ if gt (len $featured) 0 }}
-    {{ $category := site.GetPage (printf "/models/%s" $key) }}
-    <section class="cad-section cad-home-category" data-category="{{ $key }}">
-      <div class="cad-section-heading">
-        <h2>{{ $category.Title }}</h2>
-        <p>{{ index $categoryDescriptions $key }}</p>
-      </div>
-      <div class="cad-model-grid">
-        {{ range sort $featured "Params.model.priority" }}
-          {{ partial "cad/model-card.html" . }}
-        {{ end }}
-      </div>
-      <p class="cad-category-more"><a href="{{ $category.RelPermalink }}">Browse all {{ $category.Title }} →</a></p>
-    </section>
-  {{ end }}
+{{ $models := where site.RegularPages "Params.categoryIndex" "!=" true }}
+{{ $models = where $models "Params.cadSection" "!=" nil }}
+{{ $recent := first 6 $models.ByLastmod.Reverse }}
+{{ if gt (len $recent) 0 }}
+  <section class="cad-section cad-home-recent">
+    <div class="cad-section-heading">
+      <h2>Recently updated models</h2>
+      <p>The latest model roots changed in Git, newest first.</p>
+    </div>
+    <div class="cad-model-grid">
+      {{ range $recent }}
+        {{ partial "cad/model-card.html" (dict "page" . "showSection" true "showUpdated" true) }}
+      {{ end }}
+    </div>
+    <p class="cad-category-more"><a href="{{ "models/" | relURL }}">Browse all models →</a></p>
+  </section>
 {{ end }}
 </main>
 {{ end }}
