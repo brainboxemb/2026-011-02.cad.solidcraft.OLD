@@ -31,6 +31,15 @@ Permanent target requirements/design are in `docs/requirements.md` and
 **Do not claim the Forge CI migration is completed by the successful runtime
 upgrade or by a green selected-model run.**
 
+### Owner decision before more model migration
+
+**Forge issue #661 is the entry point** for the shared scan/plan/batch
+requirements and any generic `lib.py.cad.ci` / `tool.cad.ci`
+enhancements. Do not implement these requests directly in those repositories
+from the CAD consumer, and do not build a second CAD-specific scheduler.
+Forge owns acceptance; the appropriate library/tool makes its own released
+implementation and Forge qualifies that version. Only then adopt it here.
+
 ## Architecture review gate — NO-GO on current per-model execution
 
 **Status: blocking M1/M2/M3 until replaced and measured.** The nine model
