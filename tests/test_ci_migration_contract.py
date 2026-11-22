@@ -92,12 +92,18 @@ class MigrationCatalogContractTests(unittest.TestCase):
         self.assertIn('out / "models" / slug', site_builder)
         self.assertIn(".model-warning", stylesheet)
 
-    def test_dev_ci_runs_exact_released_pilot_without_touching_main(self):
+    def test_dev_ci_runs_released_model_build_graph_without_touching_main(self):
         source = (ROOT / "cad-ci.yml").read_text(encoding="utf-8")
         self.assertIn("cad-solidcraft:v0.3.4", source)
-        self.assertIn("cad-native-pilot", source)
+        self.assertIn("cad-model-build", source)
+        self.assertIn("scpc-package", source)
         self.assertIn("models/basic/plate", source)
+        self.assertIn("models/basic/vent_plate", source)
         self.assertNotIn("models/advanced/*", source)
+        self.assertIn("scripts/ci/model_verify.py", source)
+        self.assertIn("scpc/**", source)
+        self.assertTrue((ROOT / "ci/scpc-package/ci.yml").is_file())
+        self.assertTrue((ROOT / "scripts/ci/scpc_dependency.py").is_file())
 
         config = __import__("json").loads(
             (ROOT / "ci/cad-verification-package/package.json").read_text()
@@ -117,6 +123,10 @@ class MigrationCatalogContractTests(unittest.TestCase):
 
         workflow = (ROOT / ".github/workflows/cad.yml").read_text()
         self.assertIn("tool.cad.ci@d88d6e189c12edb5a30158c068145c099c17a019", workflow)
+        self.assertTrue(
+            (ROOT / "models/basic/vent_plate/verification/verify.py").is_file()
+        )
+        self.assertFalse((ROOT / "scripts/ci/model_verify_pilot.py").exists())
 
     def test_development_branches_do_not_use_old_preview_publisher(self):
         workflow = (ROOT / ".github/workflows/cad.yml").read_text(

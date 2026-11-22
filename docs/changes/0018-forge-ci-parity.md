@@ -46,3 +46,20 @@ is proven; this record does not authorize premature deletion or changes to
 already accepted build/Pages data.
 
 Do not close #172 on the basis of an ordinary selected-model run.
+
+## Staged development-lane evidence
+
+- PR #177: permanent source lanes and site/catalog contract tests.
+- PR #178: released CAD-CI built the Plate model on SolidCraft 0.45.0 (run
+  45008030428). The Forge and verification wheels were built separately.
+- Next PR: remove the Plate-only bridge and let one model-independent
+  producer read the authoritative catalog for Plate and Vent Plate, including
+  SCPC source models. This remains development-only, without stable Pages
+  changes or a full-catalog acceptance claim.
+
+- The two-model trial identified a parallel checkout race on SCPC. The fix
+  is one pinned shared `scpc-package` dependency wheel, matching how Forge's
+  wheel is prepared; model tasks only consume that existing wheel.
+  The new shared template is named `cad-model-build`. User-facing text says
+  model build/verification/results. Existing saved output folder names remain
+  compatible until site migration. See Forge terminology issue #659.

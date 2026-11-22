@@ -56,11 +56,14 @@ comparison remains outstanding.
 
 ### M1 — Released tooling and declarative model graph
 
-Status: **pilot PR underway on dev-ci**. Use exact released tool.cad.ci
-0.17.0 / lib.py.cad.ci 0.9.3, released verification library 0.15.0,
-Forge 0.11.0 and central SolidCraft 0.45.0. Only the Plate item is included
-in staged CAD-CI discovery until further model conversions pass. This is not
-full-catalog acceptance.
+Status: **first single-model pilot accepted, two-model stage in progress**.
+PR #178 at `a4329d0791803572184b8ebf163adea737f7a372`
+passed a real Plate build with released tool.cad.ci 0.17.0 /
+lib.py.cad.ci 0.9.3, verification 0.15.0, Forge 0.11.0 and central
+SolidCraft 0.45.0. The next stage uses one model-independent producer, adds Vent Plate,
+and compares separate Forge/SCPC SolidCraft results. SCPC is prepared
+once as a shared dependency to prevent simultaneous checkout conflicts;
+all other roots remain outside the staged graph until checked. This is not full-catalog acceptance.
 
 - Pin exactly Forge's accepted released
   `tool.cad.ci 0.17.0` /`lib.py.cad.ci 0.9.3` stack.
@@ -74,8 +77,11 @@ full-catalog acceptance.
 
 ### M2 — Native verification and consumer step migration
 
-Status: **Plate proof underway**; 15 other physical model roots and SCPC
-comparisons still use the accepted old pipeline until converted.
+Status: **Plate proof passed; two-model stage in progress**.
+The Plate model was built successfully by released CAD-CI. The next
+stage converts Plate and Vent Plate to one model-independent producer, builds
+and checks Forge and independent SCPC SolidCraft models and checks that their body
+bounds and volume agree. Other model roots remain on the old main pipeline.
 
 - Convert one representative basic model to model-local declarative
   verification and released `lib.py.cad.verification`, including native

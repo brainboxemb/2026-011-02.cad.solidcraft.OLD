@@ -1,3 +1,4 @@
+# The catalog identifies the source; the shared producer compiles this item.
 id: plate
-template: cad-native-pilot
+template: cad-model-build
 process: true

@@ -1,6 +1,5 @@
-# Development-branch pilot: only the Plate model and its exact dependency wheels.
-# Other 15 model roots remain in the source catalog and existing main pipeline.
-# Expand discovery only as each native model is migrated and verified.
+# Staged released CAD-CI graph. Main still uses the accepted prior workflow.
+# Enable each model root only after a real SolidCraft build with its own checks.
 schema: 1
 
 variables:
@@ -8,34 +7,55 @@ variables:
   SOLIDCRAFT_VERSION: "0.45.0"
 
 templates:
-  cad-native-pilot:
+  cad-model-build:
     kind: model
     needs:
       - forge-package
       - cad-verification-package
+      - scpc-package
     watch:
       item:
+        - ci.yml
         - scpf/**
+        - scpc/**
         - verification/**
+        - check.py
       repo:
         - dependencies.repos
         - ci/toolchain.json
-        - scripts/ci/model_verify_pilot.py
+        - ci/cad-verification-package/package.json
+        - ci/scpc-package/ci.yml
+        - scripts/ci/scpc_dependency.py
+        - scripts/ci/model_verify.py
+        - scripts/ci/model_catalog.py
+        - scripts/ci/model_checks.py
     strategy:
       reuse: true
     steps:
       - id: model_verify
         inputs:
           item:
+            - ci.yml
             - scpf/**
+            - scpc/**
             - verification/**
+            - check.py
           repo:
             - dependencies.repos
             - ci/toolchain.json
-            - scripts/ci/model_verify_pilot.py
-        run: [python, ../../../scripts/ci/model_verify_pilot.py]
-        outputs: [solidcraft.json, model_verify]
+            - ci/cad-verification-package/package.json
+            - ci/scpc-package/ci.yml
+            - scripts/ci/scpc_dependency.py
+            - scripts/ci/model_verify.py
+            - scripts/ci/model_catalog.py
+            - scripts/ci/model_checks.py
+        run: [python, ../../../scripts/ci/model_verify.py]
+        outputs:
+          - generated
+          - models
+          - manifest.json
 
 items:
   - ci/*
   - models/basic/plate
+  - models/basic/vent_plate
