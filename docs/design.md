@@ -179,42 +179,52 @@ cannot be used to claim execution if SCons reused valid results.
 
 ## Website preservation boundary
 
-Unlike the generic CI, the CAD website is **not** adopting Forge's renderer
-or visual design. CAD #191 uses Hugo 0.169.0 + Blowfish v3.10.0 as the
-presentation layer. `site/results.css` remains the pre-cut-over visual
-baseline for comparison. Hugo reads local `model.yml` directly and reads
-accepted results only from the prepared complete build scope.
+The CAD website uses Hugo **0.169.0** with Hextra **v0.13.0** as the shared
+documentation shell. The repository retains its own CAD presentation in
+`site/assets/css/custom.css`; it does not adopt Forge's renderer or copy
+Forge's page templates. `site/results.css` is retained only as a historical
+pre-Hugo comparison baseline and is not a second active style authority.
 
-In particular, existing model pages at `/models/<slug>/` must continue
-to show their own title, explanation, construction stages, source and
-commands, visual preview, verification status and relevant downloads. Keep
-home and category pages, their navigation, and the established Basic /
-Components / Advanced grouping.
+Hugo reads local `model.yml` files directly for model content and reads
+accepted build/verification results only from the prepared complete build
+scope. Existing model routes at `/models/<slug>/` remain the public contract.
 
-During the transition, generate an old-site baseline and a new-site candidate
-from equivalent accepted CAD output, then compare:
+### CAD visual component contract
 
-1. Homepage and the three category index pages, including CSS/layout and
-   navigation on desktop and narrow screens.
-2. A basic model, a complex HUB75 assembly and a model with an independent
-   SCPC source, including preview images, commands, source links and
-   downloads.
-3. All existing `/models/<slug>/` routes and internal links, with the
-   current model catalog as the route authority.
-4. Correct source/version/status information; retained old screenshots must
-   not be presented as newly verified output.
+Model-detail pages use a small semantic presentation system:
 
-Keep changes to the page's composition minimal. If the new evidence format
-cannot be rendered without a visible layout change, treat that as an explicit
-migration blocker instead of silently redesigning the site.
+- **standard content panel** — neutral 1 px border, common radius/padding,
+  no accent edge; used for ordinary grouped content such as Preview, Files,
+  Background and Verification;
+- **primary action panel** — the same standard panel with one blue accent line
+  at the **top**; reserved for the user-facing `Open in SolidCraft Web`
+  action;
+- **semantic notice/warning** — a left accent edge is reserved for notice or
+  warning semantics; warnings use the red warning color;
+- **code/generated-output section** — no white outer panel; heading and helper
+  text lead directly to the dark code surface, and generated commands may use
+  the native collapsed disclosure.
+
+Accent-edge direction therefore has meaning: normal content never gains a blue
+left or top edge merely for decoration.
+
+CAD prose uses the accepted sans-serif CAD typography with normal body weight
+and neutral tracking. Ordinary panel/section headings use medium weight and
+neutral tracking. Markdown-rendered Background content must follow the same
+CAD typography rather than reverting to Hextra prose styling.
+
+Regression checks compare representative basic, component and advanced model
+pages, including desktop/narrow layouts, source/command blocks, preview/files,
+Background, verification and downloads. Retained screenshots must never be
+presented as newly verified output.
 
 ## Retirement boundary
 
 Currently the CAD repository still has local orchestration in
 `build_plan.py`, `select_models.py`, `pipeline_ci.py`, `cad_ci.py`,
 `native_ci.py` and `publish_ci.py`. Model-specific build adapters remain. The custom Python site renderer does
-not: after the Hugo/Blowfish dev-ci preview is accepted it is removed with the
-obsolete planner/runtime/publisher code.
+not: after the accepted Hugo/Hextra cut-over it was removed with the obsolete
+planner/runtime/publisher code.
 
 No rewrite of the CAD website's layout or content is authorized merely to
 match Forge's CI design.
@@ -237,7 +247,7 @@ scripts/ci/model_catalog.py (load/validate; no hard-coded model list)
         |
         +-- existing build selectors / model dependencies (compatible API)
         +-- site/content/models/_content.gotmpl
-        +-- site/layouts/models/* + Blowfish
+        +-- site/layouts/models/* + Hextra
                 |
                 v
 homepage + category pages + /models/<slug>/ + model/build downloads

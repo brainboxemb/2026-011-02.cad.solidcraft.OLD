@@ -73,6 +73,19 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn(".cad-model-grid,.cad-reference-grid{grid-template-columns:1fr}", css)
 
 
+    def test_model_detail_panel_styles_have_semantic_accent_edges(self):
+        css = (SITE / "assets/css/custom.css").read_text()
+        page = (SITE / "layouts/models/single.html").read_text()
+        design = (ROOT / "docs/design.md").read_text()
+        self.assertNotIn(".cad-background{border-left:", css)
+        self.assertIn(".cad-panel-emphasis{border-top:3px solid var(--cad-accent)}", css)
+        self.assertIn('class="cad-panel cad-panel-emphasis cad-web-open"', page)
+        self.assertIn("border-left:4px solid #d32f2f", css)
+        self.assertIn(".content blockquote{border:1px solid var(--cad-line)", css)
+        self.assertIn("Hugo **0.169.0** with Hextra **v0.13.0**", design)
+        self.assertIn("primary action panel", design)
+        self.assertNotIn("Blowfish v3.10.0", design)
+
     def test_model_detail_typography_does_not_inherit_hextra_prose_tracking(self):
         css = (SITE / "assets/css/custom.css").read_text()
         self.assertNotIn(".content h1{letter-spacing:-.025em}", css)
