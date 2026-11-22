@@ -1,4 +1,4 @@
-# Shared build configuration; physical checks live in verification/verify.py.
+# Both GuideRail catalog variants share this model-build item.
 id: guide-rail
 template: cad-model-build
-process: false
+process: true

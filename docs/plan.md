@@ -73,6 +73,19 @@ full catalog acceptance (#172), independent development build/Pages scopes
 and site comparison. The public CAD website and `main` remain unchanged.
 A compact new-chat handoff is available at `docs/handoff.md`.
 
+## Next component batch — in verification
+
+- Enable the reusable `flex-bench-dog` and `guide-rail` model roots in
+  the **existing shared SolidCraft build batch**, not separate jobs.
+- GuideRail owns Festool/Makita as two catalog variants with their own
+  measured envelopes and volumes, but only one three-line `ci.yml`.
+- FlexBenchDog retains a second independent SCPC implementation.
+- Acceptance requires **11 enabled physical roots / 12 catalog variants**
+  built using one Docker run, including checks for both GuideRail
+  variants and the FlexBenchDog SCPC comparison.
+- Keep the remaining five roots disabled until separately checked.
+- No change to the public CAD website or the accepted `main` pipeline.
+
 ## Previous architecture review — obsolete per-model execution
 
 **Historical reason for #184 (resolved for nine active model roots):**

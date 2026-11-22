@@ -30,9 +30,14 @@ class SharedModelBatchTests(unittest.TestCase):
             self.assertNotIn("package", source)
             if "process: true" in source:
                 active.append(file.parent.relative_to(ROOT).as_posix())
-        self.assertEqual(len(active), 9)
+        self.assertEqual(len(active), 11)
         self.assertEqual(len(MODELS), 18)
         self.assertEqual(len(COMMAND_SOURCES), 5)
+        # Two catalog variants share the enabled GuideRail root.
+        self.assertIn(
+            "models/components/guide_rail",
+            active,
+        )
 
     def test_one_batch_runtime_and_released_copy_projection(self):
         root = (ROOT / "cad-ci.yml").read_text(encoding="utf-8")

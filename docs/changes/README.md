@@ -40,3 +40,5 @@ Current records:
 - [0018-forge-ci-parity.md](0018-forge-ci-parity.md) — migrate CAD CI to Forge's released tooling, source lanes and generated scopes (#174).
 
 - [0019-shared-build-batch.md](0019-shared-build-batch.md) — Forge-compatible shared model-build batch; one runtime start (#174).
+
+- [0020-component-model-builds.md](0020-component-model-builds.md) — shared SolidCraft build for GuideRail variants and FlexBenchDog (#174).
