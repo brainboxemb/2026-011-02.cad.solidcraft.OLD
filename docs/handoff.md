@@ -4,6 +4,11 @@ Repository: `brainboxemb/2026-011-02.cad.solidcraft`.
 
 Read `docs/plan.md` first. It is the source of truth for unfinished work.
 
+Shared SolidCraft/CAD conventions and document templates live in
+`brainboxemb/meta.cad.solidcraft`. Use
+`templates/docs/plan.md` there as the structural reference for this
+repository's plan; keep CAD-specific work and status in this repository.
+
 ## Current state
 
 - Permanent source lanes: `main`, `dev-cad`, `dev-ci`.
