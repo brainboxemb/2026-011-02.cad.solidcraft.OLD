@@ -58,12 +58,15 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertNotIn("accepted CAD-CI results", home)
 
 
-    def test_cad_typography_is_centralized_and_compact(self):
+    def test_cad_typography_matches_the_accepted_visual_baseline(self):
         css = (SITE / "assets/css/custom.css").read_text()
-        self.assertIn(".content{font-size:.96rem", css)
-        self.assertIn(".cad-model-card{display:flex", css)
-        self.assertIn(".cad-panel{padding:1rem 1.05rem", css)
-        self.assertIn(".cad-hero{margin:2rem 0 2.3rem", css)
+        self.assertIn(".cad-page-shell{", css)
+        self.assertIn("font-size:1rem", css)
+        self.assertIn('font-family:Inter,"Segoe UI",system-ui', css)
+        self.assertIn("font-size:.76rem", css)
+        self.assertIn("padding:4px 11px", css)
+        self.assertIn(".hextra-max-navbar-width", css)
+        self.assertIn("font-size:1.19rem!important", css)
 
     def test_optional_page_markdown_is_generic_model_content(self):
         mounts = (SITE / "config/_default/module.toml").read_text()
@@ -96,17 +99,17 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn('index $model "scpc_source"', adapter)
         self.assertIn('scpc-source.py', adapter)
         self.assertIn('.Resources.Get "scpc-source.py"', page)
-        self.assertIn("SCPC native-command source", page)
+        self.assertIn("SCPC command source", page)
         self.assertIn("It does not call SCPF", page)
 
-    def test_native_model_can_open_in_external_solidcraft_web(self):
+    def test_solidcraft_model_can_open_in_external_solidcraft_web(self):
         page = (SITE / "layouts/models/single.html").read_text()
         self.assertIn('.Resources.Get "model.sc"', page)
         self.assertIn("https://docs.solidcraft.io/app/?open=", page)
         self.assertIn("urlquery $nativeURL", page)
         self.assertIn('target="_blank"', page)
         self.assertIn('rel="noopener noreferrer"', page)
-        self.assertIn("Download native .sc", page)
+        self.assertIn("Download model .sc", page)
 
     def test_verification_section_uses_only_build_provenance(self):
         page = (SITE / "layouts/models/single.html").read_text()
@@ -117,9 +120,45 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn('index $prov "runtime_image"', page)
         self.assertIn("No accepted build or verification evidence", page)
 
+
+    def test_cad_routes_use_one_shared_page_shell(self):
+        home = (SITE / "layouts/home.html").read_text()
+        listing = (SITE / "layouts/models/list.html").read_text()
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn('class="cad-page-shell cad-home"', home)
+        self.assertIn('class="cad-page-shell cad-catalog-page"', listing)
+        self.assertIn('class="cad-page-shell cad-model-detail"', page)
+        self.assertIn('class="cad-page-shell"', page)
+
+    def test_scpf_code_uses_hextra_copy_control(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        partial = (SITE / "layouts/partials/cad/codeblock.html").read_text()
+        params = (SITE / "config/_default/params.toml").read_text()
+        self.assertIn('partial "cad/codeblock.html"', page)
+        self.assertIn('components/codeblock-copy-button', partial)
+        self.assertIn('[highlight.copy]', params)
+        self.assertIn('display = "always"', params)
+
+    def test_public_model_page_avoids_native_terminology(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        for value in ("Native verified", "Verified native", "SCPC native-command source", ">Native .sc<", "Native model", "Download native .sc", "saved native model", "native SolidCraft operations"):
+            self.assertNotIn(value, page)
+
+    def test_model_overview_restores_header_status_preview_and_files_layout(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn('class="cad-model-hero"', page)
+        self.assertIn('class="cad-model-statusbar"', page)
+        self.assertIn('class="cad-model-overview"', page)
+        self.assertIn(">Model preview<", page)
+        self.assertIn(">Files<", page)
+        self.assertIn("Construction stages", page)
+        self.assertIn('$commandCount = len .', page)
+        self.assertIn('{{ $commandCount }} commands', page)
+        self.assertNotIn("scpc_command_count", page)
+
     def test_model_page_keeps_expected_public_content(self):
         page = (SITE / "layouts/models/single.html").read_text()
-        for value in ("SCPF source","SolidCraft commands","Construction stages","Python source","model.yml","Forge commands","SolidCraft model","STEP","Build provenance","No build evidence in this scope","extra_views"):
+        for value in ("SCPF source","SolidCraft commands","Construction stages","Python source","model.yml","Forge commands","SolidCraft model","STEP","Build provenance","No accepted build evidence","extra_views"):
             self.assertIn(value, page)
 
     def test_model_page_uses_declared_scpf_source_and_generated_commands(self):
@@ -130,7 +169,7 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn('$sourcePath := index $model "source"', adapter)
         self.assertIn("scpf-source.py", adapter)
         self.assertIn('.Resources.Get "scpf-source.py"', page)
-        self.assertIn('transform.Highlight .Content "python"', page)
+        self.assertIn('partial "cad/codeblock.html"', page)
         self.assertIn('.Resources.Get "solidcraft.json"', page)
         self.assertIn('$commandsDoc := .Content | transform.Unmarshal', page)
         self.assertIn('index $commandsDoc "commands"', page)

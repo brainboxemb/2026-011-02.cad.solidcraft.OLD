@@ -2,14 +2,14 @@
  * Hextra owns the shared documentation shell. These rules own CAD pages only.
  */
 :root{
-  --cad-ink:#142033;
-  --cad-muted:#58677a;
+  --cad-ink:#182235;
+  --cad-muted:#526279;
   --cad-line:#dbe3ef;
   --cad-line-strong:#c4cfdd;
   --cad-accent:#195eb8;
   --cad-accent-strong:#0f4f96;
   --cad-card:#fff;
-  --cad-soft:#edf5ff;
+  --cad-soft:#eef5ff;
   --cad-soft-2:#f6f9fd;
   --cad-shadow:0 14px 40px rgba(25,44,72,.07);
 }
@@ -22,12 +22,12 @@
 .content blockquote{border-left:3px solid var(--cad-accent);background:var(--cad-soft-2);padding:.7rem 1rem;border-radius:0 8px 8px 0}
 .dark .content blockquote{background:#111a28}
 
-.cad-hero{margin:2rem 0 2.3rem;padding:2.2rem 2.4rem;border:1px solid #1e4f86;border-radius:12px;background:linear-gradient(135deg,#102d57,#244f80);box-shadow:var(--cad-shadow);color:#fff}
-.cad-hero h1{max-width:54rem;margin:.35rem 0 .75rem;color:#fff;font-size:clamp(2rem,4.2vw,3.15rem);line-height:1.05;letter-spacing:-.038em}
-.cad-hero p{max-width:54rem;margin:.5rem 0;color:#dce9fa;font-size:.98rem;line-height:1.55}
-.cad-eyebrow{margin:0;text-transform:uppercase;letter-spacing:.115em;font-size:.68rem;font-weight:800;opacity:.75}
+.cad-hero{margin:1rem 0 2.1rem;padding:40px 44px;border-radius:17px;background:linear-gradient(130deg,#102d57,#244f80);box-shadow:var(--cad-shadow);color:#fff}
+.cad-hero h1{max-width:760px;margin:4px 0 15px;color:#fff;font-size:clamp(2rem,4.5vw,3rem);line-height:1.14;letter-spacing:-.025em}
+.cad-hero p{max-width:780px;margin:.5rem 0;color:#dce9fa;font-size:1.08rem;line-height:1.52}
+.cad-eyebrow{margin:0;text-transform:uppercase;letter-spacing:.11em;font-size:.78rem;font-weight:800;opacity:.75}
 .cad-actions,.cad-links,.cad-badges{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.9rem}
-.cad-button,.cad-links a{display:inline-block;padding:.48rem .72rem;border-radius:7px;background:var(--cad-soft);color:#174f91;font-size:.84rem;font-weight:750;text-decoration:none}
+.cad-button,.cad-links a{display:inline-block;padding:9px 14px;border-radius:9px;background:var(--cad-soft);color:#174f91;font-size:1rem;line-height:1.2;font-weight:650;text-decoration:none}
 .cad-button:hover,.cad-links a:hover{background:#dcecff;text-decoration:none}
 
 .cad-category-grid,.cad-model-grid,.cad-preview-layout,.cad-reference-grid{display:grid;gap:.9rem}
@@ -57,21 +57,21 @@
 .cad-heading h1{margin:.25rem 0;font-size:clamp(1.95rem,3.7vw,2.8rem);line-height:1.08;letter-spacing:-.034em}
 .cad-heading>p:last-child{color:var(--cad-muted)}
 .cad-lead{max-width:54rem;margin:.3rem 0;color:var(--cad-muted);font-size:1rem;line-height:1.48}
-.cad-status,.cad-badges>span{padding:.22rem .54rem;border-radius:999px;background:#eaf3ff;color:#19518e;font-size:.7rem;font-weight:700}
+.cad-status,.cad-badges>span{padding:4px 11px;border-radius:999px;background:#eaf3ff;color:#19518e;font-size:.76rem;font-weight:750;line-height:1.52}
 .cad-status-built{background:#eaf3ff!important;color:#19518e!important}
 .cad-warning{margin:1rem 0;padding:.85rem 1rem;border:2px solid #d32f2f;border-radius:7px;background:#fff5f5;color:#b71c1c}
 .cad-warning p{margin:.3rem 0 0;color:#b71c1c}
 
-.cad-panel{padding:1rem 1.05rem;margin:1rem 0;font-size:.93rem;line-height:1.5}
-.cad-panel h2{margin:0 0 .6rem;font-size:1.22rem;line-height:1.25;letter-spacing:-.018em}
+.cad-panel{padding:22px;margin:1rem 0;font-size:1rem;line-height:1.52}
+.cad-panel h2{margin:0 0 .6rem;font-size:1.6rem;line-height:1.3;letter-spacing:-.015em}
 .cad-preview{min-height:340px;border:1px solid var(--cad-line);border-radius:9px;overflow:hidden;background:linear-gradient(145deg,#f5f8fc,#edf3fa)}
 .dark .cad-preview{border-color:#29384d;background:#0c1420}
 .cad-preview-link{display:flex;width:100%;min-height:340px;align-items:center;justify-content:center}
 .cad-preview img{width:100%;height:100%;max-height:500px;object-fit:contain}
 .cad-preview-empty{min-height:340px;display:grid;place-items:center;padding:2rem;color:var(--cad-muted);text-align:center}
-.cad-stages{margin:.45rem 0 0;padding-left:1.25rem}
-.cad-stages li{margin:.32rem 0;color:var(--cad-muted)}
-.cad-muted{color:var(--cad-muted);font-size:.81rem}
+.cad-stages{margin:.45rem 0 0;padding-left:1.35rem;font-size:1rem;line-height:1.52}
+.cad-stages li{margin:.3rem 0;color:var(--cad-ink);font-weight:400}
+.cad-muted{color:var(--cad-muted);font-size:.86rem;line-height:1.52}
 .cad-reference{padding:.85rem;font-size:.88rem;line-height:1.45}
 .cad-reference img{width:100%;max-height:360px;object-fit:contain;background:#eef3fa;margin-top:.65rem}
 .dark .cad-reference img{background:#0c1420}
@@ -152,4 +152,212 @@
 @media(max-width:680px){
   .cad-verification-grid{grid-template-columns:1fr;gap:.1rem}
   .cad-verification-grid dd{margin-bottom:.5rem}
+}
+
+/* Model overview: restore the strong pre-Hugo information order while keeping
+ * Hextra as the shared shell. */
+.cad-model-hero{
+  margin:1rem 0 1.1rem;
+  padding:40px 44px;
+  border-radius:17px;
+  background:linear-gradient(130deg,#102d57,#244f80);
+  color:#fff;
+}
+.cad-model-kicker{
+  margin:0 0 .45rem;
+  color:#b8d9ff;
+  text-transform:uppercase;
+  letter-spacing:.11em;
+  font-size:.78rem;
+  font-weight:800;
+}
+.cad-model-hero h1{
+  margin:4px 0 15px;
+  color:#fff;
+  font-size:clamp(2rem,4.5vw,3rem);
+  line-height:1.14;
+  letter-spacing:-.025em;
+}
+.cad-model-hero>p:last-child{
+  margin:.3rem 0;
+  color:#dce9fa;
+  font-size:1.08rem;
+  line-height:1.52;
+}
+.cad-model-statusbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:15px 0 24px;
+}
+.cad-model-statusbar .cad-status{
+  margin:0;
+}
+.cad-model-overview{
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(300px,.95fr);
+  gap:1rem;
+  align-items:stretch;
+  margin:0 0 1rem;
+}
+.cad-preview-panel,
+.cad-files-panel{
+  margin:0;
+}
+.cad-preview-panel h2,
+.cad-files-panel h2{
+  margin:0 0 .75rem;
+  font-size:1.6rem;
+  line-height:1.3;
+}
+.cad-preview-panel .cad-preview{
+  min-height:390px;
+}
+.cad-preview-panel .cad-preview-link{
+  min-height:390px;
+}
+.cad-preview-note{
+  margin:.65rem 0 0;
+  color:var(--cad-muted);
+  font-size:.86rem;
+  line-height:1.52;
+}
+.cad-files-panel>p{
+  margin:.15rem 0 .8rem;
+  color:var(--cad-muted);
+}
+.cad-file-links{
+  align-items:flex-start;
+  margin:.55rem 0 .75rem;
+}
+.cad-file-links a{
+  margin:0;
+}
+.cad-file-links .cad-file-primary{
+  background:#1b67c2;
+  color:#fff;
+}
+.cad-file-links .cad-file-primary:hover{
+  background:#15539c;
+}
+.cad-files-panel h3{
+  margin:1.2rem 0 .45rem;
+  font-size:1rem;
+  line-height:1.3;
+  font-weight:700;
+}
+@media(max-width:840px){
+  .cad-model-overview{grid-template-columns:1fr}
+  .cad-preview-panel .cad-preview,
+  .cad-preview-panel .cad-preview-link{min-height:300px}
+}
+
+
+/* Accepted Hextra CAD baseline: keep every CAD route aligned to the same shell
+ * and retain the pre-Hugo CAD typography while Hextra owns the shared header. */
+html:not(.dark) body{background:#f6f8fb}
+html:not(.dark) .hextra-nav-container-blur{
+  background:#fff!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+.hextra-max-navbar-width{
+  width:min(1080px,calc(100% - 44px))!important;
+  max-width:1080px!important;
+  padding-left:0!important;
+  padding-right:0!important;
+  font-family:Inter,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  line-height:1.52;
+}
+.hextra-nav-container{border-bottom:1px solid var(--cad-line)}
+html:not(.dark) .hextra-max-navbar-width>a:first-of-type{
+  color:#17375e!important;
+  font-size:1.19rem!important;
+  font-weight:800!important;
+  letter-spacing:0!important;
+}
+html:not(.dark) .hextra-max-navbar-width>a:not(:first-of-type){
+  color:#34445a!important;
+  font-size:1rem!important;
+  font-weight:600!important;
+  line-height:1.52!important;
+}
+html:not(.dark) .hextra-max-navbar-width>a:not(:first-of-type):hover{color:var(--cad-accent)!important}
+html:not(.dark) .hextra-search-trigger{
+  font-family:Inter,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:.9rem;
+}
+
+.cad-page-shell{
+  width:min(1080px,calc(100% - 44px));
+  margin:0 auto;
+  padding:1.1rem 0 4rem;
+  font-family:Inter,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:1rem;
+  line-height:1.52;
+  color:var(--cad-ink);
+}
+.cad-page-shell p,.cad-page-shell li{line-height:1.52}
+.cad-home>.cad-hero{margin-top:1rem}
+.cad-catalog-page>.cad-model-hero{margin-top:1rem}
+.cad-model-detail>.cad-model-hero{margin-top:1rem}
+.cad-model-hero-small{padding:30px 36px}
+.cad-model-hero-small h1{margin-bottom:.4rem}
+.cad-model-hero-small>p:last-child{font-size:1rem}
+
+.cad-code-frame{
+  overflow:hidden;
+  margin-top:.75rem;
+  border:1px solid #243a55;
+  border-radius:9px;
+  background:#0d1f33;
+}
+.cad-code-label{
+  padding:.55rem .85rem;
+  border-bottom:1px solid #28415f;
+  background:#112945;
+  color:#bfd4ec;
+  font:600 .74rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;
+}
+.cad-code-block{margin:0!important;background:#0d1f33!important}
+.cad-code-block>div:first-child{margin:0!important}
+.cad-code-block .highlight,.cad-code-block pre{
+  margin:0!important;
+  border-radius:0!important;
+  background:#0d1f33!important;
+}
+.cad-code-block pre{max-height:44rem;overflow:auto;padding:1rem 1.05rem!important}
+.cad-code-block code,.cad-code-block code span{color:#e6eef9!important}
+.cad-code-block code{font:13px/1.55 Consolas,"Courier New",monospace}
+.hextra-code-copy-btn-container{
+  top:.55rem!important;
+  right:.55rem!important;
+  margin:0!important;
+  opacity:1!important;
+}
+.hextra-code-copy-btn{
+  display:flex!important;
+  align-items:center!important;
+  gap:.35rem!important;
+  min-height:30px;
+  padding:.3rem .55rem!important;
+  border:1px solid #47617e!important;
+  border-radius:7px!important;
+  background:#173653!important;
+  color:#dce9f7!important;
+}
+.hextra-code-copy-btn::after{content:"Copy";font-size:.7rem;font-weight:700}
+.hextra-code-copy-btn.copied::after{content:"Copied"}
+.hextra-copy-icon,.hextra-success-icon{width:14px!important;height:14px!important}
+
+.cad-web-open .cad-links{
+  justify-content:flex-start;
+  margin-top:1rem;
+}
+.cad-web-open .cad-links a{margin:0}
+.cad-verification-grid dt{font-size:.83rem}
+.cad-verification-grid dd{font-size:.86rem}
+
+@media(max-width:800px){
+  .hextra-max-navbar-width,.cad-page-shell{width:min(1080px,calc(100% - 28px))!important}
 }

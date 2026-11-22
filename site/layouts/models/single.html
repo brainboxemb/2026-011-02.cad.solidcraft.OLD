@@ -2,8 +2,14 @@
 {{ if .Params.categoryIndex }}
   {{ $models := where site.RegularPages "Params.cadSection" .Params.cadSection }}
   {{ $models = where $models "Params.categoryIndex" "!=" true }}
-  <header class="cad-heading"><p class="cad-eyebrow">CAD category</p><h1>{{ .Title }}</h1><p>{{ len $models }} model variants.</p></header>
-  <div class="cad-model-grid">{{ range sort $models "Params.model.priority" }}{{ partial "cad/model-card.html" . }}{{ end }}</div>
+  <main class="cad-page-shell">
+    <section class="cad-model-hero cad-model-hero-small">
+      <p class="cad-model-kicker">CAD category</p>
+      <h1>{{ .Title }}</h1>
+      <p>{{ len $models }} model variants.</p>
+    </section>
+    <div class="cad-model-grid">{{ range sort $models "Params.model.priority" }}{{ partial "cad/model-card.html" . }}{{ end }}</div>
+  </main>
 {{ else }}
   {{ $m := .Params.model }}
   {{ $repo := site.Params.cadSourceRepository }}
@@ -14,29 +20,64 @@
   {{ $semantic := "not-configured" }}
   {{ with index $prov "semantic_verification" }}{{ $semantic = . }}{{ end }}
   {{ $built := eq (index $prov "solidcraft_built") true }}
+  {{ $commandCount := 0 }}
+  {{ with .Resources.Get "solidcraft.json" }}
+    {{ $commandDoc := .Content | transform.Unmarshal }}
+    {{ with index $commandDoc "commands" }}{{ $commandCount = len . }}{{ end }}
+  {{ end }}
+  {{ $buildShort := "" }}
+  {{ with site.Params.buildCommit }}{{ $buildShort = printf "%.8s" . }}{{ end }}
 
-  <article class="cad-model-detail">
-    <header class="cad-heading">
-      <p class="cad-eyebrow">{{ .Params.cadSection }} · {{ .Params.cadSlug }}</p>
+  <article class="cad-page-shell cad-model-detail">
+    <header class="cad-model-hero">
+      <p class="cad-model-kicker">{{ upper .Params.cadSection }} / {{ upper .Params.cadSlug }}</p>
       <h1>{{ .Title }}</h1>
-      <p class="cad-lead">{{ index $m "tagline" }}</p>
-      <div class="cad-badges">
-        <span>{{ index $m "parameters" }}</span>
-        {{ if eq $semantic "pass" }}<span class="cad-status cad-status-ok">Built + verified</span>
-        {{ else if $built }}<span class="cad-status cad-status-built">Built in SolidCraft</span>
-        {{ else }}<span class="cad-status cad-status-pending">No build evidence in this scope</span>{{ end }}
-      </div>
+      <p>{{ index $m "tagline" }}</p>
     </header>
+
+    <div class="cad-model-statusbar">
+      {{ if eq $semantic "pass" }}
+        <span class="cad-status cad-status-ok">SolidCraft verified{{ with $buildShort }} · build {{ . }}{{ end }}</span>
+      {{ else if $built }}
+        <span class="cad-status cad-status-built">Built in SolidCraft{{ with $buildShort }} · build {{ . }}{{ end }}</span>
+      {{ else }}
+        <span class="cad-status cad-status-pending">No accepted build evidence</span>
+      {{ end }}
+      {{ if gt $commandCount 0 }}<span class="cad-status">{{ $commandCount }} commands</span>{{ end }}
+      <span class="cad-status">{{ index $m "parameters" }}</span>
+      {{ if eq (index $prov "solidcraft_verified") true }}<span class="cad-status">SolidCraft verified</span>{{ end }}
+    </div>
 
     {{ with index $m "warning" }}<aside class="cad-warning"><strong>{{ index . "title" }}</strong><p>{{ index . "body" }}</p></aside>{{ end }}
 
-    <div class="cad-preview-layout">
-      <section class="cad-preview">
-        {{ with .Resources.Get "model.png" }}
-          <a href="{{ .RelPermalink }}" class="cad-preview-link"><img src="{{ .RelPermalink }}" alt="{{ $.Title }} SolidCraft build"></a>
-        {{ else }}<div class="cad-preview-empty">Current scope has no accepted preview for this model.</div>{{ end }}
+    <div class="cad-model-overview">
+      <section class="cad-panel cad-preview-panel">
+        <h2>Model preview</h2>
+        <div class="cad-preview">
+          {{ with .Resources.Get "model.png" }}
+            <a href="{{ .RelPermalink }}" class="cad-preview-link"><img src="{{ .RelPermalink }}" alt="{{ $.Title }} SolidCraft build"></a>
+          {{ else }}<div class="cad-preview-empty">Current scope has no accepted preview for this model.</div>{{ end }}
+        </div>
+        {{ if eq $semantic "pass" }}
+          <p class="cad-preview-note">Verified SolidCraft image. Build and verification details are shown below.</p>
+        {{ end }}
       </section>
-      <section class="cad-panel"><h2>Model</h2><p>{{ index $m "description" }}</p><p class="cad-muted"><strong>Parameters:</strong> {{ index $m "parameters" }}</p></section>
+
+      <aside class="cad-panel cad-files-panel">
+        <h2>Files</h2>
+        <p>Open the model sources and generated build artifacts.</p>
+        <div class="cad-links cad-file-links">
+          <a class="cad-file-primary" href="https://github.com/{{ $repo }}/blob/{{ $ref }}/{{ $root }}/{{ index $m "source" }}">SCPF source</a>
+          {{ with index $m "scpc_source" }}<a href="https://github.com/{{ $repo }}/blob/{{ $ref }}/{{ $root }}/{{ . }}">SCPC command source</a>{{ end }}
+          {{ with .Resources.Get "solidcraft.json" }}<a href="{{ .RelPermalink }}">Command JSON</a>{{ end }}
+          {{ with .Resources.Get "model.sc" }}<a href="{{ .RelPermalink }}" download>SolidCraft .sc</a>{{ end }}
+          {{ with .Resources.Get "model.step" }}<a href="{{ .RelPermalink }}">STEP</a>{{ end }}
+        </div>
+        <p class="cad-muted">Command JSON describes the generated SolidCraft operations; the .sc file is the editable SolidCraft model.</p>
+
+        <h3>Construction stages</h3>
+        <ol class="cad-stages">{{ range index $m "stages" }}<li>{{ . }}</li>{{ end }}</ol>
+      </aside>
     </div>
 
     <section class="cad-panel cad-source-panel">
@@ -44,7 +85,7 @@
       <h2>SCPF source</h2>
       <p class="cad-muted">This is the SCPF Python source declared by this model. It generates the SolidCraft command sequence shown below.</p>
       {{ with .Resources.Get "scpf-source.py" }}
-        <div class="cad-code">{{ transform.Highlight .Content "python" }}</div>
+        {{ partial "cad/codeblock.html" (dict "lang" "python" "content" .Content "label" (index $m "source")) }}
       {{ else }}
         <p class="cad-muted">The declared SCPF source is not available in this site build.</p>
       {{ end }}
@@ -56,7 +97,7 @@
         <section class="cad-panel cad-commands-panel">
           <p class="cad-panel-label">Generated output</p>
           <h2>SolidCraft commands</h2>
-          <p class="cad-muted">These are the native SolidCraft operations generated from the SCPF source.</p>
+          <p class="cad-muted">These are the SolidCraft operations generated from the SCPF source.</p>
           <ol class="cad-command-list">
             {{ range . }}
               <li>
@@ -69,14 +110,12 @@
       {{ end }}
     {{ end }}
 
-    <section class="cad-panel"><h2>Construction stages</h2><ol class="cad-stages">{{ range index $m "stages" }}<li>{{ . }}</li>{{ end }}</ol></section>
-
     {{ with .Resources.Get "scpc-source.py" }}
       <section class="cad-panel cad-scpc-panel">
         <p class="cad-panel-label">Independent comparison</p>
-        <h2>SCPC native-command source</h2>
+        <h2>SCPC command source</h2>
         <p class="cad-muted">This is a separate explicit-command implementation. It does not call SCPF or reuse the generated SCPF command JSON.</p>
-        <div class="cad-code">{{ transform.Highlight .Content "python" }}</div>
+        {{ partial "cad/codeblock.html" (dict "lang" "python" "content" .Content "label" (index $m "scpc_source")) }}
         <div class="cad-links">
           {{ with $.Resources.Get "scpc-solidcraft.json" }}<a href="{{ .RelPermalink }}">SCPC command JSON</a>{{ end }}
         </div>
@@ -86,13 +125,13 @@
     {{ with .Resources.Get "model.sc" }}
       {{ $nativeURL := .Permalink }}
       <section class="cad-panel cad-web-open">
-        <p class="cad-panel-label">Native model</p>
+        <p class="cad-panel-label">SolidCraft model</p>
         <h2>Open in SolidCraft Web</h2>
         <p>The editable <code>.sc</code> model can be opened in SolidCraft's official web application at <strong>docs.solidcraft.io</strong>.</p>
         <p class="cad-muted">This is an external website. The SolidCraft web application is downloaded from SolidCraft's servers; the model file remains hosted on this GitHub Pages site.</p>
         <div class="cad-links">
           <a href="https://docs.solidcraft.io/app/?open={{ urlquery $nativeURL }}" target="_blank" rel="noopener noreferrer">Open in SolidCraft Web ↗</a>
-          <a href="{{ .RelPermalink }}" download>Download native .sc</a>
+          <a href="{{ .RelPermalink }}" download>Download model .sc</a>
         </div>
       </section>
     {{ end }}
