@@ -28,34 +28,30 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertNotIn('if eq $slug "hub75-panel"', adapter)
 
 
-    def test_homepage_uses_explicit_featured_models_grouped_by_category(self):
-        home = (SITE / "layouts/home.html").read_text()
-        self.assertIn('slice "basic" "components" "advanced"', home)
-        self.assertIn('eq (index .Params.model "featured") true', home)
-        self.assertIn('sort $featured "Params.model.priority"', home)
-        self.assertIn('data-category="{{ $key }}"', home)
-        self.assertNotIn('ne (index .Params.model "featured") false', home)
-
-        featured = {
-            "basic": ["models/basic/plate/model.yml", "models/basic/plastic_enclosure/model.yml"],
-            "components": ["models/components/corner_bracket/model.yml", "models/components/guide_rail/model.yml"],
-            "advanced": ["models/advanced/simple_mft/model.yml", "models/advanced/hub75_screen/model.yml"],
-        }
-        for section, paths in featured.items():
-            with self.subTest(section=section):
-                for relative in paths:
-                    content = (ROOT / relative).read_text()
-                    self.assertIn("featured: true", content)
-
-
     def test_homepage_explains_the_cad_library_not_the_ci_pipeline(self):
         home = (SITE / "layouts/home.html").read_text()
         self.assertIn("SCPF CAD models for SolidCraft", home)
         self.assertIn("practical SCPF reference", home)
         self.assertIn("generated SolidCraft commands", home)
-        self.assertIn("Reusable parts designed to be imported", home)
+        self.assertIn("reusable components and complete assemblies", home)
         self.assertNotIn("Model descriptions come from local", home)
         self.assertNotIn("accepted CAD-CI results", home)
+
+    def test_homepage_uses_git_lastmod_instead_of_featured_categories(self):
+        home = (SITE / "layouts/home.html").read_text()
+        adapter = (SITE / "content/models/_content.gotmpl").read_text()
+        card = (SITE / "layouts/partials/cad/model-card.html").read_text()
+        workflow = (ROOT / ".github/workflows/cad.yml").read_text()
+        self.assertIn("Recently updated models", home)
+        self.assertIn("first 6 $models.ByLastmod.Reverse", home)
+        self.assertNotIn("$categoryDescriptions", home)
+        self.assertNotIn('index .Params.model "featured"', home)
+        self.assertIn('"showUpdated" true', home)
+        self.assertIn('"dates" (dict "lastmod" $lastmod)', adapter)
+        self.assertIn('hugo.Data.cad.model_history', adapter)
+        self.assertIn('class="cad-card-updated"', card)
+        self.assertIn('fetch-depth: 0', workflow)
+        self.assertEqual(workflow.count("scripts/ci/model_history.py"), 2)
 
     def test_homepage_links_scpf_and_scpc_libraries(self):
         home = (SITE / "layouts/home.html").read_text()
