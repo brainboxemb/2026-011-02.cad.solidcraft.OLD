@@ -1,0 +1,34 @@
+{
+  "commands": [
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": {
+          "face": [
+            -359.3213360061674,
+            5.974984480396167e-16,
+            18.0
+          ],
+          "body": "SimpleMFT",
+          "index": 0
+        },
+        "project_edges": false,
+        "name": "Clamp slots"
+      }
+    },
+    {
+      "command": "sketch.slot.center_to_center",
+      "params": {
+        "p0": [
+          76.0,
+          76.0
+        ],
+        "p1": [
+          132.5685424949238,
+          132.5685424949238
+        ],
+        "width": 24.0
+      }
+    }
+  ]
+}

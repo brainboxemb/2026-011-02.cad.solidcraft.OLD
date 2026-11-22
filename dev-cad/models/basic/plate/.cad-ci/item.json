@@ -1,0 +1,12 @@
+{
+  "engine": "scons",
+  "engine_schema": 3,
+  "final_bundle_sha256": "c102191ab481da5a9a58f2e972526a2f442d50dc84e6aa1f61d2c1c87618cfaf",
+  "final_step": "build_results",
+  "final_target_spec_digest": "72922eb00fea363aac8cff70689c7c12bbb38baa98f794157c8eb6ab3a8de08c",
+  "item": "plate",
+  "run_finished_at": "2026-11-22T13:47:26.271Z",
+  "run_started_at": "2026-11-22T13:46:04.895Z",
+  "schema": 2,
+  "status": "pass"
+}

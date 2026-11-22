@@ -1,0 +1,298 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 25590.974097626204,
+      "bbox": {
+        "max": [
+          47.5,
+          33.0,
+          24.0
+        ],
+        "min": [
+          -47.5,
+          -33.0,
+          0.0
+        ]
+      },
+      "center_of_mass": [
+        -1.1727279344319739,
+        1.7841785574876463,
+        7.47961421308697
+      ],
+      "closed": true,
+      "density_g_cm3": 1.27,
+      "edges": 314,
+      "face_types": {
+        "cylinder": 20,
+        "other": 12,
+        "plane": 91
+      },
+      "faces": 123,
+      "kernel": {
+        "edges": 314,
+        "faces": 123,
+        "shells": 1,
+        "vertices": 206
+      },
+      "mass_g": 30.253807105777387,
+      "material": "PETG",
+      "measured_by": "smlib",
+      "name": "PlasticEnclosurePi",
+      "notes": [],
+      "vertices": 206,
+      "volume_mm3": 23821.895358879832
+    }
+  ],
+  "body_count": 1,
+  "params": [
+    {
+      "comment": "",
+      "error": null,
+      "expression": "85",
+      "model": false,
+      "name": "board_w",
+      "unit": "mm",
+      "value": 85.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "56",
+      "model": false,
+      "name": "board_d",
+      "unit": "mm",
+      "value": 56.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "24",
+      "model": false,
+      "name": "height",
+      "unit": "mm",
+      "value": 24.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "2",
+      "model": false,
+      "name": "wall",
+      "unit": "mm",
+      "value": 2.0
+    }
+  ],
+  "sketches": [
+    {
+      "curves": 12,
+      "dof": 12,
+      "id": 9,
+      "name": "Pi ports",
+      "profiles": 3,
+      "status": "solved",
+      "visible": false,
+      "wires_ok": true
+    },
+    {
+      "curves": 4,
+      "dof": 4,
+      "id": 11,
+      "name": "USB and Ethernet",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false,
+      "wires_ok": true
+    },
+    {
+      "curves": 20,
+      "dof": 20,
+      "id": 13,
+      "name": "Floor vents",
+      "profiles": 5,
+      "status": "solved",
+      "visible": false,
+      "wires_ok": true
+    },
+    {
+      "curves": 38,
+      "dof": 0,
+      "id": 15,
+      "name": "Pi 4 engraving",
+      "profiles": 6,
+      "status": "solved",
+      "visible": false,
+      "wires_ok": true
+    }
+  ],
+  "timeline": [
+    {
+      "error": null,
+      "id": 1,
+      "ms": 2.699395,
+      "name": "Box1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 2,
+      "ms": 67.60163800000001,
+      "name": "Fillet1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 3,
+      "ms": 334.600545,
+      "name": "Shell1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ShellFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 4,
+      "ms": 634.963283,
+      "name": "Fillet2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 5,
+      "ms": 101.188132,
+      "name": "Boss1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BossFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 6,
+      "ms": 107.99821399999999,
+      "name": "Boss2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BossFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 7,
+      "ms": 116.30703000000001,
+      "name": "Boss3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BossFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 8,
+      "ms": 124.67637099999999,
+      "name": "Boss4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BossFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 9,
+      "ms": 0.322515,
+      "name": "Pi ports",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 10,
+      "ms": 60.617049,
+      "name": "Pi ports",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 11,
+      "ms": 0.208873,
+      "name": "USB and Ethernet",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 12,
+      "ms": 100.563101,
+      "name": "USB and Ethernet",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 13,
+      "ms": 0.501812,
+      "name": "Floor vents",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 14,
+      "ms": 104.688405,
+      "name": "Floor vents",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 15,
+      "ms": 3.3013149999999998,
+      "name": "Pi 4 engraving",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 16,
+      "ms": 194.055223,
+      "name": "Pi 4 engraving",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    }
+  ],
+  "total": {
+    "area_mm2": 25590.974097626204,
+    "edges": 314,
+    "faces": 123,
+    "mass_g": 30.253807105777387,
+    "open_bodies_skipped": 0,
+    "vertices": 206,
+    "volume_mm3": 23821.895358879832
+  }
+}

@@ -1,0 +1,506 @@
+{
+  "format": "scpf-replay-log",
+  "version": 1,
+  "replay_sha256": "697d9d6e28860f009e6340a991277b10674249a694988baf34acfeb1882a55a8",
+  "variables": {},
+  "commands": [
+    {
+      "index": 0,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "board_w",
+        "expression": "85",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 1,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "board_d",
+        "expression": "56",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 2,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "height",
+        "expression": "24",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 3,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "wall",
+        "expression": "2",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 4,
+      "command": "solid.box",
+      "resolved_params": {
+        "length": "board_w + 10 mm",
+        "width": "board_d + 10 mm",
+        "height": "height",
+        "corner": [
+          "-(board_w + 10 mm) / 2",
+          "-(board_d + 10 mm) / 2",
+          0
+        ],
+        "body_name": "PlasticEnclosurePi"
+      }
+    },
+    {
+      "index": 5,
+      "command": "solid.fillet",
+      "resolved_params": {
+        "edges": [
+          [
+            -47.5,
+            -33.0,
+            12.0
+          ],
+          [
+            47.5,
+            -33.0,
+            12.0
+          ],
+          [
+            47.5,
+            33.0,
+            12.0
+          ],
+          [
+            -47.5,
+            33.0,
+            12.0
+          ]
+        ],
+        "radius": 5.0,
+        "body": "PlasticEnclosurePi"
+      }
+    },
+    {
+      "index": 6,
+      "command": "solid.shell",
+      "resolved_params": {
+        "faces": [
+          [
+            0.0,
+            0.0,
+            24.0
+          ]
+        ],
+        "thickness": "wall",
+        "body": "PlasticEnclosurePi"
+      }
+    },
+    {
+      "index": 7,
+      "command": "solid.fillet",
+      "resolved_params": {
+        "edges": [
+          [
+            0.0,
+            33.0,
+            24.0
+          ]
+        ],
+        "radius": 1.0,
+        "body": "PlasticEnclosurePi"
+      }
+    },
+    {
+      "index": 8,
+      "command": "plastic.boss",
+      "resolved_params": {
+        "position": [
+          -39.0,
+          -24.5,
+          2.0
+        ],
+        "diameter": 6.0,
+        "height": 4.0,
+        "body": "PlasticEnclosurePi",
+        "hole_diameter": 2.5
+      }
+    },
+    {
+      "index": 9,
+      "command": "plastic.boss",
+      "resolved_params": {
+        "position": [
+          19.0,
+          -24.5,
+          2.0
+        ],
+        "diameter": 6.0,
+        "height": 4.0,
+        "body": "PlasticEnclosurePi",
+        "hole_diameter": 2.5
+      }
+    },
+    {
+      "index": 10,
+      "command": "plastic.boss",
+      "resolved_params": {
+        "position": [
+          -39.0,
+          24.5,
+          2.0
+        ],
+        "diameter": 6.0,
+        "height": 4.0,
+        "body": "PlasticEnclosurePi",
+        "hole_diameter": 2.5
+      }
+    },
+    {
+      "index": 11,
+      "command": "plastic.boss",
+      "resolved_params": {
+        "position": [
+          19.0,
+          24.5,
+          2.0
+        ],
+        "diameter": 6.0,
+        "height": 4.0,
+        "body": "PlasticEnclosurePi",
+        "hole_diameter": 2.5
+      }
+    },
+    {
+      "index": 12,
+      "command": "sketch.create",
+      "resolved_params": {
+        "plane": {
+          "origin": [
+            0.0,
+            -33.0,
+            0.0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            0,
+            1
+          ]
+        },
+        "name": "Pi ports"
+      }
+    },
+    {
+      "index": 13,
+      "command": "sketch.rectangle.two_point",
+      "resolved_params": {
+        "p0": [
+          -41.3,
+          5.5
+        ],
+        "p1": [
+          -31.299999999999997,
+          9.5
+        ]
+      }
+    },
+    {
+      "index": 14,
+      "command": "sketch.rectangle.two_point",
+      "resolved_params": {
+        "p0": [
+          -24.5,
+          5.5
+        ],
+        "p1": [
+          -16.5,
+          9.5
+        ]
+      }
+    },
+    {
+      "index": 15,
+      "command": "sketch.rectangle.two_point",
+      "resolved_params": {
+        "p0": [
+          -11.0,
+          5.5
+        ],
+        "p1": [
+          -3.0,
+          9.5
+        ]
+      }
+    },
+    {
+      "index": 16,
+      "command": "sketch.finish",
+      "resolved_params": {}
+    },
+    {
+      "index": 17,
+      "command": "solid.extrude",
+      "resolved_params": {
+        "operation": "cut",
+        "targets": [
+          "PlasticEnclosurePi"
+        ],
+        "name": "Pi ports",
+        "distance": "wall",
+        "direction": "negative"
+      }
+    },
+    {
+      "index": 18,
+      "command": "sketch.create",
+      "resolved_params": {
+        "plane": {
+          "origin": [
+            47.5,
+            0.0,
+            0.0
+          ],
+          "x_dir": [
+            0,
+            1,
+            0
+          ],
+          "y_dir": [
+            0,
+            0,
+            1
+          ]
+        },
+        "name": "USB and Ethernet"
+      }
+    },
+    {
+      "index": 19,
+      "command": "sketch.rectangle.two_point",
+      "resolved_params": {
+        "p0": [
+          -50.0,
+          1.0
+        ],
+        "p1": [
+          0.0,
+          15.0
+        ]
+      }
+    },
+    {
+      "index": 20,
+      "command": "sketch.finish",
+      "resolved_params": {}
+    },
+    {
+      "index": 21,
+      "command": "solid.extrude",
+      "resolved_params": {
+        "operation": "cut",
+        "targets": [
+          "PlasticEnclosurePi"
+        ],
+        "name": "USB and Ethernet",
+        "distance": "wall",
+        "direction": "negative"
+      }
+    },
+    {
+      "index": 22,
+      "command": "sketch.create",
+      "resolved_params": {
+        "plane": {
+          "origin": [
+            0.0,
+            0.0,
+            2.0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "name": "Floor vents"
+      }
+    },
+    {
+      "index": 23,
+      "command": "sketch.rectangle.two_point",
+      "resolved_params": {
+        "p0": [
+          -24.5,
+          -30.5
+        ],
+        "p1": [
+          -19.5,
+          -2.5
+        ]
+      }
+    },
+    {
+      "index": 24,
+      "command": "sketch.rectangle.two_point",
+      "resolved_params": {
+        "p0": [
+          -17.5,
+          -30.5
+        ],
+        "p1": [
+          -12.5,
+          -2.5
+        ]
+      }
+    },
+    {
+      "index": 25,
+      "command": "sketch.rectangle.two_point",
+      "resolved_params": {
+        "p0": [
+          -10.5,
+          -30.5
+        ],
+        "p1": [
+          -5.5,
+          -2.5
+        ]
+      }
+    },
+    {
+      "index": 26,
+      "command": "sketch.rectangle.two_point",
+      "resolved_params": {
+        "p0": [
+          -3.5,
+          -30.5
+        ],
+        "p1": [
+          1.5,
+          -2.5
+        ]
+      }
+    },
+    {
+      "index": 27,
+      "command": "sketch.rectangle.two_point",
+      "resolved_params": {
+        "p0": [
+          3.5,
+          -30.5
+        ],
+        "p1": [
+          8.5,
+          -2.5
+        ]
+      }
+    },
+    {
+      "index": 28,
+      "command": "sketch.finish",
+      "resolved_params": {}
+    },
+    {
+      "index": 29,
+      "command": "solid.extrude",
+      "resolved_params": {
+        "operation": "cut",
+        "targets": [
+          "PlasticEnclosurePi"
+        ],
+        "name": "Floor vents",
+        "distance": "wall",
+        "direction": "negative"
+      }
+    },
+    {
+      "index": 30,
+      "command": "sketch.create",
+      "resolved_params": {
+        "plane": {
+          "origin": [
+            0.0,
+            0.0,
+            2.0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "name": "Pi 4 engraving"
+      }
+    },
+    {
+      "index": 31,
+      "command": "sketch.text",
+      "resolved_params": {
+        "text": "Pi 4",
+        "at": [
+          -9.0,
+          18.0
+        ],
+        "height": 6.0,
+        "font": "DejaVu Sans Bold"
+      }
+    },
+    {
+      "index": 32,
+      "command": "sketch.finish",
+      "resolved_params": {}
+    },
+    {
+      "index": 33,
+      "command": "solid.extrude",
+      "resolved_params": {
+        "operation": "cut",
+        "targets": [
+          "PlasticEnclosurePi"
+        ],
+        "name": "Pi 4 engraving",
+        "distance": 0.6,
+        "direction": "negative"
+      }
+    },
+    {
+      "index": 34,
+      "command": "material.create",
+      "resolved_params": {
+        "name": "PETG",
+        "density_g_cm3": 1.27,
+        "color": "#2a8696"
+      }
+    },
+    {
+      "index": 35,
+      "command": "material.assign",
+      "resolved_params": {
+        "bodies": [
+          "PlasticEnclosurePi"
+        ],
+        "material": "PETG"
+      }
+    }
+  ],
+  "completed": 36
+}

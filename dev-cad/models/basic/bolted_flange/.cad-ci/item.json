@@ -1,0 +1,12 @@
+{
+  "engine": "scons",
+  "engine_schema": 3,
+  "final_bundle_sha256": "548ecedfc1ed64c397d8532a6d4d60f389ed45e20e4dbd8a6dde5a3b81a07992",
+  "final_step": "build_results",
+  "final_target_spec_digest": "6effd5656ca04fa9714c9e3af82aad46193d4199b49d9bb4f6ce8f934b59eecc",
+  "item": "bolted-flange",
+  "run_finished_at": "2026-11-22T13:47:26.271Z",
+  "run_started_at": "2026-11-22T13:46:04.895Z",
+  "schema": 2,
+  "status": "pass"
+}

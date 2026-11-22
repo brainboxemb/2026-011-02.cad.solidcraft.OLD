@@ -1,0 +1,84 @@
+{
+  "checks": [
+    {
+      "artifacts": [
+        {
+          "kind": "file",
+          "path": "baseline/measurements.json",
+          "sha256": "c45a2abb89f6b6d51de1bdbb1e67f0e73918f5bc27b1e05432bedf2905c8d2ff",
+          "size": 4208
+        }
+      ],
+      "error": null,
+      "evidence": {
+        "body_count": {
+          "actual": 1,
+          "expected": 1,
+          "label": "SolidCraft body count",
+          "pass": true
+        },
+        "body_envelopes": {
+          "actual_count": 1,
+          "expected_count": 1,
+          "kind": "body_envelopes",
+          "matched_pairs": [
+            {
+              "actual": {
+                "label": "CornerBracket",
+                "max": [
+                  60.0,
+                  12.0,
+                  12.000000000000004
+                ],
+                "min": [
+                  -12.000000000000002,
+                  -12.0,
+                  -60.00000000000001
+                ]
+              },
+              "expected": {
+                "label": null,
+                "max": [
+                  60.0,
+                  12.0,
+                  12.0
+                ],
+                "min": [
+                  -12.0,
+                  -12.0,
+                  -60.0
+                ]
+              },
+              "max_delta": 7.105427357601002e-15
+            }
+          ],
+          "pass": true,
+          "tolerance": 0.001,
+          "unmatched_actual": [],
+          "unmatched_expected": []
+        },
+        "named_bodies": [
+          {
+            "body_name": "CornerBracket",
+            "closed": {
+              "actual": true,
+              "expected": true,
+              "label": "CornerBracket closed",
+              "pass": true
+            },
+            "name_prefix": "CornerBracket"
+          }
+        ]
+      },
+      "id": "baseline",
+      "reason": null,
+      "status": "pass"
+    }
+  ],
+  "input": "/output/items/models/components/corner_bracket/models/corner-bracket/scpc/native/model.sc",
+  "metadata": {},
+  "schema": "cad-verification",
+  "schema_version": 1,
+  "status": "pass",
+  "verification_id": "corner-bracket"
+}

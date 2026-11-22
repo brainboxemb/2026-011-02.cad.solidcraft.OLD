@@ -1,0 +1,498 @@
+[
+  {
+    "display_value": 80.0,
+    "name": "width",
+    "unit": "mm",
+    "value": 80.0
+  },
+  {
+    "display_value": 50.0,
+    "name": "depth",
+    "unit": "mm",
+    "value": 50.0
+  },
+  {
+    "display_value": 8.0,
+    "name": "thickness",
+    "unit": "mm",
+    "value": 8.0
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "name": "Base",
+    "projected": null,
+    "sketch": 1
+  },
+  {
+    "constraints": [
+      "k1",
+      "k2",
+      "k3",
+      "k4"
+    ],
+    "corners": {
+      "bottom_left": "p1",
+      "bottom_right": "p2",
+      "top_left": "p4",
+      "top_right": "p3"
+    },
+    "created": {
+      "constraints": [
+        "k1",
+        "k2",
+        "k3",
+        "k4"
+      ],
+      "curves": [
+        "l1",
+        "l2",
+        "l3",
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ]
+    },
+    "curves": [
+      "l1",
+      "l2",
+      "l3",
+      "l4"
+    ],
+    "sides": {
+      "bottom": "l1",
+      "left": "l4",
+      "right": "l2",
+      "top": "l3"
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 1
+  },
+  {
+    "bodies": [
+      "SamplePlate"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [
+      "SamplePlate"
+    ],
+    "feature": 2,
+    "ms": 2.8884190000000003,
+    "name": "Extrude1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "SamplePlate"
+    ],
+    "changed_bodies": [
+      "SamplePlate"
+    ],
+    "created_bodies": [],
+    "feature": 3,
+    "ms": 67.976421,
+    "name": "Fillet1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "body": "SamplePlate",
+    "faces": [
+      {
+        "area": 544.0,
+        "centroid": [
+          0.0,
+          25.0,
+          4.000000000000001
+        ],
+        "exact": true,
+        "index": 0,
+        "name": "F2:side:l3",
+        "plane_normal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "point": [
+          -32.058772731852805,
+          25.0,
+          2.0587727318528026
+        ]
+      },
+      {
+        "area": 3966.1991762167763,
+        "centroid": [
+          6.879342120990993e-16,
+          1.7198355302477482e-16,
+          0.0
+        ],
+        "exact": true,
+        "index": 1,
+        "name": "F2:start",
+        "plane_normal": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "point": [
+          19.948684188300806,
+          4.948684188301103,
+          0.0
+        ]
+      },
+      {
+        "area": 304.0,
+        "centroid": [
+          -40.0,
+          0.0,
+          4.0
+        ],
+        "exact": true,
+        "index": 2,
+        "name": "F2:side:l4",
+        "plane_normal": [
+          -1.0,
+          0.0,
+          -0.0
+        ],
+        "point": [
+          -40.0,
+          17.1049731745428,
+          5.8950268254572
+        ]
+      },
+      {
+        "area": 3966.1991762167763,
+        "centroid": [
+          2.293114040330331e-16,
+          1.1465570201651655e-16,
+          8.0
+        ],
+        "exact": true,
+        "index": 3,
+        "name": "F2:top",
+        "plane_normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "point": [
+          -19.948684188300792,
+          4.94868418830112,
+          8.0
+        ]
+      },
+      {
+        "area": 74.91236365679902,
+        "centroid": [
+          37.76977630842661,
+          22.769776308426607,
+          3.999999999999999
+        ],
+        "cylinder": {
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "origin": [
+            34.0,
+            19.0,
+            -4.0
+          ],
+          "radius": 6.0
+        },
+        "exact": true,
+        "index": 4,
+        "name": "F3:blend(F2:side:l2|F2:side:l3)",
+        "plane_normal": null,
+        "point": [
+          38.7156482883933,
+          22.70980608929542,
+          0.5247064260608028
+        ]
+      },
+      {
+        "area": 304.0,
+        "centroid": [
+          40.0,
+          0.0,
+          3.999999999999999
+        ],
+        "exact": true,
+        "index": 5,
+        "name": "F2:side:l2",
+        "plane_normal": [
+          1.0,
+          0.0,
+          -0.0
+        ],
+        "point": [
+          40.0,
+          17.1049731745428,
+          2.1049731745428
+        ]
+      },
+      {
+        "area": 74.91236365679902,
+        "centroid": [
+          37.76977630842661,
+          -22.769776308426604,
+          3.999999999999999
+        ],
+        "cylinder": {
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "origin": [
+            34.0,
+            -19.0,
+            -4.0
+          ],
+          "radius": 6.0
+        },
+        "exact": true,
+        "index": 6,
+        "name": "F3:blend(F2:side:l1|F2:side:l2)",
+        "plane_normal": null,
+        "point": [
+          38.597368463558134,
+          -22.85541219719515,
+          7.475293573939197
+        ]
+      },
+      {
+        "area": 544.0,
+        "centroid": [
+          0.0,
+          -25.0,
+          4.000000000000001
+        ],
+        "exact": true,
+        "index": 7,
+        "name": "F2:side:l1",
+        "plane_normal": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "point": [
+          32.058772731852805,
+          -25.0,
+          2.0587727318528026
+        ]
+      },
+      {
+        "area": 74.91236365679902,
+        "centroid": [
+          -37.76977630842661,
+          -22.769776308426607,
+          3.999999999999999
+        ],
+        "cylinder": {
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "origin": [
+            -34.0,
+            -19.0,
+            -4.0
+          ],
+          "radius": 6.0
+        },
+        "exact": true,
+        "index": 8,
+        "name": "F3:blend(F2:side:l1|F2:side:l4)",
+        "plane_normal": null,
+        "point": [
+          -38.7156482883933,
+          -22.70980608929542,
+          0.5247064260608028
+        ]
+      },
+      {
+        "area": 74.91236365679902,
+        "centroid": [
+          -37.76977630842661,
+          22.769776308426604,
+          3.999999999999999
+        ],
+        "cylinder": {
+          "axis": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "origin": [
+            -34.0,
+            19.0,
+            -4.0
+          ],
+          "radius": 6.0
+        },
+        "exact": true,
+        "index": 9,
+        "name": "F3:blend(F2:side:l3|F2:side:l4)",
+        "plane_normal": null,
+        "point": [
+          -38.597368463558134,
+          22.85541219719515,
+          7.475293573939197
+        ]
+      }
+    ]
+  },
+  {
+    "attachment": "exact_face",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "name": "Holes",
+    "projected": null,
+    "sketch": 4
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "c1"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1"
+      ]
+    },
+    "curves": [
+      "c1"
+    ],
+    "sketch": {
+      "dof": 1,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 4
+  },
+  {
+    "bodies": [
+      "SamplePlate"
+    ],
+    "changed_bodies": [
+      "SamplePlate"
+    ],
+    "created_bodies": [],
+    "feature": 5,
+    "ms": 19.756967,
+    "name": "Holes",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "SamplePlate"
+    ],
+    "changed_bodies": [
+      "SamplePlate"
+    ],
+    "created_bodies": [],
+    "feature": 6,
+    "ms": 34.24326,
+    "name": "RectangularPattern1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "SamplePlate"
+    ],
+    "changed_bodies": [
+      "SamplePlate"
+    ],
+    "created_bodies": [],
+    "feature": 7,
+    "ms": 26.880034000000002,
+    "name": "Cylinder1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "name": "Bore",
+    "projected": null,
+    "sketch": 8
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "c1"
+      ],
+      "dimensions": [],
+      "points": [
+        "c1.center"
+      ]
+    },
+    "curves": [
+      "c1"
+    ],
+    "sketch": {
+      "dof": 1,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 8
+  },
+  {
+    "bodies": [
+      "SamplePlate"
+    ],
+    "changed_bodies": [
+      "SamplePlate"
+    ],
+    "created_bodies": [],
+    "feature": 9,
+    "ms": 24.884248,
+    "name": "Bore",
+    "removed_bodies": [],
+    "warning": null
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "forge_sha": "9258d54079981604b6dd777a4c4face897c190fe",
+  "independent_scpc_compared": false,
+  "model": "bracket",
+  "runtime_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
+  "schema": 1,
+  "scpc_sha": null,
+  "semantic_verification": "pass",
+  "solidcraft_built": true,
+  "solidcraft_verified": true,
+  "source_sha": "b627544423523ce54d2366ad4ae52d233532c54a"
+}

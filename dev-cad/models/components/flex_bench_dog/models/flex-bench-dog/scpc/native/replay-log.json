@@ -1,0 +1,313 @@
+{
+  "format": "scpf-replay-log",
+  "version": 1,
+  "replay_sha256": "334fef969e643e2ae29fbb2732412b5112272015aed3d046622e89374a9065eb",
+  "variables": {},
+  "commands": [
+    {
+      "index": 0,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "hole_diameter",
+        "expression": "20.0",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 1,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "interference",
+        "expression": "0.2",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 2,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "rim_diameter",
+        "expression": "24.0",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 3,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "slot_width",
+        "expression": "1.5",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 4,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 3,
+        "diameter": "rim_diameter",
+        "base": [
+          0,
+          0,
+          0
+        ],
+        "axis": "Z",
+        "operation": "new",
+        "body_name": "FlexBenchDog"
+      }
+    },
+    {
+      "index": 5,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 17,
+        "diameter": "hole_diameter",
+        "base": [
+          0,
+          0,
+          3
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "FlexBenchDog"
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 20,
+        "diameter": "hole_diameter",
+        "base": [
+          0,
+          0,
+          -20
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "FlexBenchDog"
+        ]
+      }
+    },
+    {
+      "index": 7,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 2,
+        "diameter": "hole_diameter + interference",
+        "base": [
+          0,
+          0,
+          -20
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "FlexBenchDog"
+        ]
+      }
+    },
+    {
+      "index": 8,
+      "command": "solid.chamfer",
+      "resolved_params": {
+        "body": "FlexBenchDog",
+        "distance": 1.0,
+        "edges": [
+          [
+            10.1,
+            0,
+            -20
+          ]
+        ]
+      }
+    },
+    {
+      "index": 9,
+      "command": "sketch.create",
+      "resolved_params": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            -20
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "name": "Flex slot X"
+      }
+    },
+    {
+      "index": 10,
+      "command": "sketch.rectangle.two_point",
+      "resolved_params": {
+        "p0": [
+          "-(hole_diameter + interference + 2) / 2",
+          "-slot_width / 2"
+        ],
+        "p1": [
+          "(hole_diameter + interference + 2) / 2",
+          "slot_width / 2"
+        ]
+      }
+    },
+    {
+      "index": 11,
+      "command": "sketch.finish",
+      "resolved_params": {}
+    },
+    {
+      "index": 12,
+      "command": "solid.extrude",
+      "resolved_params": {
+        "distance": 16,
+        "direction": "positive",
+        "operation": "cut",
+        "targets": [
+          "FlexBenchDog"
+        ],
+        "name": "Flex slot X"
+      }
+    },
+    {
+      "index": 13,
+      "command": "sketch.create",
+      "resolved_params": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            -20
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "name": "Flex slot Y"
+      }
+    },
+    {
+      "index": 14,
+      "command": "sketch.rectangle.two_point",
+      "resolved_params": {
+        "p0": [
+          "-slot_width / 2",
+          "-(hole_diameter + interference + 2) / 2"
+        ],
+        "p1": [
+          "slot_width / 2",
+          "(hole_diameter + interference + 2) / 2"
+        ]
+      }
+    },
+    {
+      "index": 15,
+      "command": "sketch.finish",
+      "resolved_params": {}
+    },
+    {
+      "index": 16,
+      "command": "solid.extrude",
+      "resolved_params": {
+        "distance": 16,
+        "direction": "positive",
+        "operation": "cut",
+        "targets": [
+          "FlexBenchDog"
+        ],
+        "name": "Flex slot Y"
+      }
+    },
+    {
+      "index": 17,
+      "command": "solid.chamfer",
+      "resolved_params": {
+        "body": "FlexBenchDog",
+        "distance": 0.6,
+        "edges": [
+          [
+            10,
+            0,
+            20
+          ]
+        ]
+      }
+    },
+    {
+      "index": 18,
+      "command": "sketch.create",
+      "resolved_params": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            20
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "name": "Top logo"
+      }
+    },
+    {
+      "index": 19,
+      "command": "sketch.rectangle.two_point",
+      "resolved_params": {
+        "p0": [
+          -4,
+          -4
+        ],
+        "p1": [
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "index": 20,
+      "command": "sketch.finish",
+      "resolved_params": {}
+    },
+    {
+      "index": 21,
+      "command": "solid.extrude",
+      "resolved_params": {
+        "distance": 0.6,
+        "direction": "negative",
+        "operation": "cut",
+        "targets": [
+          "FlexBenchDog"
+        ],
+        "name": "Top logo"
+      }
+    }
+  ],
+  "completed": 22
+}

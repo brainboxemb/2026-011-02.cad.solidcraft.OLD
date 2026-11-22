@@ -1,0 +1,190 @@
+[
+  {
+    "display_value": 24.0,
+    "name": "arm_width",
+    "unit": "mm",
+    "value": 24.0
+  },
+  {
+    "display_value": 60.0,
+    "name": "horizontal_arm_length",
+    "unit": "mm",
+    "value": 60.0
+  },
+  {
+    "display_value": 12.0,
+    "name": "arm_height",
+    "unit": "mm",
+    "value": 12.0
+  },
+  {
+    "display_value": 3.0,
+    "name": "arm_end_chamfer",
+    "unit": "mm",
+    "value": 3.0
+  },
+  {
+    "display_value": 6.0,
+    "name": "outer_corner_chamfer",
+    "unit": "mm",
+    "value": 6.0
+  },
+  {
+    "display_value": 60.0,
+    "name": "vertical_arm_length",
+    "unit": "mm",
+    "value": 60.0
+  },
+  {
+    "display_value": 4.0,
+    "name": "inside_corner_radius",
+    "unit": "mm",
+    "value": 4.0
+  },
+  {
+    "display_value": 2.0,
+    "name": "side_edge_chamfer",
+    "unit": "mm",
+    "value": 2.0
+  },
+  {
+    "display_value": 0.6,
+    "name": "elephant_foot_relief",
+    "unit": "mm",
+    "value": 0.6
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "name": "Profile",
+    "projected": null,
+    "sketch": 1
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "i_corner",
+        "o_hor_tip",
+        "o_hor_bevel",
+        "o_hor",
+        "o_corner",
+        "o_vert",
+        "o_vert_bevel",
+        "o_vert_end",
+        "v_tip"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "p7",
+        "p8",
+        "i_corner.start"
+      ]
+    },
+    "curves": [
+      "i_corner",
+      "o_hor_tip",
+      "o_hor_bevel",
+      "o_hor",
+      "o_corner",
+      "o_vert",
+      "o_vert_bevel",
+      "o_vert_end",
+      "v_tip"
+    ],
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 1
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [
+      "CornerBracket"
+    ],
+    "feature": 2,
+    "ms": 4.923521,
+    "name": "Extrude1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 3,
+    "ms": 14.354105,
+    "name": "Fillet1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 4,
+    "ms": 90.476235,
+    "name": "Chamfer1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 5,
+    "ms": 38.508767,
+    "name": "Chamfer2",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 6,
+    "ms": 137.102171,
+    "name": "Chamfer3",
+    "removed_bodies": [],
+    "warning": null
+  }
+]

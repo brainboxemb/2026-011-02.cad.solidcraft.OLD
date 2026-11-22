@@ -1,0 +1,72 @@
+{
+  "commands": [
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "width",
+        "expression": "805",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "depth",
+        "expression": "555",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "thickness",
+        "expression": "18",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "hole_diameter",
+        "expression": "20",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "hole_pitch",
+        "expression": "76",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "corner_chamfer",
+        "expression": "20",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "width",
+        "width": "depth",
+        "height": "thickness",
+        "corner": [
+          "-width / 2",
+          "-depth / 2",
+          0
+        ],
+        "body_name": "SimpleMFT"
+      }
+    },
+    {
+      "command": "model.faces",
+      "params": {
+        "body": "SimpleMFT"
+      }
+    }
+  ]
+}

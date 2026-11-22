@@ -1,0 +1,39 @@
+{
+  "action_executed": true,
+  "action_type": "copy",
+  "bundle_sha256": "3cad56454f69390589d7e20a61abb26beaf51155d0f8dc4323031cd2ea351d64",
+  "duration_seconds": 0.119,
+  "engine": "scons",
+  "engine_schema": 3,
+  "error": null,
+  "exit_code": null,
+  "finished_at": "2026-11-22T13:47:25.532Z",
+  "item": "guide-rail",
+  "outcome": "BUILT",
+  "output_state": "RESTORED",
+  "outputs": {
+    "generated": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "832d4bab012f7f0e5237aa12fe728a85238707029c853adb26b06417765bfa78"
+    },
+    "manifest.json": {
+      "kind": "file",
+      "mode": 420,
+      "sha256": "8b5f56cd0987a332d2e7c17fa50f145020584f32d365d84708176ea12a49f819"
+    },
+    "models": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "c3a38fd4b6eddf4504c8e5841f5a55159b07091338edfc8c0cf759c784b14bd0"
+    }
+  },
+  "run_finished_at": "2026-11-22T13:47:26.271Z",
+  "run_started_at": "2026-11-22T13:46:04.895Z",
+  "schema": 4,
+  "started_at": "2026-11-22T13:47:25.413Z",
+  "status": "pass",
+  "step": "build_results",
+  "target_spec_digest": "a70e248d8769e4f3466d4503e3ef0925418b4beb9b468b2ea27f4493fb493f42",
+  "timeout_seconds": null
+}

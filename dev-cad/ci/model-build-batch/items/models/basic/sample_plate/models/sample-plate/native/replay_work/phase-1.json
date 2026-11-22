@@ -1,0 +1,95 @@
+{
+  "commands": [
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "width",
+        "expression": "80",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "depth",
+        "expression": "50",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "thickness",
+        "expression": "8",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": "XY",
+        "name": "Base"
+      }
+    },
+    {
+      "command": "sketch.rectangle.two_point",
+      "params": {
+        "p0": [
+          "-(width / 2)",
+          "-(depth / 2)"
+        ],
+        "p1": [
+          "width / 2",
+          "depth / 2"
+        ]
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "distance": "thickness",
+        "direction": "positive",
+        "body_name": "SamplePlate"
+      }
+    },
+    {
+      "command": "solid.fillet",
+      "params": {
+        "edges": [
+          [
+            -40.0,
+            -25.0,
+            4.0
+          ],
+          [
+            40.0,
+            -25.0,
+            4.0
+          ],
+          [
+            40.0,
+            25.0,
+            4.0
+          ],
+          [
+            -40.0,
+            25.0,
+            4.0
+          ]
+        ],
+        "radius": 6,
+        "body": "SamplePlate"
+      }
+    },
+    {
+      "command": "model.faces",
+      "params": {
+        "body": "SamplePlate"
+      }
+    }
+  ]
+}

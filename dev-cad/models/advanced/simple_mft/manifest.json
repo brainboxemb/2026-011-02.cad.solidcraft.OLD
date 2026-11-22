@@ -1,0 +1,8 @@
+{
+  "item_path": "models/advanced/simple_mft",
+  "models": [
+    "simple-mft",
+    "simple-mft-assembly"
+  ],
+  "schema": 1
+}

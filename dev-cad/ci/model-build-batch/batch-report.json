@@ -1,0 +1,104 @@
+{
+  "model_count": 16,
+  "models": [
+    {
+      "error": null,
+      "model": "hub75-screen",
+      "semantic_verification": "not-configured",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "simple-mft",
+      "semantic_verification": "not-configured",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "simple-mft-assembly",
+      "semantic_verification": "not-configured",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "bolted-flange",
+      "semantic_verification": "pass",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "bracket",
+      "semantic_verification": "pass",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "csg-cube",
+      "semantic_verification": "pass",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "plastic-enclosure",
+      "semantic_verification": "pass",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "plastic-enclosure-pi",
+      "semantic_verification": "pass",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "plate",
+      "semantic_verification": "pass",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "sample-plate",
+      "semantic_verification": "pass",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "vent-plate",
+      "semantic_verification": "pass",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "corner-bracket",
+      "semantic_verification": "pass",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "flex-bench-dog",
+      "semantic_verification": "pass",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "guide-rail",
+      "semantic_verification": "pass",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "guide-rail-makita",
+      "semantic_verification": "pass",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "hub75-panel",
+      "semantic_verification": "not-configured",
+      "status": "pass"
+    }
+  ],
+  "schema": 1,
+  "source_sha": "b627544423523ce54d2366ad4ae52d233532c54a",
+  "status": "pass"
+}

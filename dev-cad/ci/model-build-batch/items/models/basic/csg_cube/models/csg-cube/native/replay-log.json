@@ -1,0 +1,104 @@
+{
+  "format": "scpf-replay-log",
+  "version": 1,
+  "replay_sha256": "0d98d0801487273ffa53828a2d1253e1d56306a086ca1e60317931e94e3839e0",
+  "variables": {},
+  "commands": [
+    {
+      "index": 0,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "size",
+        "expression": "50",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 1,
+      "command": "solid.sphere",
+      "resolved_params": {
+        "radius": "size / 1.5",
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "operation": "new",
+        "body_name": "CsgCube"
+      }
+    },
+    {
+      "index": 2,
+      "command": "solid.box",
+      "resolved_params": {
+        "length": "size",
+        "width": "size",
+        "height": "size",
+        "operation": "intersect",
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "targets": [
+          "CsgCube"
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": "size",
+        "diameter": "size / 1.5",
+        "base": [
+          "-(size / 2)",
+          0,
+          0
+        ],
+        "axis": "X",
+        "operation": "cut",
+        "targets": [
+          "CsgCube"
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": "size",
+        "diameter": "size / 1.5",
+        "base": [
+          0,
+          "-(size / 2)",
+          0
+        ],
+        "axis": "Y",
+        "operation": "cut",
+        "targets": [
+          "CsgCube"
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": "size",
+        "diameter": "size / 1.5",
+        "base": [
+          0,
+          0,
+          "-(size / 2)"
+        ],
+        "axis": "Z",
+        "operation": "cut",
+        "targets": [
+          "CsgCube"
+        ]
+      }
+    }
+  ],
+  "completed": 6
+}

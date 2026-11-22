@@ -1,0 +1,273 @@
+{
+  "commands": [
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": {
+          "face": [
+            18.40772842651739,
+            -98.41272842651739,
+            14.5
+          ],
+          "body": "Hub75Panel",
+          "index": 8
+        },
+        "project_edges": false,
+        "name": "Rear electronics bays"
+      }
+    },
+    {
+      "command": "sketch.rectangle.two_point",
+      "params": {
+        "p0": [
+          -67.3734375,
+          -149.11474218749998
+        ],
+        "p1": [
+          67.3734375,
+          -89.91843749999998
+        ]
+      }
+    },
+    {
+      "command": "sketch.rectangle.two_point",
+      "params": {
+        "p0": [
+          -67.3734375,
+          -69.9365625
+        ],
+        "p1": [
+          67.3734375,
+          -9.990937500000001
+        ]
+      }
+    },
+    {
+      "command": "sketch.rectangle.two_point",
+      "params": {
+        "p0": [
+          -67.3734375,
+          9.990937500000001
+        ],
+        "p1": [
+          67.3734375,
+          69.9365625
+        ]
+      }
+    },
+    {
+      "command": "sketch.rectangle.two_point",
+      "params": {
+        "p0": [
+          -67.3734375,
+          89.91843749999998
+        ],
+        "p1": [
+          67.3734375,
+          149.11474218749998
+        ]
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "operation": "cut",
+        "targets": [
+          "Hub75Panel"
+        ],
+        "name": "Rear electronics bays",
+        "distance": 12.5,
+        "direction": "negative"
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          -72.0,
+          -152.0,
+          14.5
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 3.0,
+        "depth": 12.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          -72.0,
+          0,
+          14.5
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 3.0,
+        "depth": 12.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          -72.0,
+          152.0,
+          14.5
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 3.0,
+        "depth": 12.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          72.0,
+          -152.0,
+          14.5
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 3.0,
+        "depth": 12.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          72.0,
+          0,
+          14.5
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 3.0,
+        "depth": 12.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          72.0,
+          152.0,
+          14.5
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 3.0,
+        "depth": 12.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "command": "material.create",
+      "params": {
+        "name": "HUB75 housing",
+        "density_g_cm3": 1.2,
+        "color": "#B8B8B8"
+      }
+    },
+    {
+      "command": "material.assign",
+      "params": {
+        "bodies": [
+          "Hub75Panel"
+        ],
+        "material": "HUB75 housing"
+      }
+    },
+    {
+      "command": "component.activate",
+      "params": {
+        "component": "root"
+      }
+    },
+    {
+      "command": "occurrence.copy",
+      "params": {
+        "component": "Hub75Panel"
+      }
+    },
+    {
+      "command": "occurrence.copy",
+      "params": {
+        "component": "Hub75Panel"
+      }
+    },
+    {
+      "command": "occurrence.copy",
+      "params": {
+        "component": "Hub75Panel"
+      }
+    },
+    {
+      "command": "occurrence.copy",
+      "params": {
+        "component": "Hub75Panel"
+      }
+    },
+    {
+      "command": "occurrence.move",
+      "params": {
+        "occurrence": 2,
+        "translate": [
+          0,
+          0,
+          160.0
+        ],
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "angle": "90 deg",
+        "move_grounded": true
+      }
+    }
+  ]
+}

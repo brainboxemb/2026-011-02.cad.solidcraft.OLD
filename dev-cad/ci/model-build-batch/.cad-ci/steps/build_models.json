@@ -1,0 +1,39 @@
+{
+  "action_executed": true,
+  "action_type": "command",
+  "bundle_sha256": "a586c34a7f6f1b319d10e90a7f80d89881230f7266ce6431b7ec7cabd16d5aad",
+  "duration_seconds": 72.117,
+  "engine": "scons",
+  "engine_schema": 3,
+  "error": null,
+  "exit_code": 0,
+  "finished_at": "2026-11-22T13:47:24.958Z",
+  "item": "model-build-batch",
+  "outcome": "BUILT",
+  "output_state": "UNCHANGED",
+  "outputs": {
+    "batch-report.json": {
+      "kind": "file",
+      "mode": 420,
+      "sha256": "2dc7399e42cc3be9e2db0c97164de21d917662b903c78dbc16ddd597ec9ffe88"
+    },
+    "items": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "5147921f02f68f20551dfa4b714348a31e75ae59c3f14ef4303f7dff81108d78"
+    },
+    "manifest.json": {
+      "kind": "file",
+      "mode": 420,
+      "sha256": "ce9f029f7dee032a938d062678ca278c6b7027cdc3d44e1bf8246ee6f593604b"
+    }
+  },
+  "run_finished_at": "2026-11-22T13:47:26.271Z",
+  "run_started_at": "2026-11-22T13:46:04.895Z",
+  "schema": 4,
+  "started_at": "2026-11-22T13:46:12.863Z",
+  "status": "pass",
+  "step": "build_models",
+  "target_spec_digest": "8a05013db197595c50c01a1e419d0895f8c4535c0bcc270348cf1570c9c33c1c",
+  "timeout_seconds": null
+}

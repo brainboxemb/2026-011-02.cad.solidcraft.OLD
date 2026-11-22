@@ -1,0 +1,15 @@
+{
+  "commands": [
+    {
+      "command": "occurrence.move",
+      "params": {
+        "occurrence": 10,
+        "translate": [
+          -92.1,
+          0,
+          "worktop_thickness"
+        ]
+      }
+    }
+  ]
+}

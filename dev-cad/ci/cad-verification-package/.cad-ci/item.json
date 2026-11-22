@@ -1,0 +1,12 @@
+{
+  "engine": "scons",
+  "engine_schema": 3,
+  "final_bundle_sha256": "2984d928df05bab72ec5de0e981ed06124deeeb5dc3afb063f87efb47f4b9d30",
+  "final_step": "wheel",
+  "final_target_spec_digest": "02d311d81acf4247199e9e7f636b13069c3e7aafd0028a7de444cad4302efed3",
+  "item": "cad-verification-package",
+  "run_finished_at": "2026-11-22T13:47:26.271Z",
+  "run_started_at": "2026-11-22T13:46:04.895Z",
+  "schema": 2,
+  "status": "pass"
+}

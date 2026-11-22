@@ -1,0 +1,137 @@
+{
+  "format": "scpf-replay-log",
+  "version": 1,
+  "replay_sha256": "3b847839f4b06126b7dfbc9264d736ce35d7e80f784f62cfdf9336bf80d2cbbf",
+  "variables": {},
+  "commands": [
+    {
+      "index": 0,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "width",
+        "expression": "60",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 1,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "thickness",
+        "expression": "6",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 2,
+      "command": "sketch.create",
+      "resolved_params": {
+        "plane": "XZ",
+        "name": "Profile"
+      }
+    },
+    {
+      "index": 3,
+      "command": "sketch.line",
+      "resolved_params": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            40,
+            0
+          ],
+          [
+            40,
+            "thickness"
+          ],
+          [
+            "thickness",
+            "thickness"
+          ],
+          [
+            "thickness",
+            30
+          ],
+          [
+            0,
+            30
+          ]
+        ],
+        "closed": true,
+        "ids": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f"
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "command": "sketch.finish",
+      "resolved_params": {}
+    },
+    {
+      "index": 5,
+      "command": "solid.extrude",
+      "resolved_params": {
+        "distance": "width",
+        "direction": "negative",
+        "body_name": "Bracket"
+      }
+    },
+    {
+      "index": 6,
+      "command": "solid.fillet",
+      "resolved_params": {
+        "edges": [
+          [
+            40.0,
+            -30.0,
+            -6.0
+          ]
+        ],
+        "radius": 2,
+        "body": "Bracket"
+      }
+    },
+    {
+      "index": 7,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          25.0,
+          -15.0,
+          0.0
+        ],
+        "targets": [
+          "Bracket"
+        ],
+        "diameter": 8,
+        "depth": "thickness"
+      }
+    },
+    {
+      "index": 8,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          25.0,
+          -45.0,
+          0.0
+        ],
+        "targets": [
+          "Bracket"
+        ],
+        "diameter": 8,
+        "depth": "thickness"
+      }
+    }
+  ],
+  "completed": 9
+}
