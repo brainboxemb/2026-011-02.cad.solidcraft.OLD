@@ -26,6 +26,21 @@ implementation to copy into this repository.
 Do not create a second CAD-specific generic selector, SCons scheduler,
 verification engine, build-store implementation or Pages publisher.
 
+## Generic CI requests: Forge owns the decision
+
+Generic changes requested by this CAD consumer do **not** go directly into
+`lib.py.cad.ci` or `tool.cad.ci`. Start with a Forge issue explaining
+the problem, expected behavior, acceptance tests and performance impact.
+Forge decides the shared requirements and design. The appropriate generic
+owner repository implements and releases the change independently, after
+which Forge qualifies and selects its release. This CAD repository then
+adopts the same released stack.
+
+The scan → plan → shared model-build-batch requirement is tracked by
+`brainboxemb/lib.py.solidcraft.forge#661`. Do not introduce local
+selection/scheduling/cache logic while waiting for a generic answer.
+Do not move the stable CAD site to Forge's page layout.
+
 ## Same source lanes and generated scopes as Forge
 
 Permanent source branches: `main`, `dev-cad`, `dev-ci`.

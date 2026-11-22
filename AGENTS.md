@@ -19,6 +19,14 @@
 > Use the released CAD-CI changed/dependency planner: do not invent a second
 > selection engine. See `docs/design.md` and `docs/plan.md`.
 >
+> **Generic CAD-CI requests go through Forge first:** track the common
+> scan/plan/build-batch requirement under
+> `brainboxemb/lib.py.solidcraft.forge#661`. Forge decides shared behavior
+> and acceptance; the generic CI owner implements/releases it; Forge
+> qualifies the release; only then does this repository adopt it. Do not
+> change `lib.py.cad.ci` directly as a workaround for this CAD repository,
+> and do not create another CI planner here.
+>
 This repository contains product and project CAD models built with SCPF/SCPC.
 Forge itself belongs in `brainboxemb/lib.py.solidcraft.forge`; do not work
 around a Forge API/compiler problem in a product model.
