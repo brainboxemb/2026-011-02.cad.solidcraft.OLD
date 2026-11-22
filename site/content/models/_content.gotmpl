@@ -68,6 +68,15 @@ identity and does not produce /models/<slug>/<resource>.
           ) }}
         {{ end }}
 
+        {{/* Show the exact SCPF source declared by this model. */}}
+        {{ $sourcePath := index $model "source" }}
+        {{ with resources.Get (printf "cad-source/%s/%s/%s" $section $rootName $sourcePath) }}
+          {{ $.AddResource (dict
+            "content" (dict "mediaType" "text/plain" "value" .Content)
+            "path" (printf "%s/scpf-source.py" $slug)
+          ) }}
+        {{ end }}
+
         {{ with resources.Get (printf "%s/model.png" $buildRoot) }}
           {{ $.AddResource (dict
             "content" (dict "mediaType" .MediaType.Type "value" .Content)

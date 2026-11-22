@@ -39,6 +39,36 @@
       <section class="cad-panel"><h2>Model</h2><p>{{ index $m "description" }}</p><p class="cad-muted"><strong>Parameters:</strong> {{ index $m "parameters" }}</p></section>
     </div>
 
+    <section class="cad-panel cad-source-panel">
+      <p class="cad-panel-label">Source</p>
+      <h2>SCPF source</h2>
+      <p class="cad-muted">This is the SCPF Python source declared by this model. It generates the SolidCraft command sequence shown below.</p>
+      {{ with .Resources.Get "scpf-source.py" }}
+        <div class="cad-code">{{ transform.Highlight .Content "python" }}</div>
+      {{ else }}
+        <p class="cad-muted">The declared SCPF source is not available in this site build.</p>
+      {{ end }}
+    </section>
+
+    {{ with .Resources.Get "solidcraft.json" }}
+      {{ $commandsDoc := .Content | transform.Unmarshal }}
+      {{ with index $commandsDoc "commands" }}
+        <section class="cad-panel cad-commands-panel">
+          <p class="cad-panel-label">Generated output</p>
+          <h2>SolidCraft commands</h2>
+          <p class="cad-muted">These are the native SolidCraft operations generated from the SCPF source.</p>
+          <ol class="cad-command-list">
+            {{ range . }}
+              <li>
+                <strong><code>{{ index . "command" }}</code></strong>
+                {{ with index . "params" }}<pre><code>{{ . | transform.Remarshal "json" }}</code></pre>{{ end }}
+              </li>
+            {{ end }}
+          </ol>
+        </section>
+      {{ end }}
+    {{ end }}
+
     <section class="cad-panel"><h2>Construction stages</h2><ol class="cad-stages">{{ range index $m "stages" }}<li>{{ . }}</li>{{ end }}</ol></section>
 
     <section class="cad-panel">

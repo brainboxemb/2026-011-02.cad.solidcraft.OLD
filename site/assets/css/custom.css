@@ -87,3 +87,46 @@
   .cad-preview-layout{grid-template-columns:1fr}
   .cad-model-grid,.cad-reference-grid{grid-template-columns:1fr}
 }
+
+.cad-panel-label{
+  margin:0 0 .2rem;
+  text-transform:uppercase;
+  letter-spacing:.105em;
+  font-size:.65rem;
+  font-weight:800;
+  color:var(--cad-accent);
+}
+.cad-source-panel{border-top:3px solid var(--cad-accent)}
+.cad-code{margin-top:.75rem}
+.cad-code .highlight{margin:0}
+.cad-code pre,.cad-command-list pre{
+  margin:.5rem 0 0;
+  padding:.8rem .9rem;
+  border-radius:7px;
+  overflow:auto;
+  font-size:.78rem;
+  line-height:1.45;
+}
+.cad-command-list{list-style:none;margin:.6rem 0 0;padding:0;counter-reset:cad-command}
+.cad-command-list>li{
+  position:relative;
+  padding:.7rem 0 .75rem 2rem;
+  border-bottom:1px solid var(--cad-line);
+}
+.cad-command-list>li:last-child{border-bottom:0}
+.cad-command-list>li:before{
+  counter-increment:cad-command;
+  content:counter(cad-command);
+  position:absolute;
+  left:0;
+  top:.72rem;
+  width:1.35rem;
+  height:1.35rem;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--cad-soft);
+  color:#174f91;
+  font-size:.68rem;
+  font-weight:700;
+}
