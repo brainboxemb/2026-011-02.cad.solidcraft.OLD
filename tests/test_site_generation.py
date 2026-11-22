@@ -132,7 +132,7 @@ class HugoSiteContractTests(unittest.TestCase):
 
     def test_model_page_keeps_expected_public_content(self):
         page = (SITE / "layouts/models/single.html").read_text()
-        for value in ("SCPF source","SolidCraft commands","Construction stages","Python source","model.yml","Forge commands","SolidCraft model","STEP","Build provenance","No build evidence in this scope","extra_views"):
+        for value in ("SCPF source","SolidCraft commands","Construction stages","Python source","model.yml","Forge commands","SolidCraft model","STEP","Build provenance","No accepted build evidence","extra_views"):
             self.assertIn(value, page)
 
     def test_model_page_uses_declared_scpf_source_and_generated_commands(self):
