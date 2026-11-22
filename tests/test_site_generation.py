@@ -84,6 +84,15 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn("action emphasis", design)
         self.assertNotIn("Blowfish v3.10.0", design)
 
+    def test_site_uses_one_global_sans_and_mono_font_contract(self):
+        css = (SITE / "assets/css/custom.css").read_text()
+        self.assertIn('--cad-font-sans:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;', css)
+        self.assertIn('--cad-font-mono:Consolas,"Courier New",monospace;', css)
+        self.assertIn("html,\nbody,\nbutton,\ninput,\nselect,\ntextarea,\nsummary{\n  font-family:var(--cad-font-sans)!important;", css)
+        self.assertIn("code,\npre,\nkbd,\nsamp{\n  font-family:var(--cad-font-mono)!important;", css)
+        self.assertNotIn('font-family:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;', css.replace('--cad-font-sans:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;', ''))
+        self.assertNotIn('ui-monospace,SFMono-Regular,Consolas', css)
+
     def test_model_detail_typography_does_not_inherit_hextra_prose_tracking(self):
         css = (SITE / "assets/css/custom.css").read_text()
         self.assertNotIn(".content h1{letter-spacing:-.025em}", css)
@@ -95,6 +104,7 @@ class HugoSiteContractTests(unittest.TestCase):
 
     def test_background_markdown_uses_the_same_quiet_cad_typography(self):
         css = (SITE / "assets/css/custom.css").read_text()
+        page = (SITE / "layouts/models/single.html").read_text()
         self.assertIn(".cad-rich-text{max-width:78ch;font-size:1rem;line-height:1.52}", css)
         self.assertIn("<h2>Background</h2>", page)
         self.assertIn("color:var(--cad-ink);", css)
