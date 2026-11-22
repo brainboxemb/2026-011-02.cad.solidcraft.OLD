@@ -17,3 +17,60 @@
 .cad-preview img{width:100%;height:100%;max-height:480px;object-fit:contain}.cad-preview-empty{min-height:320px;display:grid;place-items:center;padding:2rem;color:var(--cad-muted);text-align:center}.cad-stages li{margin:.5rem 0}.cad-muted{color:var(--cad-muted);font-size:.88rem}
 .cad-reference{padding:1rem}.cad-reference img{width:100%;max-height:360px;object-fit:contain;background:#eef3fa;margin-top:.75rem}.cad-section{margin:2.5rem 0}.cad-section-heading p{color:var(--cad-muted)}
 @media(max-width:760px){.cad-hero{padding:1.75rem 1.4rem}.cad-preview-layout{grid-template-columns:1fr}.cad-model-grid,.cad-reference-grid{grid-template-columns:1fr}}
+
+
+/* Compact engineering reading scale for CAD content.
+ * Keep Blowfish's restrained header, but do not use its large article scale
+ * for the model catalogue and technical pages. */
+#main-content{
+  font-size:1rem;
+  line-height:1.5;
+}
+#main-content h1{
+  font-size:clamp(1.9rem,3.4vw,2.45rem);
+  line-height:1.16;
+  letter-spacing:-.018em;
+}
+#main-content h2{
+  font-size:1.42rem;
+  line-height:1.25;
+  margin-top:1.65rem;
+  margin-bottom:.75rem;
+}
+#main-content h3{
+  font-size:1.12rem;
+  line-height:1.3;
+}
+.cad-heading{margin:1.45rem 0 1.25rem}
+.cad-heading h1{margin:.25rem 0}
+.cad-lead{font-size:1rem;line-height:1.45}
+.cad-section{margin:1.9rem 0}
+.cad-section-heading{margin-bottom:.8rem}
+.cad-section-heading h2{margin-bottom:.3rem}
+.cad-section-heading p{margin:.25rem 0;color:var(--cad-muted)}
+.cad-model-grid{gap:.9rem}
+.cad-model-card{gap:.32rem;padding:.9rem;font-size:.92rem;line-height:1.38}
+.cad-model-card strong{font-size:1.02rem;line-height:1.3}
+.cad-model-card small{font-size:.78rem;line-height:1.35;color:var(--cad-muted)}
+.cad-card-picture{height:165px;margin:-.9rem -.9rem .55rem}
+.cad-card-state{font-size:.68rem;padding:.16rem .48rem}
+.cad-panel{padding:1rem 1.1rem;margin:1rem 0;font-size:.94rem;line-height:1.48}
+.cad-panel h2{margin-top:0;margin-bottom:.65rem}
+.cad-badges{gap:.45rem;margin-top:.75rem}
+.cad-status,.cad-badges>span{font-size:.72rem;padding:.22rem .55rem}
+.cad-muted{font-size:.82rem}
+.cad-stages{margin-top:.5rem;margin-bottom:.25rem}
+.cad-stages li{margin:.3rem 0}
+.cad-reference{padding:.85rem;font-size:.9rem;line-height:1.42}
+.cad-links{gap:.5rem;margin-top:.7rem}
+.cad-button,.cad-links a{padding:.45rem .7rem;font-size:.88rem}
+.cad-hero{margin:1.5rem 0 1.8rem;padding:2rem 2.25rem}
+.cad-hero h1{font-size:clamp(1.9rem,3.8vw,2.65rem);margin:.25rem 0 .7rem}
+.cad-hero p{font-size:1rem;line-height:1.5;margin:.5rem 0}
+.cad-eyebrow{font-size:.7rem}
+@media(max-width:760px){
+  #main-content{font-size:.96rem}
+  .cad-hero{padding:1.45rem 1.2rem}
+  .cad-model-card{font-size:.9rem}
+  .cad-panel{padding:.9rem}
+}
