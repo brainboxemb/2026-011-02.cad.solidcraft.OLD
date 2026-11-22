@@ -35,11 +35,15 @@ class MergePolicyWorkflowTests(unittest.TestCase):
         self.assertNotIn('HEAD_REF" = "dev-cad"', text)
         self.assertNotIn('HEAD_REF" = "dev-ci"', text)
 
-    def test_legacy_cad_workflow_is_not_dispatched_from_merge_policy(self):
+    def test_accepted_source_refs_are_explicitly_dispatched(self):
         text = WORKFLOW.read_text(encoding="utf-8")
 
-        self.assertNotIn("actions/workflows/cad.yml/dispatches", text)
-        self.assertIn("Do not dispatch cad.yml here yet", text)
+        self.assertIn("actions: write", text)
+        self.assertIn("INTEGRATE_BASE", text)
+        self.assertIn("actions/workflows/cad.yml/dispatches", text)
+        self.assertIn('-f ref="$BASE_REF"', text)
+        self.assertIn('-f ref="$HEAD_REF"', text)
+        self.assertIn("Integration dispatched: %s", text)
 
 
 if __name__ == "__main__":
