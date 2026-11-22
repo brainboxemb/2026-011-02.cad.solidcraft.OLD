@@ -2,7 +2,9 @@
 
 > **CI migration in progress:** Issue #174 and
 > `docs/requirements.md`, `docs/design.md`, and `docs/plan.md` define the
-> intended Forge-compatible CI architecture. Existing `cad.yml`,
+> intended Forge-compatible CI architecture. The permanent `dev-cad` and
+> `dev-ci` source branches now exist. M0 guard tests run on development PRs,
+> but these checks are **not** native CAD validation. Existing `cad.yml`,
 > `pipeline_ci.py`, and publication rules below describe the **current
 > implementation**, not the target. Do not extend the old selectors or
 > publication framework to address runtime upgrade coverage. Migrate in
