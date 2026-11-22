@@ -101,7 +101,12 @@ Permanent source branches: `main`, `dev-cad`, `dev-ci`.
 
 ## Verification and results
 
-- Keep the semantic checks declarative beside their models; do not bury model
+- Every processed model must complete a real SolidCraft build and produce
+  truthful build provenance and the required saved design/build artifacts.
+- Semantic verification is optional. Add `verification/verify.py` only where
+  explicit physical expectations are useful and maintainable; do not invent
+  assertions merely to make migration coverage look complete.
+- Keep semantic checks declarative beside their models; do not bury model
   expectations inside the GitHub workflow, general Python runners or HTML.
 - Preserve SCPC-versus-Forge comparison where the model has an independent
   SCPC source.
@@ -171,8 +176,8 @@ missing generic CI feature.
   Simple MFT) declare those variants **inside one local `model.yml`**.
 - `scripts/ci/model_catalog.py` validates/discovers the local YAML; it
   must not maintain a competing handwritten list of models.
-- `ci.yml` declares build execution only, while `verification/verify.py`
-  declares physical checks. The static site renderer consumes model-owned
+- `ci.yml` declares build execution only, while an optional
+  `verification/verify.py` declares physical/semantic checks. The static site renderer consumes model-owned
   metadata, build results, source code and verification evidence.
 - A presentation-only metadata change must not change SolidCraft geometry
   fingerprints or trigger a SolidCraft rebuild. Metadata must still select

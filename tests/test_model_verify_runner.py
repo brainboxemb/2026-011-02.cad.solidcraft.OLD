@@ -17,27 +17,46 @@ from model_catalog import COMMAND_SOURCES, MODELS  # noqa: E402
 
 
 class SharedModelBatchTests(unittest.TestCase):
-    def test_all_sixteen_roots_discovered_and_seven_remain_disabled(self):
+    def test_all_buildable_roots_participate_in_the_shared_build_batch(self):
         roots = sorted(ROOT.glob("models/*/*/ci.yml"))
         self.assertEqual(len(roots), 16)
         active = []
+        semantic = []
         for file in roots:
             source = file.read_text(encoding="utf-8")
             self.assertRegex(source, r"(?m)^id: [a-z0-9-]+$")
             self.assertIn("template: cad-model-build", source)
-            self.assertEqual(len(re.findall(r"(?m)^process: (true|false)$", source)), 1)
+            self.assertEqual(
+                len(re.findall(r"(?m)^process: (true|false)$", source)),
+                1,
+            )
             self.assertNotIn("run:", source)
             self.assertNotIn("package", source)
             if "process: true" in source:
-                active.append(file.parent.relative_to(ROOT).as_posix())
-        self.assertEqual(len(active), 11)
+                root = file.parent.relative_to(ROOT).as_posix()
+                active.append(root)
+                if (file.parent / "verification/verify.py").is_file():
+                    semantic.append(root)
+
+        self.assertEqual(len(active), 14)
+        blocked = {
+            "models/advanced/hub75-display2",
+            "models/advanced/hub75_wood_frame",
+        }
+        self.assertEqual(
+            {
+                file.parent.relative_to(ROOT).as_posix()
+                for file in roots
+                if "process: false" in file.read_text(encoding="utf-8")
+            },
+            blocked,
+        )
+        self.assertEqual(len(semantic), 11)
         self.assertEqual(len(MODELS), 18)
         self.assertEqual(len(COMMAND_SOURCES), 5)
-        # Two catalog variants share the enabled GuideRail root.
-        self.assertIn(
-            "models/components/guide_rail",
-            active,
-        )
+        self.assertIn("models/components/guide_rail", active)
+        self.assertIn("models/advanced/simple_mft", active)
+
 
     def test_one_batch_runtime_and_released_copy_projection(self):
         root = (ROOT / "cad-ci.yml").read_text(encoding="utf-8")
@@ -56,6 +75,9 @@ class SharedModelBatchTests(unittest.TestCase):
         self.assertIn('ROOT.glob("models/*/*/ci.yml")', batch)
         self.assertIn('config.get("process", True) is False', batch)
         self.assertIn('source: items/{item_path}', root)
+        self.assertNotIn("missing model-local verification/verify.py", batch)
+        self.assertIn('"solidcraft_built": True', model)
+        self.assertIn('"semantic_verification": semantic_status', model)
 
     def test_batch_source_adapter_has_no_syntax_errors(self):
         for path in (CI / "model_build_batch.py", CI / "model_verify.py"):

@@ -118,10 +118,12 @@ process: true
 
 Root `cad-ci.yml` will hold the shared template and explicit runtime
 variables; the exact template syntax must be validated against the released
-tool/library contracts. The model-specific `verification/verify.py` will
-define the expected native outcomes, while the generic verification library
-will apply them and write evidence. SCPC models add an independent comparison
-step with explicit outputs.
+tool/library contracts. A model-specific `verification/verify.py` is optional. Every processed model
+must build successfully in SolidCraft and produce its saved design/build
+artifacts; when useful semantic expectations exist, the released verification
+library applies the local definition and writes separate verification evidence.
+SCPC models keep an independent comparison and therefore require such a
+semantic definition.
 
 This is an illustrative contract, not a ready-to-run YAML drop-in. The
 migration must test it against the pinned released stack before replacing
@@ -225,7 +227,7 @@ The CAD version is:
 ```text
 models/<category>/<root>/model.yml  (source of website model content)
 models/<category>/<root>/ci.yml     (build identity and participation)
-models/<category>/<root>/verification/verify.py (geometry expectations)
+models/<category>/<root>/verification/verify.py (optional semantic expectations)
         |
         v
 scripts/ci/model_catalog.py (load/validate; no hard-coded model list)

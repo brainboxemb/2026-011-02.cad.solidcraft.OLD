@@ -1,4 +1,4 @@
-# Shared build configuration; physical checks live in verification/verify.py.
+# Blocked by Forge #679: repeated component-local feature names are not namespaced.
 id: hub75-wood-frame
 template: cad-model-build
 process: false

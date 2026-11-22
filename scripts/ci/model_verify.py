@@ -97,28 +97,31 @@ def compare_independent_geometry(forge_file: Path, scpc_file: Path) -> dict:
     }
 
 
-def _build_one(row: dict, batch: dict) -> None:
-    """Save and check one model, preserving previously accepted output paths."""
+def _build_one(row: dict, batch: dict) -> str:
+    """Build one model and run optional model-owned semantic verification."""
 
     from cad_verification import SolidCraftVerification, run_solidcraft_verification
     from scpf.headless import run_document
 
     slug = row["slug"]
-    definitions = runpy.run_path(str(Path("/workspace") / row["definition"]))
-    by_variant = definitions.get("VERIFICATIONS")
-    if by_variant is not None:
-        if not isinstance(by_variant, dict):
-            raise RuntimeError(f"{slug}: VERIFICATIONS must be a mapping")
-        definition = by_variant.get(slug)
-    else:
-        definition = definitions.get("VERIFICATION")
-    if not isinstance(definition, SolidCraftVerification):
-        raise RuntimeError(f"{slug}: missing model verification definition")
-    if definition.verification_id != slug:
-        raise RuntimeError(f"{slug}: verification identity mismatch")
+    definition = None
+    definition_path = row.get("definition")
+    if definition_path:
+        definitions = runpy.run_path(str(Path("/workspace") / definition_path))
+        by_variant = definitions.get("VERIFICATIONS")
+        if by_variant is not None:
+            if not isinstance(by_variant, dict):
+                raise RuntimeError(f"{slug}: VERIFICATIONS must be a mapping")
+            definition = by_variant.get(slug)
+        else:
+            definition = definitions.get("VERIFICATION")
+        if not isinstance(definition, SolidCraftVerification):
+            raise RuntimeError(f"{slug}: invalid model verification definition")
+        if definition.verification_id != slug:
+            raise RuntimeError(f"{slug}: verification identity mismatch")
 
     root = Path("/output/items") / row["item_path"] / "models" / slug
-    saved_dir = root / "native"  # Existing output schema; preserve links.
+    saved_dir = root / "native"  # Compatibility output path; do not rename here.
     saved_dir.mkdir(parents=True, exist_ok=True)
     saved = saved_dir / "model.sc"
 
@@ -131,11 +134,15 @@ def _build_one(row: dict, batch: dict) -> None:
         replay_log_out=saved_dir / "replay-log.json",
         work_dir=saved_dir / "replay_work",
     )
-    report = run_solidcraft_verification(
-        saved, root / "verification", definition
-    )
-    if report["status"] != "pass":
-        raise RuntimeError(f"{slug}: SolidCraft checks failed: {report}")
+
+    semantic_status = "not-configured"
+    if definition is not None:
+        report = run_solidcraft_verification(
+            saved, root / "verification", definition
+        )
+        if report["status"] != "pass":
+            raise RuntimeError(f"{slug}: SolidCraft checks failed: {report}")
+        semantic_status = "pass"
 
     subprocess.run(
         [
@@ -150,6 +157,11 @@ def _build_one(row: dict, batch: dict) -> None:
 
     comparison = None
     if row.get("scpc_commands"):
+        if definition is None:
+            raise RuntimeError(
+                f"{slug}: independent SCPC comparison requires "
+                "model-owned semantic verification"
+            )
         scpc_dir = root / "scpc" / "native"
         scpc_dir.mkdir(parents=True, exist_ok=True)
         scpc_saved = scpc_dir / "model.sc"
@@ -186,7 +198,11 @@ def _build_one(row: dict, batch: dict) -> None:
                 "runtime_image": batch["runtime_image"],
                 "forge_sha": batch["forge_sha"],
                 "scpc_sha": row.get("scpc_sha"),
-                "solidcraft_verified": True,
+                "solidcraft_built": True,
+                # Compatibility field for existing consumers. Build-only
+                # models must never be presented as semantically verified.
+                "solidcraft_verified": semantic_status == "pass",
+                "semantic_verification": semantic_status,
                 "independent_scpc_compared": comparison is not None,
                 "source_sha": batch["source_sha"],
             },
@@ -195,10 +211,12 @@ def _build_one(row: dict, batch: dict) -> None:
         ) + "\n", encoding="utf-8",
     )
     print(
-        f"{slug}: SolidCraft model built and checked; STEP and image saved"
+        f"{slug}: SolidCraft build PASS; semantic verification "
+        f"{semantic_status}; STEP and image saved"
         + ("; independent Forge/SCPC geometry agrees" if comparison else ""),
         flush=True,
     )
+    return semantic_status
 
 
 def run_inside_runtime(manifest_path: Path) -> int:
@@ -219,14 +237,30 @@ def run_inside_runtime(manifest_path: Path) -> int:
                 raise RuntimeError(
                     f"SolidCraft command generation failed: {row['compile_error']}"
                 )
-            _build_one(row, manifest)
-            results.append({"model": slug, "status": "pass", "error": None})
+            semantic_status = _build_one(row, manifest)
+            results.append(
+                {
+                    "model": slug,
+                    "status": "pass",
+                    "semantic_verification": semantic_status,
+                    "error": None,
+                }
+            )
         except Exception as exc:
             error = "".join(
                 traceback.format_exception_only(type(exc), exc)
             ).strip()
             print(f"{slug}: SolidCraft build/check ERROR: {error}", flush=True)
-            results.append({"model": slug, "status": "fail", "error": error})
+            results.append(
+                {
+                    "model": slug,
+                    "status": "fail",
+                    "semantic_verification": (
+                        "configured" if row.get("definition") else "not-configured"
+                    ),
+                    "error": error,
+                }
+            )
 
     failed = any(item["status"] != "pass" for item in results)
     report = {
