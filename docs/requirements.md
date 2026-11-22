@@ -48,13 +48,18 @@ Permanent source branches: `main`, `dev-cad`, `dev-ci`.
 - Short-lived CAD/model PRs target `dev-cad`.
 - CI/publishing migration PRs target `dev-ci`.
 - Feature/fix PRs are **squash-merged** into the corresponding dev lane.
-- Lane-to-`main` promotions use a **normal merge commit** through the
-  owner-controlled merge policy, not squash; the long-lived lane is retained.
+- Exact lane-to-`main` promotions and exact `main`-to-lane synchronizations
+  use **normal merge commits** through the owner-controlled merge policy;
+  long-lived source refs are preserved.
 - The supported merge entrypoint is the owner-only pull-request `/merge`
-  command. It evaluates `scripts/merge_policy.py`, requires the exact current
-  head checks/statuses to be green, supplies that SHA to GitHub's merge API,
-  and advances a promoted long-lived lane to the resulting main merge commit.
-  Manual selection of GitHub's squash/merge/rebase buttons is outside policy.
+  command. CAD's workflow is a thin exact-SHA caller of released
+  `tool.cad.ci` merge policy. The shared owner workflow requires exact
+  current-head checks/statuses to be green, excludes its own command runs from
+  that gate, selects the merge method, applies branch lifecycle rules and
+  dispatches durable integration. Manual selection of GitHub's
+  squash/merge/rebase buttons is outside policy.
+- Do not maintain a second CAD-local merge decision engine or GitHub API merge
+  implementation.
 - PRs validate without writing durable model output.
 - Pushes to a long-lived branch may publish only their own generated scope:
   `build/main`, `build/dev-cad`, `build/dev-ci` and Pages root,

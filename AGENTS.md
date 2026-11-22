@@ -318,26 +318,30 @@ The repository needs both squash merges and normal merge commits, so the
 GitHub merge method must not be chosen manually. Use the owner-only
 `/merge` comment on the pull request.
 
-`scripts/merge_policy.py` is the single decision table and
-`.github/workflows/merge-policy.yml` executes it against the exact checked
-PR head after all current checks are green:
+Merge mechanics and branch lifecycle are owned by released `tool.cad.ci`.
+`.github/workflows/merge-policy.yml` is only a thin caller of the exact
+externally accepted reusable merge-policy workflow. Do not add a CAD-local
+merge decision table or GitHub merge implementation.
 
-- `dev-cad -> main` and `dev-ci -> main`: **normal merge commit**;
-- every other PR: **squash merge**;
-- a promoted long-lived lane is retained and advanced to the resulting main
-  merge commit;
+Configured repository policy:
+
+- short-lived feature/fix/documentation/CI branches: **squash merge**;
+- exact `dev-cad -> main` and `dev-ci -> main`: **normal merge commit**;
+- exact `main -> dev-cad` and `main -> dev-ci`: **normal history-preserving
+  synchronization**;
+- promoted long-lived lanes are retained/advanced by the shared policy;
 - only allow-listed short-lived branch prefixes may be deleted after merge;
-- `main`, `dev-cad`, `dev-ci`, `build`, `gh-pages` and backup refs
-  are never cleanup targets.
+- `main`, `dev-cad`, `dev-ci`, `build`, `gh-pages` and backup refs are never
+  cleanup targets.
 
-Because policy merges run with `GITHUB_TOKEN`, the policy explicitly dispatches
-`cad.yml` for the accepted durable base ref; direct lane-to-main promotions
-also dispatch the retained lane. Do not rely on an implicit push-triggered
-integration run.
+The shared policy requires the exact current PR-head validation to be green and
+filters its own issue-comment command runs from that gate. It explicitly
+dispatches `cad.yml` for accepted durable refs because policy merges use
+`GITHUB_TOKEN`.
 
 Do not use GitHub's merge buttons or auto-merge as an alternative. Repository
 settings must permit both merge methods because the correct method depends on
-the PR head/base pair; the policy workflow is the supported merge entrypoint.
+the PR head/base pair; `/merge` is the supported merge entrypoint.
 
 ## Git workflow
 
