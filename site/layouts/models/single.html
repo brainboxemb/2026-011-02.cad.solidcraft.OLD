@@ -85,6 +85,13 @@
       <p class="cad-muted">Source {{ site.Params.sourceRef }} · build scope {{ site.Params.buildScope }}{{ with site.Params.buildCommit }} · build {{ . }}{{ end }}</p>
     </section>
 
+    {{ with .Resources.Get "page.md" }}
+      <section class="cad-panel cad-background">
+        <p class="cad-panel-label">Background</p>
+        <div class="cad-rich-text">{{ $.RenderString .Content }}</div>
+      </section>
+    {{ end }}
+
     {{ with $views := index $m "extra_views" }}
       {{ $show := true }}
       {{ if and (index $views "verified_only") (ne $semantic "pass") }}{{ $show = false }}{{ end }}
@@ -95,7 +102,15 @@
             {{ range $view := index $views "items" }}
               {{ $kind := index $view "kind" }}{{ $src := index $view "src" }}
               <article class="cad-reference"><strong>{{ index $view "caption" }}</strong>
-                {{ if eq $kind "url" }}<p><a href="{{ $src }}">Open external reference</a></p>
+                {{ if eq $kind "url" }}
+                  {{ $lower := lower $src }}
+                  {{ $isImage := or (strings.HasSuffix $lower ".jpg") (strings.HasSuffix $lower ".jpeg") (strings.HasSuffix $lower ".png") (strings.HasSuffix $lower ".webp") (strings.HasSuffix $lower ".svg") }}
+                  {{ if $isImage }}
+                    <a href="{{ $src }}" class="cad-external-image"><img src="{{ $src }}" alt="{{ index $view "alt" }}"></a>
+                    <p class="cad-reference-source">External reference · <a href="{{ $src }}">open original</a></p>
+                  {{ else }}
+                    <p><a href="{{ $src }}">Open external reference</a></p>
+                  {{ end }}
                 {{ else }}{{ with $.Resources.Get $src }}<a href="{{ .RelPermalink }}"><img src="{{ .RelPermalink }}" alt="{{ index $view "alt" }}"></a>
                 {{ else }}<p class="cad-muted">This declared view is not present in the current build scope.</p>{{ end }}{{ end }}
               </article>

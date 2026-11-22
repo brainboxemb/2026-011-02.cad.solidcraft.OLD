@@ -130,3 +130,13 @@
   font-size:.68rem;
   font-weight:700;
 }
+
+.cad-background{border-left:3px solid var(--cad-accent)}
+.cad-rich-text{max-width:78ch}
+.cad-rich-text>h2:first-child{margin-top:.15rem}
+.cad-rich-text h2{margin:1.35rem 0 .45rem;font-size:1.12rem}
+.cad-rich-text h3{margin:1.1rem 0 .4rem;font-size:.98rem}
+.cad-rich-text p,.cad-rich-text li{color:var(--cad-muted)}
+.cad-rich-text ul{padding-left:1.25rem}
+.cad-reference-source{margin:.45rem 0 0;color:var(--cad-muted);font-size:.72rem}
+.cad-external-image{display:block}
