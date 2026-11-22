@@ -75,10 +75,10 @@
           -15.0,
           10.0
         ],
-        "diameter": 8,
         "targets": [
           "Plate"
-        ]
+        ],
+        "diameter": 8
       }
     },
     {
@@ -89,10 +89,10 @@
           -15.0,
           10.0
         ],
-        "diameter": 8,
         "targets": [
           "Plate"
-        ]
+        ],
+        "diameter": 8
       }
     },
     {
@@ -103,10 +103,10 @@
           15.0,
           10.0
         ],
-        "diameter": 8,
         "targets": [
           "Plate"
-        ]
+        ],
+        "diameter": 8
       }
     },
     {
@@ -117,10 +117,10 @@
           15.0,
           10.0
         ],
-        "diameter": 8,
         "targets": [
           "Plate"
-        ]
+        ],
+        "diameter": 8
       }
     }
   ]

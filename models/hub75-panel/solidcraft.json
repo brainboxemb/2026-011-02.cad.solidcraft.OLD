@@ -308,10 +308,10 @@
           "-(mount_y)",
           "depth"
         ],
-        "diameter": "hole_diameter",
         "targets": [
           "Hub75Panel"
         ],
+        "diameter": "hole_diameter",
         "depth": "depth - (front_depth)",
         "direction": [
           0.0,
@@ -328,10 +328,10 @@
           0,
           "depth"
         ],
-        "diameter": "hole_diameter",
         "targets": [
           "Hub75Panel"
         ],
+        "diameter": "hole_diameter",
         "depth": "depth - (front_depth)",
         "direction": [
           0.0,
@@ -348,10 +348,10 @@
           "mount_y",
           "depth"
         ],
-        "diameter": "hole_diameter",
         "targets": [
           "Hub75Panel"
         ],
+        "diameter": "hole_diameter",
         "depth": "depth - (front_depth)",
         "direction": [
           0.0,
@@ -368,10 +368,10 @@
           "-(mount_y)",
           "depth"
         ],
-        "diameter": "hole_diameter",
         "targets": [
           "Hub75Panel"
         ],
+        "diameter": "hole_diameter",
         "depth": "depth - (front_depth)",
         "direction": [
           0.0,
@@ -388,10 +388,10 @@
           0,
           "depth"
         ],
-        "diameter": "hole_diameter",
         "targets": [
           "Hub75Panel"
         ],
+        "diameter": "hole_diameter",
         "depth": "depth - (front_depth)",
         "direction": [
           0.0,
@@ -408,10 +408,10 @@
           "mount_y",
           "depth"
         ],
-        "diameter": "hole_diameter",
         "targets": [
           "Hub75Panel"
         ],
+        "diameter": "hole_diameter",
         "depth": "depth - (front_depth)",
         "direction": [
           0.0,

@@ -40,10 +40,10 @@
           0,
           26
         ],
-        "diameter": 24,
         "targets": [
           "Flange"
         ],
+        "diameter": 24,
         "depth": 26,
         "direction": [
           0.0,
@@ -60,10 +60,10 @@
           0.0,
           10
         ],
-        "diameter": 9,
         "targets": [
           "Flange"
         ],
+        "diameter": 9,
         "depth": 10,
         "direction": [
           0.0,
@@ -80,10 +80,10 @@
           30.31088913245535,
           10
         ],
-        "diameter": 9,
         "targets": [
           "Flange"
         ],
+        "diameter": 9,
         "depth": 10,
         "direction": [
           0.0,
@@ -100,10 +100,10 @@
           30.310889132455355,
           10
         ],
-        "diameter": 9,
         "targets": [
           "Flange"
         ],
+        "diameter": 9,
         "depth": 10,
         "direction": [
           0.0,
@@ -120,10 +120,10 @@
           4.2862637970157365e-15,
           10
         ],
-        "diameter": 9,
         "targets": [
           "Flange"
         ],
+        "diameter": 9,
         "depth": 10,
         "direction": [
           0.0,
@@ -140,10 +140,10 @@
           -30.310889132455344,
           10
         ],
-        "diameter": 9,
         "targets": [
           "Flange"
         ],
+        "diameter": 9,
         "depth": 10,
         "direction": [
           0.0,
@@ -160,10 +160,10 @@
           -30.31088913245535,
           10
         ],
-        "diameter": 9,
         "targets": [
           "Flange"
         ],
+        "diameter": 9,
         "depth": 10,
         "direction": [
           0.0,
