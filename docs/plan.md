@@ -263,7 +263,11 @@ template instead of being attached as page resources. Pages publication was
 correctly skipped. The first asset follow-up then exposed Hugo extension
 detection treating SolidCraft `.sc` as Scala (`text/x-scala`). Native
 `.sc` and STEP resources are therefore published explicitly as opaque binary
-downloads before retrying `/dev-ci/`; stable Pages remains untouched.
+downloads. The next durable attempt showed a second Hugo handoff detail:
+`AddResource` was given existing global Resource objects, so declared
+`/models/<slug>/...` resources such as `model.yml` were not materialized
+at their page paths. The adapter now supplies resource content to create true
+page resources before retrying `/dev-ci/`; stable Pages remains untouched.
 
 - Publish complete accepted build scopes at `main`, `dev-cad`,
   `dev-ci` using released build-store CLI, preserving siblings.

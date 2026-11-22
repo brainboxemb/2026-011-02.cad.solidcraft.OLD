@@ -3,6 +3,11 @@ Direct model.yml -> Hugo page adapter.
 
 This code creates routes and attaches existing resources. It never executes
 CAD, selects CI items, or infers successful build/verification evidence.
+
+AddResource receives source .Content rather than the source Resource object.
+That is deliberate: Hugo then creates a new page resource at the declared
+logical path. Passing the existing Resource object keeps its global publication
+identity and does not produce /models/<slug>/<resource>.
 */}}
 {{ $catalog := hugo.Data.cad.models }}
 {{ $categoryTitles := dict
@@ -58,14 +63,14 @@ CAD, selects CI items, or infers successful build/verification evidence.
 
         {{ with resources.Get (printf "cad-source/%s/%s/model.yml" $section $rootName) }}
           {{ $.AddResource (dict
-            "content" (dict "mediaType" .MediaType.Type "value" .)
+            "content" (dict "mediaType" .MediaType.Type "value" .Content)
             "path" (printf "%s/model.yml" $slug)
           ) }}
         {{ end }}
 
         {{ with resources.Get (printf "%s/model.png" $buildRoot) }}
           {{ $.AddResource (dict
-            "content" (dict "mediaType" .MediaType.Type "value" .)
+            "content" (dict "mediaType" .MediaType.Type "value" .Content)
             "path" (printf "%s/model.png" $slug)
           ) }}
         {{ end }}
@@ -82,7 +87,7 @@ CAD, selects CI items, or infers successful build/verification evidence.
                  Keep native downloads opaque so Hugo never interprets their
                  extension as a text/source media type. */}}
             {{ $.AddResource (dict
-              "content" (dict "mediaType" "application/octet-stream" "value" .)
+              "content" (dict "mediaType" "application/octet-stream" "value" .Content)
               "path" (printf "%s/%s" $slug (index $resource "target"))
             ) }}
           {{ end }}
@@ -95,7 +100,7 @@ CAD, selects CI items, or infers successful build/verification evidence.
         }}
           {{ with resources.Get (index $resource "source") }}
             {{ $.AddResource (dict
-              "content" (dict "mediaType" .MediaType.Type "value" .)
+              "content" (dict "mediaType" .MediaType.Type "value" .Content)
               "path" (printf "%s/%s" $slug (index $resource "target"))
             ) }}
           {{ end }}
@@ -108,14 +113,14 @@ CAD, selects CI items, or infers successful build/verification evidence.
             {{ if eq $kind "asset" }}
               {{ with resources.Get (printf "cad-source/%s/%s/%s" $section $rootName $name) }}
                 {{ $.AddResource (dict
-                  "content" (dict "mediaType" .MediaType.Type "value" .)
+                  "content" (dict "mediaType" .MediaType.Type "value" .Content)
                   "path" (printf "%s/%s" $slug $name)
                 ) }}
               {{ end }}
             {{ else if eq $kind "build" }}
               {{ with resources.Get (printf "%s/native/%s" $buildRoot $name) }}
                 {{ $.AddResource (dict
-                  "content" (dict "mediaType" .MediaType.Type "value" .)
+                  "content" (dict "mediaType" .MediaType.Type "value" .Content)
                   "path" (printf "%s/%s" $slug $name)
                 ) }}
               {{ end }}
