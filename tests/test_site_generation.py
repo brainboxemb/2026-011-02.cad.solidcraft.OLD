@@ -45,6 +45,16 @@ class HugoSiteContractTests(unittest.TestCase):
                     content = (ROOT / relative).read_text()
                     self.assertIn("featured: true", content)
 
+
+    def test_homepage_explains_the_cad_library_not_the_ci_pipeline(self):
+        home = (SITE / "layouts/home.html").read_text()
+        self.assertIn("SCPF CAD models for SolidCraft", home)
+        self.assertIn("practical SCPF reference", home)
+        self.assertIn("generated SolidCraft commands", home)
+        self.assertIn("Reusable parts designed to be imported", home)
+        self.assertNotIn("Model descriptions come from local", home)
+        self.assertNotIn("accepted CAD-CI results", home)
+
     def test_model_page_keeps_expected_public_content(self):
         page = (SITE / "layouts/models/single.html").read_text()
         for value in ("Construction stages","Python source","model.yml","Forge commands","SolidCraft model","STEP","Build provenance","No build evidence in this scope","extra_views"):
