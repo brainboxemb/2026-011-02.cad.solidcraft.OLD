@@ -67,8 +67,21 @@ class HugoSiteContractTests(unittest.TestCase):
 
     def test_model_page_keeps_expected_public_content(self):
         page = (SITE / "layouts/models/single.html").read_text()
-        for value in ("Construction stages","Python source","model.yml","Forge commands","SolidCraft model","STEP","Build provenance","No build evidence in this scope","extra_views"):
+        for value in ("SCPF source","SolidCraft commands","Construction stages","Python source","model.yml","Forge commands","SolidCraft model","STEP","Build provenance","No build evidence in this scope","extra_views"):
             self.assertIn(value, page)
+
+    def test_model_page_uses_declared_scpf_source_and_generated_commands(self):
+        mounts = (SITE / "config/_default/module.toml").read_text()
+        adapter = (SITE / "content/models/_content.gotmpl").read_text()
+        page = (SITE / "layouts/models/single.html").read_text()
+        self.assertIn('"**/*.py"', mounts)
+        self.assertIn('$sourcePath := index $model "source"', adapter)
+        self.assertIn('"scpf-source.py"', adapter)
+        self.assertIn('.Resources.Get "scpf-source.py"', page)
+        self.assertIn('transform.Highlight .Content "python"', page)
+        self.assertIn('.Resources.Get "solidcraft.json"', page)
+        self.assertIn('$commandsDoc := .Content | transform.Unmarshal', page)
+        self.assertIn('index $commandsDoc "commands"', page)
 
     def test_site_reads_only_prepared_build_scope(self):
         mounts = (SITE / "config/_default/module.toml").read_text()
