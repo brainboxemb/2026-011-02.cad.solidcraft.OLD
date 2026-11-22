@@ -485,10 +485,13 @@ class CADModelRegressions(unittest.TestCase):
         self.assertEqual(generated["commands"][6]["params"]["edges"], [[40, -35, -8]])
 
 
-    def test_sample_plate_preserves_original_sketch_and_feature_names(self):
-        commands = run_script(ROOT / "models/basic/sample_plate/scpf/model.py")["commands"]
+    def test_sample_plate_uses_one_native_hole_pattern(self):
+        commands = run_script(
+            ROOT / "models/basic/sample_plate/scpf/model.py"
+        )["commands"]
         self.assertEqual(
-            [c["params"]["name"] for c in commands if c["command"] == "sketch.create"],
+            [c["params"]["name"] for c in commands
+             if c["command"] == "sketch.create"],
             ["Base", "Holes", "Bore"],
         )
         self.assertEqual(
@@ -503,11 +506,6 @@ class CADModelRegressions(unittest.TestCase):
         self.assertEqual(boss["height"], 14)
         self.assertEqual(boss["base"], [0.0, 0.0, 8.0])
         self.assertEqual(
-            [c["params"]["operation"] for c in commands
-             if c["command"] == "solid.extrude" and "operation" in c["params"]],
-            ["cut", "cut"],
-        )
-        self.assertEqual(
             [c["params"]["name"] for c in commands
              if c["command"] == "solid.extrude" and "operation" in c["params"]],
             ["Holes", "Bore"],
@@ -516,12 +514,20 @@ class CADModelRegressions(unittest.TestCase):
             c["params"]["center"] for c in commands
             if c["command"] == "sketch.circle.center"
         ]
-        self.assertEqual(len(centers), 3)
+        self.assertEqual(len(centers), 2)
         self.assertEqual(centers[-1], [0.0, 0.0])
         self.assertIn("width", str(centers[0][0]))
-        self.assertIn("width", str(centers[1][0]))
-        self.assertIn("depth", str(centers[0][1]))
-        self.assertIn("depth", str(centers[1][1]))
+
+        patterns = [
+            c["params"] for c in commands
+            if c["command"] == "solid.pattern.rectangular"
+        ]
+        self.assertEqual(len(patterns), 1)
+        self.assertEqual(patterns[0]["features"], ["Holes"])
+        self.assertEqual(patterns[0]["count1"], 2)
+        self.assertIn("width", str(patterns[0]["spacing1"]))
+        self.assertEqual(patterns[0]["dir1"], [1, 0, 0])
+
         self.assertEqual(
             [c["params"]["offset"] for c in commands
              if c["command"] == "sketch.create" and "offset" in c["params"]],
@@ -555,6 +561,10 @@ class CADModelRegressions(unittest.TestCase):
         self.assertEqual(centers, default_centers)
         self.assertEqual(centers[-1], [0.0, 0.0])
         self.assertFalse(any(c["command"] == "solid.hole" for c in commands))
+        self.assertEqual(
+            len([c for c in commands if c["command"] == "solid.pattern.rectangular"]),
+            1,
+        )
 
 
     def test_sample_plate_uses_edge_enum(self):

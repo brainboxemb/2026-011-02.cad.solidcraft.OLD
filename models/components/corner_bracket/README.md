@@ -21,8 +21,12 @@ editable native features.
 
 The original **42-command, hole-containing** exploration is preserved as
 `scpf/reference.py` for study, but is **not the default model** and is
-**not used by the wooden enclosure**. Hole geometry and fixing methods can be
-reintroduced later, after they can be built without native warnings.
+**not used by the wooden enclosure**. This archived source retains the old
+`Hole(countersink_*)` call shape; Forge 0.11 removed that API, so the
+archive is no longer executable without porting its historical geometry
+intent. It remains deliberately unmodified and is not current qualification
+evidence. Hole geometry and fixing methods can be reintroduced as live
+`CountersinkHole` features when they can be built without native warnings.
 
 ## Named profile and explicit reliefs
 

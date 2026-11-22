@@ -1,5 +1,5 @@
 {
   "schema": 2,
-  "runtime_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.2",
-  "solidcraft": "0.42.0"
+  "runtime_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
+  "solidcraft": "0.45.0"
 }
