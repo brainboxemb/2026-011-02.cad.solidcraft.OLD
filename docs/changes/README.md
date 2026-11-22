@@ -46,3 +46,5 @@ Current records:
 - [0021-model-metadata.md](0021-model-metadata.md) — local model.yml drives CAD website metadata and views (#189).
 
 - [0022-build-vs-semantic-verification.md](0022-build-vs-semantic-verification.md) — require real model builds while keeping semantic verification optional (#174).
+
+- [0023-hugo-blowfish-site.md](0023-hugo-blowfish-site.md) — direct model.yml → Hugo/Blowfish site generation with prepared CAD-CI evidence (#191, #174).

@@ -1,0 +1,52 @@
+[[imports]]
+path = "github.com/nunocoracao/blowfish/v3"
+
+# Custom project mounts replace Hugo's defaults, so retain every ordinary
+# project component explicitly.
+[[mounts]]
+source = "archetypes"
+target = "archetypes"
+
+[[mounts]]
+source = "assets"
+target = "assets"
+
+[[mounts]]
+source = "content"
+target = "content"
+
+[[mounts]]
+source = "data"
+target = "data"
+
+[[mounts]]
+source = "i18n"
+target = "i18n"
+
+[[mounts]]
+source = "layouts"
+target = "layouts"
+
+[[mounts]]
+source = "static"
+target = "static"
+
+# model.yml is the only website metadata source. Never mount the complete model
+# tree as data because Hugo would then try to parse Python/CAD source files.
+[[mounts]]
+source = "../models"
+target = "data/cad/models"
+files = ["**/model.yml"]
+
+# Exact metadata files and declared local presentation assets are available as
+# Hugo resources. They are not a second model catalogue.
+[[mounts]]
+source = "../models"
+target = "assets/cad-source"
+files = ["**/model.yml", "**/*.svg", "**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.webp"]
+
+# The released CAD-CI action creates this complete accepted scope on durable
+# source-lane runs. PR site checks create an empty directory at the same path.
+[[mounts]]
+source = "../prepared-scope"
+target = "assets/build"

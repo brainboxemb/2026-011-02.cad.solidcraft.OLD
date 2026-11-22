@@ -142,9 +142,10 @@ Preserve these user-visible contracts in the stable Pages root:
   broad terms. Pixel-perfect equality is not required, but major navigation,
   information, or layout changes are **not** part of this CI migration.
 
-The existing CAD site generator remains consumer-owned and is adapted only
-where the new build evidence format requires it; it must not be replaced by
-Forge's site generator as a side effect of CI modernization.
+The CAD site remains consumer-owned, but its renderer is Hugo 0.169.0 +
+Blowfish v3.10.0 instead of a custom Python HTML generator. It must not be
+replaced by Forge's site renderer. Hugo consumes the prepared complete build
+scope read-only and does not execute CAD, select build items, or publish Pages.
 
 Before publishing the new stable site, compare generated old and new versions
 of the homepage, all three category indexes, representative simple and
@@ -184,7 +185,7 @@ missing generic CI feature.
   site refresh when publishing from the accepted build output.
 - Common page/layout rendering remains shared. Model-specific supplementary
   views are described in `model.yml` and rendered generically, not in
-  slug-specific branches inside the HTML generator.
+  slug-specific branches inside the Hugo content adapter or templates.
 - Do not change the existing website design, routes, warnings, published
   assets, or source/download behavior without a separate explicit decision.
 

@@ -4,6 +4,9 @@
 > omschrijving, parameteruitleg, bouwstap, waarschuwing, bron-/variantrelatie
 > en extra afbeelding naast het model in `models/<groep>/<model>/model.yml`.
 > De Python `model_catalog.py` is uitsluitend een lezer/validator.
+> Hugo + Blowfish onder `site/` leest dezelfde `model.yml` direct via een
+> content adapter; voeg geen gegenereerde Markdown-catalogus of Python
+> HTML-renderer toe.
 > `ci.yml` is alleen voor uitvoering; `verification/verify.py` is optioneel en
 > alleen voor zinvolle geometrische/semantische controles. Een model moet wel
 > echt in SolidCraft bouwen; voeg geen kunstmatige verificatie toe om CI groen
@@ -90,12 +93,12 @@ below before opening or merging the PR.
      need explanation.
    - Keep the model small enough to understand from its own source.
 
-2. **Model catalog**
-   - Add one record to `scripts/ci/model_catalog.py:MODELS`.
-   - Put the source path, section, site metadata, native flags and optional
-     component/SCPC metadata in that record.
-   - Do not create a second model list elsewhere. The derived source mappings,
-     site sections and CI selections come from `MODELS`.
+2. **Model metadata**
+   - Add or update `models/<group>/<model>/model.yml`.
+   - Put title, description, parameters, stages, warnings, source relations,
+     variants and presentation-only extra views there.
+   - `scripts/ci/model_catalog.py` only validates/normalizes these files for
+     CAD-side consumers; do not add a second handwritten model list.
 
 3. **Regression tests**
    - Add a focused test file under `tests/` for the important geometry and
@@ -124,11 +127,13 @@ below before opening or merging the PR.
      list in YAML.
 
 6. **Results site**
-   - Site title, description, parameters, stages and section belong in the
-     central model record.
-   - Add only presentation-specific artwork to `build-results.py:DIAGRAMS`
-     when a schematic fallback is useful.
-   - The site builder and smoke tests iterate the central catalog automatically.
+   - Site title, description, parameters, stages and section belong in local
+     `model.yml`.
+   - Hugo creates `/models/<slug>/` from
+     `site/content/models/_content.gotmpl`.
+   - Accepted build evidence is read-only input from the prepared
+     `tool.cad.ci` scope; missing evidence must remain missing/pending.
+   - Keep presentation in Hugo/Blowfish templates and CSS, not Python HTML.
 
 7. **Repository model index**
    - Add a concise entry to `models/README.md` when the model is a reusable

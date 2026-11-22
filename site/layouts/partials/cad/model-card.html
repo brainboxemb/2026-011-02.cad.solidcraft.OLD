@@ -1,0 +1,13 @@
+{{ $m := .Params.model }}
+{{ $prov := .Params.buildProvenance }}
+{{ $semantic := "not-configured" }}
+{{ with index $prov "semantic_verification" }}{{ $semantic = . }}{{ end }}
+{{ $built := eq (index $prov "solidcraft_built") true }}
+<a class="cad-model-card" href="{{ .RelPermalink }}">
+  {{ with .Resources.Get "model.png" }}<span class="cad-card-picture"><img src="{{ .RelPermalink }}" alt=""></span>{{ end }}
+  <span class="cad-card-section">{{ .Params.cadSection }}</span>
+  <strong>{{ .Title }}</strong><span>{{ index $m "tagline" }}</span><small>{{ index $m "parameters" }}</small>
+  {{ if eq $semantic "pass" }}<b class="cad-card-state cad-card-ok">verified</b>
+  {{ else if $built }}<b class="cad-card-state">built</b>
+  {{ else }}<b class="cad-card-state cad-card-pending">pending</b>{{ end }}
+</a>
