@@ -118,7 +118,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 3.929648,
+      "ms": 3.26378,
       "name": "Cylinder1",
       "rolled_back": false,
       "suppressed": false,
@@ -128,7 +128,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 26.530640000000002,
+      "ms": 22.158907,
       "name": "Cylinder2",
       "rolled_back": false,
       "suppressed": false,
@@ -138,7 +138,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 26.715009000000002,
+      "ms": 21.956370999999997,
       "name": "Cylinder3",
       "rolled_back": false,
       "suppressed": false,
@@ -148,7 +148,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 28.476436,
+      "ms": 23.062355,
       "name": "Cylinder4",
       "rolled_back": false,
       "suppressed": false,
@@ -158,7 +158,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 53.562940000000005,
+      "ms": 48.231865,
       "name": "Chamfer1",
       "rolled_back": false,
       "suppressed": false,
@@ -168,7 +168,7 @@
     {
       "error": null,
       "id": 6,
-      "ms": 0.251701,
+      "ms": 0.197689,
       "name": "Flex slot X",
       "rolled_back": false,
       "suppressed": false,
@@ -178,7 +178,7 @@
     {
       "error": null,
       "id": 7,
-      "ms": 41.411056,
+      "ms": 34.289277,
       "name": "Flex slot X",
       "rolled_back": false,
       "suppressed": false,
@@ -188,7 +188,7 @@
     {
       "error": null,
       "id": 8,
-      "ms": 0.183819,
+      "ms": 0.08325600000000001,
       "name": "Flex slot Y",
       "rolled_back": false,
       "suppressed": false,
@@ -198,7 +198,7 @@
     {
       "error": null,
       "id": 9,
-      "ms": 37.726979,
+      "ms": 30.309072999999998,
       "name": "Flex slot Y",
       "rolled_back": false,
       "suppressed": false,
@@ -208,7 +208,7 @@
     {
       "error": null,
       "id": 10,
-      "ms": 96.550586,
+      "ms": 84.086701,
       "name": "Chamfer2",
       "rolled_back": false,
       "suppressed": false,
@@ -218,7 +218,7 @@
     {
       "error": null,
       "id": 11,
-      "ms": 0.199342,
+      "ms": 0.11216,
       "name": "Top logo",
       "rolled_back": false,
       "suppressed": false,
@@ -228,7 +228,7 @@
     {
       "error": null,
       "id": 12,
-      "ms": 26.262851,
+      "ms": 21.617277,
       "name": "Top logo",
       "rolled_back": false,
       "suppressed": false,

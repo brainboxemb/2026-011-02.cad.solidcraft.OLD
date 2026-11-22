@@ -118,7 +118,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 4.127889,
+      "ms": 3.216157,
       "name": "Cylinder1",
       "rolled_back": false,
       "suppressed": false,
@@ -128,7 +128,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 26.499083,
+      "ms": 22.44455,
       "name": "Cylinder2",
       "rolled_back": false,
       "suppressed": false,
@@ -138,7 +138,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 27.06555,
+      "ms": 22.011034,
       "name": "Cylinder3",
       "rolled_back": false,
       "suppressed": false,
@@ -148,7 +148,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 28.516316,
+      "ms": 23.25713,
       "name": "Cylinder4",
       "rolled_back": false,
       "suppressed": false,
@@ -158,7 +158,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 54.178532000000004,
+      "ms": 44.627024,
       "name": "Chamfer1",
       "rolled_back": false,
       "suppressed": false,
@@ -168,7 +168,7 @@
     {
       "error": null,
       "id": 6,
-      "ms": 0.281726,
+      "ms": 0.201325,
       "name": "Flex slot X",
       "rolled_back": false,
       "suppressed": false,
@@ -178,7 +178,7 @@
     {
       "error": null,
       "id": 7,
-      "ms": 41.874367,
+      "ms": 37.344730999999996,
       "name": "Flex slot X",
       "rolled_back": false,
       "suppressed": false,
@@ -188,7 +188,7 @@
     {
       "error": null,
       "id": 8,
-      "ms": 0.19163,
+      "ms": 0.08082299999999999,
       "name": "Flex slot Y",
       "rolled_back": false,
       "suppressed": false,
@@ -198,7 +198,7 @@
     {
       "error": null,
       "id": 9,
-      "ms": 37.2191,
+      "ms": 29.995778,
       "name": "Flex slot Y",
       "rolled_back": false,
       "suppressed": false,
@@ -208,7 +208,7 @@
     {
       "error": null,
       "id": 10,
-      "ms": 96.445283,
+      "ms": 84.715467,
       "name": "Chamfer2",
       "rolled_back": false,
       "suppressed": false,
@@ -218,7 +218,7 @@
     {
       "error": null,
       "id": 11,
-      "ms": 0.210699,
+      "ms": 0.108985,
       "name": "Top logo",
       "rolled_back": false,
       "suppressed": false,
@@ -228,7 +228,7 @@
     {
       "error": null,
       "id": 12,
-      "ms": 27.958862,
+      "ms": 20.923827999999997,
       "name": "Top logo",
       "rolled_back": false,
       "suppressed": false,

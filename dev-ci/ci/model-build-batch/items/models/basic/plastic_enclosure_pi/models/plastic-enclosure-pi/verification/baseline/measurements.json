@@ -128,7 +128,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 2.704915,
+      "ms": 2.240139,
       "name": "Box1",
       "rolled_back": false,
       "suppressed": false,
@@ -138,7 +138,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 50.526469,
+      "ms": 42.054407000000005,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -148,7 +148,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 243.286331,
+      "ms": 202.674227,
       "name": "Shell1",
       "rolled_back": false,
       "suppressed": false,
@@ -158,7 +158,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 464.44570200000004,
+      "ms": 386.740775,
       "name": "Fillet2",
       "rolled_back": false,
       "suppressed": false,
@@ -168,7 +168,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 75.47578800000001,
+      "ms": 60.866735,
       "name": "Boss1",
       "rolled_back": false,
       "suppressed": false,
@@ -178,7 +178,7 @@
     {
       "error": null,
       "id": 6,
-      "ms": 81.394148,
+      "ms": 66.179512,
       "name": "Boss2",
       "rolled_back": false,
       "suppressed": false,
@@ -188,7 +188,7 @@
     {
       "error": null,
       "id": 7,
-      "ms": 87.943182,
+      "ms": 71.19590000000001,
       "name": "Boss3",
       "rolled_back": false,
       "suppressed": false,
@@ -198,7 +198,7 @@
     {
       "error": null,
       "id": 8,
-      "ms": 109.511713,
+      "ms": 81.542156,
       "name": "Boss4",
       "rolled_back": false,
       "suppressed": false,
@@ -208,7 +208,7 @@
     {
       "error": null,
       "id": 9,
-      "ms": 0.333214,
+      "ms": 0.25264200000000003,
       "name": "Pi ports",
       "rolled_back": false,
       "suppressed": false,
@@ -218,7 +218,7 @@
     {
       "error": null,
       "id": 10,
-      "ms": 44.906912,
+      "ms": 35.717521000000005,
       "name": "Pi ports",
       "rolled_back": false,
       "suppressed": false,
@@ -228,7 +228,7 @@
     {
       "error": null,
       "id": 11,
-      "ms": 0.192261,
+      "ms": 0.096436,
       "name": "USB and Ethernet",
       "rolled_back": false,
       "suppressed": false,
@@ -238,7 +238,7 @@
     {
       "error": null,
       "id": 12,
-      "ms": 75.70855,
+      "ms": 60.529645,
       "name": "USB and Ethernet",
       "rolled_back": false,
       "suppressed": false,
@@ -248,7 +248,7 @@
     {
       "error": null,
       "id": 13,
-      "ms": 0.369199,
+      "ms": 0.23785,
       "name": "Floor vents",
       "rolled_back": false,
       "suppressed": false,
@@ -258,7 +258,7 @@
     {
       "error": null,
       "id": 14,
-      "ms": 76.677234,
+      "ms": 61.726756,
       "name": "Floor vents",
       "rolled_back": false,
       "suppressed": false,
@@ -268,7 +268,7 @@
     {
       "error": null,
       "id": 15,
-      "ms": 1.89677,
+      "ms": 1.455161,
       "name": "Pi 4 engraving",
       "rolled_back": false,
       "suppressed": false,
@@ -278,7 +278,7 @@
     {
       "error": null,
       "id": 16,
-      "ms": 138.500012,
+      "ms": 113.461046,
       "name": "Pi 4 engraving",
       "rolled_back": false,
       "suppressed": false,

@@ -126,7 +126,7 @@
       "CornerBracket"
     ],
     "feature": 2,
-    "ms": 4.229713,
+    "ms": 3.746761,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null
@@ -140,7 +140,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 11.066391999999999,
+    "ms": 9.313165999999999,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null
@@ -154,7 +154,7 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 65.72831699999999,
+    "ms": 55.240267,
     "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null
@@ -168,7 +168,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 28.714187,
+    "ms": 22.970254999999998,
     "name": "Chamfer2",
     "removed_bodies": [],
     "warning": null
@@ -182,7 +182,7 @@
     ],
     "created_bodies": [],
     "feature": 6,
-    "ms": 101.22470899999999,
+    "ms": 86.315589,
     "name": "Chamfer3",
     "removed_bodies": [],
     "warning": null

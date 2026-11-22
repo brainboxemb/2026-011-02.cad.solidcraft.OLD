@@ -1,13 +1,13 @@
 {
   "action_executed": true,
   "action_type": "copy",
-  "bundle_sha256": "f6e49fe0be6d071a98f08b8c0cdc66f805b185613acda32afce3710db47bf5bf",
-  "duration_seconds": 0.048,
+  "bundle_sha256": "06d7006b130ad48320951ae28af16e539a621894fa3a8107eef51710f0e90771",
+  "duration_seconds": 0.057,
   "engine": "scons",
   "engine_schema": 3,
   "error": null,
   "exit_code": null,
-  "finished_at": "2026-11-22T12:25:41.754Z",
+  "finished_at": "2026-11-22T13:10:33.096Z",
   "item": "hub75-screen",
   "outcome": "BUILT",
   "output_state": "RESTORED",
@@ -25,13 +25,13 @@
     "models": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "03f1506ff5db08dc5adfa32adca932db0bc2ac11a62d5175cfe2b9c014e0f2c0"
+      "sha256": "432ec864e0aa297ee40e98f727fa9dce38838bf3220a49a643d0bf7cbc642ba8"
     }
   },
-  "run_finished_at": "2026-11-22T12:25:42.329Z",
-  "run_started_at": "2026-11-22T12:24:42.239Z",
+  "run_finished_at": "2026-11-22T13:10:33.375Z",
+  "run_started_at": "2026-11-22T13:09:38.152Z",
   "schema": 4,
-  "started_at": "2026-11-22T12:25:41.706Z",
+  "started_at": "2026-11-22T13:10:33.039Z",
   "status": "pass",
   "step": "build_results",
   "target_spec_digest": "402d6ec0967a3b17f9c509ca3c2baa770df6df667320ba24e2157c6f6dd19f0b",

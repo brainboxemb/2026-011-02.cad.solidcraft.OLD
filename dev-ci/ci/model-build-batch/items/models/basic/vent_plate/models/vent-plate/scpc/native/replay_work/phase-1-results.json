@@ -26,7 +26,7 @@
       "Plate"
     ],
     "feature": 1,
-    "ms": 2.718603,
+    "ms": 2.375846,
     "name": "Box1",
     "removed_bodies": [],
     "warning": null
@@ -40,7 +40,7 @@
     ],
     "created_bodies": [],
     "feature": 2,
-    "ms": 49.210564999999995,
+    "ms": 43.750427,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null
@@ -121,7 +121,7 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 11.546765,
+    "ms": 9.139423,
     "name": "Vent",
     "removed_bodies": [],
     "warning": null
@@ -135,7 +135,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 81.67515,
+    "ms": 65.420675,
     "name": "RectangularPattern1",
     "removed_bodies": [],
     "warning": null
