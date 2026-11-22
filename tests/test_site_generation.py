@@ -57,6 +57,22 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertNotIn("Model descriptions come from local", home)
         self.assertNotIn("accepted CAD-CI results", home)
 
+    def test_homepage_uses_git_lastmod_instead_of_featured_categories(self):
+        home = (SITE / "layouts/home.html").read_text()
+        adapter = (SITE / "content/models/_content.gotmpl").read_text()
+        card = (SITE / "layouts/partials/cad/model-card.html").read_text()
+        workflow = (ROOT / ".github/workflows/cad.yml").read_text()
+        self.assertIn("Recently updated models", home)
+        self.assertIn("first 6 $models.ByLastmod.Reverse", home)
+        self.assertNotIn("$categoryDescriptions", home)
+        self.assertNotIn('index .Params.model "featured"', home)
+        self.assertIn('"showUpdated" true', home)
+        self.assertIn('"dates" (dict "lastmod" $lastmod)', adapter)
+        self.assertIn('hugo.Data.cad.model_history', adapter)
+        self.assertIn('class="cad-card-updated"', card)
+        self.assertIn('fetch-depth: 0', workflow)
+        self.assertGreaterEqual(workflow.count("scripts/ci/model_history.py"), 2)
+
     def test_homepage_links_scpf_and_scpc_libraries(self):
         home = (SITE / "layouts/home.html").read_text()
         self.assertIn("https://brainboxemb.github.io/lib.py.solidcraft.forge/", home)
