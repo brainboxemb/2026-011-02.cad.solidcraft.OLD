@@ -6,6 +6,29 @@ Permanent target requirements/design are in `docs/requirements.md` and
 `docs/design.md`. Keep implementation history in numbered
 `docs/changes/` records.
 
+
+## Website/catalog architecture correction — CAD #189
+
+**Status: implementation PR being tested on `dev-ci`, no public cut-over.**
+
+Audit found **zero** `model.yml` files. All 18 website-model entries were
+embedded in the central `scripts/ci/model_catalog.py` dictionary; the
+page generator also contained special branches for Simple MFT reference
+images and HUB75 panel face views. This is not the agreed Forge pattern.
+
+The migration moves that content to exactly 16 model-owned YAML files,
+replaces the Python table with a loader/validator, and makes extra views
+declarative. The two multi-variant roots remain one file/CI item each.
+A frozen CRC check protects the original 18 entry values and ordering.
+Existing model routes/CSS/layout/source links remain, with a new download
+link to each published `model.yml`.
+
+A metadata-only change must select the website for regeneration without
+changing the geometry input fingerprint. The released CAD-CI model-batch
+watchlist deliberately excludes model.yml; publishing from the new lane
+output still needs to be connected in M4. The old `main` website is
+unchanged until Pages comparison and promotion acceptance.
+
 ## Current accepted state — 2026-11-22
 
 - PR #171 / commit `f615379bb2e8cb44e300dc87f9edf0983c6ea6cb`:

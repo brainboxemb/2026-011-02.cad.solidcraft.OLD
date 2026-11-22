@@ -1,0 +1,25 @@
+# Model-owned content. Editing this file updates the website; it does not rebuild geometry.
+section: components
+priority: 10
+title: "CornerBracket"
+tagline: "24 mm plywood corner bracket without mounting holes"
+description: >-
+  One shared, hole-free CornerBracket is reused by the standalone model and the wooden HUB75
+  enclosure. Its native outline, inner R4 fillet and elephant-foot/outer chamfers remain
+  editable. The older hole-containing experiment is archived separately.
+parameters: "24 mm width, 12 mm wall, 60 mm arms; no screw holes"
+diagram: "bracket"
+stages:
+  - "Profile — 2D L outline with arm-end bevels"
+  - "Extrude — symmetric 24 mm body"
+  - "Fillet — rounded inside corner R4"
+  - "Chamfer — outer edges of both broad faces"
+  - "Chamfer — print-face elephant-foot relief"
+  - "Solid bracket — mounting-hole features deliberately omitted"
+source: "scpf/model.py"
+scpc_source: "scpc/model.py"
+scpc_command_count: 17
+component_source: "scpf/model.py"
+component_definition_primary: true
+build: true
+snapshot_required: true

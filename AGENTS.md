@@ -1,3 +1,14 @@
+
+> **Website- en modelgegevens (CAD #189):** volg Forge's
+> `examples/*/model.yml`: in CAD staat de bron voor elke titel,
+> omschrijving, parameteruitleg, bouwstap, waarschuwing, bron-/variantrelatie
+> en extra afbeelding naast het model in `models/<groep>/<model>/model.yml`.
+> De Python `model_catalog.py` is uitsluitend een lezer/validator.
+> `ci.yml` is alleen voor uitvoering; `verification/verify.py` is alleen
+> voor geometrische controles. Voeg niet opnieuw een Python-dictionary met
+> modelbeschrijvingen of model-specifieke HTML-condities toe. Bewaak de
+> huidige website en URLs; wijzig metadata zonder geometrische herbouw.
+>
 # CAD repository instructions
 
 > **CI migration in progress:** Issue #174 and

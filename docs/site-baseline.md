@@ -43,3 +43,15 @@ checks, along with homepage, all category pages and narrow-screen layout.
 
 If a visible difference is a design choice rather than necessary build-data
 migration, keep the existing site and open a separate website change.
+
+## Model-content parity gate (CAD #189)
+
+The migration to local model.yml files must preserve the **18 original
+entries and their order**, section cards, titles, taglines, descriptions,
+parameters, stages, warnings, featured flags and source associations.
+The frozen source-content CRC is asserted in
+`tests/test_model_metadata.py`, and the generated site is tested by
+`tests/test_site_generation.py`. Supplementary MFT and HUB75 views are
+declared in local metadata and rendered through the same visual layout.
+A new `model.yml` download link is additive and intentional.
+

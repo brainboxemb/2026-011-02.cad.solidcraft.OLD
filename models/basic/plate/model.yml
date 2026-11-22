@@ -1,0 +1,19 @@
+# Model-owned content. Editing this file updates the website; it does not rebuild geometry.
+section: basic
+priority: 10
+title: "Plate"
+tagline: "A rounded plate with four holes"
+description: "A feature-based plate: sketch, extrusion, four vertical fillets and a through-hole sketch."
+parameters: "100 × 60 × 10 mm; four Ø8 mm holes"
+diagram: "plate"
+stages:
+  - "Sketch the rectangle"
+  - "Extrude the base"
+  - "Fillet vertical corners"
+  - "Sketch four hole centres"
+  - "Cut the holes"
+source: "scpf/model.py"
+scpc_source: "scpc/model.py"
+scpc_command_count: 9
+build: true
+snapshot_required: true

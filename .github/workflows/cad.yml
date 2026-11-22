@@ -46,8 +46,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install model.yml reader for website contract tests
+        run: python -m pip install -r requirements-site.txt
       - name: Check model catalog and website route contracts
         run: python -m unittest discover -s tests -p test_ci_migration_contract.py -v
+      - name: Verify model.yml metadata and preserved page content
+        run: python -m unittest discover -s tests -p test_model_metadata.py -v
       - name: Check branch merge policy
         run: python -m unittest discover -s tests -p test_merge_policy.py -v
       - name: Exercise existing CAD website layout and link generation

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a self-contained static CAD-results website (no third-party deps).
+"""Build a self-contained static CAD-results website (PyYAML at build time).
 
 Content is generated from the current SCPF source and command JSON.
 A rendered CAD screenshot is published only if native verification metadata
@@ -226,6 +226,53 @@ def copy_if_exists(source, target):
         shutil.copy2(source, target)
 
 
+def supplementary_views(info, work, built_source, has_build):
+    """Render model-owned supplementary views without slug-specific HTML.
+
+    Entries come from the local model.yml, alongside descriptions and
+    construction stages. Preserve prior CAD page layout and download paths.
+    """
+
+    config = info.get("extra_views")
+    if not config or (config["verified_only"] and not has_build):
+        return ""
+    model_root = ROOT.joinpath(*Path(info["source"]).parts[:3])
+    figures = []
+    for view in config["items"]:
+        kind = view["kind"]
+        name = view["src"]
+        if kind == "url":
+            href = name
+        else:
+            if kind == "asset":
+                origin = model_root / name
+            elif kind == "build":
+                if built_source is None:
+                    raise ValueError("Verified model view requires saved build results")
+                origin = built_source / name
+            else:
+                raise ValueError(f"Unknown model view kind: {kind}")
+            if not origin.is_file() or not origin.stat().st_size:
+                raise FileNotFoundError(f"Missing declared model view: {origin}")
+            copy_if_exists(origin, work / name)
+            href = name
+        figures.append(
+            f'<figure><a href="{esc(href)}" target="_blank" '
+            'rel="noopener noreferrer">'
+            f'<img src="{esc(href)}" alt="{esc(view["alt"])}"></a>'
+            f'<figcaption>{esc(view["caption"])}</figcaption></figure>'
+        )
+    note = (
+        f'<p class="small muted">{esc(config["note"])}</p>'
+        if config["note"] else ""
+    )
+    return (
+        f'<h2>{esc(config["title"])}</h2>'
+        '<div class="panel-views">'
+        + "".join(figures) + '</div>' + note
+    )
+
+
 def build(out, commit, native_root=None, generated_root=None, previous_site=None, stable_store=None, public_base=PUBLIC_SITE):
     out.mkdir(parents=True, exist_ok=True)
     copy_if_exists(ROOT / "site/results.css", out / "results.css")
@@ -284,6 +331,9 @@ def build(out, commit, native_root=None, generated_root=None, previous_site=None
             )
         commands = read_json(command_file)["commands"]
         copy_if_exists(source, work / "model.py")
+        # Publish the same local model.yml that drives this page's content.
+        model_yaml = ROOT.joinpath(*Path(info["source"]).parts[:3]) / "model.yml"
+        copy_if_exists(model_yaml, work / "model.yml")
         copy_if_exists(command_file, work / "solidcraft.json")
 
         fresh_native = (
@@ -352,7 +402,7 @@ def build(out, commit, native_root=None, generated_root=None, previous_site=None
         # resolved build has no current native image. It is presentation only:
         # the page never marks that older screenshot as verified for this run.
         previously_verified = None
-        if not has_native and previous_site is not None and slug != "sample-plate":
+        if not has_native and previous_site is not None and info.get("allow_stale_preview", True):
             prior = previous_site / "models" / slug / "native.png"
             if prior.is_file() and prior.stat().st_size:
                 previously_verified = prior
@@ -419,56 +469,9 @@ def build(out, commit, native_root=None, generated_root=None, previous_site=None
             if preview_image else diagram(slug)
         )
         # Publish model-specific reference/native views next to the main render.
-        extra_views = ""
-        if slug == "simple-mft":
-            expectation = ROOT / "models/advanced/simple_mft/expected-top-view.svg"
-            if not expectation.is_file():
-                raise FileNotFoundError(
-                    f"Missing Simple MFT 2D expectation: {expectation}"
-                )
-            copy_if_exists(expectation, work / "expected-top-view.svg")
-            reference_image = (
-                "https://cdn.myshoptet.com/usr/www.craftmaker.nl/"
-                "user/documents/upload/Product_description/"
-                "craftmaker_pro_station_s30_accessories.jpg"
-            )
-            extra_views = (
-                '<h2>Reference and 2D expectation</h2>'
-                '<div class="panel-views">'
-                '<figure><a href="' + reference_image + '" target="_blank" '
-                'rel="noopener noreferrer">'
-                '<img src="' + reference_image + '" '
-                'alt="CRAFTMAKER ProStation S30 reference worktop"></a>'
-                '<figcaption>Front product reference used to estimate the '
-                'hole and Slot pattern.</figcaption></figure>'
-                '<figure><a href="expected-top-view.svg" target="_blank" '
-                'rel="noopener noreferrer">'
-                '<img src="expected-top-view.svg" '
-                'alt="Simple MFT expected top view"></a>'
-                '<figcaption>2D expectation: nominal 9 × 7 grid at 76 mm pitch, '
-                'four diagonal ring-2 holes omitted, with two Slots per quadrant.</figcaption></figure>'
-                '</div>'
-                '<p class="small muted">The 76 mm pitch, 20 mm corner cuts '
-                'and ≈104 × 24 mm Slot dimensions are photo-based estimates, '
-                'not manufacturer specifications.</p>'
-            )
-        if slug == "hub75-panel" and has_native:
-            faces = []
-            for title, filename in (("Front — LED mask", "front.png"),
-                                    ("Rear — pockets and mounting bores", "rear.png")):
-                candidate = native_source / filename
-                if not candidate.is_file() or not candidate.stat().st_size:
-                    raise ValueError(f"Verified HUB75 face view is missing: {candidate}")
-                copy_if_exists(candidate, work / filename)
-                faces.append(
-                    f'<figure><a href="{filename}" target="_blank" rel="noopener">'
-                    f'<img src="{filename}" alt="Native SolidCraft {esc(title)}">'
-                    f'</a><figcaption>{esc(title)}</figcaption></figure>'
-                )
-            extra_views = ('<h2>Front and rear of the same local component</h2>'
-                           '<div class="panel-views">' + ''.join(faces) + '</div>'
-                           '<p class="small muted">Both are native SolidCraft '
-                           'snapshots of the same single-component design.</p>')
+        extra_views = supplementary_views(
+            info, work, native_source, has_native
+        )
         version_label = (
             f"SolidCraft {engine_version} · verified"
             if has_native and engine_version else
@@ -607,6 +610,9 @@ def build(out, commit, native_root=None, generated_root=None, previous_site=None
             )
             source_links += ('<a class="btn secondary" href="scpc-model.py">'
                              'SCPC native-command script</a>')
+        source_links += (
+            '<a class="btn secondary" href="model.yml">Model metadata</a>'
+        )
         warning = info.get("warning")
         warning_html = ""
         if warning:

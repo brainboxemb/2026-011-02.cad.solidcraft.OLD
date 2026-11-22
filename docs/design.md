@@ -213,3 +213,44 @@ be retired only after the released replacements are proven.
 
 No rewrite of the CAD website's layout or content is authorized merely to
 match Forge's CI design.
+
+## Website data flow: model.yml → validated catalog → shared renderer
+
+The original CAD website was generated directly from an approximately
+28 KB handwritten Python `MODELS` dictionary. Forge already uses
+`examples/<model>/model.yml` for model titles, descriptions and stages.
+
+The CAD version is:
+
+```text
+models/<category>/<root>/model.yml  (source of website model content)
+models/<category>/<root>/ci.yml     (build identity and participation)
+models/<category>/<root>/verification/verify.py (geometry expectations)
+        |
+        v
+scripts/ci/model_catalog.py (load/validate; no hard-coded model list)
+        |
+        +-- existing build selectors / model dependencies (compatible API)
+        +-- scripts/ci/build-results.py (one static page template + views)
+                |
+                v
+homepage + category pages + /models/<slug>/ + model.yml downloads
+```
+
+A model's optional `extra_views` declaration contains a title, a
+caption, and view items of kinds `url` (external HTTPS reference),
+`asset` (checked-in model asset), or `build` (saved SolidCraft
+screenshot). The shared renderer checks availability and verification,
+copies assets, and uses the original `panel-views` layout. No model slug
+should appear in dedicated view-generation conditionals.
+
+The loader verifies local source paths, section, page ordering, duplicate
+YAML keys, optional SCPC/component sources, referenced CAD dependencies,
+required public text, and multi-variant ownership. Source SHA/verification
+evidence is **not** inferred from YAML. The existing geometry-only
+fingerprint excludes `model.yml`, while site selection includes it.
+
+The site stays static HTML/CSS. PyYAML is a **build-time dependency**,
+not a browser dependency or a new general-purpose CI subsystem. Accepted
+Pages baselines must be compared before any public cut-over.
+

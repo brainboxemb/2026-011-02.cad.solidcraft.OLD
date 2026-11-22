@@ -1,0 +1,24 @@
+# Model-owned content. Editing this file updates the website; it does not rebuild geometry.
+section: advanced
+priority: 30
+title: "BasicHub75Screen"
+tagline: "Five shared native HUB75 occurrences with two 180° rotations"
+description: >-
+  Five panels on the source project's 800 × 320 mm nominal grid. One rear-tapered, four-bay
+  panel component is reused at X=−320, −160, 0, 160 and 320 mm. Columns 2 and 4 reverse
+  direction around the assembled front-to-back axis for the rear data chain, and all
+  occurrences stand upright in XZ. R5 corners, detailed rear reinforcements, PCB and
+  connectors remain future phases.
+parameters: "Five 159.70 × 319.71 × 14.50 mm panels; X pitch 160 mm"
+diagram: "hub75-screen"
+stages:
+  - "Create the reusable tapered HUB75 component"
+  - "Make six blind M3 rear bores and assign material once"
+  - "Ground the middle occurrence at X=0"
+  - "Place four copies on the 160 mm nominal grid"
+  - "Place native occurrences with translate, axis and angle"
+  - "Verify five saved native occurrences"
+source: "scpf/model.py"
+component_source: "models/components/hub75_panel/detailed/scpf/model.py"
+build: true
+snapshot_required: true

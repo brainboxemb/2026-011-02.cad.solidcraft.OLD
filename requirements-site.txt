@@ -1,0 +1,2 @@
+# Build-time model metadata parser. Browser pages remain static HTML/CSS.
+PyYAML==6.0.4
