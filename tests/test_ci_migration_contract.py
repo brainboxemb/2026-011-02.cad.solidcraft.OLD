@@ -23,7 +23,21 @@ from model_catalog import (  # noqa: E402
     dependency_closure,
     model_slugs,
 )
-from model_item import catalog_root, item_id_for_slug, item_members  # noqa: E402
+
+def catalog_root(slug):
+    source = Path(MODELS[slug]["source"])
+    return Path(*source.parts[:3])
+
+
+def item_members(root):
+    relative = root.resolve().relative_to(ROOT.resolve())
+    return tuple(slug for slug in MODELS if catalog_root(slug) == relative)
+
+
+def item_id_for_slug(slug):
+    root = catalog_root(slug)
+    return next(candidate for candidate in MODELS if catalog_root(candidate) == root)
+
 
 
 class MigrationCatalogContractTests(unittest.TestCase):
@@ -101,6 +115,11 @@ class MigrationCatalogContractTests(unittest.TestCase):
         self.assertIn("models/advanced/*", config)
         self.assertIn("models/components/*", config)
         self.assertIn("models/basic/*", config)
+        self.assertIn("ci/*", config)
+
+        repository_tests = (ROOT / "ci/repository-tests/ci.yml").read_text()
+        self.assertIn("id: repository-tests", repository_tests)
+        self.assertIn("scripts/ci/repository_tests.py", repository_tests)
 
         shared = (ROOT / "ci/model-build-batch/ci.yml").read_text()
         self.assertIn("forge-package", shared)
@@ -114,6 +133,47 @@ class MigrationCatalogContractTests(unittest.TestCase):
         )
         self.assertEqual(pin["version"], "0.15.0")
         self.assertTrue((ROOT / "docs/handoff.md").is_file())
+
+    def test_legacy_local_ci_implementations_are_retired_and_documented(self):
+        legacy = (
+            "build-results.py",
+            "build_plan.py",
+            "cad_ci.py",
+            "native_ci.py",
+            "output_store.py",
+            "pipeline_ci.py",
+            "publish_ci.py",
+            "select_models.py",
+            "snapshot_camera.py",
+        )
+        for name in legacy:
+            with self.subTest(name=name):
+                self.assertFalse((CI / name).exists())
+
+        retained = {
+            path.name
+            for path in CI.glob("*.py")
+            if path.name != "__init__.py"
+        }
+        self.assertEqual(
+            retained,
+            {
+                "bootstrap_cad_ci.py",
+                "forge_dependency.py",
+                "model_build_batch.py",
+                "model_catalog.py",
+                "model_checks.py",
+                "model_verify.py",
+                "repository_tests.py",
+                "scpc_dependency.py",
+                "verification_package.py",
+            },
+        )
+        self.assertTrue((CI / "README.md").is_file())
+
+        for config in ROOT.glob("ci/*/ci.yml"):
+            with self.subTest(item=config.parent.name):
+                self.assertTrue((config.parent / "README.md").is_file())
 
     def test_development_branches_use_released_scopes_and_pages_publisher(self):
         workflow = (ROOT / ".github/workflows/cad.yml").read_text(encoding="utf-8")

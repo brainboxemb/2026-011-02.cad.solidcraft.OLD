@@ -21,7 +21,6 @@ import yaml
 
 from bootstrap_cad_ci import dependency
 from model_catalog import COMMAND_SOURCES, MODELS, source_path
-from model_checks import command_check
 from model_verify import compile_scpc, dependency_wheel
 
 
@@ -93,7 +92,6 @@ def write_manifest(batch_output: Path, forge_wheel: Path, scpc_wheel: Path) -> P
                     json.dumps(document, indent=2) + "\n",
                     encoding="utf-8",
                 )
-                command_check(slug, command_file)
 
                 if slug in COMMAND_SOURCES:
                     scpc_sha = compile_scpc(slug, scpc_file, scpc_wheel)

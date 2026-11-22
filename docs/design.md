@@ -93,13 +93,12 @@ but **not** a parallel planning mechanism or manually extended root item list.
 - The site remains a separate consumer of complete build evidence; no
   redesign or URL change is authorized by this correction.
 
-**Current implementation is not accepted as the target.** On `dev-ci`
-the present `cad-model-build` runs `scripts/ci/model_verify.py` once per
-model, doing a `docker pull` and `docker run` for every model. The
-development PR also uses `full_run: true`, and root `cad-ci.yml` grows
-one manual item path at a time. These choices are a performance and
-ownership regression compared with Forge and must be replaced before
-onboarding the remaining models.
+**Current dev-ci implementation:** released CAD-CI scans/plans one SCons
+graph; `model-build-batch` launches the SolidCraft runtime once and model
+items project their output with released `copy: dependency`. Fourteen
+physical roots / sixteen variants are active. The two remaining advanced
+assemblies are disabled only by Forge #679. Repository regressions are one
+normal CAD-CI item, not a separate orchestration layer.
 
 ## Model item shape
 

@@ -1,3 +1,4 @@
+# Shared exact CAD-verification wheel; not part of the runtime image.
 id: cad-verification-package
 kind: tool
 watch: [ci/cad-verification-package/package.json, scripts/ci/verification_package.py]

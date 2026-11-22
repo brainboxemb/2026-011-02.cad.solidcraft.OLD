@@ -78,6 +78,8 @@ class SharedModelBatchTests(unittest.TestCase):
         self.assertNotIn("missing model-local verification/verify.py", batch)
         self.assertIn('"solidcraft_built": True', model)
         self.assertIn('"semantic_verification": semantic_status', model)
+        self.assertIn("snapshot_camera(slug)", model)
+        self.assertIn("extra_snapshots(slug)", model)
 
     def test_batch_source_adapter_has_no_syntax_errors(self):
         for path in (CI / "model_build_batch.py", CI / "model_verify.py"):

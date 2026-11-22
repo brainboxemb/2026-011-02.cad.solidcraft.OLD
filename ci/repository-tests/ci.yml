@@ -1,0 +1,27 @@
+# One repository-level regression item in the released CAD-CI graph.
+# Selection/scheduling remain generic; this item contains no private planner.
+id: repository-tests
+kind: verification
+process: true
+needs: [forge-package, scpc-package, cad-verification-package]
+watch:
+  - tests/**
+  - models/**
+  - examples/**
+  - site/**
+  - scripts/ci/**
+  - cad-ci.yml
+  - dependencies.repos
+  - ci/**
+steps:
+  - id: unittest
+    inputs:
+      - tests/**
+      - models/**
+      - examples/**
+      - site/**
+      - scripts/ci/**
+      - cad-ci.yml
+      - dependencies.repos
+    run: [python, ../../scripts/ci/repository_tests.py]
+    outputs: [result.json]

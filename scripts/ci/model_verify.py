@@ -17,6 +17,7 @@ import sys
 
 from bootstrap_cad_ci import dependency
 from model_catalog import COMMAND_SOURCES, source_path
+from model_checks import extra_snapshots, snapshot_camera
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -144,14 +145,34 @@ def _build_one(row: dict, batch: dict) -> str:
             raise RuntimeError(f"{slug}: SolidCraft checks failed: {report}")
         semantic_status = "pass"
 
-    subprocess.run(
-        [
+    def render_snapshot(target: Path, camera: dict | None = None) -> None:
+        """Render one required snapshot with optional model-owned framing."""
+
+        command = [
             "solidcraft-cli", "snapshot", str(saved),
-            "--out", str(root / "model.png"), "--no-grid", "--no-axes",
-        ],
-        check=True,
-    )
-    for path in (saved, saved_dir / "model.step", root / "model.png"):
+            "--out", str(target), "--no-grid", "--no-axes",
+        ]
+        if camera:
+            command.extend(
+                ["--camera", json.dumps(camera, separators=(",", ":"))]
+            )
+        subprocess.run(command, check=True)
+        if not target.is_file() or not target.stat().st_size:
+            raise RuntimeError(f"{slug}: snapshot is missing or empty: {target}")
+
+    primary_snapshot = root / "model.png"
+    render_snapshot(primary_snapshot, snapshot_camera(slug))
+    for spec in extra_snapshots(slug):
+        name = spec.get("name")
+        if (
+            not isinstance(name, str)
+            or Path(name).name != name
+            or name in {".", ".."}
+        ):
+            raise RuntimeError(f"{slug}: invalid extra snapshot name {name!r}")
+        render_snapshot(saved_dir / name, spec.get("camera"))
+
+    for path in (saved, saved_dir / "model.step", primary_snapshot):
         if not path.is_file() or not path.stat().st_size:
             raise RuntimeError(f"{slug}: required build result missing: {path}")
 
