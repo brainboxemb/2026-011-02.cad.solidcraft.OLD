@@ -1,82 +1,82 @@
-"""Unit checks for the CAD-owned generic model producer's catalog boundary."""
+"""Guard the CAD-specific shared batch adapter, not a second CI planner."""
 
 from __future__ import annotations
 
-import importlib.util
-import os
+import ast
 from pathlib import Path
+import re
 import sys
 import unittest
-from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
 CI = ROOT / "scripts" / "ci"
 sys.path.insert(0, str(CI))
 
-
-def load_module():
-    spec = importlib.util.spec_from_file_location(
-        "model_verify", CI / "model_verify.py"
-    )
-    module = importlib.util.module_from_spec(spec)
-    assert spec.loader is not None
-    spec.loader.exec_module(module)
-    return module
+from model_catalog import COMMAND_SOURCES, MODELS  # noqa: E402
 
 
-class ModelVerifyRunnerTests(unittest.TestCase):
-    def setUp(self):
-        self.module = load_module()
+class SharedModelBatchTests(unittest.TestCase):
+    def test_all_sixteen_roots_discovered_and_seven_remain_disabled(self):
+        roots = sorted(ROOT.glob("models/*/*/ci.yml"))
+        self.assertEqual(len(roots), 16)
+        active = []
+        for file in roots:
+            source = file.read_text(encoding="utf-8")
+            self.assertRegex(source, r"(?m)^id: [a-z0-9-]+$")
+            self.assertIn("template: cad-model-build", source)
+            self.assertEqual(len(re.findall(r"(?m)^process: (true|false)$", source)), 1)
+            self.assertNotIn("run:", source)
+            self.assertNotIn("package", source)
+            if "process: true" in source:
+                active.append(file.parent.relative_to(ROOT).as_posix())
+        self.assertEqual(len(active), 9)
+        self.assertEqual(len(MODELS), 18)
+        self.assertEqual(len(COMMAND_SOURCES), 5)
 
-    def test_selected_model_roots_derive_members_from_catalog(self):
-        for item, folder in (
-            ("plate", "models/basic/plate"),
-            ("vent-plate", "models/basic/vent_plate"),
-            ("bolted-flange", "models/basic/bolted_flange"),
-            ("sample-plate", "models/basic/sample_plate"),
-            ("corner-bracket", "models/components/corner_bracket"),
-            ("bracket", "models/basic/bracket"),
-            ("csg-cube", "models/basic/csg_cube"),
-            ("plastic-enclosure", "models/basic/plastic_enclosure"),
-            ("plastic-enclosure-pi", "models/basic/plastic_enclosure_pi"),
-        ):
-            with self.subTest(item=item):
-                with patch.dict(os.environ, {
-                    "CAD_CI_ITEM": item,
-                    "CAD_CI_ITEM_PATH": str(ROOT / folder),
-                }):
-                    self.assertEqual(self.module.selected_models(), (item,))
+    def test_one_batch_runtime_and_released_copy_projection(self):
+        root = (ROOT / "cad-ci.yml").read_text(encoding="utf-8")
+        self.assertIn("items/{item_path}", root)
+        self.assertIn("dependency: model-build-batch", root)
+        for section in ("basic", "components", "advanced"):
+            self.assertIn(f"models/{section}/*", root)
+        self.assertNotIn("models/basic/plate\n", root)
+        self.assertIn("model-build-batch", root)
 
-    def test_wrong_item_identity_fails_closed(self):
-        with patch.dict(os.environ, {
-            "CAD_CI_ITEM": "vent-plate",
-            "CAD_CI_ITEM_PATH": str(ROOT / "models/basic/plate"),
-        }):
-            with self.assertRaisesRegex(RuntimeError, "identity mismatch"):
-                self.module.selected_models()
+        batch = (CI / "model_build_batch.py").read_text(encoding="utf-8")
+        model = (CI / "model_verify.py").read_text(encoding="utf-8")
+        self.assertEqual(batch.count('"docker", "pull"'), 1)
+        self.assertEqual(batch.count('"docker", "run"'), 1)
+        self.assertNotIn('"docker", "run"', model)
+        self.assertIn('ROOT.glob("models/*/*/ci.yml")', batch)
+        self.assertIn('config.get("process", True) is False', batch)
+        self.assertIn('source: items/{item_path}', root)
 
-    def test_unknown_root_is_rejected(self):
-        with patch.dict(os.environ, {
-            "CAD_CI_ITEM": "unknown",
-            "CAD_CI_ITEM_PATH": str(ROOT / "models/basic/unknown"),
-        }):
-            with self.assertRaisesRegex(RuntimeError, "no catalog variants"):
-                self.module.selected_models()
+    def test_batch_source_adapter_has_no_syntax_errors(self):
+        for path in (CI / "model_build_batch.py", CI / "model_verify.py"):
+            text = path.read_text(encoding="utf-8")
+            tree = ast.parse(text, filename=str(path))
+            self.assertTrue(tree.body)
 
-    def test_scpc_compilation_consumes_one_shared_wheel(self):
-        import inspect
-        source = inspect.getsource(self.module.compile_scpc)
-        self.assertIn("scpc_wheel", source)
-        self.assertNotIn("ensure_checkout", source)
-        config = (ROOT / "cad-ci.yml").read_text(encoding="utf-8")
-        self.assertIn("- scpc-package", config)
+    def test_scpc_is_prepared_once_from_pinned_source(self):
+        batch = (CI / "model_build_batch.py").read_text(encoding="utf-8")
+        verify = (CI / "model_verify.py").read_text(encoding="utf-8")
+        self.assertIn('dependency_wheel("scpc-package", "scpc-*.whl")', batch)
+        self.assertIn("scpc_wheel", verify)
+        self.assertNotIn("ensure_checkout", verify)
+        self.assertTrue((ROOT / "ci/scpc-package/ci.yml").is_file())
 
-    def test_independent_scpc_is_discovered_from_the_catalog(self):
-        from model_catalog import COMMAND_SOURCES
-        self.assertIn("plate", COMMAND_SOURCES)
-        self.assertIn("vent-plate", COMMAND_SOURCES)
-        self.assertNotIn("bracket", COMMAND_SOURCES)
+    def test_all_models_have_a_model_ci_owner(self):
+        for slug, config in MODELS.items():
+            source = Path(config["source"])
+            root = ROOT.joinpath(*source.parts[:3])
+            with self.subTest(slug=slug):
+                self.assertTrue((root / "ci.yml").is_file())
+
+    def test_development_ci_follows_released_forge_tooling(self):
+        workflow = (ROOT / ".github/workflows/cad.yml").read_text(encoding="utf-8")
+        self.assertIn("tool.cad.ci@1012e6a539a2fddd8194124844fe208bf16cf4e4", workflow)
+        self.assertNotIn("full_run: true\n          jobs:", workflow)
 
 
 if __name__ == "__main__":

@@ -38,3 +38,5 @@ Current records:
 - [0017-forge-011-solidcraft-045.md](0017-forge-011-solidcraft-045.md) — adopt released Forge 0.11.0 and central SolidCraft 0.45.0 in CAD verification (#172).
 
 - [0018-forge-ci-parity.md](0018-forge-ci-parity.md) — migrate CAD CI to Forge's released tooling, source lanes and generated scopes (#174).
+
+- [0019-shared-build-batch.md](0019-shared-build-batch.md) — Forge-compatible shared model-build batch; one runtime start (#174).

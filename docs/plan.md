@@ -40,7 +40,28 @@ from the CAD consumer, and do not build a second CAD-specific scheduler.
 Forge owns acceptance; the appropriate library/tool makes its own released
 implementation and Forge qualifies that version. Only then adopt it here.
 
-## Architecture review gate — NO-GO on current per-model execution
+## Architecture correction — shared build-batch migration in progress
+
+The correction has a dedicated implementation branch
+`ci/174-shared-build-batch`, based on `dev-ci`:
+- Reuse the accepted Forge `model-verification-batch` / `copy: dependency`
+  architecture with one SolidCraft runtime launch for the batch.
+- Discover model roots through generic globs; each of the 16 model
+  `ci.yml` files has only id/template/process. Keep the 7 not yet built by
+  the new route `process: false`.
+- Build the existing nine accepted model roots as the first batch and retain
+  separate model files, STEP, images, checks and independent SCPC comparisons.
+- Use the released Forge-accepted `tool.cad.ci 0.17.1` /
+  `lib.py.cad.ci 0.10.0` stack with `copy: dependency`.
+- Regular development PRs use selective CAD-CI planning. The batch may
+  still rebuild all `process: true` models if any batch input changes; this
+  is an existing Forge trade-off and its selectivity is tracked by Forge #661.
+- Do not change stable `main`, generated publication or the CAD website.
+
+**Status: implementation underway, not yet qualified or merged.**
+A compact new-chat handoff is available in `docs/handoff.md`.
+
+## Previous architecture review — obsolete per-model execution
 
 **Status: blocking M1/M2/M3 until replaced and measured.** The nine model
 roots already built successfully on `dev-ci` establish valid input models,

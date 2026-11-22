@@ -1,4 +1,4 @@
-# Common model-build template; physical expectations live beside the source.
+# Shared build configuration; physical checks live in verification/verify.py.
 id: bolted-flange
 template: cad-model-build
 process: true
