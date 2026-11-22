@@ -74,12 +74,14 @@ class HugoSiteContractTests(unittest.TestCase):
         page = (SITE / "layouts/models/single.html").read_text()
         design = (ROOT / "docs/design.md").read_text()
         self.assertNotIn(".cad-background{border-left:", css)
-        self.assertIn(".cad-panel-emphasis{border-top:3px solid var(--cad-accent)}", css)
-        self.assertIn('class="cad-panel cad-panel-emphasis cad-web-open"', page)
+        self.assertNotIn(".cad-panel-emphasis{", css)
+        self.assertIn('class="cad-panel cad-web-open"', page)
+        self.assertNotIn('cad-panel-emphasis', page)
         self.assertIn("border-left:4px solid #d32f2f", css)
         self.assertIn(".content blockquote{border:1px solid var(--cad-line)", css)
         self.assertIn("Hugo **0.169.0** with Hextra **v0.13.0**", design)
         self.assertIn("primary action panel", design)
+        self.assertIn("action emphasis", design)
         self.assertNotIn("Blowfish v3.10.0", design)
 
     def test_model_detail_typography_does_not_inherit_hextra_prose_tracking(self):
@@ -94,6 +96,9 @@ class HugoSiteContractTests(unittest.TestCase):
     def test_background_markdown_uses_the_same_quiet_cad_typography(self):
         css = (SITE / "assets/css/custom.css").read_text()
         self.assertIn(".cad-rich-text{max-width:78ch;font-size:1rem;line-height:1.52}", css)
+        self.assertIn("<h2>Background</h2>", page)
+        self.assertIn("color:var(--cad-ink);", css)
+        self.assertNotIn(".cad-verification-panel{background:", css)
         self.assertIn("font-size:1.05rem;\n  line-height:1.35;\n  font-weight:600;\n  letter-spacing:0;", css)
         self.assertIn(".cad-rich-text li::marker{color:var(--cad-accent)}", css)
         self.assertIn(".cad-background .subheading-anchor{display:none}", css)
