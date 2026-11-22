@@ -11,34 +11,35 @@ repository's plan; keep CAD-specific work and status in this repository.
 
 ## Current state
 
+- Stable `main`: `4b4ed80188c0de49cb33d4796e243644a7ae8374`.
 - Permanent source lanes: `main`, `dev-cad`, `dev-ci`.
 - Short-lived work is squash-merged into a dev lane.
 - `dev-cad` / `dev-ci` promotion to `main` uses a normal merge commit
   through the owner-only `/merge` policy.
-- Generic execution/publication is owned by the released
-  `tool.cad.ci` / `lib.py.cad.ci` stack.
-- Model/site metadata is owned by the 16 local `model.yml` files, representing
-  18 published variants.
-- Hugo + Blowfish builds the CAD site from those files plus accepted build
-  evidence.
+- The #174 `dev-ci -> main` migration promotion is complete.
+- Stable `build/main` and stable Hugo/Blowfish Pages are source-matched to the
+  current stable main.
+- Generic execution/publication is owned by released
+  `tool.cad.ci` / `lib.py.cad.ci`.
+- Runtime baseline is `cad-solidcraft:v0.3.4` with SolidCraft `0.45.0`.
 - 14 physical model roots / 16 variants build through the shared SolidCraft
-  batch. `hub75-display2` and `hub75-wood-frame` remain disabled only for
-  Forge #679; do not add CAD-side naming workarounds.
-- Durable `build/dev-ci` and Pages `/dev-ci/` publication are proven and
-  isolated from stable Pages.
-- Stable pre-cut-over Pages are backed up at
-  `backup/gh-pages-before-174-2026-11-22`.
+  batch; two remain blocked only by Forge #679.
+- Forge and CAD model-description schemas have drifted; #205 / Forge #703 own
+  the correction. Do not extend the CAD-local schema meanwhile.
+- Stable pre-cut-over generated state is retained on the backup build/Pages
+  branches.
 
 ## Active workstream
 
-There is one active workstream: finish the `dev-ci` stabilization and promote
-that accepted lane to `main`.
+One workstream is active:
 
-Do not start new CAD features, an `examples/` cleanup, new site/theme work, or
-unrelated CI refactors until that promotion is complete.
+1. reconcile/close the completed #174 migration from exact evidence;
+2. synchronize `dev-cad` from current `main` without flattening history;
+3. reassess the existing CAD feature PRs;
+4. then resume one product CAD work item.
 
-Relevant tracking: #174 (CI/publication migration), #172 (full qualification),
-#191 (site migration/history).
+New model-metadata cleanup (#204/#205/#206) is recorded in the plan but must not
+turn into another parallel migration before the lane is coherent.
 
-After promotion, synchronize/reactivate `dev-cad` and return to product CAD
-work.
+PR #188 is an old #174 governance draft and should be reassessed rather than
+merged into the already-promoted CI lane.
