@@ -1,12 +1,12 @@
 {
-  "duration_seconds": 0.181,
+  "duration_seconds": 0.15,
   "exit_code": 0,
-  "input_fingerprint": "f0a36243f28a7bdfea835e2391927d34d8b4b920d077de89749a5f2c7824b68a",
+  "input_fingerprint": "7d7e922ef4598526b8fadb7c4e7ffcaf23f1cb248920165c9025be328b16d75c",
   "outputs": {
-    "checks/package.json": "10acacffe693e141c251f5911274493c18cf2dbb63d5360a2bbebb554b492b7f",
-    "results": "2f39f8cf9550d892359c2cfd9ca0cb97f0ec4e6eba2cbb05dc0a8eea056e5fa8"
+    "checks/package.json": "eae32fee8ee910d6a5050d85f5c8e055d968c47c65ce907bf35524842849ae1b",
+    "results": "d9bae36d9c9af85a195251c34d5cf8ddc6206ae4de4a2cc7326f7ee01f7146ec"
   },
-  "result_fingerprint": "8d3f12a434ae1d280db5994bd17f0ffd48029cf698d51ecee4c11969721f60ef",
+  "result_fingerprint": "e62697a15a3d3c5264c861432c4fc588386eb9dc25ea87193eeb06e798fc47b0",
   "status": "pass",
   "step": "package"
 }

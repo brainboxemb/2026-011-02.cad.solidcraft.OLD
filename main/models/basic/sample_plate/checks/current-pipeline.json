@@ -2,8 +2,8 @@
   "models": {
     "sample-plate": {
       "scpf": {
-        "sha256": "6b61802c946cf770a3561f8c2292cb1bd6053202121bc1f12bd3f5ad5806e7ea",
-        "source": "stable-build",
+        "sha256": "4f67147ce915b77bd2ce6e0c3a05672e39763cf6ee6fca44e1848d960667f676",
+        "source": "current-run",
         "status": "pass"
       }
     }

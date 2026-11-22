@@ -1,11 +1,11 @@
 {
-  "duration_seconds": 0.183,
+  "duration_seconds": 0.147,
   "exit_code": 0,
-  "input_fingerprint": "dfe386bc5e9c21ba9c02cc96957bd68121afd64a4e2e5efd57696777bfa19f24",
+  "input_fingerprint": "37681ead0d769e04500fe114d57983225656da2d1fa56402a2c5a4cda30aeab1",
   "outputs": {
-    "checks/current-pipeline.json": "20974b96557f4f30e85e32b221313f8dfb60bb60ed802be22dbf7504e9141756"
+    "checks/current-pipeline.json": "c1874bfbe62ee993edc1a2f6a0bf1df8ca8829d4d592866059d912d6bb94b07d"
   },
-  "result_fingerprint": "3ff383330eb8a0a0454ae25baab422418aa8d8d189123a5cb74667099355139f",
+  "result_fingerprint": "4a8dc82a273a92d75eda11094d7ad8b76dbed56fbe467102e9cc439265e74946",
   "status": "pass",
   "step": "compare-current"
 }

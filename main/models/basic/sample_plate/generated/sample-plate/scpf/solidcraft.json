@@ -1,4 +1,6 @@
 {
+  "format": "scpf-replay",
+  "version": 2,
   "commands": [
     {
       "command": "parameters.add",
@@ -86,9 +88,46 @@
       }
     },
     {
+      "command": "model.faces",
+      "params": {
+        "body": "SamplePlate"
+      },
+      "bind": {
+        "$face_point_1": {
+          "field": "faces",
+          "where": {
+            "plane_normal": [
+              0,
+              0,
+              1
+            ]
+          },
+          "max": "area",
+          "select": "point"
+        },
+        "$face_index_1": {
+          "field": "faces",
+          "where": {
+            "plane_normal": [
+              0,
+              0,
+              1
+            ]
+          },
+          "max": "area",
+          "select": "index"
+        }
+      }
+    },
+    {
       "command": "sketch.create",
       "params": {
-        "plane": "XY",
+        "plane": {
+          "face": "$face_point_1",
+          "body": "SamplePlate",
+          "index": "$face_index_1"
+        },
+        "project_edges": false,
         "name": "Holes"
       }
     },
@@ -96,18 +135,8 @@
       "command": "sketch.circle.center",
       "params": {
         "center": [
-          "(-(width / 2)) + (width / 2) + ((width - 24 mm) * -0.5)",
-          "(-(depth / 2)) + (depth / 2)"
-        ],
-        "diameter": 8
-      }
-    },
-    {
-      "command": "sketch.circle.center",
-      "params": {
-        "center": [
-          "(-(width / 2)) + (width / 2) + ((width - 24 mm) * 0.5)",
-          "(-(depth / 2)) + (depth / 2)"
+          "(-((width - 24 mm) / 2))",
+          0.0
         ],
         "diameter": 8
       }
@@ -119,13 +148,30 @@
     {
       "command": "solid.extrude",
       "params": {
-        "distance": "thickness",
-        "direction": "positive",
         "operation": "cut",
         "targets": [
           "SamplePlate"
         ],
-        "name": "Holes"
+        "name": "Holes",
+        "through_all": true,
+        "direction": "negative"
+      }
+    },
+    {
+      "command": "solid.pattern.rectangular",
+      "params": {
+        "features": [
+          "Holes"
+        ],
+        "dir1": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "count1": 2,
+        "spacing1": "width - 24 mm",
+        "alignment": "right",
+        "reversed": false
       }
     },
     {

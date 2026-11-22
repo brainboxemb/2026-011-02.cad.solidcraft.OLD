@@ -1,11 +1,11 @@
 {
-  "duration_seconds": 0.18,
+  "duration_seconds": 0.148,
   "exit_code": 0,
-  "input_fingerprint": "a704c598a421ba51092db9ee8569c251ffcbeb17aaa00d5533386b6b83017876",
+  "input_fingerprint": "f8b4d735bfa4b6945ab1d5fea400ac91aab02933bdefd7cb86cbc64ad4819e67",
   "outputs": {
     "checks/current-pipeline.json": "33a33bbb8652713c37117054b503a3ce283bd7a9c2478b21fbc66aad430ffbee"
   },
-  "result_fingerprint": "52272983e5e6e5b5f4f05e39c3f6d41302f2c56e758480996ec191a9b64759b4",
+  "result_fingerprint": "0db4918022748e13063109ac3faab48c3891d56ef6fbfa5625ae36f56a95002f",
   "status": "pass",
   "step": "compare-current"
 }
