@@ -23,7 +23,7 @@ dev-ci
 Current heads at this reconciliation:
 
 - `main`: `6be947fd47333389513e64a73ae19649eb80796a`;
-- `dev-cad`: `d8af5c3a6bbce9b34e216da1a44f6c1603f4aaa5`;
+- `dev-cad`: `75d8fb377e37766fc59fcf1abaa7cc18bfec1069`;
 - `dev-ci`: `c3d46976c8810487b74a802faf1009cb8608e4b0`.
 
 Stable `main` includes the accepted #344/#350 model-detail presentation and
@@ -131,6 +131,18 @@ generic Forge gaps.
   `extra_views` / `EXTRA_SNAPSHOTS` mechanism already proves model-owned
   multiple views, but #20's broader gallery contract is not yet complete.
 
+## Forge v0.13.1 adoption gate
+
+CAD #405 is qualifying released Forge v0.13.1. Consumer validation exposed
+Forge #796 in the detailed `hub75-panel` root: symbolic placed-Cylinder anchor
+arithmetic fails before SolidCraft replay.
+
+CAD #408 temporarily sets only `hub75-panel` to `process: false` so the
+remaining product-CAD roots can qualify the released Forge capability batch.
+This is an execution gate, not a geometry rollback. Do not add a CAD-local
+compiler workaround. Re-enable the root after Forge #796 is fixed, released
+and adopted.
+
 ## Blocked HUB75/native follow-ups
 
 The current `hub75-wood-frame` root is still `process: false` while the
@@ -149,6 +161,7 @@ required naming fix and any other applicable runner fixes.
 
 | Issue | Owner/lane | Status | Next action |
 | --- | --- | --- | --- |
+| #408 Temporary hub75-panel process gate | dev-cad + Forge | **now / temporary** | Disable only `hub75-panel` for Forge #796, let #405 qualify v0.13.1 across the remaining roots, then re-enable after the upstream fix is released/adopted. |
 | #8 CornerBracket exact geometry | dev-cad + Forge | **blocked on #362 / Forge #750** | Preserve PR #360 geometry; add final rotated wedge only after generic transform support is released. |
 | #362 CornerBracket arm-tip wedge | dev-cad + Forge | **blocked on Forge #750** | PR #363 is merged; temporary markers are in both model sources. Geometry waits for released transform support. |
 | #154 HUB75 lower compartment | dev-cad + Forge | **blocked / draft PR #349** | Wait for released #679 fix and Forge #749, then enable native processing and mutation acceptance. |
@@ -204,12 +217,12 @@ required naming fix and any other applicable runner fixes.
 
 ## Next checkpoint
 
-1. resolve #388 through Forge #753 / the applicable SolidCraft owner fix; do
-   not add a CAD-local primitive/placement workaround;
-2. only after #388 is qualified, finish #374 assembly visual acceptance and
-   refresh/revalidate the already-green draft #390 / #375 connector slice on
-   the synchronized dev-cad baseline before merge;
-3. keep #365 as a design-decision slice and keep
-   #154/#327/#348/#362/#367 parked until their required design/owner-layer
-   capabilities are available;
-4. keep #382 Phase B (`dev-cad -> main`) paused while #388 remains open.
+1. merge #408 after normal CAD validation proves only `hub75-panel` is newly
+   gated;
+2. refresh #405 on that `dev-cad` baseline and qualify Forge v0.13.1 across
+   the remaining active roots;
+3. after #405 is accepted, resume the model slices unlocked by the released
+   Forge capability batch, starting with #378 and #154;
+4. keep #388 on Forge #753 / the applicable SolidCraft owner path; it still
+   blocks final #374/#375 assembly acceptance and the `dev-cad -> main`
+   checkpoint, but must not freeze unrelated CAD work.
