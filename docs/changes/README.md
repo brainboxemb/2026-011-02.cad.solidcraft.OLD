@@ -66,9 +66,5 @@ Current records:
 - [0035-selective-model-build-batch.md](0035-selective-model-build-batch.md) — make the shared SolidCraft batch honor CAD-CI direct-dependent model selection instead of rebuilding the full catalog (#335).
 
 - [0037-development-lane-promotion-cadence.md](0037-development-lane-promotion-cadence.md) — let dev-cad/dev-ci accumulate work and promote only at deliberate stable checkpoints (#346).
-- [0032-remove-local-cross-cad-references.md](0032-remove-local-cross-cad-references.md) — remove CadQuery/MicroCAD/PythonSCAD/vcad reference sources from the product CAD repository (#206).
-- [0034-flex-bench-dog-mft-collar.md](0034-flex-bench-dog-mft-collar.md) — shape the FlexBenchDog stop collar as a Ø22 × 1.5 mm MFT seat with a 45° underside chamfer (#331).
-- [0036-flex-bench-dog-cube-wireframe-logo.md](0036-flex-bench-dog-cube-wireframe-logo.md) — replace the filled top square with the nine-rib BrainBox cube wireframe construction (#332).
-- [0038-flex-bench-dog-logo-polygon-ribs.md](0038-flex-bench-dog-logo-polygon-ribs.md) — isolate the nine BrainBox logo ribs into separate cuts; current Slot-per-Sketch construction is temporary pending Forge #747 (#332/#348).
-- [0041-flex-bench-dog-rounded-slot-corners.md](0041-flex-bench-dog-rounded-slot-corners.md) — fillet the four vertical material corners around the FlexBenchDog central cross without changing slot dimensions (#333).
-- [0042-corner-bracket-exact-geometry.md](0042-corner-bracket-exact-geometry.md) — restore the preserved arm-tip profile and exact four-part recessed M5 fixing-seat geometry in the shared CornerBracket (#8).
+
+- [0040-compact-model-detail-facts.md](0040-compact-model-detail-facts.md) — keep long model parameters out of the status badge row and render them as readable key-dimensions prose (#344).
