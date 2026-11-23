@@ -1,4 +1,4 @@
-# 0047 — qualify the lower-compartment HUB75 case on Forge v0.13.2
+# 0048 — qualify the lower-compartment HUB75 case on Forge v0.13.2
 
 Issue: #154
 

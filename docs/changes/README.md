@@ -79,5 +79,5 @@ Current records:
 - [0044-opt-in-stl-artifacts.md](0044-opt-in-stl-artifacts.md) — make STL export an explicit model-root artifact request instead of a universal CAD output (#403).
 - [0045-temporary-hub75-panel-test-gate.md](0045-temporary-hub75-panel-test-gate.md) — make direct detailed-panel repository tests follow the temporary process gate for Forge #796 (#412).
 - [0046-hub75-display-case-names.md](0046-hub75-display-case-names.md) — align the two wooden HUB75 enclosure product/class names as Hub75DisplayCase and Hub75DisplayCase v2 while preserving current paths/slugs (#416).
-- [0047-hub75-wood-frame-iter2-v0132-qualification.md](0047-hub75-wood-frame-iter2-v0132-qualification.md) — enable and natively qualify the lower-compartment HUB75 case on Forge v0.13.2 with a 70→90 mm saved-design mutation (#154).
+- [0048-hub75-wood-frame-iter2-v0132-qualification.md](0048-hub75-wood-frame-iter2-v0132-qualification.md) — enable and natively qualify the lower-compartment HUB75 case on Forge v0.13.2 with a 70→90 mm saved-design mutation (#154).
 - [0047-forge-0132-hub75-panel.md](0047-forge-0132-hub75-panel.md) — adopt Forge v0.13.2 and remove the temporary detailed hub75-panel process gate after #796 (#421).
