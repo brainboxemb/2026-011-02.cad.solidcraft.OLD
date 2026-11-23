@@ -1,7 +1,7 @@
 {
   "format": "scpf-replay-log",
   "version": 1,
-  "replay_sha256": "72a4f353c9e1109e9e89a6684416bcabd2066979cebb6fb5148446a5120e85a3",
+  "replay_sha256": "bd8f3ff0a30fd3de9be995d1d6dcd6b95ac9208bd7cb502e84c07bc9adcb496a",
   "variables": {},
   "commands": [
     {
@@ -332,25 +332,146 @@
     },
     {
       "index": 22,
-      "command": "sketch.rectangle.two_point",
+      "command": "sketch.slot.center_to_center",
       "resolved_params": {
         "p0": [
-          -4.0,
-          -4.0
+          0.0,
+          4.0
         ],
         "p1": [
-          4.0,
-          4.0
-        ]
+          3.5,
+          2.0
+        ],
+        "width": 0.6
       }
     },
     {
       "index": 23,
+      "command": "sketch.slot.center_to_center",
+      "resolved_params": {
+        "p0": [
+          3.5,
+          2.0
+        ],
+        "p1": [
+          3.5,
+          -2.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "index": 24,
+      "command": "sketch.slot.center_to_center",
+      "resolved_params": {
+        "p0": [
+          3.5,
+          -2.0
+        ],
+        "p1": [
+          0.0,
+          -4.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "index": 25,
+      "command": "sketch.slot.center_to_center",
+      "resolved_params": {
+        "p0": [
+          0.0,
+          -4.0
+        ],
+        "p1": [
+          -3.5,
+          -2.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "index": 26,
+      "command": "sketch.slot.center_to_center",
+      "resolved_params": {
+        "p0": [
+          -3.5,
+          -2.0
+        ],
+        "p1": [
+          -3.5,
+          2.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "index": 27,
+      "command": "sketch.slot.center_to_center",
+      "resolved_params": {
+        "p0": [
+          -3.5,
+          2.0
+        ],
+        "p1": [
+          0.0,
+          4.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "index": 28,
+      "command": "sketch.slot.center_to_center",
+      "resolved_params": {
+        "p0": [
+          0.0,
+          0.0
+        ],
+        "p1": [
+          0.0,
+          4.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "index": 29,
+      "command": "sketch.slot.center_to_center",
+      "resolved_params": {
+        "p0": [
+          0.0,
+          0.0
+        ],
+        "p1": [
+          3.5,
+          -2.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "index": 30,
+      "command": "sketch.slot.center_to_center",
+      "resolved_params": {
+        "p0": [
+          0.0,
+          0.0
+        ],
+        "p1": [
+          -3.5,
+          -2.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "index": 31,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 24,
+      "index": 32,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -363,5 +484,5 @@
       }
     }
   ],
-  "completed": 25
+  "completed": 33
 }

@@ -1,7 +1,7 @@
 {
   "bodies": [
     {
-      "area_mm2": 4283.714333852089,
+      "area_mm2": 4280.120016505335,
       "bbox": {
         "max": [
           11.000000000000002,
@@ -15,32 +15,32 @@
         ]
       },
       "center_of_mass": [
-        -4.350904782321478e-15,
-        5.096237377890573e-15,
-        0.9048960988662035
+        -4.429194398818319e-15,
+        4.986514162364597e-15,
+        0.9189145905451737
       ],
       "closed": true,
       "density_g_cm3": 1.29,
-      "edges": 108,
+      "edges": 132,
       "face_types": {
         "cone": 6,
-        "cylinder": 11,
-        "plane": 24
+        "cylinder": 17,
+        "plane": 26
       },
-      "faces": 41,
+      "faces": 49,
       "kernel": {
-        "edges": 113,
-        "faces": 43,
+        "edges": 137,
+        "faces": 51,
         "shells": 1,
-        "vertices": 74
+        "vertices": 90
       },
-      "mass_g": 15.015022354962776,
+      "mass_g": 15.026229799120216,
       "material": "Default",
       "measured_by": "smlib",
       "name": "FlexBenchDog",
       "notes": [],
-      "vertices": 71,
-      "volume_mm3": 11639.552213149438
+      "vertices": 87,
+      "volume_mm3": 11648.240154356756
     }
   ],
   "body_count": 1,
@@ -113,11 +113,11 @@
       "wires_ok": true
     },
     {
-      "curves": 4,
-      "dof": 4,
+      "curves": 45,
+      "dof": 21,
       "id": 13,
       "name": "Top logo",
-      "profiles": 1,
+      "profiles": 28,
       "status": "solved",
       "visible": false,
       "wires_ok": true
@@ -127,7 +127,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 3.9836460000000002,
+      "ms": 3.303403,
       "name": "Cylinder1",
       "rolled_back": false,
       "suppressed": false,
@@ -137,7 +137,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 40.628904,
+      "ms": 32.804198,
       "name": "Chamfer1",
       "rolled_back": false,
       "suppressed": false,
@@ -147,7 +147,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 32.584037,
+      "ms": 27.199029,
       "name": "Cylinder2",
       "rolled_back": false,
       "suppressed": false,
@@ -157,7 +157,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 47.29321,
+      "ms": 38.632289,
       "name": "Cylinder3",
       "rolled_back": false,
       "suppressed": false,
@@ -167,7 +167,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 28.287782,
+      "ms": 22.99962,
       "name": "Cylinder4",
       "rolled_back": false,
       "suppressed": false,
@@ -177,7 +177,7 @@
     {
       "error": null,
       "id": 6,
-      "ms": 74.331333,
+      "ms": 57.154615,
       "name": "Chamfer2",
       "rolled_back": false,
       "suppressed": false,
@@ -187,7 +187,7 @@
     {
       "error": null,
       "id": 7,
-      "ms": 0.223775,
+      "ms": 0.22161899999999998,
       "name": "Flex slot X",
       "rolled_back": false,
       "suppressed": false,
@@ -197,7 +197,7 @@
     {
       "error": null,
       "id": 8,
-      "ms": 65.148624,
+      "ms": 65.17290700000001,
       "name": "Flex slot X",
       "rolled_back": false,
       "suppressed": false,
@@ -207,7 +207,7 @@
     {
       "error": null,
       "id": 9,
-      "ms": 0.151898,
+      "ms": 0.182098,
       "name": "Flex slot Y",
       "rolled_back": false,
       "suppressed": false,
@@ -217,7 +217,7 @@
     {
       "error": null,
       "id": 10,
-      "ms": 77.640452,
+      "ms": 63.961641,
       "name": "Flex slot Y",
       "rolled_back": false,
       "suppressed": false,
@@ -227,7 +227,7 @@
     {
       "error": null,
       "id": 11,
-      "ms": 244.745152,
+      "ms": 205.371934,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -237,7 +237,7 @@
     {
       "error": null,
       "id": 12,
-      "ms": 109.720257,
+      "ms": 91.613451,
       "name": "Chamfer3",
       "rolled_back": false,
       "suppressed": false,
@@ -247,7 +247,7 @@
     {
       "error": null,
       "id": 13,
-      "ms": 0.169544,
+      "ms": 1.006576,
       "name": "Top logo",
       "rolled_back": false,
       "suppressed": false,
@@ -257,7 +257,7 @@
     {
       "error": null,
       "id": 14,
-      "ms": 35.085488,
+      "ms": 45.921485,
       "name": "Top logo",
       "rolled_back": false,
       "suppressed": false,
@@ -266,12 +266,12 @@
     }
   ],
   "total": {
-    "area_mm2": 4283.714333852089,
-    "edges": 108,
-    "faces": 41,
-    "mass_g": 15.015022354962776,
+    "area_mm2": 4280.120016505335,
+    "edges": 132,
+    "faces": 49,
+    "mass_g": 15.026229799120216,
     "open_bodies_skipped": 0,
-    "vertices": 71,
-    "volume_mm3": 11639.552213149438
+    "vertices": 87,
+    "volume_mm3": 11648.240154356756
   }
 }

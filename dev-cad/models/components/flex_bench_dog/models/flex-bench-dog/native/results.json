@@ -38,7 +38,7 @@
       "FlexBenchDog"
     ],
     "feature": 1,
-    "ms": 4.2361949999999995,
+    "ms": 3.2807209999999998,
     "name": "Cylinder1",
     "removed_bodies": [],
     "warning": null
@@ -52,7 +52,7 @@
     ],
     "created_bodies": [],
     "feature": 2,
-    "ms": 39.039531000000004,
+    "ms": 31.2169,
     "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null
@@ -66,7 +66,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 33.563587,
+    "ms": 26.014261,
     "name": "Cylinder2",
     "removed_bodies": [],
     "warning": null
@@ -80,7 +80,7 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 47.365539999999996,
+    "ms": 38.142174000000004,
     "name": "Cylinder3",
     "removed_bodies": [],
     "warning": null
@@ -94,7 +94,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 27.329895999999998,
+    "ms": 20.864013,
     "name": "Cylinder4",
     "removed_bodies": [],
     "warning": null
@@ -108,7 +108,7 @@
     ],
     "created_bodies": [],
     "feature": 6,
-    "ms": 59.121785,
+    "ms": 48.294450000000005,
     "name": "Chamfer2",
     "removed_bodies": [],
     "warning": null
@@ -190,7 +190,7 @@
     ],
     "created_bodies": [],
     "feature": 8,
-    "ms": 64.46637199999999,
+    "ms": 50.267073,
     "name": "Flex slot X",
     "removed_bodies": [],
     "warning": null
@@ -272,7 +272,7 @@
     ],
     "created_bodies": [],
     "feature": 10,
-    "ms": 75.335324,
+    "ms": 60.686771,
     "name": "Flex slot Y",
     "removed_bodies": [],
     "warning": null
@@ -286,7 +286,7 @@
     ],
     "created_bodies": [],
     "feature": 11,
-    "ms": 232.81413,
+    "ms": 191.38877200000002,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null
@@ -300,7 +300,7 @@
     ],
     "created_bodies": [],
     "feature": 12,
-    "ms": 99.11198999999999,
+    "ms": 81.84735,
     "name": "Chamfer3",
     "removed_bodies": [],
     "warning": null
@@ -319,58 +319,472 @@
     "sketch": 13
   },
   {
+    "centre_line": "l3",
     "constraints": [
       "k1",
       "k2",
       "k3",
-      "k4"
+      "k4",
+      "k5",
+      "k6"
     ],
-    "corners": {
-      "bottom_left": "p1",
-      "bottom_right": "p2",
-      "top_left": "p4",
-      "top_right": "p3"
-    },
     "created": {
       "constraints": [
         "k1",
         "k2",
         "k3",
-        "k4"
+        "k4",
+        "k5",
+        "k6"
       ],
       "curves": [
         "l1",
+        "a1",
         "l2",
-        "l3",
-        "l4"
+        "a2",
+        "l3"
       ],
       "dimensions": [],
       "points": [
         "p1",
         "p2",
         "p3",
-        "p4"
+        "p4",
+        "a1.center",
+        "a2.center",
+        "p5"
       ]
     },
     "curves": [
       "l1",
+      "a1",
       "l2",
-      "l3",
-      "l4"
+      "a2"
     ],
-    "sides": {
-      "bottom": "l1",
-      "left": "l4",
-      "right": "l2",
-      "top": "l3"
-    },
+    "middle": "p5",
     "sketch": {
-      "dof": 4,
+      "dof": 5,
       "solved": true
     }
   },
   {
-    "profiles": 1,
+    "centre_line": "l6",
+    "constraints": [
+      "k7",
+      "k8",
+      "k9",
+      "k10",
+      "k11",
+      "k12",
+      "k13"
+    ],
+    "created": {
+      "constraints": [
+        "k7",
+        "k8",
+        "k9",
+        "k10",
+        "k11",
+        "k12",
+        "k13"
+      ],
+      "curves": [
+        "l4",
+        "a3",
+        "l5",
+        "a4",
+        "l6"
+      ],
+      "dimensions": [],
+      "points": [
+        "p6",
+        "p7",
+        "p8",
+        "p9",
+        "a3.center",
+        "a4.center",
+        "p10"
+      ]
+    },
+    "curves": [
+      "l4",
+      "a3",
+      "l5",
+      "a4"
+    ],
+    "middle": "p10",
+    "sketch": {
+      "dof": 8,
+      "solved": true
+    }
+  },
+  {
+    "centre_line": "l9",
+    "constraints": [
+      "k14",
+      "k15",
+      "k16",
+      "k17",
+      "k18",
+      "k19",
+      "k20"
+    ],
+    "created": {
+      "constraints": [
+        "k14",
+        "k15",
+        "k16",
+        "k17",
+        "k18",
+        "k19",
+        "k20"
+      ],
+      "curves": [
+        "l7",
+        "a5",
+        "l8",
+        "a6",
+        "l9"
+      ],
+      "dimensions": [],
+      "points": [
+        "p11",
+        "p12",
+        "p13",
+        "p14",
+        "a5.center",
+        "a6.center",
+        "p15"
+      ]
+    },
+    "curves": [
+      "l7",
+      "a5",
+      "l8",
+      "a6"
+    ],
+    "middle": "p15",
+    "sketch": {
+      "dof": 11,
+      "solved": true
+    }
+  },
+  {
+    "centre_line": "l12",
+    "constraints": [
+      "k21",
+      "k22",
+      "k23",
+      "k24",
+      "k25",
+      "k26",
+      "k27"
+    ],
+    "created": {
+      "constraints": [
+        "k21",
+        "k22",
+        "k23",
+        "k24",
+        "k25",
+        "k26",
+        "k27"
+      ],
+      "curves": [
+        "l10",
+        "a7",
+        "l11",
+        "a8",
+        "l12"
+      ],
+      "dimensions": [],
+      "points": [
+        "p16",
+        "p17",
+        "p18",
+        "p19",
+        "a7.center",
+        "a8.center",
+        "p20"
+      ]
+    },
+    "curves": [
+      "l10",
+      "a7",
+      "l11",
+      "a8"
+    ],
+    "middle": "p20",
+    "sketch": {
+      "dof": 14,
+      "solved": true
+    }
+  },
+  {
+    "centre_line": "l15",
+    "constraints": [
+      "k28",
+      "k29",
+      "k30",
+      "k31",
+      "k32",
+      "k33",
+      "k34"
+    ],
+    "created": {
+      "constraints": [
+        "k28",
+        "k29",
+        "k30",
+        "k31",
+        "k32",
+        "k33",
+        "k34"
+      ],
+      "curves": [
+        "l13",
+        "a9",
+        "l14",
+        "a10",
+        "l15"
+      ],
+      "dimensions": [],
+      "points": [
+        "p21",
+        "p22",
+        "p23",
+        "p24",
+        "a9.center",
+        "a10.center",
+        "p25"
+      ]
+    },
+    "curves": [
+      "l13",
+      "a9",
+      "l14",
+      "a10"
+    ],
+    "middle": "p25",
+    "sketch": {
+      "dof": 17,
+      "solved": true
+    }
+  },
+  {
+    "centre_line": "l18",
+    "constraints": [
+      "k35",
+      "k36",
+      "k37",
+      "k38",
+      "k39",
+      "k40",
+      "k41",
+      "k42"
+    ],
+    "created": {
+      "constraints": [
+        "k35",
+        "k36",
+        "k37",
+        "k38",
+        "k39",
+        "k40",
+        "k41",
+        "k42"
+      ],
+      "curves": [
+        "l16",
+        "a11",
+        "l17",
+        "a12",
+        "l18"
+      ],
+      "dimensions": [],
+      "points": [
+        "p26",
+        "p27",
+        "p28",
+        "p29",
+        "a11.center",
+        "a12.center",
+        "p30"
+      ]
+    },
+    "curves": [
+      "l16",
+      "a11",
+      "l17",
+      "a12"
+    ],
+    "middle": "p30",
+    "sketch": {
+      "dof": 18,
+      "solved": true
+    }
+  },
+  {
+    "centre_line": "l21",
+    "constraints": [
+      "k43",
+      "k44",
+      "k45",
+      "k46",
+      "k47",
+      "k48",
+      "k49",
+      "k50"
+    ],
+    "created": {
+      "constraints": [
+        "k43",
+        "k44",
+        "k45",
+        "k46",
+        "k47",
+        "k48",
+        "k49",
+        "k50"
+      ],
+      "curves": [
+        "l19",
+        "a13",
+        "l20",
+        "a14",
+        "l21"
+      ],
+      "dimensions": [],
+      "points": [
+        "p31",
+        "p32",
+        "p33",
+        "p34",
+        "a13.center",
+        "a14.center",
+        "p35"
+      ]
+    },
+    "curves": [
+      "l19",
+      "a13",
+      "l20",
+      "a14"
+    ],
+    "middle": "p35",
+    "sketch": {
+      "dof": 19,
+      "solved": true
+    }
+  },
+  {
+    "centre_line": "l24",
+    "constraints": [
+      "k51",
+      "k52",
+      "k53",
+      "k54",
+      "k55",
+      "k56",
+      "k57",
+      "k58"
+    ],
+    "created": {
+      "constraints": [
+        "k51",
+        "k52",
+        "k53",
+        "k54",
+        "k55",
+        "k56",
+        "k57",
+        "k58"
+      ],
+      "curves": [
+        "l22",
+        "a15",
+        "l23",
+        "a16",
+        "l24"
+      ],
+      "dimensions": [],
+      "points": [
+        "p36",
+        "p37",
+        "p38",
+        "p39",
+        "a15.center",
+        "a16.center",
+        "p40"
+      ]
+    },
+    "curves": [
+      "l22",
+      "a15",
+      "l23",
+      "a16"
+    ],
+    "middle": "p40",
+    "sketch": {
+      "dof": 20,
+      "solved": true
+    }
+  },
+  {
+    "centre_line": "l27",
+    "constraints": [
+      "k59",
+      "k60",
+      "k61",
+      "k62",
+      "k63",
+      "k64",
+      "k65",
+      "k66"
+    ],
+    "created": {
+      "constraints": [
+        "k59",
+        "k60",
+        "k61",
+        "k62",
+        "k63",
+        "k64",
+        "k65",
+        "k66"
+      ],
+      "curves": [
+        "l25",
+        "a17",
+        "l26",
+        "a18",
+        "l27"
+      ],
+      "dimensions": [],
+      "points": [
+        "p41",
+        "p42",
+        "p43",
+        "p44",
+        "a17.center",
+        "a18.center",
+        "p45"
+      ]
+    },
+    "curves": [
+      "l25",
+      "a17",
+      "l26",
+      "a18"
+    ],
+    "middle": "p45",
+    "sketch": {
+      "dof": 21,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 28,
     "sketch": 13
   },
   {
@@ -382,7 +796,7 @@
     ],
     "created_bodies": [],
     "feature": 14,
-    "ms": 33.202905,
+    "ms": 44.851794,
     "name": "Top logo",
     "removed_bodies": [],
     "warning": null
