@@ -694,6 +694,20 @@ html:not(.dark) .hextra-search-trigger{font-size:.9rem}
   margin: .8rem 0 0;
 }
 
+.cad-model-parameters {
+  margin: .55rem 0 0;
+  padding-top: .55rem;
+  border-top: 1px solid var(--cad-line);
+  color: var(--cad-muted);
+  font-size: .86rem;
+  line-height: 1.48;
+  font-weight: 400;
+}
+.cad-model-parameters strong {
+  color: var(--cad-ink);
+  font-weight: 650;
+}
+
 .cad-links {
   display: flex;
   flex-wrap: wrap;
