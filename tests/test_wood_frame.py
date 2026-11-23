@@ -41,7 +41,7 @@ def commands(**overrides):
     args = ", ".join(f"{key}={value!r}" for key, value in overrides.items())
     # Normal model files use Forge's implicit single-class root. For a test
     # override, append one explicit call with the requested parameter values.
-    changed = text.rstrip() + f"\n\nWoodenHub75Box({args})\n"
+    changed = text.rstrip() + f"\n\nHub75DisplayCase({args})\n"
 
     # Keep the temporary entrypoint beside model.py so its local
     # parts/ and assemblies/ imports resolve exactly as in normal use.
@@ -121,7 +121,7 @@ class WoodenFrameTests(unittest.TestCase):
             obj.name for obj in definitions
             if isinstance(obj, ast.ClassDef)
         ]
-        self.assertEqual(classes, ["WoodenHub75Box"])
+        self.assertEqual(classes, ["Hub75DisplayCase"])
 
         board_classes = [
             obj.name for obj in ast.parse(

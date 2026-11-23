@@ -1,7 +1,7 @@
-# HUB75Display2
+# Hub75DisplayCase v2
 
-HUB75Display2 is the second HUB75 enclosure design. It is developed **in
-parallel** with the existing [Wooden HUB75 Basic Box](../hub75_wood_frame/README.md).
+Hub75DisplayCase v2 is the second HUB75 enclosure design. It is developed **in
+parallel** with the existing [Hub75DisplayCase](../hub75_wood_frame/README.md).
 
 The first revision intentionally starts from the same verified geometry and
 parameter values as the current wooden display. That gives v1 and v2 a known
@@ -10,7 +10,7 @@ be copied back to v1.
 
 ## Independence
 
-HUB75Display2 owns its own model-local:
+Hub75DisplayCase v2 owns its own model-local:
 
 - `scpf/model.py`;
 - `scpf/parts/`;

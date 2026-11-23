@@ -1,4 +1,4 @@
-# Wooden HUB75 Basic Box — one parametrized assembly
+# Hub75DisplayCase — one parametrized assembly
 
 This model is a wooden enclosure for five upright P5 HUB75 LED modules.
 [`scpf/model.py`](scpf/model.py) now contains only the top-level design
@@ -16,10 +16,10 @@ every older dimension written in the v29 reference.
 
 ## Change dimensions in one place
 
-At the bottom of the source, `WoodenHub75Box` has the design parameters:
+At the bottom of the source, `Hub75DisplayCase` has the design parameters:
 
 ```python
-class WoodenHub75Box:
+class Hub75DisplayCase:
     opening_width = 844.0
     opening_height = 362.0
     panel_recess_depth = 25.0
@@ -190,7 +190,7 @@ also still deferred under #362 / Forge #750.
 ## Model browser and source layout
 
 ```text
-WoodenHub75Box
+Hub75DisplayCase
 ├── HUB75Panels
 │   └── Hub75PanelBasic × 5
 ├── WoodBoxFrame

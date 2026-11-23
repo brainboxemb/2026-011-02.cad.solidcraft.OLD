@@ -1,4 +1,4 @@
-"""Wooden HUB75 display assembled from named parts and subassemblies."""
+"""Hub75DisplayCase assembled from named parts and subassemblies."""
 
 from assemblies.corner_brackets import CornerBrackets
 from assemblies.glass_frame import GlassFrame
@@ -7,7 +7,7 @@ from assemblies.wood_frame import WoodFrame
 from parts.window import Window
 
 
-class WoodenHub75Box:
+class Hub75DisplayCase:
     """Top-level adjustable design parameters and composition."""
 
     # Coordinate / datum conventions
