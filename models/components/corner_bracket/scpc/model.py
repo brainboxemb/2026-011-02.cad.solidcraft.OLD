@@ -45,7 +45,7 @@ script.add(
     closed=True,
     ids=[
         "i_corner",
-        "o_hor_tip_relief",
+        "tip_hor_relief",
         "o_hor_tip",
         "o_hor_bevel",
         "o_hor",
@@ -53,7 +53,7 @@ script.add(
         "o_vert",
         "o_vert_bevel",
         "o_vert_end",
-        "o_vert_tip_relief",
+        "tip_vert_relief",
         "v_tip",
     ],
 )
@@ -72,9 +72,10 @@ script.add(
     body="CornerBracket",
 )
 
-# Reference pick points for the nine outside profile segments on both broad faces.
+# Reference pick points for the seven normal outside profile segments on each
+# broad face. The two 0.6 mm tip-relief diagonals are intentionally excluded:
+# a 2 mm chamfer on those tiny faces causes a native trim leak.
 outside_edges = [
-    [59.7, -12, 0.3],
     [60, -12, 4.8],
     [58.5, -12, 10.5],
     [25.5, -12, 12],
@@ -82,8 +83,6 @@ outside_edges = [
     [-12, -12, -25.5],
     [-10.5, -12, -58.5],
     [-4.8, -12, -60],
-    [-0.3, -12, -59.7],
-    [59.7, 12, 0.3],
     [60, 12, 4.8],
     [58.5, 12, 10.5],
     [25.5, 12, 12],
@@ -91,7 +90,6 @@ outside_edges = [
     [-12, 12, -25.5],
     [-10.5, 12, -58.5],
     [-4.8, 12, -60],
-    [-0.3, 12, -59.7],
 ]
 script.add(
     "solid.chamfer",
