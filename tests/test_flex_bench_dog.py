@@ -19,7 +19,7 @@ class FlexBenchDogTests(unittest.TestCase):
         self.assertEqual(names.count("sketch.rectangle.two_point"), 3)
         self.assertEqual(names.count("solid.extrude"), 3)
         self.assertEqual(names.count("solid.fillet"), 0)
-        self.assertEqual(names.count("solid.chamfer"), 2)
+        self.assertEqual(names.count("solid.chamfer"), 3)
         self.assertFalse(any(name == "solid.hole" for name in names))
 
     def test_native_parameters_are_fit_dimensions(self):
@@ -34,7 +34,7 @@ class FlexBenchDogTests(unittest.TestCase):
             {
                 "hole_diameter": "20",
                 "interference": "0.2",
-                "rim_diameter": "24",
+                "rim_diameter": "22",
                 "slot_width": "1.5",
             },
         )
@@ -47,9 +47,9 @@ class FlexBenchDogTests(unittest.TestCase):
         ]
 
         self.assertEqual(cylinders[0]["base"], [0, 0, 0])
-        self.assertEqual(cylinders[0]["height"], 3)
-        self.assertEqual(cylinders[1]["base"], [0, 0, 3])
-        self.assertEqual(cylinders[1]["height"], 17)
+        self.assertEqual(cylinders[0]["height"], 1.5)
+        self.assertEqual(cylinders[1]["base"], [0, 0, 1.5])
+        self.assertEqual(cylinders[1]["height"], 18.5)
         self.assertEqual(cylinders[2]["base"], [0, 0, -20])
         self.assertEqual(cylinders[2]["height"], 20)
         self.assertEqual(cylinders[3]["base"], [0, 0, -20])
@@ -83,16 +83,37 @@ class FlexBenchDogTests(unittest.TestCase):
         self.assertEqual(len(cuts), 2)
         self.assertTrue(all(row["distance"] == 16 for row in cuts))
 
-    def test_top_and_bottom_chamfers_have_different_sizes(self):
+    def test_mft_collar_has_45_degree_seat_profile(self):
         commands = run_script(MODEL)["commands"]
         chamfers = [
             row["params"]
             for row in commands
             if row["command"] == "solid.chamfer"
         ]
-        self.assertEqual(len(chamfers), 2)
-        self.assertEqual(chamfers[0]["distance"], 1.0)
-        self.assertEqual(chamfers[1]["distance"], 0.6)
+        self.assertEqual(len(chamfers), 3)
+
+        collar = chamfers[0]
+        self.assertEqual(collar["distance"], 1.0)
+        self.assertEqual(collar["body"], "FlexBenchDog")
+        self.assertEqual(collar["edges"][0][1:], [0, 0])
+        self.assertIn(
+            str(collar["edges"][0][0]).replace(" ", ""),
+            ("11", "11.0", "rim_diameter/2", "(rim_diameter)/2"),
+        )
+
+        # The 1 mm radial difference between Ø22 and Ø20 makes this selected
+        # edge chamfer a 45-degree seat. The remaining 0.5 mm stays vertical.
+        cylinders = [
+            row["params"]
+            for row in commands
+            if row["command"] == "solid.cylinder"
+        ]
+        self.assertEqual(cylinders[0]["height"], 1.5)
+        self.assertEqual(cylinders[1]["base"], [0, 0, 1.5])
+        self.assertEqual(cylinders[1]["height"], 18.5)
+
+        self.assertEqual(chamfers[1]["distance"], 1.0)
+        self.assertEqual(chamfers[2]["distance"], 0.6)
 
     def test_recessed_top_logo_is_present(self):
         commands = run_script(MODEL)["commands"]

@@ -209,7 +209,8 @@ schema, planner or reference framework.
 | #172 Full-catalog Forge/SolidCraft qualification | dev-cad | **blocked** | Re-enable the two remaining roots after the required Forge fix reaches the CAD-consumed baseline. |
 | #168 Verification terminology cleanup | cross-repo | **later** | Revisit after lane and model-ownership cleanup are stable. |
 | #331 FlexBenchDog MFT stop collar | dev-cad | **now** | Implement the shaped Ø22 × 1.5 mm collar with a 45° underside seat chamfer back to Ø20; verify the side profile. |
-| #332 FlexBenchDog BrainBox cube-wireframe logo | dev-cad | **next after #331** | Replace the filled square with the recessed six-edge + three-spoke cube/box wireframe from preserved PR #128. |
+| #333 FlexBenchDog rounded central slot corners | dev-cad | **next after #331** | Round the four material-side corners around the central  in the underside slot geometry; preserve slot width/length and 4 mm root. |
+| #332 FlexBenchDog BrainBox cube-wireframe logo | dev-cad | **next after #333** | Replace the filled square with the recessed six-edge + three-spoke cube/box wireframe from preserved PR #128. |
 | #327 FlexBenchDog full-length native Cone taper | dev-cad | **blocked** | PR #328 proved native Cone exists, but Forge #746 must add Cone join/cut feature compilation and reach a CAD-consumable release/pin. |
 | #154 HUB75 lower storage compartment | dev-cad | **next after #332** | Refresh PR #156 against current dev-cad and retain only the product/model work; drop stale catalog/CI-era edits. |
 | #142 HUB75Display2 | dev-cad | **blocked** | Resume qualification after the required Forge naming fix reaches the CAD baseline. |
@@ -264,16 +265,16 @@ in this plan.
 
 ## Next checkpoint
 
-Complete the unblocked FlexBenchDog refinements before returning to the older
-HUB75 branch:
+Complete the remaining unblocked FlexBenchDog refinements in focused changes:
 
-1. #331 — implement the MFT stop collar as a shaped Ø22 × 1.5 mm profile whose
-   underside chamfers 45° back to the Ø20 shaft;
-2. verify that the collar seats geometrically on the small 45° mouth chamfer of
-   a nominal Ø20 MFT hole and is not a plain cylindrical band;
-3. #332 — replace the current filled-square top recess with the recessed
-   BrainBox cube/box wireframe from preserved PR #128;
-4. verify both changes independently with SCPF/SCPC parity and durable renders;
+1. #331 — implement the Ø22 × 1.5 mm MFT stop collar with a 1.0 mm 45°
+   underside seat chamfer back to the Ø20 shaft;
+2. #333 — round the four material-side inner corners around the central
+   underside `+` while preserving 1.5 mm slot width, 16 mm slot length and the
+   4 mm solid root;
+3. #332 — replace the filled-square top recess with the recessed BrainBox
+   cube/box wireframe from preserved PR #128;
+4. verify each change independently with SCPF/SCPC parity and durable renders;
 5. then refresh #154 / PR #156 against the current `dev-cad` lane.
 
 Keep #327 / PR #328 draft and parked on Forge #746. Keep PR #141 parked on

@@ -21,8 +21,8 @@ on the actual dog-hole diameter, printer, filament and print settings.
 ## Shape
 
 - **20 mm** insertion below the worktop;
-- **20 mm** overall body height above the worktop, including the 3 mm rim;
-- Ø24 × 3 mm stop rim;
+- **20 mm** overall body height above the worktop, including the 1.5 mm collar;
+- Ø22 × 1.5 mm MFT stop collar with a 1.0 mm 45° underside seat chamfer back to Ø20;
 - light **0.6 mm chamfer** around the upper edge;
 - larger **1.0 mm chamfer** on the lower insertion edge as a lead-in;
 - small **recessed square box logo** in the top face;
@@ -37,8 +37,9 @@ on the actual dog-hole diameter, printer, filament and print settings.
 | Tip flare / interference | 0.20 mm |
 | Height above worktop | 20 mm |
 | Insertion length | 20 mm |
-| Rim diameter | 24 mm |
-| Rim thickness | 3 mm |
+| Stop-collar diameter | 22 mm |
+| Stop-collar axial zone | 1.5 mm |
+| Stop-collar seat chamfer | 1.0 mm at 45° |
 | Flared tip length | 2 mm |
 | Cross-slot width | 1.5 mm |
 | Cross-slot length | 16 mm |
@@ -55,8 +56,9 @@ does not need to stop flush with the underside. The square logo is recessed
 
 The overall construction is inferred from the supplied Mini-MFT image. The
 nominal 20 mm dog-hole size and the current symmetric 20/20 mm proportions are
-project decisions. Rim size, flex-slot dimensions and the 0.20 mm tip flare
-have not yet been verified by a physical fit test.
+project decisions. The collar profile follows the supplied MFT reference and nominal Ø20 hole with a
+small 45° mouth chamfer. Flex-slot dimensions and the 0.20 mm tip flare have not
+yet been verified by a physical fit test.
 
 After a first print, the first value to tune is `interference`, followed by
 `slot_width` if more or less spring movement is needed.

@@ -11,11 +11,12 @@ preload after the stem is split into four flexible quadrants.
 class FlexBenchDog:
     hole_diameter = 20.0
     interference = 0.20
-    rim_diameter = 24.0
+    rim_diameter = 22.0
     slot_width = 1.5
 
     ABOVE_WORKTOP = 20.0
-    RIM_THICKNESS = 3.0
+    RIM_THICKNESS = 1.5
+    RIM_SEAT_CHAMFER = 1.0
     INSERTION_LENGTH = 20.0
     TIP_FLARE_LENGTH = 2.0
     SLOT_LENGTH = 16.0
@@ -25,12 +26,18 @@ class FlexBenchDog:
     LOGO_DEPTH = 0.6
 
     def build(self):
-        # Rim bottom is the worktop datum. The narrower working cylinder starts
-        # on the rim and ends at 20 mm above the worktop.
+        # The stop collar sits on the small 45-degree mouth chamfer of a
+        # nominal 20 mm MFT hole. Its Ø22 × 1.5 mm envelope is chamfered only
+        # at the lower outside edge: 1 mm radial difference gives a 1 mm axial
+        # 45-degree seat, leaving a 0.5 mm straight Ø22 land above it.
         rim = Cylinder(
             d=self.rim_diameter,
             h=self.RIM_THICKNESS,
             anchor=Anchor.BOTTOM,
+        )
+        rim = rim.chamfer(
+            self.RIM_SEAT_CHAMFER,
+            edges=[(self.rim_diameter / 2, 0, 0)],
         )
 
         working_height = self.ABOVE_WORKTOP - self.RIM_THICKNESS

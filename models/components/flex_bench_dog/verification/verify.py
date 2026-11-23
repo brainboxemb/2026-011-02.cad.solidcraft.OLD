@@ -13,7 +13,7 @@ VERIFICATION = SolidCraftVerification(
     baseline=SolidCraftModelExpectation(
         body_count=1,
         body_envelopes=(
-            BodyEnvelope((-12.0, -12.0, -20.0), (12.0, 12.0, 20.0)),
+            BodyEnvelope((-11.0, -11.0, -20.0), (11.0, 11.0, 20.0)),
         ),
         bounds_tolerance=0.005,
         sketch_count=3,
