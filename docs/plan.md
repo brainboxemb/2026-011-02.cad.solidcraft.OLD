@@ -22,9 +22,14 @@ dev-ci
 
 Current heads at this reconciliation:
 
-- `main`: `48fafd27a41249811b5df7f5f2d39f1ce0829d50`;
-- `dev-cad`: `fe5268dcff3ce5f4d52316da3313743f80da9c9d`;
-- `dev-ci`: `6677eaa99e73a5c2d6faed5c87106139d4694d6f`.
+- `main`: `c3d46976c8810487b74a802faf1009cb8608e4b0`;
+- `dev-cad`: `b69e8170576a911581c4d8d58806ba92f1ac0b57`;
+- `dev-ci`: `c3d46976c8810487b74a802faf1009cb8608e4b0`.
+
+Stable `main` and `dev-ci` now include the accepted #344/#350 model-detail
+presentation: long model parameter prose is normal **Key dimensions** text,
+not a status badge. Stable run #45199498406 and dev-ci run #45199501975 are
+green on the exact shared head.
 
 Development lanes are working/integration lanes. Multiple accepted logical
 changes may accumulate there. Do **not** promote to `main` after every green
@@ -55,6 +60,11 @@ Primary lane: `dev-cad`.
   #361/#368/#372 added, corrected and zoomed the model-owned underside view.
   Durable run #433 made the four equal rounded material-side corners clearly
   inspectable and they were visually accepted.
+- #385 is complete: PR #386 removed the unintended primary-camera override
+  introduced with the underside view. The primary FlexBenchDog preview again
+  uses the shared/default camera while `underside.png` keeps its dedicated
+  review camera. Durable dev-cad run #45196422598 is green at
+  `b69e8170576a911581c4d8d58806ba92f1ac0b57`.
 - #327 / draft PR #328: full-length native Cone taper remains blocked on Forge
   #746. Do not emulate Cone locally.
 
@@ -100,9 +110,11 @@ generic Forge gaps.
 
 ### 5. Site lane
 
-- #344 is complete on `dev-ci`: long model parameter prose is no longer a
-  status badge; it is rendered as readable **Key dimensions** under the model
-  description.
+- #344 is complete and promoted to stable `main`: long model parameter prose
+  is no longer a status badge; it is rendered as readable **Key dimensions**
+  under the model description. #383 synchronized `main -> dev-ci`, restored
+  the accepted documentation, and promoted exact `dev-ci -> main` through the
+  permanent-lane merge policy.
 - #278 is closed: the accepted EXP-derived model-detail hierarchy has been
   ported and accepted.
 - Keep #288 as a separate CAD-CI consumer migration; do not mix it into model
@@ -148,15 +160,20 @@ required naming fix and any other applicable runner fixes.
 | #365 HUB75 glazing retention/seal | dev-cad | **next design slice** | Define the physical glazing stack, contact/clearance, retention and sealing before modelling guessed hardware. |
 | #371 Detailed HUB75 panel completion | tracking | **tracking only** | Reusable-panel work is split into #373 rear-frame contour, #374 mounting interfaces and #375 connector envelopes. |
 | #373 HUB75 rear-frame bay contours | dev-cad + Forge | **blocked if clean Polygon2D is required** | Restore R5/stepped bay contours; do not use overlapping-profile workarounds instead of Forge #747. |
-| #374 HUB75 mounting tubes/bushings/locator pins | dev-cad | **merged / durable qualification** | PR #376 is merged; inspect durable rear snapshot from run #435, then close if the restored interfaces read correctly. |
-| #375 HUB75 connector envelopes | dev-cad | **next after #374** | Add two IDC/data envelopes and the explicitly approximate power envelope in reusable local panel coordinates. |
+| #374 HUB75 mounting tubes/bushings/locator pins | dev-cad + Forge/SolidCraft | **standalone merged / assembly acceptance blocked on #388** | PR #376 is merged and the standalone detailed panel remains valid. Do not close final visual acceptance while the five-panel assembly leaves component-local Cylinder features detached. |
+| #375 HUB75 connector envelopes | dev-cad | **implemented / draft PR #390 green; blocked on #388 before merge** | The two measured IDC envelopes and explicitly approximate power envelope build successfully in the standalone reusable panel on the released stack. Keep PR #390 draft until reusable-component assembly output is clean. |
+| #388 HUB75 component-local Cylinder placement regression | dev-cad + Forge/SolidCraft | **blocked on owner-layer qualification** | Five panel bodies are placed correctly, but the 14 native Cylinder join features can appear detached. Forge #753 / draft PR #754 owns the minimal rotated-component reproducer. SolidCraft 0.45 issue #21098 / PR #21145 is the primary runtime hypothesis, not yet proven or released. |
+| #382 Stable-to-dev-cad synchronization / CAD checkpoint | repository governance | **next: main -> dev-cad only; reverse promotion paused** | Bring the now-stable #344 site fix into dev-cad through an exact history-preserving merge, then require durable dev-cad green. Do not promote dev-cad back to main while #388 remains open. |
 | #366 HUB75 rear/electrical interfaces | dev-cad | **blocked on reusable panel children** | After #371 children are accepted, model only enclosure-side clearance/access/cable consequences; do not duplicate panel dimensions. |
 | #367 HUB75 exploded view | dev-cad + Forge | **blocked on Forge #751** | SolidCraft 0.45 has native `explode.create/show`; Forge #751 owns the reusable wrapper/qualification, then CAD publishes through generic extra views. |
 | #7 complete HUB75 screen assembly | tracking | **tracking only** | Remaining work is split across #8/#77/#91/#365/#366/#367 plus #20/#21; do not create one broad #7 implementation PR. |
 
 ## Completed / retired in this batch
 
-- #344 complete: compact model-detail facts on `dev-ci`.
+- #344 complete and stable: compact model-detail facts are on synchronized
+  `main` / `dev-ci` at `c3d46976c8810487b74a802faf1009cb8608e4b0`.
+- #385 complete: FlexBenchDog primary preview camera restored without changing
+  the dedicated underside review camera.
 - #278 closed: accepted model-detail presentation baseline.
 - #34 closed: SCPC/SCPF repository split and representative parallel-model
   architecture are complete; future SCPC coverage is model-specific work.
@@ -177,10 +194,16 @@ required naming fix and any other applicable runner fixes.
 
 ## Next checkpoint
 
-1. finish durable visual acceptance of #374 from run #435;
-2. then implement #375 as the next independent detailed-panel slice;
-3. keep #365 as a design-decision slice: do not guess gasket/fastener hardware;
-4. keep #154/#327/#345/#348/#362/#367 parked until their owner-layer Forge
+1. complete #383 baseline reconciliation, then synchronize exact stable
+   `main -> dev-cad` under #382 so the accepted Key-dimensions presentation is
+   also visible on the dev-cad Pages scope;
+2. verify the synchronized dev-cad durable build/Pages scope remains green and
+   retains the restored FlexBenchDog primary camera;
+3. resolve #388 through Forge #753 / the applicable SolidCraft owner fix; do not
+   add a CAD-local primitive/placement workaround;
+4. only after #388 is qualified, finish #374 assembly visual acceptance and
+   merge the already-green draft #390 / #375 connector slice;
+5. keep #365 as a design-decision slice and keep
+   #154/#327/#345/#348/#362/#367 parked until their owner-layer Forge
    capabilities are released and adopted;
-5. continue independent dev-cad/dev-ci work without forcing promotion to
-   `main`; promote only at a deliberate stable checkpoint.
+6. do not promote `dev-cad -> main` under #382 while #388 remains open.
