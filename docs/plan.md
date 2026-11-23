@@ -46,14 +46,15 @@ Pure repository-instruction/documentation corrections in `AGENTS.md` and
 work. Documentation belonging to a code/model change stays with that issue,
 branch and PR.
 
-Current CAD runtime baseline is SolidCraft 0.45.0. Stable `dev-cad` still
-consumes released Forge v0.11.0. CAD #405 is qualifying Forge v0.13.1 at exact
-commit `17a4e1d0e2edf0124d40daf5425891fdf65c24be`, which contains #679,
-#703, #746, #747, #749 and #750. Adoption run #45263158238 failed because
-Forge #796 regresses symbolic placed-Cylinder anchor arithmetic in
-`hub75-panel`; therefore v0.13.1 is **not** an accepted CAD baseline. #405
-must move to a patched released Forge version after #796 is fixed. Forge #753 /
-CAD #388 is separate and remains an owner-layer blocker.
+Current CAD runtime baseline is SolidCraft 0.45.0. CAD #405 is adopting
+released Forge v0.13.1 at exact commit
+`17a4e1d0e2edf0124d40daf5425891fdf65c24be`, which contains #679, #703,
+#746, #747, #749 and #750. Adoption run #45263158238 exposed Forge #796 in
+the existing detailed `hub75-panel`. CAD #407 therefore temporarily marks only
+that model root `process: false`; its geometry stays unchanged and the gate is
+removed after a released Forge fix is adopted. This temporary model gate does
+not block accepting v0.13.1 for the other CAD roots. Forge #753 / CAD #388 is
+separate and remains an owner-layer blocker.
 
 ## Current work order
 
@@ -74,9 +75,9 @@ Primary lane: `dev-cad`.
   uses the shared/default camera while `underside.png` keeps its dedicated
   review camera. Durable dev-cad run #45196422598 is green at
   `b69e8170576a911581c4d8d58806ba92f1ac0b57`.
-- #327 / draft PR #328: Forge #746 is present in v0.13.1, but CAD adoption is blocked by #405 / Forge
-  #796. Resume the full-length native Cone taper only after the patched Forge
-  baseline is released and accepted.
+- #327 / draft PR #328: Forge #746 is released in v0.13.1. Resume the
+  full-length native Cone taper after #405 accepts the baseline; Forge #796 is
+  isolated to the temporarily disabled `hub75-panel` root through #407.
 
 ### 2. Keep temporary capability workarounds explicit
 
@@ -162,6 +163,8 @@ freeze unrelated model work.
 
 ## Other open work
 
+| #407 temporary hub75-panel gate | dev-cad + Forge | **temporary / Forge #796** | Keep only `hub75-panel` disabled while #796 is unresolved; re-enable immediately after a released Forge fix is adopted. |
+
 | Issue | Owner/lane | Status | Next action |
 | --- | --- | --- | --- |
 | #8 CornerBracket exact geometry | dev-cad + Forge | **blocked on #405 / Forge #796** | Preserve PR #360 geometry; add the final rotated wedge only after the patched Forge baseline is accepted. |
@@ -215,22 +218,22 @@ freeze unrelated model work.
   baseline is available.
 - PR #141 — Bolted Flange circular pattern; blocked on Forge #347.
 
-PR #349 (#154) and PR #328 (#327) have their original Forge capabilities in
-v0.13.1, but remain parked while #405 is blocked on Forge #796. Resume them
-only after a patched release is accepted and within their existing issues.
+PR #349 (#154) and PR #328 (#327) have their required Forge capabilities in
+v0.13.1. Resume them after #405 is accepted; #407 isolates the unrelated
+`hub75-panel` regression while Forge #796 is fixed upstream.
 
 ## Next checkpoint
 
-1. fix Forge #796 in Forge itself and qualify the symbolic placed-Cylinder
-   regression; do not add a CAD-local workaround;
-2. publish a patched Forge release containing the v0.13.1 capability set plus
-   #796, then update #405 to that exact release commit;
-3. require #405 PR validation to be fully green before merging the dependency
-   adoption;
-4. re-enable the existing `hub75-wood-frame` under #378 and require a real
+1. merge #407 into the #405 adoption branch so only `hub75-panel` is
+   temporarily disabled for Forge #796; do not change its geometry;
+2. require #405 validation to be green on exact Forge v0.13.1, then merge the
+   dependency adoption into `dev-cad`;
+3. re-enable the existing `hub75-wood-frame` under #378 and require a real
    native build plus source-matched dev-cad output;
-5. resume #154 / draft PR #349, then the independent #327/#348/#362/#373
+4. resume #154 / draft PR #349, then the independent #327/#348/#362/#373
    slices in their own issue/branch/PR order;
+5. fix Forge #796 upstream in parallel; after a released Forge fix is adopted,
+   restore `hub75-panel` to `process: true` and remove #407's temporary gate;
 6. after #378 is green, continue #77/#91 and then #142/full-catalog #172 as
    appropriate;
 7. keep #388 on its Forge #753/SolidCraft owner path. It still blocks final
