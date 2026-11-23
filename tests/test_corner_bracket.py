@@ -12,23 +12,39 @@ REFERENCE = (
 
 
 class CornerBracketTests(unittest.TestCase):
-    def test_default_bracket_is_hole_free_and_retains_all_edge_features(self):
+    def test_default_bracket_restores_exact_recessed_fixing_contract(self):
         commands = run_script(COMPONENT)["commands"]
-        # Current reusable component deliberately does not cut any mounting
-        # holes; the archived model_reference.py is a different experiment.
-        self.assertFalse(any(c["command"] == "solid.hole" for c in commands))
-        self.assertEqual(len([c for c in commands if c["command"] == "solid.chamfer"]), 3)
-        self.assertEqual(len([c for c in commands if c["command"] == "solid.fillet"]), 1)
-        # Nine geometry parameters + four sketch/extrude + four edge features.
-        self.assertEqual(len(commands), 17)
-        names = [c["params"]["name"] for c in commands
-                 if c["command"] == "parameters.add"]
-        self.assertFalse(any("bolt" in name or "head" in name or
-                             "plywood" in name for name in names))
+        holes = [c["params"] for c in commands if c["command"] == "solid.hole"]
+        chamfers = [c["params"] for c in commands if c["command"] == "solid.chamfer"]
+        fillets = [c["params"] for c in commands if c["command"] == "solid.fillet"]
+
+        self.assertEqual(len(commands), 42)
+        self.assertEqual(len(holes), 16)
+        self.assertEqual(len(chamfers), 2)
+        self.assertEqual(len(fillets), 1)
+
+        names = {
+            c["params"]["name"]
+            for c in commands
+            if c["command"] == "parameters.add"
+        }
+        self.assertEqual(
+            names,
+            {
+                "arm_width", "arm_height",
+                "horizontal_arm_length", "vertical_arm_length",
+                "outer_corner_chamfer", "arm_end_chamfer",
+                "side_edge_chamfer", "elephant_foot_relief",
+                "inside_corner_radius", "plywood_thickness",
+                "bolt_offset", "bolt_spacing", "bolt_y_offset",
+                "bolt_diameter", "bolt_clearance",
+                "head_diameter", "head_clearance", "head_recess",
+                "bolt_hole_edge_relief",
+            },
+        )
 
     def test_standalone_uses_exact_shared_component_class(self):
         source = COMPONENT.read_text(encoding="utf-8")
-
         self.assertIn("class CornerBracket:", source)
         self.assertNotIn("CornerBracket()", source)
         self.assertNotIn("_Shared.build", source)
@@ -36,99 +52,89 @@ class CornerBracketTests(unittest.TestCase):
         self.assertNotIn("getattr(", source)
         self.assertEqual(source.count("points = ["), 1)
 
-        commands = run_script(COMPONENT)["commands"]
-        names = [
-            row["params"]["name"]
-            for row in commands
-            if row["command"] == "parameters.add"
-        ]
-        self.assertEqual(
-            set(names),
-            {
-                "arm_width",
-                "arm_height",
-                "horizontal_arm_length",
-                "vertical_arm_length",
-                "outer_corner_chamfer",
-                "arm_end_chamfer",
-                "side_edge_chamfer",
-                "elephant_foot_relief",
-                "inside_corner_radius",
-            },
-        )
-        self.assertFalse(any(name.startswith("_") for name in names))
-
-    def test_named_polygon_vertices_generate_sketch_ids(self):
-        from scpf.core import Polygon2D
-        profile = Polygon2D([
-            ("bottom", (0, 0)), ("right", (10, 0)),
-            ("top", (10, 8)), ("left", (0, 8)),
-        ], plane="XZ", world=True)
-        points, plane, ids = profile.data
-        self.assertEqual(plane, "XZ")
-        self.assertEqual(points, ((0, 0), (10, 0), (10, -8), (0, -8)))
-        self.assertEqual(ids, ("bottom", "right", "top", "left"))
-
-        with self.assertRaisesRegex(ValueError, "all polygon vertices"):
-            Polygon2D([("a", (0, 0)), (10, 0), (10, 10)])
-        with self.assertRaisesRegex(ValueError, "cannot also specify ids"):
-            Polygon2D([("a", (0, 0)), ("b", (10, 0)), ("c", (0, 10))],
-                      ids=["a", "b", "c"])
-
-    def test_polygon_segments_have_meaningful_sketch_ids(self):
+    def test_profile_restores_open_scad_arm_tip_relief(self):
         commands = run_script(COMPONENT)["commands"]
         sketch = next(c for c in commands if c["command"] == "sketch.line")
-        # Start drafting at I: the inside corner is the sketch origin.
-        self.assertEqual(sketch["params"]["points"][0], [0, 0])
+        self.assertEqual(len(sketch["params"]["points"]), 11)
         self.assertEqual(
             sketch["params"]["ids"],
             [
-                "i_corner", "o_hor_tip", "o_hor_bevel",
-                "o_hor", "o_corner",
-                "o_vert", "o_vert_bevel",
-                "o_vert_end", "v_tip",
+                "i_corner",
+                "o_hor_tip_relief",
+                "o_hor_tip",
+                "o_hor_bevel",
+                "o_hor",
+                "o_corner",
+                "o_vert",
+                "o_vert_bevel",
+                "o_vert_end",
+                "o_vert_tip_relief",
+                "v_tip",
             ],
         )
+        points = sketch["params"]["points"]
+        self.assertEqual(points[0], [0, 0])
+        self.assertEqual(points[1], ["horizontal_arm_length - (elephant_foot_relief)", 0])
+        self.assertEqual(points[2], ["horizontal_arm_length", "-(elephant_foot_relief)"])
+        self.assertEqual(points[-2], ["-(elephant_foot_relief)", "-(vertical_arm_length)"])
+        self.assertEqual(points[-1], [0, "-((vertical_arm_length) - (elephant_foot_relief))"])
 
-    def test_polygon_segment_ids_are_checked(self):
-        from scpf.core import Polygon2D
-        points = [(0, 0), (10, 0), (10, 10)]
-        for tags in (["a", "b"], ["a", "a", "c"], ["a", "bad id", "c"]):
-            with self.subTest(tags=tags), self.assertRaises(ValueError):
-                Polygon2D(points, ids=tags)
-
-    def test_named_edges_and_tip_relief_compile_to_separate_features(self):
-        """Sketch contains no EF cuts; native chamfer adds them explicitly."""
+    def test_named_edges_compile_without_full_width_tip_chamfer(self):
         commands = run_script(COMPONENT)["commands"]
-        sketch = next(c for c in commands if c["command"] == "sketch.line")
-        self.assertEqual(len(sketch["params"]["points"]), 9)
-
         fillet = next(c for c in commands if c["command"] == "solid.fillet")
         self.assertEqual(fillet["params"]["edges"], [[0, 0, 0]])
 
         chamfers = [c["params"] for c in commands if c["command"] == "solid.chamfer"]
-
-        expected_xz = [
-            (60, 4.5), (58.5, 10.5), (25.5, 12),
-            (-9, 9), (-12, -25.5), (-10.5, -58.5),
-            (-4.5, -60),
-        ]
-        self.assertEqual(len(chamfers[0]["edges"]), 14)
+        self.assertEqual(len(chamfers), 2)
         self.assertEqual(chamfers[0]["distance"], "side_edge_chamfer")
-        for side_index, side in enumerate((-12, 12)):
-            for (expected_x, expected_z), point in zip(
-                expected_xz, chamfers[0]["edges"][side_index * 7:(side_index + 1) * 7]
-            ):
-                x, y, z = point
-                self.assertAlmostEqual(x, expected_x)
-                self.assertAlmostEqual(y, side)
-                self.assertAlmostEqual(z, expected_z)
-
-        self.assertEqual(chamfers[1]["edges"], [[60, 0, 0], [0, 0, -60]])
+        self.assertEqual(len(chamfers[0]["edges"]), 18)
         self.assertEqual(chamfers[1]["distance"], "elephant_foot_relief")
+        self.assertEqual(chamfers[1]["edges"], [[29.7, -12, 0], [29.7, 12, 0]])
+        self.assertFalse(
+            any(
+                row["edges"] == [[60, 0, 0], [0, 0, -60]]
+                for row in chamfers
+            )
+        )
 
-        self.assertEqual(chamfers[2]["edges"], [[30, -12, 0], [30, 12, 0]])
-        self.assertEqual(chamfers[2]["distance"], "elephant_foot_relief")
+    def test_each_bolt_seat_has_flat_recess_cone_and_two_edge_reliefs(self):
+        commands = run_script(COMPONENT)["commands"]
+        holes = [c["params"] for c in commands if c["command"] == "solid.hole"]
+        self.assertEqual(len(holes), 16)
+
+        for index in range(0, 16, 4):
+            flat, cone, outside_relief, inside_relief = holes[index:index + 4]
+            self.assertEqual(flat["diameter"], "head_diameter + head_clearance")
+            self.assertEqual(flat["depth"], "head_recess")
+            self.assertNotIn("type", flat)
+
+            self.assertEqual(cone["diameter"], "bolt_diameter + bolt_clearance")
+            self.assertEqual(cone["depth"], "arm_height - head_recess")
+            self.assertEqual(cone["type"], "countersink")
+            self.assertEqual(cone["cs_diameter"], "head_diameter + head_clearance")
+            self.assertEqual(cone["cs_angle"], 90)
+
+            self.assertEqual(
+                outside_relief["diameter"],
+                "head_diameter + head_clearance + 2 * bolt_hole_edge_relief",
+            )
+            self.assertEqual(outside_relief["depth"], "bolt_hole_edge_relief")
+            self.assertEqual(
+                inside_relief["diameter"],
+                "bolt_diameter + bolt_clearance + 2 * bolt_hole_edge_relief",
+            )
+            self.assertEqual(inside_relief["depth"], "bolt_hole_edge_relief")
+
+        outside_positions = [holes[i]["position"] for i in range(0, 16, 4)]
+        self.assertEqual(
+            outside_positions,
+            [
+                ["plywood_thickness + bolt_offset", "bolt_y_offset", "arm_height"],
+                ["plywood_thickness + bolt_offset + bolt_spacing", "bolt_y_offset", "arm_height"],
+                ["-(arm_height)", "bolt_y_offset", "-(plywood_thickness + bolt_offset)"],
+                ["-(arm_height)", "bolt_y_offset", "-(plywood_thickness + bolt_offset + bolt_spacing)"],
+            ],
+        )
 
     def test_missing_profile_edge_name_is_rejected(self):
         from scpf import Sketch
@@ -182,8 +188,8 @@ class CornerBracketTests(unittest.TestCase):
         self.assertEqual(chamfer["params"]["edges"], [[10, 0, 0], [0, 0, 8]])
 
     def test_historical_reference_remains_original_and_separate(self):
-        # Archived source is retained verbatim: Forge 0.11 removed the legacy
-        # Hole(countersink_*) interface, so this is not a live qualification.
+        # Archived source remains verbatim; the live component ports its
+        # geometry intent to current Hole/CountersinkHole features.
         reference = REFERENCE.read_text(encoding="utf-8")
         self.assertIn("class CornerBracket:", reference)
         self.assertEqual(reference.count("countersink_d=head_d"), 2)

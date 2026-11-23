@@ -11,22 +11,11 @@ definition and the standalone SCPF model. Forge runs that file directly;
 the HUB75 assembly imports the exact same `CornerBracket` class. There is
 no launcher file, wrapper model or second copy of the geometry.
 
-The default component is deliberately **without screw holes**. The earlier countersink operations caused warnings
-in native SolidCraft, especially when the same component was used four times
-inside the wooden HUB75 frame.
+The default component now restores the four recessed M5 fixing seats from the preserved OpenSCAD model. Each seat is intentionally decomposed into a Ø5.4 clearance bore, a Ø10.4 × 1.0 mm flat cylindrical head recess, a 90° transition cone and separate 0.2 mm flat reliefs at the outside and inside edges. This is not approximated by one oversized countersink.
 
-Only the screw-hole features have been removed. The L outline, inside R4
-fillet, outer chamfers and elephant-foot reliefs are all still separate,
-editable native features.
+The L outline, inside R4 fillet, broad-face chamfers and elephant-foot relief remain separate editable native features.
 
-The original **42-command, hole-containing** exploration is preserved as
-`scpf/reference.py` for study, but is **not the default model** and is
-**not used by the wooden enclosure**. This archived source retains the old
-`Hole(countersink_*)` call shape; Forge 0.11 removed that API, so the
-archive is no longer executable without porting its historical geometry
-intent. It remains deliberately unmodified and is not current qualification
-evidence. Hole geometry and fixing methods can be reintroduced as live
-`CountersinkHole` features when they can be built without native warnings.
+The archived `scpf/reference.py` remains preserved as historical source, but the live model now expresses the same fixing intent using Forge 0.11's current `Hole` and `CountersinkHole` APIs. The live SCPF and independent SCPC plans both contain 42 commands at the default dimensions.
 
 ## Named profile and explicit reliefs
 
@@ -49,9 +38,11 @@ The name belongs to the **vertex** and becomes the sketch-line ID for the **segm
 
 `Edges.from_profile("o_*")` selects named profile segments on the two broad faces. `Edges.from_vertices("o_hor_tip", "v_tip")` instead selects the extrusion-direction edges starting at those vertices. SCPF translates both selectors to edge-pick points because SolidCraft 0.42.0's fillet/chamfer commands do not directly accept sketch-line IDs.
 
-The original 0.6 mm **tip elephant-foot cuts are not in the polygon**: a separate native chamfer removes them at the two tip edges. Another chamfer produces the relief along the inside horizontal edge. The inside fillet, both reliefs and side chamfers remain separate editable features. SolidCraft 0.42.0 requires the larger 2 mm broad-face chamfers to be applied before the adjacent 0.6 mm tip reliefs; the dimensions are unchanged, only the native feature order is deliberate. No mounting holes are created in the default model.
+The 0.6 mm arm-tip print relief is again part of the 2D profile itself, matching the preserved OpenSCAD `base_profile_2d()`. The former sweep-edge tip chamfer was not equivalent because it removed material across the full 24 mm extrusion edge. The inside R4 fillet, broad-face side chamfer and continuous inside elephant-foot chamfer remain explicit native features.
 
-Named-edge selection is currently implemented for **symmetric XZ polygon extrusions only**. The remaining irregularities at the arm tips are a separate follow-up in issue #20.
+Four fixing seats are placed at 24 mm and 42 mm along each arm. For every seat the 1 mm flat head recess is cut first; the 90° countersink starts 1 mm inside the wall and transitions from Ø10.4 to the Ø5.4 through bore. Separate 0.2 mm shallow cuts create Ø10.8 outside and Ø5.8 inside edge reliefs.
+
+Named-edge selection is currently implemented for **symmetric XZ polygon extrusions only**. Issue #8 now owns final visual acceptance of the arm-tip junction. If the native render still shows the small local wedge remnant from OpenSCAD's `arm_tip_relief_cuts()`, that remaining transform/cutter capability must be handled through Forge rather than by a CAD-local geometry hack.
 
 For local GUI testing from the repository root after `./bootstrap.ps1`:
 
@@ -73,6 +64,6 @@ Original geometry reference: `brainboxemb/2026-011-01.cad.model-archive`, `model
 ## Two scripts: Forge and native commands
 
 - [SCPF model](scpf/model.py) is the shared parametric `CornerBracket` definition itself.
-- [SCPC model](scpc/model.py) independently lists all **17 native SolidCraft commands**, including named XZ sketch points, extrusion, R4 fillet and three chamfers.
+- [SCPC model](scpc/model.py) independently lists all **42 native SolidCraft commands**, including named XZ sketch points, extrusion, R4 fillet and three chamfers.
 
 This is useful for understanding exactly what SolidCraft receives. SCPC does **not** read Forge's JSON. Its explicit edge selectors describe the current reference dimensions (60 mm arms, 12 mm wall, 24 mm extrusion); when those dimensions change, review the sample coordinates as well. Native CI runs both and compares the final geometry and feature history.
