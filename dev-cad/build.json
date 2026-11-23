@@ -50,7 +50,7 @@
       "outputs": [
         "result.json"
       ],
-      "source_commit": "c2917f64f103424c4247c6b4a81c3848fe8f1668"
+      "source_commit": "e7149d2b402c4ba30835c6b56aeb5373205ef496"
     },
     "ci/scpc-package": {
       "engine": "scons",
@@ -64,6 +64,20 @@
         "provenance.json"
       ],
       "source_commit": "f975ff4f60af2e719399635fdb5153dc1f052c18"
+    },
+    "models/advanced/hub75-display2": {
+      "engine": "scons",
+      "engine_schema": 4,
+      "final_bundle_sha256": "2130afcc29d6e79e650803192c8866793af5bbd017dfb868fa71293125c8fa4a",
+      "final_step": "build_results",
+      "final_target_spec_digest": "6fdf6e559e77ef3a478d03871b99c9e2c31f172b7426fbfbe6d04a1af687b56f",
+      "item_id": "hub75-display2",
+      "outputs": [
+        "generated",
+        "manifest.json",
+        "models"
+      ],
+      "source_commit": "e7149d2b402c4ba30835c6b56aeb5373205ef496"
     },
     "models/advanced/hub75_screen": {
       "engine": "scons",
@@ -265,5 +279,5 @@
   "name": "dev-cad",
   "schema": 1,
   "scope": "named",
-  "source_commit": "c2917f64f103424c4247c6b4a81c3848fe8f1668"
+  "source_commit": "e7149d2b402c4ba30835c6b56aeb5373205ef496"
 }

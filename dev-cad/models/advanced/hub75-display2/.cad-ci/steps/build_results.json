@@ -1,0 +1,40 @@
+{
+  "action_executed": true,
+  "action_type": "copy",
+  "active_dependents": [],
+  "bundle_sha256": "2130afcc29d6e79e650803192c8866793af5bbd017dfb868fa71293125c8fa4a",
+  "duration_seconds": 0.022,
+  "engine": "scons",
+  "engine_schema": 4,
+  "error": null,
+  "exit_code": null,
+  "finished_at": "2026-11-23T21:31:17.484Z",
+  "item": "hub75-display2",
+  "outcome": "BUILT",
+  "output_state": "RESTORED",
+  "outputs": {
+    "generated": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "a72a40f71d629bcf7d7477603e6fd83eaf07fdc102a2f2db2af3e3b7cb1b17ba"
+    },
+    "manifest.json": {
+      "kind": "file",
+      "mode": 420,
+      "sha256": "93a18eca77b81f779150d790c6871c367c9e178871715cd7a442cb398cae439c"
+    },
+    "models": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "f7ba3e477de782540b5684ba6340e61e20f58ff35eacbb2c0fbbc4e761da728c"
+    }
+  },
+  "run_finished_at": "2026-11-23T21:31:17.569Z",
+  "run_started_at": "2026-11-23T21:30:43.844Z",
+  "schema": 5,
+  "started_at": "2026-11-23T21:31:17.462Z",
+  "status": "pass",
+  "step": "build_results",
+  "target_spec_digest": "6fdf6e559e77ef3a478d03871b99c9e2c31f172b7426fbfbe6d04a1af687b56f",
+  "timeout_seconds": null
+}
