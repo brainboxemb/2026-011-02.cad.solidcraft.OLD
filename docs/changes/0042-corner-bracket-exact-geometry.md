@@ -43,6 +43,13 @@ OpenSCAD also applies a small local `arm_tip_relief_wedge()` correction where
 the broad-face relief meets the diagonal side chamfer. The restored 2D profile
 removes the known incorrect full-width tip chamfer first.
 
+Native qualification showed that the 2 mm broad-face chamfer must not include
+the two new 0.6 mm tip-relief diagonal segments: doing so fails with an SMLib
+trim-leak error because the chamfer rails extend past those tiny faces. Those
+segments therefore use `tip_*` IDs and are excluded from the normal `o_*`
+selector, matching the fact that OpenSCAD handles the local tip junction as a
+separate operation.
+
 Native render inspection is required before #8 can close. If a remaining local
 triangular remnant still requires an arbitrary rotated wedge/cutter capability
 that released Forge cannot express, create or reuse the generic Forge owner
