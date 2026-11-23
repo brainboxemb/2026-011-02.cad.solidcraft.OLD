@@ -137,6 +137,11 @@ class FlexBenchDog:
         # created extra enclosed regions and visually removed a filled face.
         # Keeping one Slot profile per Sketch preserves the same nine visible
         # cube edges without allowing intersections to create face regions.
+        #
+        # TEMPORARY compatibility workaround — CAD #348 / Forge #747.
+        # The preferred final construction is one closed polygon strip per rib.
+        # Remove this one-Slot-per-Sketch workaround only after Forge #747
+        # reaches a released version consumed by this repository.
         for index, (p0, p1) in enumerate(self.LOGO_SEGMENTS, start=1):
             with Sketch(
                 name=f"Top logo rib {index}",

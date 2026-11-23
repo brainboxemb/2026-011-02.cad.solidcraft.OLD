@@ -217,6 +217,7 @@ schema, planner or reference framework.
 | #168 Verification terminology cleanup | cross-repo | **later** | Revisit after lane and model-ownership cleanup are stable. |
 | #333 FlexBenchDog rounded central slot corners | dev-cad | **implemented / visual pending** | PR #338 and durable run #373 prove the R0.5 four-edge fillet; keep open because the standard upper-oblique render does not expose the central underside cross clearly enough for visual acceptance. |
 | #332 FlexBenchDog BrainBox cube-wireframe logo | dev-cad | **correction now** | Keep the accepted nine centerlines, put each 0.6 mm Slot rib in its own Sketch/cut, and visually verify that all three cube faces remain open. |
+| #348 FlexBenchDog logo workaround cleanup | Forge + dev-cad | **blocked** | Keep the temporary one-Slot-per-Sketch implementation until Forge #747 adds Polygon2D support for explicit/attached Sketch compilation and that support reaches the CAD-consumed release. |
 | #327 FlexBenchDog full-length native Cone taper | dev-cad | **blocked** | PR #328 proved native Cone exists, but Forge #746 must add Cone join/cut feature compilation and reach a CAD-consumable release/pin. |
 | #154 HUB75 lower storage compartment | dev-cad | **next after #332** | Refresh PR #156 against current dev-cad and retain only the product/model work; drop stale catalog/CI-era edits. |
 | #142 HUB75Display2 | dev-cad | **blocked** | Resume qualification after the required Forge naming fix reaches the CAD baseline. |
@@ -292,6 +293,8 @@ Complete the #332 visual correction before returning to #154:
 6. then continue the clean #154 refresh from current `dev-cad`.
 
 Keep #333 open only for explicit underside-view visual acceptance of R0.5.
+Keep #348 blocked on Forge #747; the per-rib Slot sketches are explicitly
+temporary compatibility code, not the desired final logo construction.
 Keep #327 / PR #328 draft and parked on Forge #746. Keep PR #141 parked on
 Forge #347. Keep PR #169 draft/parked until its required Forge API is available
 in a CAD-consumable release. Keep #21 and #288 separate.

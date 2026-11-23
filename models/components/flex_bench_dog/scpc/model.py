@@ -139,6 +139,10 @@ script.add(
 # Recessed BrainBox wireframe. Each visible cube edge is one independent
 # Slot profile in its own Sketch and one cut. The nine slots therefore never
 # intersect inside the same Sketch and cannot create filled cube-face regions.
+#
+# TEMPORARY compatibility workaround — CAD #348 / Forge #747.
+# The preferred final construction is one closed polygon strip per rib once
+# Forge can lower Polygon2D in an explicit/attached Sketch.
 LOGO_SEGMENTS = (
     ([0.0, 4.0], [3.5, 2.0]),
     ([3.5, 2.0], [3.5, -2.0]),

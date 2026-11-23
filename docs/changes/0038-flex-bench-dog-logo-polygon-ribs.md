@@ -13,6 +13,10 @@ An initial correction attempt used Polygon2D rib strips. CAD CI rejected that
 approach because the released Forge v0.11.0 consumed by this repository does
 not support Polygon2D in this attached-Sketch route.
 
+That missing generic capability is tracked upstream as Forge #747. CAD #348
+tracks removal of the temporary per-rib Slot workaround after the Forge fix is
+released and adopted here.
+
 ## Decision
 
 Keep the nine accepted cube centerlines, 0.6 mm line width and 0.6 mm recess
