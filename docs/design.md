@@ -197,101 +197,89 @@ The homepage and Basic / Components / Advanced category routes remain stable.
 
 ### CAD model-detail presentation contract
 
-The accepted presentation reference is the rendered Hextra proof from
-`exp.2026-015.hugo-cad-site` (change record 0027 / issue #278).
+The accepted model-detail presentation is the user-approved framed baseline from
+`exp.2026-015.hugo-cad-site` issue #29 / PR #31.
 
-The model-detail page deliberately uses a small, calm hierarchy rather than a
-dashboard of independent cards.
+Change 0028 supersedes the intermediate presentation decision in change 0027.
 
-#### Overview
+#### Framed hierarchy
 
-The top of every model page contains:
+Model-detail pages preserve the established framed panel hierarchy:
 
-- the existing model hero;
-- one compact facts row derived from model metadata and accepted build evidence;
-- two neutral overview panels:
-  - **Model preview**;
-  - **Files + Construction stages**.
+- compact build/status badges below the hero;
+- Model preview and Files/Construction stages in the paired top panels;
+- Open in SolidCraft Web in a framed panel;
+- optional Background in a framed panel;
+- optional reference/extra views in a framed panel;
+- SCPF source in a framed code section;
+- generated SolidCraft commands in a framed disclosure;
+- optional SCPC comparison in a framed code section;
+- build/verification evidence in a framed panel;
+- source/downloads in a framed panel.
 
-The preview image owns its own aspect ratio. Heading height never controls
-preview height. Construction stages use the same Segoe UI/system sans body
-typography, weight and line-height as ordinary CAD prose.
+Do not replace this hierarchy with a free-form facts row or transparent
+document-section treatment.
 
-#### Ordinary document sections
+#### Section labels
 
-Below the overview, content is arranged as ordinary document sections with
-subtle horizontal separators rather than another layer of cards.
+Small blue labels give consistent hierarchy without standalone numeric section
+markers:
 
-This applies to:
+- `SolidCraft model` → Open in SolidCraft Web;
+- `Model context` → Background;
+- `Design reference` → reference/extra-view title;
+- `Source` → SCPF source;
+- `Generated output` → SolidCraft command sequence;
+- `Independent comparison` → SCPC command source;
+- `Accepted build evidence` → Build and verification.
 
-- Open in SolidCraft Web;
-- optional Background;
-- optional reference/extra views;
-- SCPF source;
-- generated SolidCraft commands;
-- optional SCPC comparison;
-- build and verification evidence;
-- source/download links.
+#### Source-first behavior
 
-Warnings remain semantic notices and may use the warning-specific left accent.
-Ordinary sections do not gain blue top/left accents merely for decoration.
+SCPF source is primary content and remains visible on initial page load. SCPC
+source is also visible when present.
 
-#### Technical disclosure
+Generated SolidCraft commands are secondary generated evidence and remain
+collapsed by default.
 
-Large technical content is collapsed on initial page load:
+#### Typography and list rhythm
 
-- SCPF source uses a disclosure;
-- SCPC source uses the same disclosure when present;
-- generated SolidCraft commands use a disclosure;
-- standalone large section ordinals are not part of the page hierarchy;
-- command-step numbering remains inside the expanded command sequence.
+CAD prose uses the Segoe UI/system sans stack with body weight 400 and neutral
+tracking. Headings use weight 600.
 
-Code itself remains on one dark technical surface and uses the CAD monospace
-stack. Hextra's copy control remains available inside code blocks.
+Background Markdown lists explicitly retain their list markers and use the CAD
+accent color.
 
-#### Build and verification evidence
+Construction stages intentionally use a tighter rhythm than ordinary prose:
 
-Build/provenance values use a compact definition list:
+- line-height `1.42`;
+- item margin `0.12rem 0`.
 
-- field name on the left;
-- value on the right;
-- subtle row separators;
-- monospace only for technical identifiers;
-- one-column rows on narrow screens.
+The preview owns its own aspect ratio and is never sized from heading height.
 
-Build evidence is not a dashboard or a collection of mini-cards.
+#### SolidCraft version evidence
 
-#### Rich model content
+Each model provenance record contains the actual SolidCraft version exposed by
+the immutable runtime through `SOLIDCRAFT_VERSION`.
 
-`model.yml` and optional `page.md` remain the model-owned content sources.
-The generic model template renders optional Background and `extra_views`
-without model-slug-specific presentation branches.
+The status badge uses that provenance value:
 
-External product/reference images may be represented by a publication-safe
-local/cache mapping when a mutable third-party image fetch would make the
-rendered site nondeterministic. Such mapping is presentation input only; it
-does not redefine geometry, source ownership or verification evidence.
+- verified build: `SolidCraft <version> · verified`;
+- built without semantic verification: `Built in SolidCraft <version>`.
+
+The Hugo template does not hardcode a SolidCraft version.
 
 #### Rendered visual regression proof
 
-Durable source-lane publication renders representative model pages in real
-headless Chrome/Chromium before Pages publication.
-
-The retained visual artifact includes:
+The durable CAD build renders representative pages in headless Chrome before
+Pages publication and retains:
 
 - Plate overview;
 - Plate full page;
 - Simple MFT overview;
 - Simple MFT full page.
 
-Missing local rendered assets fail the screenshot step. The browser screenshots
-complement HTML/content assertions and build/provenance checks; they do not
-replace them.
-
-CAD prose uses the accepted sans-serif CAD typography with body weight 400 and
-neutral tracking. Ordinary section headings use weight 600 and neutral
-tracking. Markdown-rendered Background content follows the same CAD typography
-rather than reverting to a separate Hextra prose style.
+Missing local assets fail the capture. Screenshots complement build/provenance
+checks and must be visually reviewed for presentation changes.
 
 ## Retirement boundary
 
