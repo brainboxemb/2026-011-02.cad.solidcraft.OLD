@@ -245,7 +245,7 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn('slice "basic" "components" "advanced"', listing)
         card = (SITE / "layouts/partials/cad/model-card.html").read_text()
         self.assertIn('{{ if $showSection }}<span class="cad-card-section">', card)
-        self.assertIn('"showSection" false', listing)
+        self.assertIn('"showSection" true', listing)
         self.assertIn(".cad-model-grid{grid-template-columns:repeat(4,minmax(0,1fr))}", css)
         self.assertIn(".cad-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}", css)
         self.assertNotIn(".cad-catalog-page .cad-model-grid{", css)
