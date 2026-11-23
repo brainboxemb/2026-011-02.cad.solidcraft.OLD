@@ -165,6 +165,7 @@ wooden HUB75 root on the adopted v0.13.1 baseline.
 
 | Issue | Owner/lane | Status | Next action |
 | --- | --- | --- | --- |
+| #378 Re-enable existing WoodenHub75Box | dev-cad | **now** | Restore only `hub75-wood-frame` to `process: true` on Forge v0.13.1 and prove native replay/output; leave iter2 and detailed panel gates separate. |
 | #412 hub75-panel repository-test process gate | dev-cad | **merged / temporary gate active** | Direct detailed-panel compilation tests follow the existing `ci.yml process` state and auto-restore when the model is re-enabled. |
 | #408 Temporary hub75-panel process gate | dev-cad + Forge | **merged / temporary gate active** | `hub75-panel` stays disabled only for Forge #796; re-enable after the upstream fix is released/adopted. |
 | #8 CornerBracket exact geometry | dev-cad | **actionable after #405 via #362** | Preserve PR #360 geometry; add the final rotated wedge with released Forge #750 support. |
@@ -223,14 +224,12 @@ is accepted; refresh each within its existing issue before resuming geometry.
 
 ## Next checkpoint
 
-1. finish #405 qualification of exact Forge v0.13.1 with the merged #408/#412
-   detailed-panel gate;
-2. after #405 is accepted, re-enable the existing `hub75-wood-frame` under
-   #378 and require a real native build;
-3. refresh #154 / PR #349, then resume #327, #348 and #362 as independent
+1. complete #378 by re-enabling only the existing `hub75-wood-frame` and
+   proving real native replay/output on the adopted Forge v0.13.1 baseline;
+2. refresh #154 / PR #349, then resume #327, #348 and #362 as independent
    model slices unlocked by v0.13.1;
-4. continue #77/#91 and then #142 after #378 is green;
-5. keep #373/#374/#375 behind the temporary `hub75-panel`/#796 gate and keep
+3. continue #77/#91 and then #142 after #378 is green;
+4. keep #373/#374/#375 behind the temporary `hub75-panel`/#796 gate and keep
    #388 on its separate Forge #753/SolidCraft owner path;
-6. do not promote `dev-cad -> main` until the deliberate stable checkpoint
+5. do not promote `dev-cad -> main` until the deliberate stable checkpoint
    criteria are met.
