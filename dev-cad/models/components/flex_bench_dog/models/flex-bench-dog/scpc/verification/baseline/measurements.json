@@ -1,7 +1,7 @@
 {
   "bodies": [
     {
-      "area_mm2": 4304.080963140094,
+      "area_mm2": 4309.4274179539825,
       "bbox": {
         "max": [
           11.000000000000002,
@@ -11,36 +11,36 @@
         "min": [
           -11.0,
           -11.000000000000002,
-          -20.00000000000005
+          -20.000000000000014
         ]
       },
       "center_of_mass": [
-        -7.711589846817718e-17,
-        1.58936096965826e-6,
-        0.9467081817704958
+        1.0629073016510413e-14,
+        1.5831381589898722e-6,
+        0.8965132658027607
       ],
       "closed": true,
       "density_g_cm3": 1.29,
-      "edges": 168,
+      "edges": 145,
       "face_types": {
-        "cone": 6,
-        "cylinder": 17,
-        "plane": 41
+        "cone": 7,
+        "cylinder": 12,
+        "plane": 37
       },
-      "faces": 64,
+      "faces": 56,
       "kernel": {
-        "edges": 173,
-        "faces": 66,
+        "edges": 145,
+        "faces": 56,
         "shells": 1,
-        "vertices": 114
+        "vertices": 96
       },
-      "mass_g": 15.048499643409027,
+      "mass_g": 15.107650546190488,
       "material": "Default",
       "measured_by": "smlib",
       "name": "FlexBenchDog",
       "notes": [],
-      "vertices": 111,
-      "volume_mm3": 11665.50359954188
+      "vertices": 96,
+      "volume_mm3": 11711.357012550765
     }
   ],
   "body_count": 1,
@@ -95,7 +95,7 @@
     {
       "curves": 4,
       "dof": 0,
-      "id": 7,
+      "id": 6,
       "name": "Flex slot X",
       "profiles": 1,
       "status": "solved",
@@ -105,7 +105,7 @@
     {
       "curves": 4,
       "dof": 0,
-      "id": 9,
+      "id": 8,
       "name": "Flex slot Y",
       "profiles": 1,
       "status": "solved",
@@ -115,7 +115,7 @@
     {
       "curves": 5,
       "dof": 5,
-      "id": 13,
+      "id": 12,
       "name": "Top logo rib 1",
       "profiles": 1,
       "status": "solved",
@@ -125,7 +125,7 @@
     {
       "curves": 5,
       "dof": 5,
-      "id": 15,
+      "id": 14,
       "name": "Top logo rib 2",
       "profiles": 1,
       "status": "solved",
@@ -135,7 +135,7 @@
     {
       "curves": 5,
       "dof": 5,
-      "id": 17,
+      "id": 16,
       "name": "Top logo rib 3",
       "profiles": 1,
       "status": "solved",
@@ -145,7 +145,7 @@
     {
       "curves": 5,
       "dof": 5,
-      "id": 19,
+      "id": 18,
       "name": "Top logo rib 4",
       "profiles": 1,
       "status": "solved",
@@ -155,7 +155,7 @@
     {
       "curves": 5,
       "dof": 5,
-      "id": 21,
+      "id": 20,
       "name": "Top logo rib 5",
       "profiles": 1,
       "status": "solved",
@@ -165,7 +165,7 @@
     {
       "curves": 5,
       "dof": 5,
-      "id": 23,
+      "id": 22,
       "name": "Top logo rib 6",
       "profiles": 1,
       "status": "solved",
@@ -175,7 +175,7 @@
     {
       "curves": 5,
       "dof": 3,
-      "id": 25,
+      "id": 24,
       "name": "Top logo rib 7",
       "profiles": 1,
       "status": "solved",
@@ -185,7 +185,7 @@
     {
       "curves": 5,
       "dof": 3,
-      "id": 27,
+      "id": 26,
       "name": "Top logo rib 8",
       "profiles": 1,
       "status": "solved",
@@ -195,7 +195,7 @@
     {
       "curves": 5,
       "dof": 3,
-      "id": 29,
+      "id": 28,
       "name": "Top logo rib 9",
       "profiles": 1,
       "status": "solved",
@@ -207,7 +207,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 4.621081,
+      "ms": 3.983597,
       "name": "Cylinder1",
       "rolled_back": false,
       "suppressed": false,
@@ -217,7 +217,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 51.970467,
+      "ms": 47.615352,
       "name": "Chamfer1",
       "rolled_back": false,
       "suppressed": false,
@@ -227,7 +227,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 40.042634,
+      "ms": 34.963001,
       "name": "Cylinder2",
       "rolled_back": false,
       "suppressed": false,
@@ -237,27 +237,17 @@
     {
       "error": null,
       "id": 4,
-      "ms": 57.793842,
-      "name": "Cylinder3",
+      "ms": 56.174302000000004,
+      "name": "Cone1",
       "rolled_back": false,
       "suppressed": false,
-      "type": "CylinderFeature",
+      "type": "ConeFeature",
       "warning": null
     },
     {
       "error": null,
       "id": 5,
-      "ms": 34.778067,
-      "name": "Cylinder4",
-      "rolled_back": false,
-      "suppressed": false,
-      "type": "CylinderFeature",
-      "warning": null
-    },
-    {
-      "error": null,
-      "id": 6,
-      "ms": 82.054839,
+      "ms": 77.075162,
       "name": "Chamfer2",
       "rolled_back": false,
       "suppressed": false,
@@ -266,28 +256,28 @@
     },
     {
       "error": null,
-      "id": 7,
-      "ms": 0.239061,
+      "id": 6,
+      "ms": 0.217978,
       "name": "Flex slot X",
       "rolled_back": false,
       "suppressed": false,
       "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 7,
+      "ms": 71.573385,
+      "name": "Flex slot X",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
       "warning": null
     },
     {
       "error": null,
       "id": 8,
-      "ms": 79.391622,
-      "name": "Flex slot X",
-      "rolled_back": false,
-      "suppressed": false,
-      "type": "ExtrudeFeature",
-      "warning": null
-    },
-    {
-      "error": null,
-      "id": 9,
-      "ms": 0.149946,
+      "ms": 0.149589,
       "name": "Flex slot Y",
       "rolled_back": false,
       "suppressed": false,
@@ -296,8 +286,8 @@
     },
     {
       "error": null,
-      "id": 10,
-      "ms": 96.463199,
+      "id": 9,
+      "ms": 74.488742,
       "name": "Flex slot Y",
       "rolled_back": false,
       "suppressed": false,
@@ -306,8 +296,8 @@
     },
     {
       "error": null,
-      "id": 11,
-      "ms": 309.320989,
+      "id": 10,
+      "ms": 372.55319399999996,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -316,8 +306,8 @@
     },
     {
       "error": null,
-      "id": 12,
-      "ms": 146.743187,
+      "id": 11,
+      "ms": 115.209169,
       "name": "Chamfer3",
       "rolled_back": false,
       "suppressed": false,
@@ -326,148 +316,148 @@
     },
     {
       "error": null,
-      "id": 13,
-      "ms": 0.22649200000000003,
+      "id": 12,
+      "ms": 0.213938,
       "name": "Top logo rib 1",
       "rolled_back": false,
       "suppressed": false,
       "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 13,
+      "ms": 44.150212,
+      "name": "Top logo rib 1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
       "warning": null
     },
     {
       "error": null,
       "id": 14,
-      "ms": 51.624185000000004,
-      "name": "Top logo rib 1",
+      "ms": 0.254773,
+      "name": "Top logo rib 2",
       "rolled_back": false,
       "suppressed": false,
-      "type": "ExtrudeFeature",
+      "type": "Sketch",
       "warning": null
     },
     {
       "error": null,
       "id": 15,
-      "ms": 0.208114,
+      "ms": 78.057164,
       "name": "Top logo rib 2",
       "rolled_back": false,
       "suppressed": false,
-      "type": "Sketch",
+      "type": "ExtrudeFeature",
       "warning": null
     },
     {
       "error": null,
       "id": 16,
-      "ms": 92.65129900000001,
-      "name": "Top logo rib 2",
+      "ms": 0.278228,
+      "name": "Top logo rib 3",
       "rolled_back": false,
       "suppressed": false,
-      "type": "ExtrudeFeature",
+      "type": "Sketch",
       "warning": null
     },
     {
       "error": null,
       "id": 17,
-      "ms": 0.239351,
+      "ms": 88.088305,
       "name": "Top logo rib 3",
       "rolled_back": false,
       "suppressed": false,
-      "type": "Sketch",
+      "type": "ExtrudeFeature",
       "warning": null
     },
     {
       "error": null,
       "id": 18,
-      "ms": 107.59054,
-      "name": "Top logo rib 3",
+      "ms": 0.26032099999999997,
+      "name": "Top logo rib 4",
       "rolled_back": false,
       "suppressed": false,
-      "type": "ExtrudeFeature",
+      "type": "Sketch",
       "warning": null
     },
     {
       "error": null,
       "id": 19,
-      "ms": 0.24815399999999999,
+      "ms": 98.988444,
       "name": "Top logo rib 4",
       "rolled_back": false,
       "suppressed": false,
-      "type": "Sketch",
+      "type": "ExtrudeFeature",
       "warning": null
     },
     {
       "error": null,
       "id": 20,
-      "ms": 104.294378,
-      "name": "Top logo rib 4",
+      "ms": 0.281538,
+      "name": "Top logo rib 5",
       "rolled_back": false,
       "suppressed": false,
-      "type": "ExtrudeFeature",
+      "type": "Sketch",
       "warning": null
     },
     {
       "error": null,
       "id": 21,
-      "ms": 0.259752,
+      "ms": 93.514649,
       "name": "Top logo rib 5",
       "rolled_back": false,
       "suppressed": false,
-      "type": "Sketch",
+      "type": "ExtrudeFeature",
       "warning": null
     },
     {
       "error": null,
       "id": 22,
-      "ms": 112.67778,
-      "name": "Top logo rib 5",
+      "ms": 0.295055,
+      "name": "Top logo rib 6",
       "rolled_back": false,
       "suppressed": false,
-      "type": "ExtrudeFeature",
+      "type": "Sketch",
       "warning": null
     },
     {
       "error": null,
       "id": 23,
-      "ms": 0.26912600000000003,
+      "ms": 107.505358,
       "name": "Top logo rib 6",
       "rolled_back": false,
       "suppressed": false,
-      "type": "Sketch",
+      "type": "ExtrudeFeature",
       "warning": null
     },
     {
       "error": null,
       "id": 24,
-      "ms": 118.076052,
-      "name": "Top logo rib 6",
+      "ms": 0.318822,
+      "name": "Top logo rib 7",
       "rolled_back": false,
       "suppressed": false,
-      "type": "ExtrudeFeature",
+      "type": "Sketch",
       "warning": null
     },
     {
       "error": null,
       "id": 25,
-      "ms": 0.261465,
+      "ms": 102.78295399999999,
       "name": "Top logo rib 7",
       "rolled_back": false,
       "suppressed": false,
-      "type": "Sketch",
+      "type": "ExtrudeFeature",
       "warning": null
     },
     {
       "error": null,
       "id": 26,
-      "ms": 108.976776,
-      "name": "Top logo rib 7",
-      "rolled_back": false,
-      "suppressed": false,
-      "type": "ExtrudeFeature",
-      "warning": null
-    },
-    {
-      "error": null,
-      "id": 27,
-      "ms": 0.283617,
+      "ms": 0.28511600000000004,
       "name": "Top logo rib 8",
       "rolled_back": false,
       "suppressed": false,
@@ -476,8 +466,8 @@
     },
     {
       "error": null,
-      "id": 28,
-      "ms": 124.400502,
+      "id": 27,
+      "ms": 113.941991,
       "name": "Top logo rib 8",
       "rolled_back": false,
       "suppressed": false,
@@ -486,8 +476,8 @@
     },
     {
       "error": null,
-      "id": 29,
-      "ms": 0.261154,
+      "id": 28,
+      "ms": 0.28011600000000003,
       "name": "Top logo rib 9",
       "rolled_back": false,
       "suppressed": false,
@@ -496,8 +486,8 @@
     },
     {
       "error": null,
-      "id": 30,
-      "ms": 126.99432599999999,
+      "id": 29,
+      "ms": 107.971019,
       "name": "Top logo rib 9",
       "rolled_back": false,
       "suppressed": false,
@@ -506,12 +496,12 @@
     }
   ],
   "total": {
-    "area_mm2": 4304.080963140094,
-    "edges": 168,
-    "faces": 64,
-    "mass_g": 15.048499643409027,
+    "area_mm2": 4309.4274179539825,
+    "edges": 145,
+    "faces": 56,
+    "mass_g": 15.107650546190488,
     "open_bodies_skipped": 0,
-    "vertices": 111,
-    "volume_mm3": 11665.50359954188
+    "vertices": 96,
+    "volume_mm3": 11711.357012550765
   }
 }
