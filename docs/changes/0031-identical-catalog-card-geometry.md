@@ -40,3 +40,20 @@ visually compared directly with the Basic section in `models-overview.png`.
 
 Presentation only. Model metadata, geometry, CAD execution and generic CAD-CI
 behavior are unchanged.
+
+## Accepted evidence
+
+- PR #317 merged the implementation to `dev-ci`.
+- Accepted dev-ci implementation commit:
+  `3ae614b0c64a937ef4db92837cf60e288875f857`.
+- Dev-ci run #339 (`45145735379`) was green; artifact `14803314793`
+  contained both `models-overview.png` and `basic-overview.png`, which were
+  visually compared and showed identical Basic card geometry.
+- PR #318 promoted the correction through the permanent-lane merge policy.
+- `main` and `dev-ci` are synchronized at
+  `6bf67ab733293868f349c820fc1dcc6a44abadf0`.
+- Stable run #341 (`45146269640`) and dev-ci run #342 (`45146273209`) are green.
+- Stable artifact: `model-layouts-main` / `14804840316`.
+- Dev-ci artifact: `model-layouts-dev-ci` / `14804067733`.
+- Durable build and Pages provenance on both lanes source-match
+  `6bf67ab733293868f349c820fc1dcc6a44abadf0`.
