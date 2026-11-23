@@ -28,3 +28,13 @@ component_source: "scpf/model.py"
 component_definition_primary: true
 build: true
 snapshot_required: true
+
+extra_views:
+  title: "Underside flex-root detail"
+  note: "SolidCraft underside view used to review the four R0.5 material-side fillets around the central cross."
+  verified_only: true
+  items:
+    - kind: "build"
+      src: "underside.png"
+      alt: "FlexBenchDog underside showing central cross and rounded inner corners"
+      caption: "Underside — central cross and R0.5 inner corners"

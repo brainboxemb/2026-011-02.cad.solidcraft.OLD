@@ -20,6 +20,7 @@ class ModelOwnedPresentationSettingsTests(unittest.TestCase):
             "hub75-screen",
             "hub75-wood-frame",
             "hub75-panel",
+            "flex-bench-dog",
         }
         actual = {slug for slug in MODELS if check_path(slug).is_file()}
         self.assertEqual(actual, expected)
@@ -27,6 +28,11 @@ class ModelOwnedPresentationSettingsTests(unittest.TestCase):
             with self.subTest(slug=slug):
                 self.assertIsNotNone(load_check(slug))
                 self.assertIsInstance(snapshot_camera(slug), dict)
+
+    def test_flex_bench_dog_owns_underside_review_view(self):
+        views = extra_snapshots("flex-bench-dog")
+        self.assertEqual([item["name"] for item in views], ["underside.png"])
+        self.assertIsInstance(views[0].get("camera"), dict)
 
     def test_hub75_panel_owns_two_extra_face_views(self):
         views = extra_snapshots("hub75-panel")
