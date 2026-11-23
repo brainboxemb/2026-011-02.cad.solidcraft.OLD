@@ -66,3 +66,5 @@ Current records:
 - [0032-remove-local-cross-cad-references.md](0032-remove-local-cross-cad-references.md) — remove CadQuery/MicroCAD/PythonSCAD/vcad reference sources from the product CAD repository (#206).
 
 - [0034-flex-bench-dog-mft-collar.md](0034-flex-bench-dog-mft-collar.md) — shape the Ø22 × 1.5 mm stop collar to seat on the 45° mouth chamfer of a Ø20 MFT hole (#331).
+
+- [0035-flex-bench-dog-rounded-slot-corners.md](0035-flex-bench-dog-rounded-slot-corners.md) — fillet the four vertical material corners around the FlexBenchDog central cross without changing slot dimensions (#333).

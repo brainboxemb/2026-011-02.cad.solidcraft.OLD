@@ -147,6 +147,36 @@ class ParallelModelTests(unittest.TestCase):
             self.assertEqual(seat["distance"], 1.0)
             self.assertEqual(seat["body"], "FlexBenchDog")
 
+    def test_flex_bench_dog_scpc_matches_inner_corner_fillet_contract(self):
+        native = source_path(ROOT, "flex-bench-dog", "scpc")
+        forge = source_path(ROOT, "flex-bench-dog")
+        scpc_doc = native_script(native).to_dict()
+        scpf_doc = forge_script(forge)
+
+        for document in (scpc_doc, scpf_doc):
+            fillets = [
+                row["params"] for row in document["commands"]
+                if row["command"] == "solid.fillet"
+            ]
+            self.assertEqual(len(fillets), 1)
+            self.assertEqual(fillets[0]["body"], "FlexBenchDog")
+            self.assertEqual(len(fillets[0]["edges"]), 4)
+
+        scpc_fillet = next(
+            row["params"] for row in scpc_doc["commands"]
+            if row["command"] == "solid.fillet"
+        )
+        self.assertEqual(scpc_fillet["radius"], "slot_corner_radius")
+        self.assertEqual(
+            scpc_fillet["edges"],
+            [
+                [0.75, 0.75, -12],
+                [-0.75, 0.75, -12],
+                [-0.75, -0.75, -12],
+                [0.75, -0.75, -12],
+            ],
+        )
+
     def test_plate_and_corner_bracket_have_independent_native_scripts(self):
         for slug in ("plate", "corner-bracket"):
             with self.subTest(slug=slug):

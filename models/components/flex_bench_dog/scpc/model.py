@@ -9,6 +9,7 @@ for name, value in (
     ("interference", 0.20),
     ("rim_diameter", 22.0),
     ("slot_width", 1.5),
+    ("slot_corner_radius", 0.5),
 ):
     script.add("parameters.add", name=name, expression=str(value), unit="mm")
 
@@ -110,6 +111,19 @@ script.add(
     operation="cut",
     targets=["FlexBenchDog"],
     name="Flex slot Y",
+)
+
+# Round only the four vertical material edges around the central cross.
+script.add(
+    "solid.fillet",
+    body="FlexBenchDog",
+    radius="slot_corner_radius",
+    edges=[
+        [0.75, 0.75, -12],
+        [-0.75, 0.75, -12],
+        [-0.75, -0.75, -12],
+        [0.75, -0.75, -12],
+    ],
 )
 
 # Light chamfer on the visible upper perimeter.

@@ -13,6 +13,7 @@ class FlexBenchDog:
     interference = 0.20
     rim_diameter = 22.0
     slot_width = 1.5
+    slot_corner_radius = 0.5
 
     ABOVE_WORKTOP = 20.0
     RIM_THICKNESS = 1.5
@@ -95,6 +96,21 @@ class FlexBenchDog:
         ) as slot_y:
             Rectangle2D(self.slot_width, slot_span)
         dog = dog - slot_y.extrude(self.SLOT_LENGTH)
+
+        # Round only the four vertical material corners around the central
+        # cross. The rectangular slot dimensions and 4 mm solid root remain
+        # unchanged.
+        slot_half = self.slot_width / 2
+        slot_edge_z = -self.INSERTION_LENGTH + self.SLOT_LENGTH / 2
+        dog = dog.fillet(
+            self.slot_corner_radius,
+            edges=[
+                (slot_half, slot_half, slot_edge_z),
+                (-slot_half, slot_half, slot_edge_z),
+                (-slot_half, -slot_half, slot_edge_z),
+                (slot_half, -slot_half, slot_edge_z),
+            ],
+        )
 
         # Light chamfer on the visible upper perimeter.
         dog = dog.chamfer(

@@ -8,8 +8,9 @@ description: >-
   20 mm below the worktop, with a nominal Ø20 insert and a small Ø20.2 flare only at the
   free tip. A compact Ø22 stop collar seats on the 45° chamfer of a nominal Ø20 MFT hole:
   its lower edge chamfers back to Ø20 while a 0.5 mm Ø22 land remains above. Two
-  perpendicular slots create four flexible legs; there is no screw mechanism.
-parameters: "20.0 mm nominal hole; Ø22 × 1.5 mm MFT stop collar with 45° seat; Ø20.2 mm flared flex tip; 20 mm above and 20 mm below worktop"
+  perpendicular slots create four flexible legs, with R0.5 mm relief on the four
+  material corners around the central cross; there is no screw mechanism.
+parameters: "20.0 mm nominal hole; Ø22 × 1.5 mm MFT stop collar with 45° seat; 1.5 mm flex slots with R0.5 inner corners; Ø20.2 mm flared flex tip; 20 mm above and 20 mm below worktop"
 diagram: "plate"
 stages:
   - "Cylinder — create Ø22 × 1.5 mm stop-collar envelope at worktop datum"
@@ -18,6 +19,7 @@ stages:
   - "Cylinder — join Ø20 × 20 mm insertion below worktop"
   - "Cylinder — add Ø20.2 × 2 mm flared free tip"
   - "Two 1.5 × 16 mm crossing cuts create four flex legs"
+  - "Fillet — R0.5 mm on the four vertical inner corners around the central cross"
   - "Chamfer top and bottom edges, then cut a recessed square box logo"
 source: "scpf/model.py"
 scpc_source: "scpc/model.py"
