@@ -34,9 +34,11 @@ Accepted repository state:
   (`b62f9d0b169aa201a3c66c3166f364396b2d71bc`) for CAD execution and
   `tool.cad.ci 0.20.1`
   (`eb64a46b243db00e8dbb4b78b6643a2a7efa3fb9`) for merge policy.
-- `main` remains at `f4469205f9bcef118c169135c0ac5dffaea9837c`.
-- `dev-ci` now carries the accepted model-detail plus model-card presentation
-  baseline at `baf187f826e3b66a5082bf40f8c81e67d6e2d36a`.
+- `main` and `dev-ci` were promoted/synchronized by PR #296 and currently
+  point to `e568f6764d36d748bdb95c1d00d5751162e9e6c7`.
+- Post-promotion review of the published `dev-ci` Components route exposed the
+  residual card-row alignment defect tracked in #303; do not synchronize
+  `main -> dev-cad` until that presentation fix is accepted and re-promoted.
 - The presentation from change 0027 was later visually rejected; Pages was
   temporarily switched back to the preserved pre-change publication while the
   replacement was worked out in EXP.
@@ -86,7 +88,7 @@ The shared plan structure is defined by
 
 Owner/lane: `dev-ci`.
 
-Status: **accepted on dev-ci; stable promotion is next**.
+Status: **promoted; #303 presentation correction is now the active dev-ci follow-up**.
 
 The earlier 0027 presentation was technically green but visually rejected.
 The restored backup publication was then used as the baseline in EXP issue #29.
@@ -124,12 +126,12 @@ Accepted CAD evidence:
 
 Required next order:
 
-1. merge this docs-only acceptance reconciliation to `dev-ci`;
-2. verify the resulting durable lane remains source-matched;
-3. open exact `dev-ci -> main`;
-4. require full promotion validation;
-5. merge only through `/merge` as a normal permanent-lane merge commit;
-6. verify stable `build/main`, public Pages and main screenshots.
+1. complete #303 on a short-lived branch targeting `dev-ci`;
+2. inspect Home, Models and Components durable Chrome screenshots;
+3. merge #303 through `/merge` to `dev-ci` and verify source-match;
+4. promote exact `dev-ci -> main` through the permanent-lane merge policy;
+5. verify stable Pages/screenshots;
+6. only then synchronize `main -> dev-cad`.
 
 Do not mix #21 or #288 into this replacement.
 
@@ -169,7 +171,8 @@ schema, planner or reference framework.
 
 | Issue | Lane/owner | Status | Next action |
 | --- | --- | --- | --- |
-| #278 Model-detail presentation replacement | dev-ci | **accepted; promotion next** | User-approved model-detail baseline plus accepted #297 card-grid checkpoint are on dev-ci; refresh PR #296 after docs reconciliation and promote exact dev-ci to main. |
+| #303 Residual model-card vertical alignment | dev-ci | **now** | Replace flex-flow card internals with explicit named rows; visually verify the reported Components route before re-promotion. |
+| #278 Model-detail presentation replacement | dev-ci | **promoted** | PR #296 promoted the accepted model-detail baseline; keep #303 as the separate post-promotion presentation correction. |
 | #288 tool.cad.ci v0.25.0 workflow/config migration | dev-ci / CI | **later / separate** | Do not mix with #278; reassess after the current site presentation checkpoint. |
 | #250 Shared changelog template/history | documentation | **later** | Reassess after permanent lanes are coherent; do not interrupt WS1/WS2. |
 | #206 Remove Forge reference implementations | dev-cad | **next after WS2** | Remove local cross-CAD reference sources/assumptions without changing product geometry. |
@@ -222,16 +225,14 @@ in this plan.
 
 ## Next checkpoint
 
-The #278 replacement and #297 model-card checkpoint are visually accepted on
-`dev-ci`. Complete stable promotion:
+Fix #303 on `dev-ci` before any product-lane synchronization:
 
-1. merge this docs-only acceptance reconciliation to `dev-ci`;
-2. verify the resulting durable `build/dev-ci` and Pages scope source-match
-   the reconciled lane;
-3. refresh existing PR #296 so its evidence names the current accepted head;
-4. require the full `dev-ci -> main` promotion validation;
-5. merge only through `/merge` as a normal permanent-lane merge commit;
-6. verify stable `build/main`, public Pages and stable screenshots;
-7. then synchronize `main -> dev-cad` before resuming parked product-CAD work.
+1. make the shared model-card partial use explicit named CSS-grid rows;
+2. verify one-line and two-line titles cannot move later rows;
+3. inspect `home-overview.png`, `models-overview.png` and
+   `components-overview.png`;
+4. merge through `/merge` to `dev-ci` and verify durable source-match;
+5. promote exact `dev-ci -> main` and verify stable publication;
+6. then resume the planned `main -> dev-cad` synchronization.
 
 Keep #21 and #288 separate.

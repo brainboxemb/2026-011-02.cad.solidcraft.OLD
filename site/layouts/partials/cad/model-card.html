@@ -6,7 +6,7 @@
 {{ $semantic := "not-configured" }}
 {{ with index $prov "semantic_verification" }}{{ $semantic = . }}{{ end }}
 {{ $built := eq (index $prov "solidcraft_built") true }}
-<a class="cad-model-card" href="{{ $page.RelPermalink }}">
+<a class="cad-model-card{{ if $showSection }} cad-model-card-has-section{{ end }}{{ if $showUpdated }} cad-model-card-has-updated{{ end }}" href="{{ $page.RelPermalink }}">
   <span class="cad-card-picture">{{ with $page.Resources.Get "model.png" }}<img src="{{ .RelPermalink }}" alt="">{{ end }}</span>
   {{ if $showSection }}<span class="cad-card-section">{{ $page.Params.cadSection }}</span>{{ end }}
   <strong class="cad-card-title">{{ $page.Title }}</strong>

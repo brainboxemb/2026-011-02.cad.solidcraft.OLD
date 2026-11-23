@@ -58,3 +58,5 @@ Current records:
 - [0028-approved-framed-model-detail.md](0028-approved-framed-model-detail.md) — supersede the intermediate #278 redesign with the user-approved EXP #29 framed/source-first baseline.
 
 - [0029-four-column-model-card-grid.md](0029-four-column-model-card-grid.md) — use one four/two/one model-card grid with bounded card text on Home and Models (#297).
+
+- [0030-explicit-model-card-row-grid.md](0030-explicit-model-card-row-grid.md) — use explicit named card rows so one/two-line text cannot shift later content (#303).
