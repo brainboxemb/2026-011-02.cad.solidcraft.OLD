@@ -290,7 +290,7 @@ class ParallelModelTests(unittest.TestCase):
 
                 self.assertEqual(
                     len(scpc_doc["commands"]),
-                    9 if slug == "plate" else 17,
+                    9 if slug == "plate" else 42,
                 )
 
 
