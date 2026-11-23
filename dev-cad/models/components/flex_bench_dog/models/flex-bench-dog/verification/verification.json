@@ -5,8 +5,8 @@
         {
           "kind": "file",
           "path": "baseline/measurements.json",
-          "sha256": "557eda49caf9df5690927e8d80ca48b3d436ab682fa2ce3fb7fcdcf69cc79c8c",
-          "size": 5558
+          "sha256": "b1ef539143711a6feacc4f40470d840133900e6000a6928f24678f50d01c15f1",
+          "size": 10502
         }
       ],
       "error": null,
@@ -69,8 +69,8 @@
           }
         ],
         "sketch_count": {
-          "actual": 3,
-          "expected": 3,
+          "actual": 11,
+          "expected": 11,
           "label": "SolidCraft sketch count",
           "pass": true
         }

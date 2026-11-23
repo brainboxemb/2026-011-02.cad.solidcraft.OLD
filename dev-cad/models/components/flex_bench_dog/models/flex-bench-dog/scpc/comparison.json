@@ -43,9 +43,9 @@
   "schema": 1,
   "status": "pass",
   "volume": {
-    "actual": 11648.240154356756,
+    "actual": 11665.50359954188,
     "delta": 0.0,
-    "expected": 11648.240154356756,
+    "expected": 11665.50359954188,
     "kind": "scalar",
     "label": "Forge/SCPC volume (mm\u00b3)",
     "pass": true,
