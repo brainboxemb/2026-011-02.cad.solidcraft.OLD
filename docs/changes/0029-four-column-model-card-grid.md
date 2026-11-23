@@ -22,7 +22,7 @@ Home and `/models/` use one shared model-card grid contract:
 
 The card itself owns stable text geometry:
 
-- image: fixed compact height;
+- image: fixed compact height, with the slot retained even when a model has no current preview image;
 - title: maximum 2 lines;
 - tagline: maximum 2 lines;
 - technical parameters: maximum 2 lines;
