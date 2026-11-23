@@ -1,6 +1,7 @@
 # Model-owned content. Editing this file updates the website; it does not rebuild geometry.
 section: basic
 priority: 70
+featured: true
 title: "Plastic Enclosure"
 tagline: "A shelled enclosure with native plastic design features"
 description: >-

@@ -3,6 +3,7 @@ section: advanced
 variants:
   simple-mft:
     priority: 10
+    featured: true
     title: "Simple MFT"
     tagline: "805 × 555 mm reusable worktop with a 9 × 7 dog-hole grid and eight native clamp slots"
     description: >-
