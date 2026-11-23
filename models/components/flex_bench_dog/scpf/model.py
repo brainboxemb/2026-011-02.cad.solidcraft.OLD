@@ -1,6 +1,7 @@
 """Reusable 20 mm flex bench dog based on the supplied Mini-MFT reference image.
 
 The CAD orientation is functional rather than a prescribed print orientation:
+This comment-only probe validates one-model CAD-CI batch selection.
 the worktop surface is Z=0, the insert extends 20 mm downward and the dog rises
 20 mm upward. A small flare at the free insert end provides passive spring
 preload after the stem is split into four flexible quadrants.
