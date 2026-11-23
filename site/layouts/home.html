@@ -13,7 +13,7 @@
 
 {{ $models := where site.RegularPages "Params.categoryIndex" "!=" true }}
 {{ $models = where $models "Params.cadSection" "!=" nil }}
-{{ $recent := first 6 $models.ByLastmod.Reverse }}
+{{ $recent := first 8 $models.ByLastmod.Reverse }}
 {{ if gt (len $recent) 0 }}
   <section class="cad-section cad-home-recent">
     <div class="cad-section-heading">
