@@ -56,3 +56,5 @@ Current records:
 - [0027-calm-model-detail.md](0027-calm-model-detail.md) — adopt the EXP-proven calm generic model-detail layout and rendered-browser regression proof (#278).
 
 - [0028-approved-framed-model-detail.md](0028-approved-framed-model-detail.md) — supersede the intermediate #278 redesign with the user-approved EXP #29 framed/source-first baseline.
+
+- [0029-four-column-model-card-grid.md](0029-four-column-model-card-grid.md) — use one four/two/one model-card grid with bounded card text on Home and Models (#297).

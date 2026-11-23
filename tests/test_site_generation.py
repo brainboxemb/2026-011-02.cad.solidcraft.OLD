@@ -43,7 +43,7 @@ class HugoSiteContractTests(unittest.TestCase):
         card = (SITE / "layouts/partials/cad/model-card.html").read_text()
         workflow = (ROOT / ".github/workflows/cad.yml").read_text()
         self.assertIn("Recently updated models", home)
-        self.assertIn("first 6 $models.ByLastmod.Reverse", home)
+        self.assertIn("first 8 $models.ByLastmod.Reverse", home)
         self.assertNotIn("$categoryDescriptions", home)
         self.assertNotIn('index .Params.model "featured"', home)
         self.assertIn('"showUpdated" true', home)
@@ -61,15 +61,30 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn(">SCPC Commands<", home)
         self.assertNotIn("brainboxemb/tool.cad.ci", home)
 
-    def test_homepage_featured_grid_uses_three_two_one_columns(self):
+
+    def test_homepage_and_catalog_share_four_two_one_model_grid(self):
         css = (SITE / "assets/css/custom.css").read_text()
-        self.assertIn(".cad-home .cad-model-grid{grid-template-columns:repeat(3,minmax(0,1fr))}", css)
+        home = (SITE / "layouts/home.html").read_text()
+        self.assertIn(".cad-model-grid{grid-template-columns:repeat(4,minmax(0,1fr))}", css)
         self.assertIn("@media(max-width:1000px) and (min-width:761px)", css)
-        self.assertIn(".cad-home .cad-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}", css)
+        self.assertIn(".cad-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}", css)
         self.assertIn(".cad-model-grid,.cad-reference-grid{grid-template-columns:1fr}", css)
+        self.assertNotIn(".cad-home .cad-model-grid{", css)
+        self.assertNotIn(".cad-catalog-page .cad-model-grid{", css)
+        self.assertIn("{{ $recent := first 8 $models.ByLastmod.Reverse }}", home)
 
-
-
+    def test_model_cards_bound_text_regions_for_stable_rows(self):
+        css = (SITE / "assets/css/custom.css").read_text()
+        card = (SITE / "layouts/partials/cad/model-card.html").read_text()
+        self.assertIn('class="cad-card-title"', card)
+        self.assertIn('class="cad-card-tagline"', card)
+        self.assertIn('class="cad-card-parameters"', card)
+        self.assertIn(".cad-card-title,", css)
+        self.assertIn(".cad-card-tagline,", css)
+        self.assertIn(".cad-card-parameters{", css)
+        self.assertGreaterEqual(css.count("-webkit-line-clamp:2"), 3)
+        self.assertIn("height:140px", css)
+        self.assertIn("margin-top:auto", css)
 
     def test_model_detail_uses_one_calm_shared_layout_contract(self):
         css = (SITE / "assets/css/custom.css").read_text()
@@ -207,6 +222,7 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn('"solidcraft_version": solidcraft_version', verifier)
         self.assertIn("No accepted build or verification evidence", page)
 
+
     def test_catalog_uses_sections_without_repeated_category_navigation(self):
         listing = (SITE / "layouts/models/list.html").read_text()
         css = (SITE / "assets/css/custom.css").read_text()
@@ -217,8 +233,9 @@ class HugoSiteContractTests(unittest.TestCase):
         card = (SITE / "layouts/partials/cad/model-card.html").read_text()
         self.assertIn('{{ if $showSection }}<span class="cad-card-section">', card)
         self.assertIn('"showSection" false', listing)
-        self.assertIn(".cad-catalog-page .cad-model-grid{grid-template-columns:repeat(3,minmax(0,1fr))}", css)
-        self.assertIn(".cad-catalog-page .cad-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}", css)
+        self.assertIn(".cad-model-grid{grid-template-columns:repeat(4,minmax(0,1fr))}", css)
+        self.assertIn(".cad-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}", css)
+        self.assertNotIn(".cad-catalog-page .cad-model-grid{", css)
         self.assertIn("font-weight:600;", css)
 
     def test_cad_routes_use_one_shared_page_shell(self):
@@ -311,6 +328,7 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn('<section class="cad-code-section cad-scpc-section">', page)
         self.assertNotIn("Show SCPC source", page)
 
+
     def test_rendered_model_layout_capture_is_part_of_durable_publication(self):
         workflow = (ROOT / ".github/workflows/cad.yml").read_text()
         script = (ROOT / "scripts/ci/capture_site_layout.sh").read_text()
@@ -321,9 +339,11 @@ class HugoSiteContractTests(unittest.TestCase):
             workflow.index("Capture rendered model layouts"),
             workflow.index("Publish CAD Pages for source scope"),
         )
-        for route in ("models/plate/", "models/simple-mft/"):
+        for route in ("models_url=", "models/plate/", "models/simple-mft/"):
             self.assertIn(route, script)
         for image in (
+            "home-overview.png",
+            "models-overview.png",
             "plate-overview.png",
             "plate-full.png",
             "simple-mft-overview.png",
@@ -331,8 +351,6 @@ class HugoSiteContractTests(unittest.TestCase):
         ):
             self.assertIn(image, script)
         self.assertIn('404 ', script)
-
-
 
     def test_model_page_keeps_expected_public_content(self):
         page = (SITE / "layouts/models/single.html").read_text()
