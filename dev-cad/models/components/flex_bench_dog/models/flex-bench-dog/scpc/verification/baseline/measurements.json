@@ -207,7 +207,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 4.112327,
+      "ms": 3.4376789999999997,
       "name": "Cylinder1",
       "rolled_back": false,
       "suppressed": false,
@@ -217,7 +217,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 45.108659,
+      "ms": 38.170118,
       "name": "Chamfer1",
       "rolled_back": false,
       "suppressed": false,
@@ -227,7 +227,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 33.936222,
+      "ms": 32.907804999999996,
       "name": "Cylinder2",
       "rolled_back": false,
       "suppressed": false,
@@ -237,7 +237,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 49.804111,
+      "ms": 45.948418999999994,
       "name": "Cylinder3",
       "rolled_back": false,
       "suppressed": false,
@@ -247,7 +247,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 30.556320000000003,
+      "ms": 31.170309,
       "name": "Cylinder4",
       "rolled_back": false,
       "suppressed": false,
@@ -257,7 +257,7 @@
     {
       "error": null,
       "id": 6,
-      "ms": 79.632858,
+      "ms": 64.076856,
       "name": "Chamfer2",
       "rolled_back": false,
       "suppressed": false,
@@ -267,7 +267,7 @@
     {
       "error": null,
       "id": 7,
-      "ms": 0.25483100000000003,
+      "ms": 0.217834,
       "name": "Flex slot X",
       "rolled_back": false,
       "suppressed": false,
@@ -277,7 +277,7 @@
     {
       "error": null,
       "id": 8,
-      "ms": 71.209788,
+      "ms": 62.052507999999996,
       "name": "Flex slot X",
       "rolled_back": false,
       "suppressed": false,
@@ -287,7 +287,7 @@
     {
       "error": null,
       "id": 9,
-      "ms": 0.422535,
+      "ms": 0.224429,
       "name": "Flex slot Y",
       "rolled_back": false,
       "suppressed": false,
@@ -297,7 +297,7 @@
     {
       "error": null,
       "id": 10,
-      "ms": 83.602227,
+      "ms": 78.888707,
       "name": "Flex slot Y",
       "rolled_back": false,
       "suppressed": false,
@@ -307,7 +307,7 @@
     {
       "error": null,
       "id": 11,
-      "ms": 277.25330399999996,
+      "ms": 227.995703,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -317,7 +317,7 @@
     {
       "error": null,
       "id": 12,
-      "ms": 133.463921,
+      "ms": 136.040091,
       "name": "Chamfer3",
       "rolled_back": false,
       "suppressed": false,
@@ -327,7 +327,7 @@
     {
       "error": null,
       "id": 13,
-      "ms": 0.263302,
+      "ms": 0.30779100000000004,
       "name": "Top logo rib 1",
       "rolled_back": false,
       "suppressed": false,
@@ -337,7 +337,7 @@
     {
       "error": null,
       "id": 14,
-      "ms": 48.940419999999996,
+      "ms": 54.551804000000004,
       "name": "Top logo rib 1",
       "rolled_back": false,
       "suppressed": false,
@@ -347,7 +347,7 @@
     {
       "error": null,
       "id": 15,
-      "ms": 0.276227,
+      "ms": 0.281186,
       "name": "Top logo rib 2",
       "rolled_back": false,
       "suppressed": false,
@@ -357,7 +357,7 @@
     {
       "error": null,
       "id": 16,
-      "ms": 101.086152,
+      "ms": 72.001811,
       "name": "Top logo rib 2",
       "rolled_back": false,
       "suppressed": false,
@@ -367,7 +367,7 @@
     {
       "error": null,
       "id": 17,
-      "ms": 0.293293,
+      "ms": 0.246477,
       "name": "Top logo rib 3",
       "rolled_back": false,
       "suppressed": false,
@@ -377,7 +377,7 @@
     {
       "error": null,
       "id": 18,
-      "ms": 73.711341,
+      "ms": 68.997522,
       "name": "Top logo rib 3",
       "rolled_back": false,
       "suppressed": false,
@@ -387,7 +387,7 @@
     {
       "error": null,
       "id": 19,
-      "ms": 0.300872,
+      "ms": 2.271485,
       "name": "Top logo rib 4",
       "rolled_back": false,
       "suppressed": false,
@@ -397,7 +397,7 @@
     {
       "error": null,
       "id": 20,
-      "ms": 111.581346,
+      "ms": 78.00228100000001,
       "name": "Top logo rib 4",
       "rolled_back": false,
       "suppressed": false,
@@ -407,7 +407,7 @@
     {
       "error": null,
       "id": 21,
-      "ms": 0.30985399999999996,
+      "ms": 0.248604,
       "name": "Top logo rib 5",
       "rolled_back": false,
       "suppressed": false,
@@ -417,7 +417,7 @@
     {
       "error": null,
       "id": 22,
-      "ms": 103.429716,
+      "ms": 80.927075,
       "name": "Top logo rib 5",
       "rolled_back": false,
       "suppressed": false,
@@ -427,7 +427,7 @@
     {
       "error": null,
       "id": 23,
-      "ms": 0.309249,
+      "ms": 0.256759,
       "name": "Top logo rib 6",
       "rolled_back": false,
       "suppressed": false,
@@ -437,7 +437,7 @@
     {
       "error": null,
       "id": 24,
-      "ms": 102.776178,
+      "ms": 92.051303,
       "name": "Top logo rib 6",
       "rolled_back": false,
       "suppressed": false,
@@ -447,7 +447,7 @@
     {
       "error": null,
       "id": 25,
-      "ms": 0.316131,
+      "ms": 0.286575,
       "name": "Top logo rib 7",
       "rolled_back": false,
       "suppressed": false,
@@ -457,7 +457,7 @@
     {
       "error": null,
       "id": 26,
-      "ms": 106.3438,
+      "ms": 85.213078,
       "name": "Top logo rib 7",
       "rolled_back": false,
       "suppressed": false,
@@ -467,7 +467,7 @@
     {
       "error": null,
       "id": 27,
-      "ms": 0.30974,
+      "ms": 0.290267,
       "name": "Top logo rib 8",
       "rolled_back": false,
       "suppressed": false,
@@ -477,7 +477,7 @@
     {
       "error": null,
       "id": 28,
-      "ms": 113.750156,
+      "ms": 91.13092400000001,
       "name": "Top logo rib 8",
       "rolled_back": false,
       "suppressed": false,
@@ -487,7 +487,7 @@
     {
       "error": null,
       "id": 29,
-      "ms": 0.314112,
+      "ms": 0.294748,
       "name": "Top logo rib 9",
       "rolled_back": false,
       "suppressed": false,
@@ -497,7 +497,7 @@
     {
       "error": null,
       "id": 30,
-      "ms": 120.748864,
+      "ms": 96.595985,
       "name": "Top logo rib 9",
       "rolled_back": false,
       "suppressed": false,

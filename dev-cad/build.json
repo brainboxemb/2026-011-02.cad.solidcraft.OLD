@@ -45,12 +45,12 @@
       "engine_schema": 4,
       "final_bundle_sha256": "be3e0e7e8aaa129f8d9070a8c5cad112bd939bd10da00311d3cd107db09a8a63",
       "final_step": "unittest",
-      "final_target_spec_digest": "bc1ccaecc4d33301de988bfea5f5a73ea5a3e28a2915561a30fa8408d7227e01",
+      "final_target_spec_digest": "ee083f81efdd2f0ff9e56adae4b24621e42b6100bcc3696a31604c6af9aa21ad",
       "item_id": "repository-tests",
       "outputs": [
         "result.json"
       ],
-      "source_commit": "96c255b571e44d031793edc030745025d2df4de7"
+      "source_commit": "e3855cce96465f75830318a1e2fdbd6efee77157"
     },
     "ci/scpc-package": {
       "engine": "scons",
@@ -222,7 +222,7 @@
     "models/components/flex_bench_dog": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "16a51fe24f60042054ffd4e29dd38d7c32744cf30f5bcb165f4e8fd67b68b8f2",
+      "final_bundle_sha256": "ff8f9f5a36a92d4776ef2ae8561b5601cfa558e6a46f49b0b8c71731eb3bbf98",
       "final_step": "build_results",
       "final_target_spec_digest": "6f5c28ea29b86a31936f0681ff16d395d8f35e90d552bd71aa3d5fbdba33e9fe",
       "item_id": "flex-bench-dog",
@@ -231,7 +231,7 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "449bd96710a0c020ba10958d294d419251637469"
+      "source_commit": "e3855cce96465f75830318a1e2fdbd6efee77157"
     },
     "models/components/guide_rail": {
       "engine": "scons",
@@ -265,5 +265,5 @@
   "name": "dev-cad",
   "schema": 1,
   "scope": "named",
-  "source_commit": "96c255b571e44d031793edc030745025d2df4de7"
+  "source_commit": "e3855cce96465f75830318a1e2fdbd6efee77157"
 }

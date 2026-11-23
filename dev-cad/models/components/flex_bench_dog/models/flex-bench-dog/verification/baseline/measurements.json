@@ -207,7 +207,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 4.174856999999999,
+      "ms": 3.4701049999999998,
       "name": "Cylinder1",
       "rolled_back": false,
       "suppressed": false,
@@ -217,7 +217,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 44.099784,
+      "ms": 33.51997,
       "name": "Chamfer1",
       "rolled_back": false,
       "suppressed": false,
@@ -227,7 +227,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 34.478872,
+      "ms": 26.651127,
       "name": "Cylinder2",
       "rolled_back": false,
       "suppressed": false,
@@ -237,7 +237,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 50.308092,
+      "ms": 38.705721999999994,
       "name": "Cylinder3",
       "rolled_back": false,
       "suppressed": false,
@@ -247,7 +247,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 32.462933,
+      "ms": 24.492812,
       "name": "Cylinder4",
       "rolled_back": false,
       "suppressed": false,
@@ -257,7 +257,7 @@
     {
       "error": null,
       "id": 6,
-      "ms": 71.75072899999999,
+      "ms": 63.004251,
       "name": "Chamfer2",
       "rolled_back": false,
       "suppressed": false,
@@ -267,7 +267,7 @@
     {
       "error": null,
       "id": 7,
-      "ms": 0.281845,
+      "ms": 0.227071,
       "name": "Flex slot X",
       "rolled_back": false,
       "suppressed": false,
@@ -277,7 +277,7 @@
     {
       "error": null,
       "id": 8,
-      "ms": 69.52372299999999,
+      "ms": 52.020093,
       "name": "Flex slot X",
       "rolled_back": false,
       "suppressed": false,
@@ -287,7 +287,7 @@
     {
       "error": null,
       "id": 9,
-      "ms": 0.208104,
+      "ms": 0.171285,
       "name": "Flex slot Y",
       "rolled_back": false,
       "suppressed": false,
@@ -297,7 +297,7 @@
     {
       "error": null,
       "id": 10,
-      "ms": 85.325482,
+      "ms": 63.275554,
       "name": "Flex slot Y",
       "rolled_back": false,
       "suppressed": false,
@@ -307,7 +307,7 @@
     {
       "error": null,
       "id": 11,
-      "ms": 274.093581,
+      "ms": 201.527422,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -317,7 +317,7 @@
     {
       "error": null,
       "id": 12,
-      "ms": 125.54464000000002,
+      "ms": 93.334803,
       "name": "Chamfer3",
       "rolled_back": false,
       "suppressed": false,
@@ -327,7 +327,7 @@
     {
       "error": null,
       "id": 13,
-      "ms": 0.250164,
+      "ms": 0.229084,
       "name": "Top logo rib 1",
       "rolled_back": false,
       "suppressed": false,
@@ -337,7 +337,7 @@
     {
       "error": null,
       "id": 14,
-      "ms": 49.085688000000005,
+      "ms": 36.004724,
       "name": "Top logo rib 1",
       "rolled_back": false,
       "suppressed": false,
@@ -347,7 +347,7 @@
     {
       "error": null,
       "id": 15,
-      "ms": 0.294761,
+      "ms": 0.250667,
       "name": "Top logo rib 2",
       "rolled_back": false,
       "suppressed": false,
@@ -357,7 +357,7 @@
     {
       "error": null,
       "id": 16,
-      "ms": 100.974906,
+      "ms": 67.415558,
       "name": "Top logo rib 2",
       "rolled_back": false,
       "suppressed": false,
@@ -367,7 +367,7 @@
     {
       "error": null,
       "id": 17,
-      "ms": 0.284478,
+      "ms": 0.25148899999999996,
       "name": "Top logo rib 3",
       "rolled_back": false,
       "suppressed": false,
@@ -377,7 +377,7 @@
     {
       "error": null,
       "id": 18,
-      "ms": 89.009821,
+      "ms": 72.57268,
       "name": "Top logo rib 3",
       "rolled_back": false,
       "suppressed": false,
@@ -387,7 +387,7 @@
     {
       "error": null,
       "id": 19,
-      "ms": 0.28854199999999997,
+      "ms": 0.264825,
       "name": "Top logo rib 4",
       "rolled_back": false,
       "suppressed": false,
@@ -397,7 +397,7 @@
     {
       "error": null,
       "id": 20,
-      "ms": 92.00936,
+      "ms": 66.687635,
       "name": "Top logo rib 4",
       "rolled_back": false,
       "suppressed": false,
@@ -407,7 +407,7 @@
     {
       "error": null,
       "id": 21,
-      "ms": 0.28696499999999997,
+      "ms": 0.30320800000000003,
       "name": "Top logo rib 5",
       "rolled_back": false,
       "suppressed": false,
@@ -417,7 +417,7 @@
     {
       "error": null,
       "id": 22,
-      "ms": 112.162667,
+      "ms": 72.41423800000001,
       "name": "Top logo rib 5",
       "rolled_back": false,
       "suppressed": false,
@@ -427,7 +427,7 @@
     {
       "error": null,
       "id": 23,
-      "ms": 0.30747199999999997,
+      "ms": 0.264821,
       "name": "Top logo rib 6",
       "rolled_back": false,
       "suppressed": false,
@@ -437,7 +437,7 @@
     {
       "error": null,
       "id": 24,
-      "ms": 113.478177,
+      "ms": 82.07160900000001,
       "name": "Top logo rib 6",
       "rolled_back": false,
       "suppressed": false,
@@ -447,7 +447,7 @@
     {
       "error": null,
       "id": 25,
-      "ms": 0.32184599999999997,
+      "ms": 0.304722,
       "name": "Top logo rib 7",
       "rolled_back": false,
       "suppressed": false,
@@ -457,7 +457,7 @@
     {
       "error": null,
       "id": 26,
-      "ms": 99.64764,
+      "ms": 86.462826,
       "name": "Top logo rib 7",
       "rolled_back": false,
       "suppressed": false,
@@ -467,7 +467,7 @@
     {
       "error": null,
       "id": 27,
-      "ms": 0.324357,
+      "ms": 0.31095100000000003,
       "name": "Top logo rib 8",
       "rolled_back": false,
       "suppressed": false,
@@ -477,7 +477,7 @@
     {
       "error": null,
       "id": 28,
-      "ms": 112.447461,
+      "ms": 84.860094,
       "name": "Top logo rib 8",
       "rolled_back": false,
       "suppressed": false,
@@ -487,7 +487,7 @@
     {
       "error": null,
       "id": 29,
-      "ms": 0.329704,
+      "ms": 0.27442900000000003,
       "name": "Top logo rib 9",
       "rolled_back": false,
       "suppressed": false,
@@ -497,7 +497,7 @@
     {
       "error": null,
       "id": 30,
-      "ms": 123.355361,
+      "ms": 82.34731500000001,
       "name": "Top logo rib 9",
       "rolled_back": false,
       "suppressed": false,
