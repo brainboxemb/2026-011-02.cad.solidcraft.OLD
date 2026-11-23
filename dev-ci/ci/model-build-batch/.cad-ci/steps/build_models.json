@@ -1,14 +1,29 @@
 {
   "action_executed": true,
   "action_type": "command",
-  "active_dependents": [],
-  "bundle_sha256": "f8da86e4959e71c060b9a8a6e89d1c68baa3280320cc7f59e85bca447da1051c",
-  "duration_seconds": 52.297,
+  "active_dependents": [
+    "bolted-flange",
+    "bracket",
+    "csg-cube",
+    "plastic-enclosure",
+    "plastic-enclosure-pi",
+    "plate",
+    "sample-plate",
+    "vent-plate",
+    "corner-bracket",
+    "flex-bench-dog",
+    "guide-rail",
+    "hub75-panel",
+    "hub75-screen",
+    "simple-mft"
+  ],
+  "bundle_sha256": "99d06bcc9bc71b2b4fb7247aecb992b053289d2777ab06287a00ebfe1212adce",
+  "duration_seconds": 69.355,
   "engine": "scons",
   "engine_schema": 4,
   "error": null,
   "exit_code": 0,
-  "finished_at": "2026-11-23T10:38:26.272Z",
+  "finished_at": "2026-11-23T10:43:42.597Z",
   "item": "model-build-batch",
   "outcome": "BUILT",
   "output_state": "UNCHANGED",
@@ -16,25 +31,25 @@
     "batch-report.json": {
       "kind": "file",
       "mode": 420,
-      "sha256": "d135790297617f8441f6f084ef1181e43927ca9bcde37af329bade801ff5cc15"
+      "sha256": "a4f14f4dbf808544109b4c017f4b040a47571c12741e713db29328e4bca667a5"
     },
     "items": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "0232be112c900cf346564c1a751df965d19158dc13605c4ec84754d25ca0550e"
+      "sha256": "9e28966e9b0e7e651b50196c9c24f1943425566957c246f227e785cf725e2985"
     },
     "manifest.json": {
       "kind": "file",
       "mode": 420,
-      "sha256": "d92cfbdeedd5b607ec49987ec5c8d3af963dc0c68534eaad4e6d0fd700c1bb16"
+      "sha256": "f477a6bae4e406dd99d222f4de0ae555e78476f0aead94c2fd0e181e97c6a93c"
     }
   },
-  "run_finished_at": "2026-11-23T10:38:27.132Z",
-  "run_started_at": "2026-11-23T10:37:25.569Z",
+  "run_finished_at": "2026-11-23T10:43:44.144Z",
+  "run_started_at": "2026-11-23T10:42:23.446Z",
   "schema": 5,
-  "started_at": "2026-11-23T10:37:33.990Z",
+  "started_at": "2026-11-23T10:42:33.266Z",
   "status": "pass",
   "step": "build_models",
-  "target_spec_digest": "1bff051e79d5db0ca09c65f64b9c235635d242acb3cde1439fe4f6152bc8200f",
+  "target_spec_digest": "807f94bbc371dafabc8bf3368f651b90171afe040107c4d2dd847fd2da1ea987",
   "timeout_seconds": null
 }

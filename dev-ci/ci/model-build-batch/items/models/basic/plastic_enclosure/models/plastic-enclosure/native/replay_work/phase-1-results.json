@@ -32,7 +32,7 @@
       "Enclosure"
     ],
     "feature": 1,
-    "ms": 1.712968,
+    "ms": 2.794613,
     "name": "Box1",
     "removed_bodies": [],
     "warning": null
@@ -46,7 +46,7 @@
     ],
     "created_bodies": [],
     "feature": 2,
-    "ms": 17.603202,
+    "ms": 25.987004000000002,
     "name": "Shell1",
     "removed_bodies": [],
     "warning": null
@@ -60,7 +60,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 10.404999,
+    "ms": 16.114097,
     "name": "Lip1",
     "removed_bodies": [],
     "warning": null
@@ -74,7 +74,7 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 9.591344,
+    "ms": 12.482593999999999,
     "name": "SnapFit1",
     "removed_bodies": [],
     "warning": null
@@ -88,7 +88,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 33.664443000000006,
+    "ms": 46.242306,
     "name": "Boss1",
     "removed_bodies": [],
     "warning": null
@@ -102,7 +102,7 @@
     ],
     "created_bodies": [],
     "feature": 6,
-    "ms": 41.234966,
+    "ms": 57.296763,
     "name": "Boss2",
     "removed_bodies": [],
     "warning": null
@@ -116,7 +116,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 17.109519,
+    "ms": 22.989732999999998,
     "name": "Rest1",
     "removed_bodies": [],
     "warning": null

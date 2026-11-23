@@ -228,7 +228,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 14.722509,
+    "ms": 19.559182,
     "name": "Rear electronics bays",
     "removed_bodies": [],
     "warning": null
@@ -242,7 +242,7 @@
     ],
     "created_bodies": [],
     "feature": 8,
-    "ms": 18.806367,
+    "ms": 25.102778,
     "name": "Hole1",
     "removed_bodies": [],
     "warning": null
@@ -256,7 +256,7 @@
     ],
     "created_bodies": [],
     "feature": 9,
-    "ms": 21.060446,
+    "ms": 28.914801999999998,
     "name": "Hole2",
     "removed_bodies": [],
     "warning": null
@@ -270,7 +270,7 @@
     ],
     "created_bodies": [],
     "feature": 10,
-    "ms": 22.571613,
+    "ms": 31.397875,
     "name": "Hole3",
     "removed_bodies": [],
     "warning": null
@@ -284,7 +284,7 @@
     ],
     "created_bodies": [],
     "feature": 11,
-    "ms": 24.457624,
+    "ms": 33.796641,
     "name": "Hole4",
     "removed_bodies": [],
     "warning": null
@@ -298,7 +298,7 @@
     ],
     "created_bodies": [],
     "feature": 12,
-    "ms": 26.492905,
+    "ms": 36.845982,
     "name": "Hole5",
     "removed_bodies": [],
     "warning": null
@@ -312,7 +312,7 @@
     ],
     "created_bodies": [],
     "feature": 13,
-    "ms": 27.958496999999998,
+    "ms": 39.367488,
     "name": "Hole6",
     "removed_bodies": [],
     "warning": null

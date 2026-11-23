@@ -3,24 +3,6 @@
   "models": [
     {
       "error": null,
-      "model": "hub75-screen",
-      "semantic_verification": "not-configured",
-      "status": "pass"
-    },
-    {
-      "error": null,
-      "model": "simple-mft",
-      "semantic_verification": "not-configured",
-      "status": "pass"
-    },
-    {
-      "error": null,
-      "model": "simple-mft-assembly",
-      "semantic_verification": "not-configured",
-      "status": "pass"
-    },
-    {
-      "error": null,
       "model": "bolted-flange",
       "semantic_verification": "pass",
       "status": "pass"
@@ -96,9 +78,27 @@
       "model": "hub75-panel",
       "semantic_verification": "not-configured",
       "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "hub75-screen",
+      "semantic_verification": "not-configured",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "simple-mft",
+      "semantic_verification": "not-configured",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "simple-mft-assembly",
+      "semantic_verification": "not-configured",
+      "status": "pass"
     }
   ],
   "schema": 1,
-  "source_sha": "d61aa24c90ca185630470ce35dc829d0fc115576",
+  "source_sha": "22e38283e68cc5007f5cd1c6619239e042f1a1c6",
   "status": "pass"
 }
