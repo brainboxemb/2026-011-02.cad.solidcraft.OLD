@@ -34,8 +34,9 @@ Accepted repository state:
   (`b62f9d0b169aa201a3c66c3166f364396b2d71bc`) for CAD execution and
   `tool.cad.ci 0.20.1`
   (`eb64a46b243db00e8dbb4b78b6643a2a7efa3fb9`) for merge policy.
-- `main` and `dev-ci` currently point to
-  `f4469205f9bcef118c169135c0ac5dffaea9837c`.
+- `main` remains at `f4469205f9bcef118c169135c0ac5dffaea9837c`.
+- `dev-ci` now carries the accepted model-detail plus model-card presentation
+  baseline at `baf187f826e3b66a5082bf40f8c81e67d6e2d36a`.
 - The presentation from change 0027 was later visually rejected; Pages was
   temporarily switched back to the preserved pre-change publication while the
   replacement was worked out in EXP.
@@ -105,13 +106,20 @@ User-approved reference:
 Accepted CAD evidence:
 
 - PR #293 ported the approved hierarchy and SolidCraft version provenance;
-- PR #294 corrected the remaining durable screenshot parity differences;
+- PR #294 corrected the remaining model-detail screenshot parity differences;
+- #297 / PRs #299, #300 and #301 normalized Home and Models to the shared
+  four/two/one model-card grid, retained preview slots when images are missing,
+  and fixed title/tagline/parameter slots so text baselines remain aligned;
 - `dev-ci` is accepted at
-  `5fba03403ce00319c941ef888b23cd8d0a0c2fa4`;
-- durable run #296 (`45135721728`) is green;
-- screenshot artifact `model-layouts-dev-ci` (artifact `14800215325`) was
-  visually inspected against EXP run #92;
-- `build/dev-ci` and Pages `/dev-ci/` source-match the accepted lane;
+  `baf187f826e3b66a5082bf40f8c81e67d6e2d36a`;
+- durable run #309 (`45138523550`) is green;
+- screenshot artifact `model-layouts-dev-ci` (artifact `14800049960`) was
+  visually inspected: Home and Models card text is aligned and missing-preview
+  cards retain the same image slot;
+- `build/dev-ci` and Pages `/dev-ci/` source-match
+  `baf187f826e3b66a5082bf40f8c81e67d6e2d36a`;
+- Pages provenance records build commit
+  `354e4c80b2023459f7a2c9e9302ad24316399966`;
 - published Plate and Simple MFT provenance both record SolidCraft `0.45.0`.
 
 Required next order:
@@ -161,7 +169,7 @@ schema, planner or reference framework.
 
 | Issue | Lane/owner | Status | Next action |
 | --- | --- | --- | --- |
-| #278 Model-detail presentation replacement | dev-ci | **accepted; promotion next** | PRs #293/#294 + durable run #296 match approved EXP run #92; promote exact dev-ci to main after docs reconciliation. |
+| #278 Model-detail presentation replacement | dev-ci | **accepted; promotion next** | User-approved model-detail baseline plus accepted #297 card-grid checkpoint are on dev-ci; refresh PR #296 after docs reconciliation and promote exact dev-ci to main. |
 | #288 tool.cad.ci v0.25.0 workflow/config migration | dev-ci / CI | **later / separate** | Do not mix with #278; reassess after the current site presentation checkpoint. |
 | #250 Shared changelog template/history | documentation | **later** | Reassess after permanent lanes are coherent; do not interrupt WS1/WS2. |
 | #206 Remove Forge reference implementations | dev-cad | **next after WS2** | Remove local cross-CAD reference sources/assumptions without changing product geometry. |
@@ -189,6 +197,10 @@ Parked open product PRs:
 
 ## Recently completed
 
+- #297 / PRs #299, #300 and #301 established one shared four/two/one model-card
+  grid on Home and Models, fixed preview/text slots, and added durable
+  Home/Models screenshot proof. Run #309 is the visually accepted dev-ci
+  baseline.
 - #253 reconciled this plan from current branch/build/Pages evidence after the
   Hextra migration and subsequent `dev-ci` work.
 - #274 / PR #280 replaced repeated homepage category blocks with six
@@ -208,27 +220,18 @@ Parked open product PRs:
 Historical implementation detail belongs in issues and `docs/changes/`, not
 in this plan.
 
-
-### WS1b — normalize Home and Models model-card grid
-
-Owner/lane: `dev-ci`.
-
-Status: **now — #297**.
-
-The approved model-detail baseline remains intact. Before promoting it to main,
-normalize Home and `/models/` to one four-column desktop model-card contract,
-bound card text, and add Home/Models rendered screenshots. The existing
-promotion PR remains draft until this visual checkpoint is accepted.
-
 ## Next checkpoint
 
-Complete #297 on `dev-ci` before stable promotion:
+The #278 replacement and #297 model-card checkpoint are visually accepted on
+`dev-ci`. Complete stable promotion:
 
-1. validate the shared four/two/one model-card grid;
-2. inspect `home-overview.png` and `models-overview.png`;
-3. verify card text remains bounded and readable at four columns;
-4. merge through `/merge` to `dev-ci`;
-5. verify durable build/Pages source-match;
-6. then refresh and complete the exact `dev-ci -> main` promotion.
+1. merge this docs-only acceptance reconciliation to `dev-ci`;
+2. verify the resulting durable `build/dev-ci` and Pages scope source-match
+   the reconciled lane;
+3. refresh existing PR #296 so its evidence names the current accepted head;
+4. require the full `dev-ci -> main` promotion validation;
+5. merge only through `/merge` as a normal permanent-lane merge commit;
+6. verify stable `build/main`, public Pages and stable screenshots;
+7. then synchronize `main -> dev-cad` before resuming parked product-CAD work.
 
 Keep #21 and #288 separate.
