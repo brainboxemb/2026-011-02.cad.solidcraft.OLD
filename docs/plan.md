@@ -50,6 +50,10 @@ Accepted repository state:
 - Durable `build/dev-cad` and Pages `/dev-cad/` source-match
   `4e6f36f946cdb560fa2349f8559419f66ba577fc` (run #353); the synchronized
   development site now uses Hugo/Hextra like stable.
+- #335 / PR #339 made the shared model batch honor CAD-CI direct-dependent
+  selection on `dev-ci`; one-model proof #340 / run #376 selected only
+  FlexBenchDog. PR #343 promoted that accepted fix to stable `main`.
+  Exact `main -> dev-cad` propagation remains tracked by #342 / PR #351.
 - #206 / PR #326 removed the local cross-CAD reference implementations.
 - #331 / PR #334 replaced the old Ø24 × 3 mm band with the shaped Ø22 × 1.5 mm
   MFT stop collar.
@@ -93,8 +97,18 @@ The shared plan structure is defined by
 - `main` is stable integration only.
 - `dev-cad` owns product CAD/model work.
 - `dev-ci` owns CAD-CI/runtime/publication/site integration.
+- `dev-cad` and `dev-ci` may accumulate multiple accepted logical changes;
+  a green development PR is not by itself a reason to promote to `main`.
+- Promote to `main` only at a deliberate stable checkpoint: a coherent
+  feature set, end of a work block/day, release point, or a real cross-lane
+  dependency.
 - Short-lived branches target the appropriate lane and are squash-merged.
-- Exact `main -> dev-cad|dev-ci` synchronization uses a normal merge commit.
+- Pure `AGENTS.md` / `docs/*` instruction or documentation corrections may
+  go directly to `main` when independent of unmerged code/model work.
+- Documentation that belongs to a code/model change stays in that issue,
+  branch and PR.
+- Exact `main -> dev-cad|dev-ci` synchronization uses a normal merge commit
+  when that stable change is actually needed in the target lane.
 - Exact `dev-cad|dev-ci -> main` promotion uses a normal merge commit.
 - Permanent-ref synchronization and promotion use the owner-only repository
   `/merge` policy; do not use GitHub merge buttons as an alternative.
@@ -210,6 +224,8 @@ schema, planner or reference framework.
 | Issue | Lane/owner | Status | Next action |
 | --- | --- | --- | --- |
 | #278 Model-detail presentation replacement | dev-ci | **promoted / accepted** | Framed model-detail baseline plus #297/#303 catalog corrections are stable; no further action in this workstream. |
+| #342 Propagate selective model batch to dev-cad | governance + dev-cad | **now** | After #352 neutralizes shared-doc conflicts, merge exact PR #351 through `/merge` and verify durable dev-cad provenance. |
+| #335 Selective model-build batch | dev-ci / main | **accepted / awaiting dev-cad sync** | Implementation and one-model proof are accepted; no new CI behavior is needed, only #342 propagation. |
 | #288 tool.cad.ci v0.25.0 workflow/config migration | dev-ci / CI | **later / separate** | Do not mix with #278; reassess after the current site presentation checkpoint. |
 | #250 Shared changelog template/history | documentation | **later** | Reassess after permanent lanes are coherent; do not interrupt WS1/WS2. |
 | #205 Canonical shared model.yml contract | shared + dev-cad | **blocked** | Wait for an actually reusable/adoptable shared contract; do not copy Forge's site-local validator. |
@@ -280,21 +296,21 @@ in this plan.
 
 ## Next checkpoint
 
-Complete the #332 visual correction before returning to #154:
+Finish the already-required selective-batch propagation before starting another
+unblocked product-CAD change:
 
-1. retain the nine BrainBox cube centerlines and 0.6 mm line width;
-2. replace the rejected one-Sketch/nine-Slot implementation from PR #341 with
-   nine independent Sketches containing one native Slot rib each;
-3. cut every rib 0.6 mm deep while leaving the three projected cube faces as
-   material;
-4. compare SCPF and independent SCPC Slot/cut geometry;
-5. inspect the PR top-view/perspective render and merge only when it visibly
-   reads as the supplied wireframe cube;
-6. then continue the clean #154 refresh from current `dev-cad`.
+1. #352 — normalize only the shared documentation that conflicts between
+   `main` and `dev-cad`, including the duplicate change-record number;
+2. re-check exact permanent-lane PR #351 (`main -> dev-cad`);
+3. merge #351 only through `/merge` as a normal history-preserving merge;
+4. verify durable `build/dev-cad` and Pages provenance;
+5. close #342/#335 when that propagation is proven;
+6. keep #154 / draft PR #349 parked on the released-Forge blockers rather
+   than adding CAD-local import or naming workarounds.
 
-Keep #333 open only for explicit underside-view visual acceptance of R0.5.
-Keep #348 blocked on Forge #747; the per-rib Slot sketches are explicitly
-temporary compatibility code, not the desired final logo construction.
-Keep #327 / PR #328 draft and parked on Forge #746. Keep PR #141 parked on
-Forge #347. Keep PR #169 draft/parked until its required Forge API is available
-in a CAD-consumable release. Keep #21 and #288 separate.
+#332 / PR #347 is built and published on `dev-cad`; keep #332 open only for
+explicit visual acceptance of the BrainBox logo. Keep #333 open only for
+explicit underside-view visual acceptance of R0.5. Keep #348 blocked on Forge
+#747, #327 / PR #328 blocked on Forge #746, and #154 / PR #349 blocked on the
+required Forge fixes/releases including #749. Keep PR #141 and PR #169 parked
+on their existing Forge blockers. Keep #21 and #288 separate.

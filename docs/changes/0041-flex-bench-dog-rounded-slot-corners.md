@@ -1,4 +1,4 @@
-# 0035 — Rounded FlexBenchDog central slot corners
+# 0041 — Rounded FlexBenchDog central slot corners
 
 Issue: #333
 
