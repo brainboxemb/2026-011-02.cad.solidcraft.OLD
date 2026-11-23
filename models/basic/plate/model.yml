@@ -1,6 +1,7 @@
 # Model-owned content. Editing this file updates the website; it does not rebuild geometry.
 section: basic
 priority: 10
+featured: true
 title: "Plate"
 tagline: "A rounded plate with four holes"
 description: "A feature-based plate: sketch, extrusion, four vertical fillets and a through-hole sketch."

@@ -24,10 +24,10 @@ from model_catalog import (  # noqa: E402
     COMMAND_SOURCES,
     MODELS,
     SECTIONS,
-    _model_entry,
     load_models,
     model_metadata_paths,
     verification_input_paths,
+    _model_entry,
 )
 
 
