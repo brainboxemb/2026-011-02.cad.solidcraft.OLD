@@ -12,6 +12,20 @@ REFERENCE = (
 
 
 class CornerBracketTests(unittest.TestCase):
+    @staticmethod
+    def _resolved(value, parameters):
+        if isinstance(value, (int, float)):
+            return float(value)
+        return float(eval(value, {"__builtins__": {}}, parameters))
+
+    @classmethod
+    def _parameter_values(cls, commands):
+        return {
+            row["params"]["name"]: float(row["params"]["expression"])
+            for row in commands
+            if row["command"] == "parameters.add"
+        }
+
     def test_default_bracket_restores_exact_recessed_fixing_contract(self):
         commands = run_script(COMPONENT)["commands"]
         holes = [c["params"] for c in commands if c["command"] == "solid.hole"]
@@ -72,12 +86,27 @@ class CornerBracketTests(unittest.TestCase):
                 "v_tip",
             ],
         )
-        points = sketch["params"]["points"]
-        self.assertEqual(points[0], [0, 0])
-        self.assertEqual(points[1], ["horizontal_arm_length - (elephant_foot_relief)", 0])
-        self.assertEqual(points[2], ["horizontal_arm_length", "-(elephant_foot_relief)"])
-        self.assertEqual(points[-2], ["-(elephant_foot_relief)", "-(vertical_arm_length)"])
-        self.assertEqual(points[-1], [0, "-((vertical_arm_length) - (elephant_foot_relief))"])
+        parameters = self._parameter_values(commands)
+        actual = [
+            [self._resolved(value, parameters) for value in point]
+            for point in sketch["params"]["points"]
+        ]
+        self.assertEqual(
+            actual,
+            [
+                [0.0, 0.0],
+                [59.4, 0.0],
+                [60.0, -0.6],
+                [60.0, -9.0],
+                [57.0, -12.0],
+                [-6.0, -12.0],
+                [-12.0, -6.0],
+                [-12.0, 57.0],
+                [-9.0, 60.0],
+                [-0.6, 60.0],
+                [0.0, 59.4],
+            ],
+        )
 
     def test_named_edges_compile_without_full_width_tip_chamfer(self):
         commands = run_script(COMPONENT)["commands"]
@@ -99,41 +128,52 @@ class CornerBracketTests(unittest.TestCase):
 
     def test_each_bolt_seat_has_flat_recess_cone_and_two_edge_reliefs(self):
         commands = run_script(COMPONENT)["commands"]
+        parameters = self._parameter_values(commands)
         holes = [c["params"] for c in commands if c["command"] == "solid.hole"]
         self.assertEqual(len(holes), 16)
 
         for index in range(0, 16, 4):
             flat, cone, outside_relief, inside_relief = holes[index:index + 4]
-            self.assertEqual(flat["diameter"], "head_diameter + head_clearance")
-            self.assertEqual(flat["depth"], "head_recess")
+
+            self.assertAlmostEqual(self._resolved(flat["diameter"], parameters), 10.4)
+            self.assertAlmostEqual(self._resolved(flat["depth"], parameters), 1.0)
             self.assertNotIn("type", flat)
 
-            self.assertEqual(cone["diameter"], "bolt_diameter + bolt_clearance")
-            self.assertEqual(cone["depth"], "arm_height - head_recess")
+            self.assertAlmostEqual(self._resolved(cone["diameter"], parameters), 5.4)
+            self.assertAlmostEqual(self._resolved(cone["depth"], parameters), 11.0)
             self.assertEqual(cone["type"], "countersink")
-            self.assertEqual(cone["cs_diameter"], "head_diameter + head_clearance")
+            self.assertAlmostEqual(self._resolved(cone["cs_diameter"], parameters), 10.4)
             self.assertEqual(cone["cs_angle"], 90)
 
-            self.assertEqual(
-                outside_relief["diameter"],
-                "head_diameter + head_clearance + 2 * bolt_hole_edge_relief",
+            self.assertAlmostEqual(
+                self._resolved(outside_relief["diameter"], parameters), 10.8
             )
-            self.assertEqual(outside_relief["depth"], "bolt_hole_edge_relief")
-            self.assertEqual(
-                inside_relief["diameter"],
-                "bolt_diameter + bolt_clearance + 2 * bolt_hole_edge_relief",
+            self.assertAlmostEqual(
+                self._resolved(outside_relief["depth"], parameters), 0.2
             )
-            self.assertEqual(inside_relief["depth"], "bolt_hole_edge_relief")
+            self.assertAlmostEqual(
+                self._resolved(inside_relief["diameter"], parameters), 5.8
+            )
+            self.assertAlmostEqual(
+                self._resolved(inside_relief["depth"], parameters), 0.2
+            )
 
-        outside_positions = [holes[i]["position"] for i in range(0, 16, 4)]
+        outside_positions = [
+            [self._resolved(value, parameters) for value in holes[i]["position"]]
+            for i in range(0, 16, 4)
+        ]
         self.assertEqual(
             outside_positions,
             [
-                ["plywood_thickness + bolt_offset", "bolt_y_offset", "arm_height"],
-                ["plywood_thickness + bolt_offset + bolt_spacing", "bolt_y_offset", "arm_height"],
-                ["-(arm_height)", "bolt_y_offset", "-(plywood_thickness + bolt_offset)"],
-                ["-(arm_height)", "bolt_y_offset", "-(plywood_thickness + bolt_offset + bolt_spacing)"],
+                [24.0, 0.0, 12.0],
+                [42.0, 0.0, 12.0],
+                [-12.0, 0.0, -24.0],
+                [-12.0, 0.0, -42.0],
             ],
+        )
+        self.assertEqual(
+            [holes[i]["direction"] for i in range(0, 16, 4)],
+            [[0, 0, -1], [0, 0, -1], [1, 0, 0], [1, 0, 0]],
         )
 
     def test_missing_profile_edge_name_is_rejected(self):
