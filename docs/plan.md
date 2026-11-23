@@ -51,9 +51,10 @@ Accepted repository state:
   `4e6f36f946cdb560fa2349f8559419f66ba577fc` (run #353); the synchronized
   development site now uses Hugo/Hextra like stable.
 - #206 / PR #326 removed the local cross-CAD reference implementations.
-  Current `dev-cad` is `679c584b90943cb7e6ca726eb11f4a80d649b6e6`;
-  durable run #359, `build/dev-cad` and Pages `/dev-cad/` all source-match
-  that commit.
+- #331 / PR #334 replaced the old Ø24 × 3 mm band with the shaped Ø22 × 1.5 mm
+  MFT stop collar. Current `dev-cad` is
+  `086678bd0ce9280f14603df66231da75ec3b5a56`; durable run #368,
+  `build/dev-cad` and Pages `/dev-cad/` all source-match that commit.
 - The presentation from change 0027 was later visually rejected; Pages was
   temporarily switched back to the preserved pre-change publication while the
   replacement was worked out in EXP.
@@ -208,8 +209,7 @@ schema, planner or reference framework.
 | #205 Canonical shared model.yml contract | shared + dev-cad | **blocked** | Wait for an actually reusable/adoptable shared contract; do not copy Forge's site-local validator. |
 | #172 Full-catalog Forge/SolidCraft qualification | dev-cad | **blocked** | Re-enable the two remaining roots after the required Forge fix reaches the CAD-consumed baseline. |
 | #168 Verification terminology cleanup | cross-repo | **later** | Revisit after lane and model-ownership cleanup are stable. |
-| #331 FlexBenchDog MFT stop collar | dev-cad | **now** | Implement the shaped Ø22 × 1.5 mm collar with a 45° underside seat chamfer back to Ø20; verify the side profile. |
-| #333 FlexBenchDog rounded central slot corners | dev-cad | **next after #331** | Round the four material-side corners around the central  in the underside slot geometry; preserve slot width/length and 4 mm root. |
+| #333 FlexBenchDog rounded central slot corners | dev-cad | **now** | Add R0.5 mm fillets to the four vertical material-side corners around the central `+`; preserve slot width/length and 4 mm root. |
 | #332 FlexBenchDog BrainBox cube-wireframe logo | dev-cad | **next after #333** | Replace the filled square with the recessed six-edge + three-spoke cube/box wireframe from preserved PR #128. |
 | #327 FlexBenchDog full-length native Cone taper | dev-cad | **blocked** | PR #328 proved native Cone exists, but Forge #746 must add Cone join/cut feature compilation and reach a CAD-consumable release/pin. |
 | #154 HUB75 lower storage compartment | dev-cad | **next after #332** | Refresh PR #156 against current dev-cad and retain only the product/model work; drop stale catalog/CI-era edits. |
@@ -232,6 +232,10 @@ Parked open product PRs:
 
 ## Recently completed
 
+- #331 / PR #334 shaped the FlexBenchDog stop collar as a Ø22 × 1.5 mm MFT
+  seat with a 1.0 mm 45° underside chamfer back to Ø20. Durable run #368 and
+  both dev-cad publication scopes source-match
+  `086678bd0ce9280f14603df66231da75ec3b5a56`.
 - #310 / PR #311 completed the permanent history-preserving `main -> dev-cad`
   synchronization. Run #353 and both durable dev-cad publication scopes
   source-match `4e6f36f946cdb560fa2349f8559419f66ba577fc`.
@@ -265,17 +269,16 @@ in this plan.
 
 ## Next checkpoint
 
-Complete the remaining unblocked FlexBenchDog refinements in focused changes:
+Complete the remaining unblocked FlexBenchDog refinements:
 
-1. #331 — implement the Ø22 × 1.5 mm MFT stop collar with a 1.0 mm 45°
-   underside seat chamfer back to the Ø20 shaft;
-2. #333 — round the four material-side inner corners around the central
-   underside `+` while preserving 1.5 mm slot width, 16 mm slot length and the
-   4 mm solid root;
+1. #333 — fillet the four vertical material-side edges around the central
+   underside `+` with initial R0.5 mm while preserving 1.5 mm slot width,
+   16 mm slot length and the 4 mm solid root;
+2. inspect the durable underside/profile render and tune only the explicit
+   `slot_corner_radius` if the reference calls for a smaller/larger relief;
 3. #332 — replace the filled-square top recess with the recessed BrainBox
    cube/box wireframe from preserved PR #128;
-4. verify each change independently with SCPF/SCPC parity and durable renders;
-5. then refresh #154 / PR #156 against the current `dev-cad` lane.
+4. then refresh #154 / PR #156 against the current `dev-cad` lane.
 
 Keep #327 / PR #328 draft and parked on Forge #746. Keep PR #141 parked on
 Forge #347. Keep PR #169 draft/parked until its required Forge API is available

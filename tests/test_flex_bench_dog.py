@@ -18,7 +18,7 @@ class FlexBenchDogTests(unittest.TestCase):
         self.assertEqual(names.count("sketch.create"), 3)
         self.assertEqual(names.count("sketch.rectangle.two_point"), 3)
         self.assertEqual(names.count("solid.extrude"), 3)
-        self.assertEqual(names.count("solid.fillet"), 0)
+        self.assertEqual(names.count("solid.fillet"), 1)
         self.assertEqual(names.count("solid.chamfer"), 3)
         self.assertFalse(any(name == "solid.hole" for name in names))
 
@@ -36,6 +36,7 @@ class FlexBenchDogTests(unittest.TestCase):
                 "interference": "0.2",
                 "rim_diameter": "22",
                 "slot_width": "1.5",
+                "slot_corner_radius": "0.5",
             },
         )
 
@@ -82,6 +83,27 @@ class FlexBenchDogTests(unittest.TestCase):
         ]
         self.assertEqual(len(cuts), 2)
         self.assertTrue(all(row["distance"] == 16 for row in cuts))
+
+    def test_cross_slot_inner_corners_use_one_symmetric_fillet(self):
+        commands = run_script(MODEL)["commands"]
+        fillets = [
+            row["params"]
+            for row in commands
+            if row["command"] == "solid.fillet"
+        ]
+        self.assertEqual(len(fillets), 1)
+        fillet = fillets[0]
+        self.assertEqual(fillet["body"], "FlexBenchDog")
+        self.assertIn(fillet["radius"], ("slot_corner_radius", 0.5))
+        self.assertEqual(len(fillet["edges"]), 4)
+
+        z_values = {str(edge[2]).replace(" ", "") for edge in fillet["edges"]}
+        self.assertEqual(len(z_values), 1)
+        self.assertIn(
+            next(iter(z_values)),
+            ("-12", "-12.0", "-INSERTION_LENGTH+SLOT_LENGTH/2",
+             "-(INSERTION_LENGTH)+SLOT_LENGTH/2"),
+        )
 
     def test_mft_collar_has_45_degree_seat_profile(self):
         commands = run_script(MODEL)["commands"]
