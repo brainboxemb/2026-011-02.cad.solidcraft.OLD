@@ -396,6 +396,7 @@ class HugoSiteContractTests(unittest.TestCase):
             "model.yml",
             "Forge commands",
             "SolidCraft model",
+            "STL",
             "STEP",
             "Build provenance",
             "No accepted build evidence",
@@ -427,13 +428,18 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn('build/models/%s/%s/models/%s', adapter)
         self.assertIn("steps.cad_ci.outputs.prepared_scope", workflow)
         self.assertIn('"target" "model.sc"', adapter)
+        self.assertIn('"target" "model.stl"', adapter)
         self.assertIn('"target" "model.step"', adapter)
         self.assertIn('"mediaType" "application/octet-stream"', adapter)
         self.assertIn('"value" .Content', adapter)
         self.assertNotIn('"value" .)', adapter)
         page = (SITE / "layouts/models/single.html").read_text()
         self.assertIn('.Resources.Get "model.sc"', page)
+        self.assertIn('.Resources.Get "model.stl"', page)
         self.assertIn('.Resources.Get "model.step"', page)
+        self.assertIn('blob/build/%s/models/%s/%s/models/%s/native/model.stl', page)
+        self.assertIn('View STL on GitHub', page)
+        self.assertIn('STL is the printable mesh', page)
         self.assertNotIn("resources.Copy", page)
         self.assertNotIn("scripts/ci/build-results.py", workflow)
 

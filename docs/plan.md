@@ -23,7 +23,7 @@ dev-ci
 Current heads at this reconciliation:
 
 - `main`: `6be947fd47333389513e64a73ae19649eb80796a`;
-- `dev-cad`: `200c902f976ff6809692cc344379bbdc10dcbd13`;
+- `dev-cad`: `cefc38f6dd7c10e5462fed660d5566fa91348c41`;
 - `dev-ci`: `c3d46976c8810487b74a802faf1009cb8608e4b0`.
 
 Stable `main` includes the accepted #344/#350 model-detail presentation and
@@ -104,13 +104,15 @@ generic Forge gaps.
 
 ### 4. STL publication
 
-- #345 is blocked on Forge #748.
-- Required final CAD behaviour remains: publish `model.stl` beside `.sc`,
-  STEP and preview; expose STL as the practical mesh/view artifact; link the
-  exact durable `build/<scope>/.../native/model.stl` so GitHub's STL viewer
-  can be used.
-- Do not add a CAD-local STEP-to-STL conversion. Forge/runtime must first
-  qualify STL export from the accepted SolidCraft result.
+- #345 is active CAD-owned output/publication work; Forge #748 is not a blocker.
+- The pinned SolidCraft 0.45.0 CLI already supports direct export from an
+  accepted saved design with
+  `solidcraft-cli run --in model.sc --out model.stl --quality fine`.
+- Publish `model.stl` beside `.sc`, STEP and preview; expose STL as the
+  practical mesh/view artifact; link the exact durable
+  `build/<scope>/.../native/model.stl` so GitHub's STL viewer can be used.
+- Export from the saved `.sc` directly. Do not add a STEP-to-STL conversion
+  and do not add a Forge STL API for this CAD output path.
 
 ### 5. Site lane
 
@@ -148,7 +150,7 @@ required naming fix and any other applicable runner fixes.
 | #8 CornerBracket exact geometry | dev-cad + Forge | **blocked on #362 / Forge #750** | Preserve PR #360 geometry; add final rotated wedge only after generic transform support is released. |
 | #362 CornerBracket arm-tip wedge | dev-cad + Forge | **blocked on Forge #750** | PR #363 is merged; temporary markers are in both model sources. Geometry waits for released transform support. |
 | #154 HUB75 lower compartment | dev-cad + Forge | **blocked / draft PR #349** | Wait for released #679 fix and Forge #749, then enable native processing and mutation acceptance. |
-| #345 STL output + GitHub viewer | dev-ci/dev-cad + Forge | **blocked on Forge #748** | Adopt qualified STL export after upstream release; no STEP conversion workaround. |
+| #345 STL output + GitHub viewer | dev-cad / SolidCraft runtime | **active** | Export directly from the accepted saved .sc with SolidCraft 0.45 CLI, publish model.stl and expose the scope-matched GitHub viewer link. |
 | #348 FlexBenchDog logo cleanup | dev-cad + Forge | **blocked on Forge #747** | Replace temporary per-rib Slot Sketches after released Polygon2D attached-Sketch support. |
 
 | #327 FlexBenchDog Cone taper | dev-cad + Forge | **blocked on Forge #746** | Resume draft PR #328 only after native Cone support is released/adopted. |
@@ -203,7 +205,8 @@ required naming fix and any other applicable runner fixes.
 2. only after #388 is qualified, finish #374 assembly visual acceptance and
    refresh/revalidate the already-green draft #390 / #375 connector slice on
    the synchronized dev-cad baseline before merge;
-3. keep #365 as a design-decision slice and keep
-   #154/#327/#345/#348/#362/#367 parked until their owner-layer Forge
-   capabilities are released and adopted;
+3. finish #345 independently through the existing SolidCraft 0.45 runtime;
+   keep #365 as a design-decision slice and keep
+   #154/#327/#348/#362/#367 parked until their required design/owner-layer
+   capabilities are available;
 4. keep #382 Phase B (`dev-cad -> main`) paused while #388 remains open.

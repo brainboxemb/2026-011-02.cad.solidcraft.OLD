@@ -16,6 +16,7 @@
   {{ $ref := site.Params.sourceRef }}
   {{ $root := printf "models/%s/%s" .Params.cadSection .Params.cadRoot }}
   {{ $buildRoot := printf "build/models/%s/%s/models/%s" .Params.cadSection .Params.cadRoot .Params.cadSlug }}
+  {{ $stlBuildURL := printf "https://github.com/%s/blob/build/%s/models/%s/%s/models/%s/native/model.stl" $repo site.Params.buildScope .Params.cadSection .Params.cadRoot .Params.cadSlug }}
   {{ $prov := .Params.buildProvenance }}
   {{ $semantic := "not-configured" }}
   {{ with index $prov "semantic_verification" }}{{ $semantic = . }}{{ end }}
@@ -70,9 +71,13 @@
           {{ with index $m "scpc_source" }}<a href="https://github.com/{{ $repo }}/blob/{{ $ref }}/{{ $root }}/{{ . }}">SCPC command source</a>{{ end }}
           {{ with .Resources.Get "solidcraft.json" }}<a href="{{ .RelPermalink }}">Command JSON</a>{{ end }}
           {{ with .Resources.Get "model.sc" }}<a href="{{ .RelPermalink }}" download>SolidCraft .sc</a>{{ end }}
+          {{ with .Resources.Get "model.stl" }}
+            <a href="{{ .RelPermalink }}" download>STL</a>
+            <a href="{{ $stlBuildURL }}" target="_blank" rel="noopener noreferrer">View STL on GitHub ↗</a>
+          {{ end }}
           {{ with .Resources.Get "model.step" }}<a href="{{ .RelPermalink }}">STEP</a>{{ end }}
         </div>
-        <p class="cad-section-help">Command JSON describes the generated SolidCraft operations; the .sc file is the editable SolidCraft model.</p>
+        <p class="cad-section-help">The .sc file is the editable SolidCraft model; STL is the printable mesh; STEP remains the interchange CAD export.</p>
 
         <h3 class="cad-section-subtitle">Construction stages</h3>
         <ul class="cad-stages">{{ range index $m "stages" }}<li>{{ . }}</li>{{ end }}</ul>

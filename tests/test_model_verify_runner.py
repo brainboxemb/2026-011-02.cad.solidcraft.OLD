@@ -80,6 +80,12 @@ class SharedModelBatchTests(unittest.TestCase):
         self.assertIn('"semantic_verification": semantic_status', model)
         self.assertIn("snapshot_camera(slug)", model)
         self.assertIn("extra_snapshots(slug)", model)
+        self.assertIn('"solidcraft-cli", "run"', model)
+        self.assertIn('"--in", str(saved)', model)
+        self.assertIn('"--out", str(stl)', model)
+        self.assertIn('"--quality", "fine"', model)
+        self.assertIn('saved_dir / "model.stl"', model)
+        self.assertIn('saved_dir / "model.step", stl, primary_snapshot', model)
 
     def test_batch_source_adapter_has_no_syntax_errors(self):
         for path in (CI / "model_build_batch.py", CI / "model_verify.py"):
