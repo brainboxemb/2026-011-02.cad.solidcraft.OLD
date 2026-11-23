@@ -43,7 +43,7 @@ class HugoSiteContractTests(unittest.TestCase):
         card = (SITE / "layouts/partials/cad/model-card.html").read_text()
         workflow = (ROOT / ".github/workflows/cad.yml").read_text()
         self.assertIn("Recently updated models", home)
-        self.assertIn("first 6 $models.ByLastmod.Reverse", home)
+        self.assertIn("first 8 $models.ByLastmod.Reverse", home)
         self.assertNotIn("$categoryDescriptions", home)
         self.assertNotIn('index .Params.model "featured"', home)
         self.assertIn('"showUpdated" true', home)
