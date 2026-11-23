@@ -34,11 +34,12 @@ Accepted repository state:
   (`b62f9d0b169aa201a3c66c3166f364396b2d71bc`) for CAD execution and
   `tool.cad.ci 0.20.1`
   (`eb64a46b243db00e8dbb4b78b6643a2a7efa3fb9`) for merge policy.
-- `main` and `dev-ci` are synchronized at
-  `64702b64e3ff1842886f3e2031d25ed552cd5d6c` after PR #305 promoted the
-  accepted #303 model-card row fix.
+- PR #305 promoted the accepted #303 model-card row code baseline at
+  `64702b64e3ff1842886f3e2031d25ed552cd5d6c`; PR #307 later promoted only
+  the acceptance documentation. `main` and `dev-ci` remain synchronized,
+  but verify their live refs for the exact current documentation head.
 - Durable `build/main`, public Pages, `build/dev-ci` and Pages `/dev-ci/`
-  source-match `64702b64e3ff1842886f3e2031d25ed552cd5d6c`.
+  are required to source-match those live synchronized refs.
 - The presentation from change 0027 was later visually rejected; Pages was
   temporarily switched back to the preserved pre-change publication while the
   replacement was worked out in EXP.
