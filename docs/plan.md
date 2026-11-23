@@ -3,13 +3,14 @@
 This file is the current source of truth for unfinished work in
 `2026-011-02.cad.solidcraft`.
 
-This repository owns product CAD models, model-specific expectations and the
-published CAD catalog. Shared SolidCraft/CAD repository conventions come from
-`brainboxemb/meta.cad.solidcraft`; Forge owns reusable modelling API/compiler
-behavior; generic CI, verification and runtime behavior remain in their owner
-repositories.
+This repository owns product/project CAD models, model-specific expectations,
+variants, dependencies and the published CAD catalog. Forge owns reusable CAD
+API/compiler behaviour; generic CAD-CI belongs in `lib.py.cad.ci` /
+`tool.cad.ci`; generic verification belongs in
+`lib.py.cad.verification`; runtime packaging belongs in
+`docker.cad.solidcraft`.
 
-## Current accepted baseline
+## Current repository state
 
 Permanent source lanes:
 
@@ -19,272 +20,190 @@ dev-cad
 dev-ci
 ```
 
-Accepted repository state:
+Current heads at this reconciliation:
 
-- `main` is stable integration. Its durable `build/main` scope and public
-  Pages are source-matched to the current stable source; verify the live
-  provenance before every synchronization/promotion rather than copying a
-  stale SHA into a handoff.
-- The public site uses Hugo **0.169.0** with Hextra **v0.13.0**.
-- The Hextra migration and final migration documentation are complete. The
-  post-migration `dev-ci` work has since normalized catalog/model-page
-  presentation and changed the landing page to show Git-derived recently
-  updated models.
-- `main` currently consumes released `tool.cad.ci 0.18.0`
-  (`b62f9d0b169aa201a3c66c3166f364396b2d71bc`) for CAD execution and
-  `tool.cad.ci 0.20.1`
-  (`eb64a46b243db00e8dbb4b78b6643a2a7efa3fb9`) for merge policy.
-- #316 / PRs #317 and #318 made all catalog overview routes use the same
-  section-bearing card geometry and promoted that correction to stable.
-- #204 is complete. PR #315 promoted the accepted removal of handwritten
-  `scpc_command_count` metadata to stable `main`.
-- `main` is currently `48fafd27a41249811b5df7f5f2d39f1ce0829d50`; this is the stable checkpoint consumed by the latest dev-cad synchronization.
-- `dev-ci` is currently `6677eaa99e73a5c2d6faed5c87106139d4694d6f`; #344 / PR #350 is accepted there and keeps long model parameters out of the compact status-badge row.
-- #342 / PR #351 synchronized the accepted selective model-batch fix and current stable history from `main` into `dev-cad` as normal two-parent merge `449bd96710a0c020ba10958d294d419251637469` (parents `fc6cc06f2c16627da8f4936b52359d9a31bb29e2` and `48fafd27a41249811b5df7f5f2d39f1ce0829d50`). Durable run #403 is green; `build/dev-cad` and Pages `/dev-cad/` both source-match that commit, with build/pages commit `d0d3adcee5b852ab1a84549cf4d048a3b60c9de1`.
-- #335 / PR #339 makes the shared model batch honor CAD-CI direct-dependent selection. One-model proof #340 / run #376 selected only FlexBenchDog; PR #343 promoted the fix to main and #342 / PR #351 propagated it to dev-cad. The implementation is now accepted on all required lanes.
-- #206 / PR #326 removed the local cross-CAD reference implementations.
-- #331 / PR #334 replaced the old Ø24 × 3 mm band with the shaped Ø22 × 1.5 mm
-  MFT stop collar.
-- #333 / PR #338 added the R0.5 four-edge inner-corner relief. Durable run
-  #373 proved that geometry. #333 remains open only for underside-view visual
-  acceptance because the standard catalog camera does not expose the central
-  cross clearly.
-- #332 / PR #347 replaced the rejected one-Sketch logo cut with nine independent rib cuts. Durable run #390 and the published `build/dev-cad` PNG show the former filled six-sided recess is gone and the three projected cube faces remain open. Keep #332 open only for explicit user visual acceptance. The current one-Slot-per-Sketch construction is temporary and tracked by #348 / Forge #747.
-- The presentation from change 0027 was later visually rejected; Pages was
-  temporarily switched back to the preserved pre-change publication while the
-  replacement was worked out in EXP.
-- EXP issue #29 / PR #31 is the user-approved replacement baseline. EXP main
-  commit `b0ed2dc474affc9bc0591ff60c5e95ce12a31b25` and run #92
-  (`45134031122`) prove the approved framed/source-first layout, including the
-  SolidCraft version badge, before this CAD port.
-- The synchronized `dev-ci` lane consumes released `tool.cad.ci 0.21.0`
-  (`b1474f6be66dc0236f2a5c2555af07a100447255`) for CAD execution and merge
-  policy. The later tool.cad.ci lifecycle migration is tracked separately in
-  #288 and is not part of the current site presentation work.
-- `dev-cad` retains its unique product-CAD history and current stable history at `449bd96710a0c020ba10958d294d419251637469`. Do not rebase or recreate the permanent lane.
-- Runtime baseline is
-  `ghcr.io/brainboxemb/cad-solidcraft:v0.3.4` with SolidCraft `0.45.0`.
-- There are 16 physical model roots and 18 published model variants. Fourteen
-  physical model roots are processed; `hub75-display2` and
-  `hub75-wood-frame` remain blocked on their Forge-side naming/API
-  qualification.
-- `model.yml` remains model-owned website description data. Generated facts
-  such as command counts, build status and Git last-modified timestamps do not
-  belong in handwritten model metadata.
+- `main`: `c3d46976c8810487b74a802faf1009cb8608e4b0`;
+- `dev-cad`: `b69e8170576a911581c4d8d58806ba92f1ac0b57`;
+- `dev-ci`: `c3d46976c8810487b74a802faf1009cb8608e4b0`.
 
-The shared plan structure is defined by
-`brainboxemb/meta.cad.solidcraft/templates/docs/plan.md`.
+Stable `main` and `dev-ci` now include the accepted #344/#350 model-detail
+presentation: long model parameter prose is normal **Key dimensions** text,
+not a status badge. Stable run #45199498406 and dev-ci run #45199501975 are
+green on the exact shared head.
 
-## Lane rule
+Development lanes are working/integration lanes. Multiple accepted logical
+changes may accumulate there. Do **not** promote to `main` after every green
+feature PR. Promote only at a deliberate stable checkpoint such as a coherent
+feature batch, end of work block/day, release point, or genuine cross-lane
+dependency.
 
-- `main` is stable integration only.
-- `dev-cad` owns product CAD/model work.
-- `dev-ci` owns CAD-CI/runtime/publication/site integration.
-- `dev-cad` and `dev-ci` may accumulate multiple accepted logical changes;
-  a green development PR is not by itself a reason to promote to `main`.
-- Promote to `main` only at a deliberate stable checkpoint: a coherent
-  feature set, end of a work block/day, release point, or a real cross-lane
-  dependency.
-- Short-lived branches target the appropriate lane and are squash-merged.
-- Pure `AGENTS.md` / `docs/*` instruction or documentation corrections may
-  go directly to `main` when independent of unmerged code/model work.
-- Documentation that belongs to a code/model change stays in that issue,
-  branch and PR.
-- Exact `main -> dev-cad|dev-ci` synchronization uses a normal merge commit
-  when that stable change is actually needed in the target lane.
-- Exact `dev-cad|dev-ci -> main` promotion uses a normal merge commit.
-- Permanent-ref synchronization and promotion use the owner-only repository
-  `/merge` policy; do not use GitHub merge buttons as an alternative.
-- Generic CI/verification/runtime changes are implemented and released in
-  their owner repositories before adoption here.
-- Reconcile this plan after each permanent-lane synchronization/promotion or
-  other change that materially alters the accepted baseline.
+Pure repository-instruction/documentation corrections in `AGENTS.md` and
+`docs/*` may go directly to `main` when independent of unmerged code/model
+work. Documentation belonging to a code/model change stays with that issue,
+branch and PR.
 
-## Active workstreams
+Current CAD runtime baseline is SolidCraft 0.45.0. The CAD repository still
+consumes released Forge v0.11.0; several newer Forge fixes exist upstream but
+are not yet available through a released CAD-consumable baseline.
 
-### WS1 — port the user-approved EXP model-detail baseline
+## Current work order
 
-Owner/lane: `dev-ci`.
+### 1. Finish current FlexBenchDog visual acceptance
 
-Status: **promoted and accepted, including #303 row alignment and #316 identical catalog-card geometry**.
+Primary lane: `dev-cad`.
 
-The earlier 0027 presentation was technically green but visually rejected.
-The restored backup publication was then used as the baseline in EXP issue #29.
+- #332 is complete: the durable render after PR #347 visibly matches the open
+  BrainBox wireframe cube. The current one-Slot-per-Sketch implementation is
+  temporary only at the construction/API level; cleanup remains #348 / Forge
+  #747 and must preserve the accepted visible geometry.
+- #333 is complete: PR #338 supplied the R0.5 four-edge fillet and PRs
+  #361/#368/#372 added, corrected and zoomed the model-owned underside view.
+  Durable run #433 made the four equal rounded material-side corners clearly
+  inspectable and they were visually accepted.
+- #385 is complete: PR #386 removed the unintended primary-camera override
+  introduced with the underside view. The primary FlexBenchDog preview again
+  uses the shared/default camera while `underside.png` keeps its dedicated
+  review camera. Durable dev-cad run #45196422598 is green at
+  `b69e8170576a911581c4d8d58806ba92f1ac0b57`.
+- #327 / draft PR #328: full-length native Cone taper remains blocked on Forge
+  #746. Do not emulate Cone locally.
 
-User-approved reference:
+### 2. Keep temporary capability workarounds explicit
 
-- EXP PR #31;
-- EXP run #92 (`45134031122`);
-- framed panel hierarchy retained;
-- SCPF source visible by default;
-- Background and reference section labels added;
-- Background bullets restored;
-- Construction-stage spacing tightened;
-- generated commands collapsed;
-- no standalone numeric section labels.
+- #348 -> Forge #747: the FlexBenchDog one-Slot-per-Sketch logo construction is
+  temporary until attached/explicit Sketch `Polygon2D` lowering is released.
+  Both SCPF and SCPC sources carry explicit TEMPORARY comments.
+- #362 -> Forge #750: the final CornerBracket arm-tip triangular wedge needs a
+  reusable locally rotated standalone cutter. PR #363 adds explicit TEMPORARY
+  comments to SCPF and SCPC; no geometry change.
+- #8: PR #360 restored the preserved 11-point arm profile and exact four-part
+  recessed M5 fixing seats. The remaining arm-tip wedge is exactly the #362 /
+  Forge #750 blocker.
 
-Accepted CAD evidence:
+Do not add CAD-local compiler, transform or command workarounds for these
+generic Forge gaps.
 
-- PRs #293/#294 ported and corrected the approved framed model-detail baseline;
-- #297 / PRs #299/#300/#301 established the shared four/two/one model-card grid;
-- #303 / PR #304 replaced flex-flow card internals with explicit named rows;
-- #316 / PR #317 made `/models/` use the same section-bearing card geometry as
-  Basic/Components/Advanced category pages;
-- PR #318 promoted the accepted #316 correction through the permanent-lane
-  merge policy;
-- `main` and `dev-ci` are synchronized at
-  `6bf67ab733293868f349c820fc1dcc6a44abadf0`;
-- stable run #341 (`45146269640`) and dev-ci run #342 (`45146273209`) are green;
-- stable screenshot artifact `model-layouts-main` is artifact `14804840316`;
-- dev-ci screenshot artifact `model-layouts-dev-ci` is artifact `14804067733`;
-- `models-overview.png` and `basic-overview.png` were visually compared and
-  show identical Basic card geometry;
-- `build/main`, public Pages, `build/dev-ci` and Pages `/dev-ci/` all
-  source-match the synchronized lane;
-- public Pages build commit is
-  `480d4f7d1a98acfaf6409b6e041e89beff7fc828`;
-- dev-ci Pages build commit is
-  `d9ba40d1664cb51aea1941f394d8582bcf319222`;
-- published Plate and Simple MFT provenance record SolidCraft `0.45.0`.
+### 3. HUB75 iteration 2 refresh
 
-Required next order:
+- #154 is represented by current draft PR #349; old PR #156 is closed as
+  superseded.
+- The refreshed root is `models/advanced/hub75_wood_frame_iter2/` and keeps
+  only current product-CAD geometry plus current `model.yml` / `ci.yml`
+  ownership.
+- Native processing stays disabled until the required Forge naming fix from
+  #679 reaches a released CAD-consumable Forge version.
+- Full repository execution also exposed Forge #749: `run_script()` must
+  isolate project-local Python modules between independent model roots.
+- No CAD-local `sys.modules` cleanup is allowed.
+- Keep PR #349 draft until both generic blockers are released/adopted and the
+  normal native build plus saved-design lower-compartment mutation pass.
 
-- none; WS1 is accepted and stable;
-- keep #21 and #288 separate from any future site work.
+### 4. STL publication
 
-### WS2 — synchronize dev-cad and reassess parked product work
+- #345 is blocked on Forge #748.
+- Required final CAD behaviour remains: publish `model.stl` beside `.sc`,
+  STEP and preview; expose STL as the practical mesh/view artifact; link the
+  exact durable `build/<scope>/.../native/model.stl` so GitHub's STL viewer
+  can be used.
+- Do not add a CAD-local STEP-to-STL conversion. Forge/runtime must first
+  qualify STL export from the accepted SolidCraft result.
 
-Owner/lane: repository governance + `dev-cad`.
+### 5. Site lane
 
-Status: **completed**.
+- #344 is complete and promoted to stable `main`: long model parameter prose
+  is no longer a status badge; it is rendered as readable **Key dimensions**
+  under the model description. #383 synchronized `main -> dev-ci`, restored
+  the accepted documentation, and promoted exact `dev-ci -> main` through the
+  permanent-lane merge policy.
+- #278 is closed: the accepted EXP-derived model-detail hierarchy has been
+  ported and accepted.
+- Keep #288 as a separate CAD-CI consumer migration; do not mix it into model
+  presentation work.
+- #20 and #21 remain later product/site work. The current generic
+  `extra_views` / `EXTRA_SNAPSHOTS` mechanism already proves model-owned
+  multiple views, but #20's broader gallery contract is not yet complete.
 
-Accepted evidence:
+## Blocked HUB75/native follow-ups
 
-- #314 / PR #315 promoted the already accepted #204 metadata contract to
-  current stable `main`;
-- #321 / PR #322 converged the remaining stable model metadata and plan before
-  the permanent lane merge;
-- all former conflict files were byte-identical between `main` and
-  `dev-cad` before synchronization;
-- #310 / PR #311 merged `main -> dev-cad` using the repository policy as a
-  normal history-preserving merge commit;
-- synchronized `dev-cad` is
-  `4e6f36f946cdb560fa2349f8559419f66ba577fc`;
-- durable run #353 (`45149024946`) is green;
-- `build/dev-cad` and Pages `/dev-cad/` source-match the synchronized lane;
-- Pages build commit is
-  `bd4dfdcf4e6c0b5a74b9c7635c66e6f0128a52c8`;
-- screenshot artifact `model-layouts-dev-cad` is artifact `14804679663`.
+The current `hub75-wood-frame` root is still `process: false` while the
+closed Forge #679 fix is absent from the released CAD-consumed Forge baseline.
+Therefore do not claim native saved-design acceptance for:
 
-Parked product reassessment:
+- #91 frame-thickness mutation moving all eight CornerBrackets;
+- #77 CornerBracket placement/associativity under dimension changes;
+- #142 HUB75Display2 native qualification;
+- the remaining full-catalog acceptance in #172.
 
-- PR #141 / #135 remains blocked on Forge #347;
-- PR #169 remains blocked: Forge #349 is open, and the completed sheet/profile
-  fixes are newer than the CAD-consumed Forge v0.11.0 release;
-- PR #156 / #154 has no current upstream blocker, but its old branch is
-  substantially behind the synchronized lane and still contains stale
-  catalog/CI-era edits. Preserve the model work and refresh it deliberately
-  when its turn arrives.
+These become actionable after a Forge release/adoption that contains the
+required naming fix and any other applicable runner fixes.
 
-### WS3 — normalize model-description ownership
+## Other open work
 
-Owner/lane: shared owner repositories first; CAD adoption in `dev-cad` after
-WS2.
-
-- #204 is complete: handwritten SCPC command counts are removed and rejected
-  as model metadata.
-- #205 adopts a genuinely reusable canonical model-description contract.
-  Forge #703 is closed, but current Forge `main` still exposes its validator
-  as site-local `site/example_metadata.py`; do not copy that validator into
-  CAD. Resume only when an adoptable shared contract is actually available.
-- #206 removes cross-CAD reference implementations that belong to Forge.
-
-Keep these as focused ownership cleanups. Do not create another CAD-local
-schema, planner or reference framework.
-
-## Open issue assignment
-
-| Issue | Lane/owner | Status | Next action |
+| Issue | Owner/lane | Status | Next action |
 | --- | --- | --- | --- |
-| #278 Model-detail presentation replacement | dev-ci | **promoted / accepted** | Framed model-detail baseline plus #297/#303 catalog corrections are stable; no further action in this workstream. |
-| #288 tool.cad.ci v0.25.0 workflow/config migration | dev-ci / CI | **later / separate** | Do not mix with #278; reassess after the current site presentation checkpoint. |
-| #250 Shared changelog template/history | documentation | **later** | Reassess after permanent lanes are coherent; do not interrupt WS1/WS2. |
-| #205 Canonical shared model.yml contract | shared + dev-cad | **blocked** | Wait for an actually reusable/adoptable shared contract; do not copy Forge's site-local validator. |
-| #172 Full-catalog Forge/SolidCraft qualification | dev-cad | **blocked** | Re-enable the two remaining roots after the required Forge fix reaches the CAD-consumed baseline. |
-| #168 Verification terminology cleanup | cross-repo | **later** | Revisit after lane and model-ownership cleanup are stable. |
-| #333 FlexBenchDog rounded central slot corners | dev-cad | **implemented / visual pending** | PR #338 and durable run #373 prove the R0.5 four-edge fillet; keep open because the standard upper-oblique render does not expose the central underside cross clearly enough for visual acceptance. |
-| #332 FlexBenchDog BrainBox cube-wireframe logo | dev-cad | **implemented / visual pending** | PR #347 and durable run #390 prove the corrected open-face wireframe; keep open only for explicit user visual acceptance. |
-| #348 FlexBenchDog logo workaround cleanup | Forge + dev-cad | **blocked** | Keep the temporary one-Slot-per-Sketch implementation until Forge #747 adds Polygon2D support for explicit/attached Sketch compilation and that support reaches the CAD-consumed release. |
-| #327 FlexBenchDog full-length native Cone taper | dev-cad | **blocked** | PR #328 proved native Cone exists, but Forge #746 must add Cone join/cut feature compilation and reach a CAD-consumable release/pin. |
-| #154 HUB75 lower storage compartment | dev-cad | **draft / Forge-blocked** | Draft PR #349 cleanly refreshes the product model, but native qualification is blocked by the unreleased #679 fix and Forge #749 runner import isolation; add no CAD-local workaround. |
-| #142 HUB75Display2 | dev-cad | **blocked** | Resume qualification after the required Forge naming fix reaches the CAD baseline. |
-| #135 Bolted Flange circular pattern | dev-cad | **blocked** | Keep PR #141 parked until Forge #347 supports the intended applied feature seed. |
-| #91 Frame-thickness native regression | dev-cad | **blocked with HUB75 qualification** | Resume after the relevant HUB75 root can run saved-design mutations on a released Forge baseline. |
-| #77 CornerBracket placement/associativity | dev-cad | **blocked with HUB75 qualification** | Resume the assembly associativity mutation checks after HUB75 native qualification is unblocked. |
-| #34 SCPC alongside SCPF | dev-cad | **later** | Reassess remaining scope against current supported SCPC-backed models before extending it. |
-| #21 Interactive SolidCraft viewer | site/product | **later** | Resume only after lane synchronization and current product work are stable. |
-| #20 Multiple verified model views | site/product | **later** | Keep deferred until complex model geometry and verification are stable. |
-| #14 Incremental CAD builds / Moon evaluation | CI | **probably obsolete** | Reassess against released selective CAD-CI/SCons; retain only an unmet requirement if one still exists. |
-| #8 CornerBracket exact geometry | dev-cad | **now** | Restore the exact arm-tip relief and bolt-seat geometry from the preserved OpenSCAD reference; keep generic API gaps upstream. |
-| #7 Complete HUB75 screen assembly | dev-cad | **later** | Resume after relevant reusable model/API blockers are cleared. |
+| #8 CornerBracket exact geometry | dev-cad + Forge | **blocked on #362 / Forge #750** | Preserve PR #360 geometry; add final rotated wedge only after generic transform support is released. |
+| #362 CornerBracket arm-tip wedge | dev-cad + Forge | **blocked on Forge #750** | PR #363 is merged; temporary markers are in both model sources. Geometry waits for released transform support. |
+| #154 HUB75 lower compartment | dev-cad + Forge | **blocked / draft PR #349** | Wait for released #679 fix and Forge #749, then enable native processing and mutation acceptance. |
+| #345 STL output + GitHub viewer | dev-ci/dev-cad + Forge | **blocked on Forge #748** | Adopt qualified STL export after upstream release; no STEP conversion workaround. |
+| #348 FlexBenchDog logo cleanup | dev-cad + Forge | **blocked on Forge #747** | Replace temporary per-rib Slot Sketches after released Polygon2D attached-Sketch support. |
 
-Parked open product PRs:
+| #327 FlexBenchDog Cone taper | dev-cad + Forge | **blocked on Forge #746** | Resume draft PR #328 only after native Cone support is released/adopted. |
+| #288 CAD-CI workflow/config migration | dev-ci / tool.cad.ci | **later / separate** | Reassess against the current released tool.cad.ci owner baseline before implementation. |
+| #205 canonical model.yml contract | Forge release + dev-cad | **blocked on Forge release** | Forge PR #711 already provides reusable `scpf.model_metadata`; adopt it only after a qualified post-v0.11 Forge release, then move CAD-only fields to their owning layers. |
+| #172 full-catalog native qualification | dev-cad + Forge | **blocked** | Re-enable remaining disabled roots after required Forge fixes reach the CAD baseline. |
+| #142 HUB75Display2 | dev-cad + Forge | **blocked on released #679 fix** | Resume native qualification after Forge adoption. |
+| #135 Bolted Flange circular pattern | dev-cad + Forge | **blocked on Forge #347** | Keep PR #141 parked until the intended applied-feature seed is supported. |
+| #91 frame-thickness native regression | dev-cad + Forge | **blocked on released #679 fix** | Run current native saved-design mutation once hub75-wood-frame is processable. |
+| #77 CornerBracket placement/associativity | dev-cad + Forge | **blocked on released #679 fix** | Validate eight bracket occurrences only on a processable current HUB75 root. |
+| #21 interactive SolidCraft viewer | site/product | **later** | Revisit after current model/output contracts stabilize. |
+| #20 multiple verified model views | site/product | **later / partially enabled** | Build on generic extra_views; broader responsive gallery contract remains open. |
+| #365 HUB75 glazing retention/seal | dev-cad | **next design slice** | Define the physical glazing stack, contact/clearance, retention and sealing before modelling guessed hardware. |
+| #371 Detailed HUB75 panel completion | tracking | **tracking only** | Reusable-panel work is split into #373 rear-frame contour, #374 mounting interfaces and #375 connector envelopes. |
+| #373 HUB75 rear-frame bay contours | dev-cad + Forge | **blocked if clean Polygon2D is required** | Restore R5/stepped bay contours; do not use overlapping-profile workarounds instead of Forge #747. |
+| #374 HUB75 mounting tubes/bushings/locator pins | dev-cad + Forge/SolidCraft | **standalone merged / assembly acceptance blocked on #388** | PR #376 is merged and the standalone detailed panel remains valid. Do not close final visual acceptance while the five-panel assembly leaves component-local Cylinder features detached. |
+| #375 HUB75 connector envelopes | dev-cad | **implemented / draft PR #390 green; blocked on #388 before merge** | The two measured IDC envelopes and explicitly approximate power envelope build successfully in the standalone reusable panel on the released stack. Keep PR #390 draft until reusable-component assembly output is clean. |
+| #388 HUB75 component-local Cylinder placement regression | dev-cad + Forge/SolidCraft | **blocked on owner-layer qualification** | Five panel bodies are placed correctly, but the 14 native Cylinder join features can appear detached. Forge #753 / draft PR #754 owns the minimal rotated-component reproducer. SolidCraft 0.45 issue #21098 / PR #21145 is the primary runtime hypothesis, not yet proven or released. |
+| #382 Stable-to-dev-cad synchronization / CAD checkpoint | repository governance | **next: main -> dev-cad only; reverse promotion paused** | Bring the now-stable #344 site fix into dev-cad through an exact history-preserving merge, then require durable dev-cad green. Do not promote dev-cad back to main while #388 remains open. |
+| #366 HUB75 rear/electrical interfaces | dev-cad | **blocked on reusable panel children** | After #371 children are accepted, model only enclosure-side clearance/access/cable consequences; do not duplicate panel dimensions. |
+| #367 HUB75 exploded view | dev-cad + Forge | **blocked on Forge #751** | SolidCraft 0.45 has native `explode.create/show`; Forge #751 owns the reusable wrapper/qualification, then CAD publishes through generic extra views. |
+| #7 complete HUB75 screen assembly | tracking | **tracking only** | Remaining work is split across #8/#77/#91/#365/#366/#367 plus #20/#21; do not create one broad #7 implementation PR. |
 
-- PR #141 — Bolted Flange circular pattern;
-- PR #349 — refreshed HUB75 lower storage compartment (draft; Forge #679/#749 blocked);
-- PR #169 — latch design draft.
+## Completed / retired in this batch
 
-## Recently completed
+- #344 complete and stable: compact model-detail facts are on synchronized
+  `main` / `dev-ci` at `c3d46976c8810487b74a802faf1009cb8608e4b0`.
+- #385 complete: FlexBenchDog primary preview camera restored without changing
+  the dedicated underside review camera.
+- #278 closed: accepted model-detail presentation baseline.
+- #34 closed: SCPC/SCPF repository split and representative parallel-model
+  architecture are complete; future SCPC coverage is model-specific work.
+- #14 closed as superseded: released CAD-CI/SCons selection now owns affected
+  model selection; do not revive CAD-local Moon/GitHub-cache architecture.
+- #250 complete: root `CHANGELOG.md` follows the shared template without inventing historical releases; the repository currently has no tags or GitHub Releases.
+- #168 complete: active operator-facing documentation now uses explicit SolidCraft build/verification terminology; the site already enforced `Build and verification` / `SolidCraft verified` labels.
+- #206 and #204 were already completed before this reconciliation.
+- PR #156 is closed and superseded by #349.
 
-- #335 / #342 / PR #351 completed the selective model-batch propagation to dev-cad. Exact merge `449bd96710a0c020ba10958d294d419251637469` and durable run #403 source-match build and Pages.
-- #332 / PR #347 corrected the FlexBenchDog BrainBox logo to nine isolated rib cuts; durable run #390 is green and the published render no longer contains the rejected filled six-sided recess.
-- #333 / PR #338 implemented the R0.5 four-edge fillet around the FlexBenchDog
-  central cross. PR and durable CAD verification are green at
-  `b68e3670e5278bda9dcd5de32aafc4772cb7c269`; only the explicit underside
-  visual acceptance remains open.
-- #331 / PR #334 shaped the FlexBenchDog stop collar as a Ø22 × 1.5 mm MFT
-  seat with a 1.0 mm 45° underside chamfer back to Ø20. Durable run #368 and
-  both dev-cad publication scopes source-match
-  `086678bd0ce9280f14603df66231da75ec3b5a56`.
-- #310 / PR #311 completed the permanent history-preserving `main -> dev-cad`
-  synchronization. Run #353 and both durable dev-cad publication scopes
-  source-match `4e6f36f946cdb560fa2349f8559419f66ba577fc`.
-- #204 / #314 / PR #315 removed handwritten SCPC command counts from model
-  metadata on stable; #321 / PR #322 completed the final metadata convergence
-  required for the lane merge.
-- #316 / PRs #317/#318 made catalog card geometry identical between `/models/`
-  and category pages and promoted the accepted layout to stable.
-- #297 / PRs #299, #300 and #301 established one shared four/two/one model-card
-  grid on Home and Models, fixed preview/text slots, and added durable
-  Home/Models screenshot proof. Run #309 is the visually accepted dev-ci
-  baseline.
-- #253 reconciled this plan from current branch/build/Pages evidence after the
-  Hextra migration and subsequent `dev-ci` work.
-- #274 / PR #280 replaced repeated homepage category blocks with six
-  Git-derived recently updated model cards; durable `dev-ci` Pages are
-  source-matched to `73d3268b2f3fd647d8c73f52559718f8378440fc`.
-- #257 established the model-detail typography baseline. The first #278/0027
-  layout was technically validated but later visually rejected; change 0028
-  records the user-approved EXP replacement now being ported.
-- #273 simplified the all-model catalog so category context is not repeated in
-  multiple visual layers.
-- #263/#267/#269 completed the remaining construction-stage typography,
-  library Pages-link and Hugo/Hextra footer refinements.
-- #191/#251 completed the Hugo/Hextra migration and final migration
-  documentation.
-- PR #254 adopted externally accepted `tool.cad.ci 0.21.0` on `dev-ci`.
+## Parked pull requests
 
-Historical implementation detail belongs in issues and `docs/changes/`, not
-in this plan.
+- PR #349 — draft HUB75 iteration-2 refresh; blocked as documented above.
+- PR #328 — draft FlexBenchDog native Cone taper; blocked on Forge #746.
+- PR #169 — draft latch design; keep parked until its required Forge API
+  baseline is available.
+- PR #141 — Bolted Flange circular pattern; blocked on Forge #347.
 
 ## Next checkpoint
 
-Proceed with #8 as the next independently unblocked product-CAD change:
-
-1. restore the exact CornerBracket arm-tip profile/relief from the preserved OpenSCAD construction instead of approximating it with a sweep-edge chamfer;
-2. restore the four M5 bolt seats as explicit native features: Ø5.4 through bore, Ø10.4 × 1.0 mm flat head recess, 90° conical transition, and separate 0.2 mm outside/inside flat edge reliefs;
-3. keep 24 mm width, 12 mm wall and 60 mm arm lengths unchanged;
-4. update independent SCPC and focused regression coverage together;
-5. require native SolidCraft build and rendered visual inspection; if an exact remaining tip-wedge operation needs a missing generic transform/API, create or reuse the Forge owner issue instead of adding a CAD-local workaround.
-
-Keep #332 and #333 open only for their explicit visual acceptances. Keep #348 blocked on Forge #747, #327 / PR #328 blocked on Forge #746, and #154 / draft PR #349 blocked on the released Forge requirements including #679 and #749. #91/#77 remain tied to HUB75 native qualification. Keep PR #141 and PR #169 parked on their existing Forge blockers. Keep #21 and #288 separate.
+1. complete #383 baseline reconciliation, then synchronize exact stable
+   `main -> dev-cad` under #382 so the accepted Key-dimensions presentation is
+   also visible on the dev-cad Pages scope;
+2. verify the synchronized dev-cad durable build/Pages scope remains green and
+   retains the restored FlexBenchDog primary camera;
+3. resolve #388 through Forge #753 / the applicable SolidCraft owner fix; do not
+   add a CAD-local primitive/placement workaround;
+4. only after #388 is qualified, finish #374 assembly visual acceptance and
+   merge the already-green draft #390 / #375 connector slice;
+5. keep #365 as a design-decision slice and keep
+   #154/#327/#345/#348/#362/#367 parked until their owner-layer Forge
+   capabilities are released and adopted;
+6. do not promote `dev-cad -> main` under #382 while #388 remains open.
