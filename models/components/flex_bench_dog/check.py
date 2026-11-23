@@ -12,10 +12,10 @@ EXTRA_SNAPSHOTS = (
     {
         "name": "underside.png",
         "camera": {
-            "target": [0, 0, -12],
-            "yaw": -0.55,
-            "pitch": -1.20,
-            "distance": 70,
+            "target": [0, 0, -18],
+            "yaw": -0.45,
+            "pitch": -1.35,
+            "distance": 42,
             "fov": 0,
         },
     },
