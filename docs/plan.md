@@ -208,9 +208,27 @@ Parked open product PRs:
 Historical implementation detail belongs in issues and `docs/changes/`, not
 in this plan.
 
+
+### WS1b — normalize Home and Models model-card grid
+
+Owner/lane: `dev-ci`.
+
+Status: **now — #297**.
+
+The approved model-detail baseline remains intact. Before promoting it to main,
+normalize Home and `/models/` to one four-column desktop model-card contract,
+bound card text, and add Home/Models rendered screenshots. The existing
+promotion PR remains draft until this visual checkpoint is accepted.
+
 ## Next checkpoint
 
-Merge the #278 acceptance documentation to `dev-ci`, verify the final durable
-lane is source-matched, then promote exact `dev-ci -> main` through the
-repository `/merge` policy. Inspect stable Plate/Simple-MFT screenshots and
-public provenance before closing #278. Keep #21 and #288 separate.
+Complete #297 on `dev-ci` before stable promotion:
+
+1. validate the shared four/two/one model-card grid;
+2. inspect `home-overview.png` and `models-overview.png`;
+3. verify card text remains bounded and readable at four columns;
+4. merge through `/merge` to `dev-ci`;
+5. verify durable build/Pages source-match;
+6. then refresh and complete the exact `dev-ci -> main` promotion.
+
+Keep #21 and #288 separate.
