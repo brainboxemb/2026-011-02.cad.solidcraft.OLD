@@ -4,13 +4,17 @@ from __future__ import annotations
 
 import importlib.util
 import os
+import sys
 from pathlib import Path
 from unittest.mock import patch
 import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPT = ROOT / "scripts" / "ci" / "model_build_batch.py"
+CI = ROOT / "scripts" / "ci"
+SCRIPT = CI / "model_build_batch.py"
+if str(CI) not in sys.path:
+    sys.path.insert(0, str(CI))
 
 
 def load_module():
