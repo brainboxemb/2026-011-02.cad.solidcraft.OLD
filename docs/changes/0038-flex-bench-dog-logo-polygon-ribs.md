@@ -1,4 +1,4 @@
-# 0038 — FlexBenchDog logo polygon ribs
+# 0038 — FlexBenchDog independent logo rib cuts
 
 Issue: #332
 
@@ -9,33 +9,33 @@ placed nine intersecting closed Slot profiles in one Sketch. Their intersections
 created additional enclosed sketch regions. The resulting recess visually
 removed a filled six-sided face instead of only engraving the cube ribs.
 
+An initial correction attempt used Polygon2D rib strips. CAD CI rejected that
+approach because the released Forge v0.11.0 consumed by this repository does
+not support Polygon2D in this attached-Sketch route.
+
 ## Decision
 
-Keep the nine accepted cube centerlines and the 0.6 mm line width / 0.6 mm
-recess depth.
+Keep the nine accepted cube centerlines, 0.6 mm line width and 0.6 mm recess
+depth.
 
-Do not represent the complete logo as intersecting closed profiles in one
-Sketch. Convert every centreline to one narrow square-ended four-vertex
-`Polygon2D` strip. Extend each end by half the line width so neighbouring rib
-cuts overlap cleanly at a cube vertex.
+Use the already supported native Slot profile, but put **exactly one rib in
+each Sketch**. Each of the nine Sketches is extruded as its own 0.6 mm cut.
 
-Cut the nine rib polygons independently. This makes the intended material
-removal explicit: only the nine visible ribs are recessed, while all three
-projected cube faces remain material.
+This retains the intended rounded line engraving while preventing intersections
+between closed profiles from generating selectable cube-face regions.
 
-SCPF and SCPC use the same polygon-strip construction. The supplied BrainBox
-logo image is the visual source of truth; the preserved centerline coordinates
-remain the dimensional construction.
+SCPF and independent SCPC use the same nine centerlines and the same
+one-Sketch/one-Slot/one-cut construction.
 
 ## Verification
 
 Regression tests require:
 
-- nine `sketch.line` closed quadrilateral profiles;
-- nine independent logo cuts;
-- no `sketch.slot.center_to_center` logo profiles;
-- matching SCPF/SCPC polygon coordinates;
-- 0.6 mm recess depth.
+- nine separately named top-logo Sketches;
+- exactly one 0.6 mm Slot profile per rib Sketch;
+- nine independent 0.6 mm negative cuts;
+- no polygon/sketch.line workaround;
+- identical SCPF/SCPC Slot geometry.
 
 The PR render must be visually inspected before merge. A green command-plan
 test alone is not sufficient acceptance for this logo correction.

@@ -71,4 +71,4 @@ Current records:
 
 - [0036-flex-bench-dog-cube-wireframe-logo.md](0036-flex-bench-dog-cube-wireframe-logo.md) — replace the filled top square with the exact preserved nine-stroke BrainBox cube wireframe (#332).
 
-- [0038-flex-bench-dog-logo-polygon-ribs.md](0038-flex-bench-dog-logo-polygon-ribs.md) — replace the rejected intersecting-Slot logo cut with nine independent polygon rib cuts while keeping the BrainBox cube centerlines (#332).
+- [0038-flex-bench-dog-logo-polygon-ribs.md](0038-flex-bench-dog-logo-polygon-ribs.md) — replace the rejected one-Sketch logo cut with nine independent single-Slot rib sketches while keeping the BrainBox cube centerlines (#332).

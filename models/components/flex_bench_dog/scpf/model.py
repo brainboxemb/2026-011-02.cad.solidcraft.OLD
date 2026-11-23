@@ -8,32 +8,6 @@ preload after the stem is split into four flexible quadrants.
 
 
 
-def _logo_strip_points(p0, p1, width):
-    """Return one square-ended polygon strip around a logo centreline."""
-    x0, y0 = p0
-    x1, y1 = p1
-    dx = x1 - x0
-    dy = y1 - y0
-    length = (dx * dx + dy * dy) ** 0.5
-    half_width = width / 2
-
-    ux = dx / length
-    uy = dy / length
-    px = -uy * half_width
-    py = ux * half_width
-    ex = ux * half_width
-    ey = uy * half_width
-
-    # Extend both ends by half the line width. Adjacent rib polygons then
-    # overlap at the cube vertices without relying on intersecting Sketch
-    # regions to infer the wireframe.
-    return (
-        (x0 - ex + px, y0 - ey + py),
-        (x1 + ex + px, y1 + ey + py),
-        (x1 + ex - px, y1 + ey - py),
-        (x0 - ex - px, y0 - ey - py),
-    )
-
 
 @component
 class FlexBenchDog:
@@ -158,11 +132,11 @@ class FlexBenchDog:
             edges=[(self.hole_diameter / 2, 0, self.ABOVE_WORKTOP)],
         )
 
-        # Recess the BrainBox wireframe as nine explicit rib polygons. PR #341
-        # put nine overlapping closed Slot profiles in one Sketch; their
-        # intersections created extra enclosed regions and visually removed a
-        # filled hexagonal face. One polygon/cut per rib keeps all three cube
-        # faces open while preserving the same nine visible centerlines.
+        # Recess the BrainBox wireframe as nine independent rib cuts. PR #341
+        # put all nine overlapping closed Slot profiles in one Sketch, which
+        # created extra enclosed regions and visually removed a filled face.
+        # Keeping one Slot profile per Sketch preserves the same nine visible
+        # cube edges without allowing intersections to create face regions.
         for index, (p0, p1) in enumerate(self.LOGO_SEGMENTS, start=1):
             with Sketch(
                 name=f"Top logo rib {index}",
@@ -170,10 +144,7 @@ class FlexBenchDog:
                 plane="XY",
                 origin=(0, 0, self.ABOVE_WORKTOP),
             ) as rib:
-                Polygon2D(
-                    _logo_strip_points(p0, p1, self.LOGO_LINE_WIDTH),
-                    plane="XY",
-                )
+                SlotCenterToCenter2D(p0, p1, self.LOGO_LINE_WIDTH)
             dog = dog - rib.extrude(-self.LOGO_DEPTH)
 
         return dog

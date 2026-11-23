@@ -3,29 +3,6 @@
 from scpc import Script
 
 
-def logo_strip_points(p0, p1, width):
-    """Return one square-ended polygon strip around a logo centreline."""
-    x0, y0 = p0
-    x1, y1 = p1
-    dx = x1 - x0
-    dy = y1 - y0
-    length = (dx * dx + dy * dy) ** 0.5
-    half_width = width / 2
-
-    ux = dx / length
-    uy = dy / length
-    px = -uy * half_width
-    py = ux * half_width
-    ex = ux * half_width
-    ey = uy * half_width
-
-    return [
-        [x0 - ex + px, y0 - ey + py],
-        [x1 + ex + px, y1 + ey + py],
-        [x1 + ex - px, y1 + ey - py],
-        [x0 - ex - px, y0 - ey - py],
-    ]
-
 
 script = Script()
 
@@ -159,9 +136,9 @@ script.add(
     edges=[[10, 0, 20]],
 )
 
-# Recessed BrainBox wireframe. Each visible cube rib is one independent
-# closed polygon strip and one cut. This avoids the extra enclosed Sketch
-# regions produced by the rejected one-Sketch/nine-Slot implementation.
+# Recessed BrainBox wireframe. Each visible cube edge is one independent
+# Slot profile in its own Sketch and one cut. The nine slots therefore never
+# intersect inside the same Sketch and cannot create filled cube-face regions.
 LOGO_SEGMENTS = (
     ([0.0, 4.0], [3.5, 2.0]),
     ([3.5, 2.0], [3.5, -2.0]),
@@ -182,10 +159,10 @@ for index, (p0, p1) in enumerate(LOGO_SEGMENTS, start=1):
         name=name,
     )
     script.add(
-        "sketch.line",
-        points=logo_strip_points(p0, p1, 0.6),
-        closed=True,
-        ids=["a", "b", "c", "d"],
+        "sketch.slot.center_to_center",
+        p0=p0,
+        p1=p1,
+        width=0.6,
     )
     script.add("sketch.finish")
     script.add(

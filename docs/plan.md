@@ -60,7 +60,7 @@ Accepted repository state:
 - #332 / PR #341 preserved the intended nine BrainBox cube centerlines but its
   one-Sketch/nine-Slot construction was visually rejected: intersecting closed
   profiles produced a filled six-sided cut. #332 remains active for the
-  polygon-rib correction; PR #341 is not an accepted visual baseline.
+  independent-rib correction; PR #341 is not an accepted visual baseline.
 - The presentation from change 0027 was later visually rejected; Pages was
   temporarily switched back to the preserved pre-change publication while the
   replacement was worked out in EXP.
@@ -216,7 +216,7 @@ schema, planner or reference framework.
 | #172 Full-catalog Forge/SolidCraft qualification | dev-cad | **blocked** | Re-enable the two remaining roots after the required Forge fix reaches the CAD-consumed baseline. |
 | #168 Verification terminology cleanup | cross-repo | **later** | Revisit after lane and model-ownership cleanup are stable. |
 | #333 FlexBenchDog rounded central slot corners | dev-cad | **implemented / visual pending** | PR #338 and durable run #373 prove the R0.5 four-edge fillet; keep open because the standard upper-oblique render does not expose the central underside cross clearly enough for visual acceptance. |
-| #332 FlexBenchDog BrainBox cube-wireframe logo | dev-cad | **correction now** | Keep the accepted nine centerlines, replace PR #341's intersecting Slot profiles with nine independent Polygon2D rib cuts, and visually verify that all three cube faces remain open. |
+| #332 FlexBenchDog BrainBox cube-wireframe logo | dev-cad | **correction now** | Keep the accepted nine centerlines, put each 0.6 mm Slot rib in its own Sketch/cut, and visually verify that all three cube faces remain open. |
 | #327 FlexBenchDog full-length native Cone taper | dev-cad | **blocked** | PR #328 proved native Cone exists, but Forge #746 must add Cone join/cut feature compilation and reach a CAD-consumable release/pin. |
 | #154 HUB75 lower storage compartment | dev-cad | **next after #332** | Refresh PR #156 against current dev-cad and retain only the product/model work; drop stale catalog/CI-era edits. |
 | #142 HUB75Display2 | dev-cad | **blocked** | Resume qualification after the required Forge naming fix reaches the CAD baseline. |
@@ -283,10 +283,10 @@ Complete the #332 visual correction before returning to #154:
 
 1. retain the nine BrainBox cube centerlines and 0.6 mm line width;
 2. replace the rejected one-Sketch/nine-Slot implementation from PR #341 with
-   nine independent closed Polygon2D rib strips;
+   nine independent Sketches containing one native Slot rib each;
 3. cut every rib 0.6 mm deep while leaving the three projected cube faces as
    material;
-4. compare SCPF and independent SCPC polygon/cut geometry;
+4. compare SCPF and independent SCPC Slot/cut geometry;
 5. inspect the PR top-view/perspective render and merge only when it visibly
    reads as the supplied wireframe cube;
 6. then continue the clean #154 refresh from current `dev-cad`.

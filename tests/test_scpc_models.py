@@ -177,28 +177,21 @@ class ParallelModelTests(unittest.TestCase):
             ],
         )
 
-    def test_flex_bench_dog_scpc_matches_polygon_rib_logo_contract(self):
+    def test_flex_bench_dog_scpc_matches_independent_slot_logo_contract(self):
         native = source_path(ROOT, "flex-bench-dog", "scpc")
         forge = source_path(ROOT, "flex-bench-dog")
         scpc_doc = native_script(native).to_dict()
         scpf_doc = forge_script(forge)
 
         for document in (scpc_doc, scpf_doc):
-            self.assertFalse(
-                any(
-                    row["command"] == "sketch.slot.center_to_center"
-                    for row in document["commands"]
-                )
-            )
-
             logo_sketches = [
                 row["params"] for row in document["commands"]
                 if row["command"] == "sketch.create"
                 and row["params"]["name"].startswith("Top logo rib ")
             ]
-            lines = [
+            slots = [
                 row["params"] for row in document["commands"]
-                if row["command"] == "sketch.line"
+                if row["command"] == "sketch.slot.center_to_center"
             ]
             cuts = [
                 row["params"] for row in document["commands"]
@@ -207,28 +200,25 @@ class ParallelModelTests(unittest.TestCase):
             ]
 
             self.assertEqual(len(logo_sketches), 9)
-            self.assertEqual(len(lines), 9)
+            self.assertEqual(len(slots), 9)
             self.assertEqual(len(cuts), 9)
-            self.assertTrue(all(row["closed"] for row in lines))
-            self.assertTrue(all(len(row["points"]) == 4 for row in lines))
-            self.assertTrue(all(row["ids"] == ["a", "b", "c", "d"] for row in lines))
+            self.assertTrue(all(row["width"] == 0.6 for row in slots))
             self.assertTrue(all(row["operation"] == "cut" for row in cuts))
             self.assertTrue(all(row["distance"] == 0.6 for row in cuts))
             self.assertTrue(all(row["direction"] == "negative" for row in cuts))
+            self.assertFalse(
+                any(row["command"] == "sketch.line" for row in document["commands"])
+            )
 
-        scpc_lines = [
-            row["params"]["points"] for row in scpc_doc["commands"]
-            if row["command"] == "sketch.line"
+        scpc_slots = [
+            row["params"] for row in scpc_doc["commands"]
+            if row["command"] == "sketch.slot.center_to_center"
         ]
-        scpf_lines = [
-            row["params"]["points"] for row in scpf_doc["commands"]
-            if row["command"] == "sketch.line"
+        scpf_slots = [
+            row["params"] for row in scpf_doc["commands"]
+            if row["command"] == "sketch.slot.center_to_center"
         ]
-        self.assertEqual(len(scpc_lines), len(scpf_lines))
-        for scpc_polygon, scpf_polygon in zip(scpc_lines, scpf_lines):
-            for scpc_point, scpf_point in zip(scpc_polygon, scpf_polygon):
-                for scpc_value, scpf_value in zip(scpc_point, scpf_point):
-                    self.assertAlmostEqual(scpc_value, scpf_value, places=9)
+        self.assertEqual(scpc_slots, scpf_slots)
 
     def test_plate_and_corner_bracket_have_independent_native_scripts(self):
         for slug in ("plate", "corner-bracket"):
