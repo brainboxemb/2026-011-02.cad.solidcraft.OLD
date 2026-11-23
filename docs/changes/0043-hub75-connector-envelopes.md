@@ -27,8 +27,10 @@ The IDC dimensions and front datum are preserved from the existing source
 contract. The power connector remains explicitly approximate: its source
 position and envelope are visual-reference values, not drawing dimensions.
 
-These volumes are native Box features joined to the reusable panel model so
-they remain explicit in the feature history. No enclosure dimensions or
+These volumes are named native XY Sketch + join-Extrude features attached to
+the reusable panel body so they remain explicit in the feature history. This
+uses the released Forge v0.11 explicit-Sketch feature path; it does not depend
+on newer standalone-Sketch boolean support. No enclosure dimensions or
 assembly-world coordinates are introduced in this component.
 
 ## Contract
@@ -44,9 +46,10 @@ assembly-world coordinates are introduced in this component.
 
 Focused model regressions must verify:
 
-- two 27.90 × 9.50 × 10.64 data-envelope Box features at Y=±113.5 mm,
-  front Z=2.63 mm;
-- one 13 × 20 × 7 power-envelope Box feature at the transformed local center;
+- two named 27.90 × 9.50 × 10.64 data-envelope Sketch/Extrude features at
+  Y=±113.5 mm, front Z=2.63 mm;
+- one named 13 × 20 × 7 approximate power-envelope Sketch/Extrude feature at
+  the transformed local center;
 - no new editable parameters;
 - the ordinary native SolidCraft build and rear snapshot complete on the
   pinned CAD stack.
