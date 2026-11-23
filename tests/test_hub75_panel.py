@@ -17,7 +17,7 @@ MODEL_PROCESS_ENABLED = bool(
 )
 requires_detailed_panel_process = unittest.skipUnless(
     MODEL_PROCESS_ENABLED,
-    "hub75-panel process:false (CAD #408 / Forge #796)",
+    "hub75-panel process:false",
 )
 
 
