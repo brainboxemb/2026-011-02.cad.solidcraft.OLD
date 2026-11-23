@@ -41,3 +41,20 @@ Durable Chrome proof adds `components-overview.png` so the exact reported
 
 Presentation only. Model metadata, geometry, CAD execution and generic CAD-CI
 behavior are unchanged.
+
+## Accepted evidence
+
+- PR #304 merged the implementation to `dev-ci`.
+- Accepted dev-ci implementation commit:
+  `966be3d57b2ea8e9fe986d974f55284ffbb151d9`.
+- Dev-ci run #318 (`45140334107`) was green and retained
+  `components-overview.png` in artifact `14801118096`.
+- PR #305 promoted the fix through the permanent-lane merge policy.
+- `main` and `dev-ci` are synchronized at
+  `64702b64e3ff1842886f3e2031d25ed552cd5d6c`.
+- Stable run #320 (`45140887606`) is green with artifact
+  `model-layouts-main` / `14801817789`.
+- Dev-ci run #321 (`45140890247`) is green with artifact
+  `model-layouts-dev-ci` / `14801916726`.
+- Durable build and Pages provenance on both lanes source-match
+  `64702b64e3ff1842886f3e2031d25ed552cd5d6c`.

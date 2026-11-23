@@ -34,11 +34,11 @@ Accepted repository state:
   (`b62f9d0b169aa201a3c66c3166f364396b2d71bc`) for CAD execution and
   `tool.cad.ci 0.20.1`
   (`eb64a46b243db00e8dbb4b78b6643a2a7efa3fb9`) for merge policy.
-- `main` and `dev-ci` were promoted/synchronized by PR #296 and currently
-  point to `e568f6764d36d748bdb95c1d00d5751162e9e6c7`.
-- Post-promotion review of the published `dev-ci` Components route exposed the
-  residual card-row alignment defect tracked in #303; do not synchronize
-  `main -> dev-cad` until that presentation fix is accepted and re-promoted.
+- `main` and `dev-ci` are synchronized at
+  `64702b64e3ff1842886f3e2031d25ed552cd5d6c` after PR #305 promoted the
+  accepted #303 model-card row fix.
+- Durable `build/main`, public Pages, `build/dev-ci` and Pages `/dev-ci/`
+  source-match `64702b64e3ff1842886f3e2031d25ed552cd5d6c`.
 - The presentation from change 0027 was later visually rejected; Pages was
   temporarily switched back to the preserved pre-change publication while the
   replacement was worked out in EXP.
@@ -88,7 +88,7 @@ The shared plan structure is defined by
 
 Owner/lane: `dev-ci`.
 
-Status: **promoted; #303 presentation correction is now the active dev-ci follow-up**.
+Status: **promoted and accepted, including the #303 post-promotion card-row correction**.
 
 The earlier 0027 presentation was technically green but visually rejected.
 The restored backup publication was then used as the baseline in EXP issue #29.
@@ -107,31 +107,31 @@ User-approved reference:
 
 Accepted CAD evidence:
 
-- PR #293 ported the approved hierarchy and SolidCraft version provenance;
-- PR #294 corrected the remaining model-detail screenshot parity differences;
-- #297 / PRs #299, #300 and #301 normalized Home and Models to the shared
-  four/two/one model-card grid, retained preview slots when images are missing,
-  and fixed title/tagline/parameter slots so text baselines remain aligned;
-- `dev-ci` is accepted at
-  `baf187f826e3b66a5082bf40f8c81e67d6e2d36a`;
-- durable run #309 (`45138523550`) is green;
-- screenshot artifact `model-layouts-dev-ci` (artifact `14800049960`) was
-  visually inspected: Home and Models card text is aligned and missing-preview
-  cards retain the same image slot;
-- `build/dev-ci` and Pages `/dev-ci/` source-match
-  `baf187f826e3b66a5082bf40f8c81e67d6e2d36a`;
-- Pages provenance records build commit
-  `354e4c80b2023459f7a2c9e9302ad24316399966`;
-- published Plate and Simple MFT provenance both record SolidCraft `0.45.0`.
+- PRs #293/#294 ported and corrected the approved framed model-detail baseline;
+- #297 / PRs #299/#300/#301 established the shared four/two/one model-card grid;
+- #303 / PR #304 replaced flex-flow card internals with explicit named rows and
+  added the exact Components category screenshot proof;
+- PR #305 promoted the accepted #303 fix through the permanent-lane merge
+  policy;
+- `main` and `dev-ci` are synchronized at
+  `64702b64e3ff1842886f3e2031d25ed552cd5d6c`;
+- stable run #320 (`45140887606`) and dev-ci run #321 (`45140890247`) are green;
+- stable screenshot artifact `model-layouts-main` is artifact `14801817789`;
+- dev-ci screenshot artifact `model-layouts-dev-ci` is artifact `14801916726`;
+- `build/main`, public Pages, `build/dev-ci` and Pages `/dev-ci/` all
+  source-match the synchronized lane;
+- public Pages build commit is
+  `ab9f1fce4e2fd4b3c24696c7799387cdfe634527`;
+- dev-ci Pages build commit is
+  `30cc6ac7a99ae44c89512aebad80a5dd1e839b63`;
+- published Plate and Simple MFT provenance record SolidCraft `0.45.0`.
 
 Required next order:
 
-1. complete #303 on a short-lived branch targeting `dev-ci`;
-2. inspect Home, Models and Components durable Chrome screenshots;
-3. merge #303 through `/merge` to `dev-ci` and verify source-match;
-4. promote exact `dev-ci -> main` through the permanent-lane merge policy;
-5. verify stable Pages/screenshots;
-6. only then synchronize `main -> dev-cad`.
+1. synchronize exact `main -> dev-cad` through the permanent-lane merge policy;
+2. require durable `build/dev-cad` and Pages `/dev-cad/` source-match;
+3. reassess parked product PRs #141, #156 and #169;
+4. then resume one coherent product-CAD work item at a time.
 
 Do not mix #21 or #288 into this replacement.
 
@@ -139,7 +139,7 @@ Do not mix #21 or #288 into this replacement.
 
 Owner/lane: repository governance + `dev-cad`.
 
-Status: **next after #278 is durably accepted**.
+Status: **next — stable site presentation is accepted; synchronize main into dev-cad**.
 
 After the accepted #278 site work is reconciled:
 
@@ -171,8 +171,7 @@ schema, planner or reference framework.
 
 | Issue | Lane/owner | Status | Next action |
 | --- | --- | --- | --- |
-| #303 Residual model-card vertical alignment | dev-ci | **now** | Replace flex-flow card internals with explicit named rows; visually verify the reported Components route before re-promotion. |
-| #278 Model-detail presentation replacement | dev-ci | **promoted** | PR #296 promoted the accepted model-detail baseline; keep #303 as the separate post-promotion presentation correction. |
+| #278 Model-detail presentation replacement | dev-ci | **promoted / accepted** | Framed model-detail baseline plus #297/#303 catalog corrections are stable; no further action in this workstream. |
 | #288 tool.cad.ci v0.25.0 workflow/config migration | dev-ci / CI | **later / separate** | Do not mix with #278; reassess after the current site presentation checkpoint. |
 | #250 Shared changelog template/history | documentation | **later** | Reassess after permanent lanes are coherent; do not interrupt WS1/WS2. |
 | #206 Remove Forge reference implementations | dev-cad | **next after WS2** | Remove local cross-CAD reference sources/assumptions without changing product geometry. |
@@ -225,14 +224,13 @@ in this plan.
 
 ## Next checkpoint
 
-Fix #303 on `dev-ci` before any product-lane synchronization:
+Synchronize stable integration into the product-CAD lane:
 
-1. make the shared model-card partial use explicit named CSS-grid rows;
-2. verify one-line and two-line titles cannot move later rows;
-3. inspect `home-overview.png`, `models-overview.png` and
-   `components-overview.png`;
-4. merge through `/merge` to `dev-ci` and verify durable source-match;
-5. promote exact `dev-ci -> main` and verify stable publication;
-6. then resume the planned `main -> dev-cad` synchronization.
+1. open exact `main -> dev-cad`;
+2. merge only through `/merge` as a history-preserving permanent-ref merge;
+3. verify durable `build/dev-cad` and Pages `/dev-cad/` source-match the
+   synchronized lane;
+4. reassess PR #141, PR #156 and PR #169 against the new dev-cad head;
+5. choose one coherent product-CAD work item at a time.
 
 Keep #21 and #288 separate.
