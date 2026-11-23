@@ -19,7 +19,6 @@ stages:
   - "Chamfer top and bottom edges, then cut a recessed square box logo"
 source: "scpf/model.py"
 scpc_source: "scpc/model.py"
-scpc_command_count: 22
 component_source: "scpf/model.py"
 component_definition_primary: true
 build: true
