@@ -1,7 +1,7 @@
 {
   "format": "scpf-replay-log",
   "version": 1,
-  "replay_sha256": "81bd5f9d03db291cd712c24b3343175bc79725b6e17b1ffe5757986f8268c043",
+  "replay_sha256": "f92fd0f8912ba478df4ea4d8c1c7c2d3b7708154f26fa8c5d6954d5f2e1da787",
   "variables": {},
   "commands": [
     {
@@ -9,7 +9,7 @@
       "command": "parameters.add",
       "resolved_params": {
         "name": "rim_diameter",
-        "expression": "24",
+        "expression": "22",
         "unit": "mm"
       }
     },
@@ -44,7 +44,7 @@
       "index": 4,
       "command": "solid.cylinder",
       "resolved_params": {
-        "height": 3.0,
+        "height": 1.5,
         "diameter": "rim_diameter",
         "base": [
           0,
@@ -58,14 +58,29 @@
     },
     {
       "index": 5,
+      "command": "solid.chamfer",
+      "resolved_params": {
+        "edges": [
+          [
+            11.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "distance": 1.0,
+        "body": "FlexBenchDog"
+      }
+    },
+    {
+      "index": 6,
       "command": "solid.cylinder",
       "resolved_params": {
-        "height": 17.0,
+        "height": 18.5,
         "diameter": "hole_diameter",
         "base": [
           0,
           0,
-          3.0
+          1.5
         ],
         "axis": "Z",
         "operation": "join",
@@ -75,7 +90,7 @@
       }
     },
     {
-      "index": 6,
+      "index": 7,
       "command": "solid.cylinder",
       "resolved_params": {
         "height": 20.0,
@@ -93,7 +108,7 @@
       }
     },
     {
-      "index": 7,
+      "index": 8,
       "command": "solid.cylinder",
       "resolved_params": {
         "height": 2.0,
@@ -111,7 +126,7 @@
       }
     },
     {
-      "index": 8,
+      "index": 9,
       "command": "solid.chamfer",
       "resolved_params": {
         "edges": [
@@ -126,7 +141,7 @@
       }
     },
     {
-      "index": 9,
+      "index": 10,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -150,7 +165,7 @@
       }
     },
     {
-      "index": 10,
+      "index": 11,
       "command": "sketch.rectangle.two_point",
       "resolved_params": {
         "p0": [
@@ -164,12 +179,12 @@
       }
     },
     {
-      "index": 11,
+      "index": 12,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 12,
+      "index": 13,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -182,7 +197,7 @@
       }
     },
     {
-      "index": 13,
+      "index": 14,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -206,7 +221,7 @@
       }
     },
     {
-      "index": 14,
+      "index": 15,
       "command": "sketch.rectangle.two_point",
       "resolved_params": {
         "p0": [
@@ -220,12 +235,12 @@
       }
     },
     {
-      "index": 15,
+      "index": 16,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 16,
+      "index": 17,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -238,7 +253,7 @@
       }
     },
     {
-      "index": 17,
+      "index": 18,
       "command": "solid.chamfer",
       "resolved_params": {
         "edges": [
@@ -253,7 +268,7 @@
       }
     },
     {
-      "index": 18,
+      "index": 19,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -277,7 +292,7 @@
       }
     },
     {
-      "index": 19,
+      "index": 20,
       "command": "sketch.rectangle.two_point",
       "resolved_params": {
         "p0": [
@@ -291,12 +306,12 @@
       }
     },
     {
-      "index": 20,
+      "index": 21,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 21,
+      "index": 22,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -309,5 +324,5 @@
       }
     }
   ],
-  "completed": 22
+  "completed": 23
 }

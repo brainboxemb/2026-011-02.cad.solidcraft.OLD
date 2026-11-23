@@ -1,9 +1,9 @@
 [
   {
-    "display_value": 24.0,
+    "display_value": 22.0,
     "name": "rim_diameter",
     "unit": "mm",
-    "value": 24.0
+    "value": 22.0
   },
   {
     "display_value": 20.0,
@@ -32,7 +32,7 @@
       "FlexBenchDog"
     ],
     "feature": 1,
-    "ms": 3.388786,
+    "ms": 3.7965780000000002,
     "name": "Cylinder1",
     "removed_bodies": [],
     "warning": null
@@ -46,8 +46,8 @@
     ],
     "created_bodies": [],
     "feature": 2,
-    "ms": 25.719248999999998,
-    "name": "Cylinder2",
+    "ms": 38.934612,
+    "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null
   },
@@ -60,8 +60,8 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 26.423202,
-    "name": "Cylinder3",
+    "ms": 31.193556,
+    "name": "Cylinder2",
     "removed_bodies": [],
     "warning": null
   },
@@ -74,8 +74,8 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 27.549753,
-    "name": "Cylinder4",
+    "ms": 45.436709,
+    "name": "Cylinder3",
     "removed_bodies": [],
     "warning": null
   },
@@ -88,8 +88,22 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 47.468838,
-    "name": "Chamfer1",
+    "ms": 24.09553,
+    "name": "Cylinder4",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "FlexBenchDog"
+    ],
+    "changed_bodies": [
+      "FlexBenchDog"
+    ],
+    "created_bodies": [],
+    "feature": 6,
+    "ms": 58.250388,
+    "name": "Chamfer2",
     "removed_bodies": [],
     "warning": null
   },
@@ -104,7 +118,7 @@
     "frame": "world",
     "name": "Flex slot X",
     "projected": null,
-    "sketch": 6
+    "sketch": 7
   },
   {
     "constraints": [
@@ -159,7 +173,7 @@
   },
   {
     "profiles": 1,
-    "sketch": 6
+    "sketch": 7
   },
   {
     "bodies": [
@@ -169,8 +183,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 7,
-    "ms": 39.977137000000006,
+    "feature": 8,
+    "ms": 64.64294,
     "name": "Flex slot X",
     "removed_bodies": [],
     "warning": null
@@ -186,7 +200,7 @@
     "frame": "world",
     "name": "Flex slot Y",
     "projected": null,
-    "sketch": 8
+    "sketch": 9
   },
   {
     "constraints": [
@@ -241,21 +255,7 @@
   },
   {
     "profiles": 1,
-    "sketch": 8
-  },
-  {
-    "bodies": [
-      "FlexBenchDog"
-    ],
-    "changed_bodies": [
-      "FlexBenchDog"
-    ],
-    "created_bodies": [],
-    "feature": 9,
-    "ms": 35.640624,
-    "name": "Flex slot Y",
-    "removed_bodies": [],
-    "warning": null
+    "sketch": 9
   },
   {
     "bodies": [
@@ -266,8 +266,22 @@
     ],
     "created_bodies": [],
     "feature": 10,
-    "ms": 74.53067100000001,
-    "name": "Chamfer2",
+    "ms": 73.786694,
+    "name": "Flex slot Y",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "FlexBenchDog"
+    ],
+    "changed_bodies": [
+      "FlexBenchDog"
+    ],
+    "created_bodies": [],
+    "feature": 11,
+    "ms": 89.556207,
+    "name": "Chamfer3",
     "removed_bodies": [],
     "warning": null
   },
@@ -282,7 +296,7 @@
     "frame": "world",
     "name": "Top logo",
     "projected": null,
-    "sketch": 11
+    "sketch": 12
   },
   {
     "constraints": [
@@ -337,7 +351,7 @@
   },
   {
     "profiles": 1,
-    "sketch": 11
+    "sketch": 12
   },
   {
     "bodies": [
@@ -347,8 +361,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 12,
-    "ms": 24.816277,
+    "feature": 13,
+    "ms": 28.576790000000003,
     "name": "Top logo",
     "removed_bodies": [],
     "warning": null
