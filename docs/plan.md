@@ -46,12 +46,14 @@ Pure repository-instruction/documentation corrections in `AGENTS.md` and
 work. Documentation belonging to a code/model change stays with that issue,
 branch and PR.
 
-Current CAD runtime baseline is SolidCraft 0.45.0. CAD issue #405 adopts
-released Forge v0.13.1 at exact commit
-`17a4e1d0e2edf0124d40daf5425891fdf65c24be`. This release includes Forge
-#679, #703, #746, #747, #749 and #750, so their downstream CAD slices are no
-longer blocked on an unreleased Forge capability. Forge #753 / CAD #388 is not
-part of v0.13.1 and remains a separate owner-layer blocker.
+Current CAD runtime baseline is SolidCraft 0.45.0. Stable `dev-cad` still
+consumes released Forge v0.11.0. CAD #405 is qualifying Forge v0.13.1 at exact
+commit `17a4e1d0e2edf0124d40daf5425891fdf65c24be`, which contains #679,
+#703, #746, #747, #749 and #750. Adoption run #45263158238 failed because
+Forge #796 regresses symbolic placed-Cylinder anchor arithmetic in
+`hub75-panel`; therefore v0.13.1 is **not** an accepted CAD baseline. #405
+must move to a patched released Forge version after #796 is fixed. Forge #753 /
+CAD #388 is separate and remains an owner-layer blocker.
 
 ## Current work order
 
@@ -72,21 +74,20 @@ Primary lane: `dev-cad`.
   uses the shared/default camera while `underside.png` keeps its dedicated
   review camera. Durable dev-cad run #45196422598 is green at
   `b69e8170576a911581c4d8d58806ba92f1ac0b57`.
-- #327 / draft PR #328: Forge #746 is released in v0.13.1. Resume the
-  full-length native Cone taper on the existing issue/branch/PR and remove the
-  old stepped workaround only after native build/verification is green.
+- #327 / draft PR #328: Forge #746 is present in v0.13.1, but CAD adoption is blocked by #405 / Forge
+  #796. Resume the full-length native Cone taper only after the patched Forge
+  baseline is released and accepted.
 
 ### 2. Keep temporary capability workarounds explicit
 
-- #348 -> Forge #747: attached/explicit Sketch `Polygon2D` lowering is released
-  in Forge v0.13.1. Replace the temporary one-Slot-per-Sketch logo construction
-  in its own focused CAD slice while preserving the accepted visible geometry.
-- #362 -> Forge #750: locally rotated standalone Sketch cutters are released in
-  Forge v0.13.1. Resume the final CornerBracket arm-tip triangular wedge and
-  remove the TEMPORARY markers only with the completed geometry.
+- #348 -> Forge #747: attached/explicit Sketch `Polygon2D` lowering exists in v0.13.1, but the
+  repository cannot adopt that baseline until #405 / Forge #796 is resolved.
+  Keep the temporary construction until the patched release is accepted.
+- #362 -> Forge #750: locally rotated standalone Sketch cutters exist in v0.13.1, but CAD adoption
+  is blocked by #405 / Forge #796. Keep the TEMPORARY markers until the patched
+  release is accepted, then resume the final arm-tip wedge.
 - #8: PR #360 restored the preserved 11-point arm profile and exact four-part
-  recessed M5 fixing seats. The remaining arm-tip wedge is now actionable
-  through #362.
+  recessed M5 fixing seats. The remaining arm-tip wedge becomes actionable through #362 after #405.
 
 Do not add CAD-local compiler, transform or command workarounds for these
 generic Forge gaps.
@@ -98,12 +99,13 @@ generic Forge gaps.
 - The refreshed root is `models/advanced/hub75_wood_frame_iter2/` and keeps
   only current product-CAD geometry plus current `model.yml` / `ci.yml`
   ownership.
-- Forge #679 naming and #749 model-local import isolation are both released in
-  v0.13.1. Resume PR #349 on that exact baseline; no CAD-local `sys.modules`
-  cleanup is allowed.
-- Keep the iteration-2 model change in #154 / PR #349 and require the normal
-  native build plus saved-design lower-compartment mutation before marking it
-  ready.
+- Forge #679 naming and #749 model-local import isolation are present in
+  v0.13.1, but CAD #405 cannot yet accept that release because of Forge #796.
+  Keep PR #349 draft; no CAD-local `sys.modules` or primitive workaround is
+  allowed.
+- After a patched Forge release is accepted, refresh #154 / PR #349 on the
+  current lane and require the normal native build plus saved-design
+  lower-compartment mutation before marking it ready.
 
 ### 4. STL publication
 
@@ -134,20 +136,24 @@ generic Forge gaps.
   `extra_views` / `EXTRA_SNAPSHOTS` mechanism already proves model-owned
   multiple views, but #20's broader gallery contract is not yet complete.
 
-## Released Forge follow-ups now actionable
+## Released capability follow-ups awaiting accepted Forge adoption
 
 Forge v0.13.1 contains the previously missing #679 naming fix and #749
-model-local import isolation. The existing `hub75-wood-frame` root can therefore
-be re-enabled under #378 without a CAD-local workaround. After that native root
-is green, the current saved-design placement/mutation work can proceed:
+model-local import isolation, but candidate adoption failed on Forge #796.
+Therefore do **not** re-enable `hub75-wood-frame` yet. After #796 is fixed,
+released and #405 is green, #378 becomes the first model-specific follow-up.
+After that native root is green, the current saved-design placement/mutation
+work can proceed:
 
 - #91 frame-thickness mutation moving all eight CornerBrackets;
 - #77 CornerBracket placement/associativity under dimension changes;
 - #142 HUB75Display2 native qualification;
 - the remaining full-catalog acceptance in #172.
 
-Forge v0.13.1 also releases #746/#747/#750, which unblocks #327, #348, #362
-and the clean Polygon2D path for #373. These are independent of #388.
+Forge v0.13.1 also contains #746/#747/#750. Those capabilities will unblock
+#327, #348, #362 and the clean Polygon2D path for #373 after a patched Forge
+release containing them and #796 is accepted under #405. These are independent
+of #388.
 
 CAD #388 remains blocked on Forge #753 / applicable SolidCraft component-local
 Cylinder ownership. It continues to block final five-panel assembly acceptance,
@@ -158,25 +164,25 @@ freeze unrelated model work.
 
 | Issue | Owner/lane | Status | Next action |
 | --- | --- | --- | --- |
-| #8 CornerBracket exact geometry | dev-cad + Forge | **actionable via #362** | Preserve PR #360 geometry and add the final rotated wedge using released Forge v0.13.1 support. |
-| #362 CornerBracket arm-tip wedge | dev-cad | **unblocked by Forge v0.13.1** | Implement the final rotated wedge in a focused branch/PR and remove the temporary markers with the completed geometry. |
-| #154 HUB75 lower compartment | dev-cad | **resume draft PR #349** | Refresh on Forge v0.13.1, enable the intended native processing and complete the saved-design lower-compartment mutation acceptance. |
+| #8 CornerBracket exact geometry | dev-cad + Forge | **blocked on #405 / Forge #796** | Preserve PR #360 geometry; add the final rotated wedge only after the patched Forge baseline is accepted. |
+| #362 CornerBracket arm-tip wedge | dev-cad + Forge | **blocked on #405 / Forge #796** | Forge #750 exists, but wait for the patched accepted Forge baseline before implementing the final rotated wedge. |
+| #154 HUB75 lower compartment | dev-cad + Forge | **blocked on #405 / Forge #796** | Keep PR #349 draft; refresh and enable native processing only after the patched Forge baseline is accepted. |
 | #345 STL output + GitHub viewer | dev-cad / SolidCraft runtime | **complete / PR #401** | Accepted on durable dev-cad run #45211961040; direct .sc → STL export and scope-matched GitHub viewer link are live. |
-| #348 FlexBenchDog logo cleanup | dev-cad | **unblocked by Forge v0.13.1** | Replace temporary per-rib Slot Sketches with the released Polygon2D attached-Sketch path while preserving accepted geometry. |
+| #348 FlexBenchDog logo cleanup | dev-cad + Forge | **blocked on #405 / Forge #796** | Forge #747 exists, but keep the temporary Slot construction until the patched accepted Forge baseline is available. |
 
-| #327 FlexBenchDog Cone taper | dev-cad | **resume draft PR #328** | Refresh on Forge v0.13.1 and complete native Cone build/verification before making the PR ready. |
+| #327 FlexBenchDog Cone taper | dev-cad + Forge | **blocked on #405 / Forge #796** | Forge #746 exists, but refresh PR #328 only after the patched Forge baseline is accepted. |
 | #288 CAD-CI workflow/config migration | dev-ci / tool.cad.ci | **later / separate** | Reassess against the current released tool.cad.ci owner baseline before implementation. |
-| #205 canonical model.yml contract | dev-cad | **unblocked / separate migration** | Forge #703 is released in v0.13.1; migrate CAD-only fields to their owning layers in its own focused work, not as part of #405. |
-| #172 full-catalog native qualification | dev-cad | **actionable after disabled roots are re-enabled** | Use the released v0.13.1 baseline, account explicitly for any still-disabled model, then run the deliberate full-library qualification. |
-| #142 HUB75Display2 | dev-cad | **actionable after #378 baseline** | Resume native qualification after the existing wooden HUB75 root is re-enabled and green on v0.13.1. |
+| #205 canonical model.yml contract | dev-cad + Forge | **blocked on #405 baseline adoption** | Forge #703 exists, but migrate only after the patched Forge baseline is accepted; keep this separate from #405. |
+| #172 full-catalog native qualification | dev-cad + Forge | **blocked on #405 then disabled-root work** | First accept the patched Forge baseline, then re-enable/qualify roots and run the deliberate full-library qualification. |
+| #142 HUB75Display2 | dev-cad + Forge | **blocked on #405 then #378** | Resume native qualification only after the patched Forge baseline is accepted and the existing wooden HUB75 root is green. |
 | #135 Bolted Flange circular pattern | dev-cad + Forge | **blocked on Forge #347** | Keep PR #141 parked until the intended applied-feature seed is supported. |
-| #91 frame-thickness native regression | dev-cad | **actionable after #378** | Run the current native saved-design mutation once hub75-wood-frame is re-enabled on v0.13.1. |
-| #77 CornerBracket placement/associativity | dev-cad | **actionable after #378** | Validate all eight bracket occurrences on the re-enabled current HUB75 root. |
+| #91 frame-thickness native regression | dev-cad | **blocked on #405 then #378** | Run the saved-design mutation after the patched Forge baseline is accepted and hub75-wood-frame is re-enabled. |
+| #77 CornerBracket placement/associativity | dev-cad | **blocked on #405 then #378** | Validate all eight bracket occurrences after the patched Forge baseline is accepted and the current HUB75 root is re-enabled. |
 | #21 interactive SolidCraft viewer | site/product | **later** | Revisit after current model/output contracts stabilize. |
 | #20 multiple verified model views | site/product | **later / partially enabled** | Build on generic extra_views; broader responsive gallery contract remains open. |
 | #365 HUB75 glazing retention/seal | dev-cad | **next design slice** | Define the physical glazing stack, contact/clearance, retention and sealing before modelling guessed hardware. |
 | #371 Detailed HUB75 panel completion | tracking | **tracking only** | Reusable-panel work is split into #373 rear-frame contour, #374 mounting interfaces and #375 connector envelopes. |
-| #373 HUB75 rear-frame bay contours | dev-cad | **unblocked by Forge v0.13.1** | Restore R5/stepped bay contours using the released clean Polygon2D path; do not add overlapping-profile workarounds. |
+| #373 HUB75 rear-frame bay contours | dev-cad + Forge | **blocked on #405 / Forge #796** | Forge #747 exists, but use the clean Polygon2D path only after the patched accepted Forge baseline; no overlapping-profile workaround. |
 | #374 HUB75 mounting tubes/bushings/locator pins | dev-cad + Forge/SolidCraft | **standalone merged / assembly acceptance blocked on #388** | PR #376 is merged and the standalone detailed panel remains valid. Do not close final visual acceptance while the five-panel assembly leaves component-local Cylinder features detached. |
 | #375 HUB75 connector envelopes | dev-cad | **implemented / draft PR #390 green; blocked on #388 before merge** | The two measured IDC envelopes and explicitly approximate power envelope build successfully in the standalone reusable panel on the released stack. Keep PR #390 draft until reusable-component assembly output is clean. |
 | #388 HUB75 component-local Cylinder placement regression | dev-cad + Forge/SolidCraft | **blocked on owner-layer qualification** | Five panel bodies are placed correctly, but the 14 native Cylinder join features can appear detached. Forge #753 / draft PR #754 owns the minimal rotated-component reproducer. SolidCraft 0.45 issue #21098 / PR #21145 is the primary runtime hypothesis, not yet proven or released. |
@@ -209,21 +215,24 @@ freeze unrelated model work.
   baseline is available.
 - PR #141 — Bolted Flange circular pattern; blocked on Forge #347.
 
-PR #349 (#154) and PR #328 (#327) are no longer parked by their former Forge
-release blockers; resume them only within their existing logical issues.
+PR #349 (#154) and PR #328 (#327) have their original Forge capabilities in
+v0.13.1, but remain parked while #405 is blocked on Forge #796. Resume them
+only after a patched release is accepted and within their existing issues.
 
 ## Next checkpoint
 
-1. complete #405 and adopt exact Forge v0.13.1 without mixing model geometry
-   into the baseline PR;
-2. re-enable the existing `hub75-wood-frame` under #378 and require a real
+1. fix Forge #796 in Forge itself and qualify the symbolic placed-Cylinder
+   regression; do not add a CAD-local workaround;
+2. publish a patched Forge release containing the v0.13.1 capability set plus
+   #796, then update #405 to that exact release commit;
+3. require #405 PR validation to be fully green before merging the dependency
+   adoption;
+4. re-enable the existing `hub75-wood-frame` under #378 and require a real
    native build plus source-matched dev-cad output;
-3. resume #154 / draft PR #349 on v0.13.1 and complete its native
-   lower-compartment mutation acceptance;
-4. resume the independent released-capability slices #327, #348, #362 and
-   #373 in their own issue/branch/PR order;
-5. after #378 is green, continue #77/#91 and then #142/full-catalog #172 as
+5. resume #154 / draft PR #349, then the independent #327/#348/#362/#373
+   slices in their own issue/branch/PR order;
+6. after #378 is green, continue #77/#91 and then #142/full-catalog #172 as
    appropriate;
-6. keep #388 on its Forge #753/SolidCraft owner path. It still blocks final
+7. keep #388 on its Forge #753/SolidCraft owner path. It still blocks final
    #374 assembly acceptance, PR #390/#375 and `dev-cad -> main`, but not the
-   unrelated model work above.
+   unrelated model work after #405.
