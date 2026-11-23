@@ -288,6 +288,7 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn("grid-template-columns: repeat(2, minmax(0, 1fr));", css)
         self.assertIn("aspect-ratio: 3 / 2;", css)
         self.assertIn("min-height: 0;", css)
+        self.assertIn('class="cad-model-description"', page)
         self.assertNotIn(".cad-preview-panel h2,\n.cad-preview-panel .cad-preview{\n  min-height", css)
         self.assertIn(".cad-panel,", css)
         self.assertIn(".cad-verification-grid {", css)
@@ -295,7 +296,9 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn('class="cad-code-section cad-commands-section cad-collapsible"', page)
         self.assertIn(".cad-command-sequence {", css)
         self.assertIn(".cad-command-json {", css)
-        self.assertIn(".cad-code-frame{", css)
+        self.assertIn(".cad-code-frame {", css)
+        self.assertIn("background: #0d1f33;", css)
+        self.assertIn(".cad-reference-source a {", css)
 
 
     def test_source_sections_are_visible_by_default(self):
