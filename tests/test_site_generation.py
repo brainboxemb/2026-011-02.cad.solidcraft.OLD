@@ -440,6 +440,11 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn('blob/build/%s/models/%s/%s/models/%s/native/model.stl', page)
         self.assertIn('View STL on GitHub', page)
         self.assertIn('STL is the printable mesh', page)
+        self.assertIn('test ! -e generated-site/models/plate/model.stl', workflow)
+        self.assertIn(
+            'require_file generated-site/models/flex-bench-dog/model.stl',
+            workflow,
+        )
         self.assertNotIn("resources.Copy", page)
         self.assertNotIn("scripts/ci/build-results.py", workflow)
 

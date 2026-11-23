@@ -136,18 +136,26 @@ def _build_one(row: dict, batch: dict) -> str:
         work_dir=saved_dir / "replay_work",
     )
 
-    # STL is exported from the accepted saved SolidCraft design itself. Forge
-    # owns command/model generation; it is not part of this output conversion.
+    artifacts = row.get("artifacts", [])
+    if not isinstance(artifacts, list) or any(
+        not isinstance(item, str) for item in artifacts
+    ):
+        raise RuntimeError(f"{slug}: invalid artifacts manifest entry")
+
+    # STL is optional model-root output. Forge owns command/model generation;
+    # SolidCraft exports the mesh directly from the accepted saved design.
     stl = saved_dir / "model.stl"
-    subprocess.run(
-        [
-            "solidcraft-cli", "run",
-            "--in", str(saved),
-            "--out", str(stl),
-            "--quality", "fine",
-        ],
-        check=True,
-    )
+    export_stl = "stl" in artifacts
+    if export_stl:
+        subprocess.run(
+            [
+                "solidcraft-cli", "run",
+                "--in", str(saved),
+                "--out", str(stl),
+                "--quality", "fine",
+            ],
+            check=True,
+        )
 
     semantic_status = "not-configured"
     if definition is not None:
@@ -185,7 +193,10 @@ def _build_one(row: dict, batch: dict) -> str:
             raise RuntimeError(f"{slug}: invalid extra snapshot name {name!r}")
         render_snapshot(saved_dir / name, spec.get("camera"))
 
-    for path in (saved, saved_dir / "model.step", stl, primary_snapshot):
+    required = [saved, saved_dir / "model.step", primary_snapshot]
+    if export_stl:
+        required.append(stl)
+    for path in required:
         if not path.is_file() or not path.stat().st_size:
             raise RuntimeError(f"{slug}: required build result missing: {path}")
 
@@ -251,9 +262,10 @@ def _build_one(row: dict, batch: dict) -> str:
             sort_keys=True,
         ) + "\n", encoding="utf-8",
     )
+    outputs = "STEP, STL and image" if export_stl else "STEP and image"
     print(
         f"{slug}: SolidCraft build PASS; semantic verification "
-        f"{semantic_status}; STEP, STL and image saved"
+        f"{semantic_status}; {outputs} saved"
         + ("; independent Forge/SCPC geometry agrees" if comparison else ""),
         flush=True,
     )

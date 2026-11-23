@@ -75,3 +75,4 @@ Current records:
 - [0041-flex-bench-dog-rounded-slot-corners.md](0041-flex-bench-dog-rounded-slot-corners.md) — fillet the four vertical material corners around the FlexBenchDog central cross without changing slot dimensions (#333).
 - [0042-corner-bracket-exact-geometry.md](0042-corner-bracket-exact-geometry.md) — restore the preserved arm-tip profile and exact four-part recessed M5 fixing-seat geometry in the shared CornerBracket (#8).
 - [0043-solidcraft-stl-publication.md](0043-solidcraft-stl-publication.md) — export STL directly from the accepted saved SolidCraft design and publish the durable mesh/viewer link (#345).
+- [0044-opt-in-stl-artifacts.md](0044-opt-in-stl-artifacts.md) — make STL export an explicit model-root artifact request instead of a universal CAD output (#403).

@@ -162,12 +162,14 @@ jobs:
           require_file generated-site/models/plate/model.yml
           require_file generated-site/models/plate/model.png
           require_file generated-site/models/plate/model.sc
-          require_file generated-site/models/plate/model.stl
+          test ! -e generated-site/models/plate/model.stl
           require_file generated-site/models/plate/model.step
           require_file generated-site/models/plate/provenance.json
           require_file generated-site/models/plate/solidcraft.json
           require_file generated-site/models/guide-rail-makita/index.html
           require_file generated-site/models/simple-mft-assembly/index.html
+          require_file generated-site/models/flex-bench-dog/index.html
+          require_file generated-site/models/flex-bench-dog/model.stl
           jq -e --arg source "$SOURCE_SHA" '.source_commit == $source' generated-site/provenance.json >/dev/null
           jq -e --arg build "$BUILD_COMMIT" '.build_commit == $build' generated-site/provenance.json >/dev/null
           jq -e --arg scope "$SCOPE" '.build_scope == $scope' generated-site/provenance.json >/dev/null

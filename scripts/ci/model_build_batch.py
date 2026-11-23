@@ -25,6 +25,32 @@ from model_verify import compile_scpc, dependency_wheel
 
 
 ROOT = Path(__file__).resolve().parents[2]
+SUPPORTED_ARTIFACTS = frozenset({"stl"})
+
+
+def model_artifacts(model_root: Path) -> tuple[str, ...]:
+    """Return optional model-root build artifacts from ci.yml."""
+
+    config_path = ROOT / model_root / "ci.yml"
+    config = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+    artifacts = config.get("artifacts", [])
+    if artifacts is None:
+        artifacts = []
+    if (
+        not isinstance(artifacts, list)
+        or any(not isinstance(item, str) or not item for item in artifacts)
+        or len(set(artifacts)) != len(artifacts)
+    ):
+        raise RuntimeError(
+            f"{config_path}: artifacts must be a unique list of strings"
+        )
+    unsupported = sorted(set(artifacts) - SUPPORTED_ARTIFACTS)
+    if unsupported:
+        raise RuntimeError(
+            f"{config_path}: unsupported artifact(s): "
+            + ", ".join(unsupported)
+        )
+    return tuple(artifacts)
 
 
 def configured_model_roots() -> tuple[tuple[Path, tuple[str, ...]], ...]:
@@ -109,6 +135,7 @@ def write_manifest(
 
     rows = []
     for model_root, variants in model_roots:
+        artifacts = model_artifacts(model_root)
         item_output = batch_output / "items" / model_root
         item_output.mkdir(parents=True, exist_ok=True)
         (item_output / "generated").mkdir(exist_ok=True)
@@ -158,6 +185,7 @@ def write_manifest(
                     else None
                 ),
                 "scpc_sha": scpc_sha,
+                "artifacts": list(artifacts),
                 "compile_error": error,
             }
             rows.append(row)
@@ -168,6 +196,7 @@ def write_manifest(
                 {
                     "schema": 1,
                     "item_path": model_root.as_posix(),
+                    "artifacts": list(artifacts),
                     "models": [row["slug"] for row in rows
                                if row["item_path"] == model_root.as_posix()],
                 },

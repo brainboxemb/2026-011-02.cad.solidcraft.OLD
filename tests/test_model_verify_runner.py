@@ -85,7 +85,11 @@ class SharedModelBatchTests(unittest.TestCase):
         self.assertIn('"--out", str(stl)', model)
         self.assertIn('"--quality", "fine"', model)
         self.assertIn('saved_dir / "model.stl"', model)
-        self.assertIn('saved_dir / "model.step", stl, primary_snapshot', model)
+        self.assertIn('export_stl = "stl" in artifacts', model)
+        self.assertIn("if export_stl:", model)
+        self.assertIn('required = [saved, saved_dir / "model.step", primary_snapshot]', model)
+        self.assertIn("required.append(stl)", model)
+        self.assertIn('"artifacts": list(artifacts)', batch)
 
     def test_batch_source_adapter_has_no_syntax_errors(self):
         for path in (CI / "model_build_batch.py", CI / "model_verify.py"):
