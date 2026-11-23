@@ -6,9 +6,9 @@ tagline: "One measured reusable P5 HUB75 panel component"
 description: >-
   Shared panel component from the existing OpenSCAD reference: a 159.70 × 319.71 × 14.50 mm
   envelope with four rear pockets, six rear-side Ø3 bores in Ø8.5 mounting tubes, separate
-  rear reinforcement features, two locator pins and a grey housing material. Standalone uses the component's own local XY/Z axes; screen assemblies
+  rear reinforcement features, two locator pins, two measured IDC/data clearance envelopes and an explicitly approximate power clearance envelope. Standalone uses the component's own local XY/Z axes; screen assemblies
   rotate the exact same class into world XZ.
-parameters: "159.70 × 319.71 × 14.50 mm body; six Ø3 bores in Ø8.5 tubes; two Ø3 × 3 mm locator pins"
+parameters: "159.70 × 319.71 × 14.50 mm body; six Ø3 bores in Ø8.5 tubes; two Ø3 × 3 mm locator pins; two 27.90 × 9.50 × 10.64 mm IDC envelopes; approximate 13 × 20 × 7 mm power envelope"
 diagram: "hub75"
 stages:
   - "Run the shared Hub75Panel component directly"
@@ -17,6 +17,8 @@ stages:
   - "Restore six Ø8.5 rear mounting tubes and their shallow circular reliefs"
   - "Add six separate reinforcement features beside the mounting tubes"
   - "Add two diagonal Ø3 × 3 mm locator pins from the referenced PDF relationship"
+  - "Add two measured IDC/data clearance envelopes at Y=±113.5 mm from the panel centre"
+  - "Add the explicitly approximate power clearance envelope from the preserved visual reference"
   - "Cut the six Ø3 mounting bores through the proud tube faces back to the Z=2 rear-housing datum"
   - "Assign grey housing material"
   - "Keep the standalone part in its local CAD axes"
@@ -37,5 +39,5 @@ extra_views:
       caption: "Front — LED mask"
     - kind: "build"
       src: "rear.png"
-      alt: "SolidCraft Rear — pockets and mounting bores"
-      caption: "Rear — pockets and mounting bores"
+      alt: "SolidCraft Rear — pockets, mounting interfaces and connector envelopes"
+      caption: "Rear — mounting and connector clearances"
