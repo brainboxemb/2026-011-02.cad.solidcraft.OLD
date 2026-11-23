@@ -15,7 +15,7 @@ belong to released `tool.cad.ci` / `lib.py.cad.ci`.
 | `model_history.py` | Derive physical model-root last-modified timestamps from Git for Hugo presentation only. |
 | `model_checks.py` | Load optional model-root snapshot presentation settings. |
 | `model_build_batch.py` | Generate model commands and start one shared SolidCraft runtime batch. |
-| `model_verify.py` | Save models, run optional semantic checks, render snapshots and write provenance. |
+| `model_verify.py` | Save models, export STEP/STL from the accepted SolidCraft design, run optional semantic checks, render snapshots and write provenance. |
 | `capture_site_layout.sh` | Render generated Plate/Simple-MFT Pages in headless Chrome and retain visual regression screenshots before publication. |
 
 Do not add a changed-files planner, model scheduler, cache/store implementation,

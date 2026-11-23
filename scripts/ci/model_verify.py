@@ -136,6 +136,19 @@ def _build_one(row: dict, batch: dict) -> str:
         work_dir=saved_dir / "replay_work",
     )
 
+    # STL is exported from the accepted saved SolidCraft design itself. Forge
+    # owns command/model generation; it is not part of this output conversion.
+    stl = saved_dir / "model.stl"
+    subprocess.run(
+        [
+            "solidcraft-cli", "run",
+            "--in", str(saved),
+            "--out", str(stl),
+            "--quality", "fine",
+        ],
+        check=True,
+    )
+
     semantic_status = "not-configured"
     if definition is not None:
         report = run_solidcraft_verification(
@@ -172,7 +185,7 @@ def _build_one(row: dict, batch: dict) -> str:
             raise RuntimeError(f"{slug}: invalid extra snapshot name {name!r}")
         render_snapshot(saved_dir / name, spec.get("camera"))
 
-    for path in (saved, saved_dir / "model.step", primary_snapshot):
+    for path in (saved, saved_dir / "model.step", stl, primary_snapshot):
         if not path.is_file() or not path.stat().st_size:
             raise RuntimeError(f"{slug}: required build result missing: {path}")
 
@@ -240,7 +253,7 @@ def _build_one(row: dict, batch: dict) -> str:
     )
     print(
         f"{slug}: SolidCraft build PASS; semantic verification "
-        f"{semantic_status}; STEP and image saved"
+        f"{semantic_status}; STEP, STL and image saved"
         + ("; independent Forge/SCPC geometry agrees" if comparison else ""),
         flush=True,
     )

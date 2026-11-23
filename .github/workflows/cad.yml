@@ -162,6 +162,7 @@ jobs:
           require_file generated-site/models/plate/model.yml
           require_file generated-site/models/plate/model.png
           require_file generated-site/models/plate/model.sc
+          require_file generated-site/models/plate/model.stl
           require_file generated-site/models/plate/model.step
           require_file generated-site/models/plate/provenance.json
           require_file generated-site/models/plate/solidcraft.json

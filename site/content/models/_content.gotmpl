@@ -118,6 +118,7 @@ identity and does not produce /models/<slug>/<resource>.
              resources.Copy side effects inside the presentation template. */}}
         {{ range $resource := slice
           (dict "source" (printf "%s/native/model.sc" $buildRoot) "target" "model.sc")
+          (dict "source" (printf "%s/native/model.stl" $buildRoot) "target" "model.stl")
           (dict "source" (printf "%s/native/model.step" $buildRoot) "target" "model.step")
         }}
           {{ with resources.Get (index $resource "source") }}
