@@ -110,3 +110,17 @@ It does **not** include:
 - the interactive SolidCraft iframe/viewer from #21;
 - CAD-CI lifecycle work from #288;
 - any new model or geometry work.
+
+
+### Durable parity correction
+
+The first durable CAD screenshot run after the approved port exposed two
+presentation differences that were not visible in the EXP data adapter:
+
+- the CAD codeblock partial had lost the dark technical code surface;
+- the external-reference `open original` anchor inherited the image-link
+  16:9 layout and rendered as a large empty tile.
+
+The follow-up parity correction restores the approved dark code surface, keeps
+`open original` as a normal inline link, and restores the model description
+below the preview as shown in EXP.
