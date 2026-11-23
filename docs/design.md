@@ -355,7 +355,7 @@ model-description/catalog source and must not gain a hand-maintained
 
 `model.yml` owns model/page metadata. Optional `page.md` owns additional
 background/reference prose without redefining identity, build state or
-verification facts. Build provenance, generated commands, saved native output
+verification facts. Build provenance, generated commands, saved SolidCraft output
 and verification state come only from the accepted prepared build scope.
 
 A model's optional supplementary views remain declarative model metadata and
