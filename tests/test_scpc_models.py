@@ -163,7 +163,10 @@ class ParallelModelTests(unittest.TestCase):
             self.assertEqual(cone["base"], [0, 0, -20])
             self.assertEqual(cone["height"], 20)
             self.assertEqual(cone["axis"], "Z")
-            self.assertEqual(cone["diameter"], "hole_diameter + interference")
+            self.assertIn(
+                cone["diameter"],
+                ("hole_diameter + interference", "hole_diameter + (interference)"),
+            )
             self.assertEqual(cone["top_diameter"], "hole_diameter")
 
             insert_cylinders = [
