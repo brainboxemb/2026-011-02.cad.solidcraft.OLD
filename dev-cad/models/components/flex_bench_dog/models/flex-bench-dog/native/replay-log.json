@@ -1,7 +1,7 @@
 {
   "format": "scpf-replay-log",
   "version": 1,
-  "replay_sha256": "f92fd0f8912ba478df4ea4d8c1c7c2d3b7708154f26fa8c5d6954d5f2e1da787",
+  "replay_sha256": "72a4f353c9e1109e9e89a6684416bcabd2066979cebb6fb5148446a5120e85a3",
   "variables": {},
   "commands": [
     {
@@ -42,6 +42,15 @@
     },
     {
       "index": 4,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "slot_corner_radius",
+        "expression": "0.5",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 5,
       "command": "solid.cylinder",
       "resolved_params": {
         "height": 1.5,
@@ -57,7 +66,7 @@
       }
     },
     {
-      "index": 5,
+      "index": 6,
       "command": "solid.chamfer",
       "resolved_params": {
         "edges": [
@@ -72,7 +81,7 @@
       }
     },
     {
-      "index": 6,
+      "index": 7,
       "command": "solid.cylinder",
       "resolved_params": {
         "height": 18.5,
@@ -90,7 +99,7 @@
       }
     },
     {
-      "index": 7,
+      "index": 8,
       "command": "solid.cylinder",
       "resolved_params": {
         "height": 20.0,
@@ -108,7 +117,7 @@
       }
     },
     {
-      "index": 8,
+      "index": 9,
       "command": "solid.cylinder",
       "resolved_params": {
         "height": 2.0,
@@ -126,7 +135,7 @@
       }
     },
     {
-      "index": 9,
+      "index": 10,
       "command": "solid.chamfer",
       "resolved_params": {
         "edges": [
@@ -141,7 +150,7 @@
       }
     },
     {
-      "index": 10,
+      "index": 11,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -165,7 +174,7 @@
       }
     },
     {
-      "index": 11,
+      "index": 12,
       "command": "sketch.rectangle.two_point",
       "resolved_params": {
         "p0": [
@@ -179,12 +188,12 @@
       }
     },
     {
-      "index": 12,
+      "index": 13,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 13,
+      "index": 14,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -197,7 +206,7 @@
       }
     },
     {
-      "index": 14,
+      "index": 15,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -221,7 +230,7 @@
       }
     },
     {
-      "index": 15,
+      "index": 16,
       "command": "sketch.rectangle.two_point",
       "resolved_params": {
         "p0": [
@@ -235,12 +244,12 @@
       }
     },
     {
-      "index": 16,
+      "index": 17,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 17,
+      "index": 18,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -253,7 +262,37 @@
       }
     },
     {
-      "index": 18,
+      "index": 19,
+      "command": "solid.fillet",
+      "resolved_params": {
+        "edges": [
+          [
+            0.75,
+            0.75,
+            -12.0
+          ],
+          [
+            -0.75,
+            0.75,
+            -12.0
+          ],
+          [
+            -0.75,
+            -0.75,
+            -12.0
+          ],
+          [
+            0.75,
+            -0.75,
+            -12.0
+          ]
+        ],
+        "radius": "slot_corner_radius",
+        "body": "FlexBenchDog"
+      }
+    },
+    {
+      "index": 20,
       "command": "solid.chamfer",
       "resolved_params": {
         "edges": [
@@ -268,7 +307,7 @@
       }
     },
     {
-      "index": 19,
+      "index": 21,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -292,7 +331,7 @@
       }
     },
     {
-      "index": 20,
+      "index": 22,
       "command": "sketch.rectangle.two_point",
       "resolved_params": {
         "p0": [
@@ -306,12 +345,12 @@
       }
     },
     {
-      "index": 21,
+      "index": 23,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 22,
+      "index": 24,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -324,5 +363,5 @@
       }
     }
   ],
-  "completed": 23
+  "completed": 25
 }

@@ -33,6 +33,14 @@
       }
     },
     {
+      "command": "parameters.add",
+      "params": {
+        "name": "slot_corner_radius",
+        "expression": "0.5",
+        "unit": "mm"
+      }
+    },
+    {
       "command": "solid.cylinder",
       "params": {
         "height": 1.5,
@@ -228,6 +236,35 @@
           "FlexBenchDog"
         ],
         "name": "Flex slot Y"
+      }
+    },
+    {
+      "command": "solid.fillet",
+      "params": {
+        "body": "FlexBenchDog",
+        "radius": "slot_corner_radius",
+        "edges": [
+          [
+            0.75,
+            0.75,
+            -12
+          ],
+          [
+            -0.75,
+            0.75,
+            -12
+          ],
+          [
+            -0.75,
+            -0.75,
+            -12
+          ],
+          [
+            0.75,
+            -0.75,
+            -12
+          ]
+        ]
       }
     },
     {

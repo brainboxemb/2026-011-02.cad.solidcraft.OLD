@@ -50,7 +50,7 @@
       "outputs": [
         "result.json"
       ],
-      "source_commit": "086678bd0ce9280f14603df66231da75ec3b5a56"
+      "source_commit": "b68e3670e5278bda9dcd5de32aafc4772cb7c269"
     },
     "ci/scpc-package": {
       "engine": "scons",
@@ -222,7 +222,7 @@
     "models/components/flex_bench_dog": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "03a8ee8375c1d71d199715524fe42704b935f1f1d82d19092d0269bbe246cd1a",
+      "final_bundle_sha256": "b11c08511c527072b22c9e10ba236067c6ea3c004f7c9d5f1ee7b0251bfc694c",
       "final_step": "build_results",
       "final_target_spec_digest": "6f5c28ea29b86a31936f0681ff16d395d8f35e90d552bd71aa3d5fbdba33e9fe",
       "item_id": "flex-bench-dog",
@@ -231,7 +231,7 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "086678bd0ce9280f14603df66231da75ec3b5a56"
+      "source_commit": "b68e3670e5278bda9dcd5de32aafc4772cb7c269"
     },
     "models/components/guide_rail": {
       "engine": "scons",
@@ -265,5 +265,5 @@
   "name": "dev-cad",
   "schema": 1,
   "scope": "named",
-  "source_commit": "086678bd0ce9280f14603df66231da75ec3b5a56"
+  "source_commit": "b68e3670e5278bda9dcd5de32aafc4772cb7c269"
 }
