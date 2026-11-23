@@ -208,8 +208,10 @@ schema, planner or reference framework.
 | #205 Canonical shared model.yml contract | shared + dev-cad | **blocked** | Wait for an actually reusable/adoptable shared contract; do not copy Forge's site-local validator. |
 | #172 Full-catalog Forge/SolidCraft qualification | dev-cad | **blocked** | Re-enable the two remaining roots after the required Forge fix reaches the CAD-consumed baseline. |
 | #168 Verification terminology cleanup | cross-repo | **later** | Revisit after lane and model-ownership cleanup are stable. |
-| #327 FlexBenchDog native conical tip flare | dev-cad | **blocked** | PR #328 proved native Cone exists, but Forge #746 must add Cone join/cut feature compilation and reach a CAD-consumable release/pin. |
-| #154 HUB75 lower storage compartment | dev-cad | **now** | Refresh PR #156 against current dev-cad and retain only the product/model work; drop stale catalog/CI-era edits. |
+| #331 FlexBenchDog MFT stop collar | dev-cad | **now** | Implement the shaped Ø22 × 1.5 mm collar with a 45° underside seat chamfer back to Ø20; verify the side profile. |
+| #332 FlexBenchDog BrainBox cube-wireframe logo | dev-cad | **next after #331** | Replace the filled square with the recessed six-edge + three-spoke cube/box wireframe from preserved PR #128. |
+| #327 FlexBenchDog full-length native Cone taper | dev-cad | **blocked** | PR #328 proved native Cone exists, but Forge #746 must add Cone join/cut feature compilation and reach a CAD-consumable release/pin. |
+| #154 HUB75 lower storage compartment | dev-cad | **next after #332** | Refresh PR #156 against current dev-cad and retain only the product/model work; drop stale catalog/CI-era edits. |
 | #142 HUB75Display2 | dev-cad | **blocked** | Resume qualification after the required Forge naming fix reaches the CAD baseline. |
 | #135 Bolted Flange circular pattern | dev-cad | **blocked** | Keep PR #141 parked until Forge #347 supports the intended applied feature seed. |
 | #91 Frame-thickness native regression | dev-cad | **later** | Resume with relevant HUB75 frame work. |
@@ -262,15 +264,17 @@ in this plan.
 
 ## Next checkpoint
 
-Refresh #154 / PR #156 against current `dev-cad`:
+Complete the unblocked FlexBenchDog refinements before returning to the older
+HUB75 branch:
 
-1. audit the old PR branch against the current WoodenHub75BoxIter2 model and
-   current repository contracts;
-2. preserve only the lower-storage-compartment product/model intent;
-3. drop stale catalog, CI, site and migration-era edits from the old branch;
-4. keep the change on a clean short-lived branch targeting `dev-cad`;
-5. verify geometry, model-owned expectations and durable dev-cad publication
-   before merge.
+1. #331 — implement the MFT stop collar as a shaped Ø22 × 1.5 mm profile whose
+   underside chamfers 45° back to the Ø20 shaft;
+2. verify that the collar seats geometrically on the small 45° mouth chamfer of
+   a nominal Ø20 MFT hole and is not a plain cylindrical band;
+3. #332 — replace the current filled-square top recess with the recessed
+   BrainBox cube/box wireframe from preserved PR #128;
+4. verify both changes independently with SCPF/SCPC parity and durable renders;
+5. then refresh #154 / PR #156 against the current `dev-cad` lane.
 
 Keep #327 / PR #328 draft and parked on Forge #746. Keep PR #141 parked on
 Forge #347. Keep PR #169 draft/parked until its required Forge API is available
