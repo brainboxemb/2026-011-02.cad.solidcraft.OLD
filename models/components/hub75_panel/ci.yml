@@ -1,4 +1,5 @@
-# Shared SolidCraft build; semantic verification is optional when it adds value.
+# TEMPORARY: disabled by CAD #407 while Forge #796 is unresolved.
+# Geometry is unchanged; re-enable after a released Forge fix is adopted.
 id: hub75-panel
 template: cad-model-build
-process: true
+process: false
