@@ -41,7 +41,6 @@ class SharedModelBatchTests(unittest.TestCase):
         self.assertEqual(len(active), 15)
         blocked = {
             "models/advanced/hub75-display2",
-            "models/advanced/hub75_wood_frame",
         }
         self.assertEqual(
             {
