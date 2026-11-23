@@ -9,9 +9,9 @@
 <a class="cad-model-card" href="{{ $page.RelPermalink }}">
   {{ with $page.Resources.Get "model.png" }}<span class="cad-card-picture"><img src="{{ .RelPermalink }}" alt=""></span>{{ end }}
   {{ if $showSection }}<span class="cad-card-section">{{ $page.Params.cadSection }}</span>{{ end }}
-  <strong>{{ $page.Title }}</strong>
+  <strong class="cad-card-title">{{ $page.Title }}</strong>
   {{ if $showUpdated }}<small class="cad-card-updated">Updated {{ $page.Lastmod.Format "2 Jan 2006" }}</small>{{ end }}
-  <span>{{ index $m "tagline" }}</span><small>{{ index $m "parameters" }}</small>
+  <span class="cad-card-tagline">{{ index $m "tagline" }}</span><small class="cad-card-parameters">{{ index $m "parameters" }}</small>
   {{ if eq $semantic "pass" }}<b class="cad-card-state cad-card-ok">verified</b>
   {{ else if $built }}<b class="cad-card-state">built</b>
   {{ else }}<b class="cad-card-state cad-card-pending">pending</b>{{ end }}
