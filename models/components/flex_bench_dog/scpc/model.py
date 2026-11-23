@@ -45,20 +45,12 @@ script.add(
     targets=["FlexBenchDog"],
 )
 
-# Straight 20 mm insert and a slightly oversized free tip.
+# Full-length insertion taper: Ø20.2 at Z=-20 to Ø20.0 at Z=0.
 script.add(
-    "solid.cylinder",
+    "solid.cone",
     height=20,
-    diameter="hole_diameter",
-    base=[0, 0, -20],
-    axis="Z",
-    operation="join",
-    targets=["FlexBenchDog"],
-)
-script.add(
-    "solid.cylinder",
-    height=2,
     diameter="hole_diameter + interference",
+    top_diameter="hole_diameter",
     base=[0, 0, -20],
     axis="Z",
     operation="join",

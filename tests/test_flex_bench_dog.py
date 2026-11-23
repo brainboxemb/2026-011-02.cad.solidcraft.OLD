@@ -10,11 +10,12 @@ MODEL = ROOT / "models" / "components" / "flex_bench_dog" / "scpf" / "model.py"
 
 
 class FlexBenchDogTests(unittest.TestCase):
-    def test_uses_native_cylinders_sketch_cuts_and_chamfers(self):
+    def test_uses_native_cylinders_cone_sketch_cuts_and_chamfers(self):
         commands = run_script(MODEL)["commands"]
         names = [row["command"] for row in commands]
 
-        self.assertEqual(names.count("solid.cylinder"), 4)
+        self.assertEqual(names.count("solid.cylinder"), 2)
+        self.assertEqual(names.count("solid.cone"), 1)
         self.assertEqual(names.count("sketch.create"), 11)
         self.assertEqual(names.count("sketch.rectangle.two_point"), 2)
         self.assertEqual(names.count("sketch.line"), 0)
@@ -53,12 +54,19 @@ class FlexBenchDogTests(unittest.TestCase):
         self.assertEqual(cylinders[0]["height"], 1.5)
         self.assertEqual(cylinders[1]["base"], [0, 0, 1.5])
         self.assertEqual(cylinders[1]["height"], 18.5)
-        self.assertEqual(cylinders[2]["base"], [0, 0, -20])
-        self.assertEqual(cylinders[2]["height"], 20)
-        self.assertEqual(cylinders[3]["base"], [0, 0, -20])
-        self.assertEqual(cylinders[3]["height"], 2)
+
+        cones = [
+            row["params"] for row in commands
+            if row["command"] == "solid.cone"
+        ]
+        self.assertEqual(len(cones), 1)
+        cone = cones[0]
+        self.assertEqual(cone["base"], [0, 0, -20])
+        self.assertEqual(cone["height"], 20)
+        self.assertEqual(cone["axis"], "Z")
+        self.assertEqual(cone["top_diameter"], "hole_diameter")
         self.assertIn(
-            cylinders[3]["diameter"],
+            cone["diameter"],
             ("hole_diameter + interference", "hole_diameter + (interference)"),
         )
 
