@@ -1,6 +1,4 @@
-# TEMPORARY: disabled by CAD #408 because Forge #796 regresses symbolic
-# placed-Cylinder anchor arithmetic on the Forge v0.13.1 adoption baseline.
-# Re-enable only after the upstream fix is released and adopted here.
+# Shared SolidCraft build; semantic verification is optional when it adds value.
 id: hub75-panel
 template: cad-model-build
-process: false
+process: true
