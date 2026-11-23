@@ -14,5 +14,6 @@ python -m scpf models/basic/csg_cube/scpf/model.py --out output/csg-cube.json
 code output/csg-cube.json
 ```
 
-CadQuery, µcad, vcad and PythonSCAD examples remain available for
-modeling-syntax comparisons. SolidCraft is the SCPF geometry engine.
+Cross-CAD reference implementations and syntax comparisons are owned by
+[Forge](https://github.com/brainboxemb/lib.py.solidcraft.forge). This product
+repository retains the SCPF model and its reviewed SolidCraft command fixture.

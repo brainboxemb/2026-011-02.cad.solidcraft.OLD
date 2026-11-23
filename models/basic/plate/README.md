@@ -13,9 +13,10 @@ python -m scpf examples/plate/scpf/model.py --out output/plate.json
 code output/plate.json
 ```
 
-Additional CadQuery, vcad, µcad and PythonSCAD variants are independent
-comparison references, not scripting runtimes for this project.
-
+Cross-CAD reference implementations and API comparisons are owned by
+[Forge](https://github.com/brainboxemb/lib.py.solidcraft.forge). This product
+repository retains only the supported SCPF/SCPC sources and their model-specific
+regression evidence.
 
 ## Two scripts: Forge and native commands
 
