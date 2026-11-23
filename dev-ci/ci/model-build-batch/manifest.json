@@ -148,5 +148,5 @@
   ],
   "runtime_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
   "schema": 1,
-  "source_sha": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+  "source_sha": "d61aa24c90ca185630470ce35dc829d0fc115576"
 }

@@ -29,7 +29,7 @@
     "ci/model-build-batch": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "4e986cbc3882b58e55fbcddc3c374dea2fb8fbb99790e892ca3146159672ab90",
+      "final_bundle_sha256": "f8da86e4959e71c060b9a8a6e89d1c68baa3280320cc7f59e85bca447da1051c",
       "final_step": "build_models",
       "final_target_spec_digest": "1bff051e79d5db0ca09c65f64b9c235635d242acb3cde1439fe4f6152bc8200f",
       "item_id": "model-build-batch",
@@ -38,7 +38,7 @@
         "items",
         "manifest.json"
       ],
-      "source_commit": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     },
     "ci/repository-tests": {
       "engine": "scons",
@@ -50,7 +50,7 @@
       "outputs": [
         "result.json"
       ],
-      "source_commit": "3ae614b0c64a937ef4db92837cf60e288875f857"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     },
     "ci/scpc-package": {
       "engine": "scons",
@@ -68,7 +68,7 @@
     "models/advanced/hub75_screen": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "5403a192d879a72c0cb03cc554e0cb71c6aa2831fae58036c6bc3786473ee876",
+      "final_bundle_sha256": "3270a62fef8aeb152f28c7b31e82710a909ee634a7c6fb951c4ba4801fd78a74",
       "final_step": "build_results",
       "final_target_spec_digest": "c7bae9d7cc40fca4ef4c5db9a316da7796e745a6e0a611e9130713d74fdc0874",
       "item_id": "hub75-screen",
@@ -77,12 +77,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     },
     "models/advanced/simple_mft": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "49b1e37622181f4f9077ef801506c96cf09a4379383120fda28bd725733774e7",
+      "final_bundle_sha256": "b9a6cf932df0cd434552e695251eb0505ab02a71e13f559e4a569ef4d22adaae",
       "final_step": "build_results",
       "final_target_spec_digest": "783598e9c46cd06c8f69566997d5d2f669070b2963422bf35a5c3ee967a5b481",
       "item_id": "simple-mft",
@@ -91,12 +91,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     },
     "models/basic/bolted_flange": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "0a6dabb42069c401fe60c977f8e2d92272c4993445b6a5f4f58bf1df9136c889",
+      "final_bundle_sha256": "72c3ebff231e3a73bee2cf14ae46f70bf9550c3267b670ba83ded4dd2d98a2e6",
       "final_step": "build_results",
       "final_target_spec_digest": "811c49de947afc91b0115058f41e538c72afaabe50146a6c294bf8bc9e421a2e",
       "item_id": "bolted-flange",
@@ -105,12 +105,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     },
     "models/basic/bracket": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "17b743526b7aeacfecb8008276d20c75172cf1052676af9caddafef4501f5fb6",
+      "final_bundle_sha256": "9bd85402d35b167b6371a2cfa1967ffd2bb22696fc8817a04380e1c013b48c21",
       "final_step": "build_results",
       "final_target_spec_digest": "7668866e6dda4a88f3e6f2bb84e8eeb82facb67cd6cb70349c9198ebced99fdf",
       "item_id": "bracket",
@@ -119,12 +119,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     },
     "models/basic/csg_cube": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "4f1f2d9876abbe27682c70a427c8a964b33a28f70409d4f17193a81a1ea7e622",
+      "final_bundle_sha256": "de39d93fa1d602c4d6c86eaa161e509d8f4e0d6c971bd2b21b0fd2d2e4034a97",
       "final_step": "build_results",
       "final_target_spec_digest": "37e7771f444ae0fe354aaa170918fc5c9f2b6e219b8c7b9824376becba18154c",
       "item_id": "csg-cube",
@@ -133,12 +133,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     },
     "models/basic/plastic_enclosure": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "ff560f5a522a07313d3184eac74b05eeffd5529393caefb2457a1dacb5546927",
+      "final_bundle_sha256": "fc9728cc8940d9cbc71b7eb92621e77dea87464edb1b7a5d461e462f0448858f",
       "final_step": "build_results",
       "final_target_spec_digest": "22abb74a8acef1bb63dee4c88e0ff50c085a6f1a204fe5a1fdb9c4051d56a63b",
       "item_id": "plastic-enclosure",
@@ -147,12 +147,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     },
     "models/basic/plastic_enclosure_pi": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "083636f6d981f5c1ee98aa000f54af3385281c197d68a337d1037f44c456d99f",
+      "final_bundle_sha256": "e62725dd59e0974b06b9871c51c5451743f71191028b708df34a5c9d86a321e9",
       "final_step": "build_results",
       "final_target_spec_digest": "8cb2a904edf8d9433bd08bfa61b535a79d4c6d38fb363174a7fc2117e26f5df9",
       "item_id": "plastic-enclosure-pi",
@@ -161,12 +161,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     },
     "models/basic/plate": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "44c5e5348468f74691777801ad8dd920fed71af9b8600bef67346a2fb7744466",
+      "final_bundle_sha256": "e4cc8f115e42a9734a4c011812a4f486019565c8886c6cccbd39219368e7da24",
       "final_step": "build_results",
       "final_target_spec_digest": "db4b84e10f14fd7a3b81735122aa4c86e14ac6e4b96aff8b3870749a9942d9c9",
       "item_id": "plate",
@@ -175,12 +175,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     },
     "models/basic/sample_plate": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "a858a49bcde855057cb64a3af0392ea8c07a919365cbc027068ee75220886692",
+      "final_bundle_sha256": "eb2b892dc537f5658b380c81b79546b22c8307d738d24032e3463ba0e83bd5be",
       "final_step": "build_results",
       "final_target_spec_digest": "e683f2c35acc12df3795b0eb7d9e22189004c224cbb39517e40be9315d8615fc",
       "item_id": "sample-plate",
@@ -189,12 +189,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     },
     "models/basic/vent_plate": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "84732d19fce909d6538de439e124c2b453ea8af8c5a6bbd587d4e23b1c969a92",
+      "final_bundle_sha256": "f8b1b63e207ae21192822e4c5685acba5397b599f06857262b208a62e50462fb",
       "final_step": "build_results",
       "final_target_spec_digest": "ea6801cdade29fe4178fc5e6b15749fb00c16201ba85fb6a58ea6e74f407f187",
       "item_id": "vent-plate",
@@ -203,12 +203,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     },
     "models/components/corner_bracket": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "e62bee39f89236a37c91ccef71c76e32f8590622d160c11af38de4ece4b3299b",
+      "final_bundle_sha256": "6c29b1cda267961b8b07b8cc8417af1b2dc40a8693cb6b7bc8460261bc4944a7",
       "final_step": "build_results",
       "final_target_spec_digest": "2651276ce325cb99c1f0a36f3a630ce1aa96cec464e3ed99278ac7d1a6190cc3",
       "item_id": "corner-bracket",
@@ -217,12 +217,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     },
     "models/components/flex_bench_dog": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "f5796e1d5ce56b68f140de5a22da48bb6b32b671675271724da3ca63222dbe2d",
+      "final_bundle_sha256": "ff3ca353790baddc83f471614dfd1548f81575c95200643605dd766ba297e152",
       "final_step": "build_results",
       "final_target_spec_digest": "6f5c28ea29b86a31936f0681ff16d395d8f35e90d552bd71aa3d5fbdba33e9fe",
       "item_id": "flex-bench-dog",
@@ -231,12 +231,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     },
     "models/components/guide_rail": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "f0462c3ddb878f86e69d349b405e7a7db11247ceb9144dbcf210ba8feb3be770",
+      "final_bundle_sha256": "4234bc207633c9388e72c20517b1f69d3da951ab26cad1337334a20b9e760660",
       "final_step": "build_results",
       "final_target_spec_digest": "48892e4ecc154ff483fb5db11476baf6e6f7bcab29ca5eb5898480db9688ad15",
       "item_id": "guide-rail",
@@ -245,12 +245,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     },
     "models/components/hub75_panel": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "7d38eb6a1e97093f13178a503fb71b9ef290f4d2a89957e0144173c5f4e6bdde",
+      "final_bundle_sha256": "ea60f81d7ba9ee37c751b9f408c88dc82e0fbddb618dc99d907b68a921d5ae70",
       "final_step": "build_results",
       "final_target_spec_digest": "6de1ee8d58a6c02f69fa79d7ff3793698b4e5663064ad358ec44bfd8cbb48758",
       "item_id": "hub75-panel",
@@ -259,11 +259,11 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "7e237233fb7f99cba88cc85bb548aef8af31f77c"
+      "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
     }
   },
   "name": "dev-ci",
   "schema": 1,
   "scope": "named",
-  "source_commit": "57c45499c02e3a70b30382488827fa5f87239088"
+  "source_commit": "d61aa24c90ca185630470ce35dc829d0fc115576"
 }
