@@ -1,4 +1,6 @@
-# Blocked by Forge #679: repeated component-local feature names are not namespaced.
+# Existing WoodenHub75Box is intentionally active on the current released
+# CAD/Forge baseline. Iteration 2 remains a separate model and stays disabled
+# until its own blockers are resolved.
 id: hub75-wood-frame
 template: cad-model-build
-process: false
+process: true
