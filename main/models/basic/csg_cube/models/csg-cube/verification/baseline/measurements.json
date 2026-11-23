@@ -60,7 +60,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 4.708914,
+      "ms": 5.246182999999999,
       "name": "Sphere1",
       "rolled_back": false,
       "suppressed": false,
@@ -70,7 +70,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 25.83306,
+      "ms": 44.783758999999996,
       "name": "Box1",
       "rolled_back": false,
       "suppressed": false,
@@ -80,7 +80,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 31.576443,
+      "ms": 66.92624799999999,
       "name": "Cylinder1",
       "rolled_back": false,
       "suppressed": false,
@@ -90,7 +90,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 67.776962,
+      "ms": 99.86157,
       "name": "Cylinder2",
       "rolled_back": false,
       "suppressed": false,
@@ -100,7 +100,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 92.551478,
+      "ms": 155.44181,
       "name": "Cylinder3",
       "rolled_back": false,
       "suppressed": false,

@@ -87,7 +87,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 295.487794,
+    "ms": 369.80613800000003,
     "name": "Clamp slots",
     "removed_bodies": [],
     "warning": null
@@ -101,7 +101,7 @@
     ],
     "created_bodies": [],
     "feature": 8,
-    "ms": 158.867481,
+    "ms": 202.712252,
     "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null
@@ -346,7 +346,7 @@
       "GuideRail"
     ],
     "feature": 12,
-    "ms": 16.524718,
+    "ms": 21.747832000000002,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null

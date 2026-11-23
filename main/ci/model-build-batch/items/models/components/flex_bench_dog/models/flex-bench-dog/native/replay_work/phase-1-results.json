@@ -32,7 +32,7 @@
       "FlexBenchDog"
     ],
     "feature": 1,
-    "ms": 4.046379,
+    "ms": 4.484385,
     "name": "Cylinder1",
     "removed_bodies": [],
     "warning": null
@@ -46,7 +46,7 @@
     ],
     "created_bodies": [],
     "feature": 2,
-    "ms": 31.744052000000003,
+    "ms": 35.271518,
     "name": "Cylinder2",
     "removed_bodies": [],
     "warning": null
@@ -60,7 +60,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 32.593913,
+    "ms": 35.915593,
     "name": "Cylinder3",
     "removed_bodies": [],
     "warning": null
@@ -74,7 +74,7 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 32.707354,
+    "ms": 37.823413,
     "name": "Cylinder4",
     "removed_bodies": [],
     "warning": null
@@ -88,7 +88,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 57.011683,
+    "ms": 70.71416699999999,
     "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null
@@ -170,7 +170,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 48.726555999999995,
+    "ms": 56.761823,
     "name": "Flex slot X",
     "removed_bodies": [],
     "warning": null
@@ -252,7 +252,7 @@
     ],
     "created_bodies": [],
     "feature": 9,
-    "ms": 41.129247,
+    "ms": 50.732095,
     "name": "Flex slot Y",
     "removed_bodies": [],
     "warning": null
@@ -266,7 +266,7 @@
     ],
     "created_bodies": [],
     "feature": 10,
-    "ms": 87.56984700000001,
+    "ms": 110.228889,
     "name": "Chamfer2",
     "removed_bodies": [],
     "warning": null
@@ -348,7 +348,7 @@
     ],
     "created_bodies": [],
     "feature": 12,
-    "ms": 27.21127,
+    "ms": 35.685001,
     "name": "Top logo",
     "removed_bodies": [],
     "warning": null
