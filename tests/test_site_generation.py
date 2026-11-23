@@ -84,6 +84,8 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn(".cad-card-parameters{", css)
         self.assertGreaterEqual(css.count("-webkit-line-clamp:2"), 3)
         self.assertIn("height:140px", css)
+        self.assertIn('<span class="cad-card-picture">{{ with $page.Resources.Get "model.png" }}', card)
+        self.assertIn('{{ end }}</span>', card)
         self.assertIn("margin-top:auto", css)
 
     def test_model_detail_uses_one_calm_shared_layout_contract(self):

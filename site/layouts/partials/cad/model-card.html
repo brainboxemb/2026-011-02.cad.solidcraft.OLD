@@ -7,7 +7,7 @@
 {{ with index $prov "semantic_verification" }}{{ $semantic = . }}{{ end }}
 {{ $built := eq (index $prov "solidcraft_built") true }}
 <a class="cad-model-card" href="{{ $page.RelPermalink }}">
-  {{ with $page.Resources.Get "model.png" }}<span class="cad-card-picture"><img src="{{ .RelPermalink }}" alt=""></span>{{ end }}
+  <span class="cad-card-picture">{{ with $page.Resources.Get "model.png" }}<img src="{{ .RelPermalink }}" alt="">{{ end }}</span>
   {{ if $showSection }}<span class="cad-card-section">{{ $page.Params.cadSection }}</span>{{ end }}
   <strong class="cad-card-title">{{ $page.Title }}</strong>
   {{ if $showUpdated }}<small class="cad-card-updated">Updated {{ $page.Lastmod.Format "2 Jan 2006" }}</small>{{ end }}
