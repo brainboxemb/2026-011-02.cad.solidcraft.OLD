@@ -133,7 +133,7 @@ required naming fix and any other applicable runner fixes.
 | Issue | Owner/lane | Status | Next action |
 | --- | --- | --- | --- |
 | #8 CornerBracket exact geometry | dev-cad + Forge | **blocked on #362 / Forge #750** | Preserve PR #360 geometry; add final rotated wedge only after generic transform support is released. |
-| #362 CornerBracket arm-tip wedge | dev-cad + Forge | **blocked on Forge #750** | Merge comment-only PR #363 when green; geometry waits for released transform support. |
+| #362 CornerBracket arm-tip wedge | dev-cad + Forge | **blocked on Forge #750** | PR #363 is merged; temporary markers are in both model sources. Geometry waits for released transform support. |
 | #154 HUB75 lower compartment | dev-cad + Forge | **blocked / draft PR #349** | Wait for released #679 fix and Forge #749, then enable native processing and mutation acceptance. |
 | #345 STL output + GitHub viewer | dev-ci/dev-cad + Forge | **blocked on Forge #748** | Adopt qualified STL export after upstream release; no STEP conversion workaround. |
 | #348 FlexBenchDog logo cleanup | dev-cad + Forge | **blocked on Forge #747** | Replace temporary per-rib Slot Sketches after released Polygon2D attached-Sketch support. |
@@ -141,7 +141,6 @@ required naming fix and any other applicable runner fixes.
 | #333 FlexBenchDog inner-corner fillets | dev-cad | **now / PR #361** | Inspect underside view, then merge/close if the R0.5 corners match the reference. |
 | #327 FlexBenchDog Cone taper | dev-cad + Forge | **blocked on Forge #746** | Resume draft PR #328 only after native Cone support is released/adopted. |
 | #288 CAD-CI workflow/config migration | dev-ci / tool.cad.ci | **later / separate** | Reassess against the current released tool.cad.ci owner baseline before implementation. |
-| #250 shared changelog history/template | documentation | **later** | Keep separate from current product/model work. |
 | #205 canonical model.yml contract | shared owner + dev-cad | **blocked** | Wait for an actually reusable shared contract; do not copy a Forge site-local validator. |
 | #172 full-catalog native qualification | dev-cad + Forge | **blocked** | Re-enable remaining disabled roots after required Forge fixes reach the CAD baseline. |
 | #168 verification terminology | cross-repo | **later** | Revisit after current owner/release work stabilizes. |
@@ -161,6 +160,7 @@ required naming fix and any other applicable runner fixes.
   architecture are complete; future SCPC coverage is model-specific work.
 - #14 closed as superseded: released CAD-CI/SCons selection now owns affected
   model selection; do not revive CAD-local Moon/GitHub-cache architecture.
+- #250 complete: root `CHANGELOG.md` follows the shared template without inventing historical releases; the repository currently has no tags or GitHub Releases.
 - #206 and #204 were already completed before this reconciliation.
 - PR #156 is closed and superseded by #349.
 
@@ -172,17 +172,14 @@ required naming fix and any other applicable runner fixes.
   baseline is available.
 - PR #141 — Bolted Flange circular pattern; blocked on Forge #347.
 - PR #361 — FlexBenchDog underside visual proof; green, awaiting visual review.
-- PR #363 — CornerBracket temporary-workaround comments; merge when CI is
-  green.
 
 ## Next checkpoint
 
 1. finish/accept #333 through PR #361;
-2. merge comment-only #363 when green;
-3. visually confirm #332's already-merged logo result;
-4. continue any independent, unblocked dev-cad/dev-ci work without forcing a
+2. visually confirm #332's already-merged logo result;
+3. continue any independent, unblocked dev-cad/dev-ci work without forcing a
    promotion to `main`;
-5. keep #154/#327/#345/#348/#362 parked until their owner-layer Forge
+4. keep #154/#327/#345/#348/#362 parked until their owner-layer Forge
    capabilities are released and adopted;
-6. promote a development lane to `main` only when there is a deliberate
+5. promote a development lane to `main` only when there is a deliberate
    stable checkpoint, not after each accepted PR.
