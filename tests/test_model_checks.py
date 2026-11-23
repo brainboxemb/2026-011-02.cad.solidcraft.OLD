@@ -27,7 +27,15 @@ class ModelOwnedPresentationSettingsTests(unittest.TestCase):
         for slug in actual:
             with self.subTest(slug=slug):
                 self.assertIsNotNone(load_check(slug))
+
+        # A model-root settings module may own only extra views. FlexBenchDog
+        # intentionally uses the shared/default primary camera and overrides
+        # only its underside review snapshot.
+        primary_overrides = actual - {"flex-bench-dog"}
+        for slug in primary_overrides:
+            with self.subTest(primary_camera=slug):
                 self.assertIsInstance(snapshot_camera(slug), dict)
+        self.assertIsNone(snapshot_camera("flex-bench-dog"))
 
     def test_flex_bench_dog_owns_underside_review_view(self):
         views = extra_snapshots("flex-bench-dog")
