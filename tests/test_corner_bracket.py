@@ -74,7 +74,7 @@ class CornerBracketTests(unittest.TestCase):
             sketch["params"]["ids"],
             [
                 "i_corner",
-                "o_hor_tip_relief",
+                "tip_hor_relief",
                 "o_hor_tip",
                 "o_hor_bevel",
                 "o_hor",
@@ -82,7 +82,7 @@ class CornerBracketTests(unittest.TestCase):
                 "o_vert",
                 "o_vert_bevel",
                 "o_vert_end",
-                "o_vert_tip_relief",
+                "tip_vert_relief",
                 "v_tip",
             ],
         )
@@ -116,7 +116,7 @@ class CornerBracketTests(unittest.TestCase):
         chamfers = [c["params"] for c in commands if c["command"] == "solid.chamfer"]
         self.assertEqual(len(chamfers), 2)
         self.assertEqual(chamfers[0]["distance"], "side_edge_chamfer")
-        self.assertEqual(len(chamfers[0]["edges"]), 18)
+        self.assertEqual(len(chamfers[0]["edges"]), 14)
         self.assertEqual(chamfers[1]["distance"], "elephant_foot_relief")
         self.assertEqual(chamfers[1]["edges"], [[29.7, -12, 0], [29.7, 12, 0]])
         self.assertFalse(
