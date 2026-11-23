@@ -72,10 +72,12 @@ Current records:
 - [0034-flex-bench-dog-mft-collar.md](0034-flex-bench-dog-mft-collar.md) — shape the FlexBenchDog stop collar as a Ø22 × 1.5 mm MFT seat with a 45° underside chamfer (#331).
 - [0036-flex-bench-dog-cube-wireframe-logo.md](0036-flex-bench-dog-cube-wireframe-logo.md) — replace the filled top square with the nine-rib BrainBox cube wireframe construction (#332).
 - [0038-flex-bench-dog-logo-polygon-ribs.md](0038-flex-bench-dog-logo-polygon-ribs.md) — isolate the nine BrainBox logo ribs into separate cuts; current Slot-per-Sketch construction is temporary pending Forge #747 (#332/#348).
+- [0039-hub75-wood-frame-iter2-lower-compartment.md](0039-hub75-wood-frame-iter2-lower-compartment.md) — add the independent lower-compartment HUB75 case geometry as a separate model root (#154).
 - [0041-flex-bench-dog-rounded-slot-corners.md](0041-flex-bench-dog-rounded-slot-corners.md) — fillet the four vertical material corners around the FlexBenchDog central cross without changing slot dimensions (#333).
 - [0042-corner-bracket-exact-geometry.md](0042-corner-bracket-exact-geometry.md) — restore the preserved arm-tip profile and exact four-part recessed M5 fixing-seat geometry in the shared CornerBracket (#8).
 - [0043-solidcraft-stl-publication.md](0043-solidcraft-stl-publication.md) — export STL directly from the accepted saved SolidCraft design and publish the durable mesh/viewer link (#345).
 - [0044-opt-in-stl-artifacts.md](0044-opt-in-stl-artifacts.md) — make STL export an explicit model-root artifact request instead of a universal CAD output (#403).
 - [0045-temporary-hub75-panel-test-gate.md](0045-temporary-hub75-panel-test-gate.md) — make direct detailed-panel repository tests follow the temporary process gate for Forge #796 (#412).
 - [0046-hub75-display-case-names.md](0046-hub75-display-case-names.md) — align the two wooden HUB75 enclosure product/class names as Hub75DisplayCase and Hub75DisplayCase v2 while preserving current paths/slugs (#416).
+- [0047-hub75-wood-frame-iter2-v0132-qualification.md](0047-hub75-wood-frame-iter2-v0132-qualification.md) — enable and natively qualify the lower-compartment HUB75 case on Forge v0.13.2 with a 70→90 mm saved-design mutation (#154).
 - [0047-forge-0132-hub75-panel.md](0047-forge-0132-hub75-panel.md) — adopt Forge v0.13.2 and remove the temporary detailed hub75-panel process gate after #796 (#421).

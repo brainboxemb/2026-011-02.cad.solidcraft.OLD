@@ -73,7 +73,7 @@ but **not** a parallel planning mechanism or manually extended root item list.
 ### Efficiency and correctness acceptance
 
 - Root `cad-ci.yml` uses generic discovery globs, not a list amended every
-  time another model is migrated. Keep the existing 16 physical roots and 18
+  time another model is migrated. Keep the existing 17 physical roots and 19
   catalog variants accounted for. Individual `ci.yml` files stay minimal.
 - Do not start Docker in a model-item action. A shared batch prepares all
   selected commands and starts the released SolidCraft runtime **once** for
@@ -96,15 +96,15 @@ but **not** a parallel planning mechanism or manually extended root item list.
 
 **Accepted implementation:** released CAD-CI scans/plans one SCons
 graph; `model-build-batch` launches the SolidCraft runtime once and model
-items project their output with released `copy: dependency`. Fourteen
-physical roots / sixteen variants are active. The two remaining advanced
-assemblies are disabled only by Forge #679. Repository regressions are one
-normal CAD-CI item, not a separate orchestration layer.
+items project their output with released `copy: dependency`. All seventeen
+physical roots / nineteen catalog variants are active on the current Forge
+v0.13.2 baseline. Repository regressions are one normal CAD-CI item, not a
+separate orchestration layer.
 
 ## Model item shape
 
-Current repository discovery has **16** physical `models/**/ci.yml` roots.
-The website/catalog has **18** model variants. Preserve that mapping; do not
+Current repository discovery has **17** physical `models/**/ci.yml` roots.
+The website/catalog has **19** model variants. Preserve that mapping; do not
 create a second catalog just for generic CI.
 
 Desired item contract:

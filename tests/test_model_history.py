@@ -18,7 +18,7 @@ from model_history import build_manifest, physical_model_roots, write_manifest  
 class ModelHistoryTests(unittest.TestCase):
     def test_history_uses_physical_model_roots_without_second_catalog(self):
         roots = physical_model_roots()
-        self.assertEqual(len(roots), 16)
+        self.assertEqual(len(roots), 17)
         self.assertIn("basic/plate", roots)
         self.assertIn("advanced/simple_mft", roots)
         self.assertNotIn("simple-mft-assembly", roots)

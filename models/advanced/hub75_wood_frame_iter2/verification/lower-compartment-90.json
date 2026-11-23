@@ -1,0 +1,11 @@
+{
+  "commands": [
+    {
+      "command": "parameters.change",
+      "params": {
+        "name": "lower_compartment_height",
+        "expression": "90 mm"
+      }
+    }
+  ]
+}

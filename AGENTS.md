@@ -24,14 +24,16 @@
 > build store, publisher or Python HTML generator.
 >
 > **Model build gate:** execution state is explicit in each model root's
-> `ci.yml`. CAD #421 adopts Forge v0.13.2 and restores the detailed
-> `hub75-panel` after Forge #796; the #412 repository-test gate follows that
-> same process state automatically. CAD #378 has re-enabled v1
-> Hub75DisplayCase, and CAD #142 re-enabled `hub75-display2` /
-> Hub75DisplayCase v2. Forge #753 / CAD #388 remains a separate component-local
-> Cylinder/occurrence problem. Do not add CAD-local compiler or naming
-> workarounds. Semantic `verification/verify.py` is optional; a processed
-> model must at least build and produce the required saved outputs.
+> `ci.yml`. CAD #421 / PR #423 adopted Forge v0.13.2 and restored the
+> detailed `hub75-panel`; v1 Hub75DisplayCase and Hub75DisplayCase v2 are
+> already active through #378/#142. CAD #154 adds the independent
+> lower-compartment HUB75 case as another processed root. No physical model
+> root is intentionally gated on this baseline. Forge #753 / CAD #388 remains
+> a separate component-local Cylinder/occurrence problem. Do not add CAD-local
+> compiler, import or naming workarounds. Semantic `verification/verify.py`
+> is optional in general, but #154 deliberately uses it for the native 70→90
+> mm saved-design mutation. Every processed model must at least build and
+> produce the required saved outputs.
 >
 > **Generic CAD-CI requests go through Forge first:** track the common
 > scan/plan/build-batch requirement under
