@@ -5,8 +5,8 @@
         {
           "kind": "file",
           "path": "baseline/measurements.json",
-          "sha256": "b0b755706db55ad9f763fbbf9131d00c5a56b76a7d21fcf85ea4b053325d44c9",
-          "size": 9065
+          "sha256": "8612120ff8ebac11a42d59db4cd9d16c5190be91a2cccfa100575b9f8075c82f",
+          "size": 9024
         }
       ],
       "error": null,

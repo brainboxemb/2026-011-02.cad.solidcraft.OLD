@@ -75,7 +75,7 @@
       "Bracket"
     ],
     "feature": 2,
-    "ms": 3.941735,
+    "ms": 3.4563800000000002,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null
@@ -89,7 +89,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 23.980824000000002,
+    "ms": 19.280824,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null
@@ -103,7 +103,7 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 32.915254999999995,
+    "ms": 27.348133999999998,
     "name": "Hole1",
     "removed_bodies": [],
     "warning": null
@@ -117,7 +117,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 43.944734,
+    "ms": 36.550837,
     "name": "Hole2",
     "removed_bodies": [],
     "warning": null
