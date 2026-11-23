@@ -1,6 +1,7 @@
 # Model-owned content. Editing this file updates the website; it does not rebuild geometry.
 section: advanced
 priority: 30
+featured: true
 title: "BasicHub75Screen"
 tagline: "Five shared native HUB75 occurrences with two 180° rotations"
 description: >-
