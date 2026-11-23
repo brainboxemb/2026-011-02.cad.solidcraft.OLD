@@ -17,9 +17,11 @@ local X/Y/Z axes:
 - two IDC/HUB75 data-connector envelopes centered at local X=0 and
   Y=±113.5 mm, each 27.90 × 9.50 × 10.64 mm, starting at Z=2.63 mm;
 - one power-connector clearance envelope derived from the preserved v1.2 visual
-  reference center X=53 mm / long-axis coordinate 128 mm, transformed to the
-  centered panel axes, with a 13 × 20 × 7 mm envelope starting 1 mm behind the
-  PCB back face (Z=3 mm).
+  reference position X=53 mm / long-axis coordinate 128 mm in the nominal
+  160 × 320 mm reference raster. Those coordinates are scaled to the measured
+  159.70 × 319.71 mm panel before centering, yielding local centres of about
+  X=-26.9494 mm and Y=-31.9710 mm. The envelope is 13 × 20 × 7 mm and starts
+  1 mm behind the PCB back face (Z=3 mm).
 
 The IDC dimensions and front datum are preserved from the existing source
 contract. The power connector remains explicitly approximate: its source
