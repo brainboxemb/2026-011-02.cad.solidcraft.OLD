@@ -65,4 +65,6 @@ Current records:
 
 - [0035-selective-model-build-batch.md](0035-selective-model-build-batch.md) — make the shared SolidCraft batch honor CAD-CI direct-dependent model selection instead of rebuilding the full catalog (#335).
 
+- [0037-development-lane-promotion-cadence.md](0037-development-lane-promotion-cadence.md) — let dev-cad/dev-ci accumulate work and promote only at deliberate stable checkpoints (#346).
+
 - [0040-compact-model-detail-facts.md](0040-compact-model-detail-facts.md) — keep long model parameters out of the status badge row and render them as readable key-dimensions prose (#344).
