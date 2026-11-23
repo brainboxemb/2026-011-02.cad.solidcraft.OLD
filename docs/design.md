@@ -208,16 +208,20 @@ Do not add route-specific Home or Catalog column overrides.
 
 The card component owns its text geometry through explicit named CSS-grid rows,
 not flex-flow plus minimum/fixed element heights. The preview occupies a fixed
-row; optional section and updated metadata have dedicated rows; title, tagline
-and technical parameters each occupy fixed two-line rows; a flexible spacer
-precedes the final status row. One-line content therefore cannot move any later
-row. The shared partial is reused by Home, /models/ and category routes.
+row; section, title, tagline and technical parameters each occupy explicit rows;
+Home may additionally insert the Updated row. A flexible spacer precedes the
+final status row. One-line content therefore cannot move any later row.
+
+All catalog overview routes use the same section-bearing card geometry:
+`/models/`, `/models/basic/`, `/models/components/` and
+`/models/advanced/` all render the blue BASIC / COMPONENTS / ADVANCED row.
+Do not hide that row only on `/models/`; doing so creates a second card geometry.
 
 Home shows eight recently updated models so the four-column desktop layout
 starts with two complete rows.
 
-The durable browser proof captures Home, Models and Components overview screenshots in
-addition to the representative model-detail screenshots.
+The durable browser proof captures Home, Models, Basic and Components overview
+screenshots in addition to the representative model-detail screenshots.
 
 ### CAD model-detail presentation contract
 

@@ -172,6 +172,7 @@ schema, planner or reference framework.
 
 | Issue | Lane/owner | Status | Next action |
 | --- | --- | --- | --- |
+| #316 Identical catalog card geometry | dev-ci | **now** | Make `/models/` use the same section-bearing card geometry as category pages; visually compare Models and Basic before resuming lane synchronization. |
 | #278 Model-detail presentation replacement | dev-ci | **promoted / accepted** | Framed model-detail baseline plus #297/#303 catalog corrections are stable; no further action in this workstream. |
 | #288 tool.cad.ci v0.25.0 workflow/config migration | dev-ci / CI | **later / separate** | Do not mix with #278; reassess after the current site presentation checkpoint. |
 | #250 Shared changelog template/history | documentation | **later** | Reassess after permanent lanes are coherent; do not interrupt WS1/WS2. |
@@ -225,13 +226,14 @@ in this plan.
 
 ## Next checkpoint
 
-Synchronize stable integration into the product-CAD lane:
+Correct #316 on `dev-ci` before continuing product-lane synchronization:
 
-1. open exact `main -> dev-cad`;
-2. merge only through `/merge` as a history-preserving permanent-ref merge;
-3. verify durable `build/dev-cad` and Pages `/dev-cad/` source-match the
-   synchronized lane;
-4. reassess PR #141, PR #156 and PR #169 against the new dev-cad head;
-5. choose one coherent product-CAD work item at a time.
+1. make `/models/` use the same section-bearing shared card as category pages;
+2. keep the explicit row-grid alignment contract from #303 unchanged;
+3. inspect `models-overview.png` and `basic-overview.png` side by side;
+4. merge through `/merge` to `dev-ci` and verify durable source-match;
+5. promote the accepted correction to `main`;
+6. then resume the interrupted `main -> dev-cad` synchronization work.
 
-Keep #21 and #288 separate.
+Do not merge PR #311 or the #314 promotion while #316 is still under visual
+acceptance. Keep #21 and #288 separate.
