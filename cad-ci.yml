@@ -8,7 +8,7 @@ templates:
     kind: model
     needs: [model-build-batch]
     watch:
-      item: [ci.yml, scpf/**, scpc/**, verification/**, check.py]
+      item: [ci.yml, scpf/**, scpc/**, verification/**, check.py, */scpf/**, */scpc/**, */verification/**, */check.py]
       repo: [dependencies.repos, ci/toolchain.json, scripts/ci/model_build_batch.py, scripts/ci/model_verify.py, scripts/ci/model_catalog.py, scripts/ci/model_checks.py]
     strategy:
       reuse: true
