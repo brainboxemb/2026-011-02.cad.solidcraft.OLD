@@ -211,12 +211,19 @@ def _build_one(row: dict, batch: dict) -> str:
             encoding="utf-8",
         )
 
+    solidcraft_version = os.environ.get("SOLIDCRAFT_VERSION")
+    if not solidcraft_version:
+        raise RuntimeError(
+            f"{slug}: SolidCraft runtime did not expose SOLIDCRAFT_VERSION"
+        )
+
     (root / "provenance.json").write_text(
         json.dumps(
             {
                 "schema": 1,
                 "model": slug,
                 "runtime_image": batch["runtime_image"],
+                "solidcraft_version": solidcraft_version,
                 "forge_sha": batch["forge_sha"],
                 "scpc_sha": row.get("scpc_sha"),
                 "solidcraft_built": True,
