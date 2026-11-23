@@ -709,6 +709,14 @@ html:not(.dark) .hextra-search-trigger{font-size:.9rem}
   object-fit: contain;
 }
 
+.cad-reference-source a {
+  display: inline;
+  width: auto;
+  aspect-ratio: auto;
+  overflow: visible;
+  background: transparent;
+}
+
 .cad-code-section {
   margin: 1rem 0;
   padding: 22px;
@@ -717,6 +725,93 @@ html:not(.dark) .hextra-search-trigger{font-size:.9rem}
 .cad-source-section .cad-code-frame,
 .cad-scpc-section .cad-code-frame {
   margin-top: .9rem;
+}
+
+.cad-code-frame {
+  overflow: hidden;
+  border: 0;
+  border-radius: 9px;
+  background: #0d1f33;
+  box-shadow: none;
+}
+
+.cad-code-label {
+  padding: .55rem .85rem;
+  border-bottom: 1px solid #28415f;
+  background: #112945;
+  color: #bfd4ec;
+  font: 600 .74rem/1.3 var(--cad-font-mono);
+}
+
+.cad-code-block {
+  margin: 0 !important;
+  border: 0 !important;
+  background: #0d1f33 !important;
+  box-shadow: none !important;
+}
+
+.cad-code-block > div:first-child {
+  margin: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.cad-code-block .highlight,
+.cad-code-block pre {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  background: #0d1f33 !important;
+}
+
+.cad-code-block pre {
+  max-height: 44rem;
+  overflow: auto;
+  padding: 1rem 5.25rem 1rem 1.05rem !important;
+  scrollbar-gutter: stable;
+}
+
+.cad-code-block code,
+.cad-code-block code span {
+  color: #e6eef9 !important;
+}
+
+.cad-code-block code {
+  font: 13px/1.55 var(--cad-font-mono);
+}
+
+.hextra-code-copy-btn-container {
+  top: .55rem !important;
+  right: 1.75rem !important;
+  margin: 0 !important;
+  opacity: 1 !important;
+}
+
+.hextra-code-copy-btn {
+  display: flex !important;
+  align-items: center !important;
+  gap: .35rem !important;
+  min-height: 30px;
+  padding: .3rem .55rem !important;
+  border: 1px solid #47617e !important;
+  border-radius: 7px !important;
+  background: #173653 !important;
+  color: #dce9f7 !important;
+}
+
+.hextra-code-copy-btn::after {
+  content: "Copy";
+  font-size: .7rem;
+  font-weight: 700;
+}
+
+.hextra-code-copy-btn.copied::after {
+  content: "Copied";
+}
+
+.hextra-copy-icon,
+.hextra-success-icon {
+  width: 14px !important;
+  height: 14px !important;
 }
 
 .cad-collapsible {
