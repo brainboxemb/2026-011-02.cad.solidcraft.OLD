@@ -94,8 +94,20 @@ run_chrome() {
 }
 
 base="http://127.0.0.1:${port}/${public_path}"
+home_url="${base}/"
+models_url="${base}/models/"
 plate_url="${base}/models/plate/"
 simple_url="${base}/models/simple-mft/"
+
+run_chrome \
+  --window-size=1600,1800 \
+  --screenshot="$PWD/$artifact_dir/home-overview.png" \
+  "$home_url"
+
+run_chrome \
+  --window-size=1600,2200 \
+  --screenshot="$PWD/$artifact_dir/models-overview.png" \
+  "$models_url"
 
 run_chrome \
   --window-size=1600,1400 \
@@ -118,6 +130,8 @@ run_chrome \
   "$simple_url"
 
 for image in \
+  home-overview.png \
+  models-overview.png \
   plate-overview.png \
   plate-full.png \
   simple-mft-overview.png \
