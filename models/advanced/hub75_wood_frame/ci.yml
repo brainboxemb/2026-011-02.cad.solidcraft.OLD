@@ -1,4 +1,5 @@
-# Blocked by Forge #679: repeated component-local feature names are not namespaced.
+# Forge #679 is released in the accepted v0.13.1 baseline.
+# Hub75DisplayCase is intentionally active again under CAD #378.
 id: hub75-wood-frame
 template: cad-model-build
-process: false
+process: true

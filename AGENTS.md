@@ -25,12 +25,11 @@
 >
 > **Model build gate:** execution state is explicit in each model root's
 > `ci.yml`. CAD #408/#412 temporarily gate only the detailed `hub75-panel`
-> execution path for Forge #796. Forge v0.13.1 contains #679, so after #405 the
-> existing `hub75-wood-frame` and `hub75-display2` blockers must be removed
-> through their own CAD issues rather than preserved as stale global gates. Do
-> not add CAD-local compiler or naming workarounds. Semantic
-> `verification/verify.py` is optional; a processed model must at least build
-> and produce the required saved outputs.
+> execution path for Forge #796. CAD #378 re-enables v1 `hub75-wood-frame`
+> (Hub75DisplayCase) on Forge v0.13.1; `hub75-display2` remains disabled until
+> #142 qualifies Hub75DisplayCase v2. Do not add CAD-local compiler or naming
+> workarounds. Semantic `verification/verify.py` is optional; a processed
+> model must at least build and produce the required saved outputs.
 >
 > **Generic CAD-CI requests go through Forge first:** track the common
 > scan/plan/build-batch requirement under
