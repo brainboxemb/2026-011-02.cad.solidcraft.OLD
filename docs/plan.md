@@ -47,16 +47,14 @@ are not yet available through a released CAD-consumable baseline.
 
 Primary lane: `dev-cad`.
 
-- #332: PR #347 is merged and run #388 is green. The BrainBox logo now uses
-  nine independent one-Slot Sketch/cut operations so intersecting closed
-  profiles cannot create a filled cube face. The implementation is a temporary
-  compatibility construction tracked by #348 / Forge #747. Keep #332 open
-  until the published result is visually accepted as the supplied wireframe
-  cube.
-- #333: the R0.5 four-edge inner-corner fillet is already merged. PR #361 is
-  also merged and adds a model-owned `underside.png` view using the existing
-  `EXTRA_SNAPSHOTS` mechanism. Durable dev-cad publication must complete, then
-  the four rounded material-side corners still need visual acceptance.
+- #332 is complete: the durable render after PR #347 visibly matches the open
+  BrainBox wireframe cube. The current one-Slot-per-Sketch implementation is
+  temporary only at the construction/API level; cleanup remains #348 / Forge
+  #747 and must preserve the accepted visible geometry.
+- #333 is complete: PR #338 supplied the R0.5 four-edge fillet and PRs
+  #361/#368/#372 added, corrected and zoomed the model-owned underside view.
+  Durable run #433 made the four equal rounded material-side corners clearly
+  inspectable and they were visually accepted.
 - #327 / draft PR #328: full-length native Cone taper remains blocked on Forge
   #746. Do not emulate Cone locally.
 
@@ -136,8 +134,7 @@ required naming fix and any other applicable runner fixes.
 | #154 HUB75 lower compartment | dev-cad + Forge | **blocked / draft PR #349** | Wait for released #679 fix and Forge #749, then enable native processing and mutation acceptance. |
 | #345 STL output + GitHub viewer | dev-ci/dev-cad + Forge | **blocked on Forge #748** | Adopt qualified STL export after upstream release; no STEP conversion workaround. |
 | #348 FlexBenchDog logo cleanup | dev-cad + Forge | **blocked on Forge #747** | Replace temporary per-rib Slot Sketches after released Polygon2D attached-Sketch support. |
-| #332 FlexBenchDog BrainBox logo | dev-cad | **visual acceptance** | Confirm merged PR #347 output visually; cleanup mechanics are separately #348. |
-| #333 FlexBenchDog inner-corner fillets | dev-cad | **visual acceptance** | PR #361 is merged; inspect durable `underside.png`, then close if the R0.5 corners match the reference. |
+
 | #327 FlexBenchDog Cone taper | dev-cad + Forge | **blocked on Forge #746** | Resume draft PR #328 only after native Cone support is released/adopted. |
 | #288 CAD-CI workflow/config migration | dev-ci / tool.cad.ci | **later / separate** | Reassess against the current released tool.cad.ci owner baseline before implementation. |
 | #205 canonical model.yml contract | Forge release + dev-cad | **blocked on Forge release** | Forge PR #711 already provides reusable `scpf.model_metadata`; adopt it only after a qualified post-v0.11 Forge release, then move CAD-only fields to their owning layers. |
@@ -149,8 +146,12 @@ required naming fix and any other applicable runner fixes.
 | #21 interactive SolidCraft viewer | site/product | **later** | Revisit after current model/output contracts stabilize. |
 | #20 multiple verified model views | site/product | **later / partially enabled** | Build on generic extra_views; broader responsive gallery contract remains open. |
 | #365 HUB75 glazing retention/seal | dev-cad | **next design slice** | Define the physical glazing stack, contact/clearance, retention and sealing before modelling guessed hardware. |
-| #366 HUB75 rear/electrical interfaces | dev-cad | **later / focused** | Complete mechanically relevant rear frame/PCB/connector/cable envelopes from measured/reference sources. |
-| #367 HUB75 exploded view | dev-cad + Forge | **blocked on Forge #751** | SolidCraft 0.45 has native `explode.create/show`; wait for Forge's reusable wrapper/qualification, then publish through generic extra views. |
+| #371 Detailed HUB75 panel completion | tracking | **tracking only** | Reusable-panel work is split into #373 rear-frame contour, #374 mounting interfaces and #375 connector envelopes. |
+| #373 HUB75 rear-frame bay contours | dev-cad + Forge | **blocked if clean Polygon2D is required** | Restore R5/stepped bay contours; do not use overlapping-profile workarounds instead of Forge #747. |
+| #374 HUB75 mounting tubes/bushings/locator pins | dev-cad | **merged / durable qualification** | PR #376 is merged; inspect durable rear snapshot from run #435, then close if the restored interfaces read correctly. |
+| #375 HUB75 connector envelopes | dev-cad | **next after #374** | Add two IDC/data envelopes and the explicitly approximate power envelope in reusable local panel coordinates. |
+| #366 HUB75 rear/electrical interfaces | dev-cad | **blocked on reusable panel children** | After #371 children are accepted, model only enclosure-side clearance/access/cable consequences; do not duplicate panel dimensions. |
+| #367 HUB75 exploded view | dev-cad + Forge | **blocked on Forge #751** | SolidCraft 0.45 has native `explode.create/show`; Forge #751 owns the reusable wrapper/qualification, then CAD publishes through generic extra views. |
 | #7 complete HUB75 screen assembly | tracking | **tracking only** | Remaining work is split across #8/#77/#91/#365/#366/#367 plus #20/#21; do not create one broad #7 implementation PR. |
 
 ## Completed / retired in this batch
@@ -176,11 +177,10 @@ required naming fix and any other applicable runner fixes.
 
 ## Next checkpoint
 
-1. visually inspect #333's durable underside view and close it if accepted;
-2. visually confirm #332's already-merged logo result;
-3. continue any independent, unblocked dev-cad/dev-ci work without forcing a
-   promotion to `main`;
-4. keep #154/#327/#345/#348/#362 parked until their owner-layer Forge
+1. finish durable visual acceptance of #374 from run #435;
+2. then implement #375 as the next independent detailed-panel slice;
+3. keep #365 as a design-decision slice: do not guess gasket/fastener hardware;
+4. keep #154/#327/#345/#348/#362/#367 parked until their owner-layer Forge
    capabilities are released and adopted;
-5. promote a development lane to `main` only when there is a deliberate
-   stable checkpoint, not after each accepted PR.
+5. continue independent dev-cad/dev-ci work without forcing promotion to
+   `main`; promote only at a deliberate stable checkpoint.
