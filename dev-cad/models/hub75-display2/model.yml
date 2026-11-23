@@ -1,7 +1,7 @@
 # Model-owned content. Editing this file updates the website; it does not rebuild geometry.
 section: advanced
 priority: 50
-title: "HUB75Display2"
+title: "Hub75DisplayCase v2"
 tagline: "Parallel second-generation HUB75 enclosure starting from the verified v1 baseline"
 description: >-
   A separately evolvable second HUB75 display design. Its first revision deliberately
