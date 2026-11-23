@@ -50,6 +50,26 @@ Treat it only as an entrypoint: inspect current GitHub state, then read
 active issue/PR state in the plan/GitHub rather than duplicating them in the
 handoff.
 
+## Development-lane cadence
+
+`dev-cad` and `dev-ci` are working/integration lanes. They may accumulate
+multiple accepted logical changes while related work continues. Do not promote
+an accepted development PR to `main` merely because it is green.
+
+Promote a development lane to `main` only at a deliberate stable checkpoint,
+such as a coherent feature set, the end of a work block/day, a release point,
+or when another lane genuinely needs that stable change. Keep the normal
+history-preserving permanent-lane merge rules when that checkpoint is chosen.
+
+Pure repository-instruction and documentation-only corrections in
+`AGENTS.md` and `docs/*` may be committed directly to `main` when they do
+not depend on an unmerged code/model change. Documentation that is part of a
+logical code/model change stays with that issue, branch and PR.
+
+Synchronize `main` back into `dev-cad` or `dev-ci` when the stable change
+is actually needed there; do not perform a synchronization cycle as a ritual
+after every development merge.
+
 ## Write simply
 
 Use normal engineering language. Use the names that exist in the code and in

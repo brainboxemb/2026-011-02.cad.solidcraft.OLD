@@ -32,7 +32,14 @@ Begin zo:
 6. houd één logische wijziging bij één issue, branch en PR;
 7. werk `docs/requirements.md` en `docs/design.md` bij als gedrag of
    architectuur verandert;
-8. reconcileer het plan na merge/release.
+8. behandel `dev-cad` en `dev-ci` als echte werklanes: meerdere afgeronde
+   wijzigingen mogen daar blijven staan; promoveer niet na iedere PR naar
+   `main`, maar pas op een bewust stabiel checkpoint;
+9. pure repository-instructies en documentatiecorrecties in `AGENTS.md` en
+   `docs/*` mogen rechtstreeks op `main`; documentatie die onderdeel is van
+   een code/modelwijziging blijft bij de bijbehorende issue/branch/PR;
+10. reconcileer het plan na een permanente-lane promotie/synchronisatie of
+    andere wijziging die de geaccepteerde baseline verandert.
 
 Repositoryrol:
 

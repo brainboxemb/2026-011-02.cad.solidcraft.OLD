@@ -82,8 +82,18 @@ The shared plan structure is defined by
 - `main` is stable integration only.
 - `dev-cad` owns product CAD/model work.
 - `dev-ci` owns CAD-CI/runtime/publication/site integration.
+- `dev-cad` and `dev-ci` may accumulate multiple accepted logical changes;
+  a green development PR is not by itself a reason to promote to `main`.
+- Promote to `main` only at a deliberate stable checkpoint: a coherent
+  feature set, end of a work block/day, release point, or a real cross-lane
+  dependency.
 - Short-lived branches target the appropriate lane and are squash-merged.
-- Exact `main -> dev-cad|dev-ci` synchronization uses a normal merge commit.
+- Pure `AGENTS.md` / `docs/*` instruction or documentation corrections may
+  go directly to `main` when independent of unmerged code/model work.
+- Documentation that belongs to a code/model change stays in that issue,
+  branch and PR.
+- Exact `main -> dev-cad|dev-ci` synchronization uses a normal merge commit
+  when that stable change is actually needed in the target lane.
 - Exact `dev-cad|dev-ci -> main` promotion uses a normal merge commit.
 - Permanent-ref synchronization and promotion use the owner-only repository
   `/merge` policy; do not use GitHub merge buttons as an alternative.
