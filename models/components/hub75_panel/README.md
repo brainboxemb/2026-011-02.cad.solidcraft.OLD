@@ -60,13 +60,23 @@ The rear web layout is derived from
 - Physical scaling uses measured 159.70 × 319.71 mm, without stretching
   the placement grid (which stays at nominal 160 × 320 mm).
 
-**Current approximation:** the four pockets have square corners, whereas
-the measured STEP/OpenSCAD model has **R5 rounded opening corners**, local
-45°/3 mm rail steps, a shallow 0.8 mm rear recess, circular mounting tubes,
-additional reinforcement bushings and two locator pins. This milestone
-deliberately avoids misrepresenting those as finished geometry. The PCB,
-power/IDC connector volumes, front mask and distinct colors still need
-their own editable SolidCraft bodies/features; they are not present yet.
+**Current approximation:** the four pockets still have square corners,
+whereas the measured STEP/OpenSCAD model has **R5 rounded opening corners**,
+local 45°/3 mm rail steps and a shallow 0.8 mm rail recess. Those rear-frame
+contours remain tracked separately.
+
+The mechanically relevant mounting interfaces are now present: six true
+**Ø8.50 mm mounting tubes** stand 0.50 mm proud of the nominal rear plane,
+with a 0.80 mm shallow relief around each tube; six separate reinforcement
+features use the preserved Ø14 / Ø10 / Ø2.5 stepped reference; and the two
+PDF-related **Ø3 × 3 mm locator pins** are placed at the diagonal
+(-75,+110) / (+75,-110) mm local coordinates. The reinforcement Ø14 and Ø2.5
+values remain documented as physical estimates in the source reference rather
+than drawing dimensions.
+
+The PCB, power/IDC connector volumes, front mask and distinct colors still need
+their own editable SolidCraft bodies/features; connector envelopes are tracked
+separately rather than being invented in this mounting-interface change.
 
 SCPF uses X for width, Y for height and Z for depth (front at Z=0).
 The source OpenSCAD model used X/Z for the front and Y for depth.
