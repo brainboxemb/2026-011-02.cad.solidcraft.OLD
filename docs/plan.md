@@ -23,7 +23,7 @@ dev-ci
 Current heads at this reconciliation:
 
 - `main`: `6be947fd47333389513e64a73ae19649eb80796a`;
-- `dev-cad`: `81dad333a5cb12c9a0653a2da611511a5f5dea83`;
+- `dev-cad`: `c2917f64f103424c4247c6b4a81c3848fe8f1668`;
 - `dev-ci`: `c3d46976c8810487b74a802faf1009cb8608e4b0`.
 
 Stable `main` includes the accepted #344/#350 model-detail presentation and
@@ -149,23 +149,24 @@ geometry rollback or compiler workaround. Re-enable `hub75-panel` after Forge
 
 ## Forge v0.13.1 follow-ups
 
-Forge #679 is present in the accepted v0.13.1 baseline. CAD #378 now
-re-enables the v1 `hub75-wood-frame` / Hub75DisplayCase root and must prove a
-real native build before dependent follow-ups continue:
+Forge #679 is present in the accepted v0.13.1 baseline. CAD #378 /
+PR #419 proved the v1 `hub75-wood-frame` / Hub75DisplayCase root with a real
+native SolidCraft build, STEP and image output. CAD #142 now qualifies v2:
 
 - #91 frame-thickness mutation moving all eight CornerBrackets;
 - #77 CornerBracket placement/associativity under dimension changes;
 - #142 Hub75DisplayCase v2 native qualification;
 - the remaining catalog qualification work in #172.
 
-These become actionable after #405 is merged and #378 proves the existing
-wooden HUB75 root on the adopted v0.13.1 baseline.
+The v1 prerequisite is now satisfied. Hub75DisplayCase v2 can be qualified
+independently because it uses Hub75PanelBasic rather than the detailed panel
+root temporarily gated by Forge #796.
 
 ## Other open work
 
 | Issue | Owner/lane | Status | Next action |
 | --- | --- | --- | --- |
-| #378 Hub75DisplayCase native re-enable | dev-cad | **now** | Set only the v1 root back to `process: true` on Forge v0.13.1 and require native build/output; no geometry change. |
+| #378 Hub75DisplayCase native re-enable | dev-cad | **complete / PR #419** | v1 selected and passed native SolidCraft build on Forge v0.13.1 with STEP and image output. |
 | #416 HUB75 display-case product/class names | dev-cad | **complete / PR #418** | Product/class names are `Hub75DisplayCase` / `Hub75DisplayCaseV2`; paths and slugs remain intentionally stable under #417. |
 | #417 HUB75 display-case paths/slugs | dev-cad/site | **later / compatibility migration** | After both models are green, migrate source roots/model ids/public slugs with explicit redirects/aliases for existing URLs. |
 | #412 hub75-panel repository-test process gate | dev-cad | **merged / temporary gate active** | Direct detailed-panel compilation tests follow the existing `ci.yml process` state and auto-restore when the model is re-enabled. |
@@ -180,7 +181,7 @@ wooden HUB75 root on the adopted v0.13.1 baseline.
 | #288 CAD-CI workflow/config migration | dev-ci / tool.cad.ci | **later / separate** | Reassess against the current released tool.cad.ci owner baseline before implementation. |
 | #205 canonical model.yml contract | dev-cad | **actionable after #405 / separate migration** | Forge #703 is in v0.13.1; move CAD-only fields to their owning layers in its own focused change. |
 | #172 full-catalog native qualification | dev-cad + Forge | **blocked on temporary disabled roots** | Qualify the active catalog on v0.13.1; final full-catalog acceptance waits for `hub75-panel`/#796 and the intentionally disabled HUB75 roots to be re-enabled. |
-| #142 Hub75DisplayCase v2 | dev-cad | **actionable after #405/#378** | Resume native qualification after the existing wooden HUB75 root is green on v0.13.1. |
+| #142 Hub75DisplayCase v2 | dev-cad | **now** | Remove the stale #679 process gate and require a real native v2 build on Forge v0.13.1. |
 | #135 Bolted Flange circular pattern | dev-cad + Forge | **blocked on Forge #347** | Keep PR #141 parked until the intended applied-feature seed is supported. |
 | #91 frame-thickness native regression | dev-cad | **actionable after #405/#378** | Run the saved-design mutation once hub75-wood-frame is processable on v0.13.1. |
 | #77 CornerBracket placement/associativity | dev-cad | **actionable after #405/#378** | Validate all eight bracket occurrences on the re-enabled current HUB75 root. |
@@ -226,13 +227,12 @@ is accepted; refresh each within its existing issue before resuming geometry.
 
 ## Next checkpoint
 
-1. complete #378 and prove Hub75DisplayCase builds natively on Forge v0.13.1;
-2. after v1 is green, re-enable/qualify #142 Hub75DisplayCase v2;
-3. refresh #154 / PR #349, then resume #327, #348 and #362 as independent
+1. complete #142 and prove Hub75DisplayCase v2 builds natively on Forge v0.13.1;
+2. refresh #154 / PR #349, then resume #327, #348 and #362 as independent
    model slices unlocked by v0.13.1;
-4. continue #77/#91 after #378; keep #373/#374/#375 behind the temporary
-   `hub75-panel`/#796 gate and #388 on its separate owner path;
-5. defer #417 path/model-id/public-slug migration until both display-case
+3. continue #77/#91 on the now-active v1 root; keep #373/#374/#375 behind the
+   temporary `hub75-panel`/#796 gate and #388 on its separate owner path;
+4. defer #417 path/model-id/public-slug migration until both display-case
    models are green and the redirect/compatibility contract is explicit;
-6. do not promote `dev-cad -> main` until the deliberate stable checkpoint
+5. do not promote `dev-cad -> main` until the deliberate stable checkpoint
    criteria are met.
