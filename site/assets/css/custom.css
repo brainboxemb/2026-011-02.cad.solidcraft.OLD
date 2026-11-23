@@ -78,21 +78,24 @@ samp{
   -webkit-box-orient:vertical;
 }
 .cad-card-title{
-  min-height:2.35em;
+  height:2.48em;
+  flex:0 0 auto;
   -webkit-line-clamp:2;
   font-size:.94rem;
   line-height:1.24;
   letter-spacing:-.008em;
 }
 .cad-card-tagline{
-  min-height:2.55em;
+  height:2.68em;
+  flex:0 0 auto;
   -webkit-line-clamp:2;
   color:var(--cad-muted);
   font-size:.76rem;
   line-height:1.34;
 }
 .cad-card-parameters{
-  min-height:2.35em;
+  height:2.6em;
+  flex:0 0 auto;
   -webkit-line-clamp:2;
   color:var(--cad-muted);
   font-size:.68rem;
