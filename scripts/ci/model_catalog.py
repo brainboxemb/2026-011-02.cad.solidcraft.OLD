@@ -71,7 +71,7 @@ def _model_entry(slug, info, section, root, path):
 
     required = ("priority", "title", "tagline", "description",
                 "parameters", "diagram", "stages", "source")
-    optional = ("scpc_source", "scpc_command_count", "component_source",
+    optional = ("scpc_source", "component_source",
                 "component_definition_primary", "extra_inputs",
                 "dependencies", "warning", "build", "snapshot_required",
                 "featured", "extra_views", "allow_stale_preview")
@@ -120,13 +120,6 @@ def _model_entry(slug, info, section, root, path):
                 if key == "extra_inputs"
                 else tuple(raw)
             )
-    if "scpc_command_count" in info:
-        count = info["scpc_command_count"]
-        if type(count) is not int or count < 1 or "scpc_source" not in entry:
-            raise ValueError(
-                f"{label}: scpc_command_count needs an independent source"
-            )
-        entry["scpc_command_count"] = count
     if "warning" in info:
         warning = info["warning"]
         if not isinstance(warning, dict) or set(warning) != {"title", "body"}:

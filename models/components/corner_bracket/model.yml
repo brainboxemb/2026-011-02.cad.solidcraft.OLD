@@ -19,7 +19,6 @@ stages:
   - "Solid bracket — mounting-hole features deliberately omitted"
 source: "scpf/model.py"
 scpc_source: "scpc/model.py"
-scpc_command_count: 17
 component_source: "scpf/model.py"
 component_definition_primary: true
 build: true
