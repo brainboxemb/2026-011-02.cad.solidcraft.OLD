@@ -1,0 +1,13 @@
+{
+  "forge_sha": "ea5710a5d2d33b0633b93c5da95dd5b74f126aa4",
+  "independent_scpc_compared": false,
+  "model": "hub75-wood-frame-iter2",
+  "runtime_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
+  "schema": 1,
+  "scpc_sha": null,
+  "semantic_verification": "pass",
+  "solidcraft_built": true,
+  "solidcraft_verified": true,
+  "solidcraft_version": "0.45.0",
+  "source_sha": "b0fd2ab4104d3d365794e2085f52ff752d7fe8c1"
+}
