@@ -50,6 +50,10 @@ Accepted repository state:
 - Durable `build/dev-cad` and Pages `/dev-cad/` source-match
   `4e6f36f946cdb560fa2349f8559419f66ba577fc` (run #353); the synchronized
   development site now uses Hugo/Hextra like stable.
+- #206 / PR #326 removed the local cross-CAD reference implementations.
+  Current `dev-cad` is `679c584b90943cb7e6ca726eb11f4a80d649b6e6`;
+  durable run #359, `build/dev-cad` and Pages `/dev-cad/` all source-match
+  that commit.
 - The presentation from change 0027 was later visually rejected; Pages was
   temporarily switched back to the preserved pre-change publication while the
   replacement was worked out in EXP.
@@ -201,12 +205,11 @@ schema, planner or reference framework.
 | #278 Model-detail presentation replacement | dev-ci | **promoted / accepted** | Framed model-detail baseline plus #297/#303 catalog corrections are stable; no further action in this workstream. |
 | #288 tool.cad.ci v0.25.0 workflow/config migration | dev-ci / CI | **later / separate** | Do not mix with #278; reassess after the current site presentation checkpoint. |
 | #250 Shared changelog template/history | documentation | **later** | Reassess after permanent lanes are coherent; do not interrupt WS1/WS2. |
-| #206 Remove Forge reference implementations | dev-cad | **now** | Remove the local CadQuery/MicroCAD/PythonSCAD/vcad reference sources and any assumptions that require them; no product geometry changes. |
 | #205 Canonical shared model.yml contract | shared + dev-cad | **blocked** | Wait for an actually reusable/adoptable shared contract; do not copy Forge's site-local validator. |
-| #204 Remove SCPC command counts from model.yml | dev-cad | **next after WS2** | Remove the handwritten counts and derive displayed/check counts from generated output. |
 | #172 Full-catalog Forge/SolidCraft qualification | dev-cad | **blocked** | Re-enable the two remaining roots after the required Forge fix reaches the CAD-consumed baseline. |
 | #168 Verification terminology cleanup | cross-repo | **later** | Revisit after lane and model-ownership cleanup are stable. |
-| #154 HUB75 lower storage compartment | dev-cad | **next after #206** | PR #156 has no upstream blocker, but refresh its old branch against current dev-cad and retain only the product/model work. |
+| #327 FlexBenchDog native conical tip flare | dev-cad | **blocked** | PR #328 proved native Cone exists, but Forge #746 must add Cone join/cut feature compilation and reach a CAD-consumable release/pin. |
+| #154 HUB75 lower storage compartment | dev-cad | **now** | Refresh PR #156 against current dev-cad and retain only the product/model work; drop stale catalog/CI-era edits. |
 | #142 HUB75Display2 | dev-cad | **blocked** | Resume qualification after the required Forge naming fix reaches the CAD baseline. |
 | #135 Bolted Flange circular pattern | dev-cad | **blocked** | Keep PR #141 parked until Forge #347 supports the intended applied feature seed. |
 | #91 Frame-thickness native regression | dev-cad | **later** | Resume with relevant HUB75 frame work. |
@@ -259,18 +262,16 @@ in this plan.
 
 ## Next checkpoint
 
-Complete #206 on `dev-cad` as the next ownership cleanup:
+Refresh #154 / PR #156 against current `dev-cad`:
 
-1. remove the local `cadquery/`, `microcad/`, `pythonscad/` and `vcad/`
-   reference implementations named in #206;
-2. remove only CAD-local CI/documentation/site assumptions that require those
-   reference sources;
-3. keep SCPF/SCPC product geometry unchanged and do not introduce a replacement
-   local comparison matrix;
-4. merge through the normal short-lived branch policy and verify durable
-   `dev-cad` publication;
-5. then refresh PR #156 / #154 against the current lane, preserving its product
-   geometry while dropping stale catalog/CI-era edits.
+1. audit the old PR branch against the current WoodenHub75BoxIter2 model and
+   current repository contracts;
+2. preserve only the lower-storage-compartment product/model intent;
+3. drop stale catalog, CI, site and migration-era edits from the old branch;
+4. keep the change on a clean short-lived branch targeting `dev-cad`;
+5. verify geometry, model-owned expectations and durable dev-cad publication
+   before merge.
 
-Keep PR #141 parked on Forge #347. Keep PR #169 draft/parked until its required
-Forge API is available in a CAD-consumable release. Keep #21 and #288 separate.
+Keep #327 / PR #328 draft and parked on Forge #746. Keep PR #141 parked on
+Forge #347. Keep PR #169 draft/parked until its required Forge API is available
+in a CAD-consumable release. Keep #21 and #288 separate.
