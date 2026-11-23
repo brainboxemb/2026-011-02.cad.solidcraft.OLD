@@ -1,13 +1,14 @@
 {
   "action_executed": true,
   "action_type": "copy",
-  "bundle_sha256": "5e4284422acbbb5fa5c9e367530f981ba39ea23cbdbe9cbf5fded4d592d0e33d",
-  "duration_seconds": 0.068,
+  "active_dependents": [],
+  "bundle_sha256": "17ff4cb74d9592f191dfc2bfa4f8770413757dec293805ee1cfe729e42c2a45e",
+  "duration_seconds": 0.07,
   "engine": "scons",
-  "engine_schema": 3,
+  "engine_schema": 4,
   "error": null,
   "exit_code": null,
-  "finished_at": "2026-11-22T13:55:21.515Z",
+  "finished_at": "2026-11-23T09:40:51.386Z",
   "item": "plastic-enclosure-pi",
   "outcome": "BUILT",
   "output_state": "RESTORED",
@@ -25,15 +26,15 @@
     "models": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "f5452f931bd4951520f90dcc85f85856fd1cc7a3e19b0ecd6a4541bb6b364564"
+      "sha256": "0a876b0c29f18fbf396cf2a5da5277a753566f813698783a6e63e9b88a88286d"
     }
   },
-  "run_finished_at": "2026-11-22T13:55:22.088Z",
-  "run_started_at": "2026-11-22T13:54:12.265Z",
-  "schema": 4,
-  "started_at": "2026-11-22T13:55:21.447Z",
+  "run_finished_at": "2026-11-23T09:40:51.950Z",
+  "run_started_at": "2026-11-23T09:39:52.221Z",
+  "schema": 5,
+  "started_at": "2026-11-23T09:40:51.316Z",
   "status": "pass",
   "step": "build_results",
-  "target_spec_digest": "ffae9199faf8e7ba33bb820bb6edb6706162dc0f7402e8e9e3534d96a18cf718",
+  "target_spec_digest": "8cb2a904edf8d9433bd08bfa61b535a79d4c6d38fb363174a7fc2117e26f5df9",
   "timeout_seconds": null
 }

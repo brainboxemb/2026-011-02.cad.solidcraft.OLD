@@ -1,13 +1,14 @@
 {
   "action_executed": true,
   "action_type": "copy",
-  "bundle_sha256": "74eed5fbea527eb81ea3a8d1a8599461c97ca806148ba77e4abe90f22844c3eb",
-  "duration_seconds": 0.108,
+  "active_dependents": [],
+  "bundle_sha256": "7fd96280edbe6c8a012fa9d8b6c04fef5ea29a27d700178719d96e8ebfaa8cfc",
+  "duration_seconds": 0.08,
   "engine": "scons",
-  "engine_schema": 3,
+  "engine_schema": 4,
   "error": null,
   "exit_code": null,
-  "finished_at": "2026-11-22T13:55:21.444Z",
+  "finished_at": "2026-11-23T09:40:51.312Z",
   "item": "plate",
   "outcome": "BUILT",
   "output_state": "RESTORED",
@@ -25,15 +26,15 @@
     "models": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "7edd3d4ed035adbf35e65a5ab503279f5dd6f5e022619beb9f26fda4f2aeacd1"
+      "sha256": "ff585e159c44e79c89383835f8d2a4495f3d02af81a9616d7aa28c916809d338"
     }
   },
-  "run_finished_at": "2026-11-22T13:55:22.088Z",
-  "run_started_at": "2026-11-22T13:54:12.265Z",
-  "schema": 4,
-  "started_at": "2026-11-22T13:55:21.336Z",
+  "run_finished_at": "2026-11-23T09:40:51.950Z",
+  "run_started_at": "2026-11-23T09:39:52.221Z",
+  "schema": 5,
+  "started_at": "2026-11-23T09:40:51.232Z",
   "status": "pass",
   "step": "build_results",
-  "target_spec_digest": "72922eb00fea363aac8cff70689c7c12bbb38baa98f794157c8eb6ab3a8de08c",
+  "target_spec_digest": "db4b84e10f14fd7a3b81735122aa4c86e14ac6e4b96aff8b3870749a9942d9c9",
   "timeout_seconds": null
 }

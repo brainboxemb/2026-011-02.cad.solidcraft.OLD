@@ -8,5 +8,6 @@
   "semantic_verification": "not-configured",
   "solidcraft_built": true,
   "solidcraft_verified": false,
-  "source_sha": "174a71d7fa87223a1d2ac48e81ca1a293435dcdc"
+  "solidcraft_version": "0.45.0",
+  "source_sha": "4e6f36f946cdb560fa2349f8559419f66ba577fc"
 }

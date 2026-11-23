@@ -69,7 +69,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 0.6631640000000001,
+      "ms": 0.618382,
       "name": "Guide rail profile - festool",
       "rolled_back": false,
       "suppressed": false,
@@ -79,7 +79,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 18.36381,
+      "ms": 17.040141000000002,
       "name": "Extrude1",
       "rolled_back": false,
       "suppressed": false,

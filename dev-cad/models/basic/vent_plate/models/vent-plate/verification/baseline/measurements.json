@@ -88,7 +88,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 2.1557,
+      "ms": 2.088471,
       "name": "Box1",
       "rolled_back": false,
       "suppressed": false,
@@ -98,7 +98,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 55.835049999999995,
+      "ms": 50.283176999999995,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -108,7 +108,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 0.192807,
+      "ms": 0.205642,
       "name": "Vent",
       "rolled_back": false,
       "suppressed": false,
@@ -118,7 +118,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 12.333575,
+      "ms": 11.042181,
       "name": "Vent",
       "rolled_back": false,
       "suppressed": false,
@@ -128,7 +128,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 98.020269,
+      "ms": 87.877547,
       "name": "RectangularPattern1",
       "rolled_back": false,
       "suppressed": false,

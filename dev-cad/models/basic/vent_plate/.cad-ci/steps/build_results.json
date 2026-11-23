@@ -1,13 +1,14 @@
 {
   "action_executed": true,
   "action_type": "copy",
-  "bundle_sha256": "11c86bc2c69273c6371525cbabba25e3a5ec256d46f29d0fdaa0a5e0c270c334",
-  "duration_seconds": 0.087,
+  "active_dependents": [],
+  "bundle_sha256": "31c4752fa3987b4de957be63376682a6b6051cdb17319b7189eaa1baa0a7dd93",
+  "duration_seconds": 0.047,
   "engine": "scons",
-  "engine_schema": 3,
+  "engine_schema": 4,
   "error": null,
   "exit_code": null,
-  "finished_at": "2026-11-22T13:55:21.795Z",
+  "finished_at": "2026-11-23T09:40:51.661Z",
   "item": "vent-plate",
   "outcome": "BUILT",
   "output_state": "RESTORED",
@@ -25,15 +26,15 @@
     "models": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "202457de1763124d5b26ce71b9516ffb6ec9e700250103964b78f177481ddcf2"
+      "sha256": "e47b31d94572e0285b1e33e7ead6fd6f83d67e37a14f0e14b3783f8a0982911e"
     }
   },
-  "run_finished_at": "2026-11-22T13:55:22.088Z",
-  "run_started_at": "2026-11-22T13:54:12.265Z",
-  "schema": 4,
-  "started_at": "2026-11-22T13:55:21.708Z",
+  "run_finished_at": "2026-11-23T09:40:51.950Z",
+  "run_started_at": "2026-11-23T09:39:52.221Z",
+  "schema": 5,
+  "started_at": "2026-11-23T09:40:51.614Z",
   "status": "pass",
   "step": "build_results",
-  "target_spec_digest": "ffc45459bcf45893e86cab171c89db74314ea8ab621c19ae12efbab3282ff0cd",
+  "target_spec_digest": "ea6801cdade29fe4178fc5e6b15749fb00c16201ba85fb6a58ea6e74f407f187",
   "timeout_seconds": null
 }
