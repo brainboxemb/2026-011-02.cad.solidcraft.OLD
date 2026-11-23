@@ -123,9 +123,10 @@ Permanent source branches: `main`, `dev-cad`, `dev-ci`.
   expectations inside the GitHub workflow, general Python runners or HTML.
 - Preserve SCPC-versus-Forge comparison where the model has an independent
   SCPC source.
-- Native output must contain the editable `.sc`, STEP where supported,
-  measurements/check results, required renders and exact input/version
-  provenance. Required artifacts missing or empty fail that model.
+- SolidCraft build output must contain the editable `.sc`, STEP where
+  supported, measurements/check results, required renders and exact
+  input/version provenance. Required artifacts missing or empty fail that
+  model.
 - Never relabel retained old results as newly checked after a library or
   runtime update.
 - Publication consumes a **complete** accepted build scope and produces one

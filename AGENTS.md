@@ -50,6 +50,26 @@ Treat it only as an entrypoint: inspect current GitHub state, then read
 active issue/PR state in the plan/GitHub rather than duplicating them in the
 handoff.
 
+## Development-lane cadence
+
+`dev-cad` and `dev-ci` are working/integration lanes. They may accumulate
+multiple accepted logical changes while related work continues. Do not promote
+an accepted development PR to `main` merely because it is green.
+
+Promote a development lane to `main` only at a deliberate stable checkpoint,
+such as a coherent feature set, the end of a work block/day, a release point,
+or when another lane genuinely needs that stable change. Keep the normal
+history-preserving permanent-lane merge rules when that checkpoint is chosen.
+
+Pure repository-instruction and documentation-only corrections in
+`AGENTS.md` and `docs/*` may be committed directly to `main` when they do
+not depend on an unmerged code/model change. Documentation that is part of a
+logical code/model change stays with that issue, branch and PR.
+
+Synchronize `main` back into `dev-cad` or `dev-ci` when the stable change
+is actually needed there; do not perform a synchronization cycle as a ritual
+after every development merge.
+
 ## Write simply
 
 Use normal engineering language. Use the names that exist in the code and in
@@ -185,19 +205,20 @@ Normal CAD CI uses the released runtime owned by
 - Use an explicit full-build mode when deliberately testing every model against
   a new Forge revision/release or SolidCraft version.
 - Keep explicit modes for changed models, named model(s), and all models.
-- Keep **selection inputs** separate from **native verification inputs**:
+- Keep **selection inputs** separate from **SolidCraft verification inputs**:
   `model_input_paths()` may include model-root README/check metadata so those
   changes select the owning model/page, while `verification_input_paths()`
   contains only geometry/source inputs and declared geometry dependencies.
-  Documentation/site metadata must never invalidate an unchanged native CAD
-  verification. A `check.py` change still selects and reruns its model.
+  Documentation/site metadata must never invalidate unchanged SolidCraft
+  geometry/verification evidence. A `check.py` change still selects and reruns
+  its model.
 - Public verification wording must be literal:
-  **Native verified** means a real SolidCraft `.sc` exists and its stored
-  verification fingerprint matches the current geometry/source inputs.
+  **SolidCraft verified** means a real editable SolidCraft `.sc` exists and its
+  stored verification fingerprint matches the current geometry/source inputs.
   An older retained screenshot must be labelled as an older render that is not
-  current verification; a command-only model must say native output is not
-  verified. SolidCraft Web links and `.sc` downloads are user actions, not
-  evidence of verification.
+  current verification; a build-only model must say that SolidCraft built
+  successfully but semantic verification is not configured. SolidCraft Web
+  links and `.sc` downloads are user actions, not evidence of verification.
 
 ### Keep build output separate from Pages
 
@@ -215,7 +236,7 @@ The output branch has two states:
 
 Each model output directory contains its own `verification.json` with the CAD
 source commit, Forge revision/release, SolidCraft version, workflow run and
-native file format that actually produced that model.
+SolidCraft file format that actually produced that model.
 
 The canonical primary native screenshot is `native/model.png`. Legacy
 `native/native.png` must be normalized during migration/publication rather
@@ -283,7 +304,7 @@ Do not add a CAD-specific workaround just to get the model green.
 5. Merge the Forge fix through its normal CI.
 6. Pin the CAD repository to the exact qualified Forge commit when the fix has
    not yet reached a normal release.
-7. Re-run the downstream CAD native verification.
+7. Re-run the downstream CAD SolidCraft build and verification.
 
 A downstream product model is evidence for a Forge bug, not the place where the
 Forge bug should be hidden.
@@ -292,14 +313,14 @@ Forge bug should be hidden.
 
 Expose one normal user-facing workflow:
 
-- `cad.yml` — the complete CAD pipeline: select, cheap checks, native checks,
-  candidate build, preview/stable publication and closed-PR cleanup.
+- `cad.yml` — the complete CAD pipeline: selection, model/repository checks,
+  SolidCraft build/verification, candidate build, preview/stable publication
+  and closed-PR cleanup.
 
 The SolidCraft image is built and released only in
 `brainboxemb/docker.cad.solidcraft`. This consumer repository must not add a
-local image-build workflow. Do not split normal CAD operation into separate
-native, publish or cleanup workflows merely because those are separate
-implementation phases.
+local image-build workflow. Do not split normal CAD operation into separate build/verification, publish
+or cleanup workflows merely because those are separate implementation phases.
 
 Workflow YAML owns triggers, permissions and the thin released-action/Hugo
 handoff. Released CAD-CI owns generic checkout, selection, dependency closure,
