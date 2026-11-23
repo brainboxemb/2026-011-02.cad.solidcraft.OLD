@@ -1,12 +1,12 @@
 {
   "bodies": [
     {
-      "area_mm2": 9333.944933780018,
+      "area_mm2": 9963.026467590304,
       "bbox": {
         "max": [
           60.0,
           12.0,
-          12.000000000000004
+          12.000000000000002
         ],
         "min": [
           -12.000000000000002,
@@ -15,32 +15,32 @@
         ]
       },
       "center_of_mass": [
-        10.510304764433972,
-        -4.500943874775244e-16,
-        -10.510304764433977
+        10.407631721849755,
+        1.8921536389507055e-16,
+        -10.407631721849759
       ],
       "closed": true,
       "density_g_cm3": 1.29,
-      "edges": 80,
+      "edges": 140,
       "face_types": {
-        "cone": 2,
-        "cylinder": 1,
-        "plane": 31
+        "cone": 6,
+        "cylinder": 17,
+        "plane": 39
       },
-      "faces": 34,
+      "faces": 62,
       "kernel": {
-        "edges": 80,
-        "faces": 34,
+        "edges": 140,
+        "faces": 62,
         "shells": 1,
-        "vertices": 48
+        "vertices": 88
       },
-      "mass_g": 47.434637271032585,
+      "mass_g": 45.32788372957079,
       "material": "Default",
       "measured_by": "smlib",
       "name": "CornerBracket",
       "notes": [],
-      "vertices": 48,
-      "volume_mm3": 36771.03664421131
+      "vertices": 88,
+      "volume_mm3": 35137.89436400837
     }
   ],
   "body_count": 1,
@@ -62,6 +62,15 @@
       "name": "horizontal_arm_length",
       "unit": "mm",
       "value": 60.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "0.6",
+      "model": false,
+      "name": "elephant_foot_relief",
+      "unit": "mm",
+      "value": 0.6
     },
     {
       "comment": "",
@@ -120,16 +129,97 @@
     {
       "comment": "",
       "error": null,
-      "expression": "0.6",
+      "expression": "10",
       "model": false,
-      "name": "elephant_foot_relief",
+      "name": "head_diameter",
       "unit": "mm",
-      "value": 0.6
+      "value": 10.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "0.4",
+      "model": false,
+      "name": "head_clearance",
+      "unit": "mm",
+      "value": 0.4
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "1",
+      "model": false,
+      "name": "head_recess",
+      "unit": "mm",
+      "value": 1.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "12",
+      "model": false,
+      "name": "plywood_thickness",
+      "unit": "mm",
+      "value": 12.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "12",
+      "model": false,
+      "name": "bolt_offset",
+      "unit": "mm",
+      "value": 12.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "0",
+      "model": false,
+      "name": "bolt_y_offset",
+      "unit": "mm",
+      "value": 0.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "5",
+      "model": false,
+      "name": "bolt_diameter",
+      "unit": "mm",
+      "value": 5.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "0.4",
+      "model": false,
+      "name": "bolt_clearance",
+      "unit": "mm",
+      "value": 0.4
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "0.2",
+      "model": false,
+      "name": "bolt_hole_edge_relief",
+      "unit": "mm",
+      "value": 0.2
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "18",
+      "model": false,
+      "name": "bolt_spacing",
+      "unit": "mm",
+      "value": 18.0
     }
   ],
   "sketches": [
     {
-      "curves": 9,
+      "curves": 11,
       "dof": 0,
       "id": 1,
       "name": "Profile",
@@ -143,7 +233,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 0.356101,
+      "ms": 0.334555,
       "name": "Profile",
       "rolled_back": false,
       "suppressed": false,
@@ -153,7 +243,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 4.949394,
+      "ms": 5.466695,
       "name": "Extrude1",
       "rolled_back": false,
       "suppressed": false,
@@ -163,7 +253,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 15.083855999999999,
+      "ms": 20.515503000000002,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -173,7 +263,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 91.904886,
+      "ms": 109.908924,
       "name": "Chamfer1",
       "rolled_back": false,
       "suppressed": false,
@@ -183,7 +273,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 40.539894,
+      "ms": 174.314438,
       "name": "Chamfer2",
       "rolled_back": false,
       "suppressed": false,
@@ -193,21 +283,171 @@
     {
       "error": null,
       "id": 6,
-      "ms": 138.757784,
-      "name": "Chamfer3",
+      "ms": 63.810230999999995,
+      "name": "Hole1",
       "rolled_back": false,
       "suppressed": false,
-      "type": "ChamferFeature",
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 7,
+      "ms": 226.394054,
+      "name": "Hole2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 8,
+      "ms": 103.197086,
+      "name": "Hole3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 9,
+      "ms": 95.77041899999999,
+      "name": "Hole4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 10,
+      "ms": 91.901021,
+      "name": "Hole5",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 11,
+      "ms": 279.54865,
+      "name": "Hole6",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 12,
+      "ms": 107.897865,
+      "name": "Hole7",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 13,
+      "ms": 146.246925,
+      "name": "Hole8",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 14,
+      "ms": 107.234645,
+      "name": "Hole9",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 15,
+      "ms": 272.33566199999996,
+      "name": "Hole10",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 16,
+      "ms": 74.284845,
+      "name": "Hole11",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 17,
+      "ms": 155.85085800000002,
+      "name": "Hole12",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 18,
+      "ms": 88.48721900000001,
+      "name": "Hole13",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 19,
+      "ms": 299.35553500000003,
+      "name": "Hole14",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 20,
+      "ms": 85.313383,
+      "name": "Hole15",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 21,
+      "ms": 149.169301,
+      "name": "Hole16",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
       "warning": null
     }
   ],
   "total": {
-    "area_mm2": 9333.944933780018,
-    "edges": 80,
-    "faces": 34,
-    "mass_g": 47.434637271032585,
+    "area_mm2": 9963.026467590304,
+    "edges": 140,
+    "faces": 62,
+    "mass_g": 45.32788372957079,
     "open_bodies_skipped": 0,
-    "vertices": 48,
-    "volume_mm3": 36771.03664421131
+    "vertices": 88,
+    "volume_mm3": 35137.89436400837
   }
 }

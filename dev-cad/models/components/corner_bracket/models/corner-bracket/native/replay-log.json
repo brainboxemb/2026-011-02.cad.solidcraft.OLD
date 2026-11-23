@@ -1,7 +1,7 @@
 {
   "format": "scpf-replay-log",
   "version": 1,
-  "replay_sha256": "0fe0cbd757ca7089e020e9e917026a0dcaa15659177d2ed3d549b507c5b259a5",
+  "replay_sha256": "720d425e34c77a35c55e2ce6a2172d2009ed161a65f43f347dc1e5e9a49b2d87",
   "variables": {},
   "commands": [
     {
@@ -26,13 +26,22 @@
       "index": 2,
       "command": "parameters.add",
       "resolved_params": {
+        "name": "elephant_foot_relief",
+        "expression": "0.6",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 3,
+      "command": "parameters.add",
+      "resolved_params": {
         "name": "arm_height",
         "expression": "12",
         "unit": "mm"
       }
     },
     {
-      "index": 3,
+      "index": 4,
       "command": "parameters.add",
       "resolved_params": {
         "name": "arm_end_chamfer",
@@ -41,7 +50,7 @@
       }
     },
     {
-      "index": 4,
+      "index": 5,
       "command": "parameters.add",
       "resolved_params": {
         "name": "outer_corner_chamfer",
@@ -50,7 +59,7 @@
       }
     },
     {
-      "index": 5,
+      "index": 6,
       "command": "parameters.add",
       "resolved_params": {
         "name": "vertical_arm_length",
@@ -59,7 +68,7 @@
       }
     },
     {
-      "index": 6,
+      "index": 7,
       "command": "parameters.add",
       "resolved_params": {
         "name": "inside_corner_radius",
@@ -68,7 +77,7 @@
       }
     },
     {
-      "index": 7,
+      "index": 8,
       "command": "parameters.add",
       "resolved_params": {
         "name": "side_edge_chamfer",
@@ -77,16 +86,97 @@
       }
     },
     {
-      "index": 8,
+      "index": 9,
       "command": "parameters.add",
       "resolved_params": {
-        "name": "elephant_foot_relief",
-        "expression": "0.6",
+        "name": "head_diameter",
+        "expression": "10",
         "unit": "mm"
       }
     },
     {
-      "index": 9,
+      "index": 10,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "head_clearance",
+        "expression": "0.4",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 11,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "head_recess",
+        "expression": "1",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 12,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "plywood_thickness",
+        "expression": "12",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 13,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "bolt_offset",
+        "expression": "12",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 14,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "bolt_y_offset",
+        "expression": "0",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 15,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "bolt_diameter",
+        "expression": "5",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 16,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "bolt_clearance",
+        "expression": "0.4",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 17,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "bolt_hole_edge_relief",
+        "expression": "0.2",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 18,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "bolt_spacing",
+        "expression": "18",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 19,
       "command": "sketch.create",
       "resolved_params": {
         "plane": "XZ",
@@ -94,7 +184,7 @@
       }
     },
     {
-      "index": 10,
+      "index": 20,
       "command": "sketch.line",
       "resolved_params": {
         "points": [
@@ -103,8 +193,12 @@
             0
           ],
           [
-            "horizontal_arm_length",
+            "horizontal_arm_length - (elephant_foot_relief)",
             0
+          ],
+          [
+            "horizontal_arm_length",
+            "-(elephant_foot_relief)"
           ],
           [
             "horizontal_arm_length",
@@ -131,13 +225,18 @@
             "vertical_arm_length"
           ],
           [
-            0,
+            "-(elephant_foot_relief)",
             "vertical_arm_length"
+          ],
+          [
+            0,
+            "-((-(vertical_arm_length)) + (elephant_foot_relief))"
           ]
         ],
         "closed": true,
         "ids": [
           "i_corner",
+          "tip_hor_relief",
           "o_hor_tip",
           "o_hor_bevel",
           "o_hor",
@@ -145,17 +244,18 @@
           "o_vert",
           "o_vert_bevel",
           "o_vert_end",
+          "tip_vert_relief",
           "v_tip"
         ]
       }
     },
     {
-      "index": 11,
+      "index": 21,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 12,
+      "index": 22,
       "command": "solid.extrude",
       "resolved_params": {
         "distance": "arm_width",
@@ -164,7 +264,7 @@
       }
     },
     {
-      "index": 13,
+      "index": 23,
       "command": "solid.fillet",
       "resolved_params": {
         "edges": [
@@ -179,14 +279,14 @@
       }
     },
     {
-      "index": 14,
+      "index": 24,
       "command": "solid.chamfer",
       "resolved_params": {
         "edges": [
           [
             60.0,
             -12.0,
-            4.5
+            4.8
           ],
           [
             58.5,
@@ -214,14 +314,14 @@
             -58.5
           ],
           [
-            -4.5,
+            -4.8,
             -12.0,
             -60.0
           ],
           [
             60.0,
             12.0,
-            4.5
+            4.8
           ],
           [
             58.5,
@@ -249,7 +349,7 @@
             -58.5
           ],
           [
-            -4.5,
+            -4.8,
             12.0,
             -60.0
           ]
@@ -259,37 +359,17 @@
       }
     },
     {
-      "index": 15,
+      "index": 25,
       "command": "solid.chamfer",
       "resolved_params": {
         "edges": [
           [
-            60.0,
-            0.0,
-            -0.0
-          ],
-          [
-            0.0,
-            0.0,
-            -60.0
-          ]
-        ],
-        "distance": "elephant_foot_relief",
-        "body": "CornerBracket"
-      }
-    },
-    {
-      "index": 16,
-      "command": "solid.chamfer",
-      "resolved_params": {
-        "edges": [
-          [
-            30.0,
+            29.7,
             -12.0,
             -0.0
           ],
           [
-            30.0,
+            29.7,
             12.0,
             -0.0
           ]
@@ -297,7 +377,355 @@
         "distance": "elephant_foot_relief",
         "body": "CornerBracket"
       }
+    },
+    {
+      "index": 26,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "plywood_thickness + (bolt_offset)",
+          "bolt_y_offset",
+          "arm_height"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "head_diameter + (head_clearance)",
+        "depth": "head_recess",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 27,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "plywood_thickness + (bolt_offset)",
+          "bolt_y_offset",
+          "arm_height - (head_recess)"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "bolt_diameter + (bolt_clearance)",
+        "depth": "arm_height - (head_recess)",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "type": "countersink",
+        "cs_diameter": "head_diameter + (head_clearance)",
+        "cs_angle": 90
+      }
+    },
+    {
+      "index": 28,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "plywood_thickness + (bolt_offset)",
+          "bolt_y_offset",
+          "arm_height"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(head_diameter + (head_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 29,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "plywood_thickness + (bolt_offset)",
+          "bolt_y_offset",
+          0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(bolt_diameter + (bolt_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "index": 30,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "(plywood_thickness + (bolt_offset)) + (bolt_spacing)",
+          "bolt_y_offset",
+          "arm_height"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "head_diameter + (head_clearance)",
+        "depth": "head_recess",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 31,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "(plywood_thickness + (bolt_offset)) + (bolt_spacing)",
+          "bolt_y_offset",
+          "arm_height - (head_recess)"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "bolt_diameter + (bolt_clearance)",
+        "depth": "arm_height - (head_recess)",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "type": "countersink",
+        "cs_diameter": "head_diameter + (head_clearance)",
+        "cs_angle": 90
+      }
+    },
+    {
+      "index": 32,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "(plywood_thickness + (bolt_offset)) + (bolt_spacing)",
+          "bolt_y_offset",
+          "arm_height"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(head_diameter + (head_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 33,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "(plywood_thickness + (bolt_offset)) + (bolt_spacing)",
+          "bolt_y_offset",
+          0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(bolt_diameter + (bolt_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "index": 34,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "-(arm_height)",
+          "bolt_y_offset",
+          "-(plywood_thickness + (bolt_offset))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "head_diameter + (head_clearance)",
+        "depth": "head_recess",
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 35,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "(-(arm_height)) + (head_recess)",
+          "bolt_y_offset",
+          "-(plywood_thickness + (bolt_offset))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "bolt_diameter + (bolt_clearance)",
+        "depth": "arm_height - (head_recess)",
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "type": "countersink",
+        "cs_diameter": "head_diameter + (head_clearance)",
+        "cs_angle": 90
+      }
+    },
+    {
+      "index": 36,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "-(arm_height)",
+          "bolt_y_offset",
+          "-(plywood_thickness + (bolt_offset))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(head_diameter + (head_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 37,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          0,
+          "bolt_y_offset",
+          "-(plywood_thickness + (bolt_offset))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(bolt_diameter + (bolt_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          -1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 38,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "-(arm_height)",
+          "bolt_y_offset",
+          "-((plywood_thickness + (bolt_offset)) + (bolt_spacing))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "head_diameter + (head_clearance)",
+        "depth": "head_recess",
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 39,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "(-(arm_height)) + (head_recess)",
+          "bolt_y_offset",
+          "-((plywood_thickness + (bolt_offset)) + (bolt_spacing))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "bolt_diameter + (bolt_clearance)",
+        "depth": "arm_height - (head_recess)",
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "type": "countersink",
+        "cs_diameter": "head_diameter + (head_clearance)",
+        "cs_angle": 90
+      }
+    },
+    {
+      "index": 40,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "-(arm_height)",
+          "bolt_y_offset",
+          "-((plywood_thickness + (bolt_offset)) + (bolt_spacing))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(head_diameter + (head_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 41,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          0,
+          "bolt_y_offset",
+          "-((plywood_thickness + (bolt_offset)) + (bolt_spacing))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(bolt_diameter + (bolt_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          -1.0,
+          0.0,
+          0.0
+        ]
+      }
     }
   ],
-  "completed": 17
+  "completed": 42
 }
