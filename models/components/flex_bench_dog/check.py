@@ -14,7 +14,7 @@ EXTRA_SNAPSHOTS = (
         "camera": {
             "target": [0, 0, -12],
             "yaw": -0.55,
-            "pitch": 1.20,
+            "pitch": -1.20,
             "distance": 70,
             "fov": 0,
         },
