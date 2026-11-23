@@ -36,10 +36,20 @@ Accepted repository state:
   (`eb64a46b243db00e8dbb4b78b6643a2a7efa3fb9`) for merge policy.
 - #316 / PRs #317 and #318 made all catalog overview routes use the same
   section-bearing card geometry and promoted that correction to stable.
-- `main` and `dev-ci` are synchronized at
-  `6bf67ab733293868f349c820fc1dcc6a44abadf0`.
-- Durable `build/main`, public Pages, `build/dev-ci` and Pages `/dev-ci/`
-  source-match `6bf67ab733293868f349c820fc1dcc6a44abadf0`.
+- #204 is complete. PR #315 promoted the accepted removal of handwritten
+  `scpc_command_count` metadata to stable `main`.
+- `main` is currently
+  `5712fce7d62a958156cdc85e3b12d57a6372b23e`; durable `build/main` and
+  public Pages source-match that commit (run #349).
+- `dev-ci` remains on the accepted site-integration baseline
+  `57c45499c02e3a70b30382488827fa5f87239088`; no active site work is
+  required before the current product-CAD work.
+- #310 / PR #311 synchronized stable history into `dev-cad` as the normal
+  history-preserving merge commit
+  `4e6f36f946cdb560fa2349f8559419f66ba577fc`.
+- Durable `build/dev-cad` and Pages `/dev-cad/` source-match
+  `4e6f36f946cdb560fa2349f8559419f66ba577fc` (run #353); the synchronized
+  development site now uses Hugo/Hextra like stable.
 - The presentation from change 0027 was later visually rejected; Pages was
   temporarily switched back to the preserved pre-change publication while the
   replacement was worked out in EXP.
@@ -51,10 +61,9 @@ Accepted repository state:
   (`b1474f6be66dc0236f2a5c2555af07a100447255`) for CAD execution and merge
   policy. The later tool.cad.ci lifecycle migration is tracked separately in
   #288 and is not part of the current site presentation work.
-- `dev-cad` is also diverged from `main`, retains unique product-CAD
-  history, and still publishes the older Blowfish site. It must not be rebased
-  or recreated; synchronize current stable history into it only after the
-  `dev-ci` work is promoted.
+- `dev-cad` retains its unique product-CAD history and now also contains the
+  current stable history through the accepted permanent-lane merge. Do not
+  rebase or recreate the lane.
 - Runtime baseline is
   `ghcr.io/brainboxemb/cad-solidcraft:v0.3.4` with SolidCraft `0.45.0`.
 - There are 16 physical model roots and 18 published model variants. Fourteen
@@ -132,39 +141,50 @@ Accepted CAD evidence:
 
 Required next order:
 
-1. resume #314 / PR #315 and revalidate its accepted #204 metadata promotion
-   against the current stable `main` head;
-2. merge #315 only through `/merge` when current-head checks are green;
-3. refresh exact `main -> dev-cad` PR #311 after #315 lands;
-4. merge PR #311 only through the permanent-lane policy as a normal merge;
-5. require durable `build/dev-cad` and Pages `/dev-cad/` source-match;
-6. then reassess parked product PRs #141, #156 and #169.
-
-Do not mix #21 or #288 into this replacement.
+- none; WS1 is accepted and stable;
+- keep #21 and #288 separate from any future site work.
 
 ### WS2 — synchronize dev-cad and reassess parked product work
 
 Owner/lane: repository governance + `dev-cad`.
 
-Status: **next — stable site presentation is accepted; synchronize main into dev-cad**.
+Status: **completed**.
 
-After the accepted #278 site work is reconciled:
+Accepted evidence:
 
-1. open exact `main -> dev-cad`;
-2. merge only through `/merge` as a history-preserving permanent-ref merge;
-3. require durable `build/dev-cad` and Pages `/dev-cad/` to source-match the
-   synchronized lane;
-4. reassess PR #141, PR #156 and PR #169 against the new `dev-cad` head;
-5. choose one coherent product-CAD work item at a time.
+- #314 / PR #315 promoted the already accepted #204 metadata contract to
+  current stable `main`;
+- #321 / PR #322 converged the remaining stable model metadata and plan before
+  the permanent lane merge;
+- all former conflict files were byte-identical between `main` and
+  `dev-cad` before synchronization;
+- #310 / PR #311 merged `main -> dev-cad` using the repository policy as a
+  normal history-preserving merge commit;
+- synchronized `dev-cad` is
+  `4e6f36f946cdb560fa2349f8559419f66ba577fc`;
+- durable run #353 (`45149024946`) is green;
+- `build/dev-cad` and Pages `/dev-cad/` source-match the synchronized lane;
+- Pages build commit is
+  `bd4dfdcf4e6c0b5a74b9c7635c66e6f0128a52c8`;
+- screenshot artifact `model-layouts-dev-cad` is artifact `14804679663`.
 
-Product/model work stays parked until this synchronization is accepted.
+Parked product reassessment:
+
+- PR #141 / #135 remains blocked on Forge #347;
+- PR #169 remains blocked: Forge #349 is open, and the completed sheet/profile
+  fixes are newer than the CAD-consumed Forge v0.11.0 release;
+- PR #156 / #154 has no current upstream blocker, but its old branch is
+  substantially behind the synchronized lane and still contains stale
+  catalog/CI-era edits. Preserve the model work and refresh it deliberately
+  when its turn arrives.
 
 ### WS3 — normalize model-description ownership
 
 Owner/lane: shared owner repositories first; CAD adoption in `dev-cad` after
 WS2.
 
-- #204 removes the hand-maintained SCPC command count from model metadata.
+- #204 is complete: handwritten SCPC command counts are removed and rejected
+  as model metadata.
 - #205 adopts a genuinely reusable canonical model-description contract.
   Forge #703 is closed, but current Forge `main` still exposes its validator
   as site-local `site/example_metadata.py`; do not copy that validator into
@@ -181,12 +201,12 @@ schema, planner or reference framework.
 | #278 Model-detail presentation replacement | dev-ci | **promoted / accepted** | Framed model-detail baseline plus #297/#303 catalog corrections are stable; no further action in this workstream. |
 | #288 tool.cad.ci v0.25.0 workflow/config migration | dev-ci / CI | **later / separate** | Do not mix with #278; reassess after the current site presentation checkpoint. |
 | #250 Shared changelog template/history | documentation | **later** | Reassess after permanent lanes are coherent; do not interrupt WS1/WS2. |
-| #206 Remove Forge reference implementations | dev-cad | **next after WS2** | Remove local cross-CAD reference sources/assumptions without changing product geometry. |
+| #206 Remove Forge reference implementations | dev-cad | **now** | Remove the local CadQuery/MicroCAD/PythonSCAD/vcad reference sources and any assumptions that require them; no product geometry changes. |
 | #205 Canonical shared model.yml contract | shared + dev-cad | **blocked** | Wait for an actually reusable/adoptable shared contract; do not copy Forge's site-local validator. |
 | #204 Remove SCPC command counts from model.yml | dev-cad | **next after WS2** | Remove the handwritten counts and derive displayed/check counts from generated output. |
 | #172 Full-catalog Forge/SolidCraft qualification | dev-cad | **blocked** | Re-enable the two remaining roots after the required Forge fix reaches the CAD-consumed baseline. |
 | #168 Verification terminology cleanup | cross-repo | **later** | Revisit after lane and model-ownership cleanup are stable. |
-| #154 HUB75 lower storage compartment | dev-cad | **later** | Reassess PR #156 after the exact `main -> dev-cad` synchronization. |
+| #154 HUB75 lower storage compartment | dev-cad | **next after #206** | PR #156 has no upstream blocker, but refresh its old branch against current dev-cad and retain only the product/model work. |
 | #142 HUB75Display2 | dev-cad | **blocked** | Resume qualification after the required Forge naming fix reaches the CAD baseline. |
 | #135 Bolted Flange circular pattern | dev-cad | **blocked** | Keep PR #141 parked until Forge #347 supports the intended applied feature seed. |
 | #91 Frame-thickness native regression | dev-cad | **later** | Resume with relevant HUB75 frame work. |
@@ -206,6 +226,14 @@ Parked open product PRs:
 
 ## Recently completed
 
+- #310 / PR #311 completed the permanent history-preserving `main -> dev-cad`
+  synchronization. Run #353 and both durable dev-cad publication scopes
+  source-match `4e6f36f946cdb560fa2349f8559419f66ba577fc`.
+- #204 / #314 / PR #315 removed handwritten SCPC command counts from model
+  metadata on stable; #321 / PR #322 completed the final metadata convergence
+  required for the lane merge.
+- #316 / PRs #317/#318 made catalog card geometry identical between `/models/`
+  and category pages and promoted the accepted layout to stable.
 - #297 / PRs #299, #300 and #301 established one shared four/two/one model-card
   grid on Home and Models, fixed preview/text slots, and added durable
   Home/Models screenshot proof. Run #309 is the visually accepted dev-ci
@@ -231,13 +259,18 @@ in this plan.
 
 ## Next checkpoint
 
-Resume the interrupted product-lane synchronization sequence after #316:
+Complete #206 on `dev-cad` as the next ownership cleanup:
 
-1. revalidate PR #315 (#314) against the current stable main head;
-2. merge the accepted #204 metadata contract to main through `/merge`;
-3. refresh PR #311 (`main -> dev-cad`);
-4. merge PR #311 only as the history-preserving permanent-lane merge;
-5. verify durable `build/dev-cad` and Pages `/dev-cad/` source-match;
-6. reassess PR #141, PR #156 and PR #169 against the synchronized dev-cad.
+1. remove the local `cadquery/`, `microcad/`, `pythonscad/` and `vcad/`
+   reference implementations named in #206;
+2. remove only CAD-local CI/documentation/site assumptions that require those
+   reference sources;
+3. keep SCPF/SCPC product geometry unchanged and do not introduce a replacement
+   local comparison matrix;
+4. merge through the normal short-lived branch policy and verify durable
+   `dev-cad` publication;
+5. then refresh PR #156 / #154 against the current lane, preserving its product
+   geometry while dropping stale catalog/CI-era edits.
 
-Keep #21 and #288 separate.
+Keep PR #141 parked on Forge #347. Keep PR #169 draft/parked until its required
+Forge API is available in a CAD-consumable release. Keep #21 and #288 separate.
