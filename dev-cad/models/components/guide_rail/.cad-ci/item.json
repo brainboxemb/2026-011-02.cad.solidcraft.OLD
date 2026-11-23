@@ -1,12 +1,12 @@
 {
   "engine": "scons",
   "engine_schema": 4,
-  "final_bundle_sha256": "f5bb29939cb8a37a40c15fa0059eef5e3ecc7851949618615f9201ae8bcb85c9",
+  "final_bundle_sha256": "27cde86411370d6267a946d08d4ccf7f338047d687ee430690af61cf0ec1601b",
   "final_step": "build_results",
   "final_target_spec_digest": "48892e4ecc154ff483fb5db11476baf6e6f7bcab29ca5eb5898480db9688ad15",
   "item": "guide-rail",
-  "run_finished_at": "2026-11-23T16:06:06.039Z",
-  "run_started_at": "2026-11-23T16:02:45.697Z",
+  "run_finished_at": "2026-11-23T16:29:14.884Z",
+  "run_started_at": "2026-11-23T16:26:22.231Z",
   "schema": 2,
   "status": "pass"
 }

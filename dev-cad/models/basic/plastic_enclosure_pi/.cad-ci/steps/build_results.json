@@ -2,13 +2,13 @@
   "action_executed": true,
   "action_type": "copy",
   "active_dependents": [],
-  "bundle_sha256": "7b7d76581f9db8ebdd814df8d7d290dc59a4d547c83d97da560f47f8f480278f",
-  "duration_seconds": 0.118,
+  "bundle_sha256": "c874d1bbc23f20781c012f8ac1d00412376f1ebb76b7961474a0dde2a84983c6",
+  "duration_seconds": 0.094,
   "engine": "scons",
   "engine_schema": 4,
   "error": null,
   "exit_code": null,
-  "finished_at": "2026-11-23T16:06:05.294Z",
+  "finished_at": "2026-11-23T16:29:14.324Z",
   "item": "plastic-enclosure-pi",
   "outcome": "BUILT",
   "output_state": "RESTORED",
@@ -21,18 +21,18 @@
     "manifest.json": {
       "kind": "file",
       "mode": 420,
-      "sha256": "b95f0c9f015ba774810e62a27d85b54fd7a25c79562f71b846e68a4fd6020809"
+      "sha256": "da7f4a6636aacdcb70f9f2faf4eef71426c175fa7f9a5270c31c56711b5c612f"
     },
     "models": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "0e107d6fd0f78702a3e3f8b0fc94a9f13900795c55d83b481fe1458022bf9114"
+      "sha256": "fa176f48062e3d072ad0f0d0fde00bfe2f8f88d5272de527a9d9d0e4ad9abca0"
     }
   },
-  "run_finished_at": "2026-11-23T16:06:06.039Z",
-  "run_started_at": "2026-11-23T16:02:45.697Z",
+  "run_finished_at": "2026-11-23T16:29:14.884Z",
+  "run_started_at": "2026-11-23T16:26:22.231Z",
   "schema": 5,
-  "started_at": "2026-11-23T16:06:05.176Z",
+  "started_at": "2026-11-23T16:29:14.230Z",
   "status": "pass",
   "step": "build_results",
   "target_spec_digest": "8cb2a904edf8d9433bd08bfa61b535a79d4c6d38fb363174a7fc2117e26f5df9",

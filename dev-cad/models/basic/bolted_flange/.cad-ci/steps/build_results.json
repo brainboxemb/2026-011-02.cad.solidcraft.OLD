@@ -2,13 +2,13 @@
   "action_executed": true,
   "action_type": "copy",
   "active_dependents": [],
-  "bundle_sha256": "27a47ce4419533c9be16acc6b7b424146af9a5153cdaee5a2a6fe8ae83f3962a",
-  "duration_seconds": 0.065,
+  "bundle_sha256": "02fe0bebb5de4b4eb15754678f4caeeed61c7cee5acfc66462b600c00ea739f5",
+  "duration_seconds": 0.074,
   "engine": "scons",
   "engine_schema": 4,
   "error": null,
   "exit_code": null,
-  "finished_at": "2026-11-23T16:06:05.155Z",
+  "finished_at": "2026-11-23T16:29:14.213Z",
   "item": "bolted-flange",
   "outcome": "BUILT",
   "output_state": "RESTORED",
@@ -21,18 +21,18 @@
     "manifest.json": {
       "kind": "file",
       "mode": 420,
-      "sha256": "f5e7124f4c444c6ae348cd5c37912de95df6120a2d39328fe774bd5e2d4cb923"
+      "sha256": "ab91b1a243ee7362ccf1fbd1f4b05cd442d2f29b45ad0a3cf8e1457d815a517e"
     },
     "models": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "ce2c8dd432f74aeb37e55809de227b1fd29b0693d2bf8f69197f8f37b21c9e4c"
+      "sha256": "690248ea5140757522cc4043627b92a69a93f11878078d553323b0287a381240"
     }
   },
-  "run_finished_at": "2026-11-23T16:06:06.039Z",
-  "run_started_at": "2026-11-23T16:02:45.697Z",
+  "run_finished_at": "2026-11-23T16:29:14.884Z",
+  "run_started_at": "2026-11-23T16:26:22.231Z",
   "schema": 5,
-  "started_at": "2026-11-23T16:06:05.090Z",
+  "started_at": "2026-11-23T16:29:14.140Z",
   "status": "pass",
   "step": "build_results",
   "target_spec_digest": "811c49de947afc91b0115058f41e538c72afaabe50146a6c294bf8bc9e421a2e",

@@ -2,13 +2,13 @@
   "action_executed": true,
   "action_type": "copy",
   "active_dependents": [],
-  "bundle_sha256": "9ca523585eb6de9b6d44f81eef178e9df5185938dfb7e62c1369821f96b7d3a7",
-  "duration_seconds": 0.045,
+  "bundle_sha256": "12c19d5a3adfe62f38a2f465d906dab2ec8ff5b039c04981b031341d6586218d",
+  "duration_seconds": 0.115,
   "engine": "scons",
   "engine_schema": 4,
   "error": null,
   "exit_code": null,
-  "finished_at": "2026-11-23T16:06:04.826Z",
+  "finished_at": "2026-11-23T16:29:13.840Z",
   "item": "csg-cube",
   "outcome": "BUILT",
   "output_state": "RESTORED",
@@ -21,18 +21,18 @@
     "manifest.json": {
       "kind": "file",
       "mode": 420,
-      "sha256": "2e477cff86e00c4ea350277e8934bd5825869a4d8aa3fe12cf28d30438fce508"
+      "sha256": "dfa8b71257347f1735175b3722129e6c6f069792e6fdfa1baf2023f091274c88"
     },
     "models": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "4a524d00aa68c7401df349a9d03ec14ab417cc1d6e2b906300643ca1c72f44cf"
+      "sha256": "02ce2d1124645c5bb2c09f21858264333d93a1d51fbd72a1785290d47261fef8"
     }
   },
-  "run_finished_at": "2026-11-23T16:06:06.039Z",
-  "run_started_at": "2026-11-23T16:02:45.697Z",
+  "run_finished_at": "2026-11-23T16:29:14.884Z",
+  "run_started_at": "2026-11-23T16:26:22.231Z",
   "schema": 5,
-  "started_at": "2026-11-23T16:06:04.781Z",
+  "started_at": "2026-11-23T16:29:13.726Z",
   "status": "pass",
   "step": "build_results",
   "target_spec_digest": "37e7771f444ae0fe354aaa170918fc5c9f2b6e219b8c7b9824376becba18154c",

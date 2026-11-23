@@ -14,7 +14,7 @@
       "CsgCube"
     ],
     "feature": 1,
-    "ms": 4.910252000000001,
+    "ms": 5.399455,
     "name": "Sphere1",
     "removed_bodies": [],
     "warning": null
@@ -28,7 +28,7 @@
     ],
     "created_bodies": [],
     "feature": 2,
-    "ms": 26.598885,
+    "ms": 32.088643,
     "name": "Box1",
     "removed_bodies": [],
     "warning": null
@@ -42,7 +42,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 33.378814999999996,
+    "ms": 38.858323999999996,
     "name": "Cylinder1",
     "removed_bodies": [],
     "warning": null
@@ -56,7 +56,7 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 47.882729,
+    "ms": 57.385482,
     "name": "Cylinder2",
     "removed_bodies": [],
     "warning": null
@@ -70,7 +70,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 66.340892,
+    "ms": 77.586416,
     "name": "Cylinder3",
     "removed_bodies": [],
     "warning": null

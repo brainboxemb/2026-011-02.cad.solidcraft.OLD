@@ -86,7 +86,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 2.47586,
+      "ms": 2.687845,
       "name": "Box1",
       "rolled_back": false,
       "suppressed": false,
@@ -96,7 +96,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 21.627207,
+      "ms": 26.263590999999998,
       "name": "Shell1",
       "rolled_back": false,
       "suppressed": false,
@@ -106,7 +106,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 12.652234,
+      "ms": 16.299373999999997,
       "name": "Lip1",
       "rolled_back": false,
       "suppressed": false,
@@ -116,7 +116,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 12.492193,
+      "ms": 12.844182,
       "name": "SnapFit1",
       "rolled_back": false,
       "suppressed": false,
@@ -126,7 +126,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 40.618012,
+      "ms": 46.797117,
       "name": "Boss1",
       "rolled_back": false,
       "suppressed": false,
@@ -136,7 +136,7 @@
     {
       "error": null,
       "id": 6,
-      "ms": 52.57597,
+      "ms": 61.268525999999994,
       "name": "Boss2",
       "rolled_back": false,
       "suppressed": false,
@@ -146,7 +146,7 @@
     {
       "error": null,
       "id": 7,
-      "ms": 25.441594000000002,
+      "ms": 29.835532,
       "name": "Rest1",
       "rolled_back": false,
       "suppressed": false,

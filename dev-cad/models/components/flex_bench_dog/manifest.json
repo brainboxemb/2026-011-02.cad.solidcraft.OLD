@@ -1,4 +1,7 @@
 {
+  "artifacts": [
+    "stl"
+  ],
   "item_path": "models/components/flex_bench_dog",
   "models": [
     "flex-bench-dog"

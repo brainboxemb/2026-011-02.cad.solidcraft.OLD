@@ -2,13 +2,13 @@
   "action_executed": true,
   "action_type": "copy",
   "active_dependents": [],
-  "bundle_sha256": "dd8c27a90392b7366d28a768250dc7016793aeac739e8d69afb75668302f8ce2",
-  "duration_seconds": 0.121,
+  "bundle_sha256": "08bd913c9e0f11a1317f6a552337d297ff5f9359d717af71b68db086804b98b2",
+  "duration_seconds": 0.169,
   "engine": "scons",
   "engine_schema": 4,
   "error": null,
   "exit_code": null,
-  "finished_at": "2026-11-23T16:06:05.156Z",
+  "finished_at": "2026-11-23T16:29:14.209Z",
   "item": "flex-bench-dog",
   "outcome": "BUILT",
   "output_state": "RESTORED",
@@ -21,18 +21,18 @@
     "manifest.json": {
       "kind": "file",
       "mode": 420,
-      "sha256": "d8fb14202a18f45cd6bd9df514228ef427cdb9231b34677867c33f6c2da39402"
+      "sha256": "787adcd4997f28217668c4d079a5bdbaf324b7261b1b5a6768ca8ab63ef83ebb"
     },
     "models": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "37e57b85953aaf297aee023afc50354b6f8db0cbbd98e222f7801c56c43ac72a"
+      "sha256": "836795b8bcfd00915f1e1c35cde5c57fb79d4460f23739e026ecf132a6115175"
     }
   },
-  "run_finished_at": "2026-11-23T16:06:06.039Z",
-  "run_started_at": "2026-11-23T16:02:45.697Z",
+  "run_finished_at": "2026-11-23T16:29:14.884Z",
+  "run_started_at": "2026-11-23T16:26:22.231Z",
   "schema": 5,
-  "started_at": "2026-11-23T16:06:05.035Z",
+  "started_at": "2026-11-23T16:29:14.041Z",
   "status": "pass",
   "step": "build_results",
   "target_spec_digest": "6f5c28ea29b86a31936f0681ff16d395d8f35e90d552bd71aa3d5fbdba33e9fe",

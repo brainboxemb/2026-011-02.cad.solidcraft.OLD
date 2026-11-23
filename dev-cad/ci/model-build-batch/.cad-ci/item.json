@@ -1,12 +1,12 @@
 {
   "engine": "scons",
   "engine_schema": 4,
-  "final_bundle_sha256": "67a5cb5d432f46cd16fa7a26d237f96059e29e24b608c8816960e88cf7853d1b",
+  "final_bundle_sha256": "4e13d333bd28724245eebd5074fee230b8b64cba42200b58460dd4f080daae0b",
   "final_step": "build_models",
   "final_target_spec_digest": "e6f62d8081d61af8699b9ba07aee0f0a0fc3709de507f1dcc04e0321da72311d",
   "item": "model-build-batch",
-  "run_finished_at": "2026-11-23T16:06:06.039Z",
-  "run_started_at": "2026-11-23T16:02:45.697Z",
+  "run_finished_at": "2026-11-23T16:29:14.884Z",
+  "run_started_at": "2026-11-23T16:26:22.231Z",
   "schema": 2,
   "status": "pass"
 }
