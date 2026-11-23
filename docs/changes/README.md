@@ -62,3 +62,5 @@ Current records:
 - [0030-explicit-model-card-row-grid.md](0030-explicit-model-card-row-grid.md) — use explicit named card rows so one/two-line text cannot shift later content (#303).
 
 - [0031-identical-catalog-card-geometry.md](0031-identical-catalog-card-geometry.md) — keep the section row on all catalog overview routes so category and all-model cards are identical (#316).
+
+- [0035-selective-model-build-batch.md](0035-selective-model-build-batch.md) — make the shared SolidCraft batch honor CAD-CI direct-dependent model selection instead of rebuilding the full catalog (#335).
