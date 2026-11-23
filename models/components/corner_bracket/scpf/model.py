@@ -90,7 +90,7 @@ class CornerBracket:
         # 24 mm width is not geometrically equivalent.
         points = [
             ("i_corner", (0, 0)),
-            ("o_hor_tip_relief", (h - ef, 0)),
+            ("tip_hor_relief", (h - ef, 0)),
             ("o_hor_tip", (h, ef)),
             ("o_hor_bevel", (h, w - end)),
             ("o_hor", (h - end, w)),
@@ -98,7 +98,7 @@ class CornerBracket:
             ("o_vert", (-w, w - outer)),
             ("o_vert_bevel", (-w, -v + end)),
             ("o_vert_end", (-w + end, -v)),
-            ("o_vert_tip_relief", (-ef, -v)),
+            ("tip_vert_relief", (-ef, -v)),
             ("v_tip", (0, -v + ef)),
         ]
 
@@ -111,6 +111,10 @@ class CornerBracket:
             self.inside_corner_radius,
             edges=Edges.from_vertices("i_corner"),
         )
+        # The two tiny tip-relief diagonals deliberately use `tip_*` names,
+        # not `o_*`: including them in the 2 mm side chamfer makes the native
+        # blend rails overrun those 0.6 mm faces. OpenSCAD treats that local
+        # junction separately in arm_tip_relief_cuts().
         body = body.chamfer(
             self.side_edge_chamfer,
             edges=Edges.from_profile("o_*", sides="both"),
