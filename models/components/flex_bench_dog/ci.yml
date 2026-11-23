@@ -2,3 +2,5 @@
 id: flex-bench-dog
 template: cad-model-build
 process: true
+artifacts:
+  - stl

@@ -53,6 +53,18 @@ class ModelBuildBatchSelectionTests(unittest.TestCase):
             {"guide-rail", "guide-rail-makita"},
         )
 
+    def test_stl_artifact_is_opt_in_per_model_root(self):
+        self.assertEqual(
+            self.module.model_artifacts(
+                Path("models/components/flex_bench_dog")
+            ),
+            ("stl",),
+        )
+        self.assertEqual(
+            self.module.model_artifacts(Path("models/basic/plate")),
+            (),
+        )
+
     def test_empty_selection_is_valid(self):
         self.assertEqual(self.active("[]"), ())
 

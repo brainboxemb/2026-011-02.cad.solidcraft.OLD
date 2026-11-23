@@ -104,13 +104,15 @@ generic Forge gaps.
 
 ### 4. STL publication
 
-- #345 is complete through PR #401. The accepted CAD build exports
-  `model.stl` directly from the saved `.sc` with the pinned SolidCraft
-  0.45.0 CLI and `--quality fine`.
-- Durable `dev-cad` run #45211961040 is green and source-matched to
-  `d8af5c3a6bbce9b34e216da1a44f6c1603f4aaa5`; the published FlexBenchDog
-  scope contains a non-empty STL and the model page exposes both download and
-  scope-matched GitHub viewer links.
+- #345 established direct saved-design STL export through the pinned
+  SolidCraft 0.45.0 CLI; #403 narrows that output to an explicit model-root
+  request instead of exporting every processed model.
+- Model roots request STL in execution config with:
+  `artifacts: [stl]`. The default is no STL.
+- FlexBenchDog currently requests STL. Models such as Plate keep `.sc`, STEP
+  and preview output without an STL mesh.
+- The site remains evidence-driven: STL download and GitHub viewer links appear
+  only when the durable build scope actually contains `model.stl`.
 - STEP remains the interchange CAD export. There is no STEP-to-STL conversion
   and Forge #748 is not required for this output path.
 
