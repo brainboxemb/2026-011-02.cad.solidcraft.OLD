@@ -7,6 +7,34 @@ preload after the stem is split into four flexible quadrants.
 """
 
 
+
+def _logo_strip_points(p0, p1, width):
+    """Return one square-ended polygon strip around a logo centreline."""
+    x0, y0 = p0
+    x1, y1 = p1
+    dx = x1 - x0
+    dy = y1 - y0
+    length = (dx * dx + dy * dy) ** 0.5
+    half_width = width / 2
+
+    ux = dx / length
+    uy = dy / length
+    px = -uy * half_width
+    py = ux * half_width
+    ex = ux * half_width
+    ey = uy * half_width
+
+    # Extend both ends by half the line width. Adjacent rib polygons then
+    # overlap at the cube vertices without relying on intersecting Sketch
+    # regions to infer the wireframe.
+    return (
+        (x0 - ex + px, y0 - ey + py),
+        (x1 + ex + px, y1 + ey + py),
+        (x1 + ex - px, y1 + ey - py),
+        (x0 - ex - px, y0 - ey - py),
+    )
+
+
 @component
 class FlexBenchDog:
     hole_diameter = 20.0
@@ -130,17 +158,22 @@ class FlexBenchDog:
             edges=[(self.hole_diameter / 2, 0, self.ABOVE_WORKTOP)],
         )
 
-        # Recess the preserved BrainBox cube/box wireframe: six perimeter
-        # strokes plus three spokes meeting at the centre. Narrow native slots
-        # keep the stroke ends printable instead of cutting one filled square.
-        with Sketch(
-            name="Top logo",
-            on=dog,
-            plane="XY",
-            origin=(0, 0, self.ABOVE_WORKTOP),
-        ) as logo:
-            for p0, p1 in self.LOGO_SEGMENTS:
-                SlotCenterToCenter2D(p0, p1, self.LOGO_LINE_WIDTH)
-        dog = dog - logo.extrude(-self.LOGO_DEPTH)
+        # Recess the BrainBox wireframe as nine explicit rib polygons. PR #341
+        # put nine overlapping closed Slot profiles in one Sketch; their
+        # intersections created extra enclosed regions and visually removed a
+        # filled hexagonal face. One polygon/cut per rib keeps all three cube
+        # faces open while preserving the same nine visible centerlines.
+        for index, (p0, p1) in enumerate(self.LOGO_SEGMENTS, start=1):
+            with Sketch(
+                name=f"Top logo rib {index}",
+                on=dog,
+                plane="XY",
+                origin=(0, 0, self.ABOVE_WORKTOP),
+            ) as rib:
+                Polygon2D(
+                    _logo_strip_points(p0, p1, self.LOGO_LINE_WIDTH),
+                    plane="XY",
+                )
+            dog = dog - rib.extrude(-self.LOGO_DEPTH)
 
         return dog

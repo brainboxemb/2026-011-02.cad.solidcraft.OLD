@@ -59,8 +59,9 @@ does not need to stop flush with the underside.
 
 The top mark is not a filled square. It is the preserved recessed BrainBox
 cube/box wireframe: six outer segments plus three spokes meeting at the centre.
-Each stroke is a 0.6 mm-wide native rounded slot, recessed 0.6 mm into the top
-face.
+Each visible cube rib is a separate 0.6 mm-wide closed polygon strip, recessed
+0.6 mm into the top face. The strips overlap only at their cube vertices; the
+three projected cube faces remain material rather than becoming filled cuts.
 
 ## Source and confidence
 

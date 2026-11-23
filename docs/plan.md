@@ -53,11 +53,14 @@ Accepted repository state:
 - #206 / PR #326 removed the local cross-CAD reference implementations.
 - #331 / PR #334 replaced the old Ø24 × 3 mm band with the shaped Ø22 × 1.5 mm
   MFT stop collar.
-- #333 / PR #338 added the R0.5 four-edge inner-corner relief. Current
-  `dev-cad` is `b68e3670e5278bda9dcd5de32aafc4772cb7c269`; durable run #373,
-  `build/dev-cad` and Pages `/dev-cad/` all source-match that commit.
-  #333 remains open only for underside-view visual acceptance because the
-  standard catalog camera does not expose the central cross clearly.
+- #333 / PR #338 added the R0.5 four-edge inner-corner relief. Durable run
+  #373 proved that geometry. #333 remains open only for underside-view visual
+  acceptance because the standard catalog camera does not expose the central
+  cross clearly.
+- #332 / PR #341 preserved the intended nine BrainBox cube centerlines but its
+  one-Sketch/nine-Slot construction was visually rejected: intersecting closed
+  profiles produced a filled six-sided cut. #332 remains active for the
+  polygon-rib correction; PR #341 is not an accepted visual baseline.
 - The presentation from change 0027 was later visually rejected; Pages was
   temporarily switched back to the preserved pre-change publication while the
   replacement was worked out in EXP.
@@ -213,7 +216,7 @@ schema, planner or reference framework.
 | #172 Full-catalog Forge/SolidCraft qualification | dev-cad | **blocked** | Re-enable the two remaining roots after the required Forge fix reaches the CAD-consumed baseline. |
 | #168 Verification terminology cleanup | cross-repo | **later** | Revisit after lane and model-ownership cleanup are stable. |
 | #333 FlexBenchDog rounded central slot corners | dev-cad | **implemented / visual pending** | PR #338 and durable run #373 prove the R0.5 four-edge fillet; keep open because the standard upper-oblique render does not expose the central underside cross clearly enough for visual acceptance. |
-| #332 FlexBenchDog BrainBox cube-wireframe logo | dev-cad | **now** | Port the exact preserved nine-segment, 0.6 mm-wide recessed cube wireframe from historical branch `feature/refine-conical-flex-bench-dog`. |
+| #332 FlexBenchDog BrainBox cube-wireframe logo | dev-cad | **correction now** | Keep the accepted nine centerlines, replace PR #341's intersecting Slot profiles with nine independent Polygon2D rib cuts, and visually verify that all three cube faces remain open. |
 | #327 FlexBenchDog full-length native Cone taper | dev-cad | **blocked** | PR #328 proved native Cone exists, but Forge #746 must add Cone join/cut feature compilation and reach a CAD-consumable release/pin. |
 | #154 HUB75 lower storage compartment | dev-cad | **next after #332** | Refresh PR #156 against current dev-cad and retain only the product/model work; drop stale catalog/CI-era edits. |
 | #142 HUB75Display2 | dev-cad | **blocked** | Resume qualification after the required Forge naming fix reaches the CAD baseline. |
@@ -276,16 +279,17 @@ in this plan.
 
 ## Next checkpoint
 
-Complete #332 as the remaining unblocked FlexBenchDog geometry refinement:
+Complete the #332 visual correction before returning to #154:
 
-1. replace the current filled 8 × 8 mm square recess with the exact preserved
-   nine-segment BrainBox cube/box wireframe;
-2. use 0.6 mm native center-to-center Slot strokes and the existing 0.6 mm
-   recess depth;
-3. verify the exact six perimeter segments + three centre spokes in both SCPF
-   and independent SCPC;
-4. inspect the durable top-view/perspective render after merge;
-5. then refresh #154 / PR #156 against the current `dev-cad` lane.
+1. retain the nine BrainBox cube centerlines and 0.6 mm line width;
+2. replace the rejected one-Sketch/nine-Slot implementation from PR #341 with
+   nine independent closed Polygon2D rib strips;
+3. cut every rib 0.6 mm deep while leaving the three projected cube faces as
+   material;
+4. compare SCPF and independent SCPC polygon/cut geometry;
+5. inspect the PR top-view/perspective render and merge only when it visibly
+   reads as the supplied wireframe cube;
+6. then continue the clean #154 refresh from current `dev-cad`.
 
 Keep #333 open only for explicit underside-view visual acceptance of R0.5.
 Keep #327 / PR #328 draft and parked on Forge #746. Keep PR #141 parked on
