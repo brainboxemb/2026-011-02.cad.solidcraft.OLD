@@ -69,7 +69,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 0.8176680000000001,
+      "ms": 1.085463,
       "name": "Guide rail profile - makita",
       "rolled_back": false,
       "suppressed": false,
@@ -79,7 +79,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 25.948603000000002,
+      "ms": 35.496528,
       "name": "Extrude1",
       "rolled_back": false,
       "suppressed": false,

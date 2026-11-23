@@ -1,12 +1,12 @@
 {
   "engine": "scons",
-  "engine_schema": 3,
-  "final_bundle_sha256": "a6e779b319a9fcefba93452669e05afb659242d800d1f87e8af6e6c15cb3ae4b",
+  "engine_schema": 4,
+  "final_bundle_sha256": "ff560f5a522a07313d3184eac74b05eeffd5529393caefb2457a1dacb5546927",
   "final_step": "build_results",
-  "final_target_spec_digest": "c1e94f480f5c22045959b952abca1e3656be5b2f9679eb4eb57a770ca9547da3",
+  "final_target_spec_digest": "22abb74a8acef1bb63dee4c88e0ff50c085a6f1a204fe5a1fdb9c4051d56a63b",
   "item": "plastic-enclosure",
-  "run_finished_at": "2026-11-22T13:10:33.375Z",
-  "run_started_at": "2026-11-22T13:09:38.152Z",
+  "run_finished_at": "2026-11-23T07:58:54.459Z",
+  "run_started_at": "2026-11-23T07:57:39.658Z",
   "schema": 2,
   "status": "pass"
 }

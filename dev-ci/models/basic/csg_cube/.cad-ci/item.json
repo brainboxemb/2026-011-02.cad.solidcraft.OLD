@@ -1,12 +1,12 @@
 {
   "engine": "scons",
-  "engine_schema": 3,
-  "final_bundle_sha256": "31f2988839897954176dbd61071c62f5b1b1aee8e645746222ce0c4a3bc74528",
+  "engine_schema": 4,
+  "final_bundle_sha256": "4f1f2d9876abbe27682c70a427c8a964b33a28f70409d4f17193a81a1ea7e622",
   "final_step": "build_results",
-  "final_target_spec_digest": "9623772021952b77e784d3ec5a81a38a848390e0888fdf11708d59f1cf917657",
+  "final_target_spec_digest": "37e7771f444ae0fe354aaa170918fc5c9f2b6e219b8c7b9824376becba18154c",
   "item": "csg-cube",
-  "run_finished_at": "2026-11-22T13:10:33.375Z",
-  "run_started_at": "2026-11-22T13:09:38.152Z",
+  "run_finished_at": "2026-11-23T07:58:54.459Z",
+  "run_started_at": "2026-11-23T07:57:39.658Z",
   "schema": 2,
   "status": "pass"
 }
