@@ -132,6 +132,22 @@ class MigrationCatalogContractTests(unittest.TestCase):
         self.assertNotIn("models/*/*/scpc/**", watch_block)
         self.assertIn("models/*/*/scpf/**", inputs_block)
         self.assertIn("models/*/*/scpc/**", inputs_block)
+        self.assertIn("models/*/*/*/scpf/**", inputs_block)
+        self.assertIn("models/*/*/*/scpc/**", inputs_block)
+        self.assertIn("models/*/*/*/verification/**", inputs_block)
+        self.assertIn("models/*/*/*/check.py", inputs_block)
+
+        item_watch = config.split("watch:", 1)[1].split("repo:", 1)[0]
+        self.assertIn("*/scpf/**", item_watch)
+        self.assertIn("*/scpc/**", item_watch)
+        self.assertIn("*/verification/**", item_watch)
+        self.assertIn("*/check.py", item_watch)
+
+        detailed = ROOT / "models/components/hub75_panel/detailed/scpf/model.py"
+        self.assertTrue(detailed.is_file())
+        self.assertIn("detailed/scpf/model.py", detailed.relative_to(
+            ROOT / "models/components/hub75_panel"
+        ).as_posix())
 
         import json
         pin = json.loads(
