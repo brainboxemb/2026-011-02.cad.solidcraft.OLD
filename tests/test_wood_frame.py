@@ -672,8 +672,12 @@ class WoodenFrameTests(unittest.TestCase):
             sum("opening_height" in str(p["translate"][2]) for p in placements),
             4,
         )
-        self.assertFalse(
-            any(p["command"] == "solid.hole" for p in cmd)
+        # The shared reusable CornerBracket now owns four fixing seats. Its
+        # component definition is emitted once and reused by all eight
+        # occurrences, so the assembly command plan contains 16 hole features.
+        self.assertEqual(
+            sum(p["command"] == "solid.hole" for p in cmd),
+            16,
         )
 
     def test_roof_z_is_symbolic_placement(self):
