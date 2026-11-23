@@ -1,7 +1,7 @@
 {
   "format": "scpf-replay-log",
   "version": 1,
-  "replay_sha256": "bf65f87fad1f6db80f9c2aedaade00953d6530e1c81a61bb5b9a9849e8aec981",
+  "replay_sha256": "1c6cbd3e530a7667553600b4cca019b330dac29fa897b363b113a500b02eb2c5",
   "variables": {
     "$face_point_1": [
       18.40772842651739,
@@ -87,8 +87,8 @@
       "index": 8,
       "command": "parameters.add",
       "resolved_params": {
-        "name": "hole_diameter",
-        "expression": "3",
+        "name": "mount_x",
+        "expression": "72",
         "unit": "mm"
       }
     },
@@ -96,8 +96,8 @@
       "index": 9,
       "command": "parameters.add",
       "resolved_params": {
-        "name": "mount_x",
-        "expression": "72",
+        "name": "mount_y",
+        "expression": "152",
         "unit": "mm"
       }
     },
@@ -105,8 +105,8 @@
       "index": 10,
       "command": "parameters.add",
       "resolved_params": {
-        "name": "mount_y",
-        "expression": "152",
+        "name": "hole_diameter",
+        "expression": "3",
         "unit": "mm"
       }
     },
@@ -337,8 +337,8 @@
         "targets": [
           "Hub75Panel"
         ],
-        "diameter": "hole_diameter",
-        "depth": "depth - (front_depth)",
+        "diameter": 10.0,
+        "depth": 0.8,
         "direction": [
           0.0,
           0.0,
@@ -348,6 +348,24 @@
     },
     {
       "index": 31,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": "(depth + 0.5 mm) - (front_depth)",
+        "diameter": 8.5,
+        "base": [
+          "-(mount_x)",
+          "-(mount_y)",
+          "(front_depth + (((depth + 0.5 mm) - (front_depth)) / 2)) + (-(((depth + 0.5 mm) - (front_depth)) / 2))"
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 32,
       "command": "solid.hole",
       "resolved_params": {
         "position": [
@@ -358,8 +376,8 @@
         "targets": [
           "Hub75Panel"
         ],
-        "diameter": "hole_diameter",
-        "depth": "depth - (front_depth)",
+        "diameter": 10.0,
+        "depth": 0.8,
         "direction": [
           0.0,
           0.0,
@@ -368,7 +386,25 @@
       }
     },
     {
-      "index": 32,
+      "index": 33,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": "(depth + 0.5 mm) - (front_depth)",
+        "diameter": 8.5,
+        "base": [
+          "-(mount_x)",
+          0,
+          "(front_depth + (((depth + 0.5 mm) - (front_depth)) / 2)) + (-(((depth + 0.5 mm) - (front_depth)) / 2))"
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 34,
       "command": "solid.hole",
       "resolved_params": {
         "position": [
@@ -379,8 +415,8 @@
         "targets": [
           "Hub75Panel"
         ],
-        "diameter": "hole_diameter",
-        "depth": "depth - (front_depth)",
+        "diameter": 10.0,
+        "depth": 0.8,
         "direction": [
           0.0,
           0.0,
@@ -389,7 +425,25 @@
       }
     },
     {
-      "index": 33,
+      "index": 35,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": "(depth + 0.5 mm) - (front_depth)",
+        "diameter": 8.5,
+        "base": [
+          "-(mount_x)",
+          "mount_y",
+          "(front_depth + (((depth + 0.5 mm) - (front_depth)) / 2)) + (-(((depth + 0.5 mm) - (front_depth)) / 2))"
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 36,
       "command": "solid.hole",
       "resolved_params": {
         "position": [
@@ -400,8 +454,8 @@
         "targets": [
           "Hub75Panel"
         ],
-        "diameter": "hole_diameter",
-        "depth": "depth - (front_depth)",
+        "diameter": 10.0,
+        "depth": 0.8,
         "direction": [
           0.0,
           0.0,
@@ -410,7 +464,25 @@
       }
     },
     {
-      "index": 34,
+      "index": 37,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": "(depth + 0.5 mm) - (front_depth)",
+        "diameter": 8.5,
+        "base": [
+          "mount_x",
+          "-(mount_y)",
+          "(front_depth + (((depth + 0.5 mm) - (front_depth)) / 2)) + (-(((depth + 0.5 mm) - (front_depth)) / 2))"
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 38,
       "command": "solid.hole",
       "resolved_params": {
         "position": [
@@ -421,8 +493,8 @@
         "targets": [
           "Hub75Panel"
         ],
-        "diameter": "hole_diameter",
-        "depth": "depth - (front_depth)",
+        "diameter": 10.0,
+        "depth": 0.8,
         "direction": [
           0.0,
           0.0,
@@ -431,7 +503,25 @@
       }
     },
     {
-      "index": 35,
+      "index": 39,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": "(depth + 0.5 mm) - (front_depth)",
+        "diameter": 8.5,
+        "base": [
+          "mount_x",
+          0,
+          "(front_depth + (((depth + 0.5 mm) - (front_depth)) / 2)) + (-(((depth + 0.5 mm) - (front_depth)) / 2))"
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 40,
       "command": "solid.hole",
       "resolved_params": {
         "position": [
@@ -442,8 +532,8 @@
         "targets": [
           "Hub75Panel"
         ],
-        "diameter": "hole_diameter",
-        "depth": "depth - (front_depth)",
+        "diameter": 10.0,
+        "depth": 0.8,
         "direction": [
           0.0,
           0.0,
@@ -452,7 +542,547 @@
       }
     },
     {
-      "index": 36,
+      "index": 41,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": "(depth + 0.5 mm) - (front_depth)",
+        "diameter": 8.5,
+        "base": [
+          "mount_x",
+          "mount_y",
+          "(front_depth + (((depth + 0.5 mm) - (front_depth)) / 2)) + (-(((depth + 0.5 mm) - (front_depth)) / 2))"
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 42,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 12.5,
+        "diameter": 14.0,
+        "base": [
+          "-(mount_x)",
+          "-(mount_y) + 11 mm",
+          "depth - 12.5 mm + 6.25 mm + -6.25 mm"
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 43,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "-(mount_x)",
+          "-(mount_y) + 11 mm",
+          "depth"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 10.0,
+        "depth": 2.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 44,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "-(mount_x)",
+          "-(mount_y) + 11 mm",
+          "depth - 2.5 mm"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 2.5,
+        "depth": 10.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 45,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 12.5,
+        "diameter": 14.0,
+        "base": [
+          "mount_x",
+          "-(mount_y) + 11 mm",
+          "depth - 12.5 mm + 6.25 mm + -6.25 mm"
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 46,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "mount_x",
+          "-(mount_y) + 11 mm",
+          "depth"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 10.0,
+        "depth": 2.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 47,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "mount_x",
+          "-(mount_y) + 11 mm",
+          "depth - 2.5 mm"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 2.5,
+        "depth": 10.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 48,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 12.5,
+        "diameter": 14.0,
+        "base": [
+          "-(mount_x)",
+          11.0,
+          "depth - 12.5 mm + 6.25 mm + -6.25 mm"
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 49,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "-(mount_x)",
+          11.0,
+          "depth"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 10.0,
+        "depth": 2.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 50,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "-(mount_x)",
+          11.0,
+          "depth - 2.5 mm"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 2.5,
+        "depth": 10.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 51,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 12.5,
+        "diameter": 14.0,
+        "base": [
+          "mount_x",
+          -11.0,
+          "depth - 12.5 mm + 6.25 mm + -6.25 mm"
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 52,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "mount_x",
+          -11.0,
+          "depth"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 10.0,
+        "depth": 2.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 53,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "mount_x",
+          -11.0,
+          "depth - 2.5 mm"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 2.5,
+        "depth": 10.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 54,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 12.5,
+        "diameter": 14.0,
+        "base": [
+          "-(mount_x)",
+          "mount_y - 11 mm",
+          "depth - 12.5 mm + 6.25 mm + -6.25 mm"
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 55,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "-(mount_x)",
+          "mount_y - 11 mm",
+          "depth"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 10.0,
+        "depth": 2.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 56,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "-(mount_x)",
+          "mount_y - 11 mm",
+          "depth - 2.5 mm"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 2.5,
+        "depth": 10.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 57,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 12.5,
+        "diameter": 14.0,
+        "base": [
+          "mount_x",
+          "mount_y - 11 mm",
+          "depth - 12.5 mm + 6.25 mm + -6.25 mm"
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 58,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "mount_x",
+          "mount_y - 11 mm",
+          "depth"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 10.0,
+        "depth": 2.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 59,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "mount_x",
+          "mount_y - 11 mm",
+          "depth - 2.5 mm"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 2.5,
+        "depth": 10.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 60,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 3.0,
+        "diameter": 3.0,
+        "base": [
+          -75.0,
+          110.0,
+          "depth + 1.5 mm + -1.5 mm"
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 61,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 3.0,
+        "diameter": 3.0,
+        "base": [
+          75.0,
+          -110.0,
+          "depth + 1.5 mm + -1.5 mm"
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 62,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "-(mount_x)",
+          "-(mount_y)",
+          "depth + 0.5 mm"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": "hole_diameter",
+        "depth": "(depth + 0.5 mm) - (front_depth)",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 63,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "-(mount_x)",
+          0,
+          "depth + 0.5 mm"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": "hole_diameter",
+        "depth": "(depth + 0.5 mm) - (front_depth)",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 64,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "-(mount_x)",
+          "mount_y",
+          "depth + 0.5 mm"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": "hole_diameter",
+        "depth": "(depth + 0.5 mm) - (front_depth)",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 65,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "mount_x",
+          "-(mount_y)",
+          "depth + 0.5 mm"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": "hole_diameter",
+        "depth": "(depth + 0.5 mm) - (front_depth)",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 66,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "mount_x",
+          0,
+          "depth + 0.5 mm"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": "hole_diameter",
+        "depth": "(depth + 0.5 mm) - (front_depth)",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 67,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          "mount_x",
+          "mount_y",
+          "depth + 0.5 mm"
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": "hole_diameter",
+        "depth": "(depth + 0.5 mm) - (front_depth)",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 68,
       "command": "material.create",
       "resolved_params": {
         "name": "HUB75 housing",
@@ -461,7 +1091,7 @@
       }
     },
     {
-      "index": 37,
+      "index": 69,
       "command": "material.assign",
       "resolved_params": {
         "bodies": [
@@ -471,5 +1101,5 @@
       }
     }
   ],
-  "completed": 38
+  "completed": 70
 }

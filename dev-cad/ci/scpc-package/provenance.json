@@ -2,7 +2,7 @@
   "commit": "fcaa6f9fc8388bc715fcd2fbb149ce6b979566a7",
   "repository": "https://github.com/brainboxemb/lib.py.solidcraft.cmd.git",
   "schema": 1,
-  "sha256": "5fd0432920d6b7d2db27af707a705c9d2b9b62877e6388243a610f8cc1986471",
+  "sha256": "b9e41cbf552d19429287b3ffb31a982915b48d8e214b6f6b1ccaaa7f0ae161a6",
   "version": "0.1.0",
   "wheel": "scpc-0.1.0-py3-none-any.whl"
 }

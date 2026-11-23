@@ -3,7 +3,7 @@
     {
       "command": "occurrence.move",
       "params": {
-        "occurrence": 16,
+        "occurrence": 48,
         "translate": [
           -320.0,
           0,
@@ -20,7 +20,7 @@
     {
       "command": "occurrence.move",
       "params": {
-        "occurrence": 17,
+        "occurrence": 49,
         "translate": [
           -160.0,
           0,
@@ -37,7 +37,7 @@
     {
       "command": "occurrence.move",
       "params": {
-        "occurrence": 18,
+        "occurrence": 50,
         "translate": [
           160.0,
           0,
@@ -54,7 +54,7 @@
     {
       "command": "occurrence.move",
       "params": {
-        "occurrence": 19,
+        "occurrence": 51,
         "translate": [
           320.0,
           0,

@@ -44,7 +44,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 19.762401999999998,
+    "ms": 19.660662,
     "name": "Holes",
     "removed_bodies": [],
     "warning": null
@@ -58,7 +58,7 @@
     ],
     "created_bodies": [],
     "feature": 6,
-    "ms": 34.569016,
+    "ms": 36.596732,
     "name": "RectangularPattern1",
     "removed_bodies": [],
     "warning": null
@@ -72,7 +72,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 28.047698,
+    "ms": 29.605492,
     "name": "Cylinder1",
     "removed_bodies": [],
     "warning": null
@@ -126,7 +126,7 @@
     ],
     "created_bodies": [],
     "feature": 9,
-    "ms": 25.049779,
+    "ms": 25.178244,
     "name": "Bore",
     "removed_bodies": [],
     "warning": null

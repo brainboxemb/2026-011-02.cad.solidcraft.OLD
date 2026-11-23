@@ -17,13 +17,13 @@
     "hub75-screen",
     "simple-mft"
   ],
-  "bundle_sha256": "985bb5799e91ed3adcab2fd7924f1a505d29cd1408c43abfe789e0bd29bcfa6a",
-  "duration_seconds": 79.096,
+  "bundle_sha256": "a6a8b48175ad8f964e281ae1b0e5b62784042a78be39ed54152deb94f85a3223",
+  "duration_seconds": 158.585,
   "engine": "scons",
   "engine_schema": 4,
   "error": null,
   "exit_code": 0,
-  "finished_at": "2026-11-23T12:30:18.150Z",
+  "finished_at": "2026-11-23T14:01:27.776Z",
   "item": "model-build-batch",
   "outcome": "BUILT",
   "output_state": "UNCHANGED",
@@ -31,25 +31,25 @@
     "batch-report.json": {
       "kind": "file",
       "mode": 420,
-      "sha256": "d5f87ac20dd6fc0bacc2d2d6b07c421c67a9fc59d934e159d334d43b3f2f03c0"
+      "sha256": "2ea6198498b110bca389a912d9da9138ce8a7edb762526c4d7eaa3a593816bd1"
     },
     "items": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "31ac72a3ba6a06425ceb59c57728f72a0d193bdcd1237f4bdadca279b6f4e1da"
+      "sha256": "cfa7559036a7fa8bc7b45320ef214dbe634487e599f55b9e7f97de6573c61692"
     },
     "manifest.json": {
       "kind": "file",
       "mode": 420,
-      "sha256": "cd63dbf3f63fe195259ad1b6719c537776e114fa54df499dc1279c18688659c9"
+      "sha256": "10a8b89d4fa72c83fbf3ddf4b4c98232a0ee82338d3e26ce969dd58bd20379c6"
     }
   },
-  "run_finished_at": "2026-11-23T12:30:19.448Z",
-  "run_started_at": "2026-11-23T12:28:50.197Z",
+  "run_finished_at": "2026-11-23T14:01:29.404Z",
+  "run_started_at": "2026-11-23T13:58:39.759Z",
   "schema": 5,
-  "started_at": "2026-11-23T12:28:59.073Z",
+  "started_at": "2026-11-23T13:58:49.209Z",
   "status": "pass",
   "step": "build_models",
-  "target_spec_digest": "807f94bbc371dafabc8bf3368f651b90171afe040107c4d2dd847fd2da1ea987",
+  "target_spec_digest": "e6f62d8081d61af8699b9ba07aee0f0a0fc3709de507f1dcc04e0321da72311d",
   "timeout_seconds": null
 }

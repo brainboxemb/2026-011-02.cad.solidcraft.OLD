@@ -67,14 +67,6 @@
     {
       "command": "parameters.add",
       "params": {
-        "name": "hole_diameter",
-        "expression": "3",
-        "unit": "mm"
-      }
-    },
-    {
-      "command": "parameters.add",
-      "params": {
         "name": "mount_x",
         "expression": "72",
         "unit": "mm"
@@ -85,6 +77,14 @@
       "params": {
         "name": "mount_y",
         "expression": "152",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "hole_diameter",
+        "expression": "3",
         "unit": "mm"
       }
     },

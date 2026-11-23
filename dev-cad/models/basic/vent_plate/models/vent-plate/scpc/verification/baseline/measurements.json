@@ -88,7 +88,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 2.69641,
+      "ms": 2.7846339999999996,
       "name": "Box1",
       "rolled_back": false,
       "suppressed": false,
@@ -98,7 +98,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 67.072177,
+      "ms": 79.14022800000001,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -108,7 +108,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 0.233747,
+      "ms": 0.192809,
       "name": "Slot",
       "rolled_back": false,
       "suppressed": false,
@@ -118,7 +118,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 19.369488,
+      "ms": 15.058699,
       "name": "Vent",
       "rolled_back": false,
       "suppressed": false,
@@ -128,7 +128,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 114.772232,
+      "ms": 122.106993,
       "name": "RectangularPattern1",
       "rolled_back": false,
       "suppressed": false,

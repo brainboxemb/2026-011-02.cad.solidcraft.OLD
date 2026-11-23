@@ -1,7 +1,7 @@
 {
   "format": "scpf-replay-log",
   "version": 1,
-  "replay_sha256": "cc924ae8331cde730f4dbe3b0746e622237531ccf866fec700d2e0219a9c3a4e",
+  "replay_sha256": "7dd9a986125595bc5ab46bdad4af07f5f8063c42b1e88c8e97e8d4625731ecd3",
   "variables": {
     "$hub75panel_occurrence_1": 2,
     "$d1_Hub75Panel_face_point_1": [
@@ -10,10 +10,10 @@
       14.5
     ],
     "$d1_Hub75Panel_face_index_1": 8,
-    "$hub75panel_occurrence_2": 16,
-    "$hub75panel_occurrence_3": 17,
-    "$hub75panel_occurrence_4": 18,
-    "$hub75panel_occurrence_5": 19
+    "$hub75panel_occurrence_2": 48,
+    "$hub75panel_occurrence_3": 49,
+    "$hub75panel_occurrence_4": 50,
+    "$hub75panel_occurrence_5": 51
   },
   "commands": [
     {
@@ -254,8 +254,8 @@
         "targets": [
           "Hub75Panel"
         ],
-        "diameter": 3.0,
-        "depth": 12.5,
+        "diameter": 10.0,
+        "depth": 0.8,
         "direction": [
           0.0,
           0.0,
@@ -265,6 +265,24 @@
     },
     {
       "index": 21,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 13.0,
+        "diameter": 8.5,
+        "base": [
+          -72.0,
+          -152.0,
+          2.0
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 22,
       "command": "solid.hole",
       "resolved_params": {
         "position": [
@@ -275,8 +293,8 @@
         "targets": [
           "Hub75Panel"
         ],
-        "diameter": 3.0,
-        "depth": 12.5,
+        "diameter": 10.0,
+        "depth": 0.8,
         "direction": [
           0.0,
           0.0,
@@ -285,7 +303,25 @@
       }
     },
     {
-      "index": 22,
+      "index": 23,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 13.0,
+        "diameter": 8.5,
+        "base": [
+          -72.0,
+          0,
+          2.0
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 24,
       "command": "solid.hole",
       "resolved_params": {
         "position": [
@@ -296,8 +332,8 @@
         "targets": [
           "Hub75Panel"
         ],
-        "diameter": 3.0,
-        "depth": 12.5,
+        "diameter": 10.0,
+        "depth": 0.8,
         "direction": [
           0.0,
           0.0,
@@ -306,7 +342,25 @@
       }
     },
     {
-      "index": 23,
+      "index": 25,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 13.0,
+        "diameter": 8.5,
+        "base": [
+          -72.0,
+          152.0,
+          2.0
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 26,
       "command": "solid.hole",
       "resolved_params": {
         "position": [
@@ -317,8 +371,8 @@
         "targets": [
           "Hub75Panel"
         ],
-        "diameter": 3.0,
-        "depth": 12.5,
+        "diameter": 10.0,
+        "depth": 0.8,
         "direction": [
           0.0,
           0.0,
@@ -327,7 +381,25 @@
       }
     },
     {
-      "index": 24,
+      "index": 27,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 13.0,
+        "diameter": 8.5,
+        "base": [
+          72.0,
+          -152.0,
+          2.0
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 28,
       "command": "solid.hole",
       "resolved_params": {
         "position": [
@@ -338,8 +410,8 @@
         "targets": [
           "Hub75Panel"
         ],
-        "diameter": 3.0,
-        "depth": 12.5,
+        "diameter": 10.0,
+        "depth": 0.8,
         "direction": [
           0.0,
           0.0,
@@ -348,7 +420,25 @@
       }
     },
     {
-      "index": 25,
+      "index": 29,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 13.0,
+        "diameter": 8.5,
+        "base": [
+          72.0,
+          0,
+          2.0
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 30,
       "command": "solid.hole",
       "resolved_params": {
         "position": [
@@ -359,8 +449,8 @@
         "targets": [
           "Hub75Panel"
         ],
-        "diameter": 3.0,
-        "depth": 12.5,
+        "diameter": 10.0,
+        "depth": 0.8,
         "direction": [
           0.0,
           0.0,
@@ -369,7 +459,547 @@
       }
     },
     {
-      "index": 26,
+      "index": 31,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 13.0,
+        "diameter": 8.5,
+        "base": [
+          72.0,
+          152.0,
+          2.0
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 32,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 12.5,
+        "diameter": 14.0,
+        "base": [
+          -72.0,
+          -141.0,
+          2.0
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 33,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -72.0,
+          -141.0,
+          14.5
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 10.0,
+        "depth": 2.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 34,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -72.0,
+          -141.0,
+          12.0
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 2.5,
+        "depth": 10.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 35,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 12.5,
+        "diameter": 14.0,
+        "base": [
+          72.0,
+          -141.0,
+          2.0
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 36,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          72.0,
+          -141.0,
+          14.5
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 10.0,
+        "depth": 2.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 37,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          72.0,
+          -141.0,
+          12.0
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 2.5,
+        "depth": 10.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 38,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 12.5,
+        "diameter": 14.0,
+        "base": [
+          -72.0,
+          11.0,
+          2.0
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 39,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -72.0,
+          11.0,
+          14.5
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 10.0,
+        "depth": 2.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 40,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -72.0,
+          11.0,
+          12.0
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 2.5,
+        "depth": 10.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 41,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 12.5,
+        "diameter": 14.0,
+        "base": [
+          72.0,
+          -11.0,
+          2.0
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 42,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          72.0,
+          -11.0,
+          14.5
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 10.0,
+        "depth": 2.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 43,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          72.0,
+          -11.0,
+          12.0
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 2.5,
+        "depth": 10.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 44,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 12.5,
+        "diameter": 14.0,
+        "base": [
+          -72.0,
+          141.0,
+          2.0
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 45,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -72.0,
+          141.0,
+          14.5
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 10.0,
+        "depth": 2.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 46,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -72.0,
+          141.0,
+          12.0
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 2.5,
+        "depth": 10.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 47,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 12.5,
+        "diameter": 14.0,
+        "base": [
+          72.0,
+          141.0,
+          2.0
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 48,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          72.0,
+          141.0,
+          14.5
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 10.0,
+        "depth": 2.5,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 49,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          72.0,
+          141.0,
+          12.0
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 2.5,
+        "depth": 10.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 50,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 3.0,
+        "diameter": 3.0,
+        "base": [
+          -75.0,
+          110.0,
+          14.5
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 51,
+      "command": "solid.cylinder",
+      "resolved_params": {
+        "height": 3.0,
+        "diameter": 3.0,
+        "base": [
+          75.0,
+          -110.0,
+          14.5
+        ],
+        "axis": "Z",
+        "operation": "join",
+        "targets": [
+          "Hub75Panel"
+        ]
+      }
+    },
+    {
+      "index": 52,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -72.0,
+          -152.0,
+          15.0
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 3.0,
+        "depth": 13.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 53,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -72.0,
+          0,
+          15.0
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 3.0,
+        "depth": 13.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 54,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -72.0,
+          152.0,
+          15.0
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 3.0,
+        "depth": 13.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 55,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          72.0,
+          -152.0,
+          15.0
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 3.0,
+        "depth": 13.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 56,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          72.0,
+          0,
+          15.0
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 3.0,
+        "depth": 13.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 57,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          72.0,
+          152.0,
+          15.0
+        ],
+        "targets": [
+          "Hub75Panel"
+        ],
+        "diameter": 3.0,
+        "depth": 13.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 58,
       "command": "material.create",
       "resolved_params": {
         "name": "HUB75 housing",
@@ -378,7 +1008,7 @@
       }
     },
     {
-      "index": 27,
+      "index": 59,
       "command": "material.assign",
       "resolved_params": {
         "bodies": [
@@ -388,54 +1018,54 @@
       }
     },
     {
-      "index": 28,
+      "index": 60,
       "command": "component.activate",
       "resolved_params": {
         "component": "root"
       }
     },
     {
-      "index": 29,
+      "index": 61,
       "command": "occurrence.copy",
       "resolved_params": {
         "component": "Hub75Panel"
       },
       "bindings": {
-        "$hub75panel_occurrence_2": 16
+        "$hub75panel_occurrence_2": 48
       }
     },
     {
-      "index": 30,
+      "index": 62,
       "command": "occurrence.copy",
       "resolved_params": {
         "component": "Hub75Panel"
       },
       "bindings": {
-        "$hub75panel_occurrence_3": 17
+        "$hub75panel_occurrence_3": 49
       }
     },
     {
-      "index": 31,
+      "index": 63,
       "command": "occurrence.copy",
       "resolved_params": {
         "component": "Hub75Panel"
       },
       "bindings": {
-        "$hub75panel_occurrence_4": 18
+        "$hub75panel_occurrence_4": 50
       }
     },
     {
-      "index": 32,
+      "index": 64,
       "command": "occurrence.copy",
       "resolved_params": {
         "component": "Hub75Panel"
       },
       "bindings": {
-        "$hub75panel_occurrence_5": 19
+        "$hub75panel_occurrence_5": 51
       }
     },
     {
-      "index": 33,
+      "index": 65,
       "command": "occurrence.move",
       "resolved_params": {
         "occurrence": 2,
@@ -454,10 +1084,10 @@
       }
     },
     {
-      "index": 34,
+      "index": 66,
       "command": "occurrence.move",
       "resolved_params": {
-        "occurrence": 16,
+        "occurrence": 48,
         "translate": [
           -320.0,
           0,
@@ -472,10 +1102,10 @@
       }
     },
     {
-      "index": 35,
+      "index": 67,
       "command": "occurrence.move",
       "resolved_params": {
-        "occurrence": 17,
+        "occurrence": 49,
         "translate": [
           -160.0,
           0,
@@ -490,10 +1120,10 @@
       }
     },
     {
-      "index": 36,
+      "index": 68,
       "command": "occurrence.move",
       "resolved_params": {
-        "occurrence": 18,
+        "occurrence": 50,
         "translate": [
           160.0,
           0,
@@ -508,10 +1138,10 @@
       }
     },
     {
-      "index": 37,
+      "index": 69,
       "command": "occurrence.move",
       "resolved_params": {
-        "occurrence": 19,
+        "occurrence": 51,
         "translate": [
           320.0,
           0,
@@ -526,5 +1156,5 @@
       }
     }
   ],
-  "completed": 38
+  "completed": 70
 }

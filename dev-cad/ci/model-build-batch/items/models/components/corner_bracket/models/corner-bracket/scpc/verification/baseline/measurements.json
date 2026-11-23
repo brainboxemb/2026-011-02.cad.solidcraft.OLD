@@ -1,12 +1,12 @@
 {
   "bodies": [
     {
-      "area_mm2": 9333.944933780018,
+      "area_mm2": 9963.026467590304,
       "bbox": {
         "max": [
           60.0,
           12.0,
-          12.000000000000004
+          12.000000000000002
         ],
         "min": [
           -12.000000000000002,
@@ -15,32 +15,32 @@
         ]
       },
       "center_of_mass": [
-        10.510304764433972,
-        -4.500943874775244e-16,
-        -10.510304764433977
+        10.407631721849755,
+        1.8921536389507055e-16,
+        -10.407631721849759
       ],
       "closed": true,
       "density_g_cm3": 1.29,
-      "edges": 80,
+      "edges": 140,
       "face_types": {
-        "cone": 2,
-        "cylinder": 1,
-        "plane": 31
+        "cone": 6,
+        "cylinder": 17,
+        "plane": 39
       },
-      "faces": 34,
+      "faces": 62,
       "kernel": {
-        "edges": 80,
-        "faces": 34,
+        "edges": 140,
+        "faces": 62,
         "shells": 1,
-        "vertices": 48
+        "vertices": 88
       },
-      "mass_g": 47.434637271032585,
+      "mass_g": 45.32788372957079,
       "material": "Default",
       "measured_by": "smlib",
       "name": "CornerBracket",
       "notes": [],
-      "vertices": 48,
-      "volume_mm3": 36771.03664421131
+      "vertices": 88,
+      "volume_mm3": 35137.89436400837
     }
   ],
   "body_count": 1,
@@ -125,11 +125,101 @@
       "name": "side_edge_chamfer",
       "unit": "mm",
       "value": 2.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "12",
+      "model": false,
+      "name": "plywood_thickness",
+      "unit": "mm",
+      "value": 12.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "12",
+      "model": false,
+      "name": "bolt_offset",
+      "unit": "mm",
+      "value": 12.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "18",
+      "model": false,
+      "name": "bolt_spacing",
+      "unit": "mm",
+      "value": 18.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "0",
+      "model": false,
+      "name": "bolt_y_offset",
+      "unit": "mm",
+      "value": 0.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "5",
+      "model": false,
+      "name": "bolt_diameter",
+      "unit": "mm",
+      "value": 5.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "0.4",
+      "model": false,
+      "name": "bolt_clearance",
+      "unit": "mm",
+      "value": 0.4
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "10",
+      "model": false,
+      "name": "head_diameter",
+      "unit": "mm",
+      "value": 10.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "0.4",
+      "model": false,
+      "name": "head_clearance",
+      "unit": "mm",
+      "value": 0.4
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "1",
+      "model": false,
+      "name": "head_recess",
+      "unit": "mm",
+      "value": 1.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "0.2",
+      "model": false,
+      "name": "bolt_hole_edge_relief",
+      "unit": "mm",
+      "value": 0.2
     }
   ],
   "sketches": [
     {
-      "curves": 9,
+      "curves": 11,
       "dof": 0,
       "id": 1,
       "name": "Profile",
@@ -143,7 +233,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 0.37408,
+      "ms": 0.34581500000000004,
       "name": "Profile",
       "rolled_back": false,
       "suppressed": false,
@@ -153,7 +243,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 4.6949440000000005,
+      "ms": 5.574498,
       "name": "Extrude1",
       "rolled_back": false,
       "suppressed": false,
@@ -163,7 +253,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 14.686819999999999,
+      "ms": 20.760925999999998,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -173,7 +263,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 90.90680499999999,
+      "ms": 110.291709,
       "name": "Chamfer1",
       "rolled_back": false,
       "suppressed": false,
@@ -183,7 +273,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 40.7922,
+      "ms": 174.717634,
       "name": "Chamfer2",
       "rolled_back": false,
       "suppressed": false,
@@ -193,21 +283,171 @@
     {
       "error": null,
       "id": 6,
-      "ms": 138.696516,
-      "name": "Chamfer3",
+      "ms": 64.070482,
+      "name": "Hole1",
       "rolled_back": false,
       "suppressed": false,
-      "type": "ChamferFeature",
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 7,
+      "ms": 211.590535,
+      "name": "Hole2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 8,
+      "ms": 90.349931,
+      "name": "Hole3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 9,
+      "ms": 93.32941699999999,
+      "name": "Hole4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 10,
+      "ms": 80.923548,
+      "name": "Hole5",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 11,
+      "ms": 244.63951,
+      "name": "Hole6",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 12,
+      "ms": 107.739828,
+      "name": "Hole7",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 13,
+      "ms": 114.45764,
+      "name": "Hole8",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 14,
+      "ms": 90.911741,
+      "name": "Hole9",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 15,
+      "ms": 273.740521,
+      "name": "Hole10",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 16,
+      "ms": 76.16994100000001,
+      "name": "Hole11",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 17,
+      "ms": 134.887267,
+      "name": "Hole12",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 18,
+      "ms": 95.557806,
+      "name": "Hole13",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 19,
+      "ms": 297.896471,
+      "name": "Hole14",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 20,
+      "ms": 86.780102,
+      "name": "Hole15",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 21,
+      "ms": 145.854645,
+      "name": "Hole16",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
       "warning": null
     }
   ],
   "total": {
-    "area_mm2": 9333.944933780018,
-    "edges": 80,
-    "faces": 34,
-    "mass_g": 47.434637271032585,
+    "area_mm2": 9963.026467590304,
+    "edges": 140,
+    "faces": 62,
+    "mass_g": 45.32788372957079,
     "open_bodies_skipped": 0,
-    "vertices": 48,
-    "volume_mm3": 36771.03664421131
+    "vertices": 88,
+    "volume_mm3": 35137.89436400837
   }
 }

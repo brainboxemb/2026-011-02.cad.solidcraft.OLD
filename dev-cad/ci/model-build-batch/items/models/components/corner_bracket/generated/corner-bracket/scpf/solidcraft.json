@@ -19,6 +19,14 @@
     {
       "command": "parameters.add",
       "params": {
+        "name": "elephant_foot_relief",
+        "expression": "0.6",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
         "name": "arm_height",
         "expression": "12",
         "unit": "mm"
@@ -67,8 +75,80 @@
     {
       "command": "parameters.add",
       "params": {
-        "name": "elephant_foot_relief",
-        "expression": "0.6",
+        "name": "head_diameter",
+        "expression": "10",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "head_clearance",
+        "expression": "0.4",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "head_recess",
+        "expression": "1",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "plywood_thickness",
+        "expression": "12",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "bolt_offset",
+        "expression": "12",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "bolt_y_offset",
+        "expression": "0",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "bolt_diameter",
+        "expression": "5",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "bolt_clearance",
+        "expression": "0.4",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "bolt_hole_edge_relief",
+        "expression": "0.2",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "bolt_spacing",
+        "expression": "18",
         "unit": "mm"
       }
     },
@@ -88,8 +168,12 @@
             0
           ],
           [
-            "horizontal_arm_length",
+            "horizontal_arm_length - (elephant_foot_relief)",
             0
+          ],
+          [
+            "horizontal_arm_length",
+            "-(elephant_foot_relief)"
           ],
           [
             "horizontal_arm_length",
@@ -116,13 +200,18 @@
             "vertical_arm_length"
           ],
           [
-            0,
+            "-(elephant_foot_relief)",
             "vertical_arm_length"
+          ],
+          [
+            0,
+            "-((-(vertical_arm_length)) + (elephant_foot_relief))"
           ]
         ],
         "closed": true,
         "ids": [
           "i_corner",
+          "tip_hor_relief",
           "o_hor_tip",
           "o_hor_bevel",
           "o_hor",
@@ -130,6 +219,7 @@
           "o_vert",
           "o_vert_bevel",
           "o_vert_end",
+          "tip_vert_relief",
           "v_tip"
         ]
       }
@@ -167,7 +257,7 @@
           [
             60.0,
             -12.0,
-            4.5
+            4.8
           ],
           [
             58.5,
@@ -195,14 +285,14 @@
             -58.5
           ],
           [
-            -4.5,
+            -4.8,
             -12.0,
             -60.0
           ],
           [
             60.0,
             12.0,
-            4.5
+            4.8
           ],
           [
             58.5,
@@ -230,7 +320,7 @@
             -58.5
           ],
           [
-            -4.5,
+            -4.8,
             12.0,
             -60.0
           ]
@@ -244,14 +334,14 @@
       "params": {
         "edges": [
           [
-            60.0,
-            0.0,
+            29.7,
+            -12.0,
             -0.0
           ],
           [
-            0.0,
-            0.0,
-            -60.0
+            29.7,
+            12.0,
+            -0.0
           ]
         ],
         "distance": "elephant_foot_relief",
@@ -259,22 +349,335 @@
       }
     },
     {
-      "command": "solid.chamfer",
+      "command": "solid.hole",
       "params": {
-        "edges": [
-          [
-            30.0,
-            -12.0,
-            -0.0
-          ],
-          [
-            30.0,
-            12.0,
-            -0.0
-          ]
+        "position": [
+          "plywood_thickness + (bolt_offset)",
+          "bolt_y_offset",
+          "arm_height"
         ],
-        "distance": "elephant_foot_relief",
-        "body": "CornerBracket"
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "head_diameter + (head_clearance)",
+        "depth": "head_recess",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          "plywood_thickness + (bolt_offset)",
+          "bolt_y_offset",
+          "arm_height - (head_recess)"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "bolt_diameter + (bolt_clearance)",
+        "depth": "arm_height - (head_recess)",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "type": "countersink",
+        "cs_diameter": "head_diameter + (head_clearance)",
+        "cs_angle": 90
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          "plywood_thickness + (bolt_offset)",
+          "bolt_y_offset",
+          "arm_height"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(head_diameter + (head_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          "plywood_thickness + (bolt_offset)",
+          "bolt_y_offset",
+          0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(bolt_diameter + (bolt_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          "(plywood_thickness + (bolt_offset)) + (bolt_spacing)",
+          "bolt_y_offset",
+          "arm_height"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "head_diameter + (head_clearance)",
+        "depth": "head_recess",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          "(plywood_thickness + (bolt_offset)) + (bolt_spacing)",
+          "bolt_y_offset",
+          "arm_height - (head_recess)"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "bolt_diameter + (bolt_clearance)",
+        "depth": "arm_height - (head_recess)",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "type": "countersink",
+        "cs_diameter": "head_diameter + (head_clearance)",
+        "cs_angle": 90
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          "(plywood_thickness + (bolt_offset)) + (bolt_spacing)",
+          "bolt_y_offset",
+          "arm_height"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(head_diameter + (head_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          "(plywood_thickness + (bolt_offset)) + (bolt_spacing)",
+          "bolt_y_offset",
+          0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(bolt_diameter + (bolt_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          "-(arm_height)",
+          "bolt_y_offset",
+          "-(plywood_thickness + (bolt_offset))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "head_diameter + (head_clearance)",
+        "depth": "head_recess",
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          "(-(arm_height)) + (head_recess)",
+          "bolt_y_offset",
+          "-(plywood_thickness + (bolt_offset))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "bolt_diameter + (bolt_clearance)",
+        "depth": "arm_height - (head_recess)",
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "type": "countersink",
+        "cs_diameter": "head_diameter + (head_clearance)",
+        "cs_angle": 90
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          "-(arm_height)",
+          "bolt_y_offset",
+          "-(plywood_thickness + (bolt_offset))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(head_diameter + (head_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          0,
+          "bolt_y_offset",
+          "-(plywood_thickness + (bolt_offset))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(bolt_diameter + (bolt_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          -1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          "-(arm_height)",
+          "bolt_y_offset",
+          "-((plywood_thickness + (bolt_offset)) + (bolt_spacing))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "head_diameter + (head_clearance)",
+        "depth": "head_recess",
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          "(-(arm_height)) + (head_recess)",
+          "bolt_y_offset",
+          "-((plywood_thickness + (bolt_offset)) + (bolt_spacing))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "bolt_diameter + (bolt_clearance)",
+        "depth": "arm_height - (head_recess)",
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "type": "countersink",
+        "cs_diameter": "head_diameter + (head_clearance)",
+        "cs_angle": 90
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          "-(arm_height)",
+          "bolt_y_offset",
+          "-((plywood_thickness + (bolt_offset)) + (bolt_spacing))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(head_diameter + (head_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "command": "solid.hole",
+      "params": {
+        "position": [
+          0,
+          "bolt_y_offset",
+          "-((plywood_thickness + (bolt_offset)) + (bolt_spacing))"
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": "(bolt_diameter + (bolt_clearance)) + (bolt_hole_edge_relief * 2)",
+        "depth": "bolt_hole_edge_relief",
+        "direction": [
+          -1.0,
+          0.0,
+          0.0
+        ]
       }
     }
   ]

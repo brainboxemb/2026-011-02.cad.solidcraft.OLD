@@ -233,7 +233,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 0.37938,
+      "ms": 0.34581500000000004,
       "name": "Profile",
       "rolled_back": false,
       "suppressed": false,
@@ -243,7 +243,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 5.4011190000000004,
+      "ms": 5.574498,
       "name": "Extrude1",
       "rolled_back": false,
       "suppressed": false,
@@ -253,7 +253,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 15.621596,
+      "ms": 20.760925999999998,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -263,7 +263,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 92.25666100000001,
+      "ms": 110.291709,
       "name": "Chamfer1",
       "rolled_back": false,
       "suppressed": false,
@@ -273,7 +273,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 133.858919,
+      "ms": 174.717634,
       "name": "Chamfer2",
       "rolled_back": false,
       "suppressed": false,
@@ -283,7 +283,7 @@
     {
       "error": null,
       "id": 6,
-      "ms": 36.622184000000004,
+      "ms": 64.070482,
       "name": "Hole1",
       "rolled_back": false,
       "suppressed": false,
@@ -293,7 +293,7 @@
     {
       "error": null,
       "id": 7,
-      "ms": 170.942583,
+      "ms": 211.590535,
       "name": "Hole2",
       "rolled_back": false,
       "suppressed": false,
@@ -303,7 +303,7 @@
     {
       "error": null,
       "id": 8,
-      "ms": 51.016655,
+      "ms": 90.349931,
       "name": "Hole3",
       "rolled_back": false,
       "suppressed": false,
@@ -313,7 +313,7 @@
     {
       "error": null,
       "id": 9,
-      "ms": 78.34849000000001,
+      "ms": 93.32941699999999,
       "name": "Hole4",
       "rolled_back": false,
       "suppressed": false,
@@ -323,7 +323,7 @@
     {
       "error": null,
       "id": 10,
-      "ms": 57.844681,
+      "ms": 80.923548,
       "name": "Hole5",
       "rolled_back": false,
       "suppressed": false,
@@ -333,7 +333,7 @@
     {
       "error": null,
       "id": 11,
-      "ms": 217.91770799999998,
+      "ms": 244.63951,
       "name": "Hole6",
       "rolled_back": false,
       "suppressed": false,
@@ -343,7 +343,7 @@
     {
       "error": null,
       "id": 12,
-      "ms": 60.099237,
+      "ms": 107.739828,
       "name": "Hole7",
       "rolled_back": false,
       "suppressed": false,
@@ -353,7 +353,7 @@
     {
       "error": null,
       "id": 13,
-      "ms": 97.943977,
+      "ms": 114.45764,
       "name": "Hole8",
       "rolled_back": false,
       "suppressed": false,
@@ -363,7 +363,7 @@
     {
       "error": null,
       "id": 14,
-      "ms": 72.397531,
+      "ms": 90.911741,
       "name": "Hole9",
       "rolled_back": false,
       "suppressed": false,
@@ -373,7 +373,7 @@
     {
       "error": null,
       "id": 15,
-      "ms": 255.72357000000002,
+      "ms": 273.740521,
       "name": "Hole10",
       "rolled_back": false,
       "suppressed": false,
@@ -383,7 +383,7 @@
     {
       "error": null,
       "id": 16,
-      "ms": 72.836529,
+      "ms": 76.16994100000001,
       "name": "Hole11",
       "rolled_back": false,
       "suppressed": false,
@@ -393,7 +393,7 @@
     {
       "error": null,
       "id": 17,
-      "ms": 128.368591,
+      "ms": 134.887267,
       "name": "Hole12",
       "rolled_back": false,
       "suppressed": false,
@@ -403,7 +403,7 @@
     {
       "error": null,
       "id": 18,
-      "ms": 82.251581,
+      "ms": 95.557806,
       "name": "Hole13",
       "rolled_back": false,
       "suppressed": false,
@@ -413,7 +413,7 @@
     {
       "error": null,
       "id": 19,
-      "ms": 271.582941,
+      "ms": 297.896471,
       "name": "Hole14",
       "rolled_back": false,
       "suppressed": false,
@@ -423,7 +423,7 @@
     {
       "error": null,
       "id": 20,
-      "ms": 82.095908,
+      "ms": 86.780102,
       "name": "Hole15",
       "rolled_back": false,
       "suppressed": false,
@@ -433,7 +433,7 @@
     {
       "error": null,
       "id": 21,
-      "ms": 156.05374799999998,
+      "ms": 145.854645,
       "name": "Hole16",
       "rolled_back": false,
       "suppressed": false,

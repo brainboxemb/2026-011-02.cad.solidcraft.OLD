@@ -12,6 +12,12 @@
     "value": 60.0
   },
   {
+    "display_value": 0.6,
+    "name": "elephant_foot_relief",
+    "unit": "mm",
+    "value": 0.6
+  },
+  {
     "display_value": 12.0,
     "name": "arm_height",
     "unit": "mm",
@@ -48,10 +54,64 @@
     "value": 2.0
   },
   {
-    "display_value": 0.6,
-    "name": "elephant_foot_relief",
+    "display_value": 10.0,
+    "name": "head_diameter",
     "unit": "mm",
-    "value": 0.6
+    "value": 10.0
+  },
+  {
+    "display_value": 0.4,
+    "name": "head_clearance",
+    "unit": "mm",
+    "value": 0.4
+  },
+  {
+    "display_value": 1.0,
+    "name": "head_recess",
+    "unit": "mm",
+    "value": 1.0
+  },
+  {
+    "display_value": 12.0,
+    "name": "plywood_thickness",
+    "unit": "mm",
+    "value": 12.0
+  },
+  {
+    "display_value": 12.0,
+    "name": "bolt_offset",
+    "unit": "mm",
+    "value": 12.0
+  },
+  {
+    "display_value": 0.0,
+    "name": "bolt_y_offset",
+    "unit": "mm",
+    "value": 0.0
+  },
+  {
+    "display_value": 5.0,
+    "name": "bolt_diameter",
+    "unit": "mm",
+    "value": 5.0
+  },
+  {
+    "display_value": 0.4,
+    "name": "bolt_clearance",
+    "unit": "mm",
+    "value": 0.4
+  },
+  {
+    "display_value": 0.2,
+    "name": "bolt_hole_edge_relief",
+    "unit": "mm",
+    "value": 0.2
+  },
+  {
+    "display_value": 18.0,
+    "name": "bolt_spacing",
+    "unit": "mm",
+    "value": 18.0
   },
   {
     "attachment": "fixed",
@@ -75,6 +135,7 @@
       ],
       "curves": [
         "i_corner",
+        "tip_hor_relief",
         "o_hor_tip",
         "o_hor_bevel",
         "o_hor",
@@ -82,6 +143,7 @@
         "o_vert",
         "o_vert_bevel",
         "o_vert_end",
+        "tip_vert_relief",
         "v_tip"
       ],
       "dimensions": [],
@@ -94,11 +156,14 @@
         "p6",
         "p7",
         "p8",
+        "p9",
+        "p10",
         "i_corner.start"
       ]
     },
     "curves": [
       "i_corner",
+      "tip_hor_relief",
       "o_hor_tip",
       "o_hor_bevel",
       "o_hor",
@@ -106,6 +171,7 @@
       "o_vert",
       "o_vert_bevel",
       "o_vert_end",
+      "tip_vert_relief",
       "v_tip"
     ],
     "sketch": {
@@ -126,7 +192,7 @@
       "CornerBracket"
     ],
     "feature": 2,
-    "ms": 4.823107,
+    "ms": 5.598752999999999,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null
@@ -140,7 +206,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 13.833865000000001,
+    "ms": 15.282657,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null
@@ -154,7 +220,7 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 89.841882,
+    "ms": 101.355526,
     "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null
@@ -168,7 +234,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 37.476981,
+    "ms": 156.59013099999999,
     "name": "Chamfer2",
     "removed_bodies": [],
     "warning": null
@@ -182,8 +248,218 @@
     ],
     "created_bodies": [],
     "feature": 6,
-    "ms": 137.52827200000002,
-    "name": "Chamfer3",
+    "ms": 35.706522,
+    "name": "Hole1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 7,
+    "ms": 177.97844700000002,
+    "name": "Hole2",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 8,
+    "ms": 48.564165,
+    "name": "Hole3",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 9,
+    "ms": 66.952143,
+    "name": "Hole4",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 10,
+    "ms": 43.113018000000004,
+    "name": "Hole5",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 11,
+    "ms": 198.661778,
+    "name": "Hole6",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 12,
+    "ms": 55.029064000000005,
+    "name": "Hole7",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 13,
+    "ms": 79.250193,
+    "name": "Hole8",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 14,
+    "ms": 49.283437,
+    "name": "Hole9",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 15,
+    "ms": 220.107009,
+    "name": "Hole10",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 16,
+    "ms": 64.894967,
+    "name": "Hole11",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 17,
+    "ms": 91.29983899999999,
+    "name": "Hole12",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 18,
+    "ms": 57.069019,
+    "name": "Hole13",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 19,
+    "ms": 242.86214,
+    "name": "Hole14",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 20,
+    "ms": 71.72793399999999,
+    "name": "Hole15",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 21,
+    "ms": 102.801389,
+    "name": "Hole16",
     "removed_bodies": [],
     "warning": null
   }
