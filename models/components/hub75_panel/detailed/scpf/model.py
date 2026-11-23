@@ -196,18 +196,24 @@ class Hub75Panel:
             ).at(x, y, self.depth, anchor=Anchor.BOTTOM)
             body = body + pin
 
-        # Add the two physical IDC/HUB75 clearance envelopes in component-local
-        # coordinates. The source landscape long axis maps directly to local Y
-        # after the current portrait transformation, so the centres are
+        # Add the two physical IDC/HUB75 clearance envelopes as named native
+        # sketch/extrude features. The source landscape long axis maps directly
+        # to local Y after the portrait transformation, so the centres are
         # y=±113.5 mm around the measured panel centre.
-        for y in (-DATA_CONNECTOR_CENTER_OFFSET, DATA_CONNECTOR_CENTER_OFFSET):
-            connector = Box(
-                DATA_CONNECTOR_WIDTH,
-                DATA_CONNECTOR_HEIGHT,
-                DATA_CONNECTOR_DEPTH,
-                anchor=Anchor.BOTTOM,
-            ).at(0, y, DATA_CONNECTOR_FRONT_Z, anchor=Anchor.BOTTOM)
-            body = body + connector
+        for label, y in (
+            ("lower", -DATA_CONNECTOR_CENTER_OFFSET),
+            ("upper", DATA_CONNECTOR_CENTER_OFFSET),
+        ):
+            with Sketch(
+                name=f"IDC connector {label}",
+                plane="XY",
+                offset=DATA_CONNECTOR_FRONT_Z,
+            ) as connector:
+                connector.add(
+                    Rectangle2D(DATA_CONNECTOR_WIDTH, DATA_CONNECTOR_HEIGHT),
+                    offset=(0, y),
+                )
+            body = body + connector.extrude(DATA_CONNECTOR_DEPTH)
 
         # Power connector: visual/clearance approximation only. The preserved
         # v1.2 source stores its centre in nominal 160 x 320 reference-space
@@ -220,13 +226,16 @@ class Hub75Panel:
             POWER_CONNECTOR_REFERENCE_Y * self.height / REFERENCE_HEIGHT
             - self.height / 2
         )
-        power_connector = Box(
-            POWER_CONNECTOR_WIDTH,
-            POWER_CONNECTOR_HEIGHT,
-            POWER_CONNECTOR_DEPTH,
-            anchor=Anchor.BOTTOM,
-        ).at(power_x, power_y, POWER_CONNECTOR_FRONT_Z, anchor=Anchor.BOTTOM)
-        body = body + power_connector
+        with Sketch(
+            name="Power connector approximate",
+            plane="XY",
+            offset=POWER_CONNECTOR_FRONT_Z,
+        ) as power_connector:
+            power_connector.add(
+                Rectangle2D(POWER_CONNECTOR_WIDTH, POWER_CONNECTOR_HEIGHT),
+                offset=(power_x, power_y),
+            )
+        body = body + power_connector.extrude(POWER_CONNECTOR_DEPTH)
 
         # Keep the six Ø3 mounting bores open through the new 0.5 mm tube
         # protrusion while still stopping at the rear-housing start Z=2 mm.
