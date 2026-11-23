@@ -3,7 +3,8 @@
 Issue: #278
 Approved experiment: `brainboxemb/exp.2026-015.hugo-cad-site#29`
 Approved EXP PR: #31
-Accepted visual proof: EXP run #89 (`45133048821`)
+Approved EXP main commit: `b0ed2dc474affc9bc0591ff60c5e95ce12a31b25`
+Accepted visual proof: EXP run #92 (`45134031122`)
 
 ## Supersedes the presentation decision in 0027
 
@@ -98,7 +99,7 @@ The existing CAD-owned Chrome proof remains required before publication:
 - Simple MFT overview;
 - Simple MFT full page.
 
-The CAD screenshots must match the user-approved EXP hierarchy before #278 is
+The CAD screenshots must match the user-approved EXP hierarchy from run #92 before #278 is
 closed again.
 
 ## Port boundary
