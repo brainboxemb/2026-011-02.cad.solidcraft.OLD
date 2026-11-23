@@ -52,8 +52,9 @@ native parameter/edge-selector semantics.
 - [Simple MFT](advanced/simple_mft/README.md) provides the reusable perforated
   worktop and a first assembly with an 800 mm Festool-profile GuideRail.
 - [Five-panel screen](advanced/hub75-screen/README.md)
-- [Wooden HUB75 Basic Box](advanced/hub75-wood-frame/README.md)
-- [HUB75Display2](advanced/hub75-display2/README.md) starts from the same verified five-panel baseline but owns a separate source tree for parallel v2 development.
+- [Hub75DisplayCase](advanced/hub75_wood_frame/README.md)
+- [Hub75DisplayCase v2](advanced/hub75-display2/README.md) starts from the same verified five-panel baseline but owns a separate source tree for parallel v2 development.
+- [WoodenHub75BoxIter2](advanced/hub75_wood_frame_iter2/README.md) is the independent lower-compartment model from #154; its final distinct product/class name is tracked by #422.
 
 The wooden enclosure keeps its top-level dimensions and composition in
 [parameterized `model.py`](advanced/hub75-wood-frame/scpf/model.py), while
@@ -106,8 +107,8 @@ difference visible immediately.
 
 ## Directory and Python naming convention
 
-- CAD model directories and published URLs use **kebab-case**, e.g. `hub75-wood-frame`.
+- Published model slugs and URLs use **kebab-case**, e.g. `hub75-wood-frame`; model source directories that act as Python package roots may use **snake_case**, e.g. `hub75_wood_frame`. The model-root `ci.yml` id owns the public slug.
 - Separate Python modules use **snake_case**, e.g. `parts/glass_strip.py` and `assemblies/wood_frame.py`.
-- Python classes use **PascalCase**, e.g. `WoodenHub75Box`, `Board`, `GlassStrip`.
+- Python classes use **PascalCase**, e.g. `Hub75DisplayCase`, `Board`, `GlassStrip`.
 - Reusable cross-model components live in root `components/`. Model-specific parts and assemblies stay inside that model's own `scpf/` directory.
 - Published slugs remain unchanged when internal directories move.
