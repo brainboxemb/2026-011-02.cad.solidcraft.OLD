@@ -50,6 +50,13 @@ Current CAD runtime baseline is SolidCraft 0.45.0. The CAD repository still
 consumes released Forge v0.11.0; several newer Forge fixes exist upstream but
 are not yet available through a released CAD-consumable baseline.
 
+CAD #408 / PR #409 is merged and temporarily disables only `hub75-panel`
+for Forge #796. Forge v0.13.1 qualification proved the shared model-build gate
+respects that state, but six direct detailed-panel repository tests still
+compile the disabled root. #412 makes those tests derive their skip state from
+the same model `ci.yml`; after that, #405 can re-run the v0.13.1 adoption
+without adding a second manual gate.
+
 ## Current work order
 
 ### 1. Finish current FlexBenchDog visual acceptance
@@ -161,6 +168,7 @@ required naming fix and any other applicable runner fixes.
 
 | Issue | Owner/lane | Status | Next action |
 | --- | --- | --- | --- |
+| #412 hub75-panel repository-test gate | dev-cad | **now** | Make only Forge-dependent detailed-panel tests respect the existing #408 `process: false` state and automatically resume when the root is re-enabled. |
 | #408 Temporary hub75-panel process gate | dev-cad + Forge | **now / temporary** | Disable only `hub75-panel` for Forge #796, let #405 qualify v0.13.1 across the remaining roots, then re-enable after the upstream fix is released/adopted. |
 | #8 CornerBracket exact geometry | dev-cad + Forge | **blocked on #362 / Forge #750** | Preserve PR #360 geometry; add final rotated wedge only after generic transform support is released. |
 | #362 CornerBracket arm-tip wedge | dev-cad + Forge | **blocked on Forge #750** | PR #363 is merged; temporary markers are in both model sources. Geometry waits for released transform support. |
@@ -217,10 +225,10 @@ required naming fix and any other applicable runner fixes.
 
 ## Next checkpoint
 
-1. merge #408 after normal CAD validation proves only `hub75-panel` is newly
-   gated;
-2. refresh #405 on that `dev-cad` baseline and qualify Forge v0.13.1 across
-   the remaining active roots;
+1. complete #412 so direct detailed-panel repository tests respect the already
+   merged #408 process gate;
+2. refresh/re-run #405 on that `dev-cad` baseline and qualify exact Forge
+   v0.13.1 across the remaining active roots;
 3. after #405 is accepted, resume the model slices unlocked by the released
    Forge capability batch, starting with #378 and #154;
 4. keep #388 on Forge #753 / the applicable SolidCraft owner path; it still

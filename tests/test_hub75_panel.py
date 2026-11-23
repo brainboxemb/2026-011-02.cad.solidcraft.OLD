@@ -7,6 +7,12 @@ from scpf.runner import ModelParameterWarning, run_script
 
 ROOT = Path(__file__).resolve().parents[1]
 MODEL = ROOT / "models/components/hub75_panel/detailed/scpf/model.py"
+PANEL_CI = ROOT / "models/components/hub75_panel/ci.yml"
+DETAILED_PANEL_ENABLED = "process: true" in PANEL_CI.read_text(encoding="utf-8")
+requires_detailed_panel = unittest.skipUnless(
+    DETAILED_PANEL_ENABLED,
+    "hub75-panel is temporarily disabled by CAD #408 / Forge #796",
+)
 
 
 class Hub75PanelTests(unittest.TestCase):
@@ -102,6 +108,7 @@ class Hub75PanelTests(unittest.TestCase):
         self.assertEqual(duplicate.placement.position, (24, 0, 0))
         self.assertIsNone(duplicate.attachment)
 
+    @requires_detailed_panel
     def test_single_panel_runs_shared_component_directly_in_local_axes(self):
         source = MODEL.read_text(encoding="utf-8")
         self.assertIn("class Hub75Panel:", source)
@@ -128,6 +135,7 @@ class Hub75PanelTests(unittest.TestCase):
             },
         )
 
+    @requires_detailed_panel
     def test_rear_taper_uses_editable_native_loft(self):
         commands = run_script(MODEL)["commands"]
         kinds = [c["command"] for c in commands]
@@ -150,6 +158,7 @@ class Hub75PanelTests(unittest.TestCase):
         self.assertEqual(rear_bays["plane"]["index"], "$face_index_1")
         self.assertFalse(rear_bays["project_edges"])
 
+    @requires_detailed_panel
     def test_four_bays_are_one_rear_facing_native_sketch_cut(self):
         from models.components.hub75_panel.detailed.scpf.model import Hub75Panel
 
@@ -220,6 +229,7 @@ class Hub75PanelTests(unittest.TestCase):
             with self.subTest(kwargs=kwargs), self.assertRaises(ValueError):
                 Box(159.70, 319.71, 14.50).taper(**kwargs)
 
+    @requires_detailed_panel
     def test_mount_positions_match_source_drawing(self):
         commands = run_script(MODEL)["commands"]
         all_holes = [
@@ -256,6 +266,7 @@ class Hub75PanelTests(unittest.TestCase):
             self.assertIn("front_depth", depth_expression)
         self.assertTrue(all(h["targets"] == ["Hub75Panel"] for h in holes))
 
+    @requires_detailed_panel
     def test_rear_mounting_interfaces_match_preserved_reference(self):
         from models.components.hub75_panel.detailed.scpf.model import (
             Hub75Panel,
@@ -321,6 +332,7 @@ class Hub75PanelTests(unittest.TestCase):
             24,
         )
 
+    @requires_detailed_panel
     def test_material_is_native_and_housing_color_is_grey(self):
         commands = run_script(MODEL)["commands"]
         material = next(c["params"] for c in commands if c["command"] == "material.create")
