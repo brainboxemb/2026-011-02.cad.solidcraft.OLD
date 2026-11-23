@@ -16,7 +16,7 @@ VERIFICATION = SolidCraftVerification(
             BodyEnvelope((-11.0, -11.0, -20.0), (11.0, 11.0, 20.0)),
         ),
         bounds_tolerance=0.005,
-        sketch_count=3,
+        sketch_count=11,
         named_bodies=(SolidCraftBodyExpectation(closed=True),),
     ),
 )
