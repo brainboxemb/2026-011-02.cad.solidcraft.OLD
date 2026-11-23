@@ -141,7 +141,7 @@ website renderer or page layout is not a replacement for this site's UI.
 Preserve these user-visible contracts in the stable Pages root:
 
 - the current homepage presentation and Git-derived recently updated model overview;
-- Home and `/models/` use one shared model-card presentation: four equal columns on desktop, two on medium widths and one on narrow screens; title, tagline and technical parameters are bounded so rows stay aligned, and Home shows eight recent models to fill two desktop rows;
+- Home, `/models/` and the Basic/Components/Advanced category routes use one shared model-card presentation: four equal columns on desktop, two on medium widths and one on narrow screens; all catalog routes retain the blue section row so the same model has identical card geometry on `/models/` and its category page; title, tagline and technical parameters are bounded so rows stay aligned, and Home shows eight recent models to fill two desktop rows;
 - the Basic Models, Components and Advanced Models navigation/category pages;
 - the current model-page information order: identity, status, preview/files,
   construction stages, SCPF source, generated SolidCraft commands, optional

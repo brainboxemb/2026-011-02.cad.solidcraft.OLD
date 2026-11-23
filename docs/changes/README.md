@@ -60,3 +60,5 @@ Current records:
 - [0029-four-column-model-card-grid.md](0029-four-column-model-card-grid.md) — use one four/two/one model-card grid with bounded card text on Home and Models (#297).
 
 - [0030-explicit-model-card-row-grid.md](0030-explicit-model-card-row-grid.md) — use explicit named card rows so one/two-line text cannot shift later content (#303).
+
+- [0031-identical-catalog-card-geometry.md](0031-identical-catalog-card-geometry.md) — keep the section row on all catalog overview routes so category and all-model cards are identical (#316).

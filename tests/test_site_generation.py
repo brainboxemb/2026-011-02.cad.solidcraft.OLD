@@ -72,6 +72,12 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertNotIn(".cad-home .cad-model-grid{", css)
         self.assertNotIn(".cad-catalog-page .cad-model-grid{", css)
         self.assertIn("{{ $recent := first 8 $models.ByLastmod.Reverse }}", home)
+        catalog = (SITE / "layouts/models/list.html").read_text()
+        category = (SITE / "layouts/models/single.html").read_text()
+        shared_call = 'partial "cad/model-card.html" (dict "page" . "showSection" true)'
+        self.assertIn(shared_call, catalog)
+        self.assertIn(shared_call, category)
+        self.assertNotIn('"showSection" false', catalog)
 
     def test_model_cards_use_explicit_named_rows_for_stable_alignment(self):
         css = (SITE / "assets/css/custom.css").read_text()
@@ -346,11 +352,12 @@ class HugoSiteContractTests(unittest.TestCase):
             workflow.index("Capture rendered model layouts"),
             workflow.index("Publish CAD Pages for source scope"),
         )
-        for route in ("models_url=", "components_url=", "models/plate/", "models/simple-mft/"):
+        for route in ("models_url=", "basic_url=", "components_url=", "models/plate/", "models/simple-mft/"):
             self.assertIn(route, script)
         for image in (
             "home-overview.png",
             "models-overview.png",
+            "basic-overview.png",
             "components-overview.png",
             "plate-overview.png",
             "plate-full.png",
