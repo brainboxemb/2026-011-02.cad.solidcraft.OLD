@@ -2,8 +2,9 @@
 
 The CAD orientation is functional rather than a prescribed print orientation:
 the worktop surface is Z=0, the insert extends 20 mm downward and the dog rises
-20 mm upward. A small flare at the free insert end provides passive spring
-preload after the stem is split into four flexible quadrants.
+20 mm upward. The insert tapers continuously from Ø20.0 at the worktop to
+Ø20.2 at the free end, providing passive spring preload after the stem is split
+into four flexible quadrants.
 """
 
 
@@ -21,7 +22,6 @@ class FlexBenchDog:
     RIM_THICKNESS = 1.5
     RIM_SEAT_CHAMFER = 1.0
     INSERTION_LENGTH = 20.0
-    TIP_FLARE_LENGTH = 2.0
     SLOT_LENGTH = 16.0
     TOP_CHAMFER = 0.6
     BOTTOM_CHAMFER = 1.0
@@ -63,20 +63,16 @@ class FlexBenchDog:
         ).at(0, 0, self.RIM_THICKNESS, anchor=Anchor.BOTTOM)
         dog = rim + upper
 
-        # Straight insert root below Z=0, with only the free 2 mm flared.
-        insert = Cylinder(
-            d=self.hole_diameter,
+        # Full-length insertion taper: Ø20.2 at the free end (Z=-20) to
+        # nominal Ø20.0 at the worktop datum (Z=0). Forge #746 provides the
+        # native joined-Cone path; no stepped cylindrical tip remains.
+        insert = Cone(
+            d=self.hole_diameter + self.interference,
+            top_d=self.hole_diameter,
             h=self.INSERTION_LENGTH,
             anchor=Anchor.BOTTOM,
         ).at(0, 0, -self.INSERTION_LENGTH, anchor=Anchor.BOTTOM)
         dog = dog + insert
-
-        flare = Cylinder(
-            d=self.hole_diameter + self.interference,
-            h=self.TIP_FLARE_LENGTH,
-            anchor=Anchor.BOTTOM,
-        ).at(0, 0, -self.INSERTION_LENGTH, anchor=Anchor.BOTTOM)
-        dog = dog + flare
 
         # Give the complete free insert edge a larger lead-in before splitting
         # it into four flexible legs.

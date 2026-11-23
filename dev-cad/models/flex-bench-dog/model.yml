@@ -5,19 +5,18 @@ title: "FlexBenchDog"
 tagline: "Passive 20 mm MFT bench dog with a four-segment flex stem"
 description: >-
   A simple printable bench dog inferred from the Mini-MFT reference image: 20 mm above and
-  20 mm below the worktop, with a nominal Ø20 insert and a small Ø20.2 flare only at the
-  free tip. A compact Ø22 stop collar seats on the 45° chamfer of a nominal Ø20 MFT hole:
+  20 mm below the worktop, with one full-length tapered insert from Ø20.0 at the
+  worktop to Ø20.2 at the free end. A compact Ø22 stop collar seats on the 45° chamfer of a nominal Ø20 MFT hole:
   its lower edge chamfers back to Ø20 while a 0.5 mm Ø22 land remains above. Two
   perpendicular slots create four flexible legs, with R0.5 mm relief on the four
   material corners around the central cross. The top face carries a recessed BrainBox cube/box wireframe with six perimeter strokes and three centre spokes; there is no screw mechanism.
-parameters: "20.0 mm nominal hole; Ø22 × 1.5 mm MFT stop collar with 45° seat; 1.5 mm flex slots with R0.5 inner corners; Ø20.2 mm flared flex tip; 20 mm above and 20 mm below worktop"
+parameters: "20.0 mm nominal hole; Ø22 × 1.5 mm MFT stop collar with 45° seat; 1.5 mm flex slots with R0.5 inner corners; Ø20.0 → Ø20.2 full-length flex taper; 20 mm above and 20 mm below worktop"
 diagram: "plate"
 stages:
   - "Cylinder — create Ø22 × 1.5 mm stop-collar envelope at worktop datum"
   - "Chamfer — 1.0 mm lower outer collar edge back to Ø20 at 45°"
   - "Cylinder — join Ø20 × 18.5 mm working section to Z=20"
-  - "Cylinder — join Ø20 × 20 mm insertion below worktop"
-  - "Cylinder — add Ø20.2 × 2 mm flared free tip"
+  - "Cone — join one 20 mm insertion taper from Ø20.2 free end to Ø20.0 worktop end"
   - "Two 1.5 × 16 mm crossing cuts create four flex legs"
   - "Fillet — R0.5 mm on the four vertical inner corners around the central cross"
   - "Chamfer top and bottom edges"
