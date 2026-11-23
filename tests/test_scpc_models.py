@@ -109,6 +109,44 @@ class ParallelModelTests(unittest.TestCase):
             any(row["command"].startswith("solid.pattern.") for row in commands)
         )
 
+    def test_flex_bench_dog_scpc_matches_mft_collar_contract(self):
+        native = source_path(ROOT, "flex-bench-dog", "scpc")
+        forge = source_path(ROOT, "flex-bench-dog")
+        scpc_doc = native_script(native).to_dict()
+        scpf_doc = forge_script(forge)
+
+        def collar_contract(document):
+            features = [
+                row for row in document["commands"]
+                if row["command"] != "parameters.add"
+            ]
+            cylinders = [
+                row["params"] for row in features
+                if row["command"] == "solid.cylinder"
+            ]
+            chamfers = [
+                row["params"] for row in features
+                if row["command"] == "solid.chamfer"
+            ]
+            return cylinders[0], cylinders[1], chamfers[0]
+
+        scpc_rim, scpc_upper, scpc_seat = collar_contract(scpc_doc)
+        scpf_rim, scpf_upper, scpf_seat = collar_contract(scpf_doc)
+
+        for rim in (scpc_rim, scpf_rim):
+            self.assertEqual(rim["base"], [0, 0, 0])
+            self.assertEqual(rim["height"], 1.5)
+            self.assertEqual(rim["diameter"], "rim_diameter")
+
+        for upper in (scpc_upper, scpf_upper):
+            self.assertEqual(upper["base"], [0, 0, 1.5])
+            self.assertEqual(upper["height"], 18.5)
+            self.assertEqual(upper["diameter"], "hole_diameter")
+
+        for seat in (scpc_seat, scpf_seat):
+            self.assertEqual(seat["distance"], 1.0)
+            self.assertEqual(seat["body"], "FlexBenchDog")
+
     def test_plate_and_corner_bracket_have_independent_native_scripts(self):
         for slug in ("plate", "corner-bracket"):
             with self.subTest(slug=slug):

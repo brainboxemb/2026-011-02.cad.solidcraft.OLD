@@ -64,3 +64,5 @@ Current records:
 - [0031-identical-catalog-card-geometry.md](0031-identical-catalog-card-geometry.md) — keep the section row on all catalog overview routes so category and all-model cards are identical (#316).
 
 - [0032-remove-local-cross-cad-references.md](0032-remove-local-cross-cad-references.md) — remove CadQuery/MicroCAD/PythonSCAD/vcad reference sources from the product CAD repository (#206).
+
+- [0034-flex-bench-dog-mft-collar.md](0034-flex-bench-dog-mft-collar.md) — shape the Ø22 × 1.5 mm stop collar to seat on the 45° mouth chamfer of a Ø20 MFT hole (#331).

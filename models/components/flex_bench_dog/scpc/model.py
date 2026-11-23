@@ -7,28 +7,36 @@ script = Script()
 for name, value in (
     ("hole_diameter", 20.0),
     ("interference", 0.20),
-    ("rim_diameter", 24.0),
+    ("rim_diameter", 22.0),
     ("slot_width", 1.5),
 ):
     script.add("parameters.add", name=name, expression=str(value), unit="mm")
 
-# Rim at the worktop datum.
+# MFT stop collar at the worktop datum. The Ø22 × 1.5 mm envelope is
+# chamfered on its lower outside edge so the underside returns to Ø20 over
+# 1 mm at 45 degrees, leaving a 0.5 mm straight Ø22 land.
 script.add(
     "solid.cylinder",
-    height=3,
+    height=1.5,
     diameter="rim_diameter",
     base=[0, 0, 0],
     axis="Z",
     operation="new",
     body_name="FlexBenchDog",
 )
+script.add(
+    "solid.chamfer",
+    body="FlexBenchDog",
+    distance=1.0,
+    edges=[[11, 0, 0]],
+)
 
-# Working section: top of rim to 20 mm above the worktop.
+# Working section: top of collar to 20 mm above the worktop.
 script.add(
     "solid.cylinder",
-    height=17,
+    height=18.5,
     diameter="hole_diameter",
-    base=[0, 0, 3],
+    base=[0, 0, 1.5],
     axis="Z",
     operation="join",
     targets=["FlexBenchDog"],
