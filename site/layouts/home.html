@@ -1,27 +1,32 @@
 {{ define "main" }}
+<main class="cad-page-shell cad-home">
 <section class="cad-hero">
   <p class="cad-eyebrow">SolidCraft CAD</p>
-  <h1>Parametric models, reusable components and complete assemblies</h1>
-  <p>Model descriptions come from local <code>model.yml</code> files. Build status and downloads come from accepted CAD-CI results.</p>
-  <div class="cad-actions"><a class="cad-button" href="{{ "models/" | relURL }}">Browse all models</a></div>
-</section>
-
-<nav class="cad-category-grid" aria-label="Model categories">
-  {{ range $key := slice "basic" "components" "advanced" }}
-    {{ with site.GetPage (printf "/models/%s" $key) }}
-      <a class="cad-category-card" href="{{ .RelPermalink }}"><strong>{{ .Title }}</strong><span>Browse {{ $key }}</span></a>
-    {{ end }}
-  {{ end }}
-</nav>
-
-<section class="cad-section">
-  <div class="cad-section-heading"><h2>Featured models</h2><p>A curated selection; all models remain under Models.</p></div>
-  <div class="cad-model-grid">
-    {{ range site.RegularPages }}
-      {{ if and .Params.cadSlug (ne (index .Params.model "featured") false) }}
-        {{ partial "cad/model-card.html" . }}
-      {{ end }}
-    {{ end }}
+  <h1>SCPF CAD models for SolidCraft</h1>
+  <p>This library contains CAD models built with SCPF for SolidCraft. It ranges from small feature examples to reusable components and complete assemblies. Each model page shows the SCPF code, the generated SolidCraft commands and the resulting geometry, so the repository works as both a CAD library and a practical SCPF reference.</p>
+  <div class="cad-actions">
+    <a class="cad-button" href="{{ "models/" | relURL }}">Browse all models</a>
+    <a class="cad-button cad-button-secondary" href="https://brainboxemb.github.io/lib.py.solidcraft.forge/" target="_blank" rel="noopener noreferrer">Forge / SCPF</a>
+    <a class="cad-button cad-button-secondary" href="https://brainboxemb.github.io/lib.py.solidcraft.cmd/" target="_blank" rel="noopener noreferrer">SCPC Commands</a>
   </div>
 </section>
+
+{{ $models := where site.RegularPages "Params.categoryIndex" "!=" true }}
+{{ $models = where $models "Params.cadSection" "!=" nil }}
+{{ $recent := first 8 $models.ByLastmod.Reverse }}
+{{ if gt (len $recent) 0 }}
+  <section class="cad-section cad-home-recent">
+    <div class="cad-section-heading">
+      <h2>Recently updated models</h2>
+      <p>The latest model roots changed in Git, newest first.</p>
+    </div>
+    <div class="cad-model-grid">
+      {{ range $recent }}
+        {{ partial "cad/model-card.html" (dict "page" . "showSection" true "showUpdated" true) }}
+      {{ end }}
+    </div>
+    <p class="cad-category-more"><a href="{{ "models/" | relURL }}">Browse all models →</a></p>
+  </section>
+{{ end }}
+</main>
 {{ end }}

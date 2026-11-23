@@ -50,3 +50,15 @@ Current records:
 - [0023-hugo-blowfish-site.md](0023-hugo-blowfish-site.md) — direct model.yml → Hugo/Blowfish site generation with prepared CAD-CI evidence (#191, #174).
 
 - [0024-retire-legacy-ci-python.md](0024-retire-legacy-ci-python.md) — remove superseded local CI/site orchestration after released dev-ci build/Pages acceptance (#174).
+- [0025-shared-merge-policy.md](0025-shared-merge-policy.md) — consume the released tool.cad.ci merge policy instead of a CAD-local merge engine (#245).
+- [0026-hextra-site.md](0026-hextra-site.md) — record Hugo 0.169.0 + Hextra v0.13.0 as the accepted CAD site architecture after #191 stable promotion (#251).
+
+- [0027-calm-model-detail.md](0027-calm-model-detail.md) — adopt the EXP-proven calm generic model-detail layout and rendered-browser regression proof (#278).
+
+- [0028-approved-framed-model-detail.md](0028-approved-framed-model-detail.md) — supersede the intermediate #278 redesign with the user-approved EXP #29 framed/source-first baseline.
+
+- [0029-four-column-model-card-grid.md](0029-four-column-model-card-grid.md) — use one four/two/one model-card grid with bounded card text on Home and Models (#297).
+
+- [0030-explicit-model-card-row-grid.md](0030-explicit-model-card-row-grid.md) — use explicit named card rows so one/two-line text cannot shift later content (#303).
+
+- [0031-identical-catalog-card-geometry.md](0031-identical-catalog-card-geometry.md) — keep the section row on all catalog overview routes so category and all-model cards are identical (#316).

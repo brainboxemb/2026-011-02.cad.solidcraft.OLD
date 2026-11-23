@@ -1,12 +1,17 @@
-{{ $m := .Params.model }}
-{{ $prov := .Params.buildProvenance }}
+{{ $page := index . "page" }}
+{{ $showSection := index . "showSection" }}
+{{ $showUpdated := index . "showUpdated" }}
+{{ $m := $page.Params.model }}
+{{ $prov := $page.Params.buildProvenance }}
 {{ $semantic := "not-configured" }}
 {{ with index $prov "semantic_verification" }}{{ $semantic = . }}{{ end }}
 {{ $built := eq (index $prov "solidcraft_built") true }}
-<a class="cad-model-card" href="{{ .RelPermalink }}">
-  {{ with .Resources.Get "model.png" }}<span class="cad-card-picture"><img src="{{ .RelPermalink }}" alt=""></span>{{ end }}
-  <span class="cad-card-section">{{ .Params.cadSection }}</span>
-  <strong>{{ .Title }}</strong><span>{{ index $m "tagline" }}</span><small>{{ index $m "parameters" }}</small>
+<a class="cad-model-card{{ if $showSection }} cad-model-card-has-section{{ end }}{{ if $showUpdated }} cad-model-card-has-updated{{ end }}" href="{{ $page.RelPermalink }}">
+  <span class="cad-card-picture">{{ with $page.Resources.Get "model.png" }}<img src="{{ .RelPermalink }}" alt="">{{ end }}</span>
+  {{ if $showSection }}<span class="cad-card-section">{{ $page.Params.cadSection }}</span>{{ end }}
+  <strong class="cad-card-title">{{ $page.Title }}</strong>
+  {{ if $showUpdated }}<small class="cad-card-updated">Updated {{ $page.Lastmod.Format "2 Jan 2006" }}</small>{{ end }}
+  <span class="cad-card-tagline">{{ index $m "tagline" }}</span><small class="cad-card-parameters">{{ index $m "parameters" }}</small>
   {{ if eq $semantic "pass" }}<b class="cad-card-state cad-card-ok">verified</b>
   {{ else if $built }}<b class="cad-card-state">built</b>
   {{ else }}<b class="cad-card-state cad-card-pending">pending</b>{{ end }}

@@ -22,16 +22,20 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 1
+          # Recently-updated model cards are derived from real Git history.
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Prepare model Git history for Hugo
+        run: python scripts/ci/model_history.py --output site/data/cad/model_history.json --expected-source "${{ github.event.pull_request.head.sha }}"
       - name: Install model.yml reader
         run: python -m pip install -r requirements-site.txt
       - name: Check CAD repository contracts
         run: |
           python -m unittest discover -s tests -p test_ci_migration_contract.py -v
           python -m unittest discover -s tests -p test_model_metadata.py -v
+          python -m unittest discover -s tests -p test_model_history.py -v
           python -m unittest discover -s tests -p test_merge_policy.py -v
           python -m unittest discover -s tests -p test_site_generation.py -v
           python -m unittest discover -s tests -p test_model_verify_runner.py -v
@@ -52,7 +56,7 @@ jobs:
         run: |
           mkdir -p prepared-scope
           cd site
-          hugo mod graph | grep -F "github.com/nunocoracao/blowfish/v3@v3.10.0"
+          hugo mod graph | grep -F "github.com/imfing/hextra@v0.13.0"
           hugo --minify --printPathWarnings --destination "$GITHUB_WORKSPACE/generated-site"
           cd "$GITHUB_WORKSPACE"
           test -s generated-site/models/plate/index.html
@@ -61,7 +65,6 @@ jobs:
           test -s generated-site/models/basic/index.html
           test -s generated-site/models/components/index.html
           test -s generated-site/models/advanced/index.html
-          grep -F "No build evidence in this scope" generated-site/models/plate/index.html
 
   cad_ci_pr:
     if: github.event_name == 'pull_request'
@@ -73,7 +76,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run exact Forge-qualified CAD-CI release
-        uses: brainboxemb/tool.cad.ci@b62f9d0b169aa201a3c66c3166f364396b2d71bc
+        uses: brainboxemb/tool.cad.ci@b1474f6be66dc0236f2a5c2555af07a100447255
         with:
           source_sha: ${{ github.event.pull_request.head.sha }}
           base_sha: ${{ github.event.pull_request.base.sha }}
@@ -101,13 +104,21 @@ jobs:
           esac
       - name: Run and publish durable CAD-CI scope
         id: cad_ci
-        uses: brainboxemb/tool.cad.ci@b62f9d0b169aa201a3c66c3166f364396b2d71bc
+        uses: brainboxemb/tool.cad.ci@b1474f6be66dc0236f2a5c2555af07a100447255
         with:
           source_sha: ${{ github.sha }}
           durable_scope: ${{ github.ref_name }}
           source_ref: ${{ github.ref_name }}
           jobs: "2"
           github_token: ${{ github.token }}
+      - name: Prepare model Git history for Hugo
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
+            git fetch --no-tags --prune --unshallow origin
+          fi
+          python3 scripts/ci/model_history.py --output site/data/cad/model_history.json --expected-source "$SOURCE_SHA"
       - uses: actions/setup-go@v5
         with:
           go-version: "1.25.x"
@@ -136,10 +147,10 @@ jobs:
           export HUGO_PARAMS_BUILDSCOPE="$SCOPE"
           export HUGO_PARAMS_BUILDCOMMIT="$BUILD_COMMIT"
           cd site
-          hugo mod graph | grep -F "github.com/nunocoracao/blowfish/v3@v3.10.0"
+          hugo mod graph | grep -F "github.com/imfing/hextra@v0.13.0"
           hugo --minify --printPathWarnings --destination "$GITHUB_WORKSPACE/generated-site"
           cd "$GITHUB_WORKSPACE"
-          jq -n --arg source "$SOURCE_SHA" --arg build "$BUILD_COMMIT" --arg scope "$SCOPE"             '{schema:1,generator:"hugo+blowfish",source_commit:$source,build_commit:$build,build_scope:$scope}'             > generated-site/provenance.json
+          jq -n --arg source "$SOURCE_SHA" --arg build "$BUILD_COMMIT" --arg scope "$SCOPE"             '{schema:1,generator:"hugo+hextra",source_commit:$source,build_commit:$build,build_scope:$scope}'             > generated-site/provenance.json
           require_file() {
             if [ ! -s "$1" ]; then
               echo "missing generated Pages file: $1" >&2
@@ -159,6 +170,19 @@ jobs:
           jq -e --arg source "$SOURCE_SHA" '.source_commit == $source' generated-site/provenance.json >/dev/null
           jq -e --arg build "$BUILD_COMMIT" '.build_commit == $build' generated-site/provenance.json >/dev/null
           jq -e --arg scope "$SCOPE" '.build_scope == $scope' generated-site/provenance.json >/dev/null
+      - name: Capture rendered model layouts
+        env:
+          SCOPE: ${{ steps.cad_ci.outputs.scope }}
+        run: bash scripts/ci/capture_site_layout.sh generated-site "$SCOPE"
+
+      - name: Upload rendered layout evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-layouts-${{ github.ref_name }}
+          path: artifacts/site-layout
+          if-no-files-found: error
+          retention-days: 7
+
       - name: Publish CAD Pages for source scope
         env:
           SOURCE_REF: ${{ github.ref_name }}

@@ -10,6 +10,9 @@ logical path. Passing the existing Resource object keeps its global publication
 identity and does not produce /models/<slug>/<resource>.
 */}}
 {{ $catalog := hugo.Data.cad.models }}
+{{ $history := hugo.Data.cad.model_history }}
+{{ if not $history }}{{ errorf "missing generated data/cad/model_history.json; run scripts/ci/model_history.py before Hugo" }}{{ end }}
+{{ $historyRoots := index $history "roots" }}
 {{ $categoryTitles := dict
   "basic" "Basic Models"
   "components" "Components"
@@ -47,8 +50,14 @@ identity and does not produce /models/<slug>/<resource>.
           {{ $provenance = . | transform.Unmarshal }}
         {{ end }}
 
+        {{ $historyKey := printf "%s/%s" $section $rootName }}
+        {{ $lastmodRaw := index $historyRoots $historyKey }}
+        {{ if not $lastmodRaw }}{{ errorf "missing model history for %s" $historyKey }}{{ end }}
+        {{ $lastmod := time.AsTime $lastmodRaw }}
+
         {{ $.AddPage (dict
           "content" (dict "mediaType" "text/markdown" "value" (index $model "description"))
+          "dates" (dict "lastmod" $lastmod)
           "kind" "page"
           "path" $slug
           "title" (index $model "title")
@@ -66,6 +75,35 @@ identity and does not produce /models/<slug>/<resource>.
             "content" (dict "mediaType" .MediaType.Type "value" .Content)
             "path" (printf "%s/model.yml" $slug)
           ) }}
+        {{ end }}
+
+        {{/* Optional model-owned background text. It adds prose only; model
+             identity/build state continue to come from model.yml and evidence. */}}
+        {{ with resources.Get (printf "cad-source/%s/%s/page.md" $section $rootName) }}
+          {{ $.AddResource (dict
+            "content" (dict "mediaType" "text/markdown" "value" .Content)
+            "path" (printf "%s/page.md" $slug)
+          ) }}
+        {{ end }}
+
+        {{/* Show the exact SCPF source declared by this model. */}}
+        {{ $sourcePath := index $model "source" }}
+        {{ with resources.Get (printf "cad-source/%s/%s/%s" $section $rootName $sourcePath) }}
+          {{ $.AddResource (dict
+            "content" (dict "mediaType" "text/plain" "value" .Content)
+            "path" (printf "%s/scpf-source.py" $slug)
+          ) }}
+        {{ end }}
+
+        {{/* SCPC is an optional independent implementation and stays secondary
+             to the SCPF source. */}}
+        {{ with $scpcSource := index $model "scpc_source" }}
+          {{ with resources.Get (printf "cad-source/%s/%s/%s" $section $rootName $scpcSource) }}
+            {{ $.AddResource (dict
+              "content" (dict "mediaType" "text/plain" "value" .Content)
+              "path" (printf "%s/scpc-source.py" $slug)
+            ) }}
+          {{ end }}
         {{ end }}
 
         {{ with resources.Get (printf "%s/model.png" $buildRoot) }}

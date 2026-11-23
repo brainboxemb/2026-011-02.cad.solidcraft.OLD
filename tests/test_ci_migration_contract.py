@@ -162,6 +162,7 @@ class MigrationCatalogContractTests(unittest.TestCase):
                 "forge_dependency.py",
                 "model_build_batch.py",
                 "model_catalog.py",
+                "model_history.py",
                 "model_checks.py",
                 "model_verify.py",
                 "repository_tests.py",
@@ -169,7 +170,10 @@ class MigrationCatalogContractTests(unittest.TestCase):
                 "verification_package.py",
             },
         )
-        self.assertTrue((CI / "README.md").is_file())
+        readme = (CI / "README.md").read_text(encoding="utf-8")
+        for name in retained:
+            with self.subTest(documented_adapter=name):
+                self.assertIn(f"`{name}`", readme)
 
         for config in ROOT.glob("ci/*/ci.yml"):
             with self.subTest(item=config.parent.name):

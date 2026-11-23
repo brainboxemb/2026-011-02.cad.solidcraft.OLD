@@ -7,3 +7,6 @@
 **/*.pyc
 **/.pytest_cache/
 .vscode/settings.json
+
+# Derived Hugo presentation data from Git history.
+/site/data/cad/model_history.json

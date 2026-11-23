@@ -48,13 +48,18 @@ Permanent source branches: `main`, `dev-cad`, `dev-ci`.
 - Short-lived CAD/model PRs target `dev-cad`.
 - CI/publishing migration PRs target `dev-ci`.
 - Feature/fix PRs are **squash-merged** into the corresponding dev lane.
-- Lane-to-`main` promotions use a **normal merge commit** through the
-  owner-controlled merge policy, not squash; the long-lived lane is retained.
+- Exact lane-to-`main` promotions and exact `main`-to-lane synchronizations
+  use **normal merge commits** through the owner-controlled merge policy;
+  long-lived source refs are preserved.
 - The supported merge entrypoint is the owner-only pull-request `/merge`
-  command. It evaluates `scripts/merge_policy.py`, requires the exact current
-  head checks/statuses to be green, supplies that SHA to GitHub's merge API,
-  and advances a promoted long-lived lane to the resulting main merge commit.
-  Manual selection of GitHub's squash/merge/rebase buttons is outside policy.
+  command. CAD's workflow is a thin exact-SHA caller of released
+  `tool.cad.ci` merge policy. The shared owner workflow requires exact
+  current-head checks/statuses to be green, excludes its own command runs from
+  that gate, selects the merge method, applies branch lifecycle rules and
+  dispatches durable integration. Manual selection of GitHub's
+  squash/merge/rebase buttons is outside policy.
+- Do not maintain a second CAD-local merge decision engine or GitHub API merge
+  implementation.
 - PRs validate without writing durable model output.
 - Pushes to a long-lived branch may publish only their own generated scope:
   `build/main`, `build/dev-cad`, `build/dev-ci` and Pages root,
@@ -128,51 +133,55 @@ Permanent source branches: `main`, `dev-cad`, `dev-ci`.
 
 ## Public CAD website continuity
 
-The **CI implementation may change, but the visible CAD website must remain
-recognizably the same**. Forge's workflow/tooling architecture is the reference;
-Forge's website layout is **not** a replacement template for this site's UI.
+The stable public CAD site is repository-owned and uses **Hugo 0.169.0 with
+Hextra v0.13.0**, with the Hextra module pinned by `site/go.mod`. Forge's
+workflow/tooling architecture is a reference for shared infrastructure; Forge's
+website renderer or page layout is not a replacement for this site's UI.
 
 Preserve these user-visible contracts in the stable Pages root:
 
-- Current home-page presentation, visual style and curated model overview.
-- The existing Basic Models, Components and Advanced Models navigation and
-  category pages.
-- The current model page hierarchy: model title and explanation, model
-  preview/screenshots, construction stages, actual Forge/SCPC source (where
-  applicable), native command sequence, downloads/links and verification
-  information.
-- Existing model slugs and public routes, including
-  `/models/<slug>/` and `/models/basic/`, `/models/components/`,
-  `/models/advanced/`; avoid broken external or internal links.
-- Model-specific diagrams, supplementary screenshots, warnings and the
-  distinction between newly checked models and older retained output.
-- The present `site/results.css` visual identity and responsive layout in
-  broad terms. Pixel-perfect equality is not required, but major navigation,
-  information, or layout changes are **not** part of this CI migration.
+- the current homepage presentation and Git-derived recently updated model overview;
+- Home, `/models/` and the Basic/Components/Advanced category routes use one shared model-card presentation: four equal columns on desktop, two on medium widths and one on narrow screens; all catalog routes retain the blue section row so the same model has identical card geometry on `/models/` and its category page; title, tagline and technical parameters are bounded so rows stay aligned, and Home shows eight recent models to fill two desktop rows;
+- the Basic Models, Components and Advanced Models navigation/category pages;
+- the current model-page information order: identity, status, preview/files,
+  construction stages, SCPF source, generated SolidCraft commands, optional
+  SCPC comparison, SolidCraft Web/native actions, verification/provenance and
+  optional background/reference content;
+- existing model slugs and public routes, including `/models/<slug>/`,
+  `/models/basic/`, `/models/components/` and `/models/advanced/`;
+- model-specific diagrams, supplementary views and warnings;
+- truthful distinction between current accepted build evidence and retained or
+  missing output.
 
-The CAD site remains consumer-owned, but its renderer is Hugo 0.169.0 +
-Blowfish v3.10.0 instead of a custom Python HTML generator. It must not be
-replaced by Forge's site renderer. Hugo consumes the prepared complete build
-scope read-only and does not execute CAD, select build items, or publish Pages.
+Active CAD styling is owned in `site/assets/css/custom.css`.
+`site/results.css` is retained only as the pre-Hugo visual comparison
+baseline; it is not the active site stylesheet.
 
-Before publishing the new stable site, compare generated old and new versions
-of the homepage, all three category indexes, representative simple and
-advanced model pages, and a model containing both Forge and SCPC sources.
-Check visual structure, source availability, links, native result/downloads
-and meaningful verification labels. A regression in these public behaviours
-blocks publication even when all model builds pass.
+Hugo consumes model-owned metadata/content and the prepared complete build
+scope read-only. Hugo does not select CAD build items, execute SolidCraft,
+change accepted evidence or publish Pages. Released CAD-CI owns durable Pages
+publication for stable and development-lane scopes.
 
-Any deliberate website redesign is a separate, explicitly scoped change with
-its own review and acceptance criteria.
+Do not reintroduce a Python HTML generator. Any deliberate redesign of the
+public site is a separate, explicitly scoped change with its own review and
+acceptance criteria.
 
-## Adoption gates
+## Stable site acceptance
 
-Before removing the current working workflow, prove: all 16 current model-root
-CI items and their 18 catalog variants are represented; selective
-single-model execution; full-model execution on promotion/version upgrade;
-matching output/verification provenance; independent stable/dev scopes;
-and website appearance/content/link parity acceptance. Do not change model geometry to disguise a
-missing generic CI feature.
+- Stable `build/main` and the public Pages root must record the exact accepted
+  `main` source commit.
+- `dev-cad` and `dev-ci` publish only their own build/Page scopes and may
+  not overwrite stable or sibling scopes.
+- A development-lane to `main` promotion runs the required full CAD
+  validation before stable publication.
+- Page/content-only changes may rebuild the site without rebuilding unchanged
+  CAD geometry.
+- Retained outputs must never be relabelled as newly verified against a newer
+  Forge, SolidCraft or CAD revision.
+- Missing accepted build evidence must remain visibly missing/pending rather
+  than being inferred from model metadata or stale output.
+- Stable publication is accepted only when generated routes, source/actions,
+  downloads and provenance-backed status information remain valid.
 
 ## Model-owned content and website data
 
@@ -185,6 +194,9 @@ missing generic CI feature.
   Simple MFT) declare those variants **inside one local `model.yml`**.
 - `scripts/ci/model_catalog.py` validates/discovers the local YAML; it
   must not maintain a competing handwritten list of models.
+- Homepage "last updated" ordering is derived from Git history at site-build
+  time. Do not add a manually maintained update timestamp to `model.yml` or
+  duplicate model-description data in the derived history manifest.
 - `ci.yml` declares build execution only, while an optional
   `verification/verify.py` declares physical/semantic checks. The static site renderer consumes model-owned
   metadata, build results, source code and verification evidence.

@@ -1,24 +1,19 @@
 {{ define "main" }}
-<header class="cad-heading">
-  <p class="cad-eyebrow">model.yml catalogue</p>
-  <h1>{{ .Title }}</h1>
-  <p>{{ .Description }}</p>
-</header>
-<nav class="cad-category-grid" aria-label="Model categories">
-  {{ range $key := slice "basic" "components" "advanced" }}
-    {{ with site.GetPage (printf "/models/%s" $key) }}
-      <a class="cad-category-card" href="{{ .RelPermalink }}"><strong>{{ .Title }}</strong><span>Browse {{ $key }}</span></a>
-    {{ end }}
-  {{ end }}
-</nav>
+<main class="cad-page-shell cad-catalog-page">
+  <section class="cad-model-hero cad-model-hero-small">
+    <p class="cad-model-kicker">SolidCraft CAD</p>
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Description }}</p>
+  </section>
 {{ range $key := slice "basic" "components" "advanced" }}
   {{ $models := where site.RegularPages "Params.cadSection" $key }}
   {{ $models = where $models "Params.categoryIndex" "!=" true }}
-  <section class="cad-section">
+  <section class="cad-section cad-catalog-section">
     <h2>{{ (site.GetPage (printf "/models/%s" $key)).Title }}</h2>
     <div class="cad-model-grid">
-      {{ range sort $models "Params.model.priority" }}{{ partial "cad/model-card.html" . }}{{ end }}
+      {{ range sort $models "Params.model.priority" }}{{ partial "cad/model-card.html" (dict "page" . "showSection" true) }}{{ end }}
     </div>
   </section>
 {{ end }}
+</main>
 {{ end }}
