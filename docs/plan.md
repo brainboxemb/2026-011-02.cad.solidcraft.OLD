@@ -20,10 +20,10 @@ dev-cad
 dev-ci
 ```
 
-Current heads at this reconciliation:
+Current heads before #421:
 
 - `main`: `6be947fd47333389513e64a73ae19649eb80796a`;
-- `dev-cad`: `c2917f64f103424c4247c6b4a81c3848fe8f1668`;
+- `dev-cad`: `e7149d2b402c4ba30835c6b56aeb5373205ef496`;
 - `dev-ci`: `c3d46976c8810487b74a802faf1009cb8608e4b0`.
 
 Stable `main` includes the accepted #344/#350 model-detail presentation and
@@ -46,13 +46,13 @@ Pure repository-instruction/documentation corrections in `AGENTS.md` and
 work. Documentation belonging to a code/model change stays with that issue,
 branch and PR.
 
-Current CAD runtime baseline is SolidCraft 0.45.0. CAD #405 / PR #406 has adopted
-released Forge v0.13.1 at exact commit
-`17a4e1d0e2edf0124d40daf5425891fdf65c24be`. The release contains Forge
-#679, #703, #746, #747, #749 and #750. CAD #408 and #412 are merged and keep
-only the detailed `hub75-panel` execution path temporarily gated for Forge
-#796; that upstream defect therefore does not block qualification of unrelated
-models. Forge #753 / CAD #388 remains a separate owner-layer blocker.
+Current CAD runtime baseline is SolidCraft 0.45.0. CAD #421 adopts released
+Forge v0.13.2 at exact commit
+`ea5710a5d2d33b0633b93c5da95dd5b74f126aa4`. v0.13.2 contains the
+v0.13.1 capability batch plus Forge #796's symbolic placed-primitive hotfix.
+The temporary #408/#412 detailed `hub75-panel` gate is therefore removed and
+the model plus its direct repository tests run normally again. Forge #753 /
+CAD #388 remains a separate owner-layer blocker.
 
 ## Current work order
 
@@ -135,19 +135,18 @@ generic Forge gaps.
   `extra_views` / `EXTRA_SNAPSHOTS` mechanism already proves model-owned
   multiple views, but #20's broader gallery contract is not yet complete.
 
-## Forge v0.13.1 adoption gate
+## Forge v0.13.2 detailed-panel adoption
 
-CAD #408 and #412 are merged. Only the detailed `hub75-panel` root is
-temporarily `process: false` for Forge #796, and only its direct
-Forge-dependent repository tests follow that same process gate. Screen,
-static/source and generic component tests remain active.
+CAD #421 adopts exact Forge v0.13.2 and restores `hub75-panel` to
+`process: true`. Forge #796 is fixed and released; the direct detailed-panel
+repository tests from #412 automatically run again because they derive their
+state from the model's `ci.yml`.
 
-CAD #405 therefore adopts Forge v0.13.1 for the remaining active roots instead
-of holding the whole repository on v0.11.0. This is an execution gate, not a
-geometry rollback or compiler workaround. Re-enable `hub75-panel` after Forge
-#796 is fixed, released and adopted.
+This removes the temporary #408/#412 execution gate without changing panel
+geometry. Forge #753 / CAD #388 remains separate and still owns the
+component-local Cylinder/occurrence problem.
 
-## Forge v0.13.1 follow-ups
+## Forge v0.13.x follow-ups
 
 Forge #679 is present in the accepted v0.13.1 baseline. CAD #378 /
 PR #419 proved the v1 `hub75-wood-frame` / Hub75DisplayCase root with a real
@@ -158,9 +157,8 @@ native SolidCraft build, STEP and image output. CAD #142 now qualifies v2:
 - #142 Hub75DisplayCase v2 native qualification;
 - the remaining catalog qualification work in #172.
 
-The v1 prerequisite is now satisfied. Hub75DisplayCase v2 can be qualified
-independently because it uses Hub75PanelBasic rather than the detailed panel
-root temporarily gated by Forge #796.
+The v1 and v2 display-case prerequisites are now satisfied. The detailed
+`hub75-panel` is separately restored by #421 on Forge v0.13.2.
 
 ## Other open work
 
@@ -169,8 +167,9 @@ root temporarily gated by Forge #796.
 | #378 Hub75DisplayCase native re-enable | dev-cad | **complete / PR #419** | v1 selected and passed native SolidCraft build on Forge v0.13.1 with STEP and image output. |
 | #416 HUB75 display-case product/class names | dev-cad | **complete / PR #418** | Product/class names are `Hub75DisplayCase` / `Hub75DisplayCaseV2`; paths and slugs remain intentionally stable under #417. |
 | #417 HUB75 display-case paths/slugs | dev-cad/site | **later / compatibility migration** | After both models are green, migrate source roots/model ids/public slugs with explicit redirects/aliases for existing URLs. |
-| #412 hub75-panel repository-test process gate | dev-cad | **merged / temporary gate active** | Direct detailed-panel compilation tests follow the existing `ci.yml process` state and auto-restore when the model is re-enabled. |
-| #408 Temporary hub75-panel process gate | dev-cad + Forge | **merged / temporary gate active** | `hub75-panel` stays disabled only for Forge #796; re-enable after the upstream fix is released/adopted. |
+| #421 Forge v0.13.2 + detailed hub75-panel re-enable | dev-cad | **now** | Pin exact v0.13.2, restore `hub75-panel process:true`, run its repository tests and require a real native build. |
+| #412 hub75-panel repository-test process gate | dev-cad | **temporary gate retiring with #421** | The tests keep deriving from `ci.yml`; with `process:true` they run normally again. |
+| #408 Temporary hub75-panel process gate | dev-cad + Forge | **temporary gate retiring with #421** | Forge #796 is released in v0.13.2; #421 removes the process gate. |
 | #8 CornerBracket exact geometry | dev-cad | **actionable after #405 via #362** | Preserve PR #360 geometry; add the final rotated wedge with released Forge #750 support. |
 | #362 CornerBracket arm-tip wedge | dev-cad | **actionable after #405** | Implement the final rotated wedge using v0.13.1 and remove the temporary markers with the completed geometry. |
 | #154 HUB75 lower compartment | dev-cad | **resume after #405 / draft PR #349** | Refresh on current dev-cad, enable native processing and complete the saved-design lower-compartment mutation acceptance. |
@@ -180,7 +179,7 @@ root temporarily gated by Forge #796.
 | #327 FlexBenchDog Cone taper | dev-cad | **resume after #405 / draft PR #328** | Refresh the branch and implement the intended full-length native Cone before making the PR ready. |
 | #288 CAD-CI workflow/config migration | dev-ci / tool.cad.ci | **later / separate** | Reassess against the current released tool.cad.ci owner baseline before implementation. |
 | #205 canonical model.yml contract | dev-cad | **actionable after #405 / separate migration** | Forge #703 is in v0.13.1; move CAD-only fields to their owning layers in its own focused change. |
-| #172 full-catalog native qualification | dev-cad + Forge | **blocked on temporary disabled roots** | Qualify the active catalog on v0.13.1; final full-catalog acceptance waits for `hub75-panel`/#796 and the intentionally disabled HUB75 roots to be re-enabled. |
+| #172 full-catalog native qualification | dev-cad + Forge | **resume after #421** | Forge v0.13.2 restores the detailed `hub75-panel`; continue qualification while keeping unrelated intentionally disabled roots explicit. |
 | #142 Hub75DisplayCase v2 | dev-cad | **now** | Remove the stale #679 process gate and require a real native v2 build on Forge v0.13.1. |
 | #135 Bolted Flange circular pattern | dev-cad + Forge | **blocked on Forge #347** | Keep PR #141 parked until the intended applied-feature seed is supported. |
 | #91 frame-thickness native regression | dev-cad | **actionable after #405/#378** | Run the saved-design mutation once hub75-wood-frame is processable on v0.13.1. |
@@ -189,9 +188,9 @@ root temporarily gated by Forge #796.
 | #20 multiple verified model views | site/product | **later / partially enabled** | Build on generic extra_views; broader responsive gallery contract remains open. |
 | #365 HUB75 glazing retention/seal | dev-cad | **next design slice** | Define the physical glazing stack, contact/clearance, retention and sealing before modelling guessed hardware. |
 | #371 Detailed HUB75 panel completion | tracking | **tracking only** | Reusable-panel work is split into #373 rear-frame contour, #374 mounting interfaces and #375 connector envelopes. |
-| #373 HUB75 rear-frame bay contours | dev-cad + Forge | **blocked on Forge #796 process gate** | Forge #747 is available, but native acceptance of this detailed panel waits until `hub75-panel` is re-enabled after #796. |
-| #374 HUB75 mounting tubes/bushings/locator pins | dev-cad + Forge/SolidCraft | **standalone merged / process gate #796; assembly gate #388** | Re-run standalone native acceptance after #796; keep final five-panel acceptance blocked on #388. |
-| #375 HUB75 connector envelopes | dev-cad | **implemented / draft PR #390; blocked on #796 and #388 before merge** | Keep the measured connector geometry; refresh standalone acceptance after #796 and final assembly acceptance after #388. |
+| #373 HUB75 rear-frame bay contours | dev-cad + Forge | **actionable after #421** | Forge #747 and v0.13.2 are available; resume native acceptance on the restored detailed panel. |
+| #374 HUB75 mounting tubes/bushings/locator pins | dev-cad + Forge/SolidCraft | **standalone merged / assembly gate #388** | Re-run standalone native acceptance on v0.13.2; keep final five-panel acceptance blocked on #388. |
+| #375 HUB75 connector envelopes | dev-cad | **implemented / draft PR #390; blocked on #388 before merge** | Refresh standalone acceptance on v0.13.2; final assembly acceptance remains blocked on #388. |
 | #388 HUB75 component-local Cylinder placement regression | dev-cad + Forge/SolidCraft | **blocked on owner-layer qualification** | Five panel bodies are placed correctly, but the 14 native Cylinder join features can appear detached. Forge #753 / draft PR #754 owns the minimal rotated-component reproducer. SolidCraft 0.45 issue #21098 / PR #21145 is the primary runtime hypothesis, not yet proven or released. |
 | #382 Stable-to-dev-cad synchronization / CAD checkpoint | repository governance | **Phase A complete; Phase B blocked on #388** | Exact `main -> dev-cad` merge `200c902f976ff6809692cc344379bbdc10dcbd13` is green and source-matched in build/Pages. Do not promote `dev-cad -> main` while #388 remains open. |
 | #366 HUB75 rear/electrical interfaces | dev-cad | **blocked on reusable panel children** | After #371 children are accepted, model only enclosure-side clearance/access/cable consequences; do not duplicate panel dimensions. |
@@ -227,12 +226,14 @@ is accepted; refresh each within its existing issue before resuming geometry.
 
 ## Next checkpoint
 
-1. complete #142 and prove Hub75DisplayCase v2 builds natively on Forge v0.13.1;
-2. refresh #154 / PR #349, then resume #327, #348 and #362 as independent
-   model slices unlocked by v0.13.1;
-3. continue #77/#91 on the now-active v1 root; keep #373/#374/#375 behind the
-   temporary `hub75-panel`/#796 gate and #388 on its separate owner path;
-4. defer #417 path/model-id/public-slug migration until both display-case
+1. complete #421 and prove the detailed `hub75-panel` builds natively on
+   exact Forge v0.13.2 with its direct repository tests active;
+2. close the temporary #408/#412 gates after that acceptance;
+3. resume #373/#374/#375 where #796 was the blocker while keeping #388 on its
+   separate owner path;
+4. refresh #154 / PR #349, then resume #327, #348 and #362 as independent
+   model slices unlocked by the released Forge capability batch;
+5. defer #417 path/model-id/public-slug migration until both display-case
    models are green and the redirect/compatibility contract is explicit;
-5. do not promote `dev-cad -> main` until the deliberate stable checkpoint
+6. do not promote `dev-cad -> main` until the deliberate stable checkpoint
    criteria are met.
