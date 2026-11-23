@@ -234,7 +234,7 @@ Change 0028 supersedes the intermediate presentation decision in change 0027.
 
 Model-detail pages preserve the established framed panel hierarchy:
 
-- compact build/status badges below the hero;
+- compact build/status badges below the hero, limited to short build/verification state and generated command count; longer model parameter prose belongs with the model description as normal readable content, not in a status pill;
 - Model preview and Files/Construction stages in the paired top panels;
 - Open in SolidCraft Web in a framed panel;
 - optional Background in a framed panel;
