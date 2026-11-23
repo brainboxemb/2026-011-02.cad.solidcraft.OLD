@@ -36,7 +36,7 @@ body = sketch.extrude(arm_width, direction=Direction.SYMMETRIC)
 
 The name belongs to the **vertex** and becomes the sketch-line ID for the **segment beginning at that vertex**. `world=True` means the XZ coordinates are ordinary world (x, z); SCPF performs SolidCraft's local-sketch axis conversion.
 
-`Edges.from_profile("o_*")` selects named profile segments on the two broad faces. `Edges.from_vertices("o_hor_tip", "v_tip")` instead selects the extrusion-direction edges starting at those vertices. SCPF translates both selectors to edge-pick points because SolidCraft 0.42.0's fillet/chamfer commands do not directly accept sketch-line IDs.
+`Edges.from_profile("o_*")` selects the seven normal outside profile segments on the two broad faces. The two tiny `tip_*` diagonals are deliberately excluded from that 2 mm chamfer because SolidCraft cannot blend 2 mm across a 0.6 mm relief face without a trim leak. `Edges.from_vertices("o_hor_tip", "v_tip")` instead selects the extrusion-direction edges starting at those vertices. SCPF translates both selectors to edge-pick points because SolidCraft 0.42.0's fillet/chamfer commands do not directly accept sketch-line IDs.
 
 The 0.6 mm arm-tip print relief is again part of the 2D profile itself, matching the preserved OpenSCAD `base_profile_2d()`. The former sweep-edge tip chamfer was not equivalent because it removed material across the full 24 mm extrusion edge. The inside R4 fillet, broad-face side chamfer and continuous inside elephant-foot chamfer remain explicit native features.
 
