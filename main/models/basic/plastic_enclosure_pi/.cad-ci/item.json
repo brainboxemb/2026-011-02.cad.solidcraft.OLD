@@ -1,12 +1,12 @@
 {
   "engine": "scons",
   "engine_schema": 4,
-  "final_bundle_sha256": "4a9339fe5d8c49dc4004204f24de76d980b4f730e09bec4bcfaf85b75380e7ce",
+  "final_bundle_sha256": "6a1edee8f1c1130352e28bd2aea2aa8b186057b06547100bf22e8aee1713ea35",
   "final_step": "build_results",
   "final_target_spec_digest": "8cb2a904edf8d9433bd08bfa61b535a79d4c6d38fb363174a7fc2117e26f5df9",
   "item": "plastic-enclosure-pi",
-  "run_finished_at": "2026-11-23T09:33:33.192Z",
-  "run_started_at": "2026-11-23T09:32:14.718Z",
+  "run_finished_at": "2026-11-23T11:02:26.055Z",
+  "run_started_at": "2026-11-23T11:01:04.108Z",
   "schema": 2,
   "status": "pass"
 }

@@ -93,7 +93,7 @@
       "SamplePlate"
     ],
     "feature": 2,
-    "ms": 2.762124,
+    "ms": 3.2867,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null
@@ -107,7 +107,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 72.419269,
+    "ms": 78.354604,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null
@@ -408,7 +408,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 20.18535,
+    "ms": 21.504974999999998,
     "name": "Holes",
     "removed_bodies": [],
     "warning": null
@@ -422,7 +422,7 @@
     ],
     "created_bodies": [],
     "feature": 6,
-    "ms": 36.815058,
+    "ms": 38.961293,
     "name": "RectangularPattern1",
     "removed_bodies": [],
     "warning": null
@@ -436,7 +436,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 29.017601,
+    "ms": 32.079929,
     "name": "Cylinder1",
     "removed_bodies": [],
     "warning": null
@@ -490,7 +490,7 @@
     ],
     "created_bodies": [],
     "feature": 9,
-    "ms": 26.151094999999998,
+    "ms": 27.730885,
     "name": "Bore",
     "removed_bodies": [],
     "warning": null
