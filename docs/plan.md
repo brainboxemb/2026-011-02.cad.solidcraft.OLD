@@ -139,6 +139,8 @@ arithmetic fails before SolidCraft replay.
 
 CAD #408 temporarily sets only `hub75-panel` to `process: false` so the
 remaining product-CAD roots can qualify the released Forge capability batch.
+CAD #412 makes only the direct detailed-panel repository tests follow that
+existing process gate; static/source and screen coverage remain active.
 This is an execution gate, not a geometry rollback. Do not add a CAD-local
 compiler workaround. Re-enable the root after Forge #796 is fixed, released
 and adopted.
@@ -161,6 +163,7 @@ required naming fix and any other applicable runner fixes.
 
 | Issue | Owner/lane | Status | Next action |
 | --- | --- | --- | --- |
+| #412 hub75-panel repository-test process gate | dev-cad | **now / temporary** | Gate only direct detailed-panel compilation tests from the existing `ci.yml process` state; keep other coverage active and auto-restore when the model is re-enabled. |
 | #408 Temporary hub75-panel process gate | dev-cad + Forge | **now / temporary** | Disable only `hub75-panel` for Forge #796, let #405 qualify v0.13.1 across the remaining roots, then re-enable after the upstream fix is released/adopted. |
 | #8 CornerBracket exact geometry | dev-cad + Forge | **blocked on #362 / Forge #750** | Preserve PR #360 geometry; add final rotated wedge only after generic transform support is released. |
 | #362 CornerBracket arm-tip wedge | dev-cad + Forge | **blocked on Forge #750** | PR #363 is merged; temporary markers are in both model sources. Geometry waits for released transform support. |
@@ -217,8 +220,8 @@ required naming fix and any other applicable runner fixes.
 
 ## Next checkpoint
 
-1. merge #408 after normal CAD validation proves only `hub75-panel` is newly
-   gated;
+1. complete #412 so direct detailed-panel repository tests honor the already
+   merged #408 process gate;
 2. refresh #405 on that `dev-cad` baseline and qualify Forge v0.13.1 across
    the remaining active roots;
 3. after #405 is accepted, resume the model slices unlocked by the released
