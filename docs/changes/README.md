@@ -54,3 +54,7 @@ Current records:
 - [0026-hextra-site.md](0026-hextra-site.md) — record Hugo 0.169.0 + Hextra v0.13.0 as the accepted CAD site architecture after #191 stable promotion (#251).
 
 - [0027-calm-model-detail.md](0027-calm-model-detail.md) — adopt the EXP-proven calm generic model-detail layout and rendered-browser regression proof (#278).
+
+- [0028-approved-framed-model-detail.md](0028-approved-framed-model-detail.md) — supersede the intermediate #278 redesign with the user-approved EXP #29 framed/source-first baseline.
+
+- [0029-four-column-model-card-grid.md](0029-four-column-model-card-grid.md) — use one four/two/one model-card grid with bounded card text on Home and Models (#297).
