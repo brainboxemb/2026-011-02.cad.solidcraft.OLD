@@ -74,9 +74,28 @@ PDF-related **Ø3 × 3 mm locator pins** are placed at the diagonal
 values remain documented as physical estimates in the source reference rather
 than drawing dimensions.
 
-The PCB, power/IDC connector volumes, front mask and distinct colors still need
-their own editable SolidCraft bodies/features; connector envelopes are tracked
-separately rather than being invented in this mounting-interface change.
+## Rear connector clearance envelopes
+
+The reusable detailed panel also owns the rear connector-clearance geometry.
+These are panel-local mechanical envelopes, so enclosure and screen models do
+not duplicate their dimensions or positions.
+
+The two IDC/HUB75 data connectors use preserved physical values from the v1.2
+reference: each envelope is **27.90 × 9.50 × 10.64 mm**, centred at local
+**X=0, Y=±113.5 mm**, and starts at **Z=2.63 mm**. They are authored as named
+native XY Sketches joined with native Extrude features.
+
+The power connector remains deliberately approximate. Its preserved visual
+reference centre is **X=53 mm / long-axis=128 mm** in the nominal 160 × 320 mm
+reference raster. The model scales those coordinates to the measured
+159.70 × 319.71 mm panel before centering them, giving approximately
+**X=-26.9494 mm, Y=-31.9710 mm**. Its clearance envelope is
+**13 × 20 × 7 mm** starting at **Z=3.00 mm**. The model and metadata keep this
+feature labelled approximate because the dimensional drawing does not locate it.
+
+The PCB, front mask and distinct connector/material colors still need their own
+editable SolidCraft bodies/features; the connector volumes here are mechanical
+clearance envelopes rather than a detailed electronics model.
 
 SCPF uses X for width, Y for height and Z for depth (front at Z=0).
 The source OpenSCAD model used X/Z for the front and Y for depth.
