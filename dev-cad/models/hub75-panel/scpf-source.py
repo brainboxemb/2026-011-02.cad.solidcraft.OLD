@@ -6,7 +6,31 @@ four rear electronics-bay pockets and six blind mounting bores. The pocket
 outlines are currently square-cornered approximations; the rounded/stepped
 bay edges, tubes, PCB and connectors still need distinct features.
 """
-from scpf import Box, Hole, Sketch, Rectangle2D, Anchor, component, half, midpoint
+from scpf import Box, Cylinder, Hole, Sketch, Rectangle2D, Anchor, component, half, midpoint
+
+
+# Fixed mechanical interface dimensions from the existing v1.2 panel
+# reference. These are product geometry, not editable design parameters.
+MOUNTING_TUBE_OUTER_DIAMETER = 8.50
+MOUNTING_TUBE_PROTRUSION = 0.50
+MOUNTING_TUBE_RELIEF_CLEARANCE = 0.75
+MOUNTING_TUBE_RELIEF_DEPTH = 0.80
+
+# Separate reinforcement features beside the six mounting tubes. The Ø14 and
+# Ø2.5 values remain documented as current physical estimates in the source
+# reference rather than drawing dimensions.
+REINFORCEMENT_OUTER_DIAMETER = 14.0
+REINFORCEMENT_RECESS_DIAMETER = 10.0
+REINFORCEMENT_RECESS_DEPTH = 2.50
+REINFORCEMENT_HOLE_DIAMETER = 2.50
+REINFORCEMENT_HOLE_DEPTH = 10.00
+REINFORCEMENT_OFFSET = 11.0
+
+# Two PDF-related locating pins in centred portrait component coordinates.
+LOCATOR_PIN_DIAMETER = 3.00
+LOCATOR_PIN_PROTRUSION = 3.00
+LOCATOR_PIN_X = 75.0
+LOCATOR_PIN_Y = 110.0
 
 
 @component
@@ -73,23 +97,94 @@ class Hub75Panel:
         # central rail relief, shallow rear recess and reinforcement tubes.
         # In particular this is not yet a complete molded HUB75 rear shell.
 
-        # The mounting bores are at the BACK of the mechanical housing.
-        # Our first envelope model previously cut all the way through the
-        # 2 mm front mask / PCB stack. The real panel must have a solid
-        # front face: stop the six bores at the START of the rear housing,
-        # Z=front_depth, without opening the front at Z=0.
-        #
-        # OpenSCAD builds separate mounting tubes and front layers. A blind
-        # bore in the simplified single-body envelope preserves that
-        # mechanical intent without inventing the missing rear structure.
-        rear_bore_depth = self.depth - self.front_depth
+        # Restore the mechanically relevant rear mounting interfaces from
+        # the existing v1.2 OpenSCAD/STEP/PDF reference. The surrounding rail
+        # gets a shallow circular relief first; the true Ø8.5 tube is then
+        # joined back so its rear outline remains visibly circular.
+        relief_diameter = (
+            MOUNTING_TUBE_OUTER_DIAMETER
+            + 2 * MOUNTING_TUBE_RELIEF_CLEARANCE
+        )
+        for x in (-self.mount_x, self.mount_x):
+            for y in (-self.mount_y, 0, self.mount_y):
+                body = body + Hole(
+                    d=relief_diameter,
+                    depth=MOUNTING_TUBE_RELIEF_DEPTH,
+                    direction=(0, 0, -1),
+                ).at(x, y, self.depth)
+
+                tube = Cylinder(
+                    d=MOUNTING_TUBE_OUTER_DIAMETER,
+                    h=(
+                        self.depth
+                        + MOUNTING_TUBE_PROTRUSION
+                        - self.front_depth
+                    ),
+                    anchor=Anchor.BOTTOM,
+                ).at(x, y, self.front_depth, anchor=Anchor.BOTTOM)
+                body = body + tube
+
+        # The six reinforcement features are separate from the mounting tubes.
+        # Their source offset is asymmetric at the middle pair in portrait
+        # orientation: left-middle is +11 mm, right-middle is -11 mm.
+        reinforcement_positions = (
+            (-self.mount_x, -self.mount_y + REINFORCEMENT_OFFSET),
+            (self.mount_x, -self.mount_y + REINFORCEMENT_OFFSET),
+            (-self.mount_x, REINFORCEMENT_OFFSET),
+            (self.mount_x, -REINFORCEMENT_OFFSET),
+            (-self.mount_x, self.mount_y - REINFORCEMENT_OFFSET),
+            (self.mount_x, self.mount_y - REINFORCEMENT_OFFSET),
+        )
+        reinforcement_depth = (
+            REINFORCEMENT_RECESS_DEPTH + REINFORCEMENT_HOLE_DEPTH
+        )
+        for x, y in reinforcement_positions:
+            reinforcement = Cylinder(
+                d=REINFORCEMENT_OUTER_DIAMETER,
+                h=reinforcement_depth,
+                anchor=Anchor.BOTTOM,
+            ).at(
+                x,
+                y,
+                self.depth - reinforcement_depth,
+                anchor=Anchor.BOTTOM,
+            )
+            body = body + reinforcement
+            body = body + Hole(
+                d=REINFORCEMENT_RECESS_DIAMETER,
+                depth=REINFORCEMENT_RECESS_DEPTH,
+                direction=(0, 0, -1),
+            ).at(x, y, self.depth)
+            body = body + Hole(
+                d=REINFORCEMENT_HOLE_DIAMETER,
+                depth=REINFORCEMENT_HOLE_DEPTH,
+                direction=(0, 0, -1),
+            ).at(x, y, self.depth - REINFORCEMENT_RECESS_DEPTH)
+
+        # PDF-dimensioned diagonal locator pair. In the centred portrait local
+        # axes these are upper-left (-75,+110) and lower-right (+75,-110).
+        for x, y in (
+            (-LOCATOR_PIN_X, LOCATOR_PIN_Y),
+            (LOCATOR_PIN_X, -LOCATOR_PIN_Y),
+        ):
+            pin = Cylinder(
+                d=LOCATOR_PIN_DIAMETER,
+                h=LOCATOR_PIN_PROTRUSION,
+                anchor=Anchor.BOTTOM,
+            ).at(x, y, self.depth, anchor=Anchor.BOTTOM)
+            body = body + pin
+
+        # Keep the six Ø3 mounting bores open through the new 0.5 mm tube
+        # protrusion while still stopping at the rear-housing start Z=2 mm.
+        rear_bore_start = self.depth + MOUNTING_TUBE_PROTRUSION
+        rear_bore_depth = rear_bore_start - self.front_depth
         for x in (-self.mount_x, self.mount_x):
             for y in (-self.mount_y, 0, self.mount_y):
                 body = body + Hole(
                     d=self.hole_diameter,
                     depth=rear_bore_depth,
                     direction=(0, 0, -1),
-                ).at(x, y, self.depth)
+                ).at(x, y, rear_bore_start)
 
         # One gray housing material. Detailed PCB/front/connector colors
         # require separate native bodies in a later panel-model iteration.
