@@ -7,6 +7,8 @@ preload after the stem is split into four flexible quadrants.
 """
 
 
+
+
 @component
 class FlexBenchDog:
     hole_diameter = 20.0
@@ -130,17 +132,24 @@ class FlexBenchDog:
             edges=[(self.hole_diameter / 2, 0, self.ABOVE_WORKTOP)],
         )
 
-        # Recess the preserved BrainBox cube/box wireframe: six perimeter
-        # strokes plus three spokes meeting at the centre. Narrow native slots
-        # keep the stroke ends printable instead of cutting one filled square.
-        with Sketch(
-            name="Top logo",
-            on=dog,
-            plane="XY",
-            origin=(0, 0, self.ABOVE_WORKTOP),
-        ) as logo:
-            for p0, p1 in self.LOGO_SEGMENTS:
+        # Recess the BrainBox wireframe as nine independent rib cuts. PR #341
+        # put all nine overlapping closed Slot profiles in one Sketch, which
+        # created extra enclosed regions and visually removed a filled face.
+        # Keeping one Slot profile per Sketch preserves the same nine visible
+        # cube edges without allowing intersections to create face regions.
+        #
+        # TEMPORARY compatibility workaround — CAD #348 / Forge #747.
+        # The preferred final construction is one closed polygon strip per rib.
+        # Remove this one-Slot-per-Sketch workaround only after Forge #747
+        # reaches a released version consumed by this repository.
+        for index, (p0, p1) in enumerate(self.LOGO_SEGMENTS, start=1):
+            with Sketch(
+                name=f"Top logo rib {index}",
+                on=dog,
+                plane="XY",
+                origin=(0, 0, self.ABOVE_WORKTOP),
+            ) as rib:
                 SlotCenterToCenter2D(p0, p1, self.LOGO_LINE_WIDTH)
-        dog = dog - logo.extrude(-self.LOGO_DEPTH)
+            dog = dog - rib.extrude(-self.LOGO_DEPTH)
 
         return dog

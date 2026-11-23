@@ -2,6 +2,8 @@
 
 from scpc import Script
 
+
+
 script = Script()
 
 for name, value in (
@@ -134,14 +136,14 @@ script.add(
     edges=[[10, 0, 20]],
 )
 
-# Recessed BrainBox cube/box wireframe: six perimeter strokes plus three
-# centre spokes. Each stroke is one 0.6 mm native rounded slot.
-script.add(
-    "sketch.create",
-    plane={"origin": [0, 0, 20], "x_dir": [1, 0, 0], "y_dir": [0, 1, 0]},
-    name="Top logo",
-)
-for p0, p1 in (
+# Recessed BrainBox wireframe. Each visible cube edge is one independent
+# Slot profile in its own Sketch and one cut. The nine slots therefore never
+# intersect inside the same Sketch and cannot create filled cube-face regions.
+#
+# TEMPORARY compatibility workaround — CAD #348 / Forge #747.
+# The preferred final construction is one closed polygon strip per rib once
+# Forge can lower Polygon2D in an explicit/attached Sketch.
+LOGO_SEGMENTS = (
     ([0.0, 4.0], [3.5, 2.0]),
     ([3.5, 2.0], [3.5, -2.0]),
     ([3.5, -2.0], [0.0, -4.0]),
@@ -151,19 +153,27 @@ for p0, p1 in (
     ([0.0, 0.0], [0.0, 4.0]),
     ([0.0, 0.0], [3.5, -2.0]),
     ([0.0, 0.0], [-3.5, -2.0]),
-):
+)
+
+for index, (p0, p1) in enumerate(LOGO_SEGMENTS, start=1):
+    name = f"Top logo rib {index}"
+    script.add(
+        "sketch.create",
+        plane={"origin": [0, 0, 20], "x_dir": [1, 0, 0], "y_dir": [0, 1, 0]},
+        name=name,
+    )
     script.add(
         "sketch.slot.center_to_center",
         p0=p0,
         p1=p1,
         width=0.6,
     )
-script.add("sketch.finish")
-script.add(
-    "solid.extrude",
-    distance=0.6,
-    direction="negative",
-    operation="cut",
-    targets=["FlexBenchDog"],
-    name="Top logo",
-)
+    script.add("sketch.finish")
+    script.add(
+        "solid.extrude",
+        distance=0.6,
+        direction="negative",
+        operation="cut",
+        targets=["FlexBenchDog"],
+        name=name,
+    )

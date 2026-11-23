@@ -15,10 +15,11 @@ class FlexBenchDogTests(unittest.TestCase):
         names = [row["command"] for row in commands]
 
         self.assertEqual(names.count("solid.cylinder"), 4)
-        self.assertEqual(names.count("sketch.create"), 3)
+        self.assertEqual(names.count("sketch.create"), 11)
         self.assertEqual(names.count("sketch.rectangle.two_point"), 2)
+        self.assertEqual(names.count("sketch.line"), 0)
         self.assertEqual(names.count("sketch.slot.center_to_center"), 9)
-        self.assertEqual(names.count("solid.extrude"), 3)
+        self.assertEqual(names.count("solid.extrude"), 11)
         self.assertEqual(names.count("solid.fillet"), 1)
         self.assertEqual(names.count("solid.chamfer"), 3)
         self.assertFalse(any(name == "solid.hole" for name in names))
@@ -138,59 +139,54 @@ class FlexBenchDogTests(unittest.TestCase):
         self.assertEqual(chamfers[1]["distance"], 1.0)
         self.assertEqual(chamfers[2]["distance"], 0.6)
 
-    def test_recessed_top_logo_is_exact_cube_wireframe_not_filled_square(self):
+    def test_recessed_top_logo_uses_nine_independent_slot_rib_cuts(self):
         commands = run_script(MODEL)["commands"]
-        sketches = [
-            row["params"]
-            for row in commands
-            if row["command"] == "sketch.create"
+        expected = [
+            ([0.0, 4.0], [3.5, 2.0]),
+            ([3.5, 2.0], [3.5, -2.0]),
+            ([3.5, -2.0], [0.0, -4.0]),
+            ([0.0, -4.0], [-3.5, -2.0]),
+            ([-3.5, -2.0], [-3.5, 2.0]),
+            ([-3.5, 2.0], [0.0, 4.0]),
+            ([0.0, 0.0], [0.0, 4.0]),
+            ([0.0, 0.0], [3.5, -2.0]),
+            ([0.0, 0.0], [-3.5, -2.0]),
         ]
-        self.assertEqual(sketches[-1]["name"], "Top logo")
-        self.assertEqual(sketches[-1]["plane"]["origin"], [0, 0, 20])
 
-        logo_slots = [
-            row["params"]
-            for row in commands
+        sketches = [
+            row["params"] for row in commands
+            if row["command"] == "sketch.create"
+            and row["params"]["name"].startswith("Top logo rib ")
+        ]
+        self.assertEqual(
+            [row["name"] for row in sketches],
+            [f"Top logo rib {index}" for index in range(1, 10)],
+        )
+        self.assertTrue(
+            all(row["plane"]["origin"] == [0, 0, 20] for row in sketches)
+        )
+
+        slots = [
+            row["params"] for row in commands
             if row["command"] == "sketch.slot.center_to_center"
         ]
-        self.assertEqual(len(logo_slots), 9)
-        self.assertTrue(all(row["width"] == 0.6 for row in logo_slots))
+        self.assertEqual(len(slots), 9)
+        for slot, (p0, p1) in zip(slots, expected):
+            self.assertEqual(slot["p0"], p0)
+            self.assertEqual(slot["p1"], p1)
+            self.assertEqual(slot["width"], 0.6)
 
-        expected = {
-            ((0.0, 4.0), (3.5, 2.0)),
-            ((3.5, 2.0), (3.5, -2.0)),
-            ((3.5, -2.0), (0.0, -4.0)),
-            ((0.0, -4.0), (-3.5, -2.0)),
-            ((-3.5, -2.0), (-3.5, 2.0)),
-            ((-3.5, 2.0), (0.0, 4.0)),
-            ((0.0, 0.0), (0.0, 4.0)),
-            ((0.0, 0.0), (3.5, -2.0)),
-            ((0.0, 0.0), (-3.5, -2.0)),
-        }
-        actual = {
-            (tuple(row["p0"]), tuple(row["p1"]))
-            for row in logo_slots
-        }
-        self.assertEqual(actual, expected)
+        self.assertFalse(any(row["command"] == "sketch.line" for row in commands))
 
-        self.assertFalse(
-            any(
-                row["command"] == "sketch.rectangle.two_point"
-                and row["params"].get("p0") == [-4, -4]
-                and row["params"].get("p1") == [4, 4]
-                for row in commands
-            )
-        )
-
-        logo_cut = next(
-            row["params"]
-            for row in commands
+        cuts = [
+            row["params"] for row in commands
             if row["command"] == "solid.extrude"
-            and row["params"]["name"] == "Top logo"
-        )
-        self.assertEqual(logo_cut["operation"], "cut")
-        self.assertEqual(logo_cut["distance"], 0.6)
-        self.assertEqual(logo_cut["direction"], "negative")
+            and row["params"]["name"].startswith("Top logo rib ")
+        ]
+        self.assertEqual(len(cuts), 9)
+        self.assertTrue(all(row["operation"] == "cut" for row in cuts))
+        self.assertTrue(all(row["distance"] == 0.6 for row in cuts))
+        self.assertTrue(all(row["direction"] == "negative" for row in cuts))
 
 
 if __name__ == "__main__":
