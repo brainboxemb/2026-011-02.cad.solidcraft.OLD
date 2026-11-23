@@ -206,8 +206,9 @@ class Hub75Panel:
         ):
             with Sketch(
                 name=f"IDC connector {label}",
+                on=body,
                 plane="XY",
-                offset=DATA_CONNECTOR_FRONT_Z,
+                origin=(0, 0, DATA_CONNECTOR_FRONT_Z),
             ) as connector:
                 connector.add(
                     Rectangle2D(DATA_CONNECTOR_WIDTH, DATA_CONNECTOR_HEIGHT),
@@ -228,8 +229,9 @@ class Hub75Panel:
         )
         with Sketch(
             name="Power connector approximate",
+            on=body,
             plane="XY",
-            offset=POWER_CONNECTOR_FRONT_Z,
+            origin=(0, 0, POWER_CONNECTOR_FRONT_Z),
         ) as power_connector:
             power_connector.add(
                 Rectangle2D(POWER_CONNECTOR_WIDTH, POWER_CONNECTOR_HEIGHT),
