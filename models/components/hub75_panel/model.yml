@@ -20,7 +20,7 @@ stages:
   - "Cut the six Ø3 mounting bores through the proud tube faces back to the Z=2 rear-housing datum"
   - "Assign grey housing material"
   - "Keep the standalone part in its local CAD axes"
-  - "Verify local front and rear views in SolidCraft 0.42.0"
+  - "Verify local front and rear views in the pinned SolidCraft runtime"
 source: "detailed/scpf/model.py"
 component_source: "detailed/scpf/model.py"
 component_definition_primary: true
