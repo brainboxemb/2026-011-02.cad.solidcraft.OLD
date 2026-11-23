@@ -1,9 +1,9 @@
 [
   {
-    "display_value": 24.0,
+    "display_value": 22.0,
     "name": "rim_diameter",
     "unit": "mm",
-    "value": 24.0
+    "value": 22.0
   },
   {
     "display_value": 20.0,
@@ -24,6 +24,12 @@
     "value": 1.5
   },
   {
+    "display_value": 0.5,
+    "name": "slot_corner_radius",
+    "unit": "mm",
+    "value": 0.5
+  },
+  {
     "bodies": [
       "FlexBenchDog"
     ],
@@ -32,7 +38,7 @@
       "FlexBenchDog"
     ],
     "feature": 1,
-    "ms": 3.388786,
+    "ms": 4.420071999999999,
     "name": "Cylinder1",
     "removed_bodies": [],
     "warning": null
@@ -46,8 +52,8 @@
     ],
     "created_bodies": [],
     "feature": 2,
-    "ms": 25.719248999999998,
-    "name": "Cylinder2",
+    "ms": 41.828497999999996,
+    "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null
   },
@@ -60,8 +66,8 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 26.423202,
-    "name": "Cylinder3",
+    "ms": 34.609813,
+    "name": "Cylinder2",
     "removed_bodies": [],
     "warning": null
   },
@@ -74,8 +80,8 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 27.549753,
-    "name": "Cylinder4",
+    "ms": 49.389899,
+    "name": "Cylinder3",
     "removed_bodies": [],
     "warning": null
   },
@@ -88,172 +94,8 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 47.468838,
-    "name": "Chamfer1",
-    "removed_bodies": [],
-    "warning": null
-  },
-  {
-    "attachment": "fixed",
-    "created": {
-      "constraints": [],
-      "curves": [],
-      "dimensions": [],
-      "points": []
-    },
-    "frame": "world",
-    "name": "Flex slot X",
-    "projected": null,
-    "sketch": 6
-  },
-  {
-    "constraints": [
-      "k1",
-      "k2",
-      "k3",
-      "k4"
-    ],
-    "corners": {
-      "bottom_left": "p1",
-      "bottom_right": "p2",
-      "top_left": "p4",
-      "top_right": "p3"
-    },
-    "created": {
-      "constraints": [
-        "k1",
-        "k2",
-        "k3",
-        "k4"
-      ],
-      "curves": [
-        "l1",
-        "l2",
-        "l3",
-        "l4"
-      ],
-      "dimensions": [],
-      "points": [
-        "p1",
-        "p2",
-        "p3",
-        "p4"
-      ]
-    },
-    "curves": [
-      "l1",
-      "l2",
-      "l3",
-      "l4"
-    ],
-    "sides": {
-      "bottom": "l1",
-      "left": "l4",
-      "right": "l2",
-      "top": "l3"
-    },
-    "sketch": {
-      "dof": 0,
-      "solved": true
-    }
-  },
-  {
-    "profiles": 1,
-    "sketch": 6
-  },
-  {
-    "bodies": [
-      "FlexBenchDog"
-    ],
-    "changed_bodies": [
-      "FlexBenchDog"
-    ],
-    "created_bodies": [],
-    "feature": 7,
-    "ms": 39.977137000000006,
-    "name": "Flex slot X",
-    "removed_bodies": [],
-    "warning": null
-  },
-  {
-    "attachment": "fixed",
-    "created": {
-      "constraints": [],
-      "curves": [],
-      "dimensions": [],
-      "points": []
-    },
-    "frame": "world",
-    "name": "Flex slot Y",
-    "projected": null,
-    "sketch": 8
-  },
-  {
-    "constraints": [
-      "k1",
-      "k2",
-      "k3",
-      "k4"
-    ],
-    "corners": {
-      "bottom_left": "p1",
-      "bottom_right": "p2",
-      "top_left": "p4",
-      "top_right": "p3"
-    },
-    "created": {
-      "constraints": [
-        "k1",
-        "k2",
-        "k3",
-        "k4"
-      ],
-      "curves": [
-        "l1",
-        "l2",
-        "l3",
-        "l4"
-      ],
-      "dimensions": [],
-      "points": [
-        "p1",
-        "p2",
-        "p3",
-        "p4"
-      ]
-    },
-    "curves": [
-      "l1",
-      "l2",
-      "l3",
-      "l4"
-    ],
-    "sides": {
-      "bottom": "l1",
-      "left": "l4",
-      "right": "l2",
-      "top": "l3"
-    },
-    "sketch": {
-      "dof": 0,
-      "solved": true
-    }
-  },
-  {
-    "profiles": 1,
-    "sketch": 8
-  },
-  {
-    "bodies": [
-      "FlexBenchDog"
-    ],
-    "changed_bodies": [
-      "FlexBenchDog"
-    ],
-    "created_bodies": [],
-    "feature": 9,
-    "ms": 35.640624,
-    "name": "Flex slot Y",
+    "ms": 27.057243000000003,
+    "name": "Cylinder4",
     "removed_bodies": [],
     "warning": null
   },
@@ -265,8 +107,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 10,
-    "ms": 74.53067100000001,
+    "feature": 6,
+    "ms": 65.505702,
     "name": "Chamfer2",
     "removed_bodies": [],
     "warning": null
@@ -280,9 +122,9 @@
       "points": []
     },
     "frame": "world",
-    "name": "Top logo",
+    "name": "Flex slot X",
     "projected": null,
-    "sketch": 11
+    "sketch": 7
   },
   {
     "constraints": [
@@ -331,13 +173,123 @@
       "top": "l3"
     },
     "sketch": {
-      "dof": 4,
+      "dof": 0,
       "solved": true
     }
   },
   {
     "profiles": 1,
-    "sketch": 11
+    "sketch": 7
+  },
+  {
+    "bodies": [
+      "FlexBenchDog"
+    ],
+    "changed_bodies": [
+      "FlexBenchDog"
+    ],
+    "created_bodies": [],
+    "feature": 8,
+    "ms": 68.497819,
+    "name": "Flex slot X",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "Flex slot Y",
+    "projected": null,
+    "sketch": 9
+  },
+  {
+    "constraints": [
+      "k1",
+      "k2",
+      "k3",
+      "k4"
+    ],
+    "corners": {
+      "bottom_left": "p1",
+      "bottom_right": "p2",
+      "top_left": "p4",
+      "top_right": "p3"
+    },
+    "created": {
+      "constraints": [
+        "k1",
+        "k2",
+        "k3",
+        "k4"
+      ],
+      "curves": [
+        "l1",
+        "l2",
+        "l3",
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ]
+    },
+    "curves": [
+      "l1",
+      "l2",
+      "l3",
+      "l4"
+    ],
+    "sides": {
+      "bottom": "l1",
+      "left": "l4",
+      "right": "l2",
+      "top": "l3"
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 9
+  },
+  {
+    "bodies": [
+      "FlexBenchDog"
+    ],
+    "changed_bodies": [
+      "FlexBenchDog"
+    ],
+    "created_bodies": [],
+    "feature": 10,
+    "ms": 82.339329,
+    "name": "Flex slot Y",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "FlexBenchDog"
+    ],
+    "changed_bodies": [
+      "FlexBenchDog"
+    ],
+    "created_bodies": [],
+    "feature": 11,
+    "ms": 258.690089,
+    "name": "Fillet1",
+    "removed_bodies": [],
+    "warning": null
   },
   {
     "bodies": [
@@ -348,8 +300,734 @@
     ],
     "created_bodies": [],
     "feature": 12,
-    "ms": 24.816277,
-    "name": "Top logo",
+    "ms": 114.27632799999999,
+    "name": "Chamfer3",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "Top logo rib 1",
+    "projected": null,
+    "sketch": 13
+  },
+  {
+    "centre_line": "l3",
+    "constraints": [
+      "k1",
+      "k2",
+      "k3",
+      "k4",
+      "k5",
+      "k6"
+    ],
+    "created": {
+      "constraints": [
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "k6"
+      ],
+      "curves": [
+        "l1",
+        "a1",
+        "l2",
+        "a2",
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "a1.center",
+        "a2.center",
+        "p5"
+      ]
+    },
+    "curves": [
+      "l1",
+      "a1",
+      "l2",
+      "a2"
+    ],
+    "middle": "p5",
+    "sketch": {
+      "dof": 5,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 13
+  },
+  {
+    "bodies": [
+      "FlexBenchDog"
+    ],
+    "changed_bodies": [
+      "FlexBenchDog"
+    ],
+    "created_bodies": [],
+    "feature": 14,
+    "ms": 46.476416,
+    "name": "Top logo rib 1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "Top logo rib 2",
+    "projected": null,
+    "sketch": 15
+  },
+  {
+    "centre_line": "l3",
+    "constraints": [
+      "k1",
+      "k2",
+      "k3",
+      "k4",
+      "k5",
+      "k6"
+    ],
+    "created": {
+      "constraints": [
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "k6"
+      ],
+      "curves": [
+        "l1",
+        "a1",
+        "l2",
+        "a2",
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "a1.center",
+        "a2.center",
+        "p5"
+      ]
+    },
+    "curves": [
+      "l1",
+      "a1",
+      "l2",
+      "a2"
+    ],
+    "middle": "p5",
+    "sketch": {
+      "dof": 5,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 15
+  },
+  {
+    "bodies": [
+      "FlexBenchDog"
+    ],
+    "changed_bodies": [
+      "FlexBenchDog"
+    ],
+    "created_bodies": [],
+    "feature": 16,
+    "ms": 60.748241,
+    "name": "Top logo rib 2",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "Top logo rib 3",
+    "projected": null,
+    "sketch": 17
+  },
+  {
+    "centre_line": "l3",
+    "constraints": [
+      "k1",
+      "k2",
+      "k3",
+      "k4",
+      "k5",
+      "k6"
+    ],
+    "created": {
+      "constraints": [
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "k6"
+      ],
+      "curves": [
+        "l1",
+        "a1",
+        "l2",
+        "a2",
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "a1.center",
+        "a2.center",
+        "p5"
+      ]
+    },
+    "curves": [
+      "l1",
+      "a1",
+      "l2",
+      "a2"
+    ],
+    "middle": "p5",
+    "sketch": {
+      "dof": 5,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 17
+  },
+  {
+    "bodies": [
+      "FlexBenchDog"
+    ],
+    "changed_bodies": [
+      "FlexBenchDog"
+    ],
+    "created_bodies": [],
+    "feature": 18,
+    "ms": 62.072055,
+    "name": "Top logo rib 3",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "Top logo rib 4",
+    "projected": null,
+    "sketch": 19
+  },
+  {
+    "centre_line": "l3",
+    "constraints": [
+      "k1",
+      "k2",
+      "k3",
+      "k4",
+      "k5",
+      "k6"
+    ],
+    "created": {
+      "constraints": [
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "k6"
+      ],
+      "curves": [
+        "l1",
+        "a1",
+        "l2",
+        "a2",
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "a1.center",
+        "a2.center",
+        "p5"
+      ]
+    },
+    "curves": [
+      "l1",
+      "a1",
+      "l2",
+      "a2"
+    ],
+    "middle": "p5",
+    "sketch": {
+      "dof": 5,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 19
+  },
+  {
+    "bodies": [
+      "FlexBenchDog"
+    ],
+    "changed_bodies": [
+      "FlexBenchDog"
+    ],
+    "created_bodies": [],
+    "feature": 20,
+    "ms": 65.542608,
+    "name": "Top logo rib 4",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "Top logo rib 5",
+    "projected": null,
+    "sketch": 21
+  },
+  {
+    "centre_line": "l3",
+    "constraints": [
+      "k1",
+      "k2",
+      "k3",
+      "k4",
+      "k5",
+      "k6"
+    ],
+    "created": {
+      "constraints": [
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "k6"
+      ],
+      "curves": [
+        "l1",
+        "a1",
+        "l2",
+        "a2",
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "a1.center",
+        "a2.center",
+        "p5"
+      ]
+    },
+    "curves": [
+      "l1",
+      "a1",
+      "l2",
+      "a2"
+    ],
+    "middle": "p5",
+    "sketch": {
+      "dof": 5,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 21
+  },
+  {
+    "bodies": [
+      "FlexBenchDog"
+    ],
+    "changed_bodies": [
+      "FlexBenchDog"
+    ],
+    "created_bodies": [],
+    "feature": 22,
+    "ms": 69.81930899999999,
+    "name": "Top logo rib 5",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "Top logo rib 6",
+    "projected": null,
+    "sketch": 23
+  },
+  {
+    "centre_line": "l3",
+    "constraints": [
+      "k1",
+      "k2",
+      "k3",
+      "k4",
+      "k5",
+      "k6"
+    ],
+    "created": {
+      "constraints": [
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "k6"
+      ],
+      "curves": [
+        "l1",
+        "a1",
+        "l2",
+        "a2",
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "a1.center",
+        "a2.center",
+        "p5"
+      ]
+    },
+    "curves": [
+      "l1",
+      "a1",
+      "l2",
+      "a2"
+    ],
+    "middle": "p5",
+    "sketch": {
+      "dof": 5,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 23
+  },
+  {
+    "bodies": [
+      "FlexBenchDog"
+    ],
+    "changed_bodies": [
+      "FlexBenchDog"
+    ],
+    "created_bodies": [],
+    "feature": 24,
+    "ms": 79.645575,
+    "name": "Top logo rib 6",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "Top logo rib 7",
+    "projected": null,
+    "sketch": 25
+  },
+  {
+    "centre_line": "l3",
+    "constraints": [
+      "k1",
+      "k2",
+      "k3",
+      "k4",
+      "k5",
+      "k6",
+      "k7"
+    ],
+    "created": {
+      "constraints": [
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "k6",
+        "k7"
+      ],
+      "curves": [
+        "l1",
+        "a1",
+        "l2",
+        "a2",
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "a1.center",
+        "a2.center",
+        "p5"
+      ]
+    },
+    "curves": [
+      "l1",
+      "a1",
+      "l2",
+      "a2"
+    ],
+    "middle": "p5",
+    "sketch": {
+      "dof": 3,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 25
+  },
+  {
+    "bodies": [
+      "FlexBenchDog"
+    ],
+    "changed_bodies": [
+      "FlexBenchDog"
+    ],
+    "created_bodies": [],
+    "feature": 26,
+    "ms": 73.853589,
+    "name": "Top logo rib 7",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "Top logo rib 8",
+    "projected": null,
+    "sketch": 27
+  },
+  {
+    "centre_line": "l3",
+    "constraints": [
+      "k1",
+      "k2",
+      "k3",
+      "k4",
+      "k5",
+      "k6",
+      "k7"
+    ],
+    "created": {
+      "constraints": [
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "k6",
+        "k7"
+      ],
+      "curves": [
+        "l1",
+        "a1",
+        "l2",
+        "a2",
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "a1.center",
+        "a2.center",
+        "p5"
+      ]
+    },
+    "curves": [
+      "l1",
+      "a1",
+      "l2",
+      "a2"
+    ],
+    "middle": "p5",
+    "sketch": {
+      "dof": 3,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 27
+  },
+  {
+    "bodies": [
+      "FlexBenchDog"
+    ],
+    "changed_bodies": [
+      "FlexBenchDog"
+    ],
+    "created_bodies": [],
+    "feature": 28,
+    "ms": 83.89885699999999,
+    "name": "Top logo rib 8",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "Top logo rib 9",
+    "projected": null,
+    "sketch": 29
+  },
+  {
+    "centre_line": "l3",
+    "constraints": [
+      "k1",
+      "k2",
+      "k3",
+      "k4",
+      "k5",
+      "k6",
+      "k7"
+    ],
+    "created": {
+      "constraints": [
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "k6",
+        "k7"
+      ],
+      "curves": [
+        "l1",
+        "a1",
+        "l2",
+        "a2",
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "a1.center",
+        "a2.center",
+        "p5"
+      ]
+    },
+    "curves": [
+      "l1",
+      "a1",
+      "l2",
+      "a2"
+    ],
+    "middle": "p5",
+    "sketch": {
+      "dof": 3,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 29
+  },
+  {
+    "bodies": [
+      "FlexBenchDog"
+    ],
+    "changed_bodies": [
+      "FlexBenchDog"
+    ],
+    "created_bodies": [],
+    "feature": 30,
+    "ms": 79.626154,
+    "name": "Top logo rib 9",
     "removed_bodies": [],
     "warning": null
   }

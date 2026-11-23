@@ -5,8 +5,8 @@
         {
           "kind": "file",
           "path": "baseline/measurements.json",
-          "sha256": "f2358c7a4b18e4980af9b28dfa1278c85cd273e51e57dbe7852f4ffd177f7efd",
-          "size": 5001
+          "sha256": "9b31114a3b06edcf65a123fedf28afd0e7d82443280c32394a076bbcc8eebe44",
+          "size": 10483
         }
       ],
       "error": null,
@@ -26,26 +26,26 @@
               "actual": {
                 "label": "FlexBenchDog",
                 "max": [
-                  12.000000000000002,
-                  12.000000000000002,
+                  11.000000000000002,
+                  11.0,
                   20.000000000000018
                 ],
                 "min": [
-                  -12.000000000000002,
-                  -12.000000000000002,
+                  -11.0,
+                  -11.000000000000002,
                   -20.00000000000005
                 ]
               },
               "expected": {
                 "label": null,
                 "max": [
-                  12.0,
-                  12.0,
+                  11.0,
+                  11.0,
                   20.0
                 ],
                 "min": [
-                  -12.0,
-                  -12.0,
+                  -11.0,
+                  -11.0,
                   -20.0
                 ]
               },
@@ -69,8 +69,8 @@
           }
         ],
         "sketch_count": {
-          "actual": 3,
-          "expected": 3,
+          "actual": 11,
+          "expected": 11,
           "label": "SolidCraft sketch count",
           "pass": true
         }

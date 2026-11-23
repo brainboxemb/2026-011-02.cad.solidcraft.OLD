@@ -3,33 +3,6 @@
   "models": [
     {
       "compile_error": null,
-      "definition": null,
-      "forge_commands": "/output/items/models/advanced/hub75_screen/generated/hub75-screen/scpf/solidcraft.json",
-      "item_path": "models/advanced/hub75_screen",
-      "scpc_commands": null,
-      "scpc_sha": null,
-      "slug": "hub75-screen"
-    },
-    {
-      "compile_error": null,
-      "definition": null,
-      "forge_commands": "/output/items/models/advanced/simple_mft/generated/simple-mft/scpf/solidcraft.json",
-      "item_path": "models/advanced/simple_mft",
-      "scpc_commands": null,
-      "scpc_sha": null,
-      "slug": "simple-mft"
-    },
-    {
-      "compile_error": null,
-      "definition": null,
-      "forge_commands": "/output/items/models/advanced/simple_mft/generated/simple-mft-assembly/scpf/solidcraft.json",
-      "item_path": "models/advanced/simple_mft",
-      "scpc_commands": null,
-      "scpc_sha": null,
-      "slug": "simple-mft-assembly"
-    },
-    {
-      "compile_error": null,
       "definition": "models/basic/bolted_flange/verification/verify.py",
       "forge_commands": "/output/items/models/basic/bolted_flange/generated/bolted-flange/scpf/solidcraft.json",
       "item_path": "models/basic/bolted_flange",
@@ -144,9 +117,36 @@
       "scpc_commands": null,
       "scpc_sha": null,
       "slug": "hub75-panel"
+    },
+    {
+      "compile_error": null,
+      "definition": null,
+      "forge_commands": "/output/items/models/advanced/hub75_screen/generated/hub75-screen/scpf/solidcraft.json",
+      "item_path": "models/advanced/hub75_screen",
+      "scpc_commands": null,
+      "scpc_sha": null,
+      "slug": "hub75-screen"
+    },
+    {
+      "compile_error": null,
+      "definition": null,
+      "forge_commands": "/output/items/models/advanced/simple_mft/generated/simple-mft/scpf/solidcraft.json",
+      "item_path": "models/advanced/simple_mft",
+      "scpc_commands": null,
+      "scpc_sha": null,
+      "slug": "simple-mft"
+    },
+    {
+      "compile_error": null,
+      "definition": null,
+      "forge_commands": "/output/items/models/advanced/simple_mft/generated/simple-mft-assembly/scpf/solidcraft.json",
+      "item_path": "models/advanced/simple_mft",
+      "scpc_commands": null,
+      "scpc_sha": null,
+      "slug": "simple-mft-assembly"
     }
   ],
   "runtime_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
   "schema": 1,
-  "source_sha": "4e6f36f946cdb560fa2349f8559419f66ba577fc"
+  "source_sha": "449bd96710a0c020ba10958d294d419251637469"
 }

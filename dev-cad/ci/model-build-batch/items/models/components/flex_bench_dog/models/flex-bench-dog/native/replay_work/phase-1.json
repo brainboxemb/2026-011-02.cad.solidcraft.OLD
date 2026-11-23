@@ -4,7 +4,7 @@
       "command": "parameters.add",
       "params": {
         "name": "rim_diameter",
-        "expression": "24",
+        "expression": "22",
         "unit": "mm"
       }
     },
@@ -33,9 +33,17 @@
       }
     },
     {
+      "command": "parameters.add",
+      "params": {
+        "name": "slot_corner_radius",
+        "expression": "0.5",
+        "unit": "mm"
+      }
+    },
+    {
       "command": "solid.cylinder",
       "params": {
-        "height": 3.0,
+        "height": 1.5,
         "diameter": "rim_diameter",
         "base": [
           0,
@@ -48,14 +56,28 @@
       }
     },
     {
+      "command": "solid.chamfer",
+      "params": {
+        "edges": [
+          [
+            11.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "distance": 1.0,
+        "body": "FlexBenchDog"
+      }
+    },
+    {
       "command": "solid.cylinder",
       "params": {
-        "height": 17.0,
+        "height": 18.5,
         "diameter": "hole_diameter",
         "base": [
           0,
           0,
-          3.0
+          1.5
         ],
         "axis": "Z",
         "operation": "join",
@@ -217,6 +239,35 @@
       }
     },
     {
+      "command": "solid.fillet",
+      "params": {
+        "edges": [
+          [
+            0.75,
+            0.75,
+            -12.0
+          ],
+          [
+            -0.75,
+            0.75,
+            -12.0
+          ],
+          [
+            -0.75,
+            -0.75,
+            -12.0
+          ],
+          [
+            0.75,
+            -0.75,
+            -12.0
+          ]
+        ],
+        "radius": "slot_corner_radius",
+        "body": "FlexBenchDog"
+      }
+    },
+    {
       "command": "solid.chamfer",
       "params": {
         "edges": [
@@ -250,20 +301,21 @@
             0
           ]
         },
-        "name": "Top logo"
+        "name": "Top logo rib 1"
       }
     },
     {
-      "command": "sketch.rectangle.two_point",
+      "command": "sketch.slot.center_to_center",
       "params": {
         "p0": [
-          -4.0,
-          -4.0
+          0.0,
+          4.0
         ],
         "p1": [
-          4.0,
-          4.0
-        ]
+          3.5,
+          2.0
+        ],
+        "width": 0.6
       }
     },
     {
@@ -277,7 +329,431 @@
         "targets": [
           "FlexBenchDog"
         ],
-        "name": "Top logo",
+        "name": "Top logo rib 1",
+        "distance": 0.6,
+        "direction": "negative"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": {
+          "origin": [
+            0.0,
+            0.0,
+            20.0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "name": "Top logo rib 2"
+      }
+    },
+    {
+      "command": "sketch.slot.center_to_center",
+      "params": {
+        "p0": [
+          3.5,
+          2.0
+        ],
+        "p1": [
+          3.5,
+          -2.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "operation": "cut",
+        "targets": [
+          "FlexBenchDog"
+        ],
+        "name": "Top logo rib 2",
+        "distance": 0.6,
+        "direction": "negative"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": {
+          "origin": [
+            0.0,
+            0.0,
+            20.0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "name": "Top logo rib 3"
+      }
+    },
+    {
+      "command": "sketch.slot.center_to_center",
+      "params": {
+        "p0": [
+          3.5,
+          -2.0
+        ],
+        "p1": [
+          0.0,
+          -4.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "operation": "cut",
+        "targets": [
+          "FlexBenchDog"
+        ],
+        "name": "Top logo rib 3",
+        "distance": 0.6,
+        "direction": "negative"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": {
+          "origin": [
+            0.0,
+            0.0,
+            20.0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "name": "Top logo rib 4"
+      }
+    },
+    {
+      "command": "sketch.slot.center_to_center",
+      "params": {
+        "p0": [
+          0.0,
+          -4.0
+        ],
+        "p1": [
+          -3.5,
+          -2.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "operation": "cut",
+        "targets": [
+          "FlexBenchDog"
+        ],
+        "name": "Top logo rib 4",
+        "distance": 0.6,
+        "direction": "negative"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": {
+          "origin": [
+            0.0,
+            0.0,
+            20.0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "name": "Top logo rib 5"
+      }
+    },
+    {
+      "command": "sketch.slot.center_to_center",
+      "params": {
+        "p0": [
+          -3.5,
+          -2.0
+        ],
+        "p1": [
+          -3.5,
+          2.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "operation": "cut",
+        "targets": [
+          "FlexBenchDog"
+        ],
+        "name": "Top logo rib 5",
+        "distance": 0.6,
+        "direction": "negative"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": {
+          "origin": [
+            0.0,
+            0.0,
+            20.0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "name": "Top logo rib 6"
+      }
+    },
+    {
+      "command": "sketch.slot.center_to_center",
+      "params": {
+        "p0": [
+          -3.5,
+          2.0
+        ],
+        "p1": [
+          0.0,
+          4.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "operation": "cut",
+        "targets": [
+          "FlexBenchDog"
+        ],
+        "name": "Top logo rib 6",
+        "distance": 0.6,
+        "direction": "negative"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": {
+          "origin": [
+            0.0,
+            0.0,
+            20.0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "name": "Top logo rib 7"
+      }
+    },
+    {
+      "command": "sketch.slot.center_to_center",
+      "params": {
+        "p0": [
+          0.0,
+          0.0
+        ],
+        "p1": [
+          0.0,
+          4.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "operation": "cut",
+        "targets": [
+          "FlexBenchDog"
+        ],
+        "name": "Top logo rib 7",
+        "distance": 0.6,
+        "direction": "negative"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": {
+          "origin": [
+            0.0,
+            0.0,
+            20.0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "name": "Top logo rib 8"
+      }
+    },
+    {
+      "command": "sketch.slot.center_to_center",
+      "params": {
+        "p0": [
+          0.0,
+          0.0
+        ],
+        "p1": [
+          3.5,
+          -2.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "operation": "cut",
+        "targets": [
+          "FlexBenchDog"
+        ],
+        "name": "Top logo rib 8",
+        "distance": 0.6,
+        "direction": "negative"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": {
+          "origin": [
+            0.0,
+            0.0,
+            20.0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "name": "Top logo rib 9"
+      }
+    },
+    {
+      "command": "sketch.slot.center_to_center",
+      "params": {
+        "p0": [
+          0.0,
+          0.0
+        ],
+        "p1": [
+          -3.5,
+          -2.0
+        ],
+        "width": 0.6
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "operation": "cut",
+        "targets": [
+          "FlexBenchDog"
+        ],
+        "name": "Top logo rib 9",
         "distance": 0.6,
         "direction": "negative"
       }
