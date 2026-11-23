@@ -23,8 +23,20 @@ class FlexBenchDog:
     SLOT_LENGTH = 16.0
     TOP_CHAMFER = 0.6
     BOTTOM_CHAMFER = 1.0
-    LOGO_SIZE = 8.0
+    LOGO_LINE_WIDTH = 0.6
     LOGO_DEPTH = 0.6
+
+    LOGO_SEGMENTS = (
+        ((0.0, 4.0), (3.5, 2.0)),
+        ((3.5, 2.0), (3.5, -2.0)),
+        ((3.5, -2.0), (0.0, -4.0)),
+        ((0.0, -4.0), (-3.5, -2.0)),
+        ((-3.5, -2.0), (-3.5, 2.0)),
+        ((-3.5, 2.0), (0.0, 4.0)),
+        ((0.0, 0.0), (0.0, 4.0)),
+        ((0.0, 0.0), (3.5, -2.0)),
+        ((0.0, 0.0), (-3.5, -2.0)),
+    )
 
     def build(self):
         # The stop collar sits on the small 45-degree mouth chamfer of a
@@ -118,14 +130,17 @@ class FlexBenchDog:
             edges=[(self.hole_diameter / 2, 0, self.ABOVE_WORKTOP)],
         )
 
-        # Small recessed square used as a simple BBE/box mark.
+        # Recess the preserved BrainBox cube/box wireframe: six perimeter
+        # strokes plus three spokes meeting at the centre. Narrow native slots
+        # keep the stroke ends printable instead of cutting one filled square.
         with Sketch(
             name="Top logo",
             on=dog,
             plane="XY",
             origin=(0, 0, self.ABOVE_WORKTOP),
         ) as logo:
-            Rectangle2D(self.LOGO_SIZE, self.LOGO_SIZE)
+            for p0, p1 in self.LOGO_SEGMENTS:
+                SlotCenterToCenter2D(p0, p1, self.LOGO_LINE_WIDTH)
         dog = dog - logo.extrude(-self.LOGO_DEPTH)
 
         return dog

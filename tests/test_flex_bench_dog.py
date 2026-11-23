@@ -16,7 +16,8 @@ class FlexBenchDogTests(unittest.TestCase):
 
         self.assertEqual(names.count("solid.cylinder"), 4)
         self.assertEqual(names.count("sketch.create"), 3)
-        self.assertEqual(names.count("sketch.rectangle.two_point"), 3)
+        self.assertEqual(names.count("sketch.rectangle.two_point"), 2)
+        self.assertEqual(names.count("sketch.slot.center_to_center"), 9)
         self.assertEqual(names.count("solid.extrude"), 3)
         self.assertEqual(names.count("solid.fillet"), 1)
         self.assertEqual(names.count("solid.chamfer"), 3)
@@ -137,7 +138,7 @@ class FlexBenchDogTests(unittest.TestCase):
         self.assertEqual(chamfers[1]["distance"], 1.0)
         self.assertEqual(chamfers[2]["distance"], 0.6)
 
-    def test_recessed_top_logo_is_present(self):
+    def test_recessed_top_logo_is_exact_cube_wireframe_not_filled_square(self):
         commands = run_script(MODEL)["commands"]
         sketches = [
             row["params"]
@@ -147,13 +148,47 @@ class FlexBenchDogTests(unittest.TestCase):
         self.assertEqual(sketches[-1]["name"], "Top logo")
         self.assertEqual(sketches[-1]["plane"]["origin"], [0, 0, 20])
 
-        cuts = [
+        logo_slots = [
+            row["params"]
+            for row in commands
+            if row["command"] == "sketch.slot.center_to_center"
+        ]
+        self.assertEqual(len(logo_slots), 9)
+        self.assertTrue(all(row["width"] == 0.6 for row in logo_slots))
+
+        expected = {
+            ((0.0, 4.0), (3.5, 2.0)),
+            ((3.5, 2.0), (3.5, -2.0)),
+            ((3.5, -2.0), (0.0, -4.0)),
+            ((0.0, -4.0), (-3.5, -2.0)),
+            ((-3.5, -2.0), (-3.5, 2.0)),
+            ((-3.5, 2.0), (0.0, 4.0)),
+            ((0.0, 0.0), (0.0, 4.0)),
+            ((0.0, 0.0), (3.5, -2.0)),
+            ((0.0, 0.0), (-3.5, -2.0)),
+        }
+        actual = {
+            (tuple(row["p0"]), tuple(row["p1"]))
+            for row in logo_slots
+        }
+        self.assertEqual(actual, expected)
+
+        self.assertFalse(
+            any(
+                row["command"] == "sketch.rectangle.two_point"
+                and row["params"].get("p0") == [-4, -4]
+                and row["params"].get("p1") == [4, 4]
+                for row in commands
+            )
+        )
+
+        logo_cut = next(
             row["params"]
             for row in commands
             if row["command"] == "solid.extrude"
-            and row["params"]["operation"] == "cut"
-        ]
-        logo_cut = next(row for row in cuts if row["name"] == "Top logo")
+            and row["params"]["name"] == "Top logo"
+        )
+        self.assertEqual(logo_cut["operation"], "cut")
         self.assertEqual(logo_cut["distance"], 0.6)
         self.assertEqual(logo_cut["direction"], "negative")
 

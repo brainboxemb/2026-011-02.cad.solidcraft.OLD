@@ -27,7 +27,7 @@ on the actual dog-hole diameter, printer, filament and print settings.
 - Ø22 × 1.5 mm MFT stop collar with a 1.0 mm 45° underside seat chamfer back to Ø20;
 - light **0.6 mm chamfer** around the upper edge;
 - larger **1.0 mm chamfer** on the lower insertion edge as a lead-in;
-- small **recessed square box logo** in the top face;
+- recessed **BrainBox cube/box wireframe** in the top face: six perimeter strokes plus three centre spokes;
 - 2 mm long flared flex tips;
 - 16 mm flex slots, leaving 4 mm solid material below the rim.
 
@@ -48,12 +48,19 @@ on the actual dog-hole diameter, printer, filament and print settings.
 | Central slot-corner fillet | R0.5 mm |
 | Top chamfer | 0.6 mm |
 | Bottom lead-in chamfer | 1.0 mm |
+| Logo line width | 0.6 mm |
 | Logo depth | 0.6 mm |
 
 The physical body spans **40 mm** from the bottom of the insert to the top
 face. That is intentionally slightly longer than an 18 mm worktop; the insert
-does not need to stop flush with the underside. The square logo is recessed
-0.6 mm into the top face.
+does not need to stop flush with the underside.
+
+## Top mark
+
+The top mark is not a filled square. It is the preserved recessed BrainBox
+cube/box wireframe: six outer segments plus three spokes meeting at the centre.
+Each stroke is a 0.6 mm-wide native rounded slot, recessed 0.6 mm into the top
+face.
 
 ## Source and confidence
 
