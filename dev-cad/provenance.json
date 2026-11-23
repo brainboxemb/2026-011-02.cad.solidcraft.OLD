@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "generator": "hugo+blowfish",
-  "source_commit": "59271081d36eacd500b4b010f43979fc7064fb4e",
-  "build_commit": "233c03ed211e3d2fdbbc3cf2f59ed2aaeade70af",
+  "generator": "hugo+hextra",
+  "source_commit": "4e6f36f946cdb560fa2349f8559419f66ba577fc",
+  "build_commit": "bd4dfdcf4e6c0b5a74b9c7635c66e6f0128a52c8",
   "build_scope": "dev-cad"
 }
