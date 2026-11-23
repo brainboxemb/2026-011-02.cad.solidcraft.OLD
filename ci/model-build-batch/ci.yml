@@ -27,10 +27,14 @@ steps:
       - models/*/*/scpc/**
       - models/*/*/verification/**
       - models/*/*/check.py
-      - models/*/*/*/scpf/**
-      - models/*/*/*/scpc/**
-      - models/*/*/*/verification/**
-      - models/*/*/*/check.py
+      - models/components/hub75_panel/basic/scpf/**
+      - models/components/hub75_panel/basic/scpc/**
+      - models/components/hub75_panel/basic/verification/**
+      - models/components/hub75_panel/basic/check.py
+      - models/components/hub75_panel/detailed/scpf/**
+      - models/components/hub75_panel/detailed/scpc/**
+      - models/components/hub75_panel/detailed/verification/**
+      - models/components/hub75_panel/detailed/check.py
       - scripts/ci/model_build_batch.py
       - scripts/ci/model_verify.py
       - scripts/ci/model_catalog.py
