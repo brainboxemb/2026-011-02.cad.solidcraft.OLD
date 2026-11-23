@@ -72,3 +72,4 @@ Current records:
 - [0038-flex-bench-dog-logo-polygon-ribs.md](0038-flex-bench-dog-logo-polygon-ribs.md) — isolate the nine BrainBox logo ribs into separate cuts; current Slot-per-Sketch construction is temporary pending Forge #747 (#332/#348).
 - [0041-flex-bench-dog-rounded-slot-corners.md](0041-flex-bench-dog-rounded-slot-corners.md) — fillet the four vertical material corners around the FlexBenchDog central cross without changing slot dimensions (#333).
 - [0042-corner-bracket-exact-geometry.md](0042-corner-bracket-exact-geometry.md) — restore the preserved arm-tip profile and exact four-part recessed M5 fixing-seat geometry in the shared CornerBracket (#8).
+- [0043-hub75-connector-envelopes.md](0043-hub75-connector-envelopes.md) — keep IDC and approximate power-clearance envelopes in the reusable detailed HUB75 panel (#375).
