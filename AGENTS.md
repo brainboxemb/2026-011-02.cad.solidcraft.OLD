@@ -23,11 +23,12 @@
 > are source-lane-owned. Do not recreate the retired local planner, selector,
 > build store, publisher or Python HTML generator.
 >
-> **Model build gate:** 14 physical roots / 16 variants currently build in the
-> shared runtime. `hub75-display2` and `hub75-wood-frame` stay disabled only
-> for Forge #679. Do not add CAD-local naming workarounds. Semantic
-> `verification/verify.py` is optional; a processed model must at least build
-> and produce the required saved outputs.
+> **Model build gate:** the repository uses the released Forge baseline pinned
+> in `dependencies.repos`. Forge #679 is released in v0.13.1; re-enable the
+> existing `hub75-wood-frame` through CAD #378 and qualify `hub75-display2`
+> through #142 rather than keeping a stale global Forge blocker. Do not add
+> CAD-local naming workarounds. Semantic `verification/verify.py` is optional;
+> a processed model must at least build and produce the required saved outputs.
 >
 > **Generic CAD-CI requests go through Forge first:** track the common
 > scan/plan/build-batch requirement under
