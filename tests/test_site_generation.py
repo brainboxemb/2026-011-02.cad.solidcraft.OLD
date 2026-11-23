@@ -292,6 +292,24 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertIn("Built in SolidCraft{{ with $solidcraftVersion }} {{ . }}{{ end }}", page)
         self.assertNotIn("scpc_command_count", page)
 
+    def test_model_page_keeps_long_parameters_out_of_status_badges(self):
+        page = (SITE / "layouts/models/single.html").read_text()
+        status_start = page.index('<div class="cad-model-statusbar">')
+        status_end = page.index("</div>", status_start)
+        status_block = page[status_start:status_end]
+
+        self.assertNotIn('index $m "parameters"', status_block)
+        self.assertIn('class="cad-model-parameters"', page)
+        self.assertIn("<strong>Key dimensions:</strong>", page)
+        self.assertIn('index $m "parameters"', page)
+        self.assertLess(
+            page.index('class="cad-model-description"'),
+            page.index('class="cad-model-parameters"'),
+        )
+
+        css = (SITE / "assets/css/custom.css").read_text()
+        self.assertIn(".cad-model-parameters {", css)
+
     def test_model_page_prioritizes_use_and_context_before_technical_depth(self):
         page = (SITE / "layouts/models/single.html").read_text()
         self.assertLess(page.index("cad-web-open"), page.index("cad-source-section"))
@@ -352,7 +370,7 @@ class HugoSiteContractTests(unittest.TestCase):
             workflow.index("Capture rendered model layouts"),
             workflow.index("Publish CAD Pages for source scope"),
         )
-        for route in ("models_url=", "basic_url=", "components_url=", "models/plate/", "models/simple-mft/"):
+        for route in ("models_url=", "basic_url=", "components_url=", "models/plate/", "models/simple-mft/", "models/flex-bench-dog/"):
             self.assertIn(route, script)
         for image in (
             "home-overview.png",
@@ -363,6 +381,7 @@ class HugoSiteContractTests(unittest.TestCase):
             "plate-full.png",
             "simple-mft-overview.png",
             "simple-mft-full.png",
+            "flex-bench-dog-overview.png",
         ):
             self.assertIn(image, script)
         self.assertIn('404 ', script)

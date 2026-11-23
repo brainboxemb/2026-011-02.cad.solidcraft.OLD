@@ -100,6 +100,7 @@ basic_url="${base}/models/basic/"
 components_url="${base}/models/components/"
 plate_url="${base}/models/plate/"
 simple_url="${base}/models/simple-mft/"
+flex_url="${base}/models/flex-bench-dog/"
 
 run_chrome \
   --window-size=1600,1800 \
@@ -141,6 +142,11 @@ run_chrome \
   --screenshot="$PWD/$artifact_dir/simple-mft-full.png" \
   "$simple_url"
 
+run_chrome \
+  --window-size=1600,1400 \
+  --screenshot="$PWD/$artifact_dir/flex-bench-dog-overview.png" \
+  "$flex_url"
+
 for image in \
   home-overview.png \
   models-overview.png \
@@ -149,7 +155,8 @@ for image in \
   plate-overview.png \
   plate-full.png \
   simple-mft-overview.png \
-  simple-mft-full.png; do
+  simple-mft-full.png \
+  flex-bench-dog-overview.png; do
   test -s "$artifact_dir/$image"
 done
 

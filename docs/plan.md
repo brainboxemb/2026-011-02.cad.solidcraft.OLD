@@ -199,6 +199,7 @@ schema, planner or reference framework.
 | Issue | Lane/owner | Status | Next action |
 | --- | --- | --- | --- |
 | #278 Model-detail presentation replacement | dev-ci | **promoted / accepted** | Framed model-detail baseline plus #297/#303 catalog corrections are stable; no further action in this workstream. |
+| #344 Compact model-detail facts | dev-ci | **now** | Remove long parameter prose from the status badges, keep it as readable Key dimensions under the model description, and add FlexBenchDog browser proof. |
 | #288 tool.cad.ci v0.25.0 workflow/config migration | dev-ci / CI | **later / separate** | Do not mix with #278; reassess after the current site presentation checkpoint. |
 | #250 Shared changelog template/history | documentation | **later** | Reassess after permanent lanes are coherent; do not interrupt WS1/WS2. |
 | #206 Remove Forge reference implementations | dev-cad | **now** | Remove the local CadQuery/MicroCAD/PythonSCAD/vcad reference sources and any assumptions that require them; no product geometry changes. |
