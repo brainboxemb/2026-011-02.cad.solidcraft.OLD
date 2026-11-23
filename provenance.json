@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "generator": "hugo+hextra",
-  "source_commit": "f4469205f9bcef118c169135c0ac5dffaea9837c",
-  "build_commit": "8ec83732cc40dfdea493596c6083ab0f8bb3a5c9",
+  "source_commit": "e568f6764d36d748bdb95c1d00d5751162e9e6c7",
+  "build_commit": "cca19435b77e35c95b6b3e3bde31e97a259267ba",
   "build_scope": "main"
 }
