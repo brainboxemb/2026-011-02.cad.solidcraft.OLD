@@ -1,0 +1,68 @@
+{
+  "checks": [
+    {
+      "artifacts": [
+        {
+          "kind": "file",
+          "path": "baseline/measurements.json",
+          "sha256": "514b03c06a0db7ec9e16f9f3c491d8411a3c691175506e97fa5692282331ac41",
+          "size": 34473
+        }
+      ],
+      "error": null,
+      "evidence": {
+        "parameters": {
+          "actual": {
+            "lower_compartment_height": 70.0
+          },
+          "expected": {
+            "lower_compartment_height": 70.0
+          },
+          "label": "SolidCraft parameters",
+          "pass": true
+        }
+      },
+      "id": "baseline",
+      "reason": null,
+      "status": "pass"
+    },
+    {
+      "artifacts": [
+        {
+          "kind": "file",
+          "path": "saved_designs/lower_compartment_90/model.sc",
+          "sha256": "48208047ac51f7787e79cb488f9f12d24434c5ec724d23213c654d7a5b406c6d",
+          "size": 1115845
+        },
+        {
+          "kind": "file",
+          "path": "saved_designs/lower_compartment_90/measurements.json",
+          "sha256": "57ce77c6e20477a3729a9b543b07677178fa5cc80f8754f8d98a72f85fe2f6b9",
+          "size": 34406
+        }
+      ],
+      "error": null,
+      "evidence": {
+        "parameters": {
+          "actual": {
+            "lower_compartment_height": 90.0
+          },
+          "expected": {
+            "lower_compartment_height": 90.0
+          },
+          "label": "SolidCraft parameters",
+          "pass": true
+        }
+      },
+      "id": "saved_design_lower_compartment_90",
+      "reason": null,
+      "status": "pass"
+    }
+  ],
+  "input": "/output/items/models/advanced/hub75_wood_frame_iter2/models/hub75-wood-frame-iter2/native/model.sc",
+  "metadata": {},
+  "schema": "cad-verification",
+  "schema_version": 1,
+  "status": "pass",
+  "verification_id": "hub75-wood-frame-iter2"
+}

@@ -45,12 +45,12 @@
       "engine_schema": 4,
       "final_bundle_sha256": "f4176d3c6c247f47eefbb404d8b18bdbcd215898639c4aec751095d9ef2a17cc",
       "final_step": "unittest",
-      "final_target_spec_digest": "ee083f81efdd2f0ff9e56adae4b24621e42b6100bcc3696a31604c6af9aa21ad",
+      "final_target_spec_digest": "340b3a33c3bf8d7a7e7390d70278fe85f56ff76c92b3f021dab515118a66165c",
       "item_id": "repository-tests",
       "outputs": [
         "result.json"
       ],
-      "source_commit": "d25440a98d4b2ab71464a92ee72c6eb76b337111"
+      "source_commit": "b0fd2ab4104d3d365794e2085f52ff752d7fe8c1"
     },
     "ci/scpc-package": {
       "engine": "scons",
@@ -106,6 +106,20 @@
         "models"
       ],
       "source_commit": "d25440a98d4b2ab71464a92ee72c6eb76b337111"
+    },
+    "models/advanced/hub75_wood_frame_iter2": {
+      "engine": "scons",
+      "engine_schema": 4,
+      "final_bundle_sha256": "734f679bc1a30a599f40e42746deea3ee42446c67a949e4f1ef1dc71e6439933",
+      "final_step": "build_results",
+      "final_target_spec_digest": "40a4fdb341796648585379e53d7f5f1ef0cc834d74665621db8552932e53d38d",
+      "item_id": "hub75-wood-frame-iter2",
+      "outputs": [
+        "generated",
+        "manifest.json",
+        "models"
+      ],
+      "source_commit": "b0fd2ab4104d3d365794e2085f52ff752d7fe8c1"
     },
     "models/advanced/simple_mft": {
       "engine": "scons",
@@ -293,5 +307,5 @@
   "name": "dev-cad",
   "schema": 1,
   "scope": "named",
-  "source_commit": "d25440a98d4b2ab71464a92ee72c6eb76b337111"
+  "source_commit": "b0fd2ab4104d3d365794e2085f52ff752d7fe8c1"
 }

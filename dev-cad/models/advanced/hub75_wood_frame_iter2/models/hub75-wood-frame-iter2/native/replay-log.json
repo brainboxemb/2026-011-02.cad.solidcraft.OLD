@@ -1,0 +1,2039 @@
+{
+  "format": "scpf-replay-log",
+  "version": 1,
+  "replay_sha256": "72a3f66b8082eca70ae7e5c985afeb2ee5fd4bbe98474faf660e6109fb3e4a65",
+  "variables": {
+    "$hub75panelbasic_occurrence_1": 10,
+    "$hub75panelbasic_occurrence_2": 13,
+    "$hub75panelbasic_occurrence_3": 14,
+    "$hub75panelbasic_occurrence_4": 15,
+    "$hub75panelbasic_occurrence_5": 16,
+    "$left": 18,
+    "$right": 22,
+    "$bottom": 24,
+    "$intermediate_shelf": 28,
+    "$lower_divider_left": 31,
+    "$lower_divider_right": 33,
+    "$roof": 35,
+    "$rear": 39,
+    "$cornerbracket_occurrence_1": 44,
+    "$cornerbracket_occurrence_2": 66,
+    "$cornerbracket_occurrence_3": 67,
+    "$cornerbracket_occurrence_4": 68,
+    "$cornerbracket_occurrence_5": 69,
+    "$cornerbracket_occurrence_6": 70,
+    "$cornerbracket_occurrence_7": 71,
+    "$cornerbracket_occurrence_8": 72,
+    "$glassstrip_occurrence_1": 74,
+    "$glassstrip_occurrence_2": 77,
+    "$glassstrip_2_occurrence_1": 79,
+    "$glassstrip_2_occurrence_2": 82,
+    "$window": 84
+  },
+  "commands": [
+    {
+      "index": 0,
+      "command": "component.create",
+      "resolved_params": {
+        "name": "HUB75Panels",
+        "activate": false,
+        "grounded": false
+      }
+    },
+    {
+      "index": 1,
+      "command": "component.create",
+      "resolved_params": {
+        "name": "WoodBoxFrame",
+        "activate": false,
+        "grounded": false
+      }
+    },
+    {
+      "index": 2,
+      "command": "component.create",
+      "resolved_params": {
+        "name": "CornerBrackets",
+        "activate": false,
+        "grounded": false
+      }
+    },
+    {
+      "index": 3,
+      "command": "component.create",
+      "resolved_params": {
+        "name": "WoodGlassFrame",
+        "activate": false,
+        "grounded": false
+      }
+    },
+    {
+      "index": 4,
+      "command": "component.create",
+      "resolved_params": {
+        "name": "Hub75PanelBasic",
+        "grounded": false,
+        "parent": "HUB75Panels"
+      },
+      "bindings": {
+        "$hub75panelbasic_occurrence_1": 10
+      }
+    },
+    {
+      "index": 5,
+      "command": "sketch.create",
+      "resolved_params": {
+        "plane": "XZ",
+        "name": "d1_Hub75PanelBasic__Profile"
+      }
+    },
+    {
+      "index": 6,
+      "command": "sketch.line",
+      "resolved_params": {
+        "points": [
+          [
+            -79.85,
+            0
+          ],
+          [
+            79.85,
+            0
+          ],
+          [
+            79.85,
+            -319.71
+          ],
+          [
+            -79.85,
+            -319.71
+          ]
+        ],
+        "closed": true,
+        "ids": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      }
+    },
+    {
+      "index": 7,
+      "command": "sketch.finish",
+      "resolved_params": {}
+    },
+    {
+      "index": 8,
+      "command": "solid.extrude",
+      "resolved_params": {
+        "distance": 14.5,
+        "direction": "symmetric",
+        "body_name": "Hub75PanelBasic"
+      }
+    },
+    {
+      "index": 9,
+      "command": "material.create",
+      "resolved_params": {
+        "name": "LED panel envelope",
+        "density_g_cm3": 1.2,
+        "color": "#242B32"
+      }
+    },
+    {
+      "index": 10,
+      "command": "material.assign",
+      "resolved_params": {
+        "bodies": [
+          "Hub75PanelBasic"
+        ],
+        "material": "LED panel envelope"
+      }
+    },
+    {
+      "index": 11,
+      "command": "component.activate",
+      "resolved_params": {
+        "component": "root"
+      }
+    },
+    {
+      "index": 12,
+      "command": "occurrence.copy",
+      "resolved_params": {
+        "component": "Hub75PanelBasic"
+      },
+      "bindings": {
+        "$hub75panelbasic_occurrence_2": 13
+      }
+    },
+    {
+      "index": 13,
+      "command": "occurrence.copy",
+      "resolved_params": {
+        "component": "Hub75PanelBasic"
+      },
+      "bindings": {
+        "$hub75panelbasic_occurrence_3": 14
+      }
+    },
+    {
+      "index": 14,
+      "command": "occurrence.copy",
+      "resolved_params": {
+        "component": "Hub75PanelBasic"
+      },
+      "bindings": {
+        "$hub75panelbasic_occurrence_4": 15
+      }
+    },
+    {
+      "index": 15,
+      "command": "occurrence.copy",
+      "resolved_params": {
+        "component": "Hub75PanelBasic"
+      },
+      "bindings": {
+        "$hub75panelbasic_occurrence_5": 16
+      }
+    },
+    {
+      "index": 16,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "frame_wood_thickness",
+        "expression": "12",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 17,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "side_panel_depth",
+        "expression": "120",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 18,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "lower_compartment_height",
+        "expression": "70",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 19,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "opening_height",
+        "expression": "362",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 20,
+      "command": "component.create",
+      "resolved_params": {
+        "name": "SideBoard",
+        "grounded": false,
+        "parent": "WoodBoxFrame"
+      },
+      "bindings": {
+        "$left": 18
+      }
+    },
+    {
+      "index": 21,
+      "command": "solid.box",
+      "resolved_params": {
+        "length": "frame_wood_thickness",
+        "width": "side_panel_depth",
+        "height": "(lower_compartment_height + (frame_wood_thickness)) + (opening_height)",
+        "corner": [
+          "-(frame_wood_thickness / 2)",
+          0,
+          0
+        ],
+        "body_name": "SideBoard"
+      }
+    },
+    {
+      "index": 22,
+      "command": "sketch.create",
+      "resolved_params": {
+        "plane": "YZ",
+        "name": "d2_SideBoard__Side hand slot"
+      }
+    },
+    {
+      "index": 23,
+      "command": "sketch.slot.center_to_center",
+      "resolved_params": {
+        "p0": [
+          85.0,
+          177.0
+        ],
+        "p1": [
+          85.0,
+          349.0
+        ],
+        "width": 30.0
+      }
+    },
+    {
+      "index": 24,
+      "command": "sketch.finish",
+      "resolved_params": {}
+    },
+    {
+      "index": 25,
+      "command": "solid.extrude",
+      "resolved_params": {
+        "operation": "cut",
+        "targets": [
+          "SideBoard"
+        ],
+        "name": "Side hand slot",
+        "distance": "frame_wood_thickness + 2 mm",
+        "direction": "symmetric"
+      }
+    },
+    {
+      "index": 26,
+      "command": "material.create",
+      "resolved_params": {
+        "name": "LIGHTPLY side board",
+        "density_g_cm3": 0.55,
+        "color": "#CBA36B"
+      }
+    },
+    {
+      "index": 27,
+      "command": "material.assign",
+      "resolved_params": {
+        "bodies": [
+          "SideBoard"
+        ],
+        "material": "LIGHTPLY side board"
+      }
+    },
+    {
+      "index": 28,
+      "command": "component.activate",
+      "resolved_params": {
+        "component": "root"
+      }
+    },
+    {
+      "index": 29,
+      "command": "occurrence.copy",
+      "resolved_params": {
+        "component": "SideBoard"
+      },
+      "bindings": {
+        "$right": 22
+      }
+    },
+    {
+      "index": 30,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "opening_width",
+        "expression": "844",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 31,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "corner_radius",
+        "expression": "4",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 32,
+      "command": "component.create",
+      "resolved_params": {
+        "name": "Board",
+        "grounded": false,
+        "parent": "WoodBoxFrame"
+      },
+      "bindings": {
+        "$bottom": 24
+      }
+    },
+    {
+      "index": 33,
+      "command": "solid.box",
+      "resolved_params": {
+        "length": "opening_width + (frame_wood_thickness * 2)",
+        "width": "side_panel_depth",
+        "height": "frame_wood_thickness",
+        "corner": [
+          "-((opening_width + (frame_wood_thickness * 2)) / 2)",
+          0,
+          0
+        ],
+        "body_name": "Board"
+      }
+    },
+    {
+      "index": 34,
+      "command": "solid.fillet",
+      "resolved_params": {
+        "edges": [
+          [
+            -434.0,
+            60.0,
+            0.0
+          ],
+          [
+            434.0,
+            60.0,
+            0.0
+          ]
+        ],
+        "radius": "corner_radius",
+        "body": "Board"
+      }
+    },
+    {
+      "index": 35,
+      "command": "material.create",
+      "resolved_params": {
+        "name": "LIGHTPLY bottom",
+        "density_g_cm3": 0.55,
+        "color": "#CBA36B"
+      }
+    },
+    {
+      "index": 36,
+      "command": "material.assign",
+      "resolved_params": {
+        "bodies": [
+          "Board"
+        ],
+        "material": "LIGHTPLY bottom"
+      }
+    },
+    {
+      "index": 37,
+      "command": "component.activate",
+      "resolved_params": {
+        "component": "root"
+      }
+    },
+    {
+      "index": 38,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "cabinet_depth",
+        "expression": "120",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 39,
+      "command": "component.create",
+      "resolved_params": {
+        "name": "Board 2",
+        "grounded": false,
+        "parent": "WoodBoxFrame"
+      },
+      "bindings": {
+        "$intermediate_shelf": 28
+      }
+    },
+    {
+      "index": 40,
+      "command": "solid.box",
+      "resolved_params": {
+        "length": "opening_width",
+        "width": "cabinet_depth - 10 mm",
+        "height": "frame_wood_thickness",
+        "corner": [
+          "-(opening_width / 2)",
+          0,
+          0
+        ],
+        "body_name": "Board_2"
+      }
+    },
+    {
+      "index": 41,
+      "command": "material.create",
+      "resolved_params": {
+        "name": "LIGHTPLY intermediate shelf",
+        "density_g_cm3": 0.55,
+        "color": "#CBA36B"
+      }
+    },
+    {
+      "index": 42,
+      "command": "material.assign",
+      "resolved_params": {
+        "bodies": [
+          "Board_2"
+        ],
+        "material": "LIGHTPLY intermediate shelf"
+      }
+    },
+    {
+      "index": 43,
+      "command": "component.activate",
+      "resolved_params": {
+        "component": "root"
+      }
+    },
+    {
+      "index": 44,
+      "command": "component.create",
+      "resolved_params": {
+        "name": "Board 3",
+        "grounded": false,
+        "parent": "WoodBoxFrame"
+      },
+      "bindings": {
+        "$lower_divider_left": 31
+      }
+    },
+    {
+      "index": 45,
+      "command": "solid.box",
+      "resolved_params": {
+        "length": "frame_wood_thickness",
+        "width": "cabinet_depth - 10 mm",
+        "height": "lower_compartment_height",
+        "corner": [
+          "-(frame_wood_thickness / 2)",
+          0,
+          0
+        ],
+        "body_name": "Board_3"
+      }
+    },
+    {
+      "index": 46,
+      "command": "material.create",
+      "resolved_params": {
+        "name": "LIGHTPLY lower divider",
+        "density_g_cm3": 0.55,
+        "color": "#CBA36B"
+      }
+    },
+    {
+      "index": 47,
+      "command": "material.assign",
+      "resolved_params": {
+        "bodies": [
+          "Board_3"
+        ],
+        "material": "LIGHTPLY lower divider"
+      }
+    },
+    {
+      "index": 48,
+      "command": "component.activate",
+      "resolved_params": {
+        "component": "root"
+      }
+    },
+    {
+      "index": 49,
+      "command": "occurrence.copy",
+      "resolved_params": {
+        "component": "Board 3"
+      },
+      "bindings": {
+        "$lower_divider_right": 33
+      }
+    },
+    {
+      "index": 50,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "roof_rear_overhang",
+        "expression": "1",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 51,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "roof_front_overhang",
+        "expression": "10",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 52,
+      "command": "component.create",
+      "resolved_params": {
+        "name": "Board 4",
+        "grounded": false,
+        "parent": "WoodBoxFrame"
+      },
+      "bindings": {
+        "$roof": 35
+      }
+    },
+    {
+      "index": 53,
+      "command": "solid.box",
+      "resolved_params": {
+        "length": "opening_width + (frame_wood_thickness * 2)",
+        "width": "(side_panel_depth + (roof_rear_overhang)) - (-(roof_front_overhang))",
+        "height": "frame_wood_thickness",
+        "corner": [
+          "-((opening_width + (frame_wood_thickness * 2)) / 2)",
+          0,
+          0
+        ],
+        "body_name": "Board_4"
+      }
+    },
+    {
+      "index": 54,
+      "command": "solid.fillet",
+      "resolved_params": {
+        "edges": [
+          [
+            -434.0,
+            65.5,
+            12.0
+          ],
+          [
+            434.0,
+            65.5,
+            12.0
+          ]
+        ],
+        "radius": "corner_radius",
+        "body": "Board_4"
+      }
+    },
+    {
+      "index": 55,
+      "command": "material.create",
+      "resolved_params": {
+        "name": "LIGHTPLY roof",
+        "density_g_cm3": 0.55,
+        "color": "#CBA36B"
+      }
+    },
+    {
+      "index": 56,
+      "command": "material.assign",
+      "resolved_params": {
+        "bodies": [
+          "Board_4"
+        ],
+        "material": "LIGHTPLY roof"
+      }
+    },
+    {
+      "index": 57,
+      "command": "component.activate",
+      "resolved_params": {
+        "component": "root"
+      }
+    },
+    {
+      "index": 58,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "panel_wood_thickness",
+        "expression": "9",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 59,
+      "command": "component.create",
+      "resolved_params": {
+        "name": "RearBoard",
+        "grounded": false,
+        "parent": "WoodBoxFrame"
+      },
+      "bindings": {
+        "$rear": 39
+      }
+    },
+    {
+      "index": 60,
+      "command": "solid.box",
+      "resolved_params": {
+        "length": "opening_width",
+        "width": "panel_wood_thickness",
+        "height": "(((frame_wood_thickness + (lower_compartment_height)) + (frame_wood_thickness)) + (opening_height)) - (frame_wood_thickness + (lower_compartment_height))",
+        "corner": [
+          "-(opening_width / 2)",
+          0,
+          0
+        ],
+        "body_name": "RearBoard"
+      }
+    },
+    {
+      "index": 61,
+      "command": "sketch.create",
+      "resolved_params": {
+        "plane": "XZ",
+        "name": "d7_RearBoard__Rear side openings"
+      }
+    },
+    {
+      "index": 62,
+      "command": "sketch.rectangle.rounded",
+      "resolved_params": {
+        "p0": [
+          "(-((opening_width / 2) - 50 mm + 35 mm)) + (-35 mm)",
+          "((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height))) + ((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2) + (-((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2))"
+        ],
+        "p1": [
+          "(-((opening_width / 2) - 50 mm + 35 mm)) + (35 mm)",
+          "((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height))) + ((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2) + ((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2)"
+        ],
+        "radius": 20.0
+      }
+    },
+    {
+      "index": 63,
+      "command": "sketch.rectangle.rounded",
+      "resolved_params": {
+        "p0": [
+          "((opening_width / 2) - 50 mm + 35 mm) + (-35 mm)",
+          "((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height))) + ((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2) + (-((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2))"
+        ],
+        "p1": [
+          "((opening_width / 2) - 50 mm + 35 mm) + (35 mm)",
+          "((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height))) + ((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2) + ((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2)"
+        ],
+        "radius": 20.0
+      }
+    },
+    {
+      "index": 64,
+      "command": "sketch.finish",
+      "resolved_params": {}
+    },
+    {
+      "index": 65,
+      "command": "solid.extrude",
+      "resolved_params": {
+        "operation": "cut",
+        "targets": [
+          "RearBoard"
+        ],
+        "name": "Rear side openings",
+        "distance": "panel_wood_thickness + 2 mm",
+        "direction": "symmetric"
+      }
+    },
+    {
+      "index": 66,
+      "command": "material.create",
+      "resolved_params": {
+        "name": "LIGHTPLY rear",
+        "density_g_cm3": 0.55,
+        "color": "#A87D4D"
+      }
+    },
+    {
+      "index": 67,
+      "command": "material.assign",
+      "resolved_params": {
+        "bodies": [
+          "RearBoard"
+        ],
+        "material": "LIGHTPLY rear"
+      }
+    },
+    {
+      "index": 68,
+      "command": "component.activate",
+      "resolved_params": {
+        "component": "root"
+      }
+    },
+    {
+      "index": 69,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "bracket_width",
+        "expression": "24",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 70,
+      "command": "component.create",
+      "resolved_params": {
+        "name": "CornerBracket",
+        "grounded": false,
+        "parent": "CornerBrackets"
+      },
+      "bindings": {
+        "$cornerbracket_occurrence_1": 44
+      }
+    },
+    {
+      "index": 71,
+      "command": "sketch.create",
+      "resolved_params": {
+        "plane": "XZ",
+        "name": "d8_CornerBracket__Profile"
+      }
+    },
+    {
+      "index": 72,
+      "command": "sketch.line",
+      "resolved_params": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            59.4,
+            0
+          ],
+          [
+            60.0,
+            -0.6
+          ],
+          [
+            60.0,
+            -9.0
+          ],
+          [
+            57.0,
+            -12.0
+          ],
+          [
+            -6.0,
+            -12.0
+          ],
+          [
+            -12.0,
+            -6.0
+          ],
+          [
+            -12.0,
+            57.0
+          ],
+          [
+            -9.0,
+            60.0
+          ],
+          [
+            -0.6,
+            60.0
+          ],
+          [
+            0,
+            59.4
+          ]
+        ],
+        "closed": true,
+        "ids": [
+          "i_corner",
+          "tip_hor_relief",
+          "o_hor_tip",
+          "o_hor_bevel",
+          "o_hor",
+          "o_corner",
+          "o_vert",
+          "o_vert_bevel",
+          "o_vert_end",
+          "tip_vert_relief",
+          "v_tip"
+        ]
+      }
+    },
+    {
+      "index": 73,
+      "command": "sketch.finish",
+      "resolved_params": {}
+    },
+    {
+      "index": 74,
+      "command": "solid.extrude",
+      "resolved_params": {
+        "distance": "bracket_width",
+        "direction": "symmetric",
+        "body_name": "CornerBracket"
+      }
+    },
+    {
+      "index": 75,
+      "command": "solid.fillet",
+      "resolved_params": {
+        "edges": [
+          [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        ],
+        "radius": "corner_radius",
+        "body": "CornerBracket"
+      }
+    },
+    {
+      "index": 76,
+      "command": "solid.chamfer",
+      "resolved_params": {
+        "edges": [
+          [
+            60.0,
+            -12.0,
+            4.8
+          ],
+          [
+            58.5,
+            -12.0,
+            10.5
+          ],
+          [
+            25.5,
+            -12.0,
+            12.0
+          ],
+          [
+            -9.0,
+            -12.0,
+            9.0
+          ],
+          [
+            -12.0,
+            -12.0,
+            -25.5
+          ],
+          [
+            -10.5,
+            -12.0,
+            -58.5
+          ],
+          [
+            -4.8,
+            -12.0,
+            -60.0
+          ],
+          [
+            60.0,
+            12.0,
+            4.8
+          ],
+          [
+            58.5,
+            12.0,
+            10.5
+          ],
+          [
+            25.5,
+            12.0,
+            12.0
+          ],
+          [
+            -9.0,
+            12.0,
+            9.0
+          ],
+          [
+            -12.0,
+            12.0,
+            -25.5
+          ],
+          [
+            -10.5,
+            12.0,
+            -58.5
+          ],
+          [
+            -4.8,
+            12.0,
+            -60.0
+          ]
+        ],
+        "distance": 2.0,
+        "body": "CornerBracket"
+      }
+    },
+    {
+      "index": 77,
+      "command": "solid.chamfer",
+      "resolved_params": {
+        "edges": [
+          [
+            29.7,
+            -12.0,
+            -0.0
+          ],
+          [
+            29.7,
+            12.0,
+            -0.0
+          ]
+        ],
+        "distance": 0.6,
+        "body": "CornerBracket"
+      }
+    },
+    {
+      "index": 78,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          24.0,
+          0.0,
+          12.0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 10.4,
+        "depth": 1.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 79,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          24.0,
+          0.0,
+          11.0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 5.4,
+        "depth": 11.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "type": "countersink",
+        "cs_diameter": 10.4,
+        "cs_angle": 90
+      }
+    },
+    {
+      "index": 80,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          24.0,
+          0.0,
+          12.0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 10.8,
+        "depth": 0.2,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 81,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          24.0,
+          0.0,
+          0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 5.800000000000001,
+        "depth": 0.2,
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "index": 82,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          42.0,
+          0.0,
+          12.0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 10.4,
+        "depth": 1.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 83,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          42.0,
+          0.0,
+          11.0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 5.4,
+        "depth": 11.0,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "type": "countersink",
+        "cs_diameter": 10.4,
+        "cs_angle": 90
+      }
+    },
+    {
+      "index": 84,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          42.0,
+          0.0,
+          12.0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 10.8,
+        "depth": 0.2,
+        "direction": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "index": 85,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          42.0,
+          0.0,
+          0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 5.800000000000001,
+        "depth": 0.2,
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "index": 86,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -12.0,
+          0.0,
+          -24.0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 10.4,
+        "depth": 1.0,
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 87,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -11.0,
+          0.0,
+          -24.0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 5.4,
+        "depth": 11.0,
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "type": "countersink",
+        "cs_diameter": 10.4,
+        "cs_angle": 90
+      }
+    },
+    {
+      "index": 88,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -12.0,
+          0.0,
+          -24.0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 10.8,
+        "depth": 0.2,
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 89,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          0,
+          0.0,
+          -24.0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 5.800000000000001,
+        "depth": 0.2,
+        "direction": [
+          -1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 90,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -12.0,
+          0.0,
+          -42.0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 10.4,
+        "depth": 1.0,
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 91,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -11.0,
+          0.0,
+          -42.0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 5.4,
+        "depth": 11.0,
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "type": "countersink",
+        "cs_diameter": 10.4,
+        "cs_angle": 90
+      }
+    },
+    {
+      "index": 92,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          -12.0,
+          0.0,
+          -42.0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 10.8,
+        "depth": 0.2,
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 93,
+      "command": "solid.hole",
+      "resolved_params": {
+        "position": [
+          0,
+          0.0,
+          -42.0
+        ],
+        "targets": [
+          "CornerBracket"
+        ],
+        "diameter": 5.800000000000001,
+        "depth": 0.2,
+        "direction": [
+          -1.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 94,
+      "command": "component.activate",
+      "resolved_params": {
+        "component": "root"
+      }
+    },
+    {
+      "index": 95,
+      "command": "occurrence.copy",
+      "resolved_params": {
+        "component": "CornerBracket"
+      },
+      "bindings": {
+        "$cornerbracket_occurrence_2": 66
+      }
+    },
+    {
+      "index": 96,
+      "command": "occurrence.copy",
+      "resolved_params": {
+        "component": "CornerBracket"
+      },
+      "bindings": {
+        "$cornerbracket_occurrence_3": 67
+      }
+    },
+    {
+      "index": 97,
+      "command": "occurrence.copy",
+      "resolved_params": {
+        "component": "CornerBracket"
+      },
+      "bindings": {
+        "$cornerbracket_occurrence_4": 68
+      }
+    },
+    {
+      "index": 98,
+      "command": "occurrence.copy",
+      "resolved_params": {
+        "component": "CornerBracket"
+      },
+      "bindings": {
+        "$cornerbracket_occurrence_5": 69
+      }
+    },
+    {
+      "index": 99,
+      "command": "occurrence.copy",
+      "resolved_params": {
+        "component": "CornerBracket"
+      },
+      "bindings": {
+        "$cornerbracket_occurrence_6": 70
+      }
+    },
+    {
+      "index": 100,
+      "command": "occurrence.copy",
+      "resolved_params": {
+        "component": "CornerBracket"
+      },
+      "bindings": {
+        "$cornerbracket_occurrence_7": 71
+      }
+    },
+    {
+      "index": 101,
+      "command": "occurrence.copy",
+      "resolved_params": {
+        "component": "CornerBracket"
+      },
+      "bindings": {
+        "$cornerbracket_occurrence_8": 72
+      }
+    },
+    {
+      "index": 102,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "glazing_wood_depth",
+        "expression": "12",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 103,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "glazing_wood_width",
+        "expression": "12",
+        "unit": "mm"
+      }
+    },
+    {
+      "index": 104,
+      "command": "component.create",
+      "resolved_params": {
+        "name": "GlassStrip",
+        "grounded": false,
+        "parent": "WoodGlassFrame"
+      },
+      "bindings": {
+        "$glassstrip_occurrence_1": 74
+      }
+    },
+    {
+      "index": 105,
+      "command": "sketch.create",
+      "resolved_params": {
+        "plane": "XZ",
+        "name": "d9_GlassStrip__Profile"
+      }
+    },
+    {
+      "index": 106,
+      "command": "sketch.line",
+      "resolved_params": {
+        "points": [
+          [
+            "-(opening_width / 2)",
+            0
+          ],
+          [
+            "opening_width / 2",
+            0
+          ],
+          [
+            "(opening_width / 2) - (glazing_wood_width)",
+            "-(glazing_wood_width)"
+          ],
+          [
+            "(-(opening_width / 2)) + (glazing_wood_width)",
+            "-(glazing_wood_width)"
+          ]
+        ],
+        "closed": true,
+        "ids": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      }
+    },
+    {
+      "index": 107,
+      "command": "sketch.finish",
+      "resolved_params": {}
+    },
+    {
+      "index": 108,
+      "command": "solid.extrude",
+      "resolved_params": {
+        "distance": "glazing_wood_depth",
+        "direction": "positive",
+        "body_name": "GlassStrip"
+      }
+    },
+    {
+      "index": 109,
+      "command": "material.create",
+      "resolved_params": {
+        "name": "PINE glazing horizontal",
+        "density_g_cm3": 0.55,
+        "color": "#E3BF80"
+      }
+    },
+    {
+      "index": 110,
+      "command": "material.assign",
+      "resolved_params": {
+        "bodies": [
+          "GlassStrip"
+        ],
+        "material": "PINE glazing horizontal"
+      }
+    },
+    {
+      "index": 111,
+      "command": "component.activate",
+      "resolved_params": {
+        "component": "root"
+      }
+    },
+    {
+      "index": 112,
+      "command": "occurrence.copy",
+      "resolved_params": {
+        "component": "GlassStrip"
+      },
+      "bindings": {
+        "$glassstrip_occurrence_2": 77
+      }
+    },
+    {
+      "index": 113,
+      "command": "component.create",
+      "resolved_params": {
+        "name": "GlassStrip 2",
+        "grounded": false,
+        "parent": "WoodGlassFrame"
+      },
+      "bindings": {
+        "$glassstrip_2_occurrence_1": 79
+      }
+    },
+    {
+      "index": 114,
+      "command": "sketch.create",
+      "resolved_params": {
+        "plane": "XZ",
+        "name": "d10_GlassStrip_2__Profile"
+      }
+    },
+    {
+      "index": 115,
+      "command": "sketch.line",
+      "resolved_params": {
+        "points": [
+          [
+            "-(opening_height / 2)",
+            0
+          ],
+          [
+            "opening_height / 2",
+            0
+          ],
+          [
+            "(opening_height / 2) - (glazing_wood_width)",
+            "-(glazing_wood_width)"
+          ],
+          [
+            "(-(opening_height / 2)) + (glazing_wood_width)",
+            "-(glazing_wood_width)"
+          ]
+        ],
+        "closed": true,
+        "ids": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      }
+    },
+    {
+      "index": 116,
+      "command": "sketch.finish",
+      "resolved_params": {}
+    },
+    {
+      "index": 117,
+      "command": "solid.extrude",
+      "resolved_params": {
+        "distance": "glazing_wood_depth",
+        "direction": "positive",
+        "body_name": "GlassStrip_2"
+      }
+    },
+    {
+      "index": 118,
+      "command": "material.create",
+      "resolved_params": {
+        "name": "PINE glazing vertical",
+        "density_g_cm3": 0.55,
+        "color": "#A9793E"
+      }
+    },
+    {
+      "index": 119,
+      "command": "material.assign",
+      "resolved_params": {
+        "bodies": [
+          "GlassStrip_2"
+        ],
+        "material": "PINE glazing vertical"
+      }
+    },
+    {
+      "index": 120,
+      "command": "component.activate",
+      "resolved_params": {
+        "component": "root"
+      }
+    },
+    {
+      "index": 121,
+      "command": "occurrence.copy",
+      "resolved_params": {
+        "component": "GlassStrip 2"
+      },
+      "bindings": {
+        "$glassstrip_2_occurrence_2": 82
+      }
+    },
+    {
+      "index": 122,
+      "command": "component.create",
+      "resolved_params": {
+        "name": "Window",
+        "grounded": false
+      },
+      "bindings": {
+        "$window": 84
+      }
+    },
+    {
+      "index": 123,
+      "command": "solid.box",
+      "resolved_params": {
+        "length": 840.0,
+        "width": 4.0,
+        "height": 360.0,
+        "corner": [
+          -420.0,
+          "glazing_wood_depth",
+          "((frame_wood_thickness * 2) + (lower_compartment_height)) + ((opening_height - 360 mm) / 2)"
+        ],
+        "body_name": "Window"
+      }
+    },
+    {
+      "index": 124,
+      "command": "material.create",
+      "resolved_params": {
+        "name": "Plexiglass",
+        "density_g_cm3": 1.19,
+        "color": "#B7DAEF"
+      }
+    },
+    {
+      "index": 125,
+      "command": "material.assign",
+      "resolved_params": {
+        "bodies": [
+          "Window"
+        ],
+        "material": "Plexiglass"
+      }
+    },
+    {
+      "index": 126,
+      "command": "component.activate",
+      "resolved_params": {
+        "component": "root"
+      }
+    },
+    {
+      "index": 127,
+      "command": "parameters.add",
+      "resolved_params": {
+        "name": "panel_recess_depth",
+        "expression": "25 mm"
+      }
+    },
+    {
+      "index": 128,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 10,
+        "translate": [
+          0,
+          "panel_recess_depth + 7.25 mm",
+          "((frame_wood_thickness * 2) + (lower_compartment_height)) + ((opening_height - 319.71 mm) / 2)"
+        ]
+      }
+    },
+    {
+      "index": 129,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 13,
+        "translate": [
+          -320.0,
+          "panel_recess_depth + 7.25 mm",
+          "((frame_wood_thickness * 2) + (lower_compartment_height)) + ((opening_height - 319.71 mm) / 2)"
+        ]
+      }
+    },
+    {
+      "index": 130,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 14,
+        "translate": [
+          -160.0,
+          "panel_recess_depth + 7.25 mm",
+          "((frame_wood_thickness * 2) + (lower_compartment_height)) + ((opening_height - 319.71 mm) / 2)"
+        ]
+      }
+    },
+    {
+      "index": 131,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 15,
+        "translate": [
+          160.0,
+          "panel_recess_depth + 7.25 mm",
+          "((frame_wood_thickness * 2) + (lower_compartment_height)) + ((opening_height - 319.71 mm) / 2)"
+        ]
+      }
+    },
+    {
+      "index": 132,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 16,
+        "translate": [
+          320.0,
+          "panel_recess_depth + 7.25 mm",
+          "((frame_wood_thickness * 2) + (lower_compartment_height)) + ((opening_height - 319.71 mm) / 2)"
+        ]
+      }
+    },
+    {
+      "index": 133,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 18,
+        "translate": [
+          "-((opening_width / 2) + (frame_wood_thickness / 2))",
+          0,
+          "frame_wood_thickness"
+        ]
+      }
+    },
+    {
+      "index": 134,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 22,
+        "translate": [
+          "(opening_width / 2) + (frame_wood_thickness / 2)",
+          0,
+          "frame_wood_thickness"
+        ]
+      }
+    },
+    {
+      "index": 135,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 28,
+        "translate": [
+          0,
+          0,
+          "frame_wood_thickness + (lower_compartment_height)"
+        ]
+      }
+    },
+    {
+      "index": 136,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 31,
+        "translate": [
+          "-(((opening_width / 2) - ((opening_width - (frame_wood_thickness * 2)) * 0.3)) - (frame_wood_thickness / 2))",
+          0,
+          "frame_wood_thickness"
+        ]
+      }
+    },
+    {
+      "index": 137,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 33,
+        "translate": [
+          "((opening_width / 2) - ((opening_width - (frame_wood_thickness * 2)) * 0.3)) - (frame_wood_thickness / 2)",
+          0,
+          "frame_wood_thickness"
+        ]
+      }
+    },
+    {
+      "index": 138,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 35,
+        "translate": [
+          0,
+          "-(roof_front_overhang)",
+          "((frame_wood_thickness + (lower_compartment_height)) + (frame_wood_thickness)) + (opening_height)"
+        ]
+      }
+    },
+    {
+      "index": 139,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 39,
+        "translate": [
+          0,
+          "cabinet_depth - (panel_wood_thickness)",
+          "frame_wood_thickness + (lower_compartment_height)"
+        ]
+      }
+    },
+    {
+      "index": 140,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 44,
+        "translate": [
+          "-((opening_width / 2) + (frame_wood_thickness))",
+          "bracket_width / 2",
+          "(lower_compartment_height + (opening_height)) + (frame_wood_thickness * 3)"
+        ]
+      }
+    },
+    {
+      "index": 141,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 66,
+        "translate": [
+          "-((opening_width / 2) + (frame_wood_thickness))",
+          "cabinet_depth - (bracket_width / 2)",
+          "(lower_compartment_height + (opening_height)) + (frame_wood_thickness * 3)"
+        ]
+      }
+    },
+    {
+      "index": 142,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 67,
+        "translate": [
+          "(opening_width / 2) + (frame_wood_thickness)",
+          "bracket_width / 2",
+          "(lower_compartment_height + (opening_height)) + (frame_wood_thickness * 3)"
+        ],
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "angle": "90 deg"
+      }
+    },
+    {
+      "index": 143,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 68,
+        "translate": [
+          "(opening_width / 2) + (frame_wood_thickness)",
+          "cabinet_depth - (bracket_width / 2)",
+          "(lower_compartment_height + (opening_height)) + (frame_wood_thickness * 3)"
+        ],
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "angle": "90 deg"
+      }
+    },
+    {
+      "index": 144,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 69,
+        "translate": [
+          "(opening_width / 2) + (frame_wood_thickness)",
+          "bracket_width / 2",
+          0
+        ],
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "angle": "180 deg"
+      }
+    },
+    {
+      "index": 145,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 70,
+        "translate": [
+          "(opening_width / 2) + (frame_wood_thickness)",
+          "cabinet_depth - (bracket_width / 2)",
+          0
+        ],
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "angle": "180 deg"
+      }
+    },
+    {
+      "index": 146,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 71,
+        "translate": [
+          "-((opening_width / 2) + (frame_wood_thickness))",
+          "bracket_width / 2",
+          0
+        ],
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "angle": "270 deg"
+      }
+    },
+    {
+      "index": 147,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 72,
+        "translate": [
+          "-((opening_width / 2) + (frame_wood_thickness))",
+          "cabinet_depth - (bracket_width / 2)",
+          0
+        ],
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "angle": "270 deg"
+      }
+    },
+    {
+      "index": 148,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 74,
+        "translate": [
+          0,
+          0,
+          "(frame_wood_thickness * 2) + (lower_compartment_height)"
+        ]
+      }
+    },
+    {
+      "index": 149,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 77,
+        "translate": [
+          0,
+          "glazing_wood_depth",
+          "((frame_wood_thickness * 2) + (lower_compartment_height)) + (opening_height)"
+        ],
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "angle": "180 deg"
+      }
+    },
+    {
+      "index": 150,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 79,
+        "translate": [
+          "-(opening_width / 2)",
+          0,
+          "(((frame_wood_thickness * 2) + (lower_compartment_height)) + (((frame_wood_thickness * 2) + (lower_compartment_height)) + (opening_height))) / 2"
+        ],
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "angle": "90 deg"
+      }
+    },
+    {
+      "index": 151,
+      "command": "occurrence.move",
+      "resolved_params": {
+        "occurrence": 82,
+        "translate": [
+          "opening_width / 2",
+          0,
+          "(((frame_wood_thickness * 2) + (lower_compartment_height)) + (((frame_wood_thickness * 2) + (lower_compartment_height)) + (opening_height))) / 2"
+        ],
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "angle": "-90 deg"
+      }
+    }
+  ],
+  "completed": 152
+}

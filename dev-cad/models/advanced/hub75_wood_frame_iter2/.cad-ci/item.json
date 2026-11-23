@@ -1,0 +1,12 @@
+{
+  "engine": "scons",
+  "engine_schema": 4,
+  "final_bundle_sha256": "734f679bc1a30a599f40e42746deea3ee42446c67a949e4f1ef1dc71e6439933",
+  "final_step": "build_results",
+  "final_target_spec_digest": "40a4fdb341796648585379e53d7f5f1ef0cc834d74665621db8552932e53d38d",
+  "item": "hub75-wood-frame-iter2",
+  "run_finished_at": "2026-11-23T21:48:47.669Z",
+  "run_started_at": "2026-11-23T21:47:54.015Z",
+  "schema": 2,
+  "status": "pass"
+}
