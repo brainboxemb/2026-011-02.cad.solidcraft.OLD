@@ -46,7 +46,6 @@
         <span class="cad-status cad-status-pending">No accepted build evidence</span>
       {{ end }}
       {{ if gt $commandCount 0 }}<span class="cad-status">{{ $commandCount }} commands</span>{{ end }}
-      <span class="cad-status">{{ index $m "parameters" }}</span>
     </div>
 
     {{ with index $m "warning" }}<aside class="cad-warning"><strong>{{ index . "title" }}</strong><p>{{ index . "body" }}</p></aside>{{ end }}
@@ -60,6 +59,7 @@
           {{ else }}<div class="cad-preview-empty">Current scope has no accepted preview for this model.</div>{{ end }}
         </div>
         <p class="cad-model-description">{{ index $m "description" }}</p>
+        <p class="cad-model-parameters"><strong>Key dimensions:</strong> {{ index $m "parameters" }}</p>
       </section>
 
       <aside class="cad-panel cad-files-panel">

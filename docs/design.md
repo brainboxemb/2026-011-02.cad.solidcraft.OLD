@@ -234,7 +234,7 @@ Change 0028 supersedes the intermediate presentation decision in change 0027.
 
 Model-detail pages preserve the established framed panel hierarchy:
 
-- compact build/status badges below the hero;
+- compact build/status badges below the hero, limited to short build/verification state and generated command count; longer model parameter prose belongs with the model description as normal readable content, not in a status pill;
 - Model preview and Files/Construction stages in the paired top panels;
 - Open in SolidCraft Web in a framed panel;
 - optional Background in a framed panel;
@@ -355,7 +355,7 @@ model-description/catalog source and must not gain a hand-maintained
 
 `model.yml` owns model/page metadata. Optional `page.md` owns additional
 background/reference prose without redefining identity, build state or
-verification facts. Build provenance, generated commands, saved native output
+verification facts. Build provenance, generated commands, saved SolidCraft output
 and verification state come only from the accepted prepared build scope.
 
 A model's optional supplementary views remain declarative model metadata and
