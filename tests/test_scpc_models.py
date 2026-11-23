@@ -177,6 +177,46 @@ class ParallelModelTests(unittest.TestCase):
             ],
         )
 
+    def test_flex_bench_dog_scpc_matches_cube_wireframe_logo_contract(self):
+        native = source_path(ROOT, "flex-bench-dog", "scpc")
+        forge = source_path(ROOT, "flex-bench-dog")
+        scpc_doc = native_script(native).to_dict()
+        scpf_doc = forge_script(forge)
+
+        expected = {
+            ((0.0, 4.0), (3.5, 2.0)),
+            ((3.5, 2.0), (3.5, -2.0)),
+            ((3.5, -2.0), (0.0, -4.0)),
+            ((0.0, -4.0), (-3.5, -2.0)),
+            ((-3.5, -2.0), (-3.5, 2.0)),
+            ((-3.5, 2.0), (0.0, 4.0)),
+            ((0.0, 0.0), (0.0, 4.0)),
+            ((0.0, 0.0), (3.5, -2.0)),
+            ((0.0, 0.0), (-3.5, -2.0)),
+        }
+
+        for document in (scpc_doc, scpf_doc):
+            slots = [
+                row["params"] for row in document["commands"]
+                if row["command"] == "sketch.slot.center_to_center"
+            ]
+            self.assertEqual(len(slots), 9)
+            self.assertTrue(all(row["width"] == 0.6 for row in slots))
+            actual = {
+                (tuple(row["p0"]), tuple(row["p1"]))
+                for row in slots
+            }
+            self.assertEqual(actual, expected)
+
+            logo_cut = next(
+                row["params"] for row in document["commands"]
+                if row["command"] == "solid.extrude"
+                and row["params"]["name"] == "Top logo"
+            )
+            self.assertEqual(logo_cut["operation"], "cut")
+            self.assertEqual(logo_cut["distance"], 0.6)
+            self.assertEqual(logo_cut["direction"], "negative")
+
     def test_plate_and_corner_bracket_have_independent_native_scripts(self):
         for slug in ("plate", "corner-bracket"):
             with self.subTest(slug=slug):

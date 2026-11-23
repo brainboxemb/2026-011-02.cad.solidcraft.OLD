@@ -52,9 +52,12 @@ Accepted repository state:
   development site now uses Hugo/Hextra like stable.
 - #206 / PR #326 removed the local cross-CAD reference implementations.
 - #331 / PR #334 replaced the old Ø24 × 3 mm band with the shaped Ø22 × 1.5 mm
-  MFT stop collar. Current `dev-cad` is
-  `086678bd0ce9280f14603df66231da75ec3b5a56`; durable run #368,
+  MFT stop collar.
+- #333 / PR #338 added the R0.5 four-edge inner-corner relief. Current
+  `dev-cad` is `b68e3670e5278bda9dcd5de32aafc4772cb7c269`; durable run #373,
   `build/dev-cad` and Pages `/dev-cad/` all source-match that commit.
+  #333 remains open only for underside-view visual acceptance because the
+  standard catalog camera does not expose the central cross clearly.
 - The presentation from change 0027 was later visually rejected; Pages was
   temporarily switched back to the preserved pre-change publication while the
   replacement was worked out in EXP.
@@ -209,8 +212,8 @@ schema, planner or reference framework.
 | #205 Canonical shared model.yml contract | shared + dev-cad | **blocked** | Wait for an actually reusable/adoptable shared contract; do not copy Forge's site-local validator. |
 | #172 Full-catalog Forge/SolidCraft qualification | dev-cad | **blocked** | Re-enable the two remaining roots after the required Forge fix reaches the CAD-consumed baseline. |
 | #168 Verification terminology cleanup | cross-repo | **later** | Revisit after lane and model-ownership cleanup are stable. |
-| #333 FlexBenchDog rounded central slot corners | dev-cad | **now** | Add R0.5 mm fillets to the four vertical material-side corners around the central `+`; preserve slot width/length and 4 mm root. |
-| #332 FlexBenchDog BrainBox cube-wireframe logo | dev-cad | **next after #333** | Replace the filled square with the recessed six-edge + three-spoke cube/box wireframe from preserved PR #128. |
+| #333 FlexBenchDog rounded central slot corners | dev-cad | **implemented / visual pending** | PR #338 and durable run #373 prove the R0.5 four-edge fillet; keep open because the standard upper-oblique render does not expose the central underside cross clearly enough for visual acceptance. |
+| #332 FlexBenchDog BrainBox cube-wireframe logo | dev-cad | **now** | Port the exact preserved nine-segment, 0.6 mm-wide recessed cube wireframe from historical branch `feature/refine-conical-flex-bench-dog`. |
 | #327 FlexBenchDog full-length native Cone taper | dev-cad | **blocked** | PR #328 proved native Cone exists, but Forge #746 must add Cone join/cut feature compilation and reach a CAD-consumable release/pin. |
 | #154 HUB75 lower storage compartment | dev-cad | **next after #332** | Refresh PR #156 against current dev-cad and retain only the product/model work; drop stale catalog/CI-era edits. |
 | #142 HUB75Display2 | dev-cad | **blocked** | Resume qualification after the required Forge naming fix reaches the CAD baseline. |
@@ -232,6 +235,10 @@ Parked open product PRs:
 
 ## Recently completed
 
+- #333 / PR #338 implemented the R0.5 four-edge fillet around the FlexBenchDog
+  central cross. PR and durable CAD verification are green at
+  `b68e3670e5278bda9dcd5de32aafc4772cb7c269`; only the explicit underside
+  visual acceptance remains open.
 - #331 / PR #334 shaped the FlexBenchDog stop collar as a Ø22 × 1.5 mm MFT
   seat with a 1.0 mm 45° underside chamfer back to Ø20. Durable run #368 and
   both dev-cad publication scopes source-match
@@ -269,17 +276,18 @@ in this plan.
 
 ## Next checkpoint
 
-Complete the remaining unblocked FlexBenchDog refinements:
+Complete #332 as the remaining unblocked FlexBenchDog geometry refinement:
 
-1. #333 — fillet the four vertical material-side edges around the central
-   underside `+` with initial R0.5 mm while preserving 1.5 mm slot width,
-   16 mm slot length and the 4 mm solid root;
-2. inspect the durable underside/profile render and tune only the explicit
-   `slot_corner_radius` if the reference calls for a smaller/larger relief;
-3. #332 — replace the filled-square top recess with the recessed BrainBox
-   cube/box wireframe from preserved PR #128;
-4. then refresh #154 / PR #156 against the current `dev-cad` lane.
+1. replace the current filled 8 × 8 mm square recess with the exact preserved
+   nine-segment BrainBox cube/box wireframe;
+2. use 0.6 mm native center-to-center Slot strokes and the existing 0.6 mm
+   recess depth;
+3. verify the exact six perimeter segments + three centre spokes in both SCPF
+   and independent SCPC;
+4. inspect the durable top-view/perspective render after merge;
+5. then refresh #154 / PR #156 against the current `dev-cad` lane.
 
+Keep #333 open only for explicit underside-view visual acceptance of R0.5.
 Keep #327 / PR #328 draft and parked on Forge #746. Keep PR #141 parked on
 Forge #347. Keep PR #169 draft/parked until its required Forge API is available
 in a CAD-consumable release. Keep #21 and #288 separate.

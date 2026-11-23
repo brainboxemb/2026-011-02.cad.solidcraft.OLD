@@ -134,17 +134,30 @@ script.add(
     edges=[[10, 0, 20]],
 )
 
-# Recessed square box logo.
+# Recessed BrainBox cube/box wireframe: six perimeter strokes plus three
+# centre spokes. Each stroke is one 0.6 mm native rounded slot.
 script.add(
     "sketch.create",
     plane={"origin": [0, 0, 20], "x_dir": [1, 0, 0], "y_dir": [0, 1, 0]},
     name="Top logo",
 )
-script.add(
-    "sketch.rectangle.two_point",
-    p0=[-4, -4],
-    p1=[4, 4],
-)
+for p0, p1 in (
+    ([0.0, 4.0], [3.5, 2.0]),
+    ([3.5, 2.0], [3.5, -2.0]),
+    ([3.5, -2.0], [0.0, -4.0]),
+    ([0.0, -4.0], [-3.5, -2.0]),
+    ([-3.5, -2.0], [-3.5, 2.0]),
+    ([-3.5, 2.0], [0.0, 4.0]),
+    ([0.0, 0.0], [0.0, 4.0]),
+    ([0.0, 0.0], [3.5, -2.0]),
+    ([0.0, 0.0], [-3.5, -2.0]),
+):
+    script.add(
+        "sketch.slot.center_to_center",
+        p0=p0,
+        p1=p1,
+        width=0.6,
+    )
 script.add("sketch.finish")
 script.add(
     "solid.extrude",
