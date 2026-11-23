@@ -87,7 +87,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 244.840618,
+    "ms": 309.56768,
     "name": "Clamp slots",
     "removed_bodies": [],
     "warning": null
@@ -101,7 +101,7 @@
     ],
     "created_bodies": [],
     "feature": 6,
-    "ms": 118.511616,
+    "ms": 181.13989999999998,
     "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null

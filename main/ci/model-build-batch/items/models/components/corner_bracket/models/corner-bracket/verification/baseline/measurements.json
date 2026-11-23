@@ -143,7 +143,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 0.305903,
+      "ms": 0.30874500000000005,
       "name": "Profile",
       "rolled_back": false,
       "suppressed": false,
@@ -153,7 +153,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 3.380366,
+      "ms": 4.217286,
       "name": "Extrude1",
       "rolled_back": false,
       "suppressed": false,
@@ -163,7 +163,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 9.492817,
+      "ms": 12.10951,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -173,7 +173,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 56.370558,
+      "ms": 78.583514,
       "name": "Chamfer1",
       "rolled_back": false,
       "suppressed": false,
@@ -183,7 +183,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 24.36669,
+      "ms": 33.04891799999999,
       "name": "Chamfer2",
       "rolled_back": false,
       "suppressed": false,
@@ -193,7 +193,7 @@
     {
       "error": null,
       "id": 6,
-      "ms": 86.17754,
+      "ms": 122.318868,
       "name": "Chamfer3",
       "rolled_back": false,
       "suppressed": false,
