@@ -147,6 +147,36 @@ class ParallelModelTests(unittest.TestCase):
             self.assertEqual(seat["distance"], 1.0)
             self.assertEqual(seat["body"], "FlexBenchDog")
 
+    def test_flex_bench_dog_scpc_matches_full_length_taper_contract(self):
+        native = source_path(ROOT, "flex-bench-dog", "scpc")
+        forge = source_path(ROOT, "flex-bench-dog")
+        scpc_doc = native_script(native).to_dict()
+        scpf_doc = forge_script(forge)
+
+        for document in (scpc_doc, scpf_doc):
+            cones = [
+                row["params"] for row in document["commands"]
+                if row["command"] == "solid.cone"
+            ]
+            self.assertEqual(len(cones), 1)
+            cone = cones[0]
+            self.assertEqual(cone["base"], [0, 0, -20])
+            self.assertEqual(cone["height"], 20)
+            self.assertEqual(cone["axis"], "Z")
+            self.assertIn(
+                cone["diameter"],
+                ("hole_diameter + interference", "hole_diameter + (interference)"),
+            )
+            self.assertEqual(cone["top_diameter"], "hole_diameter")
+
+            insert_cylinders = [
+                row["params"] for row in document["commands"]
+                if row["command"] == "solid.cylinder"
+                and row["params"]["base"] == [0, 0, -20]
+            ]
+            self.assertEqual(insert_cylinders, [])
+
+
     def test_flex_bench_dog_scpc_matches_inner_corner_fillet_contract(self):
         native = source_path(ROOT, "flex-bench-dog", "scpc")
         forge = source_path(ROOT, "flex-bench-dog")

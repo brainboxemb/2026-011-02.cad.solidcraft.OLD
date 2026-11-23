@@ -176,11 +176,11 @@ Current released-capability follow-ups include:
 | #408 Temporary hub75-panel process gate | dev-cad + Forge | **complete / gate retired** | Forge #796 is fixed in v0.13.2 and the detailed root is active again. |
 | #8 CornerBracket exact geometry | dev-cad | **actionable after #405 via #362** | Preserve PR #360 geometry; add the final rotated wedge with released Forge #750 support. |
 | #362 CornerBracket arm-tip wedge | dev-cad | **actionable** | Implement the final rotated wedge on the current v0.13.2 baseline and remove the temporary markers with the completed geometry. |
-| #154 lower-compartment HUB75 case | dev-cad | **now / refreshed draft PR #349** | Qualify the new active root on v0.13.2; native build + semantic 70→90 mm saved-design mutation already pass, repository regressions are being updated for symbolic replay. |
+| #154 lower-compartment HUB75 case | dev-cad | **complete / PR #349** | PR and durable dev-cad runs both pass native SolidCraft + semantic 70→90 mm saved-design verification on v0.13.2. |
 | #345 STL output + GitHub viewer | dev-cad / SolidCraft runtime | **complete / PR #401** | Accepted on durable dev-cad run #45211961040; direct .sc → STL export and scope-matched GitHub viewer link are live. |
 | #348 FlexBenchDog logo cleanup | dev-cad | **actionable after #405** | Replace temporary per-rib Slot Sketches with the released Polygon2D path while preserving accepted geometry. |
 
-| #327 FlexBenchDog Cone taper | dev-cad | **resume after #405 / draft PR #328** | Refresh the branch and implement the intended full-length native Cone before making the PR ready. |
+| #327 FlexBenchDog Cone taper | dev-cad | **now / refreshed draft PR #328** | Replace only the current stepped insert with one full-length native Cone on the accepted collar/logo/fillet baseline; keep #348 separate. |
 | #288 CAD-CI workflow/config migration | dev-ci / tool.cad.ci | **later / separate** | Reassess against the current released tool.cad.ci owner baseline before implementation. |
 | #205 canonical model.yml contract | dev-cad | **actionable after #405 / separate migration** | Forge #703 is in v0.13.1; move CAD-only fields to their owning layers in its own focused change. |
 | #172 full-catalog native qualification | dev-cad + Forge | **active** | The 16-root v0.13.2 durable batch is green; include the new #154 root, then reconcile final full-catalog acceptance. |
@@ -225,17 +225,16 @@ Current released-capability follow-ups include:
   baseline is available.
 - PR #141 — draft Bolted Flange circular pattern; blocked on Forge #347.
 
-PR #349 (#154) is refreshed on the current Forge v0.13.2 baseline. PR #328
-(#327) remains the next stale draft to rebuild from current `dev-cad` rather
-than carrying its old geometry/history.
+PR #349 (#154) is complete and durable-green on Forge v0.13.2. PR #328
+(#327) is now rebuilt from current `dev-cad`; its old Ø24 × 3 mm collar and
+2 mm-only Cone experiment are not carried forward.
 
 ## Next checkpoint
 
-1. finish #154 / PR #349: update stale command-plan regressions for current
-   symbolic replay, then require the already-proven native build and 70→90 mm
-   saved-design verification to pass in the complete PR run;
-2. refresh #327 / PR #328 from current accepted FlexBenchDog geometry, changing
-   only the full-length insertion taper; then resume #348 and #362 separately;
+1. complete #327 / PR #328: one full-length native Cone for the insertion,
+   preserving the accepted Ø22 × 1.5 mm collar, 45° seat, R0.5 slot fillets
+   and BrainBox logo;
+2. resume #348 and #362 as separate released-Forge cleanup slices;
 3. resume #373/#374/#375 now that Forge #796 is retired, while keeping #388 on
    its separate Forge #753/SolidCraft owner path;
 4. continue #77/#91 on active Hub75DisplayCase v1;

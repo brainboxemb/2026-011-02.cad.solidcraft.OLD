@@ -28,7 +28,7 @@ on the actual dog-hole diameter, printer, filament and print settings.
 - light **0.6 mm chamfer** around the upper edge;
 - larger **1.0 mm chamfer** on the lower insertion edge as a lead-in;
 - recessed **BrainBox cube/box wireframe** in the top face: six perimeter strokes plus three centre spokes;
-- 2 mm long flared flex tips;
+- full-length Ø20.0 → Ø20.2 insertion taper;
 - 16 mm flex slots, leaving 4 mm solid material below the rim.
 
 ## Initial dimensions
@@ -42,7 +42,6 @@ on the actual dog-hole diameter, printer, filament and print settings.
 | Stop-collar diameter | 22 mm |
 | Stop-collar axial zone | 1.5 mm |
 | Stop-collar seat chamfer | 1.0 mm at 45° |
-| Flared tip length | 2 mm |
 | Cross-slot width | 1.5 mm |
 | Cross-slot length | 16 mm |
 | Central slot-corner fillet | R0.5 mm |
@@ -69,7 +68,7 @@ material instead of becoming selectable filled regions.
 The overall construction is inferred from the supplied Mini-MFT image. The
 nominal 20 mm dog-hole size and the current symmetric 20/20 mm proportions are
 project decisions. The collar profile follows the supplied MFT reference and nominal Ø20 hole with a
-small 45° mouth chamfer. Flex-slot dimensions, the R0.5 inner-corner relief and the 0.20 mm tip flare
+small 45° mouth chamfer. Flex-slot dimensions, the R0.5 inner-corner relief and the 0.20 mm full-length taper
 have not yet been verified by a physical fit test.
 
 After a first print, the first value to tune is `interference`, followed by
