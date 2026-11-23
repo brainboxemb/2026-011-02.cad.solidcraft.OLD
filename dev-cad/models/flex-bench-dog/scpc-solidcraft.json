@@ -20,7 +20,7 @@
       "command": "parameters.add",
       "params": {
         "name": "rim_diameter",
-        "expression": "24.0",
+        "expression": "22.0",
         "unit": "mm"
       }
     },
@@ -35,7 +35,7 @@
     {
       "command": "solid.cylinder",
       "params": {
-        "height": 3,
+        "height": 1.5,
         "diameter": "rim_diameter",
         "base": [
           0,
@@ -48,14 +48,28 @@
       }
     },
     {
+      "command": "solid.chamfer",
+      "params": {
+        "body": "FlexBenchDog",
+        "distance": 1.0,
+        "edges": [
+          [
+            11,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
       "command": "solid.cylinder",
       "params": {
-        "height": 17,
+        "height": 18.5,
         "diameter": "hole_diameter",
         "base": [
           0,
           0,
-          3
+          1.5
         ],
         "axis": "Z",
         "operation": "join",
