@@ -75,6 +75,12 @@ script.add(
 # Reference pick points for the seven normal outside profile segments on each
 # broad face. The two 0.6 mm tip-relief diagonals are intentionally excluded:
 # a 2 mm chamfer on those tiny faces causes a native trim leak.
+#
+# TEMPORARY compatibility workaround — CAD #362 / Forge #750.
+# The preserved OpenSCAD model applies a separate locally rotated triangular
+# prism wedge at those arm-tip junctions. Released Forge v0.11 has no generic
+# standalone Shape transform for that 45-degree cutter, so SCPC mirrors the
+# same intentionally incomplete tip treatment until Forge #750 is consumable.
 outside_edges = [
     [60, -12, 4.8],
     [58.5, -12, 10.5],
