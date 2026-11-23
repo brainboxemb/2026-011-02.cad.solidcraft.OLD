@@ -1,0 +1,12 @@
+{
+  "engine": "scons",
+  "engine_schema": 4,
+  "final_bundle_sha256": "be34dabf7acbf89f18f82f0248985a0537707e79eb8c03df12bd707c9dc58f8a",
+  "final_step": "build_results",
+  "final_target_spec_digest": "a988fd8c510c25da25812f65f9fb9cbea1c63170966cd21443c3edc7f2d4068f",
+  "item": "hub75-wood-frame",
+  "run_finished_at": "2026-11-23T21:27:52.337Z",
+  "run_started_at": "2026-11-23T21:27:16.611Z",
+  "schema": 2,
+  "status": "pass"
+}
