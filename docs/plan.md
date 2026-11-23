@@ -23,7 +23,7 @@ dev-ci
 Current heads at this reconciliation:
 
 - `main`: `6be947fd47333389513e64a73ae19649eb80796a`;
-- `dev-cad`: `cefc38f6dd7c10e5462fed660d5566fa91348c41`;
+- `dev-cad`: `d8af5c3a6bbce9b34e216da1a44f6c1603f4aaa5`;
 - `dev-ci`: `c3d46976c8810487b74a802faf1009cb8608e4b0`.
 
 Stable `main` includes the accepted #344/#350 model-detail presentation and
@@ -104,15 +104,15 @@ generic Forge gaps.
 
 ### 4. STL publication
 
-- #345 is active CAD-owned output/publication work; Forge #748 is not a blocker.
-- The pinned SolidCraft 0.45.0 CLI already supports direct export from an
-  accepted saved design with
-  `solidcraft-cli run --in model.sc --out model.stl --quality fine`.
-- Publish `model.stl` beside `.sc`, STEP and preview; expose STL as the
-  practical mesh/view artifact; link the exact durable
-  `build/<scope>/.../native/model.stl` so GitHub's STL viewer can be used.
-- Export from the saved `.sc` directly. Do not add a STEP-to-STL conversion
-  and do not add a Forge STL API for this CAD output path.
+- #345 is complete through PR #401. The accepted CAD build exports
+  `model.stl` directly from the saved `.sc` with the pinned SolidCraft
+  0.45.0 CLI and `--quality fine`.
+- Durable `dev-cad` run #45211961040 is green and source-matched to
+  `d8af5c3a6bbce9b34e216da1a44f6c1603f4aaa5`; the published FlexBenchDog
+  scope contains a non-empty STL and the model page exposes both download and
+  scope-matched GitHub viewer links.
+- STEP remains the interchange CAD export. There is no STEP-to-STL conversion
+  and Forge #748 is not required for this output path.
 
 ### 5. Site lane
 
@@ -150,7 +150,7 @@ required naming fix and any other applicable runner fixes.
 | #8 CornerBracket exact geometry | dev-cad + Forge | **blocked on #362 / Forge #750** | Preserve PR #360 geometry; add final rotated wedge only after generic transform support is released. |
 | #362 CornerBracket arm-tip wedge | dev-cad + Forge | **blocked on Forge #750** | PR #363 is merged; temporary markers are in both model sources. Geometry waits for released transform support. |
 | #154 HUB75 lower compartment | dev-cad + Forge | **blocked / draft PR #349** | Wait for released #679 fix and Forge #749, then enable native processing and mutation acceptance. |
-| #345 STL output + GitHub viewer | dev-cad / SolidCraft runtime | **active** | Export directly from the accepted saved .sc with SolidCraft 0.45 CLI, publish model.stl and expose the scope-matched GitHub viewer link. |
+| #345 STL output + GitHub viewer | dev-cad / SolidCraft runtime | **complete / PR #401** | Accepted on durable dev-cad run #45211961040; direct .sc → STL export and scope-matched GitHub viewer link are live. |
 | #348 FlexBenchDog logo cleanup | dev-cad + Forge | **blocked on Forge #747** | Replace temporary per-rib Slot Sketches after released Polygon2D attached-Sketch support. |
 
 | #327 FlexBenchDog Cone taper | dev-cad + Forge | **blocked on Forge #746** | Resume draft PR #328 only after native Cone support is released/adopted. |
@@ -180,6 +180,8 @@ required naming fix and any other applicable runner fixes.
   and synchronized into `dev-cad` through #382 Phase A.
 - #385 complete: FlexBenchDog primary preview camera restored without changing
   the dedicated underside review camera.
+- #345 complete: PR #401 publishes direct SolidCraft STL output and a
+  scope-matched durable GitHub STL viewer link without a Forge dependency.
 - #278 closed: accepted model-detail presentation baseline.
 - #34 closed: SCPC/SCPF repository split and representative parallel-model
   architecture are complete; future SCPC coverage is model-specific work.
@@ -205,8 +207,7 @@ required naming fix and any other applicable runner fixes.
 2. only after #388 is qualified, finish #374 assembly visual acceptance and
    refresh/revalidate the already-green draft #390 / #375 connector slice on
    the synchronized dev-cad baseline before merge;
-3. finish #345 independently through the existing SolidCraft 0.45 runtime;
-   keep #365 as a design-decision slice and keep
+3. keep #365 as a design-decision slice and keep
    #154/#327/#348/#362/#367 parked until their required design/owner-layer
    capabilities are available;
 4. keep #382 Phase B (`dev-cad -> main`) paused while #388 remains open.
