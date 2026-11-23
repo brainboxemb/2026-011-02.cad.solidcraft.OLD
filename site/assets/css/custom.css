@@ -61,48 +61,171 @@ samp{
 .cad-category-card,.cad-model-card,.cad-panel,.cad-reference{border:1px solid var(--cad-line);border-radius:9px;background:var(--cad-card);box-shadow:0 2px 7px rgba(27,56,99,.025)}
 .dark .cad-category-card,.dark .cad-model-card,.dark .cad-panel,.dark .cad-reference{border-color:#29384d;background:#101827}
 
-.cad-category-card,.cad-model-card{padding:.8rem;text-decoration:none;color:inherit}
+.cad-category-card{padding:.8rem;text-decoration:none;color:inherit}
 .cad-category-card{display:flex;flex-direction:column;gap:.25rem}
-.cad-model-card{display:flex;flex-direction:column;gap:.3rem;overflow:hidden;min-width:0;height:100%;min-height:310px}
+.cad-model-card{
+  --cad-card-title-row:2.34rem;
+  --cad-card-updated-row:.83rem;
+  --cad-card-tagline-row:2.04rem;
+  --cad-card-parameters-row:1.77rem;
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  grid-template-areas:
+    "picture"
+    "title"
+    "tagline"
+    "parameters"
+    "."
+    "state";
+  grid-template-rows:
+    140px
+    var(--cad-card-title-row)
+    var(--cad-card-tagline-row)
+    var(--cad-card-parameters-row)
+    minmax(.2rem,1fr)
+    auto;
+  gap:.3rem;
+  overflow:hidden;
+  min-width:0;
+  height:100%;
+  min-height:310px;
+  padding:0 0 .8rem;
+  color:inherit;
+  text-decoration:none;
+}
+.cad-model-card-has-section{
+  grid-template-areas:
+    "picture"
+    "section"
+    "title"
+    "tagline"
+    "parameters"
+    "."
+    "state";
+  grid-template-rows:
+    140px
+    1rem
+    var(--cad-card-title-row)
+    var(--cad-card-tagline-row)
+    var(--cad-card-parameters-row)
+    minmax(.2rem,1fr)
+    auto;
+}
+.cad-model-card-has-updated{
+  grid-template-areas:
+    "picture"
+    "title"
+    "updated"
+    "tagline"
+    "parameters"
+    "."
+    "state";
+  grid-template-rows:
+    140px
+    var(--cad-card-title-row)
+    var(--cad-card-updated-row)
+    var(--cad-card-tagline-row)
+    var(--cad-card-parameters-row)
+    minmax(.2rem,1fr)
+    auto;
+}
+.cad-model-card-has-section.cad-model-card-has-updated{
+  grid-template-areas:
+    "picture"
+    "section"
+    "title"
+    "updated"
+    "tagline"
+    "parameters"
+    "."
+    "state";
+  grid-template-rows:
+    140px
+    1rem
+    var(--cad-card-title-row)
+    var(--cad-card-updated-row)
+    var(--cad-card-tagline-row)
+    var(--cad-card-parameters-row)
+    minmax(.2rem,1fr)
+    auto;
+}
 .cad-model-card:hover,.cad-category-card:hover{border-color:#8fb5df;box-shadow:var(--cad-shadow);text-decoration:none}
-.cad-card-picture{height:140px;margin:-.8rem -.8rem .45rem;display:grid;place-items:center;background:#eef3fa;border-bottom:1px solid var(--cad-line)}
+.cad-card-picture{
+  grid-area:picture;
+  width:100%;
+  height:100%;
+  display:grid;
+  place-items:center;
+  background:#eef3fa;
+  border-bottom:1px solid var(--cad-line);
+}
 .dark .cad-card-picture{background:#0c1420;border-color:#29384d}
 .cad-card-picture img{width:100%;height:100%;object-fit:contain}
-.cad-card-section{text-transform:uppercase;letter-spacing:.1em;font-size:.62rem;font-weight:750;color:var(--cad-accent)}
+.cad-card-section,
+.cad-card-title,
+.cad-card-updated,
+.cad-card-tagline,
+.cad-card-parameters{margin-inline:.8rem}
+.cad-card-section{
+  grid-area:section;
+  align-self:start;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font-size:.62rem;
+  line-height:1rem;
+  font-weight:750;
+  color:var(--cad-accent);
+}
 .cad-card-title,
 .cad-card-tagline,
 .cad-card-parameters{
   display:-webkit-box;
   min-width:0;
+  height:100%;
   overflow:hidden;
   -webkit-box-orient:vertical;
 }
 .cad-card-title{
-  height:2.48em;
-  flex:0 0 auto;
+  grid-area:title;
   -webkit-line-clamp:2;
   font-size:.94rem;
   line-height:1.24;
   letter-spacing:-.008em;
 }
+.cad-model-card .cad-card-updated{
+  grid-area:updated;
+  align-self:start;
+  font-size:.66rem;
+  line-height:1.25;
+  font-weight:600;
+  color:var(--cad-accent-strong);
+}
 .cad-card-tagline{
-  height:2.68em;
-  flex:0 0 auto;
+  grid-area:tagline;
   -webkit-line-clamp:2;
   color:var(--cad-muted);
   font-size:.76rem;
   line-height:1.34;
 }
 .cad-card-parameters{
-  height:2.6em;
-  flex:0 0 auto;
+  grid-area:parameters;
   -webkit-line-clamp:2;
   color:var(--cad-muted);
   font-size:.68rem;
   line-height:1.3;
 }
-.cad-model-card .cad-card-updated{font-size:.66rem;line-height:1.25;font-weight:600;color:var(--cad-accent-strong)}
-.cad-card-state{align-self:flex-start;margin-top:auto;padding:.16rem .45rem;border-radius:999px;background:#eaf3ff;color:#19518e;font-size:.64rem;font-weight:750}
+.cad-card-state{
+  grid-area:state;
+  align-self:end;
+  justify-self:start;
+  margin-left:.8rem;
+  padding:.16rem .45rem;
+  border-radius:999px;
+  background:#eaf3ff;
+  color:#19518e;
+  font-size:.64rem;
+  font-weight:750;
+}
 .cad-card-ok,.cad-status-ok{background:#e5f6e9!important;color:#166534!important}
 .cad-card-pending,.cad-status-pending{background:#fff1d9!important;color:#915b00!important}
 

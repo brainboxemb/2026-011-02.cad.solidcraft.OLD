@@ -73,25 +73,25 @@ class HugoSiteContractTests(unittest.TestCase):
         self.assertNotIn(".cad-catalog-page .cad-model-grid{", css)
         self.assertIn("{{ $recent := first 8 $models.ByLastmod.Reverse }}", home)
 
-    def test_model_cards_bound_text_regions_for_stable_rows(self):
+    def test_model_cards_use_explicit_named_rows_for_stable_alignment(self):
         css = (SITE / "assets/css/custom.css").read_text()
         card = (SITE / "layouts/partials/cad/model-card.html").read_text()
-        self.assertIn('class="cad-card-title"', card)
-        self.assertIn('class="cad-card-tagline"', card)
-        self.assertIn('class="cad-card-parameters"', card)
-        self.assertIn(".cad-card-title,", css)
-        self.assertIn(".cad-card-tagline,", css)
-        self.assertIn(".cad-card-parameters{", css)
+        self.assertIn("cad-model-card-has-section", card)
+        self.assertIn("cad-model-card-has-updated", card)
+        self.assertIn("display:grid;", css)
+        self.assertIn("grid-template-areas:", css)
+        for area in ("picture", "section", "title", "updated", "tagline", "parameters", "state"):
+            self.assertIn(f'"{area}"', css)
+        self.assertIn("--cad-card-title-row:2.34rem", css)
+        self.assertIn("--cad-card-updated-row:.83rem", css)
+        self.assertIn("--cad-card-tagline-row:2.04rem", css)
+        self.assertIn("--cad-card-parameters-row:1.77rem", css)
+        self.assertIn(".cad-model-card-has-section.cad-model-card-has-updated{", css)
         self.assertGreaterEqual(css.count("-webkit-line-clamp:2"), 3)
-        self.assertIn("height:2.48em", css)
-        self.assertIn("height:2.68em", css)
-        self.assertIn("height:2.6em", css)
-        self.assertNotIn("min-height:2.35em", css)
-        self.assertNotIn("min-height:2.55em", css)
-        self.assertIn("height:140px", css)
+        self.assertIn("grid-area:state", css)
+        self.assertNotIn(".cad-model-card{display:flex", css)
+        self.assertNotIn("margin-top:auto", css)
         self.assertIn('<span class="cad-card-picture">{{ with $page.Resources.Get "model.png" }}', card)
-        self.assertIn('{{ end }}</span>', card)
-        self.assertIn("margin-top:auto", css)
 
     def test_model_detail_uses_one_calm_shared_layout_contract(self):
         css = (SITE / "assets/css/custom.css").read_text()
@@ -346,11 +346,12 @@ class HugoSiteContractTests(unittest.TestCase):
             workflow.index("Capture rendered model layouts"),
             workflow.index("Publish CAD Pages for source scope"),
         )
-        for route in ("models_url=", "models/plate/", "models/simple-mft/"):
+        for route in ("models_url=", "components_url=", "models/plate/", "models/simple-mft/"):
             self.assertIn(route, script)
         for image in (
             "home-overview.png",
             "models-overview.png",
+            "components-overview.png",
             "plate-overview.png",
             "plate-full.png",
             "simple-mft-overview.png",
