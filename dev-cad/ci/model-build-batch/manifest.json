@@ -1,5 +1,5 @@
 {
-  "forge_sha": "9258d54079981604b6dd777a4c4face897c190fe",
+  "forge_sha": "17a4e1d0e2edf0124d40daf5425891fdf65c24be",
   "models": [
     {
       "artifacts": [],
@@ -127,16 +127,6 @@
       "artifacts": [],
       "compile_error": null,
       "definition": null,
-      "forge_commands": "/output/items/models/components/hub75_panel/generated/hub75-panel/scpf/solidcraft.json",
-      "item_path": "models/components/hub75_panel",
-      "scpc_commands": null,
-      "scpc_sha": null,
-      "slug": "hub75-panel"
-    },
-    {
-      "artifacts": [],
-      "compile_error": null,
-      "definition": null,
       "forge_commands": "/output/items/models/advanced/hub75_screen/generated/hub75-screen/scpf/solidcraft.json",
       "item_path": "models/advanced/hub75_screen",
       "scpc_commands": null,
@@ -166,5 +156,5 @@
   ],
   "runtime_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
   "schema": 1,
-  "source_sha": "75d8fb377e37766fc59fcf1abaa7cc18bfec1069"
+  "source_sha": "f975ff4f60af2e719399635fdb5153dc1f052c18"
 }

@@ -1,7 +1,7 @@
 {
   "format": "scpf-replay-log",
   "version": 1,
-  "replay_sha256": "046be2d2f9668b01fafebce75021cae102d0134641d5e6cd1aeca13d81473d9d",
+  "replay_sha256": "7520c1ab5d3c2b704dde06419122624a0fa2eefb72f45714420bed5f25597242",
   "variables": {
     "$simplemft": 2,
     "$d1_SimpleMFT_face_point_1": [
@@ -242,7 +242,7 @@
           "index": 0
         },
         "project_edges": false,
-        "name": "Dog holes"
+        "name": "d1_SimpleMFT__Dog holes"
       }
     },
     {
@@ -753,7 +753,7 @@
           "index": 0
         },
         "project_edges": false,
-        "name": "Clamp slots"
+        "name": "d1_SimpleMFT__Clamp slots"
       }
     },
     {
@@ -976,7 +976,7 @@
       "command": "sketch.create",
       "resolved_params": {
         "plane": "XZ",
-        "name": "Guide rail profile - festool"
+        "name": "d2_GuideRail__Guide rail profile - festool"
       }
     },
     {

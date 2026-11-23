@@ -1,6 +1,6 @@
 [
   {
-    "name": "Clamp slots",
+    "name": "d1_SimpleMFT__Clamp slots",
     "sketch": 6
   },
   {
@@ -87,7 +87,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 367.682881,
+    "ms": 230.086828,
     "name": "Clamp slots",
     "removed_bodies": [],
     "warning": null
@@ -101,7 +101,7 @@
     ],
     "created_bodies": [],
     "feature": 8,
-    "ms": 196.284322,
+    "ms": 129.938204,
     "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null
@@ -130,7 +130,7 @@
       "dimensions": [],
       "points": []
     },
-    "name": "Guide rail profile - festool",
+    "name": "d2_GuideRail__Guide rail profile - festool",
     "projected": null,
     "sketch": 11
   },
@@ -346,7 +346,7 @@
       "GuideRail"
     ],
     "feature": 12,
-    "ms": 19.531744,
+    "ms": 13.939874,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null

@@ -49,7 +49,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 4.285024,
+      "ms": 3.68577,
       "name": "Cylinder1",
       "rolled_back": false,
       "suppressed": false,
@@ -59,7 +59,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 35.338204,
+      "ms": 17.059534000000003,
       "name": "Cylinder2",
       "rolled_back": false,
       "suppressed": false,
@@ -69,7 +69,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 55.223295,
+      "ms": 23.260959,
       "name": "Hole1",
       "rolled_back": false,
       "suppressed": false,
@@ -79,7 +79,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 83.966261,
+      "ms": 42.749937,
       "name": "Hole2",
       "rolled_back": false,
       "suppressed": false,
@@ -89,7 +89,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 116.891778,
+      "ms": 46.259481,
       "name": "Hole3",
       "rolled_back": false,
       "suppressed": false,
@@ -99,7 +99,7 @@
     {
       "error": null,
       "id": 6,
-      "ms": 114.486646,
+      "ms": 53.399992,
       "name": "Hole4",
       "rolled_back": false,
       "suppressed": false,
@@ -109,7 +109,7 @@
     {
       "error": null,
       "id": 7,
-      "ms": 128.08288100000001,
+      "ms": 60.596678000000004,
       "name": "Hole5",
       "rolled_back": false,
       "suppressed": false,
@@ -119,7 +119,7 @@
     {
       "error": null,
       "id": 8,
-      "ms": 146.657214,
+      "ms": 80.141691,
       "name": "Hole6",
       "rolled_back": false,
       "suppressed": false,
@@ -129,7 +129,7 @@
     {
       "error": null,
       "id": 9,
-      "ms": 156.50418599999998,
+      "ms": 72.01682500000001,
       "name": "Hole7",
       "rolled_back": false,
       "suppressed": false,

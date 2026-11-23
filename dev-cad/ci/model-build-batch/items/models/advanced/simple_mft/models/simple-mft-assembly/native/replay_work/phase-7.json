@@ -92,7 +92,7 @@
       "command": "sketch.create",
       "params": {
         "plane": "XZ",
-        "name": "Guide rail profile - festool"
+        "name": "d2_GuideRail__Guide rail profile - festool"
       }
     },
     {

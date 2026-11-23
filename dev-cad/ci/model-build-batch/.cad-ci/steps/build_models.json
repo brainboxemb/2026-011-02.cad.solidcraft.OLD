@@ -13,17 +13,16 @@
     "corner-bracket",
     "flex-bench-dog",
     "guide-rail",
-    "hub75-panel",
     "hub75-screen",
     "simple-mft"
   ],
-  "bundle_sha256": "4e13d333bd28724245eebd5074fee230b8b64cba42200b58460dd4f080daae0b",
-  "duration_seconds": 160.371,
+  "bundle_sha256": "fd6c7c644637bab90b52042df3cc0e01e6f45006bfa6f316d5fad0182fab772f",
+  "duration_seconds": 89.379,
   "engine": "scons",
   "engine_schema": 4,
   "error": null,
   "exit_code": 0,
-  "finished_at": "2026-11-23T16:29:13.206Z",
+  "finished_at": "2026-11-23T21:15:34.956Z",
   "item": "model-build-batch",
   "outcome": "BUILT",
   "output_state": "UNCHANGED",
@@ -31,25 +30,25 @@
     "batch-report.json": {
       "kind": "file",
       "mode": 420,
-      "sha256": "599d0801b063799edeb9f3e9effe13685c37154d52aad9a67d0d864c274b3a4f"
+      "sha256": "7f00a4edab9bbc425d18501f2673fc89700971fed9c419b92b0c7ea38a44fec8"
     },
     "items": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "ed98a356b2984eb2801996970198bc3d7d8757cdc3e9ed09732b359f4eadd379"
+      "sha256": "fd7048289da6bd0480d615982579f36a64812a4a0218b3c56a5432b43d63b1e4"
     },
     "manifest.json": {
       "kind": "file",
       "mode": 420,
-      "sha256": "bf08a6c3c6c5dd7f815c1b494fd98255bdfc001168c5130f8952ce47f17ff545"
+      "sha256": "0f37c72ab596c3d6881c39057c7fc6853fb8aea78740d5fd2674ffa4d02593a5"
     }
   },
-  "run_finished_at": "2026-11-23T16:29:14.884Z",
-  "run_started_at": "2026-11-23T16:26:22.231Z",
+  "run_finished_at": "2026-11-23T21:15:35.813Z",
+  "run_started_at": "2026-11-23T21:13:58.805Z",
   "schema": 5,
-  "started_at": "2026-11-23T16:26:32.854Z",
+  "started_at": "2026-11-23T21:14:05.587Z",
   "status": "pass",
   "step": "build_models",
-  "target_spec_digest": "e6f62d8081d61af8699b9ba07aee0f0a0fc3709de507f1dcc04e0321da72311d",
+  "target_spec_digest": "c0d608b7f20c1576c924bfa87d13d1701524f21b2ed948d163c6736d21fda0d9",
   "timeout_seconds": null
 }

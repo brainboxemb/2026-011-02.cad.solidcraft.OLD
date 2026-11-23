@@ -16,7 +16,7 @@
       "command": "sketch.create",
       "params": {
         "plane": "XY",
-        "name": "Hub75Panel footprint"
+        "name": "d1_Hub75Panel__Hub75Panel footprint"
       }
     },
     {
@@ -47,7 +47,7 @@
       "command": "sketch.create",
       "params": {
         "plane": "XY",
-        "name": "Hub75Panel rear start",
+        "name": "d1_Hub75Panel__Hub75Panel rear start",
         "offset": 2.0
       }
     },
@@ -72,7 +72,7 @@
       "command": "sketch.create",
       "params": {
         "plane": "XY",
-        "name": "Hub75Panel rear perimeter",
+        "name": "d1_Hub75Panel__Hub75Panel rear perimeter",
         "offset": 14.5
       }
     },
@@ -98,10 +98,10 @@
       "params": {
         "sections": [
           {
-            "sketch": "Hub75Panel rear start"
+            "sketch": "d1_Hub75Panel__Hub75Panel rear start"
           },
           {
-            "sketch": "Hub75Panel rear perimeter"
+            "sketch": "d1_Hub75Panel__Hub75Panel rear perimeter"
           }
         ],
         "operation": "join",
@@ -151,7 +151,7 @@
           "index": "$d1_Hub75Panel_face_index_1"
         },
         "project_edges": false,
-        "name": "Rear electronics bays"
+        "name": "d1_Hub75Panel__Rear electronics bays"
       }
     },
     {

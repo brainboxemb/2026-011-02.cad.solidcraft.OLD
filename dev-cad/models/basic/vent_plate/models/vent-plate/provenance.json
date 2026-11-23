@@ -1,5 +1,5 @@
 {
-  "forge_sha": "9258d54079981604b6dd777a4c4face897c190fe",
+  "forge_sha": "17a4e1d0e2edf0124d40daf5425891fdf65c24be",
   "independent_scpc_compared": true,
   "model": "vent-plate",
   "runtime_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
@@ -9,5 +9,5 @@
   "solidcraft_built": true,
   "solidcraft_verified": true,
   "solidcraft_version": "0.45.0",
-  "source_sha": "75d8fb377e37766fc59fcf1abaa7cc18bfec1069"
+  "source_sha": "f975ff4f60af2e719399635fdb5153dc1f052c18"
 }

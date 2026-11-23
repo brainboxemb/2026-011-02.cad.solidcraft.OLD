@@ -1,5 +1,5 @@
 {
-  "model_count": 16,
+  "model_count": 15,
   "models": [
     {
       "error": null,
@@ -75,12 +75,6 @@
     },
     {
       "error": null,
-      "model": "hub75-panel",
-      "semantic_verification": "not-configured",
-      "status": "pass"
-    },
-    {
-      "error": null,
       "model": "hub75-screen",
       "semantic_verification": "not-configured",
       "status": "pass"
@@ -99,6 +93,6 @@
     }
   ],
   "schema": 1,
-  "source_sha": "75d8fb377e37766fc59fcf1abaa7cc18bfec1069",
+  "source_sha": "f975ff4f60af2e719399635fdb5153dc1f052c18",
   "status": "pass"
 }
