@@ -108,7 +108,7 @@ is needed.
 | Plexiglass | **840 × 360 × 4 mm** | Y=12..16; Z=13..373 |
 | Five basic panels | 159.70 × 319.71 × 14.50 mm | X pitch 160 |
 | Four glass retainers | Two lengths: **844** and **362 mm** | **12 × 12 mm pine (grenen)**, straight mitres |
-| Eight corner brackets | **24 mm Y width** (editable `bracket_width`), 12 mm wall | Two per corner, no screw holes |
+| Eight corner brackets | **24 mm Y width** (editable `bracket_width`), 12 mm wall | Two per corner; each shared bracket has four recessed M5 fixing seats |
 
 **Roof front:** the sidewall front is the Y=0 reference plane, while the roof starts at Y=−10. That is a **10 mm front overhang**.
 
@@ -176,9 +176,16 @@ flush with the **rear face of the sidewall (Y=100)**. The 9 mm backboard
 starts there and occupies Y=100..109, so no corner bracket overlaps it.
 This is independent of the roof's 1 mm overhang *past* the backboard.
 
-The old screw-hole operations are deliberately absent. They had caused
-native SolidCraft warnings and should not be silently reintroduced.
-Mounting and fastener design remains to be resolved later.
+The shared CornerBracket now includes four explicit recessed **M5 fixing
+seats**, restored in PR #360 from the preserved reference geometry. Each seat
+uses a flat Ø10.4 × 1 mm head recess, a 90° transition to the Ø5.4 through
+bore, plus the separate shallow outside/inside edge reliefs. The wooden-frame
+assembly reuses that same bracket definition at all eight locations.
+
+This models the bracket fixing geometry; it does **not** by itself select screw
+length/material or prove pull-out strength in the plywood. Those physical
+fastener choices remain assembly-design work. The final tiny arm-tip wedge is
+also still deferred under #362 / Forge #750.
 
 ## Model browser and source layout
 
