@@ -64,3 +64,5 @@ Current records:
 - [0031-identical-catalog-card-geometry.md](0031-identical-catalog-card-geometry.md) — keep the section row on all catalog overview routes so category and all-model cards are identical (#316).
 
 - [0035-selective-model-build-batch.md](0035-selective-model-build-batch.md) — make the shared SolidCraft batch honor CAD-CI direct-dependent model selection instead of rebuilding the full catalog (#335).
+
+- [0040-compact-model-detail-facts.md](0040-compact-model-detail-facts.md) — keep long model parameters out of the status badge row and render them as readable key-dimensions prose (#344).
