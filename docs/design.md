@@ -304,8 +304,7 @@ Pages publication and retains:
 - Plate overview;
 - Plate full page;
 - Simple MFT overview;
-- Simple MFT full page;
-- FlexBenchDog overview, including the compact status row and readable key-dimensions text.
+- Simple MFT full page.
 
 Missing local assets fail the capture. Screenshots complement build/provenance
 checks and must be visually reviewed for presentation changes.
@@ -356,7 +355,7 @@ model-description/catalog source and must not gain a hand-maintained
 
 `model.yml` owns model/page metadata. Optional `page.md` owns additional
 background/reference prose without redefining identity, build state or
-verification facts. Build provenance, generated commands, saved native output
+verification facts. Build provenance, generated commands, saved SolidCraft output
 and verification state come only from the accepted prepared build scope.
 
 A model's optional supplementary views remain declarative model metadata and
