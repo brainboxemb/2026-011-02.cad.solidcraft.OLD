@@ -1,4 +1,4 @@
-"""Native snapshot settings owned by the HUB75 wood-frame model."""
+"""Native snapshot settings owned by Hub75DisplayCase."""
 
 SNAPSHOT_CAMERA = {
     "target": [0, 28, 181],

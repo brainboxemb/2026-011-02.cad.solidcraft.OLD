@@ -1,4 +1,4 @@
-"""Native snapshot settings owned by HUB75Display2."""
+"""Native snapshot settings owned by Hub75DisplayCase v2."""
 
 SNAPSHOT_CAMERA = {
     "target": [0, 28, 181],

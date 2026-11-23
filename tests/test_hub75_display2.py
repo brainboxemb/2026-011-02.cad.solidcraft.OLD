@@ -1,4 +1,4 @@
-"""Regression checks for the independent HUB75Display2 baseline."""
+"""Regression checks for the independent Hub75DisplayCase v2 baseline."""
 
 import ast
 from pathlib import Path
@@ -25,14 +25,14 @@ def of(rows, command):
     ]
 
 
-class HUB75Display2Tests(unittest.TestCase):
+class Hub75DisplayCaseV2Tests(unittest.TestCase):
     def test_v2_has_its_own_model_local_source_tree(self):
         classes = [
             node.name
             for node in ast.parse(MODEL.read_text(encoding="utf-8")).body
             if isinstance(node, ast.ClassDef)
         ]
-        self.assertEqual(classes, ["HUB75Display2"])
+        self.assertEqual(classes, ["Hub75DisplayCaseV2"])
 
         self.assertEqual(
             {path.name for path in (SCPF_DIR / "assemblies").glob("*.py")},

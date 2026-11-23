@@ -1,4 +1,4 @@
-"""HUB75Display2 parallel design baseline assembled from named parts and subassemblies."""
+"""Hub75DisplayCase v2 baseline assembled from named parts and subassemblies."""
 
 from assemblies.corner_brackets import CornerBrackets
 from assemblies.glass_frame import GlassFrame
@@ -7,8 +7,8 @@ from assemblies.wood_frame import WoodFrame
 from parts.window import Window
 
 
-class HUB75Display2:
-    """Second HUB75 display design; initially matches the verified v1 baseline."""
+class Hub75DisplayCaseV2:
+    """Hub75DisplayCase v2; initially matches the verified v1 baseline."""
 
     # Coordinate / datum conventions
     #
