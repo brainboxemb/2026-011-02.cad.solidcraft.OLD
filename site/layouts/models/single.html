@@ -59,9 +59,7 @@
             <a href="{{ .RelPermalink }}" class="cad-preview-link"><img src="{{ .RelPermalink }}" alt="{{ $.Title }} SolidCraft build"></a>
           {{ else }}<div class="cad-preview-empty">Current scope has no accepted preview for this model.</div>{{ end }}
         </div>
-        {{ if eq $semantic "pass" }}
-          <p class="cad-preview-note">Verified SolidCraft image. Build and verification details are shown below.</p>
-        {{ end }}
+        <p class="cad-model-description">{{ index $m "description" }}</p>
       </section>
 
       <aside class="cad-panel cad-files-panel">
