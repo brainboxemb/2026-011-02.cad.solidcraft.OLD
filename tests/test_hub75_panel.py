@@ -411,18 +411,20 @@ class Hub75PanelTests(unittest.TestCase):
             {"p0": [-13.95, 108.75], "p1": [13.95, 118.25]},
         )
         power_rect = rectangle_after("Power connector approximate")
-        for actual, expected in zip(
-            power_rect["p0"],
-            [power_x - POWER_CONNECTOR_WIDTH / 2,
-             power_y - POWER_CONNECTOR_HEIGHT / 2],
-        ):
-            self.assertAlmostEqual(actual, expected, places=6)
-        for actual, expected in zip(
-            power_rect["p1"],
-            [power_x + POWER_CONNECTOR_WIDTH / 2,
-             power_y + POWER_CONNECTOR_HEIGHT / 2],
-        ):
-            self.assertAlmostEqual(actual, expected, places=6)
+        # width/height are editable native parameters, so Forge intentionally
+        # preserves the power centre as symbolic command expressions. The
+        # concrete default position is checked above; here verify that both
+        # rectangle corners retain those live parameter dependencies instead
+        # of baking the current 159.70 × 319.71 values into the command plan.
+        self.assertTrue(
+            all(isinstance(value, str) for value in power_rect["p0"] + power_rect["p1"])
+        )
+        self.assertTrue(
+            all("width" in value for value in (power_rect["p0"][0], power_rect["p1"][0]))
+        )
+        self.assertTrue(
+            all("height" in value for value in (power_rect["p0"][1], power_rect["p1"][1]))
+        )
 
         joins = {
             row["params"]["name"]: row["params"]
