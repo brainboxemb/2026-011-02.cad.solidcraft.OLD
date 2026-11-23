@@ -38,10 +38,8 @@ class SharedModelBatchTests(unittest.TestCase):
                 if (file.parent / "verification/verify.py").is_file():
                     semantic.append(root)
 
-        self.assertEqual(len(active), 15)
-        blocked = {
-            "models/components/hub75_panel",
-        }
+        self.assertEqual(len(active), 16)
+        blocked = set()
         self.assertEqual(
             {
                 file.parent.relative_to(ROOT).as_posix()
