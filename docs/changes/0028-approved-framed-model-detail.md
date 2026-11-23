@@ -124,3 +124,44 @@ presentation differences that were not visible in the EXP data adapter:
 The follow-up parity correction restores the approved dark code surface, keeps
 `open original` as a normal inline link, and restores the model description
 below the preview as shown in EXP.
+
+
+## Accepted CAD evidence
+
+The approved EXP baseline was ported through two short-lived CAD PRs:
+
+- PR #293 — structural port + provenance version field;
+- PR #294 — durable screenshot parity correction.
+
+Accepted durable `dev-ci` proof:
+
+- `dev-ci`: `5fba03403ce00319c941ef888b23cd8d0a0c2fa4`;
+- run #296: `45135721728` — green;
+- screenshot artifact: `model-layouts-dev-ci`, artifact `14800215325`;
+- `build/dev-ci` source commit:
+  `5fba03403ce00319c941ef888b23cd8d0a0c2fa4`;
+- Pages `/dev-ci/` source commit:
+  `5fba03403ce00319c941ef888b23cd8d0a0c2fa4`;
+- Pages build commit:
+  `0f1a0486b5b00b7dcd1ba1f6ac429c581bdfb229`.
+
+The four rendered screenshots were visually reviewed against approved EXP run
+#92. The review confirmed:
+
+- Plate shows `SolidCraft 0.45.0 · verified`;
+- Simple MFT shows `Built in SolidCraft 0.45.0`;
+- preview descriptions are present;
+- Open in SolidCraft Web, Background, reference, source and build evidence are
+  framed;
+- `MODEL CONTEXT`, `DESIGN REFERENCE` and `SOURCE` labels are present;
+- Background bullets are visible;
+- Construction-stage spacing matches the approved EXP rhythm;
+- SCPF source is visible by default on the dark technical code surface;
+- generated SolidCraft commands remain collapsed;
+- the external reference `open original` link is a normal inline link, not a
+  second image tile.
+
+Published model provenance records `solidcraft_version: "0.45.0"` for both
+Plate and Simple MFT.
+
+This is the accepted `dev-ci` presentation baseline for stable promotion.
