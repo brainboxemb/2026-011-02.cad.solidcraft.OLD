@@ -85,7 +85,7 @@ The shared plan structure is defined by
 
 Owner/lane: `dev-ci`.
 
-Status: **now — #278 reopened for the approved replacement**.
+Status: **accepted on dev-ci; stable promotion is next**.
 
 The earlier 0027 presentation was technically green but visually rejected.
 The restored backup publication was then used as the baseline in EXP issue #29.
@@ -102,20 +102,26 @@ User-approved reference:
 - generated commands collapsed;
 - no standalone numeric section labels.
 
-Current port branch:
+Accepted CAD evidence:
 
-`issue/278-approved-exp-baseline`
+- PR #293 ported the approved hierarchy and SolidCraft version provenance;
+- PR #294 corrected the remaining durable screenshot parity differences;
+- `dev-ci` is accepted at
+  `5fba03403ce00319c941ef888b23cd8d0a0c2fa4`;
+- durable run #296 (`45135721728`) is green;
+- screenshot artifact `model-layouts-dev-ci` (artifact `14800215325`) was
+  visually inspected against EXP run #92;
+- `build/dev-ci` and Pages `/dev-ci/` source-match the accepted lane;
+- published Plate and Simple MFT provenance both record SolidCraft `0.45.0`.
 
-Required order:
+Required next order:
 
-1. port the approved EXP hierarchy without extra redesign;
-2. record actual `SOLIDCRAFT_VERSION` in model provenance and show it in the
-   status badge;
-3. require repository tests + CAD-CI PR validation;
-4. inspect the CAD-owned Plate/Simple-MFT Chrome screenshot artifact;
-5. merge through `/merge` to `dev-ci`;
-6. verify durable `build/dev-ci` and Pages `/dev-ci/` source-match;
-7. only then promote exact `dev-ci -> main`.
+1. merge this docs-only acceptance reconciliation to `dev-ci`;
+2. verify the resulting durable lane remains source-matched;
+3. open exact `dev-ci -> main`;
+4. require full promotion validation;
+5. merge only through `/merge` as a normal permanent-lane merge commit;
+6. verify stable `build/main`, public Pages and main screenshots.
 
 Do not mix #21 or #288 into this replacement.
 
@@ -155,7 +161,7 @@ schema, planner or reference framework.
 
 | Issue | Lane/owner | Status | Next action |
 | --- | --- | --- | --- |
-| #278 Calm generic model-detail presentation | dev-ci | **now / reopened** | Port user-approved EXP #29/run #89 framed/source-first baseline; review CAD screenshots before merge. |
+| #278 Model-detail presentation replacement | dev-ci | **accepted; promotion next** | PRs #293/#294 + durable run #296 match approved EXP run #92; promote exact dev-ci to main after docs reconciliation. |
 | #288 tool.cad.ci v0.25.0 workflow/config migration | dev-ci / CI | **later / separate** | Do not mix with #278; reassess after the current site presentation checkpoint. |
 | #250 Shared changelog template/history | documentation | **later** | Reassess after permanent lanes are coherent; do not interrupt WS1/WS2. |
 | #206 Remove Forge reference implementations | dev-cad | **next after WS2** | Remove local cross-CAD reference sources/assumptions without changing product geometry. |
@@ -204,6 +210,7 @@ in this plan.
 
 ## Next checkpoint
 
-Complete the approved #278 replacement on `dev-ci`, inspect the CAD-owned
-Plate/Simple-MFT screenshots, and verify durable build/Pages provenance. Only
-then promote exact `dev-ci -> main`. Keep #21 and #288 separate.
+Merge the #278 acceptance documentation to `dev-ci`, verify the final durable
+lane is source-matched, then promote exact `dev-ci -> main` through the
+repository `/merge` policy. Inspect stable Plate/Simple-MFT screenshots and
+public provenance before closing #278. Keep #21 and #288 separate.
