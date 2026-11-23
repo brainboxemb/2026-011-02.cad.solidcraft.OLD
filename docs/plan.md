@@ -148,7 +148,10 @@ required naming fix and any other applicable runner fixes.
 | #77 CornerBracket placement/associativity | dev-cad + Forge | **blocked on released #679 fix** | Validate eight bracket occurrences only on a processable current HUB75 root. |
 | #21 interactive SolidCraft viewer | site/product | **later** | Revisit after current model/output contracts stabilize. |
 | #20 multiple verified model views | site/product | **later / partially enabled** | Build on generic extra_views; broader responsive gallery contract remains open. |
-| #7 complete HUB75 screen assembly | dev-cad | **later / broad** | Split remaining physical/electrical work into focused issues rather than one large implementation PR. |
+| #365 HUB75 glazing retention/seal | dev-cad | **next design slice** | Define the physical glazing stack, contact/clearance, retention and sealing before modelling guessed hardware. |
+| #366 HUB75 rear/electrical interfaces | dev-cad | **later / focused** | Complete mechanically relevant rear frame/PCB/connector/cable envelopes from measured/reference sources. |
+| #367 HUB75 exploded view | dev-cad + Forge if needed | **next capability check** | Qualify current SolidCraft/Forge explode support; use generic capability or open owner-layer blocker. |
+| #7 complete HUB75 screen assembly | tracking | **tracking only** | Remaining work is split across #8/#77/#91/#365/#366/#367 plus #20/#21; do not create one broad #7 implementation PR. |
 
 ## Completed / retired in this batch
 
