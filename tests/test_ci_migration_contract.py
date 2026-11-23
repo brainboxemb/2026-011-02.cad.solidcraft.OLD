@@ -126,6 +126,7 @@ class MigrationCatalogContractTests(unittest.TestCase):
         self.assertIn("scpc-package", shared)
         self.assertIn("cad-verification-package", shared)
         self.assertIn("run: [python, ../../scripts/ci/model_build_batch.py]", shared)
+        self.assertIn("selection_context: direct_dependents", shared)
 
         import json
         pin = json.loads(

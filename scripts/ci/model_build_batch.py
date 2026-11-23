@@ -54,21 +54,61 @@ def configured_model_roots() -> tuple[tuple[Path, tuple[str, ...]], ...]:
     return tuple(roots)
 
 
+def active_model_roots(
+    processed: tuple[tuple[Path, tuple[str, ...]], ...] | None = None,
+) -> tuple[tuple[Path, tuple[str, ...]], ...]:
+    """Return the released CAD-CI active direct model dependents."""
+
+    raw = os.environ.get("CAD_CI_ACTIVE_DEPENDENTS_JSON")
+    if raw is None:
+        raise RuntimeError(
+            "CAD_CI_ACTIVE_DEPENDENTS_JSON is required for the model batch"
+        )
+    try:
+        value = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(
+            "CAD_CI_ACTIVE_DEPENDENTS_JSON must be valid JSON"
+        ) from exc
+    if (
+        not isinstance(value, list)
+        or any(not isinstance(item, str) or not item for item in value)
+        or len(set(value)) != len(value)
+    ):
+        raise RuntimeError(
+            "CAD_CI_ACTIVE_DEPENDENTS_JSON must be a unique string list"
+        )
+
+    roots = configured_model_roots() if processed is None else tuple(processed)
+    by_id = {variants[0]: (model_root, variants) for model_root, variants in roots}
+    unknown = [item for item in value if item not in by_id]
+    if unknown:
+        raise RuntimeError(
+            "unexpected model batch direct dependent(s): " + ", ".join(unknown)
+        )
+    return tuple(by_id[item] for item in value)
+
+
 def source_sha() -> str:
     return subprocess.check_output(
         ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True,
     ).strip()
 
 
-def write_manifest(batch_output: Path, forge_wheel: Path, scpc_wheel: Path) -> Path:
-    """Prepare every model before launching the SolidCraft container."""
+def write_manifest(
+    batch_output: Path,
+    forge_wheel: Path,
+    scpc_wheel: Path,
+    model_roots: tuple[tuple[Path, tuple[str, ...]], ...],
+) -> Path:
+    """Prepare the selected model roots before launching SolidCraft."""
 
     if str(forge_wheel) not in sys.path:
         sys.path.insert(0, str(forge_wheel))
     from scpf.runner import run_script
 
     rows = []
-    for model_root, variants in configured_model_roots():
+    for model_root, variants in model_roots:
         item_output = batch_output / "items" / model_root
         item_output.mkdir(parents=True, exist_ok=True)
         (item_output / "generated").mkdir(exist_ok=True)
@@ -167,7 +207,7 @@ def roots_summary(rows: list[dict]) -> set[str]:
 
 
 def run_batch() -> int:
-    """Start Docker once after collecting all models and their commands."""
+    """Start Docker once for the CAD-CI-selected model-root subset."""
 
     started = time.perf_counter()
     output_env = os.environ.get("CAD_CI_OUTPUT", "").strip()
@@ -177,7 +217,49 @@ def run_batch() -> int:
     items = output / "items"
     if items.exists():
         shutil.rmtree(items)
-    output.mkdir(parents=True, exist_ok=True)
+    items.mkdir(parents=True, exist_ok=True)
+
+    model_roots = active_model_roots()
+    selected_ids = [variants[0] for _, variants in model_roots]
+    print(
+        "CAD BUILD selected model roots: "
+        + (", ".join(selected_ids) if selected_ids else "none"),
+        flush=True,
+    )
+    if not model_roots:
+        _, forge_sha = dependency("scpf")
+        manifest = {
+            "schema": 1,
+            "source_sha": source_sha(),
+            "runtime_image": os.environ.get("FORGE_RUNTIME_IMAGE", "").strip(),
+            "forge_sha": forge_sha,
+            "models": [],
+        }
+        (output / "manifest.json").write_text(
+            json.dumps(manifest, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        (output / "batch-report.json").write_text(
+            json.dumps(
+                {
+                    "schema": 1,
+                    "source_sha": manifest["source_sha"],
+                    "status": "pass",
+                    "model_count": 0,
+                    "models": [],
+                },
+                indent=2,
+                sort_keys=True,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+        print(
+            f"CAD BUILD TIMING total_s={time.perf_counter() - started:.3f}; "
+            "docker_run_count=0",
+            flush=True,
+        )
+        return 0
 
     forge = dependency_wheel("forge-package", "scpf-*.whl")
     scpc = dependency_wheel("scpc-package", "scpc-*.whl")
@@ -185,7 +267,7 @@ def run_batch() -> int:
         "cad-verification-package", "brainboxemb_cad_verification_lib-*.whl",
     )
     compile_started = time.perf_counter()
-    manifest_path = write_manifest(output, forge, scpc)
+    manifest_path = write_manifest(output, forge, scpc, model_roots)
     print(
         f"CAD BUILD TIMING command_generation_s="
         f"{time.perf_counter() - compile_started:.3f}",

@@ -21,6 +21,7 @@ strategy:
   reuse: true
 steps:
   - id: build_models
+    selection_context: direct_dependents
     inputs:
       - cad-ci.yml
       - dependencies.repos
