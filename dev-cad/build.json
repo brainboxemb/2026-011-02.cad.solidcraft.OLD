@@ -50,7 +50,7 @@
       "outputs": [
         "result.json"
       ],
-      "source_commit": "75d8fb377e37766fc59fcf1abaa7cc18bfec1069"
+      "source_commit": "b806bb32c1369f4928047fcc124ad3eb9e244524"
     },
     "ci/scpc-package": {
       "engine": "scons",
@@ -246,24 +246,10 @@
         "models"
       ],
       "source_commit": "75d8fb377e37766fc59fcf1abaa7cc18bfec1069"
-    },
-    "models/components/hub75_panel": {
-      "engine": "scons",
-      "engine_schema": 4,
-      "final_bundle_sha256": "19e4a0e9924e0a6f448c53ff505612b44bba55aa9f4162104a887c559023837f",
-      "final_step": "build_results",
-      "final_target_spec_digest": "6de1ee8d58a6c02f69fa79d7ff3793698b4e5663064ad358ec44bfd8cbb48758",
-      "item_id": "hub75-panel",
-      "outputs": [
-        "generated",
-        "manifest.json",
-        "models"
-      ],
-      "source_commit": "75d8fb377e37766fc59fcf1abaa7cc18bfec1069"
     }
   },
   "name": "dev-cad",
   "schema": 1,
   "scope": "named",
-  "source_commit": "75d8fb377e37766fc59fcf1abaa7cc18bfec1069"
+  "source_commit": "b806bb32c1369f4928047fcc124ad3eb9e244524"
 }
