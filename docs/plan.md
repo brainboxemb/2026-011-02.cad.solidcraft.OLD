@@ -53,11 +53,10 @@ Primary lane: `dev-cad`.
   compatibility construction tracked by #348 / Forge #747. Keep #332 open
   until the published result is visually accepted as the supplied wireframe
   cube.
-- #333: the R0.5 four-edge inner-corner fillet is already merged. PR #361 adds
-  a model-owned `underside.png` view using the existing
-  `EXTRA_SNAPSHOTS` mechanism. PR validation run #408 is green. Merge only
-  after the underside view can be inspected and the four rounded material-side
-  corners are visually accepted.
+- #333: the R0.5 four-edge inner-corner fillet is already merged. PR #361 is
+  also merged and adds a model-owned `underside.png` view using the existing
+  `EXTRA_SNAPSHOTS` mechanism. Durable dev-cad publication must complete, then
+  the four rounded material-side corners still need visual acceptance.
 - #327 / draft PR #328: full-length native Cone taper remains blocked on Forge
   #746. Do not emulate Cone locally.
 
@@ -138,12 +137,11 @@ required naming fix and any other applicable runner fixes.
 | #345 STL output + GitHub viewer | dev-ci/dev-cad + Forge | **blocked on Forge #748** | Adopt qualified STL export after upstream release; no STEP conversion workaround. |
 | #348 FlexBenchDog logo cleanup | dev-cad + Forge | **blocked on Forge #747** | Replace temporary per-rib Slot Sketches after released Polygon2D attached-Sketch support. |
 | #332 FlexBenchDog BrainBox logo | dev-cad | **visual acceptance** | Confirm merged PR #347 output visually; cleanup mechanics are separately #348. |
-| #333 FlexBenchDog inner-corner fillets | dev-cad | **now / PR #361** | Inspect underside view, then merge/close if the R0.5 corners match the reference. |
+| #333 FlexBenchDog inner-corner fillets | dev-cad | **visual acceptance** | PR #361 is merged; inspect durable `underside.png`, then close if the R0.5 corners match the reference. |
 | #327 FlexBenchDog Cone taper | dev-cad + Forge | **blocked on Forge #746** | Resume draft PR #328 only after native Cone support is released/adopted. |
 | #288 CAD-CI workflow/config migration | dev-ci / tool.cad.ci | **later / separate** | Reassess against the current released tool.cad.ci owner baseline before implementation. |
 | #205 canonical model.yml contract | shared owner + dev-cad | **blocked** | Wait for an actually reusable shared contract; do not copy a Forge site-local validator. |
 | #172 full-catalog native qualification | dev-cad + Forge | **blocked** | Re-enable remaining disabled roots after required Forge fixes reach the CAD baseline. |
-| #168 verification terminology | cross-repo | **later** | Revisit after current owner/release work stabilizes. |
 | #142 HUB75Display2 | dev-cad + Forge | **blocked on released #679 fix** | Resume native qualification after Forge adoption. |
 | #135 Bolted Flange circular pattern | dev-cad + Forge | **blocked on Forge #347** | Keep PR #141 parked until the intended applied-feature seed is supported. |
 | #91 frame-thickness native regression | dev-cad + Forge | **blocked on released #679 fix** | Run current native saved-design mutation once hub75-wood-frame is processable. |
@@ -161,6 +159,7 @@ required naming fix and any other applicable runner fixes.
 - #14 closed as superseded: released CAD-CI/SCons selection now owns affected
   model selection; do not revive CAD-local Moon/GitHub-cache architecture.
 - #250 complete: root `CHANGELOG.md` follows the shared template without inventing historical releases; the repository currently has no tags or GitHub Releases.
+- #168 complete: active operator-facing documentation now uses explicit SolidCraft build/verification terminology; the site already enforced `Build and verification` / `SolidCraft verified` labels.
 - #206 and #204 were already completed before this reconciliation.
 - PR #156 is closed and superseded by #349.
 
@@ -171,11 +170,10 @@ required naming fix and any other applicable runner fixes.
 - PR #169 — draft latch design; keep parked until its required Forge API
   baseline is available.
 - PR #141 — Bolted Flange circular pattern; blocked on Forge #347.
-- PR #361 — FlexBenchDog underside visual proof; green, awaiting visual review.
 
 ## Next checkpoint
 
-1. finish/accept #333 through PR #361;
+1. visually inspect #333's durable underside view and close it if accepted;
 2. visually confirm #332's already-merged logo result;
 3. continue any independent, unblocked dev-cad/dev-ci work without forcing a
    promotion to `main`;
