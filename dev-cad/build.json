@@ -50,7 +50,7 @@
       "outputs": [
         "result.json"
       ],
-      "source_commit": "78d79dac26cca8e388d8631f5fca62a3bb7c65f2"
+      "source_commit": "59271081d36eacd500b4b010f43979fc7064fb4e"
     },
     "ci/scpc-package": {
       "engine": "scons",
@@ -265,5 +265,5 @@
   "name": "dev-cad",
   "schema": 1,
   "scope": "named",
-  "source_commit": "78d79dac26cca8e388d8631f5fca62a3bb7c65f2"
+  "source_commit": "59271081d36eacd500b4b010f43979fc7064fb4e"
 }
