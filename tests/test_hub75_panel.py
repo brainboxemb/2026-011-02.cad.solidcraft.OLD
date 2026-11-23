@@ -131,20 +131,24 @@ class Hub75PanelTests(unittest.TestCase):
     def test_rear_taper_uses_editable_native_loft(self):
         commands = run_script(MODEL)["commands"]
         kinds = [c["command"] for c in commands]
-        self.assertEqual(kinds.count("solid.extrude"), 2)
         self.assertEqual(kinds.count("solid.loft"), 1)
-        self.assertEqual(kinds.count("sketch.rectangle.two_point"), 7)
         loft = next(c["params"] for c in commands if c["command"] == "solid.loft")
         self.assertEqual(loft["operation"], "join")
         self.assertEqual(loft["targets"], ["Hub75Panel"])
         self.assertIn("rear start", loft["sections"][0]["sketch"])
         self.assertIn("rear perimeter", loft["sections"][1]["sketch"])
+
+        # The taper/bay contract owns the first four sketches. Later detail
+        # features may add their own named sketches without changing these
+        # planes or making Rear electronics bays "the last sketch".
         planes = [c["params"] for c in commands if c["command"] == "sketch.create"]
         self.assertEqual(
-            [p.get("offset", 0) for p in planes],
+            [p.get("offset", 0) for p in planes[:4]],
             [0, "front_depth", "depth", 0],
         )
-        rear_bays = planes[-1]
+        rear_bays = next(
+            p for p in planes if p.get("name") == "Rear electronics bays"
+        )
         self.assertEqual(rear_bays["plane"]["body"], "Hub75Panel")
         self.assertEqual(rear_bays["plane"]["face"], "$face_point_1")
         self.assertEqual(rear_bays["plane"]["index"], "$face_index_1")
@@ -155,8 +159,10 @@ class Hub75PanelTests(unittest.TestCase):
 
         commands = run_script(MODEL)["commands"]
         named = [c for c in commands if c["command"] == "sketch.create"]
-        self.assertEqual([c["params"]["name"] for c in named][-1],
-                         "Rear electronics bays")
+        self.assertIn(
+            "Rear electronics bays",
+            [c["params"]["name"] for c in named],
+        )
         idx = next(i for i, c in enumerate(commands)
                    if c["command"] == "sketch.create"
                    and c["params"]["name"] == "Rear electronics bays")
@@ -319,6 +325,132 @@ class Hub75PanelTests(unittest.TestCase):
         self.assertEqual(
             len([c for c in commands if c["command"] == "solid.hole"]),
             24,
+        )
+
+    def test_rear_connector_envelopes_match_preserved_reference(self):
+        from models.components.hub75_panel.detailed.scpf.model import (
+            DATA_CONNECTOR_CENTER_OFFSET,
+            DATA_CONNECTOR_DEPTH,
+            DATA_CONNECTOR_FRONT_Z,
+            DATA_CONNECTOR_HEIGHT,
+            DATA_CONNECTOR_WIDTH,
+            Hub75Panel,
+            POWER_CONNECTOR_DEPTH,
+            POWER_CONNECTOR_FRONT_Z,
+            POWER_CONNECTOR_HEIGHT,
+            POWER_CONNECTOR_REFERENCE_X,
+            POWER_CONNECTOR_REFERENCE_Y,
+            POWER_CONNECTOR_WIDTH,
+            REFERENCE_HEIGHT,
+            REFERENCE_WIDTH,
+        )
+
+        self.assertEqual(DATA_CONNECTOR_CENTER_OFFSET, 113.5)
+        self.assertEqual(
+            (DATA_CONNECTOR_WIDTH, DATA_CONNECTOR_HEIGHT, DATA_CONNECTOR_DEPTH),
+            (27.90, 9.50, 10.64),
+        )
+        self.assertEqual(DATA_CONNECTOR_FRONT_Z, 2.63)
+        self.assertEqual(
+            (POWER_CONNECTOR_WIDTH, POWER_CONNECTOR_HEIGHT, POWER_CONNECTOR_DEPTH),
+            (13.0, 20.0, 7.0),
+        )
+        self.assertEqual(POWER_CONNECTOR_FRONT_Z, 3.0)
+
+        panel = Hub75Panel._scpf_component_class
+        power_x = (
+            POWER_CONNECTOR_REFERENCE_X * panel.width / REFERENCE_WIDTH
+            - panel.width / 2
+        )
+        power_y = (
+            POWER_CONNECTOR_REFERENCE_Y * panel.height / REFERENCE_HEIGHT
+            - panel.height / 2
+        )
+        self.assertAlmostEqual(power_x, -26.949375, places=6)
+        self.assertAlmostEqual(power_y, -31.971, places=6)
+
+        commands = run_script(MODEL)["commands"]
+        sketches = {
+            row["params"]["name"]: row["params"]
+            for row in commands
+            if row["command"] == "sketch.create"
+        }
+        expected_origins = {
+            "IDC connector lower": [0, 0, 2.63],
+            "IDC connector upper": [0, 0, 2.63],
+            "Power connector approximate": [0, 0, 3.0],
+        }
+        for name, origin in expected_origins.items():
+            with self.subTest(sketch=name):
+                self.assertEqual(
+                    sketches[name]["plane"],
+                    {
+                        "origin": origin,
+                        "x_dir": [1, 0, 0],
+                        "y_dir": [0, 1, 0],
+                    },
+                )
+
+        def rectangle_after(sketch_name):
+            start = next(
+                i for i, row in enumerate(commands)
+                if row["command"] == "sketch.create"
+                and row["params"]["name"] == sketch_name
+            )
+            return next(
+                row["params"] for row in commands[start + 1:]
+                if row["command"] == "sketch.rectangle.two_point"
+            )
+
+        self.assertEqual(
+            rectangle_after("IDC connector lower"),
+            {"p0": [-13.95, -118.25], "p1": [13.95, -108.75]},
+        )
+        self.assertEqual(
+            rectangle_after("IDC connector upper"),
+            {"p0": [-13.95, 108.75], "p1": [13.95, 118.25]},
+        )
+        power_rect = rectangle_after("Power connector approximate")
+        for actual, expected in zip(
+            power_rect["p0"],
+            [power_x - POWER_CONNECTOR_WIDTH / 2,
+             power_y - POWER_CONNECTOR_HEIGHT / 2],
+        ):
+            self.assertAlmostEqual(actual, expected, places=6)
+        for actual, expected in zip(
+            power_rect["p1"],
+            [power_x + POWER_CONNECTOR_WIDTH / 2,
+             power_y + POWER_CONNECTOR_HEIGHT / 2],
+        ):
+            self.assertAlmostEqual(actual, expected, places=6)
+
+        joins = {
+            row["params"]["name"]: row["params"]
+            for row in commands
+            if row["command"] == "solid.extrude"
+            and row["params"].get("operation") == "join"
+            and row["params"].get("name") in expected_origins
+        }
+        self.assertEqual(set(joins), set(expected_origins))
+        self.assertEqual(joins["IDC connector lower"]["distance"], 10.64)
+        self.assertEqual(joins["IDC connector upper"]["distance"], 10.64)
+        self.assertEqual(joins["Power connector approximate"]["distance"], 7.0)
+        self.assertTrue(
+            all(row["targets"] == ["Hub75Panel"] for row in joins.values())
+        )
+
+        parameter_names = {
+            row["params"]["name"]
+            for row in commands
+            if row["command"] == "parameters.add"
+        }
+        self.assertEqual(
+            parameter_names,
+            {
+                "width", "height", "depth", "front_depth", "rear_inset",
+                "mount_x", "mount_y", "hole_diameter", "rear_side_rail",
+                "rear_end_rail", "rear_crossbar",
+            },
         )
 
     def test_material_is_native_and_housing_color_is_grey(self):
