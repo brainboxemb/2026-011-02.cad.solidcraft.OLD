@@ -24,7 +24,8 @@ class Hub75PanelTests(unittest.TestCase):
         self.assertEqual(len(of("occurrence.copy")), 4)
         self.assertEqual(len(of("occurrence.move")), 5)
         self.assertEqual(len(of("solid.loft")), 1)
-        self.assertEqual(len(of("solid.hole")), 6)
+        self.assertEqual(len(of("solid.cylinder")), 14)
+        self.assertEqual(len(of("solid.hole")), 24)
         self.assertEqual(len(of("material.create")), 1)
 
         copies = of("occurrence.copy")
@@ -116,7 +117,8 @@ class Hub75PanelTests(unittest.TestCase):
         self.assertEqual(of("occurrence.copy"), [])
         self.assertEqual(of("occurrence.move"), [])
         self.assertEqual(of("joint.create"), [])
-        self.assertEqual(len(of("solid.hole")), 6)
+        self.assertEqual(len(of("solid.cylinder")), 14)
+        self.assertEqual(len(of("solid.hole")), 24)
         self.assertEqual(
             {c["name"] for c in of("parameters.add")},
             {
@@ -205,7 +207,7 @@ class Hub75PanelTests(unittest.TestCase):
         self.assertEqual(len(expected_bounds), len(rectangles))
         self.assertTrue(all(high > low for low, high in expected_bounds))
         self.assertEqual(len([c for c in commands
-                              if c["command"] == "solid.hole"]), 6)
+                              if c["command"] == "solid.hole"]), 24)
 
     def test_taper_rejects_invalid_dimensions(self):
         from scpf.core import Box
@@ -220,25 +222,104 @@ class Hub75PanelTests(unittest.TestCase):
 
     def test_mount_positions_match_source_drawing(self):
         commands = run_script(MODEL)["commands"]
-        holes = [c["params"] for c in commands if c["command"] == "solid.hole"]
-        # Parameter expressions may be retained by the native compiler.
+        all_holes = [
+            c["params"] for c in commands if c["command"] == "solid.hole"
+        ]
+
+        # The six mounting bores are the only hole features whose depth stays
+        # parameterized by the editable front-depth datum. The other 18 holes
+        # are fixed shallow tube reliefs and reinforcement recess/blind bores.
+        holes = [
+            h for h in all_holes if "front_depth" in str(h["depth"])
+        ]
         positions = [h["position"] for h in holes]
         self.assertEqual(len(positions), 6)
         self.assertEqual(len({str(p) for p in positions}), 6)
         self.assertTrue(all(h["direction"] == [0, 0, -1] for h in holes))
-        # Every bore must start at the REAR and terminate at Z=2 mm.
-        # An old through-hole depth of 15 mm would pierce the front face.
-        # Native input preserves expressions in the parameterized model.
-        from models.components.hub75_panel.detailed.scpf.model import Hub75Panel
+
+        # Every mounting bore now starts at the 0.5 mm proud tube face and
+        # still terminates at the rear-housing start Z=2 mm.
+        from models.components.hub75_panel.detailed.scpf.model import (
+            Hub75Panel,
+            MOUNTING_TUBE_PROTRUSION,
+        )
         panel_class = Hub75Panel._scpf_component_class
-        self.assertEqual(panel_class.depth - panel_class.front_depth, 12.5)
+        self.assertEqual(MOUNTING_TUBE_PROTRUSION, 0.5)
+        self.assertEqual(
+            panel_class.depth + MOUNTING_TUBE_PROTRUSION
+            - panel_class.front_depth,
+            13.0,
+        )
         for bore in holes:
             depth_expression = str(bore["depth"])
             self.assertIn("depth", depth_expression)
             self.assertIn("front_depth", depth_expression)
-            self.assertNotIn("15", depth_expression)
-        self.assertEqual(len(holes), 6)
         self.assertTrue(all(h["targets"] == ["Hub75Panel"] for h in holes))
+
+    def test_rear_mounting_interfaces_match_preserved_reference(self):
+        from models.components.hub75_panel.detailed.scpf.model import (
+            Hub75Panel,
+            LOCATOR_PIN_DIAMETER,
+            LOCATOR_PIN_PROTRUSION,
+            LOCATOR_PIN_X,
+            LOCATOR_PIN_Y,
+            MOUNTING_TUBE_OUTER_DIAMETER,
+            MOUNTING_TUBE_PROTRUSION,
+            MOUNTING_TUBE_RELIEF_CLEARANCE,
+            MOUNTING_TUBE_RELIEF_DEPTH,
+            REINFORCEMENT_HOLE_DEPTH,
+            REINFORCEMENT_HOLE_DIAMETER,
+            REINFORCEMENT_OFFSET,
+            REINFORCEMENT_OUTER_DIAMETER,
+            REINFORCEMENT_RECESS_DEPTH,
+            REINFORCEMENT_RECESS_DIAMETER,
+        )
+
+        self.assertEqual(MOUNTING_TUBE_OUTER_DIAMETER, 8.5)
+        self.assertEqual(MOUNTING_TUBE_PROTRUSION, 0.5)
+        self.assertEqual(MOUNTING_TUBE_RELIEF_CLEARANCE, 0.75)
+        self.assertEqual(MOUNTING_TUBE_RELIEF_DEPTH, 0.8)
+        self.assertEqual(REINFORCEMENT_OUTER_DIAMETER, 14.0)
+        self.assertEqual(REINFORCEMENT_RECESS_DIAMETER, 10.0)
+        self.assertEqual(REINFORCEMENT_RECESS_DEPTH, 2.5)
+        self.assertEqual(REINFORCEMENT_HOLE_DIAMETER, 2.5)
+        self.assertEqual(REINFORCEMENT_HOLE_DEPTH, 10.0)
+        self.assertEqual(REINFORCEMENT_OFFSET, 11.0)
+        self.assertEqual(LOCATOR_PIN_DIAMETER, 3.0)
+        self.assertEqual(LOCATOR_PIN_PROTRUSION, 3.0)
+
+        panel = Hub75Panel._scpf_component_class
+        reinforcement_positions = (
+            (-panel.mount_x, -panel.mount_y + REINFORCEMENT_OFFSET),
+            (panel.mount_x, -panel.mount_y + REINFORCEMENT_OFFSET),
+            (-panel.mount_x, REINFORCEMENT_OFFSET),
+            (panel.mount_x, -REINFORCEMENT_OFFSET),
+            (-panel.mount_x, panel.mount_y - REINFORCEMENT_OFFSET),
+            (panel.mount_x, panel.mount_y - REINFORCEMENT_OFFSET),
+        )
+        self.assertEqual(
+            reinforcement_positions,
+            (
+                (-72.0, -141.0), (72.0, -141.0),
+                (-72.0, 11.0), (72.0, -11.0),
+                (-72.0, 141.0), (72.0, 141.0),
+            ),
+        )
+        self.assertEqual(
+            ((-LOCATOR_PIN_X, LOCATOR_PIN_Y),
+             (LOCATOR_PIN_X, -LOCATOR_PIN_Y)),
+            ((-75.0, 110.0), (75.0, -110.0)),
+        )
+
+        commands = run_script(MODEL)["commands"]
+        self.assertEqual(
+            len([c for c in commands if c["command"] == "solid.cylinder"]),
+            14,
+        )
+        self.assertEqual(
+            len([c for c in commands if c["command"] == "solid.hole"]),
+            24,
+        )
 
     def test_material_is_native_and_housing_color_is_grey(self):
         commands = run_script(MODEL)["commands"]
