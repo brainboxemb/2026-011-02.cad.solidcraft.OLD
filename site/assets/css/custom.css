@@ -55,8 +55,7 @@ samp{
 
 .cad-category-grid,.cad-model-grid,.cad-preview-layout,.cad-reference-grid{display:grid;gap:.9rem}
 .cad-category-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin:1.25rem 0 2rem}
-.cad-model-grid{grid-template-columns:repeat(auto-fit,minmax(245px,1fr))}
-.cad-home .cad-model-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cad-model-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 .cad-preview-layout{grid-template-columns:minmax(0,1.35fr) minmax(300px,.75fr);margin:1.2rem 0}
 .cad-reference-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 .cad-category-card,.cad-model-card,.cad-panel,.cad-reference{border:1px solid var(--cad-line);border-radius:9px;background:var(--cad-card);box-shadow:0 2px 7px rgba(27,56,99,.025)}
@@ -142,7 +141,7 @@ samp{
   font-weight:600;
   letter-spacing:0;
 }
-.cad-catalog-page .cad-model-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cad-catalog-page .cad-model-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 .cad-section-heading{margin-bottom:.7rem}
 .cad-section-heading h2{margin:.1rem 0 .25rem;font-size:1.35rem;font-weight:600;letter-spacing:0}
 .cad-section-heading p{margin:0;color:var(--cad-muted);font-size:.9rem}
@@ -150,8 +149,7 @@ samp{
 .cad-category-more a{color:var(--cad-accent)}
 
 @media(max-width:1000px) and (min-width:761px){
-  .cad-home .cad-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .cad-catalog-page .cad-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cad-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
 @media(max-width:760px){
