@@ -115,6 +115,12 @@ class CornerBracket:
         # not `o_*`: including them in the 2 mm side chamfer makes the native
         # blend rails overrun those 0.6 mm faces. OpenSCAD treats that local
         # junction separately in arm_tip_relief_cuts().
+        #
+        # TEMPORARY compatibility workaround — CAD #362 / Forge #750.
+        # The preserved OpenSCAD geometry also subtracts a small locally rotated
+        # triangular-prism wedge at each arm tip. Released Forge v0.11 cannot
+        # express that standalone 45-degree cutter generically, so the tip_*
+        # segments stay excluded here until Forge #750 is released and adopted.
         body = body.chamfer(
             self.side_edge_chamfer,
             edges=Edges.from_profile("o_*", sides="both"),
