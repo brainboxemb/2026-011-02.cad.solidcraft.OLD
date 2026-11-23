@@ -13,16 +13,19 @@
     "corner-bracket",
     "flex-bench-dog",
     "guide-rail",
+    "hub75-panel",
+    "hub75-display2",
     "hub75-screen",
+    "hub75-wood-frame",
     "simple-mft"
   ],
-  "bundle_sha256": "fd6c7c644637bab90b52042df3cc0e01e6f45006bfa6f316d5fad0182fab772f",
-  "duration_seconds": 89.379,
+  "bundle_sha256": "9320249ddd0e82a5264b51f1c3ef65736836b8bb2c23f71453c94ec957cf6e8d",
+  "duration_seconds": 188.504,
   "engine": "scons",
   "engine_schema": 4,
   "error": null,
   "exit_code": 0,
-  "finished_at": "2026-11-23T21:15:34.956Z",
+  "finished_at": "2026-11-23T21:42:23.675Z",
   "item": "model-build-batch",
   "outcome": "BUILT",
   "output_state": "UNCHANGED",
@@ -30,25 +33,25 @@
     "batch-report.json": {
       "kind": "file",
       "mode": 420,
-      "sha256": "7f00a4edab9bbc425d18501f2673fc89700971fed9c419b92b0c7ea38a44fec8"
+      "sha256": "8f2f5996bc8512e67b57006903d82a5b1eba08a3dbe7dbd1f299648088d3e4cf"
     },
     "items": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "fd7048289da6bd0480d615982579f36a64812a4a0218b3c56a5432b43d63b1e4"
+      "sha256": "598dadaeb83065bc4d930a81808628e5b6dcad438b5df30bf1f4f48784751973"
     },
     "manifest.json": {
       "kind": "file",
       "mode": 420,
-      "sha256": "0f37c72ab596c3d6881c39057c7fc6853fb8aea78740d5fd2674ffa4d02593a5"
+      "sha256": "e960d6a9a2a310333f8cd4dc4d45c2f7bd7c7e41e4beffd8d571a501cac634a8"
     }
   },
-  "run_finished_at": "2026-11-23T21:15:35.813Z",
-  "run_started_at": "2026-11-23T21:13:58.805Z",
+  "run_finished_at": "2026-11-23T21:42:25.559Z",
+  "run_started_at": "2026-11-23T21:39:04.758Z",
   "schema": 5,
-  "started_at": "2026-11-23T21:14:05.587Z",
+  "started_at": "2026-11-23T21:39:15.195Z",
   "status": "pass",
   "step": "build_models",
-  "target_spec_digest": "c0d608b7f20c1576c924bfa87d13d1701524f21b2ed948d163c6736d21fda0d9",
+  "target_spec_digest": "594b30444636e910185c71d303760cbff4ad5f7c1b290da15241f28775f251ce",
   "timeout_seconds": null
 }

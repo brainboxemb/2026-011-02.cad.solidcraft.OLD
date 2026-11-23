@@ -2,13 +2,13 @@
   "action_executed": true,
   "action_type": "copy",
   "active_dependents": [],
-  "bundle_sha256": "620b3a5cb533a1bd6c935bcadd6d25decd3a85e727bcad76cf7c87a2d1817d1e",
-  "duration_seconds": 0.06,
+  "bundle_sha256": "5d4cb356a800826425c288def72d59d01fc37df74fee9dc35cd7780e95ac2dea",
+  "duration_seconds": 0.137,
   "engine": "scons",
   "engine_schema": 4,
   "error": null,
   "exit_code": null,
-  "finished_at": "2026-11-23T21:15:35.456Z",
+  "finished_at": "2026-11-23T21:42:24.862Z",
   "item": "bolted-flange",
   "outcome": "BUILT",
   "output_state": "RESTORED",
@@ -16,7 +16,7 @@
     "generated": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "4ec4dad60a3cf97b8f521b923b0f57b5d6dc47f9b08ef94ebcd9f9e0e68ab488"
+      "sha256": "14ab3a4c13926632c8f81dec420bf356166493563b3fc4f1a4900daf45baa425"
     },
     "manifest.json": {
       "kind": "file",
@@ -26,13 +26,13 @@
     "models": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "8d13e55ecbeb7b844eda612f25b09f914cc9d395989826a8d86f66f4ad4ba11e"
+      "sha256": "77b2d76f355e91ff6caf3c5023cc1b8f6bb2c74bdf270f62bbb3c3537896ee5d"
     }
   },
-  "run_finished_at": "2026-11-23T21:15:35.813Z",
-  "run_started_at": "2026-11-23T21:13:58.805Z",
+  "run_finished_at": "2026-11-23T21:42:25.559Z",
+  "run_started_at": "2026-11-23T21:39:04.758Z",
   "schema": 5,
-  "started_at": "2026-11-23T21:15:35.395Z",
+  "started_at": "2026-11-23T21:42:24.725Z",
   "status": "pass",
   "step": "build_results",
   "target_spec_digest": "811c49de947afc91b0115058f41e538c72afaabe50146a6c294bf8bc9e421a2e",

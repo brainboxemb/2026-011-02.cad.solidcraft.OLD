@@ -1,0 +1,40 @@
+{
+  "action_executed": true,
+  "action_type": "copy",
+  "active_dependents": [],
+  "bundle_sha256": "0b157a091a6abb623df7d452d81e55d3fa6c3c9166ad0fedf2dda07edee04711",
+  "duration_seconds": 0.142,
+  "engine": "scons",
+  "engine_schema": 4,
+  "error": null,
+  "exit_code": null,
+  "finished_at": "2026-11-23T21:42:24.876Z",
+  "item": "hub75-panel",
+  "outcome": "BUILT",
+  "output_state": "RESTORED",
+  "outputs": {
+    "generated": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "eec37374a6781937d55eff275dc66469663a1e453cc377d9d9ab7dc99339c05b"
+    },
+    "manifest.json": {
+      "kind": "file",
+      "mode": 420,
+      "sha256": "a94c02ef50c200de3bccb324d5a8db826c5e42b39da9328a3d8c5e080ab8167a"
+    },
+    "models": {
+      "kind": "directory",
+      "mode": 493,
+      "sha256": "f9ef3579715309bdf8d34c18d0f654c59c80d18275f183a000fccbec327e74fc"
+    }
+  },
+  "run_finished_at": "2026-11-23T21:42:25.559Z",
+  "run_started_at": "2026-11-23T21:39:04.758Z",
+  "schema": 5,
+  "started_at": "2026-11-23T21:42:24.734Z",
+  "status": "pass",
+  "step": "build_results",
+  "target_spec_digest": "6de1ee8d58a6c02f69fa79d7ff3793698b4e5663064ad358ec44bfd8cbb48758",
+  "timeout_seconds": null
+}

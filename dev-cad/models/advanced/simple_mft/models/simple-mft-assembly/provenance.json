@@ -1,5 +1,5 @@
 {
-  "forge_sha": "17a4e1d0e2edf0124d40daf5425891fdf65c24be",
+  "forge_sha": "ea5710a5d2d33b0633b93c5da95dd5b74f126aa4",
   "independent_scpc_compared": false,
   "model": "simple-mft-assembly",
   "runtime_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
@@ -9,5 +9,5 @@
   "solidcraft_built": true,
   "solidcraft_verified": false,
   "solidcraft_version": "0.45.0",
-  "source_sha": "f975ff4f60af2e719399635fdb5153dc1f052c18"
+  "source_sha": "d25440a98d4b2ab71464a92ee72c6eb76b337111"
 }

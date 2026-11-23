@@ -8,7 +8,7 @@
         "base": [
           0,
           0,
-          0.0
+          0
         ],
         "axis": "Z",
         "operation": "new",
@@ -23,7 +23,7 @@
         "base": [
           0,
           0,
-          10.0
+          10
         ],
         "axis": "Z",
         "operation": "join",

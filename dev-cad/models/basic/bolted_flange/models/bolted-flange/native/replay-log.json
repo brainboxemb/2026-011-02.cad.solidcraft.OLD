@@ -1,7 +1,7 @@
 {
   "format": "scpf-replay-log",
   "version": 1,
-  "replay_sha256": "52a307fbf86ebb16e7293be660b8fc78880ed17bc2bca736c6e774d8a02b91a7",
+  "replay_sha256": "2a70cb69a9461650ba5865071ee07505e509568013b288f6be962a411f98565e",
   "variables": {},
   "commands": [
     {
@@ -13,7 +13,7 @@
         "base": [
           0,
           0,
-          0.0
+          0
         ],
         "axis": "Z",
         "operation": "new",
@@ -29,7 +29,7 @@
         "base": [
           0,
           0,
-          10.0
+          10
         ],
         "axis": "Z",
         "operation": "join",

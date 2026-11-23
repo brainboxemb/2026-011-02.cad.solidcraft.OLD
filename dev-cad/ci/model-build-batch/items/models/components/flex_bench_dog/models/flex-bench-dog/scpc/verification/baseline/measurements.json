@@ -207,7 +207,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 3.509184,
+      "ms": 4.621081,
       "name": "Cylinder1",
       "rolled_back": false,
       "suppressed": false,
@@ -217,7 +217,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 31.266717,
+      "ms": 51.970467,
       "name": "Chamfer1",
       "rolled_back": false,
       "suppressed": false,
@@ -227,7 +227,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 24.788525,
+      "ms": 40.042634,
       "name": "Cylinder2",
       "rolled_back": false,
       "suppressed": false,
@@ -237,7 +237,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 35.964925,
+      "ms": 57.793842,
       "name": "Cylinder3",
       "rolled_back": false,
       "suppressed": false,
@@ -247,7 +247,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 23.223682999999998,
+      "ms": 34.778067,
       "name": "Cylinder4",
       "rolled_back": false,
       "suppressed": false,
@@ -257,7 +257,7 @@
     {
       "error": null,
       "id": 6,
-      "ms": 49.57761,
+      "ms": 82.054839,
       "name": "Chamfer2",
       "rolled_back": false,
       "suppressed": false,
@@ -267,7 +267,7 @@
     {
       "error": null,
       "id": 7,
-      "ms": 0.24654199999999998,
+      "ms": 0.239061,
       "name": "Flex slot X",
       "rolled_back": false,
       "suppressed": false,
@@ -277,7 +277,7 @@
     {
       "error": null,
       "id": 8,
-      "ms": 48.359382,
+      "ms": 79.391622,
       "name": "Flex slot X",
       "rolled_back": false,
       "suppressed": false,
@@ -287,7 +287,7 @@
     {
       "error": null,
       "id": 9,
-      "ms": 0.177648,
+      "ms": 0.149946,
       "name": "Flex slot Y",
       "rolled_back": false,
       "suppressed": false,
@@ -297,7 +297,7 @@
     {
       "error": null,
       "id": 10,
-      "ms": 58.422391999999995,
+      "ms": 96.463199,
       "name": "Flex slot Y",
       "rolled_back": false,
       "suppressed": false,
@@ -307,7 +307,7 @@
     {
       "error": null,
       "id": 11,
-      "ms": 182.105204,
+      "ms": 309.320989,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -317,7 +317,7 @@
     {
       "error": null,
       "id": 12,
-      "ms": 85.54673,
+      "ms": 146.743187,
       "name": "Chamfer3",
       "rolled_back": false,
       "suppressed": false,
@@ -327,7 +327,7 @@
     {
       "error": null,
       "id": 13,
-      "ms": 0.229546,
+      "ms": 0.22649200000000003,
       "name": "Top logo rib 1",
       "rolled_back": false,
       "suppressed": false,
@@ -337,7 +337,7 @@
     {
       "error": null,
       "id": 14,
-      "ms": 32.944869000000004,
+      "ms": 51.624185000000004,
       "name": "Top logo rib 1",
       "rolled_back": false,
       "suppressed": false,
@@ -347,7 +347,7 @@
     {
       "error": null,
       "id": 15,
-      "ms": 0.22537,
+      "ms": 0.208114,
       "name": "Top logo rib 2",
       "rolled_back": false,
       "suppressed": false,
@@ -357,7 +357,7 @@
     {
       "error": null,
       "id": 16,
-      "ms": 61.407575,
+      "ms": 92.65129900000001,
       "name": "Top logo rib 2",
       "rolled_back": false,
       "suppressed": false,
@@ -367,7 +367,7 @@
     {
       "error": null,
       "id": 17,
-      "ms": 0.224459,
+      "ms": 0.239351,
       "name": "Top logo rib 3",
       "rolled_back": false,
       "suppressed": false,
@@ -377,7 +377,7 @@
     {
       "error": null,
       "id": 18,
-      "ms": 57.289502999999996,
+      "ms": 107.59054,
       "name": "Top logo rib 3",
       "rolled_back": false,
       "suppressed": false,
@@ -387,7 +387,7 @@
     {
       "error": null,
       "id": 19,
-      "ms": 0.224389,
+      "ms": 0.24815399999999999,
       "name": "Top logo rib 4",
       "rolled_back": false,
       "suppressed": false,
@@ -397,7 +397,7 @@
     {
       "error": null,
       "id": 20,
-      "ms": 61.2022,
+      "ms": 104.294378,
       "name": "Top logo rib 4",
       "rolled_back": false,
       "suppressed": false,
@@ -407,7 +407,7 @@
     {
       "error": null,
       "id": 21,
-      "ms": 0.22953700000000002,
+      "ms": 0.259752,
       "name": "Top logo rib 5",
       "rolled_back": false,
       "suppressed": false,
@@ -417,7 +417,7 @@
     {
       "error": null,
       "id": 22,
-      "ms": 64.717705,
+      "ms": 112.67778,
       "name": "Top logo rib 5",
       "rolled_back": false,
       "suppressed": false,
@@ -427,7 +427,7 @@
     {
       "error": null,
       "id": 23,
-      "ms": 0.236847,
+      "ms": 0.26912600000000003,
       "name": "Top logo rib 6",
       "rolled_back": false,
       "suppressed": false,
@@ -437,7 +437,7 @@
     {
       "error": null,
       "id": 24,
-      "ms": 78.535985,
+      "ms": 118.076052,
       "name": "Top logo rib 6",
       "rolled_back": false,
       "suppressed": false,
@@ -447,7 +447,7 @@
     {
       "error": null,
       "id": 25,
-      "ms": 0.256157,
+      "ms": 0.261465,
       "name": "Top logo rib 7",
       "rolled_back": false,
       "suppressed": false,
@@ -457,7 +457,7 @@
     {
       "error": null,
       "id": 26,
-      "ms": 64.062491,
+      "ms": 108.976776,
       "name": "Top logo rib 7",
       "rolled_back": false,
       "suppressed": false,
@@ -467,7 +467,7 @@
     {
       "error": null,
       "id": 27,
-      "ms": 0.245641,
+      "ms": 0.283617,
       "name": "Top logo rib 8",
       "rolled_back": false,
       "suppressed": false,
@@ -477,7 +477,7 @@
     {
       "error": null,
       "id": 28,
-      "ms": 77.004419,
+      "ms": 124.400502,
       "name": "Top logo rib 8",
       "rolled_back": false,
       "suppressed": false,
@@ -487,7 +487,7 @@
     {
       "error": null,
       "id": 29,
-      "ms": 0.234915,
+      "ms": 0.261154,
       "name": "Top logo rib 9",
       "rolled_back": false,
       "suppressed": false,
@@ -497,7 +497,7 @@
     {
       "error": null,
       "id": 30,
-      "ms": 75.09747399999999,
+      "ms": 126.99432599999999,
       "name": "Top logo rib 9",
       "rolled_back": false,
       "suppressed": false,

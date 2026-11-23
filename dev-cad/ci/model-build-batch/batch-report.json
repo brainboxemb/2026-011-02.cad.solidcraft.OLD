@@ -1,5 +1,5 @@
 {
-  "model_count": 15,
+  "model_count": 18,
   "models": [
     {
       "error": null,
@@ -75,7 +75,25 @@
     },
     {
       "error": null,
+      "model": "hub75-panel",
+      "semantic_verification": "not-configured",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "hub75-display2",
+      "semantic_verification": "not-configured",
+      "status": "pass"
+    },
+    {
+      "error": null,
       "model": "hub75-screen",
+      "semantic_verification": "not-configured",
+      "status": "pass"
+    },
+    {
+      "error": null,
+      "model": "hub75-wood-frame",
       "semantic_verification": "not-configured",
       "status": "pass"
     },
@@ -93,6 +111,6 @@
     }
   ],
   "schema": 1,
-  "source_sha": "f975ff4f60af2e719399635fdb5153dc1f052c18",
+  "source_sha": "d25440a98d4b2ab71464a92ee72c6eb76b337111",
   "status": "pass"
 }
