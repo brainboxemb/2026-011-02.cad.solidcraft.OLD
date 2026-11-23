@@ -39,9 +39,10 @@ Accepted repository state:
 - The presentation from change 0027 was later visually rejected; Pages was
   temporarily switched back to the preserved pre-change publication while the
   replacement was worked out in EXP.
-- EXP issue #29 / PR #31 is the user-approved replacement baseline. Run #89
-  (`45133048821`) proves the approved framed/source-first layout before this
-  CAD port.
+- EXP issue #29 / PR #31 is the user-approved replacement baseline. EXP main
+  commit `b0ed2dc474affc9bc0591ff60c5e95ce12a31b25` and run #92
+  (`45134031122`) prove the approved framed/source-first layout, including the
+  SolidCraft version badge, before this CAD port.
 - The synchronized `dev-ci` lane consumes released `tool.cad.ci 0.21.0`
   (`b1474f6be66dc0236f2a5c2555af07a100447255`) for CAD execution and merge
   policy. The later tool.cad.ci lifecycle migration is tracked separately in
@@ -92,7 +93,7 @@ The restored backup publication was then used as the baseline in EXP issue #29.
 User-approved reference:
 
 - EXP PR #31;
-- EXP run #89 (`45133048821`);
+- EXP run #92 (`45134031122`);
 - framed panel hierarchy retained;
 - SCPF source visible by default;
 - Background and reference section labels added;
