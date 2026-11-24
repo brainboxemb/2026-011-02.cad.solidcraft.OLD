@@ -5,8 +5,8 @@
         {
           "kind": "file",
           "path": "baseline/measurements.json",
-          "sha256": "514b03c06a0db7ec9e16f9f3c491d8411a3c691175506e97fa5692282331ac41",
-          "size": 34473
+          "sha256": "1e2b3d4701b2228b4c9bc9c4c91ecc7183d96ab5d89945a5a022d4b865550f7d",
+          "size": 34427
         }
       ],
       "error": null,
@@ -31,14 +31,14 @@
         {
           "kind": "file",
           "path": "saved_designs/lower_compartment_90/model.sc",
-          "sha256": "48208047ac51f7787e79cb488f9f12d24434c5ec724d23213c654d7a5b406c6d",
-          "size": 1115845
+          "sha256": "0084e2a34fc7db57f4860bc7e84d4bf8ddc03e2306558b68db1e4275974d8cdc",
+          "size": 1115562
         },
         {
           "kind": "file",
           "path": "saved_designs/lower_compartment_90/measurements.json",
-          "sha256": "57ce77c6e20477a3729a9b543b07677178fa5cc80f8754f8d98a72f85fe2f6b9",
-          "size": 34406
+          "sha256": "328a1767d3292a411621d9f89343976f7181fbf28eb7c77b9354b33f2a2e043f",
+          "size": 34370
         }
       ],
       "error": null,
@@ -59,10 +59,10 @@
       "status": "pass"
     }
   ],
-  "input": "/output/items/models/advanced/hub75_wood_frame_iter2/models/hub75-wood-frame-iter2/native/model.sc",
+  "input": "/output/items/models/advanced/hub75-display2/models/hub75-display2/native/model.sc",
   "metadata": {},
   "schema": "cad-verification",
   "schema_version": 1,
   "status": "pass",
-  "verification_id": "hub75-wood-frame-iter2"
+  "verification_id": "hub75-display2"
 }

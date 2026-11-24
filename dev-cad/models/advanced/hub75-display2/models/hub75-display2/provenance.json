@@ -5,9 +5,9 @@
   "runtime_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
   "schema": 1,
   "scpc_sha": null,
-  "semantic_verification": "not-configured",
+  "semantic_verification": "pass",
   "solidcraft_built": true,
-  "solidcraft_verified": false,
+  "solidcraft_verified": true,
   "solidcraft_version": "0.45.0",
-  "source_sha": "d25440a98d4b2ab71464a92ee72c6eb76b337111"
+  "source_sha": "2d471662591544a545cc40b4a2d86e17240ddb0b"
 }

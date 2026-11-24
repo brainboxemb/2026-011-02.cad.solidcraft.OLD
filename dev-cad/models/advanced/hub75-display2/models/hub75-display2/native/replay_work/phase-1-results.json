@@ -88,7 +88,7 @@
       "Hub75PanelBasic"
     ],
     "feature": 12,
-    "ms": 3.573754,
+    "ms": 3.0144019999999996,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null
@@ -135,10 +135,16 @@
     "value": 12.0
   },
   {
-    "display_value": 100.0,
-    "name": "cabinet_depth",
+    "display_value": 120.0,
+    "name": "side_panel_depth",
     "unit": "mm",
-    "value": 100.0
+    "value": 120.0
+  },
+  {
+    "display_value": 70.0,
+    "name": "lower_compartment_height",
+    "unit": "mm",
+    "value": 70.0
   },
   {
     "display_value": 362.0,
@@ -149,22 +155,102 @@
   {
     "component": 17,
     "grounded": false,
-    "name": "Board",
+    "name": "SideBoard",
     "occurrence": 18,
     "parent": 3
   },
   {
     "bodies": [
       "Hub75PanelBasic",
-      "Board"
+      "SideBoard"
     ],
     "changed_bodies": [],
     "created_bodies": [
-      "Board"
+      "SideBoard"
     ],
     "feature": 19,
-    "ms": 1.655403,
+    "ms": 1.1468889999999998,
     "name": "Box1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "name": "d2_SideBoard__Side hand slot",
+    "projected": null,
+    "sketch": 20
+  },
+  {
+    "centre_line": "l3",
+    "constraints": [
+      "k1",
+      "k2",
+      "k3",
+      "k4",
+      "k5",
+      "k6"
+    ],
+    "created": {
+      "constraints": [
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "k6"
+      ],
+      "curves": [
+        "l1",
+        "a1",
+        "l2",
+        "a2",
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "a1.center",
+        "a2.center",
+        "p5"
+      ]
+    },
+    "curves": [
+      "l1",
+      "a1",
+      "l2",
+      "a2"
+    ],
+    "middle": "p5",
+    "sketch": {
+      "dof": 5,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 20
+  },
+  {
+    "bodies": [
+      "Hub75PanelBasic",
+      "SideBoard"
+    ],
+    "changed_bodies": [
+      "SideBoard"
+    ],
+    "created_bodies": [],
+    "feature": 21,
+    "ms": 12.01769,
+    "name": "Side hand slot",
     "removed_bodies": [],
     "warning": null
   },
@@ -180,7 +266,7 @@
   },
   {
     "bodies": [
-      "Board"
+      "SideBoard"
     ],
     "material": "LIGHTPLY side board"
   },
@@ -189,7 +275,7 @@
   },
   {
     "component": 17,
-    "occurrence": 20
+    "occurrence": 22
   },
   {
     "display_value": 844.0,
@@ -204,24 +290,24 @@
     "value": 4.0
   },
   {
-    "component": 21,
+    "component": 23,
     "grounded": false,
-    "name": "Board 2",
-    "occurrence": 22,
+    "name": "Board",
+    "occurrence": 24,
     "parent": 3
   },
   {
     "bodies": [
       "Hub75PanelBasic",
-      "Board",
-      "Board_2"
+      "SideBoard",
+      "Board"
     ],
     "changed_bodies": [],
     "created_bodies": [
-      "Board_2"
+      "Board"
     ],
-    "feature": 23,
-    "ms": 1.608141,
+    "feature": 25,
+    "ms": 1.082613,
     "name": "Box2",
     "removed_bodies": [],
     "warning": null
@@ -229,15 +315,15 @@
   {
     "bodies": [
       "Hub75PanelBasic",
-      "Board",
-      "Board_2"
+      "SideBoard",
+      "Board"
     ],
     "changed_bodies": [
-      "Board_2"
+      "Board"
     ],
     "created_bodies": [],
-    "feature": 24,
-    "ms": 40.813299,
+    "feature": 26,
+    "ms": 24.46408,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null
@@ -254,7 +340,7 @@
   },
   {
     "bodies": [
-      "Board_2"
+      "Board"
     ],
     "material": "LIGHTPLY bottom"
   },
@@ -262,10 +348,101 @@
     "active": 0
   },
   {
-    "display_value": 9.0,
-    "name": "panel_wood_thickness",
+    "display_value": 120.0,
+    "name": "cabinet_depth",
     "unit": "mm",
-    "value": 9.0
+    "value": 120.0
+  },
+  {
+    "component": 27,
+    "grounded": false,
+    "name": "Board 2",
+    "occurrence": 28,
+    "parent": 3
+  },
+  {
+    "bodies": [
+      "Hub75PanelBasic",
+      "SideBoard",
+      "Board",
+      "Board_2"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [
+      "Board_2"
+    ],
+    "feature": 29,
+    "ms": 1.108683,
+    "name": "Box3",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "appearance": {
+      "color": "#cba36b",
+      "name": "LIGHTPLY intermediate shelf",
+      "opacity": 1.0
+    },
+    "density_g_cm3": 0.55,
+    "name": "LIGHTPLY intermediate shelf",
+    "user": true
+  },
+  {
+    "bodies": [
+      "Board_2"
+    ],
+    "material": "LIGHTPLY intermediate shelf"
+  },
+  {
+    "active": 0
+  },
+  {
+    "component": 30,
+    "grounded": false,
+    "name": "Board 3",
+    "occurrence": 31,
+    "parent": 3
+  },
+  {
+    "bodies": [
+      "Hub75PanelBasic",
+      "SideBoard",
+      "Board",
+      "Board_2",
+      "Board_3"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [
+      "Board_3"
+    ],
+    "feature": 32,
+    "ms": 1.022224,
+    "name": "Box4",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "appearance": {
+      "color": "#cba36b",
+      "name": "LIGHTPLY lower divider",
+      "opacity": 1.0
+    },
+    "density_g_cm3": 0.55,
+    "name": "LIGHTPLY lower divider",
+    "user": true
+  },
+  {
+    "bodies": [
+      "Board_3"
+    ],
+    "material": "LIGHTPLY lower divider"
+  },
+  {
+    "active": 0
+  },
+  {
+    "component": 30,
+    "occurrence": 33
   },
   {
     "display_value": 1.0,
@@ -280,42 +457,46 @@
     "value": 10.0
   },
   {
-    "component": 25,
+    "component": 34,
     "grounded": false,
-    "name": "Board 3",
-    "occurrence": 26,
+    "name": "Board 4",
+    "occurrence": 35,
     "parent": 3
   },
   {
     "bodies": [
       "Hub75PanelBasic",
+      "SideBoard",
       "Board",
       "Board_2",
-      "Board_3"
+      "Board_3",
+      "Board_4"
     ],
     "changed_bodies": [],
     "created_bodies": [
-      "Board_3"
+      "Board_4"
     ],
-    "feature": 27,
-    "ms": 1.614241,
-    "name": "Box3",
+    "feature": 36,
+    "ms": 1.0316480000000001,
+    "name": "Box5",
     "removed_bodies": [],
     "warning": null
   },
   {
     "bodies": [
       "Hub75PanelBasic",
+      "SideBoard",
       "Board",
       "Board_2",
-      "Board_3"
+      "Board_3",
+      "Board_4"
     ],
     "changed_bodies": [
-      "Board_3"
+      "Board_4"
     ],
     "created_bodies": [],
-    "feature": 28,
-    "ms": 39.977466,
+    "feature": 37,
+    "ms": 24.193597,
     "name": "Fillet2",
     "removed_bodies": [],
     "warning": null
@@ -332,7 +513,7 @@
   },
   {
     "bodies": [
-      "Board_3"
+      "Board_4"
     ],
     "material": "LIGHTPLY roof"
   },
@@ -340,29 +521,281 @@
     "active": 0
   },
   {
-    "component": 29,
+    "display_value": 9.0,
+    "name": "panel_wood_thickness",
+    "unit": "mm",
+    "value": 9.0
+  },
+  {
+    "component": 38,
     "grounded": false,
-    "name": "Board 4",
-    "occurrence": 30,
+    "name": "RearBoard",
+    "occurrence": 39,
     "parent": 3
   },
   {
     "bodies": [
       "Hub75PanelBasic",
+      "SideBoard",
       "Board",
       "Board_2",
       "Board_3",
-      "Board_4"
+      "Board_4",
+      "RearBoard"
     ],
     "changed_bodies": [],
     "created_bodies": [
-      "Board_4"
+      "RearBoard"
     ],
-    "feature": 31,
-    "ms": 1.572608,
-    "name": "Box4",
+    "feature": 40,
+    "ms": 1.075152,
+    "name": "Box6",
     "removed_bodies": [],
     "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "name": "d7_RearBoard__Rear side openings",
+    "projected": null,
+    "sketch": 41
+  },
+  {
+    "arcs": [
+      "a1",
+      "a2",
+      "a3",
+      "a4"
+    ],
+    "centre": "p13",
+    "constraints": [
+      "k1",
+      "k2",
+      "k3",
+      "k4",
+      "k7",
+      "k8",
+      "k9",
+      "k10",
+      "k11",
+      "k12",
+      "k15",
+      "k16",
+      "k17",
+      "k18",
+      "k19",
+      "k20",
+      "k21"
+    ],
+    "created": {
+      "constraints": [
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "k6",
+        "k7",
+        "k8",
+        "k10",
+        "k11",
+        "k12",
+        "k13",
+        "k14",
+        "k15",
+        "k16",
+        "k17",
+        "k18",
+        "k19",
+        "k20",
+        "k21"
+      ],
+      "curves": [
+        "l1",
+        "l2",
+        "l3",
+        "l4",
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "l5"
+      ],
+      "dimensions": [
+        "k9"
+      ],
+      "points": [
+        "corner1",
+        "corner2",
+        "p5",
+        "p6",
+        "a1.center",
+        "p7",
+        "p8",
+        "a2.center",
+        "p9",
+        "p10",
+        "a3.center",
+        "p11",
+        "p12",
+        "a4.center",
+        "p13"
+      ]
+    },
+    "curves": [
+      "l1",
+      "l2",
+      "l3",
+      "l4",
+      "a1",
+      "a2",
+      "a3",
+      "a4"
+    ],
+    "diagonal": "l5",
+    "param": "d23",
+    "sides": {
+      "bottom": "l1",
+      "left": "l4",
+      "right": "l2",
+      "top": "l3"
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "arcs": [
+      "a5",
+      "a6",
+      "a7",
+      "a8"
+    ],
+    "centre": "p26",
+    "constraints": [
+      "k22",
+      "k23",
+      "k24",
+      "k25",
+      "k28",
+      "k29",
+      "k30",
+      "k31",
+      "k32",
+      "k33",
+      "k36",
+      "k37",
+      "k38",
+      "k39",
+      "k40",
+      "k41",
+      "k42"
+    ],
+    "created": {
+      "constraints": [
+        "k22",
+        "k23",
+        "k24",
+        "k25",
+        "k26",
+        "k27",
+        "k28",
+        "k29",
+        "k31",
+        "k32",
+        "k33",
+        "k34",
+        "k35",
+        "k36",
+        "k37",
+        "k38",
+        "k39",
+        "k40",
+        "k41",
+        "k42"
+      ],
+      "curves": [
+        "l6",
+        "l7",
+        "l8",
+        "l9",
+        "a5",
+        "a6",
+        "a7",
+        "a8",
+        "l10"
+      ],
+      "dimensions": [
+        "k30"
+      ],
+      "points": [
+        "corner3",
+        "corner4",
+        "p18",
+        "p19",
+        "a5.center",
+        "p20",
+        "p21",
+        "a6.center",
+        "p22",
+        "p23",
+        "a7.center",
+        "p24",
+        "p25",
+        "a8.center",
+        "p26"
+      ]
+    },
+    "curves": [
+      "l6",
+      "l7",
+      "l8",
+      "l9",
+      "a5",
+      "a6",
+      "a7",
+      "a8"
+    ],
+    "diagonal": "l10",
+    "param": "d24",
+    "sides": {
+      "bottom": "l6",
+      "left": "l9",
+      "right": "l7",
+      "top": "l8"
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 2,
+    "sketch": 41
+  },
+  {
+    "bodies": [
+      "Hub75PanelBasic",
+      "SideBoard",
+      "Board",
+      "Board_2",
+      "Board_3",
+      "Board_4",
+      "RearBoard"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [],
+    "feature": 42,
+    "ms": 11.427931000000001,
+    "name": "Rear side openings",
+    "removed_bodies": [],
+    "warning": "the cut removes no material; check where its profile lies, the direction and the distance"
   },
   {
     "appearance": {
@@ -376,7 +809,7 @@
   },
   {
     "bodies": [
-      "Board_4"
+      "RearBoard"
     ],
     "material": "LIGHTPLY rear"
   },
@@ -390,10 +823,10 @@
     "value": 24.0
   },
   {
-    "component": 32,
+    "component": 43,
     "grounded": false,
     "name": "CornerBracket",
-    "occurrence": 33,
+    "occurrence": 44,
     "parent": 5
   },
   {
@@ -404,9 +837,9 @@
       "dimensions": [],
       "points": []
     },
-    "name": "d6_CornerBracket__Profile",
+    "name": "d8_CornerBracket__Profile",
     "projected": null,
-    "sketch": 34
+    "sketch": 45
   },
   {
     "constraints": [
@@ -464,23 +897,25 @@
   },
   {
     "profiles": 1,
-    "sketch": 34
+    "sketch": 45
   },
   {
     "bodies": [
       "Hub75PanelBasic",
+      "SideBoard",
       "Board",
       "Board_2",
       "Board_3",
       "Board_4",
+      "RearBoard",
       "CornerBracket"
     ],
     "changed_bodies": [],
     "created_bodies": [
       "CornerBracket"
     ],
-    "feature": 35,
-    "ms": 4.317528,
+    "feature": 46,
+    "ms": 3.0595700000000003,
     "name": "Extrude2",
     "removed_bodies": [],
     "warning": null
@@ -488,219 +923,12 @@
   {
     "bodies": [
       "Hub75PanelBasic",
+      "SideBoard",
       "Board",
       "Board_2",
       "Board_3",
       "Board_4",
-      "CornerBracket"
-    ],
-    "changed_bodies": [
-      "CornerBracket"
-    ],
-    "created_bodies": [],
-    "feature": 36,
-    "ms": 15.344921,
-    "name": "Fillet3",
-    "removed_bodies": [],
-    "warning": null
-  },
-  {
-    "bodies": [
-      "Hub75PanelBasic",
-      "Board",
-      "Board_2",
-      "Board_3",
-      "Board_4",
-      "CornerBracket"
-    ],
-    "changed_bodies": [
-      "CornerBracket"
-    ],
-    "created_bodies": [],
-    "feature": 37,
-    "ms": 102.709456,
-    "name": "Chamfer1",
-    "removed_bodies": [],
-    "warning": null
-  },
-  {
-    "bodies": [
-      "Hub75PanelBasic",
-      "Board",
-      "Board_2",
-      "Board_3",
-      "Board_4",
-      "CornerBracket"
-    ],
-    "changed_bodies": [
-      "CornerBracket"
-    ],
-    "created_bodies": [],
-    "feature": 38,
-    "ms": 153.65159,
-    "name": "Chamfer2",
-    "removed_bodies": [],
-    "warning": null
-  },
-  {
-    "bodies": [
-      "Hub75PanelBasic",
-      "Board",
-      "Board_2",
-      "Board_3",
-      "Board_4",
-      "CornerBracket"
-    ],
-    "changed_bodies": [
-      "CornerBracket"
-    ],
-    "created_bodies": [],
-    "feature": 39,
-    "ms": 89.70791799999999,
-    "name": "Hole1",
-    "removed_bodies": [],
-    "warning": null
-  },
-  {
-    "bodies": [
-      "Hub75PanelBasic",
-      "Board",
-      "Board_2",
-      "Board_3",
-      "Board_4",
-      "CornerBracket"
-    ],
-    "changed_bodies": [
-      "CornerBracket"
-    ],
-    "created_bodies": [],
-    "feature": 40,
-    "ms": 410.122803,
-    "name": "Hole2",
-    "removed_bodies": [],
-    "warning": null
-  },
-  {
-    "bodies": [
-      "Hub75PanelBasic",
-      "Board",
-      "Board_2",
-      "Board_3",
-      "Board_4",
-      "CornerBracket"
-    ],
-    "changed_bodies": [
-      "CornerBracket"
-    ],
-    "created_bodies": [],
-    "feature": 41,
-    "ms": 106.83239999999999,
-    "name": "Hole3",
-    "removed_bodies": [],
-    "warning": null
-  },
-  {
-    "bodies": [
-      "Hub75PanelBasic",
-      "Board",
-      "Board_2",
-      "Board_3",
-      "Board_4",
-      "CornerBracket"
-    ],
-    "changed_bodies": [
-      "CornerBracket"
-    ],
-    "created_bodies": [],
-    "feature": 42,
-    "ms": 76.48745799999999,
-    "name": "Hole4",
-    "removed_bodies": [],
-    "warning": null
-  },
-  {
-    "bodies": [
-      "Hub75PanelBasic",
-      "Board",
-      "Board_2",
-      "Board_3",
-      "Board_4",
-      "CornerBracket"
-    ],
-    "changed_bodies": [
-      "CornerBracket"
-    ],
-    "created_bodies": [],
-    "feature": 43,
-    "ms": 94.47064900000001,
-    "name": "Hole5",
-    "removed_bodies": [],
-    "warning": null
-  },
-  {
-    "bodies": [
-      "Hub75PanelBasic",
-      "Board",
-      "Board_2",
-      "Board_3",
-      "Board_4",
-      "CornerBracket"
-    ],
-    "changed_bodies": [
-      "CornerBracket"
-    ],
-    "created_bodies": [],
-    "feature": 44,
-    "ms": 438.14507299999997,
-    "name": "Hole6",
-    "removed_bodies": [],
-    "warning": null
-  },
-  {
-    "bodies": [
-      "Hub75PanelBasic",
-      "Board",
-      "Board_2",
-      "Board_3",
-      "Board_4",
-      "CornerBracket"
-    ],
-    "changed_bodies": [
-      "CornerBracket"
-    ],
-    "created_bodies": [],
-    "feature": 45,
-    "ms": 112.73859999999999,
-    "name": "Hole7",
-    "removed_bodies": [],
-    "warning": null
-  },
-  {
-    "bodies": [
-      "Hub75PanelBasic",
-      "Board",
-      "Board_2",
-      "Board_3",
-      "Board_4",
-      "CornerBracket"
-    ],
-    "changed_bodies": [
-      "CornerBracket"
-    ],
-    "created_bodies": [],
-    "feature": 46,
-    "ms": 88.62825500000001,
-    "name": "Hole8",
-    "removed_bodies": [],
-    "warning": null
-  },
-  {
-    "bodies": [
-      "Hub75PanelBasic",
-      "Board",
-      "Board_2",
-      "Board_3",
-      "Board_4",
+      "RearBoard",
       "CornerBracket"
     ],
     "changed_bodies": [
@@ -708,18 +936,20 @@
     ],
     "created_bodies": [],
     "feature": 47,
-    "ms": 53.61771,
-    "name": "Hole9",
+    "ms": 10.337185999999999,
+    "name": "Fillet3",
     "removed_bodies": [],
     "warning": null
   },
   {
     "bodies": [
       "Hub75PanelBasic",
+      "SideBoard",
       "Board",
       "Board_2",
       "Board_3",
       "Board_4",
+      "RearBoard",
       "CornerBracket"
     ],
     "changed_bodies": [
@@ -727,18 +957,20 @@
     ],
     "created_bodies": [],
     "feature": 48,
-    "ms": 235.551883,
-    "name": "Hole10",
+    "ms": 65.668219,
+    "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null
   },
   {
     "bodies": [
       "Hub75PanelBasic",
+      "SideBoard",
       "Board",
       "Board_2",
       "Board_3",
       "Board_4",
+      "RearBoard",
       "CornerBracket"
     ],
     "changed_bodies": [
@@ -746,18 +978,20 @@
     ],
     "created_bodies": [],
     "feature": 49,
-    "ms": 69.144175,
-    "name": "Hole11",
+    "ms": 95.296936,
+    "name": "Chamfer2",
     "removed_bodies": [],
     "warning": null
   },
   {
     "bodies": [
       "Hub75PanelBasic",
+      "SideBoard",
       "Board",
       "Board_2",
       "Board_3",
       "Board_4",
+      "RearBoard",
       "CornerBracket"
     ],
     "changed_bodies": [
@@ -765,18 +999,20 @@
     ],
     "created_bodies": [],
     "feature": 50,
-    "ms": 98.38166299999999,
-    "name": "Hole12",
+    "ms": 61.112094,
+    "name": "Hole1",
     "removed_bodies": [],
     "warning": null
   },
   {
     "bodies": [
       "Hub75PanelBasic",
+      "SideBoard",
       "Board",
       "Board_2",
       "Board_3",
       "Board_4",
+      "RearBoard",
       "CornerBracket"
     ],
     "changed_bodies": [
@@ -784,18 +1020,20 @@
     ],
     "created_bodies": [],
     "feature": 51,
-    "ms": 62.27559,
-    "name": "Hole13",
+    "ms": 287.116049,
+    "name": "Hole2",
     "removed_bodies": [],
     "warning": null
   },
   {
     "bodies": [
       "Hub75PanelBasic",
+      "SideBoard",
       "Board",
       "Board_2",
       "Board_3",
       "Board_4",
+      "RearBoard",
       "CornerBracket"
     ],
     "changed_bodies": [
@@ -803,18 +1041,20 @@
     ],
     "created_bodies": [],
     "feature": 52,
-    "ms": 258.352617,
-    "name": "Hole14",
+    "ms": 70.071311,
+    "name": "Hole3",
     "removed_bodies": [],
     "warning": null
   },
   {
     "bodies": [
       "Hub75PanelBasic",
+      "SideBoard",
       "Board",
       "Board_2",
       "Board_3",
       "Board_4",
+      "RearBoard",
       "CornerBracket"
     ],
     "changed_bodies": [
@@ -822,18 +1062,20 @@
     ],
     "created_bodies": [],
     "feature": 53,
-    "ms": 76.570974,
-    "name": "Hole15",
+    "ms": 49.626611000000004,
+    "name": "Hole4",
     "removed_bodies": [],
     "warning": null
   },
   {
     "bodies": [
       "Hub75PanelBasic",
+      "SideBoard",
       "Board",
       "Board_2",
       "Board_3",
       "Board_4",
+      "RearBoard",
       "CornerBracket"
     ],
     "changed_bodies": [
@@ -841,7 +1083,238 @@
     ],
     "created_bodies": [],
     "feature": 54,
-    "ms": 111.13927,
+    "ms": 61.189484,
+    "name": "Hole5",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Hub75PanelBasic",
+      "SideBoard",
+      "Board",
+      "Board_2",
+      "Board_3",
+      "Board_4",
+      "RearBoard",
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 55,
+    "ms": 303.79621000000003,
+    "name": "Hole6",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Hub75PanelBasic",
+      "SideBoard",
+      "Board",
+      "Board_2",
+      "Board_3",
+      "Board_4",
+      "RearBoard",
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 56,
+    "ms": 73.211094,
+    "name": "Hole7",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Hub75PanelBasic",
+      "SideBoard",
+      "Board",
+      "Board_2",
+      "Board_3",
+      "Board_4",
+      "RearBoard",
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 57,
+    "ms": 57.163244,
+    "name": "Hole8",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Hub75PanelBasic",
+      "SideBoard",
+      "Board",
+      "Board_2",
+      "Board_3",
+      "Board_4",
+      "RearBoard",
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 58,
+    "ms": 35.730676,
+    "name": "Hole9",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Hub75PanelBasic",
+      "SideBoard",
+      "Board",
+      "Board_2",
+      "Board_3",
+      "Board_4",
+      "RearBoard",
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 59,
+    "ms": 154.113813,
+    "name": "Hole10",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Hub75PanelBasic",
+      "SideBoard",
+      "Board",
+      "Board_2",
+      "Board_3",
+      "Board_4",
+      "RearBoard",
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 60,
+    "ms": 45.088357,
+    "name": "Hole11",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Hub75PanelBasic",
+      "SideBoard",
+      "Board",
+      "Board_2",
+      "Board_3",
+      "Board_4",
+      "RearBoard",
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 61,
+    "ms": 63.49694,
+    "name": "Hole12",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Hub75PanelBasic",
+      "SideBoard",
+      "Board",
+      "Board_2",
+      "Board_3",
+      "Board_4",
+      "RearBoard",
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 62,
+    "ms": 40.228658,
+    "name": "Hole13",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Hub75PanelBasic",
+      "SideBoard",
+      "Board",
+      "Board_2",
+      "Board_3",
+      "Board_4",
+      "RearBoard",
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 63,
+    "ms": 166.60896,
+    "name": "Hole14",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Hub75PanelBasic",
+      "SideBoard",
+      "Board",
+      "Board_2",
+      "Board_3",
+      "Board_4",
+      "RearBoard",
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 64,
+    "ms": 50.29396,
+    "name": "Hole15",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "Hub75PanelBasic",
+      "SideBoard",
+      "Board",
+      "Board_2",
+      "Board_3",
+      "Board_4",
+      "RearBoard",
+      "CornerBracket"
+    ],
+    "changed_bodies": [
+      "CornerBracket"
+    ],
+    "created_bodies": [],
+    "feature": 65,
+    "ms": 72.399372,
     "name": "Hole16",
     "removed_bodies": [],
     "warning": null
@@ -850,32 +1323,32 @@
     "active": 0
   },
   {
-    "component": 32,
-    "occurrence": 55
+    "component": 43,
+    "occurrence": 66
   },
   {
-    "component": 32,
-    "occurrence": 56
+    "component": 43,
+    "occurrence": 67
   },
   {
-    "component": 32,
-    "occurrence": 57
+    "component": 43,
+    "occurrence": 68
   },
   {
-    "component": 32,
-    "occurrence": 58
+    "component": 43,
+    "occurrence": 69
   },
   {
-    "component": 32,
-    "occurrence": 59
+    "component": 43,
+    "occurrence": 70
   },
   {
-    "component": 32,
-    "occurrence": 60
+    "component": 43,
+    "occurrence": 71
   },
   {
-    "component": 32,
-    "occurrence": 61
+    "component": 43,
+    "occurrence": 72
   },
   {
     "display_value": 12.0,
@@ -890,10 +1363,10 @@
     "value": 12.0
   },
   {
-    "component": 62,
+    "component": 73,
     "grounded": false,
     "name": "GlassStrip",
-    "occurrence": 63,
+    "occurrence": 74,
     "parent": 7
   },
   {
@@ -904,9 +1377,9 @@
       "dimensions": [],
       "points": []
     },
-    "name": "d7_GlassStrip__Profile",
+    "name": "d9_GlassStrip__Profile",
     "projected": null,
-    "sketch": 64
+    "sketch": 75
   },
   {
     "constraints": [],
@@ -939,15 +1412,17 @@
   },
   {
     "profiles": 1,
-    "sketch": 64
+    "sketch": 75
   },
   {
     "bodies": [
       "Hub75PanelBasic",
+      "SideBoard",
       "Board",
       "Board_2",
       "Board_3",
       "Board_4",
+      "RearBoard",
       "CornerBracket",
       "GlassStrip"
     ],
@@ -955,8 +1430,8 @@
     "created_bodies": [
       "GlassStrip"
     ],
-    "feature": 65,
-    "ms": 2.233769,
+    "feature": 76,
+    "ms": 1.595478,
     "name": "Extrude3",
     "removed_bodies": [],
     "warning": null
@@ -981,14 +1456,14 @@
     "active": 0
   },
   {
-    "component": 62,
-    "occurrence": 66
+    "component": 73,
+    "occurrence": 77
   },
   {
-    "component": 67,
+    "component": 78,
     "grounded": false,
     "name": "GlassStrip 2",
-    "occurrence": 68,
+    "occurrence": 79,
     "parent": 7
   },
   {
@@ -999,9 +1474,9 @@
       "dimensions": [],
       "points": []
     },
-    "name": "d8_GlassStrip_2__Profile",
+    "name": "d10_GlassStrip_2__Profile",
     "projected": null,
-    "sketch": 69
+    "sketch": 80
   },
   {
     "constraints": [],
@@ -1034,15 +1509,17 @@
   },
   {
     "profiles": 1,
-    "sketch": 69
+    "sketch": 80
   },
   {
     "bodies": [
       "Hub75PanelBasic",
+      "SideBoard",
       "Board",
       "Board_2",
       "Board_3",
       "Board_4",
+      "RearBoard",
       "CornerBracket",
       "GlassStrip",
       "GlassStrip_2"
@@ -1051,8 +1528,8 @@
     "created_bodies": [
       "GlassStrip_2"
     ],
-    "feature": 70,
-    "ms": 1.945765,
+    "feature": 81,
+    "ms": 1.436531,
     "name": "Extrude4",
     "removed_bodies": [],
     "warning": null
@@ -1077,23 +1554,25 @@
     "active": 0
   },
   {
-    "component": 67,
-    "occurrence": 71
+    "component": 78,
+    "occurrence": 82
   },
   {
-    "component": 72,
+    "component": 83,
     "grounded": false,
     "name": "Window",
-    "occurrence": 73,
+    "occurrence": 84,
     "parent": 0
   },
   {
     "bodies": [
       "Hub75PanelBasic",
+      "SideBoard",
       "Board",
       "Board_2",
       "Board_3",
       "Board_4",
+      "RearBoard",
       "CornerBracket",
       "GlassStrip",
       "GlassStrip_2",
@@ -1103,9 +1582,9 @@
     "created_bodies": [
       "Window"
     ],
-    "feature": 74,
-    "ms": 1.553724,
-    "name": "Box5",
+    "feature": 85,
+    "ms": 1.067421,
+    "name": "Box7",
     "removed_bodies": [],
     "warning": null
   },

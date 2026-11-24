@@ -45,12 +45,12 @@
       "engine_schema": 4,
       "final_bundle_sha256": "f4176d3c6c247f47eefbb404d8b18bdbcd215898639c4aec751095d9ef2a17cc",
       "final_step": "unittest",
-      "final_target_spec_digest": "340b3a33c3bf8d7a7e7390d70278fe85f56ff76c92b3f021dab515118a66165c",
+      "final_target_spec_digest": "cd21aeb968c71ca9d17f8c331b78df60f28173126e4cc836fcc9f57babdcd6ea",
       "item_id": "repository-tests",
       "outputs": [
         "result.json"
       ],
-      "source_commit": "7015106ae05e53bf055682872f696c46ae8aebf6"
+      "source_commit": "2d471662591544a545cc40b4a2d86e17240ddb0b"
     },
     "ci/scpc-package": {
       "engine": "scons",
@@ -68,7 +68,7 @@
     "models/advanced/hub75-display2": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "61df17c883f28ba5be47e24ab98ef2275926f54143d0f279b1505945423211c3",
+      "final_bundle_sha256": "311d9ca165776b6f451d6cf07cda2d7e32306a0e00cb5a43e628d70997adc924",
       "final_step": "build_results",
       "final_target_spec_digest": "6fdf6e559e77ef3a478d03871b99c9e2c31f172b7426fbfbe6d04a1af687b56f",
       "item_id": "hub75-display2",
@@ -77,7 +77,7 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "d25440a98d4b2ab71464a92ee72c6eb76b337111"
+      "source_commit": "2d471662591544a545cc40b4a2d86e17240ddb0b"
     },
     "models/advanced/hub75_screen": {
       "engine": "scons",
@@ -106,20 +106,6 @@
         "models"
       ],
       "source_commit": "d25440a98d4b2ab71464a92ee72c6eb76b337111"
-    },
-    "models/advanced/hub75_wood_frame_iter2": {
-      "engine": "scons",
-      "engine_schema": 4,
-      "final_bundle_sha256": "734f679bc1a30a599f40e42746deea3ee42446c67a949e4f1ef1dc71e6439933",
-      "final_step": "build_results",
-      "final_target_spec_digest": "40a4fdb341796648585379e53d7f5f1ef0cc834d74665621db8552932e53d38d",
-      "item_id": "hub75-wood-frame-iter2",
-      "outputs": [
-        "generated",
-        "manifest.json",
-        "models"
-      ],
-      "source_commit": "b0fd2ab4104d3d365794e2085f52ff752d7fe8c1"
     },
     "models/advanced/simple_mft": {
       "engine": "scons",
@@ -307,5 +293,5 @@
   "name": "dev-cad",
   "schema": 1,
   "scope": "named",
-  "source_commit": "7015106ae05e53bf055682872f696c46ae8aebf6"
+  "source_commit": "2d471662591544a545cc40b4a2d86e17240ddb0b"
 }
