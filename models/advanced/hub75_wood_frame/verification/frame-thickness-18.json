@@ -1,0 +1,11 @@
+{
+  "commands": [
+    {
+      "command": "parameters.change",
+      "params": {
+        "name": "frame_wood_thickness",
+        "expression": "18 mm"
+      }
+    }
+  ]
+}

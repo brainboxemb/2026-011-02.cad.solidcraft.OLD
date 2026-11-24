@@ -155,11 +155,17 @@ CAD #421 / PR #423 restored the detailed `hub75-panel`.
 
 Current released-capability follow-ups include:
 
-- #427 consolidate the accepted #154 lower-compartment geometry into the canonical Hub75DisplayCase v2 root;
-- #91 frame-thickness mutation moving all eight CornerBrackets;
-- #77 CornerBracket placement/associativity under dimension changes;
-- #327/#348/#362 model cleanups unlocked by the released Forge batch;
-- #373/#374/#375 detailed-panel work now that #796 is retired;
+- #427 is complete: #154 geometry is consolidated into the one canonical
+  Hub75DisplayCase v2 root;
+- #91 frame-thickness native mutation is implemented and green in draft PR
+  #431; finalize its clean-head run/merge;
+- #77 remains the next Hub75DisplayCase v1 associativity slice for opening
+  width/height and orientation;
+- #327 is complete; #348 and #362 are technically green draft PRs waiting only
+  on exact PR render evidence through tool.cad.ci #181;
+- #373 is technically green in draft PR #430 and likewise waits only on exact
+  rear-view PR render evidence; #374 is already merged standalone and #375
+  remains parked behind #388 for final assembly acceptance;
 - the remaining catalog qualification work in #172.
 
 ## Other open work
@@ -174,24 +180,24 @@ Current released-capability follow-ups include:
 | #412 hub75-panel repository-test process gate | dev-cad | **complete / gate retired** | Tests continue deriving from `ci.yml`; with `process:true` they run normally on v0.13.2. |
 | #408 Temporary hub75-panel process gate | dev-cad + Forge | **complete / gate retired** | Forge #796 is fixed in v0.13.2 and the detailed root is active again. |
 | #8 CornerBracket exact geometry | dev-cad | **actionable after #405 via #362** | Preserve PR #360 geometry; add the final rotated wedge with released Forge #750 support. |
-| #362 CornerBracket arm-tip wedge | dev-cad | **actionable** | Implement the final rotated wedge on the current v0.13.2 baseline and remove the temporary markers with the completed geometry. |
-| #154 lower-compartment HUB75 geometry | dev-cad | **geometry complete / consolidation #427 now** | Preserve the green #154 geometry and 70→90 mm verification while moving it into the canonical `hub75-display2` root. |
+| #362 CornerBracket arm-tip wedge | dev-cad | **draft PR #429 / technical green** | Four OpenSCAD arm-tip wedges are native/SCPC green; keep draft only for exact horizontal/vertical tip render review through tool.cad.ci #181. |
+| #154 lower-compartment HUB75 geometry | dev-cad | **complete / consolidated by #427** | Geometry and 70→90 mm verification live in canonical `hub75-display2`; no separate Iter2 root remains. |
 | #345 STL output + GitHub viewer | dev-cad / SolidCraft runtime | **complete / PR #401** | Accepted on durable dev-cad run #45211961040; direct .sc → STL export and scope-matched GitHub viewer link are live. |
-| #348 FlexBenchDog logo cleanup | dev-cad | **actionable after #405** | Replace temporary per-rib Slot Sketches with the released Polygon2D path while preserving accepted geometry. |
+| #348 FlexBenchDog logo cleanup | dev-cad | **draft PR #426 / technical green** | Polygon2D cleanup is native/SCPC green; keep draft only for exact logo render review through tool.cad.ci #181. |
 
-| #327 FlexBenchDog Cone taper | dev-cad | **now / refreshed draft PR #328** | Replace only the current stepped insert with one full-length native Cone on the accepted collar/logo/fillet baseline; keep #348 separate. |
+| #327 FlexBenchDog Cone taper | dev-cad | **complete / PR #328** | Full-length native Cone is merged and durable-green; #348 remains a separate logo-construction cleanup. |
 | #288 CAD-CI workflow/config migration | dev-ci / tool.cad.ci | **later / separate** | Reassess against the current released tool.cad.ci owner baseline before implementation. |
 | #205 canonical model.yml contract | dev-cad | **actionable after #405 / separate migration** | Forge #703 is in v0.13.1; move CAD-only fields to their owning layers in its own focused change. |
 | #172 full-catalog native qualification | dev-cad + Forge | **active** | Requalify the corrected 16-root / 18-variant catalog after #427; do not count #154 as a separate root. |
-| #142 Hub75DisplayCase v2 baseline | dev-cad | **baseline complete / corrected by #427** | The baseline root is retained, but its placeholder v1 geometry is replaced by the accepted #154 v2 geometry. |
+| #142 Hub75DisplayCase v2 baseline | dev-cad | **complete / corrected by #427** | `hub75-display2` is the single canonical v2 root and contains the accepted #154 lower-compartment geometry. |
 | #135 Bolted Flange circular pattern | dev-cad + Forge | **blocked on Forge #347** | Keep PR #141 parked until the intended applied-feature seed is supported. |
-| #91 frame-thickness native regression | dev-cad | **actionable after #405/#378** | Run the saved-design mutation once hub75-wood-frame is processable on v0.13.1. |
-| #77 CornerBracket placement/associativity | dev-cad | **actionable after #405/#378** | Validate all eight bracket occurrences on the re-enabled current HUB75 root. |
+| #91 frame-thickness native regression | dev-cad | **draft PR #431 / technical green** | Native 12→18 mm saved-design verification passes exact five-Board and eight-CornerBracket envelopes at 0.001 mm tolerance; squash/final run then merge. |
+| #77 CornerBracket placement/associativity | dev-cad | **next after #91** | Add independent native opening-width/opening-height saved-design acceptance for all eight bracket occurrences and orientation/handedness. |
 | #21 interactive SolidCraft viewer | site/product | **later** | Revisit after current model/output contracts stabilize. |
 | #20 multiple verified model views | site/product | **later / partially enabled** | Build on generic extra_views; broader responsive gallery contract remains open. |
 | #365 HUB75 glazing retention/seal | dev-cad | **next design slice** | Define the physical glazing stack, contact/clearance, retention and sealing before modelling guessed hardware. |
 | #371 Detailed HUB75 panel completion | tracking | **tracking only** | Reusable-panel work is split into #373 rear-frame contour, #374 mounting interfaces and #375 connector envelopes. |
-| #373 HUB75 rear-frame bay contours | dev-cad + Forge | **actionable after #421** | Forge #747 and v0.13.2 are available; resume native acceptance on the restored detailed panel. |
+| #373 HUB75 rear-frame bay contours | dev-cad + Forge | **draft PR #430 / technical green** | R5/stepped bay contours plus 0.8 mm rail recess are native-green; keep draft only for exact rear-view render review through tool.cad.ci #181. |
 | #374 HUB75 mounting tubes/bushings/locator pins | dev-cad + Forge/SolidCraft | **standalone merged / assembly gate #388** | Re-run standalone native acceptance on v0.13.2; keep final five-panel acceptance blocked on #388. |
 | #375 HUB75 connector envelopes | dev-cad | **implemented / draft PR #390; blocked on #388 before merge** | Refresh standalone acceptance on v0.13.2; final assembly acceptance remains blocked on #388. |
 | #388 HUB75 component-local Cylinder placement regression | dev-cad + Forge/SolidCraft | **blocked on owner-layer qualification** | Five panel bodies are placed correctly, but the 14 native Cylinder join features can appear detached. Forge #753 / draft PR #754 owns the minimal rotated-component reproducer. SolidCraft 0.45 issue #21098 / PR #21145 is the primary runtime hypothesis, not yet proven or released. |
@@ -224,21 +230,22 @@ Current released-capability follow-ups include:
   baseline is available.
 - PR #141 — draft Bolted Flange circular pattern; blocked on Forge #347.
 
-PR #349 proved the #154 lower-compartment geometry and saved-design mutation,
-but #427 corrects its mistaken representation as a third root by moving that
-accepted geometry into `hub75-display2`. PR #328/#327 is complete and merged.
+#427 / PR #428 has consolidated the proven #154 lower-compartment geometry
+into canonical `hub75-display2`. #327 / PR #328 is complete. Draft PRs
+#426/#348, #429/#362 and #430/#373 are technically green and wait only on the
+shared exact-PR render evidence gap tracked by tool.cad.ci #181.
 
 ## Next checkpoint
 
-1. finish #427 first: one canonical Hub75DisplayCase v2 root with the complete
-   #154 lower-compartment geometry and 70→90 mm verification;
-2. keep #426/#348 draft until exact-PR render evidence is available through
-   generic CAD-CI review-artifact support (#181 upstream);
-3. resume #362 as a separate CornerBracket slice;
-4. resume #373/#374/#375 now that Forge #796 is retired, while keeping #388 on
-   its separate Forge #753/SolidCraft owner path;
-5. continue #77/#91 on active Hub75DisplayCase v1;
-6. keep #417 as the later path/slug compatibility migration; #422 becomes
-   obsolete once #427 merges;
+1. finish #91 / PR #431: squash to one logical commit, re-run the already-green
+   native 12→18 mm five-Board/eight-CornerBracket verification, then merge;
+2. implement #77 separately with native opening-width/opening-height saved
+   designs and explicit eight-bracket orientation/handedness acceptance;
+3. keep #426/#348, #429/#362 and #430/#373 draft on the common exact-render
+   review gate; fix that generically in tool.cad.ci #181, never per consumer;
+4. keep #374 as already merged standalone and #375/PR #390 parked behind #388
+   for final five-panel assembly acceptance;
+5. continue the remaining independent model slices after #77;
+6. keep #417 as the later HUB75 path/slug compatibility migration;
 7. do not promote `dev-cad -> main` until the deliberate stable checkpoint
    criteria are met.

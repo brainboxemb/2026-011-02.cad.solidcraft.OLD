@@ -48,12 +48,13 @@ class SharedModelBatchTests(unittest.TestCase):
             },
             blocked,
         )
-        self.assertEqual(len(semantic), 12)
+        self.assertEqual(len(semantic), 13)
         self.assertEqual(len(MODELS), 18)
         self.assertEqual(len(COMMAND_SOURCES), 5)
         self.assertIn("models/components/guide_rail", active)
         self.assertIn("models/advanced/simple_mft", active)
         self.assertIn("models/advanced/hub75-display2", active)
+        self.assertIn("models/advanced/hub75_wood_frame", semantic)
 
 
     def test_one_batch_runtime_and_released_copy_projection(self):

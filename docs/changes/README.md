@@ -82,4 +82,5 @@ Current records:
 - [0046-hub75-display-case-names.md](0046-hub75-display-case-names.md) — align the two wooden HUB75 enclosure product/class names as Hub75DisplayCase and Hub75DisplayCase v2 while preserving current paths/slugs (#416).
 - [0048-hub75-wood-frame-iter2-v0132-qualification.md](0048-hub75-wood-frame-iter2-v0132-qualification.md) — natively qualify the lower-compartment HUB75 v2 geometry on Forge v0.13.2 with a 70→90 mm saved-design mutation; #427 later consolidates it into `hub75-display2` (#154).
 - [0050-collapse-hub75-v2-roots.md](0050-collapse-hub75-v2-roots.md) — collapse the temporary #142 baseline root and #154 lower-compartment root into one canonical Hub75DisplayCase v2 (#427).
+- [0053-hub75-frame-thickness-native-regression.md](0053-hub75-frame-thickness-native-regression.md) — add declarative 12→18 mm native frame-thickness regression for the five boards and eight CornerBrackets (#91).
 - [0047-forge-0132-hub75-panel.md](0047-forge-0132-hub75-panel.md) — adopt Forge v0.13.2 and remove the temporary detailed hub75-panel process gate after #796 (#421).
