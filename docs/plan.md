@@ -50,25 +50,23 @@ are still waiting for final review.
 The missing convenient PR-render path is a CI/tooling problem. It must not
 cause unrelated CAD development to invent a local publication system.
 
-### 2. Clean up the model metadata contract — #205
-
-This is the next independent repository cleanup after the three pending visual
-reviews.
-
-Goal:
-
-- use the canonical Forge `model.yml` contract for human-facing model
-  metadata;
-- move CAD-only execution fields to `ci.yml` or their actual owning layer;
-- keep presentation-only model settings in the appropriate model-owned
-  presentation configuration;
-- remove the copied CAD-specific schema where Forge already owns the common
-  contract.
-
-Do this as a focused migration. Do not mix it with model geometry or CI
-workflow replacement.
-
 ## Next
+
+### Continue actual CAD model work
+
+After the three current model PRs have their visual review, continue model work
+before repository metadata cleanup.
+
+Priority order:
+
+1. finish #348 / PR #426 if the logo render is correct;
+2. finish #362 / PR #429 if the arm-tip views are correct;
+3. finish #373 / PR #430 if the rear-bay render matches the reference;
+4. continue #375 / PR #390 as far as standalone panel geometry permits;
+5. as soon as #388 is unblocked upstream, return immediately to the complete
+   `hub75-screen` assembly and final five-panel acceptance.
+
+Do not substitute repository metadata/site work for available CAD model work.
 
 ### HUB75 detailed-panel completion after #373
 
@@ -83,6 +81,14 @@ interfaces.
 - **#371** remains the tracking issue for these detailed-panel children.
 
 Do not duplicate detailed panel dimensions into the wooden enclosure.
+
+### Model metadata contract — #205
+
+Repository metadata cleanup, not CAD model work.
+
+Keep separate from the parallel model stream. Execute only when the CAD Forge
+pin actually contains the accepted canonical metadata contract; do not copy a
+newer Forge validator locally.
 
 ### CAD-CI consumer migration — #288
 
