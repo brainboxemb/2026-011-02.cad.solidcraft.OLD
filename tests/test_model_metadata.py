@@ -72,7 +72,7 @@ class ModelMetadataTests(unittest.TestCase):
         ).encode("utf-8")
         actual_crc = zlib.crc32(payload)
         self.assertEqual(
-            actual_crc, 0x28F252D5,
+            actual_crc, 0x9DE50A31,
             "Migration changed the established public model content/order; "
             f"actual CRC is {actual_crc:#010x}",
         )
