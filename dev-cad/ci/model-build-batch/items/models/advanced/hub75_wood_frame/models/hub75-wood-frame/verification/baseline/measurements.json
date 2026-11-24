@@ -1,0 +1,1446 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 614400.0,
+      "bbox": {
+        "max": [
+          420.0,
+          16.0,
+          373.0
+        ],
+        "min": [
+          -420.0,
+          12.0,
+          13.0
+        ]
+      },
+      "center_of_mass": [
+        3.4737644859382675e-15,
+        14.0,
+        193.0
+      ],
+      "closed": true,
+      "density_g_cm3": 1.19,
+      "edges": 12,
+      "face_types": {
+        "plane": 6
+      },
+      "faces": 6,
+      "kernel": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "vertices": 8
+      },
+      "mass_g": 1439.424,
+      "material": "Plexiglass",
+      "measured_by": "smlib",
+      "name": "Window",
+      "notes": [],
+      "vertices": 8,
+      "volume_mm3": 1209600.0
+    },
+    {
+      "area_mm2": 40343.293505963455,
+      "bbox": {
+        "max": [
+          422.0,
+          12.0,
+          24.0
+        ],
+        "min": [
+          -422.0,
+          0.0,
+          12.0
+        ]
+      },
+      "center_of_mass": [
+        1.0476899499902866e-14,
+        6.0,
+        17.971153846153847
+      ],
+      "closed": true,
+      "density_g_cm3": 0.55,
+      "edges": 12,
+      "face_types": {
+        "plane": 6
+      },
+      "faces": 6,
+      "kernel": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "vertices": 8
+      },
+      "mass_g": 65.8944,
+      "material": "PINE glazing horizontal",
+      "measured_by": "smlib",
+      "name": "GlassStrip",
+      "notes": [],
+      "vertices": 8,
+      "volume_mm3": 119808.0
+    },
+    {
+      "area_mm2": 40343.293505963455,
+      "bbox": {
+        "max": [
+          422.0,
+          12.0,
+          374.0
+        ],
+        "min": [
+          -422.0,
+          -1.7763568394002505e-15,
+          362.0
+        ]
+      },
+      "center_of_mass": [
+        1.1605389014463093e-14,
+        6.0,
+        368.02884615384613
+      ],
+      "closed": true,
+      "density_g_cm3": 0.55,
+      "edges": 12,
+      "face_types": {
+        "plane": 6
+      },
+      "faces": 6,
+      "kernel": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "vertices": 8
+      },
+      "mass_g": 65.8944,
+      "material": "PINE glazing horizontal",
+      "measured_by": "smlib",
+      "name": "GlassStrip (WoodGlassFrame:1/GlassStrip:2)",
+      "notes": [],
+      "vertices": 8,
+      "volume_mm3": 119808.00000000001
+    },
+    {
+      "area_mm2": 17207.29350596345,
+      "bbox": {
+        "max": [
+          -410.0,
+          12.0,
+          374.0
+        ],
+        "min": [
+          -422.0,
+          0.0,
+          12.0
+        ]
+      },
+      "center_of_mass": [
+        -416.06857142857143,
+        5.999999999999999,
+        193.0
+      ],
+      "closed": true,
+      "density_g_cm3": 0.55,
+      "edges": 12,
+      "face_types": {
+        "plane": 6
+      },
+      "faces": 6,
+      "kernel": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "vertices": 8
+      },
+      "mass_g": 27.720000000000006,
+      "material": "PINE glazing vertical",
+      "measured_by": "smlib",
+      "name": "GlassStrip_2",
+      "notes": [],
+      "vertices": 8,
+      "volume_mm3": 50400.00000000001
+    },
+    {
+      "area_mm2": 17207.29350596345,
+      "bbox": {
+        "max": [
+          422.0,
+          12.0,
+          374.0
+        ],
+        "min": [
+          410.0,
+          0.0,
+          12.0
+        ]
+      },
+      "center_of_mass": [
+        416.06857142857143,
+        5.999999999999999,
+        193.0
+      ],
+      "closed": true,
+      "density_g_cm3": 0.55,
+      "edges": 12,
+      "face_types": {
+        "plane": 6
+      },
+      "faces": 6,
+      "kernel": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "vertices": 8
+      },
+      "mass_g": 27.720000000000006,
+      "material": "PINE glazing vertical",
+      "measured_by": "smlib",
+      "name": "GlassStrip_2 (WoodGlassFrame:1/GlassStrip 2:2)",
+      "notes": [],
+      "vertices": 8,
+      "volume_mm3": 50400.00000000001
+    },
+    {
+      "area_mm2": 9963.026467590074,
+      "bbox": {
+        "max": [
+          -374.0,
+          24.0,
+          398.00000000000006
+        ],
+        "min": [
+          -446.00000000000006,
+          0.0,
+          326.0
+        ]
+      },
+      "center_of_mass": [
+        -423.5923682781502,
+        12.000000000000002,
+        375.5923682781502
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 140,
+      "face_types": {
+        "cone": 6,
+        "cylinder": 17,
+        "plane": 39
+      },
+      "faces": 62,
+      "kernel": {
+        "edges": 144,
+        "faces": 62,
+        "shells": 1,
+        "vertices": 92
+      },
+      "mass_g": 45.32788372957081,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "CornerBracket",
+      "notes": [],
+      "vertices": 88,
+      "volume_mm3": 35137.894364008374
+    },
+    {
+      "area_mm2": 9963.026467590076,
+      "bbox": {
+        "max": [
+          -374.0,
+          100.0,
+          398.00000000000006
+        ],
+        "min": [
+          -446.00000000000006,
+          76.0,
+          326.0
+        ]
+      },
+      "center_of_mass": [
+        -423.5923682781502,
+        88.0,
+        375.5923682781502
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 140,
+      "face_types": {
+        "cone": 6,
+        "cylinder": 17,
+        "plane": 39
+      },
+      "faces": 62,
+      "kernel": {
+        "edges": 144,
+        "faces": 62,
+        "shells": 1,
+        "vertices": 92
+      },
+      "mass_g": 45.32788372957081,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "CornerBracket (CornerBrackets:1/CornerBracket:2)",
+      "notes": [],
+      "vertices": 88,
+      "volume_mm3": 35137.894364008374
+    },
+    {
+      "area_mm2": 9963.026467590076,
+      "bbox": {
+        "max": [
+          446.00000000000006,
+          24.0,
+          398.0000000000001
+        ],
+        "min": [
+          374.0,
+          0.0,
+          326.0
+        ]
+      },
+      "center_of_mass": [
+        423.5923682781502,
+        12.0,
+        375.5923682781502
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 140,
+      "face_types": {
+        "cone": 6,
+        "cylinder": 17,
+        "plane": 39
+      },
+      "faces": 62,
+      "kernel": {
+        "edges": 144,
+        "faces": 62,
+        "shells": 1,
+        "vertices": 92
+      },
+      "mass_g": 45.32788372957082,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "CornerBracket (CornerBrackets:1/CornerBracket:3)",
+      "notes": [],
+      "vertices": 88,
+      "volume_mm3": 35137.89436400839
+    },
+    {
+      "area_mm2": 9963.02646759008,
+      "bbox": {
+        "max": [
+          446.00000000000006,
+          100.0,
+          398.0000000000001
+        ],
+        "min": [
+          374.0,
+          76.0,
+          326.0
+        ]
+      },
+      "center_of_mass": [
+        423.5923682781502,
+        88.0,
+        375.5923682781502
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 140,
+      "face_types": {
+        "cone": 6,
+        "cylinder": 17,
+        "plane": 39
+      },
+      "faces": 62,
+      "kernel": {
+        "edges": 144,
+        "faces": 62,
+        "shells": 1,
+        "vertices": 92
+      },
+      "mass_g": 45.32788372957081,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "CornerBracket (CornerBrackets:1/CornerBracket:4)",
+      "notes": [],
+      "vertices": 88,
+      "volume_mm3": 35137.894364008374
+    },
+    {
+      "area_mm2": 9963.026467590074,
+      "bbox": {
+        "max": [
+          446.00000000000006,
+          24.0,
+          60.00000000000001
+        ],
+        "min": [
+          374.0,
+          0.0,
+          -12.000000000000007
+        ]
+      },
+      "center_of_mass": [
+        423.5923682781502,
+        12.0,
+        10.407631721849777
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 140,
+      "face_types": {
+        "cone": 6,
+        "cylinder": 17,
+        "plane": 39
+      },
+      "faces": 62,
+      "kernel": {
+        "edges": 144,
+        "faces": 62,
+        "shells": 1,
+        "vertices": 92
+      },
+      "mass_g": 45.32788372957082,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "CornerBracket (CornerBrackets:1/CornerBracket:5)",
+      "notes": [],
+      "vertices": 88,
+      "volume_mm3": 35137.89436400839
+    },
+    {
+      "area_mm2": 9963.026467590078,
+      "bbox": {
+        "max": [
+          446.00000000000006,
+          100.0,
+          60.00000000000001
+        ],
+        "min": [
+          374.0,
+          76.0,
+          -12.000000000000007
+        ]
+      },
+      "center_of_mass": [
+        423.5923682781502,
+        88.0,
+        10.407631721849782
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 140,
+      "face_types": {
+        "cone": 6,
+        "cylinder": 17,
+        "plane": 39
+      },
+      "faces": 62,
+      "kernel": {
+        "edges": 144,
+        "faces": 62,
+        "shells": 1,
+        "vertices": 92
+      },
+      "mass_g": 45.327883729570814,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "CornerBracket (CornerBrackets:1/CornerBracket:6)",
+      "notes": [],
+      "vertices": 88,
+      "volume_mm3": 35137.89436400838
+    },
+    {
+      "area_mm2": 9963.02646759008,
+      "bbox": {
+        "max": [
+          -374.0,
+          24.0,
+          60.0
+        ],
+        "min": [
+          -446.00000000000006,
+          0.0,
+          -12.000000000000002
+        ]
+      },
+      "center_of_mass": [
+        -423.5923682781502,
+        12.000000000000002,
+        10.407631721849755
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 140,
+      "face_types": {
+        "cone": 6,
+        "cylinder": 17,
+        "plane": 39
+      },
+      "faces": 62,
+      "kernel": {
+        "edges": 144,
+        "faces": 62,
+        "shells": 1,
+        "vertices": 92
+      },
+      "mass_g": 45.327883729570814,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "CornerBracket (CornerBrackets:1/CornerBracket:7)",
+      "notes": [],
+      "vertices": 88,
+      "volume_mm3": 35137.89436400838
+    },
+    {
+      "area_mm2": 9963.026467590082,
+      "bbox": {
+        "max": [
+          -374.0,
+          100.0,
+          60.0
+        ],
+        "min": [
+          -446.0000000000001,
+          76.0,
+          -12.000000000000002
+        ]
+      },
+      "center_of_mass": [
+        -423.5923682781502,
+        88.0,
+        10.407631721849757
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 140,
+      "face_types": {
+        "cone": 6,
+        "cylinder": 17,
+        "plane": 39
+      },
+      "faces": 62,
+      "kernel": {
+        "edges": 144,
+        "faces": 62,
+        "shells": 1,
+        "vertices": 92
+      },
+      "mass_g": 45.32788372957079,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "CornerBracket (CornerBrackets:1/CornerBracket:8)",
+      "notes": [],
+      "vertices": 88,
+      "volume_mm3": 35137.89436400837
+    },
+    {
+      "area_mm2": 83488.0,
+      "bbox": {
+        "max": [
+          -422.0,
+          100.0,
+          374.0
+        ],
+        "min": [
+          -434.0,
+          0.0,
+          12.0
+        ]
+      },
+      "center_of_mass": [
+        -428.0,
+        50.0,
+        193.0
+      ],
+      "closed": true,
+      "density_g_cm3": 0.55,
+      "edges": 12,
+      "face_types": {
+        "plane": 6
+      },
+      "faces": 6,
+      "kernel": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "vertices": 8
+      },
+      "mass_g": 238.92,
+      "material": "LIGHTPLY side board",
+      "measured_by": "smlib",
+      "name": "Board",
+      "notes": [],
+      "vertices": 8,
+      "volume_mm3": 434399.99999999994
+    },
+    {
+      "area_mm2": 83488.0,
+      "bbox": {
+        "max": [
+          434.0,
+          100.0,
+          374.0
+        ],
+        "min": [
+          422.0,
+          0.0,
+          12.0
+        ]
+      },
+      "center_of_mass": [
+        428.0,
+        50.0,
+        193.0
+      ],
+      "closed": true,
+      "density_g_cm3": 0.55,
+      "edges": 12,
+      "face_types": {
+        "plane": 6
+      },
+      "faces": 6,
+      "kernel": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "vertices": 8
+      },
+      "mass_g": 238.92,
+      "material": "LIGHTPLY side board",
+      "measured_by": "smlib",
+      "name": "Board (WoodBoxFrame:1/Board:2)",
+      "notes": [],
+      "vertices": 8,
+      "volume_mm3": 434399.99999999994
+    },
+    {
+      "area_mm2": 196474.90254389332,
+      "bbox": {
+        "max": [
+          434.0,
+          100.0,
+          12.0
+        ],
+        "min": [
+          -434.0,
+          0.0,
+          0.0
+        ]
+      },
+      "center_of_mass": [
+        -3.3119646164966763e-16,
+        50.0,
+        6.003368950300441
+      ],
+      "closed": true,
+      "density_g_cm3": 0.55,
+      "edges": 18,
+      "face_types": {
+        "cylinder": 2,
+        "plane": 6
+      },
+      "faces": 8,
+      "kernel": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "vertices": 12
+      },
+      "mass_g": 572.5023007675795,
+      "material": "LIGHTPLY bottom",
+      "measured_by": "smlib",
+      "name": "Board_2",
+      "notes": [],
+      "vertices": 12,
+      "volume_mm3": 1040913.2741228719
+    },
+    {
+      "area_mm2": 231606.22995618058,
+      "bbox": {
+        "max": [
+          434.0,
+          110.00000000000006,
+          386.0
+        ],
+        "min": [
+          -434.0,
+          -10.0,
+          374.0
+        ]
+      },
+      "center_of_mass": [
+        -7.824258232503518e-15,
+        50.00000000000002,
+        379.99663104969954
+      ],
+      "closed": true,
+      "density_g_cm3": 0.55,
+      "edges": 18,
+      "face_types": {
+        "cylinder": 2,
+        "plane": 6
+      },
+      "faces": 8,
+      "kernel": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "vertices": 12
+      },
+      "mass_g": 687.0027609210957,
+      "material": "LIGHTPLY roof",
+      "measured_by": "smlib",
+      "name": "Board_3",
+      "notes": [],
+      "vertices": 12,
+      "volume_mm3": 1249095.9289474466
+    },
+    {
+      "area_mm2": 671620.0,
+      "bbox": {
+        "max": [
+          434.0,
+          109.0,
+          374.0
+        ],
+        "min": [
+          -434.0,
+          100.0,
+          0.0
+        ]
+      },
+      "center_of_mass": [
+        -1.9918994785740077e-14,
+        104.5,
+        187.0
+      ],
+      "closed": true,
+      "density_g_cm3": 0.55,
+      "edges": 12,
+      "face_types": {
+        "plane": 6
+      },
+      "faces": 6,
+      "kernel": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "vertices": 8
+      },
+      "mass_g": 1606.9284000000002,
+      "material": "LIGHTPLY rear",
+      "measured_by": "smlib",
+      "name": "Board_4",
+      "notes": [],
+      "vertices": 8,
+      "volume_mm3": 2921688.0
+    },
+    {
+      "area_mm2": 116018.26400000001,
+      "bbox": {
+        "max": [
+          79.85,
+          39.5,
+          352.855
+        ],
+        "min": [
+          -79.85,
+          25.0,
+          33.14500000000001
+        ]
+      },
+      "center_of_mass": [
+        -6.289860239549195e-16,
+        32.25,
+        193.0
+      ],
+      "closed": true,
+      "density_g_cm3": 1.2,
+      "edges": 12,
+      "face_types": {
+        "plane": 6
+      },
+      "faces": 6,
+      "kernel": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "vertices": 8
+      },
+      "mass_g": 888.4037538,
+      "material": "LED panel envelope",
+      "measured_by": "smlib",
+      "name": "Hub75PanelBasic",
+      "notes": [],
+      "vertices": 8,
+      "volume_mm3": 740336.4615
+    },
+    {
+      "area_mm2": 116018.26400000001,
+      "bbox": {
+        "max": [
+          -240.15,
+          39.5,
+          352.855
+        ],
+        "min": [
+          -399.85,
+          25.0,
+          33.14500000000001
+        ]
+      },
+      "center_of_mass": [
+        -320.0,
+        32.25,
+        193.0
+      ],
+      "closed": true,
+      "density_g_cm3": 1.2,
+      "edges": 12,
+      "face_types": {
+        "plane": 6
+      },
+      "faces": 6,
+      "kernel": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "vertices": 8
+      },
+      "mass_g": 888.4037538000001,
+      "material": "LED panel envelope",
+      "measured_by": "smlib",
+      "name": "Hub75PanelBasic (HUB75Panels:1/Hub75PanelBasic:2)",
+      "notes": [],
+      "vertices": 8,
+      "volume_mm3": 740336.4615000001
+    },
+    {
+      "area_mm2": 116018.26400000001,
+      "bbox": {
+        "max": [
+          -80.15,
+          39.5,
+          352.855
+        ],
+        "min": [
+          -239.85,
+          25.0,
+          33.14500000000001
+        ]
+      },
+      "center_of_mass": [
+        -160.0,
+        32.25,
+        193.0
+      ],
+      "closed": true,
+      "density_g_cm3": 1.2,
+      "edges": 12,
+      "face_types": {
+        "plane": 6
+      },
+      "faces": 6,
+      "kernel": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "vertices": 8
+      },
+      "mass_g": 888.4037538,
+      "material": "LED panel envelope",
+      "measured_by": "smlib",
+      "name": "Hub75PanelBasic (HUB75Panels:1/Hub75PanelBasic:3)",
+      "notes": [],
+      "vertices": 8,
+      "volume_mm3": 740336.4615
+    },
+    {
+      "area_mm2": 116018.26400000002,
+      "bbox": {
+        "max": [
+          239.85,
+          39.5,
+          352.855
+        ],
+        "min": [
+          80.15,
+          25.0,
+          33.14500000000001
+        ]
+      },
+      "center_of_mass": [
+        160.0,
+        32.25,
+        193.0
+      ],
+      "closed": true,
+      "density_g_cm3": 1.2,
+      "edges": 12,
+      "face_types": {
+        "plane": 6
+      },
+      "faces": 6,
+      "kernel": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "vertices": 8
+      },
+      "mass_g": 888.4037538,
+      "material": "LED panel envelope",
+      "measured_by": "smlib",
+      "name": "Hub75PanelBasic (HUB75Panels:1/Hub75PanelBasic:4)",
+      "notes": [],
+      "vertices": 8,
+      "volume_mm3": 740336.4615
+    },
+    {
+      "area_mm2": 116018.26400000004,
+      "bbox": {
+        "max": [
+          399.85,
+          39.5,
+          352.855
+        ],
+        "min": [
+          240.15,
+          25.0,
+          33.14500000000001
+        ]
+      },
+      "center_of_mass": [
+        320.0,
+        32.25,
+        193.0
+      ],
+      "closed": true,
+      "density_g_cm3": 1.2,
+      "edges": 12,
+      "face_types": {
+        "plane": 6
+      },
+      "faces": 6,
+      "kernel": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "vertices": 8
+      },
+      "mass_g": 888.4037538000001,
+      "material": "LED panel envelope",
+      "measured_by": "smlib",
+      "name": "Hub75PanelBasic (HUB75Panels:1/Hub75PanelBasic:5)",
+      "notes": [],
+      "vertices": 8,
+      "volume_mm3": 740336.4615000001
+    }
+  ],
+  "body_count": 23,
+  "params": [
+    {
+      "comment": "",
+      "error": null,
+      "expression": "12",
+      "model": false,
+      "name": "frame_wood_thickness",
+      "unit": "mm",
+      "value": 12.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "100",
+      "model": false,
+      "name": "cabinet_depth",
+      "unit": "mm",
+      "value": 100.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "362",
+      "model": false,
+      "name": "opening_height",
+      "unit": "mm",
+      "value": 362.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "844",
+      "model": false,
+      "name": "opening_width",
+      "unit": "mm",
+      "value": 844.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "4",
+      "model": false,
+      "name": "corner_radius",
+      "unit": "mm",
+      "value": 4.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "9",
+      "model": false,
+      "name": "panel_wood_thickness",
+      "unit": "mm",
+      "value": 9.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "1",
+      "model": false,
+      "name": "roof_rear_overhang",
+      "unit": "mm",
+      "value": 1.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "10",
+      "model": false,
+      "name": "roof_front_overhang",
+      "unit": "mm",
+      "value": 10.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "24",
+      "model": false,
+      "name": "bracket_width",
+      "unit": "mm",
+      "value": 24.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "12",
+      "model": false,
+      "name": "glazing_wood_depth",
+      "unit": "mm",
+      "value": 12.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "12",
+      "model": false,
+      "name": "glazing_wood_width",
+      "unit": "mm",
+      "value": 12.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "25 mm",
+      "model": false,
+      "name": "panel_recess_depth",
+      "unit": "mm",
+      "value": 25.0
+    }
+  ],
+  "sketches": [
+    {
+      "curves": 4,
+      "dof": 8,
+      "id": 11,
+      "name": "d1_Hub75PanelBasic__Profile",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false,
+      "wires_ok": true
+    },
+    {
+      "curves": 11,
+      "dof": 20,
+      "id": 34,
+      "name": "d6_CornerBracket__Profile",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false,
+      "wires_ok": true
+    },
+    {
+      "curves": 4,
+      "dof": 0,
+      "id": 64,
+      "name": "d7_GlassStrip__Profile",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false,
+      "wires_ok": true
+    },
+    {
+      "curves": 4,
+      "dof": 0,
+      "id": 69,
+      "name": "d8_GlassStrip_2__Profile",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false,
+      "wires_ok": true
+    }
+  ],
+  "timeline": [
+    {
+      "error": null,
+      "id": 11,
+      "ms": 0.12102600000000001,
+      "name": "d1_Hub75PanelBasic__Profile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 12,
+      "ms": 3.786458,
+      "name": "Extrude1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 19,
+      "ms": 2.059805,
+      "name": "Box1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 23,
+      "ms": 1.9963659999999999,
+      "name": "Box2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 24,
+      "ms": 42.028116,
+      "name": "Fillet1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 27,
+      "ms": 2.121609,
+      "name": "Box3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 28,
+      "ms": 40.856429999999996,
+      "name": "Fillet2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 31,
+      "ms": 2.07849,
+      "name": "Box4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 34,
+      "ms": 0.177812,
+      "name": "d6_CornerBracket__Profile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 35,
+      "ms": 5.425587,
+      "name": "Extrude2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 36,
+      "ms": 14.401871,
+      "name": "Fillet3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 37,
+      "ms": 100.499251,
+      "name": "Chamfer1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ChamferFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 38,
+      "ms": 138.089026,
+      "name": "Chamfer2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ChamferFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 39,
+      "ms": 159.189631,
+      "name": "Hole1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 40,
+      "ms": 654.716203,
+      "name": "Hole2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 41,
+      "ms": 317.51194,
+      "name": "Hole3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 42,
+      "ms": 60.423646999999995,
+      "name": "Hole4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 43,
+      "ms": 195.925016,
+      "name": "Hole5",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 44,
+      "ms": 740.231006,
+      "name": "Hole6",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 45,
+      "ms": 330.49185800000004,
+      "name": "Hole7",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 46,
+      "ms": 71.440002,
+      "name": "Hole8",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 47,
+      "ms": 43.885434000000004,
+      "name": "Hole9",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 48,
+      "ms": 200.370845,
+      "name": "Hole10",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 49,
+      "ms": 75.680899,
+      "name": "Hole11",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 50,
+      "ms": 97.43751300000001,
+      "name": "Hole12",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 51,
+      "ms": 51.65608,
+      "name": "Hole13",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 52,
+      "ms": 221.472938,
+      "name": "Hole14",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 53,
+      "ms": 83.564866,
+      "name": "Hole15",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 54,
+      "ms": 111.158056,
+      "name": "Hole16",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "HoleFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 64,
+      "ms": 0.10178000000000001,
+      "name": "d7_GlassStrip__Profile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 65,
+      "ms": 2.604552,
+      "name": "Extrude3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 69,
+      "ms": 0.08584,
+      "name": "d8_GlassStrip_2__Profile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 70,
+      "ms": 2.3041210000000003,
+      "name": "Extrude4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 74,
+      "ms": 1.8711929999999999,
+      "name": "Box5",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    }
+  ],
+  "total": {
+    "area_mm2": 2655973.8382646483,
+    "edges": 1312,
+    "faces": 590,
+    "mass_g": 9775.568100525243,
+    "open_bodies_skipped": 0,
+    "vertices": 832,
+    "volume_mm3": 11613298.665482387
+  }
+}

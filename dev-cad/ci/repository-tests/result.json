@@ -9,7 +9,7 @@
     "-v"
   ],
   "dependency_wheels": [
-    "scpf-0.13.2-py3-none-any.whl",
+    "scpf-0.14.0-py3-none-any.whl",
     "scpc-0.1.0-py3-none-any.whl",
     "brainboxemb_cad_verification_lib-0.15.0-py3-none-any.whl"
   ],

@@ -1,7 +1,7 @@
 {
   "format": "scpf-replay-log",
   "version": 1,
-  "replay_sha256": "5fa216b79a743007982626640abaffa3e81dc11ea8757299f64301bb746d4ab2",
+  "replay_sha256": "e28ae4a9a8f56171894fdc3054e91a4789a86a5ab8dc4def3b4d85f7bc030bcb",
   "variables": {},
   "commands": [
     {
@@ -100,10 +100,11 @@
     },
     {
       "index": 8,
-      "command": "solid.cylinder",
+      "command": "solid.cone",
       "resolved_params": {
         "height": 20.0,
-        "diameter": "hole_diameter",
+        "diameter": "hole_diameter + (interference)",
+        "top_diameter": "hole_diameter",
         "base": [
           0,
           0,
@@ -118,24 +119,6 @@
     },
     {
       "index": 9,
-      "command": "solid.cylinder",
-      "resolved_params": {
-        "height": 2.0,
-        "diameter": "hole_diameter + (interference)",
-        "base": [
-          0,
-          0,
-          -20.0
-        ],
-        "axis": "Z",
-        "operation": "join",
-        "targets": [
-          "FlexBenchDog"
-        ]
-      }
-    },
-    {
-      "index": 10,
       "command": "solid.chamfer",
       "resolved_params": {
         "edges": [
@@ -150,7 +133,7 @@
       }
     },
     {
-      "index": 11,
+      "index": 10,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -174,7 +157,7 @@
       }
     },
     {
-      "index": 12,
+      "index": 11,
       "command": "sketch.rectangle.two_point",
       "resolved_params": {
         "p0": [
@@ -188,12 +171,12 @@
       }
     },
     {
-      "index": 13,
+      "index": 12,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 14,
+      "index": 13,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -206,7 +189,7 @@
       }
     },
     {
-      "index": 15,
+      "index": 14,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -230,7 +213,7 @@
       }
     },
     {
-      "index": 16,
+      "index": 15,
       "command": "sketch.rectangle.two_point",
       "resolved_params": {
         "p0": [
@@ -244,12 +227,12 @@
       }
     },
     {
-      "index": 17,
+      "index": 16,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 18,
+      "index": 17,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -262,7 +245,7 @@
       }
     },
     {
-      "index": 19,
+      "index": 18,
       "command": "solid.fillet",
       "resolved_params": {
         "edges": [
@@ -292,7 +275,7 @@
       }
     },
     {
-      "index": 20,
+      "index": 19,
       "command": "solid.chamfer",
       "resolved_params": {
         "edges": [
@@ -307,7 +290,7 @@
       }
     },
     {
-      "index": 21,
+      "index": 20,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -331,7 +314,7 @@
       }
     },
     {
-      "index": 22,
+      "index": 21,
       "command": "sketch.slot.center_to_center",
       "resolved_params": {
         "p0": [
@@ -346,12 +329,12 @@
       }
     },
     {
-      "index": 23,
+      "index": 22,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 24,
+      "index": 23,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -364,7 +347,7 @@
       }
     },
     {
-      "index": 25,
+      "index": 24,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -388,7 +371,7 @@
       }
     },
     {
-      "index": 26,
+      "index": 25,
       "command": "sketch.slot.center_to_center",
       "resolved_params": {
         "p0": [
@@ -403,12 +386,12 @@
       }
     },
     {
-      "index": 27,
+      "index": 26,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 28,
+      "index": 27,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -421,7 +404,7 @@
       }
     },
     {
-      "index": 29,
+      "index": 28,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -445,7 +428,7 @@
       }
     },
     {
-      "index": 30,
+      "index": 29,
       "command": "sketch.slot.center_to_center",
       "resolved_params": {
         "p0": [
@@ -460,12 +443,12 @@
       }
     },
     {
-      "index": 31,
+      "index": 30,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 32,
+      "index": 31,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -478,7 +461,7 @@
       }
     },
     {
-      "index": 33,
+      "index": 32,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -502,7 +485,7 @@
       }
     },
     {
-      "index": 34,
+      "index": 33,
       "command": "sketch.slot.center_to_center",
       "resolved_params": {
         "p0": [
@@ -517,12 +500,12 @@
       }
     },
     {
-      "index": 35,
+      "index": 34,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 36,
+      "index": 35,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -535,7 +518,7 @@
       }
     },
     {
-      "index": 37,
+      "index": 36,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -559,7 +542,7 @@
       }
     },
     {
-      "index": 38,
+      "index": 37,
       "command": "sketch.slot.center_to_center",
       "resolved_params": {
         "p0": [
@@ -574,12 +557,12 @@
       }
     },
     {
-      "index": 39,
+      "index": 38,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 40,
+      "index": 39,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -592,7 +575,7 @@
       }
     },
     {
-      "index": 41,
+      "index": 40,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -616,7 +599,7 @@
       }
     },
     {
-      "index": 42,
+      "index": 41,
       "command": "sketch.slot.center_to_center",
       "resolved_params": {
         "p0": [
@@ -631,12 +614,12 @@
       }
     },
     {
-      "index": 43,
+      "index": 42,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 44,
+      "index": 43,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -649,7 +632,7 @@
       }
     },
     {
-      "index": 45,
+      "index": 44,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -673,7 +656,7 @@
       }
     },
     {
-      "index": 46,
+      "index": 45,
       "command": "sketch.slot.center_to_center",
       "resolved_params": {
         "p0": [
@@ -688,12 +671,12 @@
       }
     },
     {
-      "index": 47,
+      "index": 46,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 48,
+      "index": 47,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -706,7 +689,7 @@
       }
     },
     {
-      "index": 49,
+      "index": 48,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -730,7 +713,7 @@
       }
     },
     {
-      "index": 50,
+      "index": 49,
       "command": "sketch.slot.center_to_center",
       "resolved_params": {
         "p0": [
@@ -745,12 +728,12 @@
       }
     },
     {
-      "index": 51,
+      "index": 50,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 52,
+      "index": 51,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -763,7 +746,7 @@
       }
     },
     {
-      "index": 53,
+      "index": 52,
       "command": "sketch.create",
       "resolved_params": {
         "plane": {
@@ -787,7 +770,7 @@
       }
     },
     {
-      "index": 54,
+      "index": 53,
       "command": "sketch.slot.center_to_center",
       "resolved_params": {
         "p0": [
@@ -802,12 +785,12 @@
       }
     },
     {
-      "index": 55,
+      "index": 54,
       "command": "sketch.finish",
       "resolved_params": {}
     },
     {
-      "index": 56,
+      "index": 55,
       "command": "solid.extrude",
       "resolved_params": {
         "operation": "cut",
@@ -820,5 +803,5 @@
       }
     }
   ],
-  "completed": 57
+  "completed": 56
 }

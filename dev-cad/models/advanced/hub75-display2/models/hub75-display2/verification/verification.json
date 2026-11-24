@@ -5,8 +5,8 @@
         {
           "kind": "file",
           "path": "baseline/measurements.json",
-          "sha256": "1e2b3d4701b2228b4c9bc9c4c91ecc7183d96ab5d89945a5a022d4b865550f7d",
-          "size": 34427
+          "sha256": "ec39a01f3d40f9ec67212e81b578c5d9bbb4a021d0b607e61a233dedc4e9a143",
+          "size": 34486
         }
       ],
       "error": null,
@@ -31,14 +31,14 @@
         {
           "kind": "file",
           "path": "saved_designs/lower_compartment_90/model.sc",
-          "sha256": "0084e2a34fc7db57f4860bc7e84d4bf8ddc03e2306558b68db1e4275974d8cdc",
-          "size": 1115562
+          "sha256": "37ef6ef45dcbed9ff24d0dc38e289dfa1669e13b2ac0f7c4453291bec48652da",
+          "size": 1114731
         },
         {
           "kind": "file",
           "path": "saved_designs/lower_compartment_90/measurements.json",
-          "sha256": "328a1767d3292a411621d9f89343976f7181fbf28eb7c77b9354b33f2a2e043f",
-          "size": 34370
+          "sha256": "e9daf08736e953935f3e8bfef4a0c02322e43dd0c2846c108dfd58fd6ab5f706",
+          "size": 34433
         }
       ],
       "error": null,

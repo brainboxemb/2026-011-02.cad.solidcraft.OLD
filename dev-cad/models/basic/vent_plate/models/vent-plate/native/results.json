@@ -26,7 +26,7 @@
       "Plate"
     ],
     "feature": 1,
-    "ms": 3.0761,
+    "ms": 3.4342610000000002,
     "name": "Box1",
     "removed_bodies": [],
     "warning": null
@@ -40,7 +40,7 @@
     ],
     "created_bodies": [],
     "feature": 2,
-    "ms": 77.764172,
+    "ms": 80.285019,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null
@@ -55,7 +55,8 @@
     },
     "name": "Vent",
     "projected": null,
-    "sketch": 3
+    "sketch": 3,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -121,7 +122,7 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 15.257564,
+    "ms": 11.029798,
     "name": "Vent",
     "removed_bodies": [],
     "warning": null
@@ -135,7 +136,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 117.938822,
+    "ms": 113.899754,
     "name": "RectangularPattern1",
     "removed_bodies": [],
     "warning": null

@@ -9,7 +9,8 @@
     },
     "name": "Holes",
     "projected": null,
-    "sketch": 4
+    "sketch": 4,
+    "sketching_view": 1
   },
   {
     "constraints": [],
@@ -44,7 +45,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 20.579402,
+    "ms": 19.828412,
     "name": "Holes",
     "removed_bodies": [],
     "warning": null
@@ -58,7 +59,7 @@
     ],
     "created_bodies": [],
     "feature": 6,
-    "ms": 37.909032,
+    "ms": 31.414478000000003,
     "name": "RectangularPattern1",
     "removed_bodies": [],
     "warning": null
@@ -72,7 +73,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 30.003618,
+    "ms": 12.298056,
     "name": "Cylinder1",
     "removed_bodies": [],
     "warning": null
@@ -87,7 +88,8 @@
     },
     "name": "Bore",
     "projected": null,
-    "sketch": 8
+    "sketch": 8,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -126,7 +128,7 @@
     ],
     "created_bodies": [],
     "feature": 9,
-    "ms": 26.1529,
+    "ms": 19.430809,
     "name": "Bore",
     "removed_bodies": [],
     "warning": null

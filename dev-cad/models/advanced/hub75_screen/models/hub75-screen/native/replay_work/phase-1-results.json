@@ -16,7 +16,8 @@
     },
     "name": "d1_Hub75Panel__Hub75Panel footprint",
     "projected": null,
-    "sketch": 3
+    "sketch": 3,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -82,7 +83,7 @@
       "Hub75Panel"
     ],
     "feature": 4,
-    "ms": 3.024554,
+    "ms": 3.4445140000000003,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null
@@ -97,7 +98,8 @@
     },
     "name": "d1_Hub75Panel__Hub75Panel rear start",
     "projected": null,
-    "sketch": 5
+    "sketch": 5,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -164,7 +166,8 @@
     },
     "name": "d1_Hub75Panel__Hub75Panel rear perimeter",
     "projected": null,
-    "sketch": 6
+    "sketch": 6,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -230,7 +233,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 7.5220210000000005,
+    "ms": 6.23082,
     "name": "Loft1",
     "removed_bodies": [],
     "warning": null

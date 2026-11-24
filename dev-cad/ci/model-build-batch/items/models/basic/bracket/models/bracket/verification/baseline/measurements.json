@@ -79,7 +79,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 0.450029,
+      "ms": 0.18946300000000002,
       "name": "Profile",
       "rolled_back": false,
       "suppressed": false,
@@ -89,7 +89,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 6.182726000000001,
+      "ms": 4.847229,
       "name": "Extrude1",
       "rolled_back": false,
       "suppressed": false,
@@ -99,7 +99,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 39.71246300000001,
+      "ms": 24.872404,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -109,7 +109,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 57.093782000000004,
+      "ms": 34.042384,
       "name": "Hole1",
       "rolled_back": false,
       "suppressed": false,
@@ -119,7 +119,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 73.641953,
+      "ms": 44.8712,
       "name": "Hole2",
       "rolled_back": false,
       "suppressed": false,

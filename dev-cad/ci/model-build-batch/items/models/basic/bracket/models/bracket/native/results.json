@@ -21,7 +21,8 @@
     },
     "name": "Profile",
     "projected": null,
-    "sketch": 1
+    "sketch": 1,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -75,7 +76,7 @@
       "Bracket"
     ],
     "feature": 2,
-    "ms": 5.877846,
+    "ms": 4.847229,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null
@@ -89,7 +90,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 38.880298,
+    "ms": 24.872404,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null
@@ -103,7 +104,7 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 54.244013,
+    "ms": 34.042384,
     "name": "Hole1",
     "removed_bodies": [],
     "warning": null
@@ -117,7 +118,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 73.156011,
+    "ms": 44.8712,
     "name": "Hole2",
     "removed_bodies": [],
     "warning": null

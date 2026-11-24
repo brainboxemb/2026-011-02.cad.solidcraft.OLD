@@ -234,13 +234,13 @@
         "shells": 1,
         "vertices": 92
       },
-      "mass_g": 45.327883729570814,
+      "mass_g": 45.32788372957083,
       "material": "Default",
       "measured_by": "smlib",
       "name": "CornerBracket",
       "notes": [],
       "vertices": 88,
-      "volume_mm3": 35137.89436400838
+      "volume_mm3": 35137.894364008396
     },
     {
       "area_mm2": 9963.02646759008,
@@ -318,13 +318,13 @@
         "shells": 1,
         "vertices": 92
       },
-      "mass_g": 45.32788372957082,
+      "mass_g": 45.32788372957083,
       "material": "Default",
       "measured_by": "smlib",
       "name": "CornerBracket (CornerBrackets:1/CornerBracket:3)",
       "notes": [],
       "vertices": 88,
-      "volume_mm3": 35137.89436400839
+      "volume_mm3": 35137.894364008396
     },
     {
       "area_mm2": 9963.026467590078,
@@ -341,7 +341,7 @@
         ]
       },
       "center_of_mass": [
-        423.5923682781502,
+        423.5923682781503,
         108.0,
         477.5923682781502
       ],
@@ -360,13 +360,13 @@
         "shells": 1,
         "vertices": 92
       },
-      "mass_g": 45.327883729570814,
+      "mass_g": 45.32788372957079,
       "material": "Default",
       "measured_by": "smlib",
       "name": "CornerBracket (CornerBrackets:1/CornerBracket:4)",
       "notes": [],
       "vertices": 88,
-      "volume_mm3": 35137.89436400838
+      "volume_mm3": 35137.89436400837
     },
     {
       "area_mm2": 9963.026467590074,
@@ -385,7 +385,7 @@
       "center_of_mass": [
         423.5923682781502,
         12.0,
-        10.40763172184977
+        10.407631721849778
       ],
       "closed": true,
       "density_g_cm3": 1.29,
@@ -402,13 +402,13 @@
         "shells": 1,
         "vertices": 92
       },
-      "mass_g": 45.32788372957083,
+      "mass_g": 45.32788372957085,
       "material": "Default",
       "measured_by": "smlib",
       "name": "CornerBracket (CornerBrackets:1/CornerBracket:5)",
       "notes": [],
       "vertices": 88,
-      "volume_mm3": 35137.894364008396
+      "volume_mm3": 35137.89436400841
     },
     {
       "area_mm2": 9963.026467590078,
@@ -427,7 +427,7 @@
       "center_of_mass": [
         423.5923682781502,
         108.0,
-        10.407631721849768
+        10.407631721849773
       ],
       "closed": true,
       "density_g_cm3": 1.29,
@@ -444,13 +444,13 @@
         "shells": 1,
         "vertices": 92
       },
-      "mass_g": 45.327883729570814,
+      "mass_g": 45.32788372957082,
       "material": "Default",
       "measured_by": "smlib",
       "name": "CornerBracket (CornerBrackets:1/CornerBracket:6)",
       "notes": [],
       "vertices": 88,
-      "volume_mm3": 35137.89436400838
+      "volume_mm3": 35137.89436400839
     },
     {
       "area_mm2": 9963.02646759008,
@@ -469,7 +469,7 @@
       "center_of_mass": [
         -423.5923682781502,
         12.000000000000002,
-        10.407631721849755
+        10.407631721849759
       ],
       "closed": true,
       "density_g_cm3": 1.29,
@@ -486,13 +486,13 @@
         "shells": 1,
         "vertices": 92
       },
-      "mass_g": 45.327883729570814,
+      "mass_g": 45.32788372957082,
       "material": "Default",
       "measured_by": "smlib",
       "name": "CornerBracket (CornerBrackets:1/CornerBracket:7)",
       "notes": [],
       "vertices": 88,
-      "volume_mm3": 35137.89436400838
+      "volume_mm3": 35137.89436400839
     },
     {
       "area_mm2": 9963.026467590082,
@@ -528,13 +528,13 @@
         "shells": 1,
         "vertices": 92
       },
-      "mass_g": 45.327883729570786,
+      "mass_g": 45.32788372957078,
       "material": "Default",
       "measured_by": "smlib",
       "name": "CornerBracket (CornerBrackets:1/CornerBracket:8)",
       "notes": [],
       "vertices": 88,
-      "volume_mm3": 35137.89436400836
+      "volume_mm3": 35137.89436400835
     },
     {
       "area_mm2": 118901.25666117691,
@@ -1274,7 +1274,7 @@
     {
       "error": null,
       "id": 11,
-      "ms": 0.312126,
+      "ms": 0.13098400000000002,
       "name": "d1_Hub75PanelBasic__Profile",
       "rolled_back": false,
       "suppressed": false,
@@ -1284,7 +1284,7 @@
     {
       "error": null,
       "id": 12,
-      "ms": 2.7445690000000003,
+      "ms": 3.9154899999999997,
       "name": "Extrude1",
       "rolled_back": false,
       "suppressed": false,
@@ -1294,7 +1294,7 @@
     {
       "error": null,
       "id": 19,
-      "ms": 1.0378,
+      "ms": 3.1831709999999998,
       "name": "Box1",
       "rolled_back": false,
       "suppressed": false,
@@ -1304,7 +1304,7 @@
     {
       "error": null,
       "id": 20,
-      "ms": 0.19092499999999998,
+      "ms": 0.15007099999999998,
       "name": "d2_SideBoard__Side hand slot",
       "rolled_back": false,
       "suppressed": false,
@@ -1314,7 +1314,7 @@
     {
       "error": null,
       "id": 21,
-      "ms": 12.745255,
+      "ms": 22.716947,
       "name": "Side hand slot",
       "rolled_back": false,
       "suppressed": false,
@@ -1324,7 +1324,7 @@
     {
       "error": null,
       "id": 25,
-      "ms": 1.190949,
+      "ms": 2.006515,
       "name": "Box2",
       "rolled_back": false,
       "suppressed": false,
@@ -1334,7 +1334,7 @@
     {
       "error": null,
       "id": 26,
-      "ms": 25.625421999999997,
+      "ms": 42.59771,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -1344,7 +1344,7 @@
     {
       "error": null,
       "id": 29,
-      "ms": 1.061625,
+      "ms": 2.0037089999999997,
       "name": "Box3",
       "rolled_back": false,
       "suppressed": false,
@@ -1354,7 +1354,7 @@
     {
       "error": null,
       "id": 32,
-      "ms": 1.389165,
+      "ms": 3.032149,
       "name": "Box4",
       "rolled_back": false,
       "suppressed": false,
@@ -1364,7 +1364,7 @@
     {
       "error": null,
       "id": 36,
-      "ms": 1.388984,
+      "ms": 2.156625,
       "name": "Box5",
       "rolled_back": false,
       "suppressed": false,
@@ -1374,7 +1374,7 @@
     {
       "error": null,
       "id": 37,
-      "ms": 24.070119000000002,
+      "ms": 41.403291,
       "name": "Fillet2",
       "rolled_back": false,
       "suppressed": false,
@@ -1384,7 +1384,7 @@
     {
       "error": null,
       "id": 40,
-      "ms": 1.060344,
+      "ms": 1.9910459999999999,
       "name": "Box6",
       "rolled_back": false,
       "suppressed": false,
@@ -1394,7 +1394,7 @@
     {
       "error": null,
       "id": 41,
-      "ms": 0.6416689999999999,
+      "ms": 4.77946,
       "name": "d7_RearBoard__Rear side openings",
       "rolled_back": false,
       "suppressed": false,
@@ -1404,7 +1404,7 @@
     {
       "error": null,
       "id": 42,
-      "ms": 11.826132,
+      "ms": 32.602727,
       "name": "Rear side openings",
       "rolled_back": false,
       "suppressed": false,
@@ -1414,7 +1414,7 @@
     {
       "error": null,
       "id": 45,
-      "ms": 0.145367,
+      "ms": 0.12199700000000001,
       "name": "d8_CornerBracket__Profile",
       "rolled_back": false,
       "suppressed": false,
@@ -1424,7 +1424,7 @@
     {
       "error": null,
       "id": 46,
-      "ms": 2.881223,
+      "ms": 5.2065660000000005,
       "name": "Extrude2",
       "rolled_back": false,
       "suppressed": false,
@@ -1434,7 +1434,7 @@
     {
       "error": null,
       "id": 47,
-      "ms": 10.495745000000001,
+      "ms": 14.406798,
       "name": "Fillet3",
       "rolled_back": false,
       "suppressed": false,
@@ -1444,7 +1444,7 @@
     {
       "error": null,
       "id": 48,
-      "ms": 65.957146,
+      "ms": 100.74032199999999,
       "name": "Chamfer1",
       "rolled_back": false,
       "suppressed": false,
@@ -1454,7 +1454,7 @@
     {
       "error": null,
       "id": 49,
-      "ms": 95.938334,
+      "ms": 140.244139,
       "name": "Chamfer2",
       "rolled_back": false,
       "suppressed": false,
@@ -1464,7 +1464,7 @@
     {
       "error": null,
       "id": 50,
-      "ms": 65.37749099999999,
+      "ms": 173.708033,
       "name": "Hole1",
       "rolled_back": false,
       "suppressed": false,
@@ -1474,7 +1474,7 @@
     {
       "error": null,
       "id": 51,
-      "ms": 288.821043,
+      "ms": 698.8444969999999,
       "name": "Hole2",
       "rolled_back": false,
       "suppressed": false,
@@ -1484,7 +1484,7 @@
     {
       "error": null,
       "id": 52,
-      "ms": 72.262914,
+      "ms": 323.99808,
       "name": "Hole3",
       "rolled_back": false,
       "suppressed": false,
@@ -1494,7 +1494,7 @@
     {
       "error": null,
       "id": 53,
-      "ms": 51.772292,
+      "ms": 65.897114,
       "name": "Hole4",
       "rolled_back": false,
       "suppressed": false,
@@ -1504,7 +1504,7 @@
     {
       "error": null,
       "id": 54,
-      "ms": 68.340827,
+      "ms": 186.308201,
       "name": "Hole5",
       "rolled_back": false,
       "suppressed": false,
@@ -1514,7 +1514,7 @@
     {
       "error": null,
       "id": 55,
-      "ms": 313.334184,
+      "ms": 787.452227,
       "name": "Hole6",
       "rolled_back": false,
       "suppressed": false,
@@ -1524,7 +1524,7 @@
     {
       "error": null,
       "id": 56,
-      "ms": 78.19039699999999,
+      "ms": 346.835424,
       "name": "Hole7",
       "rolled_back": false,
       "suppressed": false,
@@ -1534,7 +1534,7 @@
     {
       "error": null,
       "id": 57,
-      "ms": 62.485893,
+      "ms": 81.053,
       "name": "Hole8",
       "rolled_back": false,
       "suppressed": false,
@@ -1544,7 +1544,7 @@
     {
       "error": null,
       "id": 58,
-      "ms": 53.848923,
+      "ms": 75.118874,
       "name": "Hole9",
       "rolled_back": false,
       "suppressed": false,
@@ -1554,7 +1554,7 @@
     {
       "error": null,
       "id": 59,
-      "ms": 179.207235,
+      "ms": 237.39059400000002,
       "name": "Hole10",
       "rolled_back": false,
       "suppressed": false,
@@ -1564,7 +1564,7 @@
     {
       "error": null,
       "id": 60,
-      "ms": 52.453119,
+      "ms": 91.841505,
       "name": "Hole11",
       "rolled_back": false,
       "suppressed": false,
@@ -1574,7 +1574,7 @@
     {
       "error": null,
       "id": 61,
-      "ms": 92.265518,
+      "ms": 114.721295,
       "name": "Hole12",
       "rolled_back": false,
       "suppressed": false,
@@ -1584,7 +1584,7 @@
     {
       "error": null,
       "id": 62,
-      "ms": 59.14946,
+      "ms": 67.61031100000001,
       "name": "Hole13",
       "rolled_back": false,
       "suppressed": false,
@@ -1594,7 +1594,7 @@
     {
       "error": null,
       "id": 63,
-      "ms": 202.161899,
+      "ms": 272.387038,
       "name": "Hole14",
       "rolled_back": false,
       "suppressed": false,
@@ -1604,7 +1604,7 @@
     {
       "error": null,
       "id": 64,
-      "ms": 59.203571000000004,
+      "ms": 105.83337700000001,
       "name": "Hole15",
       "rolled_back": false,
       "suppressed": false,
@@ -1614,7 +1614,7 @@
     {
       "error": null,
       "id": 65,
-      "ms": 99.361566,
+      "ms": 141.535889,
       "name": "Hole16",
       "rolled_back": false,
       "suppressed": false,
@@ -1624,7 +1624,7 @@
     {
       "error": null,
       "id": 75,
-      "ms": 0.175311,
+      "ms": 0.11256000000000001,
       "name": "d9_GlassStrip__Profile",
       "rolled_back": false,
       "suppressed": false,
@@ -1634,7 +1634,7 @@
     {
       "error": null,
       "id": 76,
-      "ms": 1.875361,
+      "ms": 2.6835180000000003,
       "name": "Extrude3",
       "rolled_back": false,
       "suppressed": false,
@@ -1644,7 +1644,7 @@
     {
       "error": null,
       "id": 80,
-      "ms": 0.092148,
+      "ms": 0.078596,
       "name": "d10_GlassStrip_2__Profile",
       "rolled_back": false,
       "suppressed": false,
@@ -1654,7 +1654,7 @@
     {
       "error": null,
       "id": 81,
-      "ms": 1.778727,
+      "ms": 3.640454,
       "name": "Extrude4",
       "rolled_back": false,
       "suppressed": false,
@@ -1664,7 +1664,7 @@
     {
       "error": null,
       "id": 85,
-      "ms": 1.095526,
+      "ms": 3.061964,
       "name": "Box7",
       "rolled_back": false,
       "suppressed": false,

@@ -2,13 +2,13 @@
   "action_executed": true,
   "action_type": "copy",
   "active_dependents": [],
-  "bundle_sha256": "9e292ec25b0e4a0874d377d6c78789438151e2705efb73089084a87e586275b2",
-  "duration_seconds": 0.03,
+  "bundle_sha256": "6820b835e944fedecbaa05dd759af45d502ea6185c99e384be123c1e25f029ba",
+  "duration_seconds": 0.163,
   "engine": "scons",
   "engine_schema": 4,
   "error": null,
   "exit_code": null,
-  "finished_at": "2026-11-24T08:03:49.739Z",
+  "finished_at": "2026-11-24T12:03:26.612Z",
   "item": "hub75-wood-frame",
   "outcome": "BUILT",
   "output_state": "RESTORED",
@@ -26,15 +26,15 @@
     "models": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "7a301ac6ebcf5619604b2c03c04c9f68f5c754692b4e4299afe91aa964951ee7"
+      "sha256": "b28b85f6b574a0de8f2f59edb8e468de05d09fa49dd0b1563f08b6ec083ee358"
     }
   },
-  "run_finished_at": "2026-11-24T08:03:49.854Z",
-  "run_started_at": "2026-11-24T08:02:35.940Z",
+  "run_finished_at": "2026-11-24T12:03:27.653Z",
+  "run_started_at": "2026-11-24T12:01:15.692Z",
   "schema": 5,
-  "started_at": "2026-11-24T08:03:49.709Z",
+  "started_at": "2026-11-24T12:03:26.449Z",
   "status": "pass",
   "step": "build_results",
-  "target_spec_digest": "a988fd8c510c25da25812f65f9fb9cbea1c63170966cd21443c3edc7f2d4068f",
+  "target_spec_digest": "47bf59594feaa61424d23439315272edf7492c2594a4461e57f36b2861537a31",
   "timeout_seconds": null
 }

@@ -44,7 +44,7 @@
       "SimpleMFT"
     ],
     "feature": 1,
-    "ms": 3.149759,
+    "ms": 3.415187,
     "name": "Box1",
     "removed_bodies": [],
     "warning": null
@@ -190,7 +190,8 @@
     },
     "name": "Dog holes",
     "projected": null,
-    "sketch": 2
+    "sketch": 2,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -684,7 +685,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 627.0009319999999,
+    "ms": 617.9347349999999,
     "name": "Dog holes",
     "removed_bodies": [],
     "warning": null
@@ -2600,7 +2601,8 @@
     },
     "name": "Clamp slots",
     "projected": null,
-    "sketch": 4
+    "sketch": 4,
+    "sketching_view": 1
   },
   {
     "centre_line": "l3",
@@ -2930,7 +2932,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 378.35559,
+    "ms": 369.594553,
     "name": "Clamp slots",
     "removed_bodies": [],
     "warning": null
@@ -2944,7 +2946,7 @@
     ],
     "created_bodies": [],
     "feature": 6,
-    "ms": 202.76790499999998,
+    "ms": 200.416732,
     "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null

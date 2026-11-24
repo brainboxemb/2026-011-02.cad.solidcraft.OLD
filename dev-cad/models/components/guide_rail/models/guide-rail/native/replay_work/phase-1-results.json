@@ -15,7 +15,8 @@
     },
     "name": "Guide rail profile - festool",
     "projected": null,
-    "sketch": 1
+    "sketch": 1,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -228,7 +229,7 @@
       "GuideRail"
     ],
     "feature": 2,
-    "ms": 24.322010000000002,
+    "ms": 29.144644,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null

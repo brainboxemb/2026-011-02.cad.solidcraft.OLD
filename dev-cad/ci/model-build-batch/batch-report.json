@@ -82,7 +82,7 @@
     {
       "error": null,
       "model": "hub75-display2",
-      "semantic_verification": "not-configured",
+      "semantic_verification": "pass",
       "status": "pass"
     },
     {
@@ -94,7 +94,7 @@
     {
       "error": null,
       "model": "hub75-wood-frame",
-      "semantic_verification": "not-configured",
+      "semantic_verification": "pass",
       "status": "pass"
     },
     {
@@ -111,6 +111,6 @@
     }
   ],
   "schema": 1,
-  "source_sha": "d25440a98d4b2ab71464a92ee72c6eb76b337111",
+  "source_sha": "5fcfe6836973e13b1d3372a151735af195f22a4d",
   "status": "pass"
 }

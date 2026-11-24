@@ -1,12 +1,12 @@
 {
   "engine": "scons",
   "engine_schema": 4,
-  "final_bundle_sha256": "5d578a5a4b0ec2194afe00d5fe9ba20bcddfd88a237adbc47ad752629a67182f",
+  "final_bundle_sha256": "b326f1e7c8e004c92afc1c4f15fc8ba1cdd6e4775659c88397c39f608514b253",
   "final_step": "wheel",
-  "final_target_spec_digest": "df84181297bf26942d647571ecc460cb54e941d4553da0b9d64a52e48d77505b",
+  "final_target_spec_digest": "daa5d20b63e7dbcc89b9d1e6bbef15188168b6d0302890eb37d0d93217fb90d7",
   "item": "forge-package",
-  "run_finished_at": "2026-11-23T21:42:25.559Z",
-  "run_started_at": "2026-11-23T21:39:04.758Z",
+  "run_finished_at": "2026-11-24T12:03:27.653Z",
+  "run_started_at": "2026-11-24T12:01:15.692Z",
   "schema": 2,
   "status": "pass"
 }

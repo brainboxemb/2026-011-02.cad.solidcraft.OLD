@@ -44,7 +44,8 @@
     },
     "name": "d1_Hub75PanelBasic__Profile",
     "projected": null,
-    "sketch": 11
+    "sketch": 11,
+    "sketching_view": 1
   },
   {
     "constraints": [],
@@ -88,7 +89,7 @@
       "Hub75PanelBasic"
     ],
     "feature": 12,
-    "ms": 3.5155089999999998,
+    "ms": 3.786458,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null
@@ -163,7 +164,7 @@
       "Board"
     ],
     "feature": 19,
-    "ms": 1.630288,
+    "ms": 2.059805,
     "name": "Box1",
     "removed_bodies": [],
     "warning": null
@@ -221,7 +222,7 @@
       "Board_2"
     ],
     "feature": 23,
-    "ms": 1.613352,
+    "ms": 1.9963659999999999,
     "name": "Box2",
     "removed_bodies": [],
     "warning": null
@@ -237,7 +238,7 @@
     ],
     "created_bodies": [],
     "feature": 24,
-    "ms": 40.445249000000004,
+    "ms": 42.028116,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null
@@ -298,7 +299,7 @@
       "Board_3"
     ],
     "feature": 27,
-    "ms": 1.560944,
+    "ms": 2.121609,
     "name": "Box3",
     "removed_bodies": [],
     "warning": null
@@ -315,7 +316,7 @@
     ],
     "created_bodies": [],
     "feature": 28,
-    "ms": 40.050783,
+    "ms": 40.856429999999996,
     "name": "Fillet2",
     "removed_bodies": [],
     "warning": null
@@ -359,7 +360,7 @@
       "Board_4"
     ],
     "feature": 31,
-    "ms": 1.552931,
+    "ms": 2.07849,
     "name": "Box4",
     "removed_bodies": [],
     "warning": null
@@ -406,7 +407,8 @@
     },
     "name": "d6_CornerBracket__Profile",
     "projected": null,
-    "sketch": 34
+    "sketch": 34,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -480,7 +482,7 @@
       "CornerBracket"
     ],
     "feature": 35,
-    "ms": 4.366572,
+    "ms": 5.425587,
     "name": "Extrude2",
     "removed_bodies": [],
     "warning": null
@@ -499,7 +501,7 @@
     ],
     "created_bodies": [],
     "feature": 36,
-    "ms": 15.478812999999999,
+    "ms": 14.401871,
     "name": "Fillet3",
     "removed_bodies": [],
     "warning": null
@@ -518,7 +520,7 @@
     ],
     "created_bodies": [],
     "feature": 37,
-    "ms": 104.16384,
+    "ms": 100.499251,
     "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null
@@ -537,7 +539,7 @@
     ],
     "created_bodies": [],
     "feature": 38,
-    "ms": 153.003102,
+    "ms": 138.089026,
     "name": "Chamfer2",
     "removed_bodies": [],
     "warning": null
@@ -556,7 +558,7 @@
     ],
     "created_bodies": [],
     "feature": 39,
-    "ms": 89.937686,
+    "ms": 159.189631,
     "name": "Hole1",
     "removed_bodies": [],
     "warning": null
@@ -575,7 +577,7 @@
     ],
     "created_bodies": [],
     "feature": 40,
-    "ms": 409.13984,
+    "ms": 654.716203,
     "name": "Hole2",
     "removed_bodies": [],
     "warning": null
@@ -594,7 +596,7 @@
     ],
     "created_bodies": [],
     "feature": 41,
-    "ms": 106.401273,
+    "ms": 317.51194,
     "name": "Hole3",
     "removed_bodies": [],
     "warning": null
@@ -613,7 +615,7 @@
     ],
     "created_bodies": [],
     "feature": 42,
-    "ms": 76.522728,
+    "ms": 60.423646999999995,
     "name": "Hole4",
     "removed_bodies": [],
     "warning": null
@@ -632,7 +634,7 @@
     ],
     "created_bodies": [],
     "feature": 43,
-    "ms": 94.402194,
+    "ms": 195.925016,
     "name": "Hole5",
     "removed_bodies": [],
     "warning": null
@@ -651,7 +653,7 @@
     ],
     "created_bodies": [],
     "feature": 44,
-    "ms": 436.70917,
+    "ms": 740.231006,
     "name": "Hole6",
     "removed_bodies": [],
     "warning": null
@@ -670,7 +672,7 @@
     ],
     "created_bodies": [],
     "feature": 45,
-    "ms": 113.030876,
+    "ms": 330.49185800000004,
     "name": "Hole7",
     "removed_bodies": [],
     "warning": null
@@ -689,7 +691,7 @@
     ],
     "created_bodies": [],
     "feature": 46,
-    "ms": 89.166502,
+    "ms": 71.440002,
     "name": "Hole8",
     "removed_bodies": [],
     "warning": null
@@ -708,7 +710,7 @@
     ],
     "created_bodies": [],
     "feature": 47,
-    "ms": 54.572233999999995,
+    "ms": 43.885434000000004,
     "name": "Hole9",
     "removed_bodies": [],
     "warning": null
@@ -727,7 +729,7 @@
     ],
     "created_bodies": [],
     "feature": 48,
-    "ms": 236.809304,
+    "ms": 200.370845,
     "name": "Hole10",
     "removed_bodies": [],
     "warning": null
@@ -746,7 +748,7 @@
     ],
     "created_bodies": [],
     "feature": 49,
-    "ms": 69.23530699999999,
+    "ms": 75.680899,
     "name": "Hole11",
     "removed_bodies": [],
     "warning": null
@@ -765,7 +767,7 @@
     ],
     "created_bodies": [],
     "feature": 50,
-    "ms": 98.24549400000001,
+    "ms": 97.43751300000001,
     "name": "Hole12",
     "removed_bodies": [],
     "warning": null
@@ -784,7 +786,7 @@
     ],
     "created_bodies": [],
     "feature": 51,
-    "ms": 62.399112,
+    "ms": 51.65608,
     "name": "Hole13",
     "removed_bodies": [],
     "warning": null
@@ -803,7 +805,7 @@
     ],
     "created_bodies": [],
     "feature": 52,
-    "ms": 260.752438,
+    "ms": 221.472938,
     "name": "Hole14",
     "removed_bodies": [],
     "warning": null
@@ -822,7 +824,7 @@
     ],
     "created_bodies": [],
     "feature": 53,
-    "ms": 79.735975,
+    "ms": 83.564866,
     "name": "Hole15",
     "removed_bodies": [],
     "warning": null
@@ -841,7 +843,7 @@
     ],
     "created_bodies": [],
     "feature": 54,
-    "ms": 110.74061,
+    "ms": 111.158056,
     "name": "Hole16",
     "removed_bodies": [],
     "warning": null
@@ -906,7 +908,8 @@
     },
     "name": "d7_GlassStrip__Profile",
     "projected": null,
-    "sketch": 64
+    "sketch": 64,
+    "sketching_view": 1
   },
   {
     "constraints": [],
@@ -956,7 +959,7 @@
       "GlassStrip"
     ],
     "feature": 65,
-    "ms": 2.224866,
+    "ms": 2.604552,
     "name": "Extrude3",
     "removed_bodies": [],
     "warning": null
@@ -1001,7 +1004,8 @@
     },
     "name": "d8_GlassStrip_2__Profile",
     "projected": null,
-    "sketch": 69
+    "sketch": 69,
+    "sketching_view": 1
   },
   {
     "constraints": [],
@@ -1052,7 +1056,7 @@
       "GlassStrip_2"
     ],
     "feature": 70,
-    "ms": 1.949721,
+    "ms": 2.3041210000000003,
     "name": "Extrude4",
     "removed_bodies": [],
     "warning": null
@@ -1104,7 +1108,7 @@
       "Window"
     ],
     "feature": 74,
-    "ms": 1.466392,
+    "ms": 1.8711929999999999,
     "name": "Box5",
     "removed_bodies": [],
     "warning": null

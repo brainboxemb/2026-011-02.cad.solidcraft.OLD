@@ -5,8 +5,8 @@
         {
           "kind": "file",
           "path": "baseline/measurements.json",
-          "sha256": "6dce563c6db96aeec0131e63ef36a01f7f1e656a2c3bcd58aeaf662e75fe433f",
-          "size": 29471
+          "sha256": "da0244fc443df985ff0ec6a29f46e34aab3aa619413e4b44f2b6644e527572e2",
+          "size": 29475
         }
       ],
       "error": null,
@@ -467,14 +467,14 @@
         {
           "kind": "file",
           "path": "saved_designs/frame_thickness_18/model.sc",
-          "sha256": "7d0cf61534e722a295ab07fed7fe731b26b1e3fab3664ff716c576ea04efd178",
-          "size": 974580
+          "sha256": "d4bf0aa58df8b9fcfc975f4a4bfbafe1a1cc1453aa968009341a9ff9172ce490",
+          "size": 973718
         },
         {
           "kind": "file",
           "path": "saved_designs/frame_thickness_18/measurements.json",
-          "sha256": "09d0860f2563ee7bc1ca98a467d7a7319ee4004b477f58497322d56fd4c6dc3e",
-          "size": 29456
+          "sha256": "500e6ad2e0b3b8241e098747aa495515173bacee25de2498436799cfefae5b30",
+          "size": 29439
         }
       ],
       "error": null,
@@ -935,14 +935,14 @@
         {
           "kind": "file",
           "path": "saved_designs/opening_width_1000/model.sc",
-          "sha256": "db8448c29f3be3040cf683f7853607fbe20957bebb782444a62ec5b6ef686c03",
-          "size": 1104377
+          "sha256": "d5727031f2105d9f180061e69e808af36b09cb62b5ccf2a4b7fb7d63f1a51a81",
+          "size": 1103427
         },
         {
           "kind": "file",
           "path": "saved_designs/opening_width_1000/measurements.json",
-          "sha256": "16585f8f9bfb6259dc58d3ad4cf2821f7f9cf202bc75c855f757cd479e788265",
-          "size": 29455
+          "sha256": "1ea6684f45c82a0766db3e111c315d56f5373e1d4a69374bb4666d5f10018e43",
+          "size": 29457
         }
       ],
       "error": null,
@@ -1231,14 +1231,14 @@
         {
           "kind": "file",
           "path": "saved_designs/opening_height_400/model.sc",
-          "sha256": "114dfd219d836c57fb00d00b32d1bb3bddee1ef9a51be6ff331f8302686ba40f",
-          "size": 1103670
+          "sha256": "b545c4e1ec4a5c4eaa3b48d30936551a1ba9ec5f92c1bc5b639f0334c51ccfdf",
+          "size": 1102758
         },
         {
           "kind": "file",
           "path": "saved_designs/opening_height_400/measurements.json",
-          "sha256": "e2925b8093ce2a73c75734b285d502d449d006bb300d16916abd7b5a9b604aa5",
-          "size": 29432
+          "sha256": "bff7e739bd371ade482b3379cc9981acee60aaca8fb2ebc4cb7db9c8bd6b0a1f",
+          "size": 29469
         }
       ],
       "error": null,

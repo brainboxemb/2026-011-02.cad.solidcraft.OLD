@@ -51,7 +51,7 @@
       "SimpleMFT"
     ],
     "feature": 3,
-    "ms": 3.141186,
+    "ms": 3.4488079999999997,
     "name": "Box1",
     "removed_bodies": [],
     "warning": null
@@ -197,7 +197,8 @@
     },
     "name": "d1_SimpleMFT__Dog holes",
     "projected": null,
-    "sketch": 4
+    "sketch": 4,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -691,7 +692,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 624.791714,
+    "ms": 627.3298000000001,
     "name": "Dog holes",
     "removed_bodies": [],
     "warning": null
@@ -2607,7 +2608,8 @@
     },
     "name": "d1_SimpleMFT__Clamp slots",
     "projected": null,
-    "sketch": 6
+    "sketch": 6,
+    "sketching_view": 1
   },
   {
     "centre_line": "l3",
@@ -2937,7 +2939,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 376.376959,
+    "ms": 368.799538,
     "name": "Clamp slots",
     "removed_bodies": [],
     "warning": null
@@ -2951,7 +2953,7 @@
     ],
     "created_bodies": [],
     "feature": 8,
-    "ms": 202.20198200000002,
+    "ms": 197.712197,
     "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null
@@ -2982,7 +2984,8 @@
     },
     "name": "d2_GuideRail__Guide rail profile - festool",
     "projected": null,
-    "sketch": 11
+    "sketch": 11,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -3196,7 +3199,7 @@
       "GuideRail"
     ],
     "feature": 12,
-    "ms": 21.277661,
+    "ms": 28.689712999999998,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null

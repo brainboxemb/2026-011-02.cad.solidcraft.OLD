@@ -164,8 +164,16 @@
     {
       "command": "parameters.add",
       "params": {
-        "name": "cabinet_depth",
-        "expression": "100",
+        "name": "side_panel_depth",
+        "expression": "120",
+        "unit": "mm"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "lower_compartment_height",
+        "expression": "70",
         "unit": "mm"
       }
     },
@@ -180,7 +188,7 @@
     {
       "command": "component.create",
       "params": {
-        "name": "Board",
+        "name": "SideBoard",
         "grounded": false,
         "parent": "WoodBoxFrame"
       },
@@ -192,14 +200,51 @@
       "command": "solid.box",
       "params": {
         "length": "frame_wood_thickness",
-        "width": "cabinet_depth",
-        "height": "opening_height",
+        "width": "side_panel_depth",
+        "height": "(lower_compartment_height + (frame_wood_thickness)) + (opening_height)",
         "corner": [
           "-(frame_wood_thickness / 2)",
           0,
           0
         ],
-        "body_name": "Board"
+        "body_name": "SideBoard"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": "YZ",
+        "name": "d2_SideBoard__Side hand slot"
+      }
+    },
+    {
+      "command": "sketch.slot.center_to_center",
+      "params": {
+        "p0": [
+          85.0,
+          177.0
+        ],
+        "p1": [
+          85.0,
+          349.0
+        ],
+        "width": 30.0
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "operation": "cut",
+        "targets": [
+          "SideBoard"
+        ],
+        "name": "Side hand slot",
+        "distance": "frame_wood_thickness + 2 mm",
+        "direction": "symmetric"
       }
     },
     {
@@ -214,7 +259,7 @@
       "command": "material.assign",
       "params": {
         "bodies": [
-          "Board"
+          "SideBoard"
         ],
         "material": "LIGHTPLY side board"
       }
@@ -228,7 +273,7 @@
     {
       "command": "occurrence.copy",
       "params": {
-        "component": "Board"
+        "component": "SideBoard"
       },
       "bind": {
         "$right": "occurrence"
@@ -253,7 +298,7 @@
     {
       "command": "component.create",
       "params": {
-        "name": "Board 2",
+        "name": "Board",
         "grounded": false,
         "parent": "WoodBoxFrame"
       },
@@ -265,14 +310,14 @@
       "command": "solid.box",
       "params": {
         "length": "opening_width + (frame_wood_thickness * 2)",
-        "width": "cabinet_depth",
+        "width": "side_panel_depth",
         "height": "frame_wood_thickness",
         "corner": [
           "-((opening_width + (frame_wood_thickness * 2)) / 2)",
           0,
           0
         ],
-        "body_name": "Board_2"
+        "body_name": "Board"
       }
     },
     {
@@ -281,17 +326,17 @@
         "edges": [
           [
             -434.0,
-            50.0,
+            60.0,
             0.0
           ],
           [
             434.0,
-            50.0,
+            60.0,
             0.0
           ]
         ],
         "radius": "corner_radius",
-        "body": "Board_2"
+        "body": "Board"
       }
     },
     {
@@ -306,7 +351,7 @@
       "command": "material.assign",
       "params": {
         "bodies": [
-          "Board_2"
+          "Board"
         ],
         "material": "LIGHTPLY bottom"
       }
@@ -320,9 +365,114 @@
     {
       "command": "parameters.add",
       "params": {
-        "name": "panel_wood_thickness",
-        "expression": "9",
+        "name": "cabinet_depth",
+        "expression": "120",
         "unit": "mm"
+      }
+    },
+    {
+      "command": "component.create",
+      "params": {
+        "name": "Board 2",
+        "grounded": false,
+        "parent": "WoodBoxFrame"
+      },
+      "bind": {
+        "$intermediate_shelf": "occurrence"
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "opening_width",
+        "width": "cabinet_depth - 10 mm",
+        "height": "frame_wood_thickness",
+        "corner": [
+          "-(opening_width / 2)",
+          0,
+          0
+        ],
+        "body_name": "Board_2"
+      }
+    },
+    {
+      "command": "material.create",
+      "params": {
+        "name": "LIGHTPLY intermediate shelf",
+        "density_g_cm3": 0.55,
+        "color": "#CBA36B"
+      }
+    },
+    {
+      "command": "material.assign",
+      "params": {
+        "bodies": [
+          "Board_2"
+        ],
+        "material": "LIGHTPLY intermediate shelf"
+      }
+    },
+    {
+      "command": "component.activate",
+      "params": {
+        "component": "root"
+      }
+    },
+    {
+      "command": "component.create",
+      "params": {
+        "name": "Board 3",
+        "grounded": false,
+        "parent": "WoodBoxFrame"
+      },
+      "bind": {
+        "$lower_divider_left": "occurrence"
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "frame_wood_thickness",
+        "width": "cabinet_depth - 10 mm",
+        "height": "lower_compartment_height",
+        "corner": [
+          "-(frame_wood_thickness / 2)",
+          0,
+          0
+        ],
+        "body_name": "Board_3"
+      }
+    },
+    {
+      "command": "material.create",
+      "params": {
+        "name": "LIGHTPLY lower divider",
+        "density_g_cm3": 0.55,
+        "color": "#CBA36B"
+      }
+    },
+    {
+      "command": "material.assign",
+      "params": {
+        "bodies": [
+          "Board_3"
+        ],
+        "material": "LIGHTPLY lower divider"
+      }
+    },
+    {
+      "command": "component.activate",
+      "params": {
+        "component": "root"
+      }
+    },
+    {
+      "command": "occurrence.copy",
+      "params": {
+        "component": "Board 3"
+      },
+      "bind": {
+        "$lower_divider_right": "occurrence"
       }
     },
     {
@@ -344,7 +494,7 @@
     {
       "command": "component.create",
       "params": {
-        "name": "Board 3",
+        "name": "Board 4",
         "grounded": false,
         "parent": "WoodBoxFrame"
       },
@@ -356,14 +506,14 @@
       "command": "solid.box",
       "params": {
         "length": "opening_width + (frame_wood_thickness * 2)",
-        "width": "((cabinet_depth + (panel_wood_thickness)) + (roof_rear_overhang)) - (-(roof_front_overhang))",
+        "width": "(side_panel_depth + (roof_rear_overhang)) - (-(roof_front_overhang))",
         "height": "frame_wood_thickness",
         "corner": [
           "-((opening_width + (frame_wood_thickness * 2)) / 2)",
           0,
           0
         ],
-        "body_name": "Board_3"
+        "body_name": "Board_4"
       }
     },
     {
@@ -372,17 +522,17 @@
         "edges": [
           [
             -434.0,
-            60.0,
+            65.5,
             12.0
           ],
           [
             434.0,
-            60.0,
+            65.5,
             12.0
           ]
         ],
         "radius": "corner_radius",
-        "body": "Board_3"
+        "body": "Board_4"
       }
     },
     {
@@ -397,7 +547,7 @@
       "command": "material.assign",
       "params": {
         "bodies": [
-          "Board_3"
+          "Board_4"
         ],
         "material": "LIGHTPLY roof"
       }
@@ -409,9 +559,17 @@
       }
     },
     {
+      "command": "parameters.add",
+      "params": {
+        "name": "panel_wood_thickness",
+        "expression": "9",
+        "unit": "mm"
+      }
+    },
+    {
       "command": "component.create",
       "params": {
-        "name": "Board 4",
+        "name": "RearBoard",
         "grounded": false,
         "parent": "WoodBoxFrame"
       },
@@ -422,15 +580,66 @@
     {
       "command": "solid.box",
       "params": {
-        "length": "opening_width + (frame_wood_thickness * 2)",
+        "length": "opening_width",
         "width": "panel_wood_thickness",
-        "height": "frame_wood_thickness + (opening_height)",
+        "height": "(((frame_wood_thickness + (lower_compartment_height)) + (frame_wood_thickness)) + (opening_height)) - (frame_wood_thickness + (lower_compartment_height))",
         "corner": [
-          "-((opening_width + (frame_wood_thickness * 2)) / 2)",
+          "-(opening_width / 2)",
           0,
           0
         ],
-        "body_name": "Board_4"
+        "body_name": "RearBoard"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "plane": "XZ",
+        "name": "d7_RearBoard__Rear side openings"
+      }
+    },
+    {
+      "command": "sketch.rectangle.rounded",
+      "params": {
+        "p0": [
+          "(-((opening_width / 2) - 50 mm + 35 mm)) + (-35 mm)",
+          "((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height))) + ((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2) + (-((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2))"
+        ],
+        "p1": [
+          "(-((opening_width / 2) - 50 mm + 35 mm)) + (35 mm)",
+          "((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height))) + ((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2) + ((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2)"
+        ],
+        "radius": 20.0
+      }
+    },
+    {
+      "command": "sketch.rectangle.rounded",
+      "params": {
+        "p0": [
+          "((opening_width / 2) - 50 mm + 35 mm) + (-35 mm)",
+          "((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height))) + ((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2) + (-((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2))"
+        ],
+        "p1": [
+          "((opening_width / 2) - 50 mm + 35 mm) + (35 mm)",
+          "((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height))) + ((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2) + ((((frame_wood_thickness + 364 mm) - (frame_wood_thickness + (lower_compartment_height))) - ((frame_wood_thickness + 162 mm) - (frame_wood_thickness + (lower_compartment_height)))) / 2)"
+        ],
+        "radius": 20.0
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "operation": "cut",
+        "targets": [
+          "RearBoard"
+        ],
+        "name": "Rear side openings",
+        "distance": "panel_wood_thickness + 2 mm",
+        "direction": "symmetric"
       }
     },
     {
@@ -445,7 +654,7 @@
       "command": "material.assign",
       "params": {
         "bodies": [
-          "Board_4"
+          "RearBoard"
         ],
         "material": "LIGHTPLY rear"
       }
@@ -479,7 +688,7 @@
       "command": "sketch.create",
       "params": {
         "plane": "XZ",
-        "name": "d6_CornerBracket__Profile"
+        "name": "d8_CornerBracket__Profile"
       }
     },
     {
@@ -1103,7 +1312,7 @@
       "command": "sketch.create",
       "params": {
         "plane": "XZ",
-        "name": "d7_GlassStrip__Profile"
+        "name": "d9_GlassStrip__Profile"
       }
     },
     {
@@ -1195,7 +1404,7 @@
       "command": "sketch.create",
       "params": {
         "plane": "XZ",
-        "name": "d8_GlassStrip_2__Profile"
+        "name": "d10_GlassStrip_2__Profile"
       }
     },
     {
@@ -1291,7 +1500,7 @@
         "corner": [
           -420.0,
           "glazing_wood_depth",
-          "frame_wood_thickness + ((opening_height - 360 mm) / 2)"
+          "((frame_wood_thickness * 2) + (lower_compartment_height)) + ((opening_height - 360 mm) / 2)"
         ],
         "body_name": "Window"
       }
@@ -1333,7 +1542,7 @@
         "translate": [
           0,
           "panel_recess_depth + 7.25 mm",
-          "frame_wood_thickness + ((opening_height - 319.71 mm) / 2)"
+          "((frame_wood_thickness * 2) + (lower_compartment_height)) + ((opening_height - 319.71 mm) / 2)"
         ]
       }
     },
@@ -1344,7 +1553,7 @@
         "translate": [
           -320.0,
           "panel_recess_depth + 7.25 mm",
-          "frame_wood_thickness + ((opening_height - 319.71 mm) / 2)"
+          "((frame_wood_thickness * 2) + (lower_compartment_height)) + ((opening_height - 319.71 mm) / 2)"
         ]
       }
     },
@@ -1355,7 +1564,7 @@
         "translate": [
           -160.0,
           "panel_recess_depth + 7.25 mm",
-          "frame_wood_thickness + ((opening_height - 319.71 mm) / 2)"
+          "((frame_wood_thickness * 2) + (lower_compartment_height)) + ((opening_height - 319.71 mm) / 2)"
         ]
       }
     },
@@ -1366,7 +1575,7 @@
         "translate": [
           160.0,
           "panel_recess_depth + 7.25 mm",
-          "frame_wood_thickness + ((opening_height - 319.71 mm) / 2)"
+          "((frame_wood_thickness * 2) + (lower_compartment_height)) + ((opening_height - 319.71 mm) / 2)"
         ]
       }
     },
@@ -1377,7 +1586,7 @@
         "translate": [
           320.0,
           "panel_recess_depth + 7.25 mm",
-          "frame_wood_thickness + ((opening_height - 319.71 mm) / 2)"
+          "((frame_wood_thickness * 2) + (lower_compartment_height)) + ((opening_height - 319.71 mm) / 2)"
         ]
       }
     },
@@ -1406,11 +1615,44 @@
     {
       "command": "occurrence.move",
       "params": {
+        "occurrence": "$intermediate_shelf",
+        "translate": [
+          0,
+          0,
+          "frame_wood_thickness + (lower_compartment_height)"
+        ]
+      }
+    },
+    {
+      "command": "occurrence.move",
+      "params": {
+        "occurrence": "$lower_divider_left",
+        "translate": [
+          "-(((opening_width / 2) - ((opening_width - (frame_wood_thickness * 2)) * 0.3)) - (frame_wood_thickness / 2))",
+          0,
+          "frame_wood_thickness"
+        ]
+      }
+    },
+    {
+      "command": "occurrence.move",
+      "params": {
+        "occurrence": "$lower_divider_right",
+        "translate": [
+          "((opening_width / 2) - ((opening_width - (frame_wood_thickness * 2)) * 0.3)) - (frame_wood_thickness / 2)",
+          0,
+          "frame_wood_thickness"
+        ]
+      }
+    },
+    {
+      "command": "occurrence.move",
+      "params": {
         "occurrence": "$roof",
         "translate": [
           0,
           "-(roof_front_overhang)",
-          "frame_wood_thickness + (opening_height)"
+          "((frame_wood_thickness + (lower_compartment_height)) + (frame_wood_thickness)) + (opening_height)"
         ]
       }
     },
@@ -1420,8 +1662,8 @@
         "occurrence": "$rear",
         "translate": [
           0,
-          "cabinet_depth",
-          0
+          "cabinet_depth - (panel_wood_thickness)",
+          "frame_wood_thickness + (lower_compartment_height)"
         ]
       }
     },
@@ -1432,7 +1674,7 @@
         "translate": [
           "-((opening_width / 2) + (frame_wood_thickness))",
           "bracket_width / 2",
-          "opening_height + (frame_wood_thickness * 2)"
+          "(lower_compartment_height + (opening_height)) + (frame_wood_thickness * 3)"
         ]
       }
     },
@@ -1443,7 +1685,7 @@
         "translate": [
           "-((opening_width / 2) + (frame_wood_thickness))",
           "cabinet_depth - (bracket_width / 2)",
-          "opening_height + (frame_wood_thickness * 2)"
+          "(lower_compartment_height + (opening_height)) + (frame_wood_thickness * 3)"
         ]
       }
     },
@@ -1454,7 +1696,7 @@
         "translate": [
           "(opening_width / 2) + (frame_wood_thickness)",
           "bracket_width / 2",
-          "opening_height + (frame_wood_thickness * 2)"
+          "(lower_compartment_height + (opening_height)) + (frame_wood_thickness * 3)"
         ],
         "axis": [
           0.0,
@@ -1471,7 +1713,7 @@
         "translate": [
           "(opening_width / 2) + (frame_wood_thickness)",
           "cabinet_depth - (bracket_width / 2)",
-          "opening_height + (frame_wood_thickness * 2)"
+          "(lower_compartment_height + (opening_height)) + (frame_wood_thickness * 3)"
         ],
         "axis": [
           0.0,
@@ -1556,7 +1798,7 @@
         "translate": [
           0,
           0,
-          "frame_wood_thickness"
+          "(frame_wood_thickness * 2) + (lower_compartment_height)"
         ]
       }
     },
@@ -1567,7 +1809,7 @@
         "translate": [
           0,
           "glazing_wood_depth",
-          "frame_wood_thickness + (opening_height)"
+          "((frame_wood_thickness * 2) + (lower_compartment_height)) + (opening_height)"
         ],
         "axis": [
           1.0,
@@ -1584,7 +1826,7 @@
         "translate": [
           "-(opening_width / 2)",
           0,
-          "(frame_wood_thickness + (frame_wood_thickness + (opening_height))) / 2"
+          "(((frame_wood_thickness * 2) + (lower_compartment_height)) + (((frame_wood_thickness * 2) + (lower_compartment_height)) + (opening_height))) / 2"
         ],
         "axis": [
           0.0,
@@ -1601,7 +1843,7 @@
         "translate": [
           "opening_width / 2",
           0,
-          "(frame_wood_thickness + (frame_wood_thickness + (opening_height))) / 2"
+          "(((frame_wood_thickness * 2) + (lower_compartment_height)) + (((frame_wood_thickness * 2) + (lower_compartment_height)) + (opening_height))) / 2"
         ],
         "axis": [
           0.0,

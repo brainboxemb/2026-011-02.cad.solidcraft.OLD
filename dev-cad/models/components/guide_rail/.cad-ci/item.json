@@ -1,12 +1,12 @@
 {
   "engine": "scons",
   "engine_schema": 4,
-  "final_bundle_sha256": "6bbb5e8c63fb38668895fce81afdff13d03403d72df9b020aefc2bcb39a89537",
+  "final_bundle_sha256": "3e510044f0405ba9265df66f74cb6e2489594b81b82bc66a75af214feac7df3c",
   "final_step": "build_results",
-  "final_target_spec_digest": "48892e4ecc154ff483fb5db11476baf6e6f7bcab29ca5eb5898480db9688ad15",
+  "final_target_spec_digest": "4c0e34662378d270f20fa7cedc7c78ba0068fbda26c00e5211196e3e9d0eafd4",
   "item": "guide-rail",
-  "run_finished_at": "2026-11-23T21:42:25.559Z",
-  "run_started_at": "2026-11-23T21:39:04.758Z",
+  "run_finished_at": "2026-11-24T12:03:27.653Z",
+  "run_started_at": "2026-11-24T12:01:15.692Z",
   "schema": 2,
   "status": "pass"
 }

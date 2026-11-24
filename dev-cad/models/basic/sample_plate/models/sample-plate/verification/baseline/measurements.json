@@ -15,8 +15,8 @@
         ]
       },
       "center_of_mass": [
-        -1.257527654395762e-15,
-        2.446774187435042e-15,
+        -1.258329316727315e-15,
+        2.463861923910993e-15,
         5.501730434309553
       ],
       "closed": true,
@@ -108,7 +108,7 @@
     {
       "error": null,
       "id": 1,
-      "ms": 0.303237,
+      "ms": 0.146344,
       "name": "Base",
       "rolled_back": false,
       "suppressed": false,
@@ -118,7 +118,7 @@
     {
       "error": null,
       "id": 2,
-      "ms": 2.973726,
+      "ms": 3.475107,
       "name": "Extrude1",
       "rolled_back": false,
       "suppressed": false,
@@ -128,7 +128,7 @@
     {
       "error": null,
       "id": 3,
-      "ms": 78.400281,
+      "ms": 79.775698,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -138,7 +138,7 @@
     {
       "error": null,
       "id": 4,
-      "ms": 0.142716,
+      "ms": 0.094857,
       "name": "Holes",
       "rolled_back": false,
       "suppressed": false,
@@ -148,7 +148,7 @@
     {
       "error": null,
       "id": 5,
-      "ms": 22.836002,
+      "ms": 19.828412,
       "name": "Holes",
       "rolled_back": false,
       "suppressed": false,
@@ -158,7 +158,7 @@
     {
       "error": null,
       "id": 6,
-      "ms": 37.735782,
+      "ms": 31.414478000000003,
       "name": "RectangularPattern1",
       "rolled_back": false,
       "suppressed": false,
@@ -168,7 +168,7 @@
     {
       "error": null,
       "id": 7,
-      "ms": 36.03399,
+      "ms": 12.298056,
       "name": "Cylinder1",
       "rolled_back": false,
       "suppressed": false,
@@ -178,7 +178,7 @@
     {
       "error": null,
       "id": 8,
-      "ms": 0.126661,
+      "ms": 0.067636,
       "name": "Bore",
       "rolled_back": false,
       "suppressed": false,
@@ -188,7 +188,7 @@
     {
       "error": null,
       "id": 9,
-      "ms": 42.239365,
+      "ms": 19.430809,
       "name": "Bore",
       "rolled_back": false,
       "suppressed": false,

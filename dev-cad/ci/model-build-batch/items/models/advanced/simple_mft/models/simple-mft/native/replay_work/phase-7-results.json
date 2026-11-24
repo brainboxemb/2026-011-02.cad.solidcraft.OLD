@@ -1,7 +1,8 @@
 [
   {
     "name": "Clamp slots",
-    "sketch": 4
+    "sketch": 4,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -87,7 +88,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 378.35559,
+    "ms": 369.594553,
     "name": "Clamp slots",
     "removed_bodies": [],
     "warning": null
@@ -101,7 +102,7 @@
     ],
     "created_bodies": [],
     "feature": 6,
-    "ms": 202.76790499999998,
+    "ms": 200.416732,
     "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null

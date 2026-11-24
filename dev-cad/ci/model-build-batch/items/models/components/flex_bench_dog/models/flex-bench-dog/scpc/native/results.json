@@ -38,7 +38,7 @@
       "FlexBenchDog"
     ],
     "feature": 1,
-    "ms": 4.926111000000001,
+    "ms": 4.813286,
     "name": "Cylinder1",
     "removed_bodies": [],
     "warning": null
@@ -52,7 +52,7 @@
     ],
     "created_bodies": [],
     "feature": 2,
-    "ms": 49.366558999999995,
+    "ms": 46.323682,
     "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null
@@ -66,7 +66,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 39.952779,
+    "ms": 8.632625999999998,
     "name": "Cylinder2",
     "removed_bodies": [],
     "warning": null
@@ -80,8 +80,8 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 58.11076,
-    "name": "Cylinder3",
+    "ms": 29.643421999999997,
+    "name": "Cone1",
     "removed_bodies": [],
     "warning": null
   },
@@ -94,21 +94,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 30.969723000000002,
-    "name": "Cylinder4",
-    "removed_bodies": [],
-    "warning": null
-  },
-  {
-    "bodies": [
-      "FlexBenchDog"
-    ],
-    "changed_bodies": [
-      "FlexBenchDog"
-    ],
-    "created_bodies": [],
-    "feature": 6,
-    "ms": 74.42249600000001,
+    "ms": 67.700031,
     "name": "Chamfer2",
     "removed_bodies": [],
     "warning": null
@@ -124,7 +110,8 @@
     "frame": "world",
     "name": "Flex slot X",
     "projected": null,
-    "sketch": 7
+    "sketch": 6,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -179,7 +166,7 @@
   },
   {
     "profiles": 1,
-    "sketch": 7
+    "sketch": 6
   },
   {
     "bodies": [
@@ -189,8 +176,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 8,
-    "ms": 78.910486,
+    "feature": 7,
+    "ms": 35.627714,
     "name": "Flex slot X",
     "removed_bodies": [],
     "warning": null
@@ -206,7 +193,8 @@
     "frame": "world",
     "name": "Flex slot Y",
     "projected": null,
-    "sketch": 9
+    "sketch": 8,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -261,7 +249,7 @@
   },
   {
     "profiles": 1,
-    "sketch": 9
+    "sketch": 8
   },
   {
     "bodies": [
@@ -271,8 +259,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 10,
-    "ms": 92.297059,
+    "feature": 9,
+    "ms": 38.263916,
     "name": "Flex slot Y",
     "removed_bodies": [],
     "warning": null
@@ -285,8 +273,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 11,
-    "ms": 298.91841200000005,
+    "feature": 10,
+    "ms": 328.078226,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null
@@ -299,8 +287,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 12,
-    "ms": 125.49912499999999,
+    "feature": 11,
+    "ms": 96.021454,
     "name": "Chamfer3",
     "removed_bodies": [],
     "warning": null
@@ -316,7 +304,8 @@
     "frame": "world",
     "name": "Top logo rib 1",
     "projected": null,
-    "sketch": 13
+    "sketch": 12,
+    "sketching_view": 1
   },
   {
     "centre_line": "l3",
@@ -369,7 +358,7 @@
   },
   {
     "profiles": 1,
-    "sketch": 13
+    "sketch": 12
   },
   {
     "bodies": [
@@ -379,8 +368,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 14,
-    "ms": 49.081069,
+    "feature": 13,
+    "ms": 43.661522,
     "name": "Top logo rib 1",
     "removed_bodies": [],
     "warning": null
@@ -396,7 +385,8 @@
     "frame": "world",
     "name": "Top logo rib 2",
     "projected": null,
-    "sketch": 15
+    "sketch": 14,
+    "sketching_view": 1
   },
   {
     "centre_line": "l3",
@@ -449,7 +439,7 @@
   },
   {
     "profiles": 1,
-    "sketch": 15
+    "sketch": 14
   },
   {
     "bodies": [
@@ -459,8 +449,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 16,
-    "ms": 65.191832,
+    "feature": 15,
+    "ms": 45.425937,
     "name": "Top logo rib 2",
     "removed_bodies": [],
     "warning": null
@@ -476,7 +466,8 @@
     "frame": "world",
     "name": "Top logo rib 3",
     "projected": null,
-    "sketch": 17
+    "sketch": 16,
+    "sketching_view": 1
   },
   {
     "centre_line": "l3",
@@ -529,7 +520,7 @@
   },
   {
     "profiles": 1,
-    "sketch": 17
+    "sketch": 16
   },
   {
     "bodies": [
@@ -539,8 +530,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 18,
-    "ms": 67.054536,
+    "feature": 17,
+    "ms": 44.080465,
     "name": "Top logo rib 3",
     "removed_bodies": [],
     "warning": null
@@ -556,7 +547,8 @@
     "frame": "world",
     "name": "Top logo rib 4",
     "projected": null,
-    "sketch": 19
+    "sketch": 18,
+    "sketching_view": 1
   },
   {
     "centre_line": "l3",
@@ -609,7 +601,7 @@
   },
   {
     "profiles": 1,
-    "sketch": 19
+    "sketch": 18
   },
   {
     "bodies": [
@@ -619,8 +611,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 20,
-    "ms": 70.16675699999999,
+    "feature": 19,
+    "ms": 47.996867,
     "name": "Top logo rib 4",
     "removed_bodies": [],
     "warning": null
@@ -636,7 +628,8 @@
     "frame": "world",
     "name": "Top logo rib 5",
     "projected": null,
-    "sketch": 21
+    "sketch": 20,
+    "sketching_view": 1
   },
   {
     "centre_line": "l3",
@@ -689,7 +682,7 @@
   },
   {
     "profiles": 1,
-    "sketch": 21
+    "sketch": 20
   },
   {
     "bodies": [
@@ -699,8 +692,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 22,
-    "ms": 73.328616,
+    "feature": 21,
+    "ms": 53.154776,
     "name": "Top logo rib 5",
     "removed_bodies": [],
     "warning": null
@@ -716,7 +709,8 @@
     "frame": "world",
     "name": "Top logo rib 6",
     "projected": null,
-    "sketch": 23
+    "sketch": 22,
+    "sketching_view": 1
   },
   {
     "centre_line": "l3",
@@ -769,7 +763,7 @@
   },
   {
     "profiles": 1,
-    "sketch": 23
+    "sketch": 22
   },
   {
     "bodies": [
@@ -779,8 +773,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 24,
-    "ms": 84.62631900000001,
+    "feature": 23,
+    "ms": 60.506589999999996,
     "name": "Top logo rib 6",
     "removed_bodies": [],
     "warning": null
@@ -796,7 +790,8 @@
     "frame": "world",
     "name": "Top logo rib 7",
     "projected": null,
-    "sketch": 25
+    "sketch": 24,
+    "sketching_view": 1
   },
   {
     "centre_line": "l3",
@@ -851,7 +846,7 @@
   },
   {
     "profiles": 1,
-    "sketch": 25
+    "sketch": 24
   },
   {
     "bodies": [
@@ -861,8 +856,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 26,
-    "ms": 77.38070800000001,
+    "feature": 25,
+    "ms": 67.978408,
     "name": "Top logo rib 7",
     "removed_bodies": [],
     "warning": null
@@ -878,7 +873,8 @@
     "frame": "world",
     "name": "Top logo rib 8",
     "projected": null,
-    "sketch": 27
+    "sketch": 26,
+    "sketching_view": 1
   },
   {
     "centre_line": "l3",
@@ -933,7 +929,7 @@
   },
   {
     "profiles": 1,
-    "sketch": 27
+    "sketch": 26
   },
   {
     "bodies": [
@@ -943,8 +939,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 28,
-    "ms": 91.955484,
+    "feature": 27,
+    "ms": 77.149883,
     "name": "Top logo rib 8",
     "removed_bodies": [],
     "warning": null
@@ -960,7 +956,8 @@
     "frame": "world",
     "name": "Top logo rib 9",
     "projected": null,
-    "sketch": 29
+    "sketch": 28,
+    "sketching_view": 1
   },
   {
     "centre_line": "l3",
@@ -1015,7 +1012,7 @@
   },
   {
     "profiles": 1,
-    "sketch": 29
+    "sketch": 28
   },
   {
     "bodies": [
@@ -1025,8 +1022,8 @@
       "FlexBenchDog"
     ],
     "created_bodies": [],
-    "feature": 30,
-    "ms": 87.173095,
+    "feature": 29,
+    "ms": 62.101995,
     "name": "Top logo rib 9",
     "removed_bodies": [],
     "warning": null

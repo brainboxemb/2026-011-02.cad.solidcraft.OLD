@@ -26,7 +26,7 @@
       "Plate"
     ],
     "feature": 1,
-    "ms": 3.0489290000000002,
+    "ms": 3.481459,
     "name": "Box1",
     "removed_bodies": [],
     "warning": null
@@ -40,7 +40,7 @@
     ],
     "created_bodies": [],
     "feature": 2,
-    "ms": 77.702038,
+    "ms": 79.99083,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null
@@ -55,7 +55,8 @@
     },
     "name": "Slot",
     "projected": null,
-    "sketch": 3
+    "sketch": 3,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -121,7 +122,7 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 15.253679,
+    "ms": 11.181431,
     "name": "Vent",
     "removed_bodies": [],
     "warning": null
@@ -135,7 +136,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 118.221729,
+    "ms": 114.12441399999999,
     "name": "RectangularPattern1",
     "removed_bodies": [],
     "warning": null

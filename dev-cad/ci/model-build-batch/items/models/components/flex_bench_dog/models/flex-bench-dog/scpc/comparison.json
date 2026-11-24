@@ -14,7 +14,7 @@
     "actual_min": [
       -11.0,
       -11.000000000000002,
-      -20.00000000000005
+      -20.000000000000014
     ],
     "deltas": [
       0.0,
@@ -32,7 +32,7 @@
     "expected_min": [
       -11.0,
       -11.000000000000002,
-      -20.00000000000005
+      -20.000000000000014
     ],
     "kind": "bounds",
     "label": "Forge/SCPC bounds",
@@ -43,9 +43,9 @@
   "schema": 1,
   "status": "pass",
   "volume": {
-    "actual": 11665.50359954188,
+    "actual": 11711.357012550765,
     "delta": 0.0,
-    "expected": 11665.50359954188,
+    "expected": 11711.357012550765,
     "kind": "scalar",
     "label": "Forge/SCPC volume (mm\u00b3)",
     "pass": true,

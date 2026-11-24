@@ -87,27 +87,11 @@
       }
     },
     {
-      "command": "solid.cylinder",
+      "command": "solid.cone",
       "params": {
         "height": 20,
-        "diameter": "hole_diameter",
-        "base": [
-          0,
-          0,
-          -20
-        ],
-        "axis": "Z",
-        "operation": "join",
-        "targets": [
-          "FlexBenchDog"
-        ]
-      }
-    },
-    {
-      "command": "solid.cylinder",
-      "params": {
-        "height": 2,
         "diameter": "hole_diameter + interference",
+        "top_diameter": "hole_diameter",
         "base": [
           0,
           0,

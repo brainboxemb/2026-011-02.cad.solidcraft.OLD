@@ -75,7 +75,8 @@
     },
     "name": "Hub75Panel footprint",
     "projected": null,
-    "sketch": 1
+    "sketch": 1,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -141,7 +142,7 @@
       "Hub75Panel"
     ],
     "feature": 2,
-    "ms": 3.0198159999999996,
+    "ms": 3.3910400000000003,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null
@@ -156,7 +157,8 @@
     },
     "name": "Hub75Panel rear start",
     "projected": null,
-    "sketch": 3
+    "sketch": 3,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -223,7 +225,8 @@
     },
     "name": "Hub75Panel rear perimeter",
     "projected": null,
-    "sketch": 4
+    "sketch": 4,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -289,7 +292,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 7.575307,
+    "ms": 6.343574,
     "name": "Loft1",
     "removed_bodies": [],
     "warning": null
@@ -519,7 +522,8 @@
     },
     "name": "Rear electronics bays",
     "projected": null,
-    "sketch": 6
+    "sketch": 6,
+    "sketching_view": 1
   },
   {
     "constraints": [
@@ -738,7 +742,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 20.362246,
+    "ms": 22.400764,
     "name": "Rear electronics bays",
     "removed_bodies": [],
     "warning": null
@@ -752,7 +756,7 @@
     ],
     "created_bodies": [],
     "feature": 8,
-    "ms": 26.025608,
+    "ms": 25.379967,
     "name": "Hole1",
     "removed_bodies": [],
     "warning": null
@@ -766,7 +770,7 @@
     ],
     "created_bodies": [],
     "feature": 9,
-    "ms": 24.076358,
+    "ms": 16.559206,
     "name": "Cylinder1",
     "removed_bodies": [],
     "warning": null
@@ -780,7 +784,7 @@
     ],
     "created_bodies": [],
     "feature": 10,
-    "ms": 43.029817,
+    "ms": 42.112455,
     "name": "Hole2",
     "removed_bodies": [],
     "warning": null
@@ -794,7 +798,7 @@
     ],
     "created_bodies": [],
     "feature": 11,
-    "ms": 27.57835,
+    "ms": 16.558033,
     "name": "Cylinder2",
     "removed_bodies": [],
     "warning": null
@@ -808,7 +812,7 @@
     ],
     "created_bodies": [],
     "feature": 12,
-    "ms": 49.249711000000005,
+    "ms": 48.961361000000004,
     "name": "Hole3",
     "removed_bodies": [],
     "warning": null
@@ -822,7 +826,7 @@
     ],
     "created_bodies": [],
     "feature": 13,
-    "ms": 29.34134,
+    "ms": 19.199166,
     "name": "Cylinder3",
     "removed_bodies": [],
     "warning": null
@@ -836,7 +840,7 @@
     ],
     "created_bodies": [],
     "feature": 14,
-    "ms": 55.630516,
+    "ms": 56.544225,
     "name": "Hole4",
     "removed_bodies": [],
     "warning": null
@@ -850,7 +854,7 @@
     ],
     "created_bodies": [],
     "feature": 15,
-    "ms": 31.900499,
+    "ms": 20.414592,
     "name": "Cylinder4",
     "removed_bodies": [],
     "warning": null
@@ -864,7 +868,7 @@
     ],
     "created_bodies": [],
     "feature": 16,
-    "ms": 62.875624,
+    "ms": 62.566950999999996,
     "name": "Hole5",
     "removed_bodies": [],
     "warning": null
@@ -878,7 +882,7 @@
     ],
     "created_bodies": [],
     "feature": 17,
-    "ms": 33.953166,
+    "ms": 20.840065000000003,
     "name": "Cylinder5",
     "removed_bodies": [],
     "warning": null
@@ -892,7 +896,7 @@
     ],
     "created_bodies": [],
     "feature": 18,
-    "ms": 69.116418,
+    "ms": 69.945465,
     "name": "Hole6",
     "removed_bodies": [],
     "warning": null
@@ -906,7 +910,7 @@
     ],
     "created_bodies": [],
     "feature": 19,
-    "ms": 37.020261999999995,
+    "ms": 23.003928,
     "name": "Cylinder6",
     "removed_bodies": [],
     "warning": null
@@ -920,7 +924,7 @@
     ],
     "created_bodies": [],
     "feature": 20,
-    "ms": 61.160416000000005,
+    "ms": 56.655743,
     "name": "Cylinder7",
     "removed_bodies": [],
     "warning": null
@@ -934,7 +938,7 @@
     ],
     "created_bodies": [],
     "feature": 21,
-    "ms": 91.34595,
+    "ms": 93.081168,
     "name": "Hole7",
     "removed_bodies": [],
     "warning": null
@@ -948,7 +952,7 @@
     ],
     "created_bodies": [],
     "feature": 22,
-    "ms": 89.651403,
+    "ms": 87.591746,
     "name": "Hole8",
     "removed_bodies": [],
     "warning": null
@@ -962,7 +966,7 @@
     ],
     "created_bodies": [],
     "feature": 23,
-    "ms": 71.29360199999999,
+    "ms": 64.58581500000001,
     "name": "Cylinder8",
     "removed_bodies": [],
     "warning": null
@@ -976,7 +980,7 @@
     ],
     "created_bodies": [],
     "feature": 24,
-    "ms": 106.498606,
+    "ms": 108.31373099999999,
     "name": "Hole9",
     "removed_bodies": [],
     "warning": null
@@ -990,7 +994,7 @@
     ],
     "created_bodies": [],
     "feature": 25,
-    "ms": 101.485068,
+    "ms": 98.69127499999999,
     "name": "Hole10",
     "removed_bodies": [],
     "warning": null
@@ -1004,7 +1008,7 @@
     ],
     "created_bodies": [],
     "feature": 26,
-    "ms": 80.233227,
+    "ms": 68.840596,
     "name": "Cylinder9",
     "removed_bodies": [],
     "warning": null
@@ -1018,7 +1022,7 @@
     ],
     "created_bodies": [],
     "feature": 27,
-    "ms": 121.560086,
+    "ms": 122.089298,
     "name": "Hole11",
     "removed_bodies": [],
     "warning": null
@@ -1032,7 +1036,7 @@
     ],
     "created_bodies": [],
     "feature": 28,
-    "ms": 116.93690199999999,
+    "ms": 110.61359499999999,
     "name": "Hole12",
     "removed_bodies": [],
     "warning": null
@@ -1046,7 +1050,7 @@
     ],
     "created_bodies": [],
     "feature": 29,
-    "ms": 91.305549,
+    "ms": 76.241265,
     "name": "Cylinder10",
     "removed_bodies": [],
     "warning": null
@@ -1060,7 +1064,7 @@
     ],
     "created_bodies": [],
     "feature": 30,
-    "ms": 135.502187,
+    "ms": 137.02004300000002,
     "name": "Hole13",
     "removed_bodies": [],
     "warning": null
@@ -1074,7 +1078,7 @@
     ],
     "created_bodies": [],
     "feature": 31,
-    "ms": 125.84615199999999,
+    "ms": 120.602003,
     "name": "Hole14",
     "removed_bodies": [],
     "warning": null
@@ -1088,7 +1092,7 @@
     ],
     "created_bodies": [],
     "feature": 32,
-    "ms": 100.051712,
+    "ms": 128.717273,
     "name": "Cylinder11",
     "removed_bodies": [],
     "warning": null
@@ -1102,7 +1106,7 @@
     ],
     "created_bodies": [],
     "feature": 33,
-    "ms": 148.99584099999998,
+    "ms": 148.66009499999998,
     "name": "Hole15",
     "removed_bodies": [],
     "warning": null
@@ -1116,7 +1120,7 @@
     ],
     "created_bodies": [],
     "feature": 34,
-    "ms": 140.169968,
+    "ms": 130.65437899999998,
     "name": "Hole16",
     "removed_bodies": [],
     "warning": null
@@ -1130,7 +1134,7 @@
     ],
     "created_bodies": [],
     "feature": 35,
-    "ms": 111.04911100000001,
+    "ms": 136.630537,
     "name": "Cylinder12",
     "removed_bodies": [],
     "warning": null
@@ -1144,7 +1148,7 @@
     ],
     "created_bodies": [],
     "feature": 36,
-    "ms": 162.54942599999998,
+    "ms": 161.647792,
     "name": "Hole17",
     "removed_bodies": [],
     "warning": null
@@ -1158,7 +1162,7 @@
     ],
     "created_bodies": [],
     "feature": 37,
-    "ms": 151.90941899999999,
+    "ms": 147.933478,
     "name": "Hole18",
     "removed_bodies": [],
     "warning": null
@@ -1172,7 +1176,7 @@
     ],
     "created_bodies": [],
     "feature": 38,
-    "ms": 87.605538,
+    "ms": 59.175214,
     "name": "Cylinder13",
     "removed_bodies": [],
     "warning": null
@@ -1186,7 +1190,7 @@
     ],
     "created_bodies": [],
     "feature": 39,
-    "ms": 89.39728600000001,
+    "ms": 58.620839000000004,
     "name": "Cylinder14",
     "removed_bodies": [],
     "warning": null
@@ -1200,7 +1204,7 @@
     ],
     "created_bodies": [],
     "feature": 40,
-    "ms": 139.771575,
+    "ms": 130.826732,
     "name": "Hole19",
     "removed_bodies": [],
     "warning": null
@@ -1214,7 +1218,7 @@
     ],
     "created_bodies": [],
     "feature": 41,
-    "ms": 141.62788,
+    "ms": 132.584772,
     "name": "Hole20",
     "removed_bodies": [],
     "warning": null
@@ -1228,7 +1232,7 @@
     ],
     "created_bodies": [],
     "feature": 42,
-    "ms": 142.072811,
+    "ms": 131.553417,
     "name": "Hole21",
     "removed_bodies": [],
     "warning": null
@@ -1242,7 +1246,7 @@
     ],
     "created_bodies": [],
     "feature": 43,
-    "ms": 144.278008,
+    "ms": 133.335554,
     "name": "Hole22",
     "removed_bodies": [],
     "warning": null
@@ -1256,7 +1260,7 @@
     ],
     "created_bodies": [],
     "feature": 44,
-    "ms": 145.82441,
+    "ms": 134.953385,
     "name": "Hole23",
     "removed_bodies": [],
     "warning": null
@@ -1270,7 +1274,7 @@
     ],
     "created_bodies": [],
     "feature": 45,
-    "ms": 146.423283,
+    "ms": 143.298593,
     "name": "Hole24",
     "removed_bodies": [],
     "warning": null

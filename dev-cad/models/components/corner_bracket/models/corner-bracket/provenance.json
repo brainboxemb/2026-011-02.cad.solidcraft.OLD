@@ -1,13 +1,13 @@
 {
-  "forge_sha": "ea5710a5d2d33b0633b93c5da95dd5b74f126aa4",
+  "forge_sha": "cd46d6797df319b9d13605c11568990113772700",
   "independent_scpc_compared": true,
   "model": "corner-bracket",
-  "runtime_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.4",
+  "runtime_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.5",
   "schema": 1,
   "scpc_sha": "fcaa6f9fc8388bc715fcd2fbb149ce6b979566a7",
   "semantic_verification": "pass",
   "solidcraft_built": true,
   "solidcraft_verified": true,
-  "solidcraft_version": "0.45.0",
-  "source_sha": "d25440a98d4b2ab71464a92ee72c6eb76b337111"
+  "solidcraft_version": "0.48.1",
+  "source_sha": "5fcfe6836973e13b1d3372a151735af195f22a4d"
 }

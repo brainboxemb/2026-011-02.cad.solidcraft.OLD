@@ -2,13 +2,13 @@
   "action_executed": true,
   "action_type": "copy",
   "active_dependents": [],
-  "bundle_sha256": "5a1932a4eac6bc905459da0f5217de94ede9b4f3d7b8e77e6463589ef6a2e3e9",
-  "duration_seconds": 0.107,
+  "bundle_sha256": "b0c7d7070bf6da1b5ce5088a12e7a22676f8783901d277086c4f6c44a56e5a47",
+  "duration_seconds": 0.125,
   "engine": "scons",
   "engine_schema": 4,
   "error": null,
   "exit_code": null,
-  "finished_at": "2026-11-23T21:42:24.292Z",
+  "finished_at": "2026-11-24T12:03:26.047Z",
   "item": "vent-plate",
   "outcome": "BUILT",
   "output_state": "RESTORED",
@@ -26,15 +26,15 @@
     "models": {
       "kind": "directory",
       "mode": 493,
-      "sha256": "1dd5551f9990b409a057b9626367b872d5e467c14433cb9d02a1e50e739da2ad"
+      "sha256": "3f5069fdf1f455b093ce1f6572d015d12e79fc00cea7cb167f164765f6490f83"
     }
   },
-  "run_finished_at": "2026-11-23T21:42:25.559Z",
-  "run_started_at": "2026-11-23T21:39:04.758Z",
+  "run_finished_at": "2026-11-24T12:03:27.653Z",
+  "run_started_at": "2026-11-24T12:01:15.692Z",
   "schema": 5,
-  "started_at": "2026-11-23T21:42:24.185Z",
+  "started_at": "2026-11-24T12:03:25.922Z",
   "status": "pass",
   "step": "build_results",
-  "target_spec_digest": "ea6801cdade29fe4178fc5e6b15749fb00c16201ba85fb6a58ea6e74f407f187",
+  "target_spec_digest": "a3983bae0b3fbd2e653cd09d28cc5d0943f76ce17958fdafdcf84261712a30d3",
   "timeout_seconds": null
 }
