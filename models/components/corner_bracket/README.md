@@ -13,9 +13,9 @@ no launcher file, wrapper model or second copy of the geometry.
 
 The default component now restores the four recessed M5 fixing seats from the preserved OpenSCAD model. Each seat is intentionally decomposed into a Ø5.4 clearance bore, a Ø10.4 × 1.0 mm flat cylindrical head recess, a 90° transition cone and separate 0.2 mm flat reliefs at the outside and inside edges. This is not approximated by one oversized countersink.
 
-The L outline, inside R4 fillet, broad-face chamfers and elephant-foot relief remain separate editable native features.
+The L outline, inside R4 fillet, broad-face chamfers and elephant-foot relief remain separate editable native features. Four small rotated triangular-prism cuts complete the arm-tip junctions from the preserved OpenSCAD `arm_tip_relief_cuts()`.
 
-The archived `scpf/reference.py` remains preserved as historical source, but the live model now expresses the same fixing intent using Forge 0.11's current `Hole` and `CountersinkHole` APIs. The live SCPF and independent SCPC plans both contain 42 commands at the default dimensions.
+The archived `scpf/reference.py` remains preserved as historical source, but the live model expresses the fixing seats with current `Hole` and `CountersinkHole` APIs and the arm-tip wedges with Forge's released rotated explicit-Sketch frames. The live SCPF and independent SCPC plans both contain 58 commands at the default dimensions.
 
 ## Named profile and explicit reliefs
 
@@ -42,7 +42,9 @@ The 0.6 mm arm-tip print relief is again part of the 2D profile itself, matching
 
 Four fixing seats are placed at 24 mm and 42 mm along each arm. For every seat the 1 mm flat head recess is cut first; the 90° countersink starts 1 mm inside the wall and transitions from Ø10.4 to the Ø5.4 through bore. Separate 0.2 mm shallow cuts create Ø10.8 outside and Ø5.8 inside edge reliefs.
 
-Named-edge selection is currently implemented for **symmetric XZ polygon extrusions only**. Issue #8 now owns final visual acceptance of the arm-tip junction. If the native render still shows the small local wedge remnant from OpenSCAD's `arm_tip_relief_cuts()`, that remaining transform/cutter capability must be handled through Forge rather than by a CAD-local geometry hack.
+Named-edge selection remains implemented for **symmetric XZ polygon extrusions only**. The two `tip_*` diagonals stay excluded from the ordinary 2 mm side-chamfer selector.
+
+The four local arm-tip corrections now follow the preserved OpenSCAD construction directly: one triangular profile `[-ef-1,-1] / [1,-1] / [1,ef+1]`, extrusion length `side_edge_chamfer * sqrt(2) + 2`, rotations `(90,0,45)` and `(0,45,90)`, and mirrored copies on the opposite broad face. The mirrored copies use reflected local Sketch frames plus negative extrusion rather than hand-expanded world coordinates.
 
 For local GUI testing from the repository root after `./bootstrap.ps1`:
 
@@ -56,14 +58,12 @@ Open an empty SolidCraft document and enable external Assistant control before r
 python -m scpf models/components/corner_bracket/scpf/model.py --out output/corner-bracket.json
 ```
 
-The uncorrected small pointed corners at the arm ends are tracked separately in [issue #20](https://github.com/brainboxemb/lib.py.solidcraft/issues/20). This issue is intentionally deferred, not a blocker for this initial SCPF model.
-
 Original geometry reference: `brainboxemb/2026-011-01.cad.model-archive`, `models/corner_bracket/v0.1/scad/corner_bracket.scad`.
 
 
 ## Two scripts: Forge and native commands
 
 - [SCPF model](scpf/model.py) is the shared parametric `CornerBracket` definition itself.
-- [SCPC model](scpc/model.py) independently lists all **42 native SolidCraft commands**, including named XZ sketch points, extrusion, R4 fillet and three chamfers.
+- [SCPC model](scpc/model.py) independently lists all **58 native SolidCraft commands**, including the named XZ profile, R4 fillet, two chamfers, four rotated arm-tip Sketch cutters and the preserved M5 seats.
 
 This is useful for understanding exactly what SolidCraft receives. SCPC does **not** read Forge's JSON. Its explicit edge selectors describe the current reference dimensions (60 mm arms, 12 mm wall, 24 mm extrusion); when those dimensions change, review the sample coordinates as well. Native CI runs both and compares the final geometry and feature history.
