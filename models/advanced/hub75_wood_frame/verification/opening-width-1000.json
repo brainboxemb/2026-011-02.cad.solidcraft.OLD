@@ -1,0 +1,11 @@
+{
+  "commands": [
+    {
+      "command": "parameters.change",
+      "params": {
+        "name": "opening_width",
+        "expression": "1000 mm"
+      }
+    }
+  ]
+}

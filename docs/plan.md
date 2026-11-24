@@ -191,8 +191,8 @@ Current released-capability follow-ups include:
 | #172 full-catalog native qualification | dev-cad + Forge | **active** | Requalify the corrected 16-root / 18-variant catalog after #427; do not count #154 as a separate root. |
 | #142 Hub75DisplayCase v2 baseline | dev-cad | **complete / corrected by #427** | `hub75-display2` is the single canonical v2 root and contains the accepted #154 lower-compartment geometry. |
 | #135 Bolted Flange circular pattern | dev-cad + Forge | **blocked on Forge #347** | Keep PR #141 parked until the intended applied-feature seed is supported. |
-| #91 frame-thickness native regression | dev-cad | **draft PR #431 / technical green** | Native 12→18 mm saved-design verification passes exact five-Board and eight-CornerBracket envelopes at 0.001 mm tolerance; squash/final run then merge. |
-| #77 CornerBracket placement/associativity | dev-cad | **next after #91** | Add independent native opening-width/opening-height saved-design acceptance for all eight bracket occurrences and orientation/handedness. |
+| #91 frame-thickness native regression | dev-cad | **complete / PR #431** | Native 12→18 mm saved-design verification is merged on dev-cad and checks exact five-Board and eight-CornerBracket envelopes at 0.001 mm tolerance. |
+| #77 CornerBracket placement/associativity | dev-cad | **now / branch active** | Add native 844→1000 mm opening-width and 362→400 mm opening-height saved-design acceptance for all eight bracket occurrences and orientation/handedness, without geometry changes. |
 | #21 interactive SolidCraft viewer | site/product | **later** | Revisit after current model/output contracts stabilize. |
 | #20 multiple verified model views | site/product | **later / partially enabled** | Build on generic extra_views; broader responsive gallery contract remains open. |
 | #365 HUB75 glazing retention/seal | dev-cad | **next design slice** | Define the physical glazing stack, contact/clearance, retention and sealing before modelling guessed hardware. |
