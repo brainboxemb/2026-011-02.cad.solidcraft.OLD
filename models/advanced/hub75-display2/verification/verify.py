@@ -1,4 +1,4 @@
-"""Native SolidCraft acceptance for the lower-compartment HUB75 case."""
+"""Native SolidCraft acceptance for Hub75DisplayCase v2."""
 
 from pathlib import Path
 
@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parent
 
 
 VERIFICATION = SolidCraftVerification(
-    verification_id="hub75-wood-frame-iter2",
+    verification_id="hub75-display2",
     baseline=SolidCraftModelExpectation(
         parameters={"lower_compartment_height": 70.0},
         parameter_match="subset",

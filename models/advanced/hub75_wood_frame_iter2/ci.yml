@@ -1,5 +1,0 @@
-# Forge #679/#749 are included in the accepted Forge v0.13.2 baseline.
-# The lower-compartment HUB75 case is intentionally active under CAD #154.
-id: hub75-wood-frame-iter2
-template: cad-model-build
-process: true

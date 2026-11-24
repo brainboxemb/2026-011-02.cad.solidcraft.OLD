@@ -34,8 +34,8 @@ from model_catalog import (  # noqa: E402
 class ModelMetadataTests(unittest.TestCase):
     def test_all_catalog_variants_come_from_local_model_yaml(self):
         metadata = sorted(ROOT.glob("models/*/*/model.yml"))
-        self.assertEqual(len(metadata), 17)
-        self.assertEqual(len(MODELS), 19)
+        self.assertEqual(len(metadata), 16)
+        self.assertEqual(len(MODELS), 18)
         self.assertEqual(len(COMMAND_SOURCES), 5)
         self.assertEqual(
             {item.parent for item in metadata},
@@ -47,8 +47,8 @@ class ModelMetadataTests(unittest.TestCase):
             ("plate", "vent-plate", "bolted-flange"),
         )
         self.assertEqual(
-            tuple(MODELS)[-3:],
-            ("hub75-wood-frame", "hub75-display2", "hub75-wood-frame-iter2"),
+            tuple(MODELS)[-2:],
+            ("hub75-wood-frame", "hub75-display2"),
         )
         self.assertEqual(
             tuple(SECTIONS),

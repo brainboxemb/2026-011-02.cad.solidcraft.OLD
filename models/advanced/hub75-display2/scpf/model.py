@@ -1,4 +1,4 @@
-"""Hub75DisplayCase v2 baseline assembled from named parts and subassemblies."""
+"""Hub75DisplayCase v2 with the lower compartment, assembled from named parts and subassemblies."""
 
 from assemblies.corner_brackets import CornerBrackets
 from assemblies.glass_frame import GlassFrame
@@ -8,7 +8,7 @@ from parts.window import Window
 
 
 class Hub75DisplayCaseV2:
-    """Hub75DisplayCase v2; initially matches the verified v1 baseline."""
+    """Second-generation HUB75 display case with a lower storage compartment."""
 
     # Coordinate / datum conventions
     #
@@ -16,20 +16,21 @@ class Hub75DisplayCaseV2:
     #           Changing frame wood thickness grows the cabinet outwards in ±X;
     #           the opening itself stays centred and keeps opening_width.
     # Y = 0 : front face of the wooden cabinet.
-    #           cabinet_depth grows only towards +Y. The rear sidewall face is
-    #           Y=cabinet_depth and the back board starts at that same plane.
+    #           cabinet_depth is the 120 mm base depth of the wooden cabinet.
+    #           side_panel_depth is kept separately because the side-wall
+    #           recess is defined from that rear edge.
     # Z = 0 : outside bottom face of the wooden cabinet.
-    #           frame_wood_thickness grows upwards from here; the opening starts
-    #           at Z=frame_wood_thickness and keeps opening_height.
     #
-    # Derived reference planes:
-    #   opening X = ±opening_width / 2
-    #   cabinet X = ±(opening_width / 2 + frame_wood_thickness)
-    #   opening Z = frame_wood_thickness ..
-    #               frame_wood_thickness + opening_height
-    #   cabinet rear Y = cabinet_depth
-    #   back board front Y = cabinet_depth
-    #   roof front Y = -roof_front_overhang (the deliberate front exception)
+    # Vertical stack from Z=0:
+    #   bottom board
+    #   lower_compartment_height clear storage space
+    #   intermediate shelf
+    #   opening_height display opening
+    #   roof board
+    #
+    # The bottom, intermediate shelf and roof all use frame_wood_thickness.
+    # Therefore the display opening begins at:
+    #   2 * frame_wood_thickness + lower_compartment_height
     #
     # Parameter rule: dimensions may move these reference planes, but no
     # dependent part may freeze such a relationship into an occurrence.move.
@@ -44,10 +45,14 @@ class Hub75DisplayCaseV2:
     opening_height = 362.0
     panel_recess_depth = 25.0
 
+    # Lower storage compartment
+    lower_compartment_height = 70.0
+
     # Wood
     frame_wood_thickness = 12.0
     panel_wood_thickness = 9.0
-    cabinet_depth = 100.0
+    cabinet_depth = 120.0
+    side_panel_depth = 120.0
     roof_front_overhang = 10.0
     roof_rear_overhang = 1.0
     corner_radius = 4.0
@@ -60,7 +65,10 @@ class Hub75DisplayCaseV2:
     glazing_wood_depth = 12.0
 
     def build(self):
-        opening_bottom_z = self.frame_wood_thickness
+        opening_bottom_z = (
+            2 * self.frame_wood_thickness
+            + self.lower_compartment_height
+        )
 
         panels = HUB75Panels(
             opening_height=self.opening_height,
@@ -71,9 +79,11 @@ class Hub75DisplayCaseV2:
         frame = WoodFrame(
             opening_width=self.opening_width,
             opening_height=self.opening_height,
+            lower_compartment_height=self.lower_compartment_height,
             frame_wood_thickness=self.frame_wood_thickness,
             panel_wood_thickness=self.panel_wood_thickness,
             cabinet_depth=self.cabinet_depth,
+            side_panel_depth=self.side_panel_depth,
             roof_front_overhang=self.roof_front_overhang,
             roof_rear_overhang=self.roof_rear_overhang,
             corner_radius=self.corner_radius,
@@ -82,6 +92,7 @@ class Hub75DisplayCaseV2:
         brackets = CornerBrackets(
             opening_width=self.opening_width,
             opening_height=self.opening_height,
+            lower_compartment_height=self.lower_compartment_height,
             frame_wood_thickness=self.frame_wood_thickness,
             cabinet_depth=self.cabinet_depth,
             bracket_width=self.bracket_width,

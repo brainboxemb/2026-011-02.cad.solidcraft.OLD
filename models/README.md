@@ -53,8 +53,7 @@ native parameter/edge-selector semantics.
   worktop and a first assembly with an 800 mm Festool-profile GuideRail.
 - [Five-panel screen](advanced/hub75-screen/README.md)
 - [Hub75DisplayCase](advanced/hub75_wood_frame/README.md)
-- [Hub75DisplayCase v2](advanced/hub75-display2/README.md) starts from the same verified five-panel baseline but owns a separate source tree for parallel v2 development.
-- [WoodenHub75BoxIter2](advanced/hub75_wood_frame_iter2/README.md) is the independent lower-compartment model from #154; its final distinct product/class name is tracked by #422.
+- [Hub75DisplayCase v2](advanced/hub75-display2/README.md) is the second-generation enclosure: it keeps the five-panel display opening and adds the 70 mm lower compartment, 30/40/30 bays, hand openings and inset rear board from #154.
 
 The wooden enclosure keeps its top-level dimensions and composition in
 [parameterized `model.py`](advanced/hub75-wood-frame/scpf/model.py), while

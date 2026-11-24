@@ -1,5 +1,5 @@
-# Forge #679 is released in the accepted v0.13.1 baseline.
-# Hub75DisplayCase v2 is intentionally active under CAD #142.
+# #142 established the v2 root; #154 supplied its lower-compartment geometry.
+# #427 consolidates both histories into this one canonical Hub75DisplayCase v2 root.
 id: hub75-display2
 template: cad-model-build
 process: true
