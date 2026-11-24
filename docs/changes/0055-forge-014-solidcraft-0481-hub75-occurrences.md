@@ -31,6 +31,9 @@ HUB75 geometry, placements, Cylinder definitions or render-specific hiding.
 ## Repository contract
 
 - `dependencies.repos` owns the exact Forge source revision.
+- `scripts/ci/forge_dependency.py` reads the expected SolidCraft version from
+  `ci/toolchain.json` and requires the pinned Forge package contract to match;
+  it does not carry a second hardcoded SolidCraft version.
 - `ci/toolchain.json` owns the immutable SolidCraft runtime and expected
   SolidCraft version.
 - `cad-ci.yml` uses the same runtime/version for the shared CAD graph.
