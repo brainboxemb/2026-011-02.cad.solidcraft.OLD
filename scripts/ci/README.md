@@ -7,7 +7,7 @@ belong to released `tool.cad.ci` / `lib.py.cad.ci`.
 | File | Responsibility |
 | --- | --- |
 | `bootstrap_cad_ci.py` | Read exact Forge/SCPC source pins and prepare those source checkouts. |
-| `forge_dependency.py` | Build one pinned Forge wheel + provenance. |
+| `forge_dependency.py` | Build one pinned Forge wheel + provenance and require its `TESTED_SOLIDCRAFT_VERSION` to match `ci/toolchain.json`. |
 | `scpc_dependency.py` | Build one pinned SCPC wheel + provenance. |
 | `verification_package.py` | Build the exact released CAD-verification wheel. |
 | `repository_tests.py` | Expose shared dependency wheels and run repository tests once. |

@@ -24,14 +24,14 @@
 > build store, publisher or Python HTML generator.
 >
 > **Model build gate:** execution state is explicit in each model root's
-> `ci.yml`. Forge v0.13.2 keeps all physical roots active. The wooden HUB75
+> `ci.yml`. Forge v0.14.0 keeps all physical roots active. The wooden HUB75
 > family has exactly two enclosure roots: Hub75DisplayCase v1
 > (`hub75_wood_frame`) and Hub75DisplayCase v2 (`hub75-display2`). CAD #427
 > consolidates the accepted #154 lower-compartment geometry and its 70→90 mm
 > semantic verification into that canonical v2 root; do not recreate
-> `hub75_wood_frame_iter2` as a third product. Forge #753 / CAD #388 remains
-> a separate component-local Cylinder/occurrence problem. Do not add CAD-local
-> compiler, import or naming workarounds. Every processed model must at least
+> `hub75_wood_frame_iter2` as a third product. Forge #753 is released in v0.14.0 with runtime v0.3.5 / SolidCraft 0.48.1;
+> CAD #388 now owns downstream consumer acceptance of that fix. Do not add
+> CAD-local compiler, import or naming workarounds. Every processed model must at least
 > build and produce the required saved outputs.
 >
 > **Generic CAD-CI requests go through Forge first:** track the common

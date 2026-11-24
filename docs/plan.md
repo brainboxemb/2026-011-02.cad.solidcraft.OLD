@@ -20,10 +20,10 @@ dev-cad
 dev-ci
 ```
 
-Current heads before #421:
+Current permanent heads at this checkpoint:
 
-- `main`: `6be947fd47333389513e64a73ae19649eb80796a`;
-- `dev-cad`: `e7149d2b402c4ba30835c6b56aeb5373205ef496`;
+- `main`: `e2ceb6e3a6fef572d532996daf6293ed6ae7c7d7`;
+- `dev-cad`: `b9fd5b6062b3a6e399612fcf3b3f0b4006af4455`;
 - `dev-ci`: `c3d46976c8810487b74a802faf1009cb8608e4b0`.
 
 Stable `main` includes the accepted #344/#350 model-detail presentation and
@@ -46,13 +46,14 @@ Pure repository-instruction/documentation corrections in `AGENTS.md` and
 work. Documentation belonging to a code/model change stays with that issue,
 branch and PR.
 
-Current CAD runtime baseline is SolidCraft 0.45.0. CAD #421 adopts released
-Forge v0.13.2 at exact commit
-`ea5710a5d2d33b0633b93c5da95dd5b74f126aa4`. v0.13.2 contains the
-v0.13.1 capability batch plus Forge #796's symbolic placed-primitive hotfix.
-The temporary #408/#412 detailed `hub75-panel` gate is therefore removed and
-the model plus its direct repository tests run normally again. Forge #753 /
-CAD #388 remains a separate owner-layer blocker.
+CAD #388 is now the active runtime/Forge consumer acceptance. The owner-layer
+blocker is released: Forge v0.14.0 at exact source
+`cd46d6797df319b9d13605c11568990113772700` is qualified with immutable
+`docker.cad.solidcraft v0.3.5` / SolidCraft 0.48.1, and retains the
+component-local joined-Cylinder occurrence regression permanently. This CAD
+repository must adopt those exact released inputs and prove the five-panel
+`hub75-screen` has no detached rear-interface cylinders before #388 closes.
+No CAD-local geometry workaround is allowed.
 
 ## Current work order
 
@@ -134,6 +135,17 @@ generic Forge gaps.
   `extra_views` / `EXTRA_SNAPSHOTS` mechanism already proves model-owned
   multiple views, but #20's broader gallery contract is not yet complete.
 
+## Forge v0.14.0 / SolidCraft 0.48.1 acceptance
+
+CAD #388 is **now / dev-cad**. Adopt exact Forge v0.14.0 source
+`cd46d6797df319b9d13605c11568990113772700`, runtime
+`ghcr.io/brainboxemb/cad-solidcraft:v0.3.5` and SolidCraft 0.48.1. Require
+normal repository tests plus the shared SolidCraft build for the affected
+HUB75 roots. Acceptance is the durable five-panel `hub75-screen` render with
+the five intended panel occurrences and no loose mounting/reinforcement/locator
+Cylinder features at the component-definition origin. Once accepted, close
+#388 and unblock the already-implemented #375 / PR #390 assembly acceptance.
+
 ## Forge v0.13.2 detailed-panel adoption
 
 CAD #421 / PR #423 adopted exact Forge v0.13.2 and restored `hub75-panel`
@@ -199,9 +211,9 @@ Current released-capability follow-ups include:
 | #371 Detailed HUB75 panel completion | tracking | **tracking only** | Reusable-panel work is split into #373 rear-frame contour, #374 mounting interfaces and #375 connector envelopes. |
 | #373 HUB75 rear-frame bay contours | dev-cad + Forge | **draft PR #430 / technical green** | R5/stepped bay contours plus 0.8 mm rail recess are native-green; keep draft only for exact rear-view render review through tool.cad.ci #181. |
 | #374 HUB75 mounting tubes/bushings/locator pins | dev-cad + Forge/SolidCraft | **standalone merged / assembly gate #388** | Re-run standalone native acceptance on v0.13.2; keep final five-panel acceptance blocked on #388. |
-| #375 HUB75 connector envelopes | dev-cad | **implemented / draft PR #390; blocked on #388 before merge** | Refresh standalone acceptance on v0.13.2; final assembly acceptance remains blocked on #388. |
-| #388 HUB75 component-local Cylinder placement regression | dev-cad + Forge/SolidCraft | **blocked on owner-layer qualification** | Five panel bodies are placed correctly, but the 14 native Cylinder join features can appear detached. Forge #753 / draft PR #754 owns the minimal rotated-component reproducer. SolidCraft 0.45 issue #21098 / PR #21145 is the primary runtime hypothesis, not yet proven or released. |
-| #382 Stable-to-dev-cad synchronization / CAD checkpoint | repository governance | **Phase A complete; Phase B blocked on #388** | Exact `main -> dev-cad` merge `200c902f976ff6809692cc344379bbdc10dcbd13` is green and source-matched in build/Pages. Do not promote `dev-cad -> main` while #388 remains open. |
+| #375 HUB75 connector envelopes | dev-cad | **implemented / draft PR #390; waiting on #388 acceptance** | After #388 is durable-green on v0.14.0 / 0.48.1, refresh PR #390 and complete final assembly acceptance. |
+| #388 HUB75 component-local Cylinder placement regression | dev-cad + Forge/SolidCraft | **now / owner fix released; consumer acceptance** | Adopt Forge v0.14.0 + runtime v0.3.5 / SolidCraft 0.48.1 and prove the durable five-panel screen contains no detached component-local Cylinder features. No CAD-local workaround. |
+| #382 Stable-to-dev-cad synchronization / CAD checkpoint | repository governance | **Phase A complete; Phase B waits on #388 consumer acceptance** | Do not promote `dev-cad -> main` until the v0.14.0 / 0.48.1 five-panel acceptance is durable-green and #388 is closed. |
 | #366 HUB75 rear/electrical interfaces | dev-cad | **blocked on reusable panel children** | After #371 children are accepted, model only enclosure-side clearance/access/cable consequences; do not duplicate panel dimensions. |
 | #367 HUB75 exploded view | dev-cad + Forge | **blocked on Forge #751** | SolidCraft 0.45 has native `explode.create/show`; Forge #751 owns the reusable wrapper/qualification, then CAD publishes through generic extra views. |
 | #7 complete HUB75 screen assembly | tracking | **tracking only** | Remaining work is split across #8/#77/#91/#365/#366/#367 plus #20/#21; do not create one broad #7 implementation PR. |
@@ -237,15 +249,14 @@ shared exact-PR render evidence gap tracked by tool.cad.ci #181.
 
 ## Next checkpoint
 
-1. finish #91 / PR #431: squash to one logical commit, re-run the already-green
-   native 12→18 mm five-Board/eight-CornerBracket verification, then merge;
-2. implement #77 separately with native opening-width/opening-height saved
-   designs and explicit eight-bracket orientation/handedness acceptance;
+1. complete #388 on `dev-cad`: adopt exact Forge v0.14.0 and immutable runtime
+   v0.3.5 / SolidCraft 0.48.1, then require source-matched durable
+   `hub75-screen` acceptance with no detached Cylinder features;
+2. after #388 closes, refresh #375 / PR #390 and finish its five-panel connector
+   assembly acceptance;
 3. keep #426/#348, #429/#362 and #430/#373 draft on the common exact-render
    review gate; fix that generically in tool.cad.ci #181, never per consumer;
-4. keep #374 as already merged standalone and #375/PR #390 parked behind #388
-   for final five-panel assembly acceptance;
-5. continue the remaining independent model slices after #77;
-6. keep #417 as the later HUB75 path/slug compatibility migration;
-7. do not promote `dev-cad -> main` until the deliberate stable checkpoint
-   criteria are met.
+4. continue the remaining independent model slices, including #365 design work;
+5. keep #417 as the later HUB75 path/slug compatibility migration;
+6. choose the deliberate `dev-cad -> main` checkpoint only after the active CAD
+   batch is coherent and durable-green.
