@@ -1,5 +1,8 @@
 [
   {
+    "active": 1
+  },
+  {
     "name": "d1_SimpleMFT__Clamp slots",
     "sketch": 6,
     "sketching_view": 1
@@ -88,7 +91,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 368.799538,
+    "ms": 230.91431200000002,
     "name": "Clamp slots",
     "removed_bodies": [],
     "warning": null
@@ -102,7 +105,7 @@
     ],
     "created_bodies": [],
     "feature": 8,
-    "ms": 197.712197,
+    "ms": 132.308666,
     "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null
@@ -348,7 +351,7 @@
       "GuideRail"
     ],
     "feature": 12,
-    "ms": 28.689712999999998,
+    "ms": 18.21543,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null

@@ -1,6 +1,12 @@
 {
   "commands": [
     {
+      "command": "component.activate",
+      "params": {
+        "component": "SimpleMFT"
+      }
+    },
+    {
       "command": "sketch.edit",
       "params": {
         "sketch": 4

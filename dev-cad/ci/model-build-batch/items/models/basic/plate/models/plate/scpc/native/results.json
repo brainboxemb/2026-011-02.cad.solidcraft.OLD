@@ -26,7 +26,7 @@
       "Plate"
     ],
     "feature": 1,
-    "ms": 3.565645,
+    "ms": 2.905438,
     "name": "Box1",
     "removed_bodies": [],
     "warning": null
@@ -40,7 +40,7 @@
     ],
     "created_bodies": [],
     "feature": 2,
-    "ms": 83.631245,
+    "ms": 44.685885,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null
@@ -54,7 +54,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 29.493232000000003,
+    "ms": 18.593342999999997,
     "name": "Hole1",
     "removed_bodies": [],
     "warning": null
@@ -68,7 +68,7 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 32.330357,
+    "ms": 20.582172999999997,
     "name": "Hole2",
     "removed_bodies": [],
     "warning": null
@@ -82,7 +82,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 34.610143,
+    "ms": 22.016113,
     "name": "Hole3",
     "removed_bodies": [],
     "warning": null
@@ -96,7 +96,7 @@
     ],
     "created_bodies": [],
     "feature": 6,
-    "ms": 38.993885,
+    "ms": 24.422275,
     "name": "Hole4",
     "removed_bodies": [],
     "warning": null

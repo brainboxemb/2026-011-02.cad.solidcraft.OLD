@@ -193,7 +193,7 @@
       "CornerBracket"
     ],
     "feature": 2,
-    "ms": 6.902735,
+    "ms": 5.14721,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null
@@ -207,7 +207,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 15.058488,
+    "ms": 10.277796,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null
@@ -221,7 +221,7 @@
     ],
     "created_bodies": [],
     "feature": 4,
-    "ms": 103.067905,
+    "ms": 61.266571,
     "name": "Chamfer1",
     "removed_bodies": [],
     "warning": null
@@ -235,7 +235,7 @@
     ],
     "created_bodies": [],
     "feature": 5,
-    "ms": 141.882156,
+    "ms": 80.335683,
     "name": "Chamfer2",
     "removed_bodies": [],
     "warning": null
@@ -249,7 +249,7 @@
     ],
     "created_bodies": [],
     "feature": 6,
-    "ms": 29.725224,
+    "ms": 19.745747,
     "name": "Hole1",
     "removed_bodies": [],
     "warning": null
@@ -263,7 +263,7 @@
     ],
     "created_bodies": [],
     "feature": 7,
-    "ms": 158.14593299999999,
+    "ms": 103.07176799999999,
     "name": "Hole2",
     "removed_bodies": [],
     "warning": null
@@ -277,7 +277,7 @@
     ],
     "created_bodies": [],
     "feature": 8,
-    "ms": 53.799532,
+    "ms": 34.048637,
     "name": "Hole3",
     "removed_bodies": [],
     "warning": null
@@ -291,7 +291,7 @@
     ],
     "created_bodies": [],
     "feature": 9,
-    "ms": 70.80413100000001,
+    "ms": 46.3078,
     "name": "Hole4",
     "removed_bodies": [],
     "warning": null
@@ -305,7 +305,7 @@
     ],
     "created_bodies": [],
     "feature": 10,
-    "ms": 36.381038999999994,
+    "ms": 24.551936,
     "name": "Hole5",
     "removed_bodies": [],
     "warning": null
@@ -319,7 +319,7 @@
     ],
     "created_bodies": [],
     "feature": 11,
-    "ms": 210.843215,
+    "ms": 142.840097,
     "name": "Hole6",
     "removed_bodies": [],
     "warning": null
@@ -333,7 +333,7 @@
     ],
     "created_bodies": [],
     "feature": 12,
-    "ms": 62.805683,
+    "ms": 44.723983000000004,
     "name": "Hole7",
     "removed_bodies": [],
     "warning": null
@@ -347,7 +347,7 @@
     ],
     "created_bodies": [],
     "feature": 13,
-    "ms": 82.61948500000001,
+    "ms": 55.308431,
     "name": "Hole8",
     "removed_bodies": [],
     "warning": null
@@ -361,7 +361,7 @@
     ],
     "created_bodies": [],
     "feature": 14,
-    "ms": 42.698083999999994,
+    "ms": 28.217463000000002,
     "name": "Hole9",
     "removed_bodies": [],
     "warning": null
@@ -375,7 +375,7 @@
     ],
     "created_bodies": [],
     "feature": 15,
-    "ms": 197.389761,
+    "ms": 127.719214,
     "name": "Hole10",
     "removed_bodies": [],
     "warning": null
@@ -389,7 +389,7 @@
     ],
     "created_bodies": [],
     "feature": 16,
-    "ms": 75.405316,
+    "ms": 46.87603,
     "name": "Hole11",
     "removed_bodies": [],
     "warning": null
@@ -403,7 +403,7 @@
     ],
     "created_bodies": [],
     "feature": 17,
-    "ms": 96.659596,
+    "ms": 61.219365999999994,
     "name": "Hole12",
     "removed_bodies": [],
     "warning": null
@@ -417,7 +417,7 @@
     ],
     "created_bodies": [],
     "feature": 18,
-    "ms": 50.803516,
+    "ms": 32.746968,
     "name": "Hole13",
     "removed_bodies": [],
     "warning": null
@@ -431,7 +431,7 @@
     ],
     "created_bodies": [],
     "feature": 19,
-    "ms": 219.294255,
+    "ms": 140.165028,
     "name": "Hole14",
     "removed_bodies": [],
     "warning": null
@@ -445,7 +445,7 @@
     ],
     "created_bodies": [],
     "feature": 20,
-    "ms": 82.544314,
+    "ms": 52.040606000000004,
     "name": "Hole15",
     "removed_bodies": [],
     "warning": null
@@ -459,7 +459,7 @@
     ],
     "created_bodies": [],
     "feature": 21,
-    "ms": 110.022363,
+    "ms": 68.955664,
     "name": "Hole16",
     "removed_bodies": [],
     "warning": null

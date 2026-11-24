@@ -16,7 +16,7 @@
     "ci/forge-package": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "b326f1e7c8e004c92afc1c4f15fc8ba1cdd6e4775659c88397c39f608514b253",
+      "final_bundle_sha256": "075ab479a9cbab2fa40461a16dc0769e1518d0cb146f5e52a1f7169c2b3bf858",
       "final_step": "wheel",
       "final_target_spec_digest": "daa5d20b63e7dbcc89b9d1e6bbef15188168b6d0302890eb37d0d93217fb90d7",
       "item_id": "forge-package",
@@ -24,12 +24,12 @@
         "dist",
         "provenance.json"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "ci/model-build-batch": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "396e9f27b1fa1820704fb065dbd33352aef2275770c3dbc9fd3efd145ad7f8af",
+      "final_bundle_sha256": "ce90e4abf66ce830465aabd0c2fa048127f03849d1a15800ed32f6b86c2df413",
       "final_step": "build_models",
       "final_target_spec_digest": "32ab570e7a53646e3708e8fb37f870df1143eb0f3308f69140e59c4e26ca07f8",
       "item_id": "model-build-batch",
@@ -38,24 +38,24 @@
         "items",
         "manifest.json"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "ci/repository-tests": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "12c25663ea6fa6e22ea1401e9513a7ea3066a51978809314deda2dac769b0701",
+      "final_bundle_sha256": "eee9f8d5be28fbe7c591aa747a78b4df73cd4968df2a14ab533b825008006532",
       "final_step": "unittest",
       "final_target_spec_digest": "b7682b0c7f51f8b38d772037ec86790df7e7a59323a0fd941045852ff9d5a5ec",
       "item_id": "repository-tests",
       "outputs": [
         "result.json"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "ci/scpc-package": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "e57fbe015eb98c9a0033184abd7bd2d880f94f7e97935b6f7786499787aec5fe",
+      "final_bundle_sha256": "ce89242797ec903c535320a8d5db8d413fe7ca9b0e531c3f63342288beb0f233",
       "final_step": "wheel",
       "final_target_spec_digest": "d2f8533122b875e8738ae9d6ba3599a9a803fedcca7a34b6ddd971a2a02255df",
       "item_id": "scpc-package",
@@ -63,12 +63,12 @@
         "dist",
         "provenance.json"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/advanced/hub75-display2": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "a0108540e813053bfcfb10f3c307963aa4c4a259f35f8f4c18eedaa0ca2c55b6",
+      "final_bundle_sha256": "9e831e865269cab2bade40d122add6083c22bfde93e4422c0c4644c5150d178c",
       "final_step": "build_results",
       "final_target_spec_digest": "d71d645f85ba7f5c77b9d1205d7fe82bc3df69cc15e053b00942dd35c742fb58",
       "item_id": "hub75-display2",
@@ -77,12 +77,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/advanced/hub75_screen": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "cd555547c30b65667de6517c5b0ce12e23daa1c2c9f6c8f802a2c26e12a44eee",
+      "final_bundle_sha256": "9265281de923ac2a2f30761764c6b26f9df4dfb525bef538267bf7997749cd56",
       "final_step": "build_results",
       "final_target_spec_digest": "e356b8041f140d044033cb3ac2afdfac669b815a6953e93b1d13380e9e1ecd5d",
       "item_id": "hub75-screen",
@@ -91,12 +91,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/advanced/hub75_wood_frame": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "6820b835e944fedecbaa05dd759af45d502ea6185c99e384be123c1e25f029ba",
+      "final_bundle_sha256": "356c18a28813e5d8f892b26842b8911008e41abda138aaf829df29cf3dc6946c",
       "final_step": "build_results",
       "final_target_spec_digest": "47bf59594feaa61424d23439315272edf7492c2594a4461e57f36b2861537a31",
       "item_id": "hub75-wood-frame",
@@ -105,12 +105,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/advanced/simple_mft": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "80e89b06b5bdf415de8b024aabe772ae94067899a4d024842132313604616a57",
+      "final_bundle_sha256": "b209bd415b92b8fa96a96874e009dbcd72763d4d6c75aed983296b520f7a2161",
       "final_step": "build_results",
       "final_target_spec_digest": "65c6de57afc4780a02d9b76b6affba370551809162e53ba0d93967943c14ec33",
       "item_id": "simple-mft",
@@ -119,12 +119,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/basic/bolted_flange": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "6b081f6c1a5f8a3d1c52b23329656df2edcf76c2f05d4191f753c7150c6b21b7",
+      "final_bundle_sha256": "81273bdfd5d5bf271817a9798a1b50551b5ae1c57f1c9d3e4b8f8bda4e30d963",
       "final_step": "build_results",
       "final_target_spec_digest": "644fd6761f946b66d62f5e91aef0030a83946231de17695b0fe697df3b721952",
       "item_id": "bolted-flange",
@@ -133,12 +133,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/basic/bracket": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "b5aa016e6c9acf18e1641ada371cd0d7e30d57ed28b8cd980485fddacc118bd9",
+      "final_bundle_sha256": "01eedc58081616c1b20587df4ad6f23e624d4906c2fa832afb3086db7f44b7d6",
       "final_step": "build_results",
       "final_target_spec_digest": "250d780837c1f9bf045cbbfdfaee9dea28227c31bfba543bcf0fd9684d7ba518",
       "item_id": "bracket",
@@ -147,12 +147,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/basic/csg_cube": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "624d8445e8f537050ba1addeb5f0caf1564eaf7e241c91c3168233febcfaf99a",
+      "final_bundle_sha256": "4c2e3854320bf30e8d610a9813006ffb11e0d14fc6afe998011998f443b69e02",
       "final_step": "build_results",
       "final_target_spec_digest": "c25c16c129ea4850aa1ea93a4701e387a4695a199f7a49ccdff4e124c2f4ec85",
       "item_id": "csg-cube",
@@ -161,12 +161,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/basic/plastic_enclosure": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "345278a7d7feb7ff82b7e061a41450d9e2e8b092d321d9ce4c12381c1fdbe900",
+      "final_bundle_sha256": "bfb37c9b801fc56b7deda8b98c01755218a54842436c6c02214e8bf0d617359e",
       "final_step": "build_results",
       "final_target_spec_digest": "334452ec52a60bddf3c8c0830d04bfb24b9beca8a9bc51639c1bb84b5d83907f",
       "item_id": "plastic-enclosure",
@@ -175,12 +175,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/basic/plastic_enclosure_pi": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "c1a3e46e0f3d84c73cbc6e5bab758401451f366a51196d851e4545975ad4333a",
+      "final_bundle_sha256": "7e4ff3f37199b583db6a4dcb6297bef0182fb9a36331d5d20df1072b574aff74",
       "final_step": "build_results",
       "final_target_spec_digest": "dffff044b3bc085d52781f8c071d68b9c87c8d30e1be1ff16dab1fedd41f6f69",
       "item_id": "plastic-enclosure-pi",
@@ -189,12 +189,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/basic/plate": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "25193afc6c580a1b0979e573b548a194d7dadd4076ed1e1967706e3f30e7dd9e",
+      "final_bundle_sha256": "ec346bd37c6e09c69bece7d47baf2770b29064f584a74d873f66135e0bca644c",
       "final_step": "build_results",
       "final_target_spec_digest": "9f4c116f1096ab9c3d6e1545b70510364474492063e8c44b17243818dd2e97c0",
       "item_id": "plate",
@@ -203,12 +203,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/basic/sample_plate": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "c43cb8128e2cd92fd6fe946e4eaa9b15a69e8f0ec4b86680c55885c7b8d2d9ae",
+      "final_bundle_sha256": "0c079be2424f3d7dc8e812c9ace277fa7ee6b885738efbf3b024a8dfe66a9992",
       "final_step": "build_results",
       "final_target_spec_digest": "a6dffbfcb49cfc639aec1be1b83f49f06ea00c93fc4192c64a8a1b5a09cc86a5",
       "item_id": "sample-plate",
@@ -217,12 +217,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/basic/vent_plate": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "b0c7d7070bf6da1b5ce5088a12e7a22676f8783901d277086c4f6c44a56e5a47",
+      "final_bundle_sha256": "e8439b5305583350b7730e19bc64f0aec8c22af51fb509e65aef01f610ddd066",
       "final_step": "build_results",
       "final_target_spec_digest": "a3983bae0b3fbd2e653cd09d28cc5d0943f76ce17958fdafdcf84261712a30d3",
       "item_id": "vent-plate",
@@ -231,12 +231,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/components/corner_bracket": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "ca1bcc025e27626a7ef80dfd6ba7d6d8bae0a27a8f9fda4d14da38cc93e0f0ac",
+      "final_bundle_sha256": "6d7abc8c69131cf1173c5934818b2581fef3ead4a99e0a76a23b72fdde960126",
       "final_step": "build_results",
       "final_target_spec_digest": "447a83741e04ff1fcf0a8bb1b92f67622fa9bb9b16f417ca553131f5e8e40cab",
       "item_id": "corner-bracket",
@@ -245,12 +245,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/components/flex_bench_dog": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "62a68ed2bf11bb689737bc34a7c2c8faa355e4b2af5923fc913450c31d56f7e8",
+      "final_bundle_sha256": "aeef36c4fbfdee336323593dd956605d5fd2256f7e70298ff0de89715cf506d3",
       "final_step": "build_results",
       "final_target_spec_digest": "eaf204e02919a505c5f3ed99a90a0a1e3195d05aa84dadc586f499d1819ab308",
       "item_id": "flex-bench-dog",
@@ -259,12 +259,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/components/guide_rail": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "3e510044f0405ba9265df66f74cb6e2489594b81b82bc66a75af214feac7df3c",
+      "final_bundle_sha256": "e5092e53f9ce6f6dbc626aa6ff83b849d0bc0d99a885b769b666a10aab59f5e8",
       "final_step": "build_results",
       "final_target_spec_digest": "4c0e34662378d270f20fa7cedc7c78ba0068fbda26c00e5211196e3e9d0eafd4",
       "item_id": "guide-rail",
@@ -273,12 +273,12 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     },
     "models/components/hub75_panel": {
       "engine": "scons",
       "engine_schema": 4,
-      "final_bundle_sha256": "ebc1320317326bff1677e81b45a7474f2c83b25d03bf4061599a1b355ea4bc18",
+      "final_bundle_sha256": "728802000bd441262e411871ad75f95cee24d3128c763e01b18393eb59169ce8",
       "final_step": "build_results",
       "final_target_spec_digest": "f51f13730a9765df6d47dc179a74872f2ab384ecf4d6d7fef9f4c771d7b7a0f7",
       "item_id": "hub75-panel",
@@ -287,11 +287,11 @@
         "manifest.json",
         "models"
       ],
-      "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+      "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
     }
   },
   "name": "dev-cad",
   "schema": 1,
   "scope": "named",
-  "source_commit": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+  "source_commit": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
 }

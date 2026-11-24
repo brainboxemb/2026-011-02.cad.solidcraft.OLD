@@ -1,5 +1,8 @@
 [
   {
+    "active": 1
+  },
+  {
     "attachment": "exact_face",
     "created": {
       "constraints": [],

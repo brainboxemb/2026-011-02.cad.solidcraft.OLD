@@ -1,9 +1,9 @@
 {
-  "commit": "cd46d6797df319b9d13605c11568990113772700",
+  "commit": "efc88bfcaf452051d721347f2e5ca561decad654",
   "repository": "https://github.com/brainboxemb/lib.py.solidcraft.forge.git",
   "schema": 1,
-  "sha256": "92fdf5cc817ceb8746004fc86eb6ee3f501a2a5ba932b4b994e6b80903db3031",
+  "sha256": "ec25f82927a967d0fb5b8918683c9e12eba5b99391f6fc41ca5d4db7f3c63341",
   "solidcraft": "0.48.1",
-  "version": "0.14.0",
-  "wheel": "scpf-0.14.0-py3-none-any.whl"
+  "version": "0.15.0",
+  "wheel": "scpf-0.15.0-py3-none-any.whl"
 }

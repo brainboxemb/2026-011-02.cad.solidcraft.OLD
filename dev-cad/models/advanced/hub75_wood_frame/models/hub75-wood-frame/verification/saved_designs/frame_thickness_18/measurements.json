@@ -1096,7 +1096,7 @@
     {
       "error": null,
       "id": 11,
-      "ms": 0.12102600000000001,
+      "ms": 0.126652,
       "name": "d1_Hub75PanelBasic__Profile",
       "rolled_back": false,
       "suppressed": false,
@@ -1106,7 +1106,7 @@
     {
       "error": null,
       "id": 12,
-      "ms": 3.786458,
+      "ms": 3.3040320000000003,
       "name": "Extrude1",
       "rolled_back": false,
       "suppressed": false,
@@ -1116,7 +1116,7 @@
     {
       "error": null,
       "id": 19,
-      "ms": 3.250868,
+      "ms": 2.805857,
       "name": "Box1",
       "rolled_back": false,
       "suppressed": false,
@@ -1126,7 +1126,7 @@
     {
       "error": null,
       "id": 23,
-      "ms": 1.984094,
+      "ms": 1.3813810000000002,
       "name": "Box2",
       "rolled_back": false,
       "suppressed": false,
@@ -1136,7 +1136,7 @@
     {
       "error": null,
       "id": 24,
-      "ms": 43.511455999999995,
+      "ms": 25.649652,
       "name": "Fillet1",
       "rolled_back": false,
       "suppressed": false,
@@ -1146,7 +1146,7 @@
     {
       "error": null,
       "id": 27,
-      "ms": 2.0631619999999997,
+      "ms": 1.581644,
       "name": "Box3",
       "rolled_back": false,
       "suppressed": false,
@@ -1156,7 +1156,7 @@
     {
       "error": null,
       "id": 28,
-      "ms": 42.621364,
+      "ms": 24.683009,
       "name": "Fillet2",
       "rolled_back": false,
       "suppressed": false,
@@ -1166,7 +1166,7 @@
     {
       "error": null,
       "id": 31,
-      "ms": 1.9944429999999997,
+      "ms": 1.5735219999999999,
       "name": "Box4",
       "rolled_back": false,
       "suppressed": false,
@@ -1176,7 +1176,7 @@
     {
       "error": null,
       "id": 34,
-      "ms": 0.16761299999999998,
+      "ms": 0.17405299999999999,
       "name": "d6_CornerBracket__Profile",
       "rolled_back": false,
       "suppressed": false,
@@ -1186,7 +1186,7 @@
     {
       "error": null,
       "id": 35,
-      "ms": 6.891295,
+      "ms": 4.423968,
       "name": "Extrude2",
       "rolled_back": false,
       "suppressed": false,
@@ -1196,7 +1196,7 @@
     {
       "error": null,
       "id": 36,
-      "ms": 14.786553,
+      "ms": 10.342628,
       "name": "Fillet3",
       "rolled_back": false,
       "suppressed": false,
@@ -1206,7 +1206,7 @@
     {
       "error": null,
       "id": 37,
-      "ms": 101.451576,
+      "ms": 61.345832,
       "name": "Chamfer1",
       "rolled_back": false,
       "suppressed": false,
@@ -1216,7 +1216,7 @@
     {
       "error": null,
       "id": 38,
-      "ms": 143.873948,
+      "ms": 81.44697500000001,
       "name": "Chamfer2",
       "rolled_back": false,
       "suppressed": false,
@@ -1226,7 +1226,7 @@
     {
       "error": null,
       "id": 39,
-      "ms": 184.239041,
+      "ms": 116.203453,
       "name": "Hole1",
       "rolled_back": false,
       "suppressed": false,
@@ -1236,7 +1236,7 @@
     {
       "error": null,
       "id": 40,
-      "ms": 568.985722,
+      "ms": 348.92825300000004,
       "name": "Hole2",
       "rolled_back": false,
       "suppressed": false,
@@ -1246,7 +1246,7 @@
     {
       "error": null,
       "id": 41,
-      "ms": 71.262941,
+      "ms": 46.144909999999996,
       "name": "Hole3",
       "rolled_back": false,
       "suppressed": false,
@@ -1256,7 +1256,7 @@
     {
       "error": null,
       "id": 42,
-      "ms": 61.151265,
+      "ms": 40.666295,
       "name": "Hole4",
       "rolled_back": false,
       "suppressed": false,
@@ -1266,7 +1266,7 @@
     {
       "error": null,
       "id": 43,
-      "ms": 210.276497,
+      "ms": 135.44647600000002,
       "name": "Hole5",
       "rolled_back": false,
       "suppressed": false,
@@ -1276,7 +1276,7 @@
     {
       "error": null,
       "id": 44,
-      "ms": 670.434572,
+      "ms": 414.786387,
       "name": "Hole6",
       "rolled_back": false,
       "suppressed": false,
@@ -1286,7 +1286,7 @@
     {
       "error": null,
       "id": 45,
-      "ms": 111.58138600000001,
+      "ms": 73.691165,
       "name": "Hole7",
       "rolled_back": false,
       "suppressed": false,
@@ -1296,7 +1296,7 @@
     {
       "error": null,
       "id": 46,
-      "ms": 74.006031,
+      "ms": 47.775751,
       "name": "Hole8",
       "rolled_back": false,
       "suppressed": false,
@@ -1306,7 +1306,7 @@
     {
       "error": null,
       "id": 47,
-      "ms": 64.980493,
+      "ms": 43.360658,
       "name": "Hole9",
       "rolled_back": false,
       "suppressed": false,
@@ -1316,7 +1316,7 @@
     {
       "error": null,
       "id": 48,
-      "ms": 252.306257,
+      "ms": 161.98028200000002,
       "name": "Hole10",
       "rolled_back": false,
       "suppressed": false,
@@ -1326,7 +1326,7 @@
     {
       "error": null,
       "id": 49,
-      "ms": 98.098236,
+      "ms": 63.943872,
       "name": "Hole11",
       "rolled_back": false,
       "suppressed": false,
@@ -1336,7 +1336,7 @@
     {
       "error": null,
       "id": 50,
-      "ms": 129.056388,
+      "ms": 102.473208,
       "name": "Hole12",
       "rolled_back": false,
       "suppressed": false,
@@ -1346,7 +1346,7 @@
     {
       "error": null,
       "id": 51,
-      "ms": 75.97191600000001,
+      "ms": 49.458707999999994,
       "name": "Hole13",
       "rolled_back": false,
       "suppressed": false,
@@ -1356,7 +1356,7 @@
     {
       "error": null,
       "id": 52,
-      "ms": 283.519101,
+      "ms": 170.600212,
       "name": "Hole14",
       "rolled_back": false,
       "suppressed": false,
@@ -1366,7 +1366,7 @@
     {
       "error": null,
       "id": 53,
-      "ms": 112.277613,
+      "ms": 69.773556,
       "name": "Hole15",
       "rolled_back": false,
       "suppressed": false,
@@ -1376,7 +1376,7 @@
     {
       "error": null,
       "id": 54,
-      "ms": 149.214063,
+      "ms": 96.36420199999999,
       "name": "Hole16",
       "rolled_back": false,
       "suppressed": false,
@@ -1386,7 +1386,7 @@
     {
       "error": null,
       "id": 64,
-      "ms": 0.148346,
+      "ms": 0.129225,
       "name": "d7_GlassStrip__Profile",
       "rolled_back": false,
       "suppressed": false,
@@ -1396,7 +1396,7 @@
     {
       "error": null,
       "id": 65,
-      "ms": 3.692183,
+      "ms": 2.168903,
       "name": "Extrude3",
       "rolled_back": false,
       "suppressed": false,
@@ -1406,7 +1406,7 @@
     {
       "error": null,
       "id": 69,
-      "ms": 0.083476,
+      "ms": 0.074183,
       "name": "d8_GlassStrip_2__Profile",
       "rolled_back": false,
       "suppressed": false,
@@ -1416,7 +1416,7 @@
     {
       "error": null,
       "id": 70,
-      "ms": 3.286115,
+      "ms": 2.2135599999999998,
       "name": "Extrude4",
       "rolled_back": false,
       "suppressed": false,
@@ -1426,7 +1426,7 @@
     {
       "error": null,
       "id": 74,
-      "ms": 3.064681,
+      "ms": 1.828878,
       "name": "Box5",
       "rolled_back": false,
       "suppressed": false,

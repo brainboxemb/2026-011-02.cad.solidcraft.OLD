@@ -1,12 +1,12 @@
 {
   "engine": "scons",
   "engine_schema": 4,
-  "final_bundle_sha256": "80e89b06b5bdf415de8b024aabe772ae94067899a4d024842132313604616a57",
+  "final_bundle_sha256": "b209bd415b92b8fa96a96874e009dbcd72763d4d6c75aed983296b520f7a2161",
   "final_step": "build_results",
   "final_target_spec_digest": "65c6de57afc4780a02d9b76b6affba370551809162e53ba0d93967943c14ec33",
   "item": "simple-mft",
-  "run_finished_at": "2026-11-24T12:03:27.653Z",
-  "run_started_at": "2026-11-24T12:01:15.692Z",
+  "run_finished_at": "2026-11-24T13:12:05.589Z",
+  "run_started_at": "2026-11-24T13:10:40.113Z",
   "schema": 2,
   "status": "pass"
 }

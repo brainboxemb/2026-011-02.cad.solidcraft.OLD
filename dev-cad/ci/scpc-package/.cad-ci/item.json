@@ -1,12 +1,12 @@
 {
   "engine": "scons",
   "engine_schema": 4,
-  "final_bundle_sha256": "e57fbe015eb98c9a0033184abd7bd2d880f94f7e97935b6f7786499787aec5fe",
+  "final_bundle_sha256": "ce89242797ec903c535320a8d5db8d413fe7ca9b0e531c3f63342288beb0f233",
   "final_step": "wheel",
   "final_target_spec_digest": "d2f8533122b875e8738ae9d6ba3599a9a803fedcca7a34b6ddd971a2a02255df",
   "item": "scpc-package",
-  "run_finished_at": "2026-11-24T12:03:27.653Z",
-  "run_started_at": "2026-11-24T12:01:15.692Z",
+  "run_finished_at": "2026-11-24T13:12:05.589Z",
+  "run_started_at": "2026-11-24T13:10:40.113Z",
   "schema": 2,
   "status": "pass"
 }

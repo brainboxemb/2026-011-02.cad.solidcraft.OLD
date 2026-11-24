@@ -94,7 +94,7 @@
       "SamplePlate"
     ],
     "feature": 2,
-    "ms": 3.475107,
+    "ms": 2.931337,
     "name": "Extrude1",
     "removed_bodies": [],
     "warning": null
@@ -108,7 +108,7 @@
     ],
     "created_bodies": [],
     "feature": 3,
-    "ms": 79.775698,
+    "ms": 44.721088,
     "name": "Fillet1",
     "removed_bodies": [],
     "warning": null

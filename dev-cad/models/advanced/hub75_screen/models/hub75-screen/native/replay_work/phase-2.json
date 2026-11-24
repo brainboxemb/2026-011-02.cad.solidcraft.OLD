@@ -1,6 +1,12 @@
 {
   "commands": [
     {
+      "command": "component.activate",
+      "params": {
+        "component": "Hub75Panel"
+      }
+    },
+    {
       "command": "sketch.create",
       "params": {
         "plane": {
