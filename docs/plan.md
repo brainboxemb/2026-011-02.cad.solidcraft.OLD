@@ -120,10 +120,16 @@ Five panel occurrences are placed correctly, but the detailed component can
 leave joined Cylinder-derived rear features in world/component-definition
 space.
 
-Blocked on the owner layers:
+Forge #753 now contains a merged native reproducer. Exact Forge dev-cad run
+`45361627528` passes on SolidCraft 0.45.0 and its generated preview shows the
+simple Box + one joined Cylinder copied/rotated case correctly: no loose source
+Cylinder is visible.
 
-- Forge #753 / draft PR #754;
-- SolidCraft #21098 / PR #21145.
+Therefore #388 is **not** reproduced by the simplest generic Cylinder-join
+occurrence case. The owner-layer reproducer must preserve more of the real
+Hub75Panel feature history until the smallest failing difference is known.
+SolidCraft #21098 / PR #21145 remains a relevant lead, but is not yet proven to
+be the exact CAD #388 defect.
 
 No CAD-local transform or placement workaround.
 
