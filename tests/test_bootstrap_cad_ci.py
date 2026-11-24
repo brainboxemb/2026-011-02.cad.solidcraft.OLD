@@ -47,7 +47,7 @@ class BootstrapCadCiTests(unittest.TestCase):
 
     def test_repository_pins_are_exact(self):
         expected = {
-            "scpf": "cd46d6797df319b9d13605c11568990113772700",
+            "scpf": "efc88bfcaf452051d721347f2e5ca561decad654",
             "scpc": "fcaa6f9fc8388bc715fcd2fbb149ce6b979566a7",
         }
         for name, sha in expected.items():
