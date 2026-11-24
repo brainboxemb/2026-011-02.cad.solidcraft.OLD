@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 import zipfile
@@ -27,6 +28,28 @@ def wheel_version(path):
     raise RuntimeError("Forge wheel version missing")
 
 
+def expected_solidcraft_version(root=ROOT):
+    """Read the one CAD-owned SolidCraft version contract."""
+    path = root / "ci/toolchain.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    version = data.get("solidcraft")
+    if not isinstance(version, str) or not version.strip():
+        raise RuntimeError("ci/toolchain.json must declare solidcraft")
+    return version.strip()
+
+
+def forge_tested_solidcraft_version(source):
+    """Read Forge's package-level tested SolidCraft contract."""
+    text = (source / "scpf/version.py").read_text(encoding="utf-8")
+    match = re.search(
+        r'(?m)^TESTED_SOLIDCRAFT_VERSION\s*=\s*["\']([^"\']+)["\']\s*$',
+        text,
+    )
+    if match is None:
+        raise RuntimeError("pinned Forge does not declare TESTED_SOLIDCRAFT_VERSION")
+    return match.group(1)
+
+
 def main():
     raw = os.environ.get("CAD_CI_OUTPUT", "").strip()
     if not raw:
@@ -46,16 +69,22 @@ def main():
     wheels = tuple(dist.glob("scpf-*.whl"))
     if len(wheels) != 1:
         raise RuntimeError(f"expected one Forge wheel, found {len(wheels)}")
-    from_version = (source / "scpf/version.py").read_text(encoding="utf-8")
-    if 'TESTED_SOLIDCRAFT_VERSION = "0.45.0"' not in from_version:
-        raise RuntimeError("pinned Forge does not support SolidCraft 0.45.0")
+
+    expected_solidcraft = expected_solidcraft_version()
+    forge_solidcraft = forge_tested_solidcraft_version(source)
+    if forge_solidcraft != expected_solidcraft:
+        raise RuntimeError(
+            "pinned Forge supports SolidCraft "
+            f"{forge_solidcraft}, CAD toolchain expects {expected_solidcraft}"
+        )
+
     wheel = wheels[0]
     provenance = {
         "schema": 1,
         "repository": url,
         "commit": revision,
         "version": wheel_version(wheel),
-        "solidcraft": "0.45.0",
+        "solidcraft": expected_solidcraft,
         "wheel": wheel.name,
         "sha256": hashlib.sha256(wheel.read_bytes()).hexdigest(),
     }
