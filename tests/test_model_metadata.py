@@ -34,8 +34,8 @@ from model_catalog import (  # noqa: E402
 class ModelMetadataTests(unittest.TestCase):
     def test_all_catalog_variants_come_from_local_model_yaml(self):
         metadata = sorted(ROOT.glob("models/*/*/model.yml"))
-        self.assertEqual(len(metadata), 17)
-        self.assertEqual(len(MODELS), 19)
+        self.assertEqual(len(metadata), 16)
+        self.assertEqual(len(MODELS), 18)
         self.assertEqual(len(COMMAND_SOURCES), 5)
         self.assertEqual(
             {item.parent for item in metadata},
@@ -47,8 +47,8 @@ class ModelMetadataTests(unittest.TestCase):
             ("plate", "vent-plate", "bolted-flange"),
         )
         self.assertEqual(
-            tuple(MODELS)[-3:],
-            ("hub75-wood-frame", "hub75-display2", "hub75-wood-frame-iter2"),
+            tuple(MODELS)[-2:],
+            ("hub75-wood-frame", "hub75-display2"),
         )
         self.assertEqual(
             tuple(SECTIONS),
@@ -72,7 +72,7 @@ class ModelMetadataTests(unittest.TestCase):
         ).encode("utf-8")
         actual_crc = zlib.crc32(payload)
         self.assertEqual(
-            actual_crc, 0x28F252D5,
+            actual_crc, 0x9DE50A31,
             "Migration changed the established public model content/order; "
             f"actual CRC is {actual_crc:#010x}",
         )

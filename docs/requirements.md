@@ -186,7 +186,7 @@ acceptance criteria.
 
 ## Model-owned content and website data
 
-- Every one of the 17 physical model roots owns a `model.yml`, following
+- Every one of the 16 physical model roots owns a `model.yml`, following
   the established Forge example metadata vocabulary: section, priority,
   title, tagline, description, parameters, and stages. CAD-specific source,
   diagram, warning, and optional variant/reused-component fields live there

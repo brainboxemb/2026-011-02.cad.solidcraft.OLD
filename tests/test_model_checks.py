@@ -19,7 +19,6 @@ class ModelOwnedPresentationSettingsTests(unittest.TestCase):
             "hub75-display2",
             "hub75-screen",
             "hub75-wood-frame",
-            "hub75-wood-frame-iter2",
             "hub75-panel",
             "flex-bench-dog",
         }

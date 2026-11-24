@@ -19,7 +19,7 @@ from model_catalog import COMMAND_SOURCES, MODELS  # noqa: E402
 class SharedModelBatchTests(unittest.TestCase):
     def test_all_buildable_roots_participate_in_the_shared_build_batch(self):
         roots = sorted(ROOT.glob("models/*/*/ci.yml"))
-        self.assertEqual(len(roots), 17)
+        self.assertEqual(len(roots), 16)
         active = []
         semantic = []
         for file in roots:
@@ -38,7 +38,7 @@ class SharedModelBatchTests(unittest.TestCase):
                 if (file.parent / "verification/verify.py").is_file():
                     semantic.append(root)
 
-        self.assertEqual(len(active), 17)
+        self.assertEqual(len(active), 16)
         blocked = set()
         self.assertEqual(
             {
@@ -49,11 +49,11 @@ class SharedModelBatchTests(unittest.TestCase):
             blocked,
         )
         self.assertEqual(len(semantic), 12)
-        self.assertEqual(len(MODELS), 19)
+        self.assertEqual(len(MODELS), 18)
         self.assertEqual(len(COMMAND_SOURCES), 5)
         self.assertIn("models/components/guide_rail", active)
         self.assertIn("models/advanced/simple_mft", active)
-        self.assertIn("models/advanced/hub75_wood_frame_iter2", active)
+        self.assertIn("models/advanced/hub75-display2", active)
 
 
     def test_one_batch_runtime_and_released_copy_projection(self):

@@ -42,9 +42,9 @@ def item_id_for_slug(slug):
 
 class MigrationCatalogContractTests(unittest.TestCase):
     def test_all_current_catalog_variants_have_an_owning_ci_item(self):
-        self.assertEqual(len(MODELS), 19)
+        self.assertEqual(len(MODELS), 18)
         roots = {catalog_root(slug) for slug in MODELS}
-        self.assertEqual(len(roots), 17)
+        self.assertEqual(len(roots), 16)
 
         physical = set()
         for section in ("basic", "components", "advanced"):
