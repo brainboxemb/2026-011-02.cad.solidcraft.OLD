@@ -18,8 +18,8 @@ class FlexBenchDogTests(unittest.TestCase):
         self.assertEqual(names.count("solid.cone"), 1)
         self.assertEqual(names.count("sketch.create"), 11)
         self.assertEqual(names.count("sketch.rectangle.two_point"), 2)
-        self.assertEqual(names.count("sketch.line"), 0)
-        self.assertEqual(names.count("sketch.slot.center_to_center"), 9)
+        self.assertEqual(names.count("sketch.line"), 9)
+        self.assertEqual(names.count("sketch.slot.center_to_center"), 0)
         self.assertEqual(names.count("solid.extrude"), 11)
         self.assertEqual(names.count("solid.fillet"), 1)
         self.assertEqual(names.count("solid.chamfer"), 3)
@@ -147,19 +147,40 @@ class FlexBenchDogTests(unittest.TestCase):
         self.assertEqual(chamfers[1]["distance"], 1.0)
         self.assertEqual(chamfers[2]["distance"], 0.6)
 
-    def test_recessed_top_logo_uses_nine_independent_slot_rib_cuts(self):
+    def test_recessed_top_logo_uses_nine_independent_polygon_rib_cuts(self):
         commands = run_script(MODEL)["commands"]
-        expected = [
-            ([0.0, 4.0], [3.5, 2.0]),
-            ([3.5, 2.0], [3.5, -2.0]),
-            ([3.5, -2.0], [0.0, -4.0]),
-            ([0.0, -4.0], [-3.5, -2.0]),
-            ([-3.5, -2.0], [-3.5, 2.0]),
-            ([-3.5, 2.0], [0.0, 4.0]),
-            ([0.0, 0.0], [0.0, 4.0]),
-            ([0.0, 0.0], [3.5, -2.0]),
-            ([0.0, 0.0], [-3.5, -2.0]),
-        ]
+
+        segments = (
+            ((0.0, 4.0), (3.5, 2.0)),
+            ((3.5, 2.0), (3.5, -2.0)),
+            ((3.5, -2.0), (0.0, -4.0)),
+            ((0.0, -4.0), (-3.5, -2.0)),
+            ((-3.5, -2.0), (-3.5, 2.0)),
+            ((-3.5, 2.0), (0.0, 4.0)),
+            ((0.0, 0.0), (0.0, 4.0)),
+            ((0.0, 0.0), (3.5, -2.0)),
+            ((0.0, 0.0), (-3.5, -2.0)),
+        )
+
+        def strip_points(p0, p1, width=0.6):
+            x0, y0 = p0
+            x1, y1 = p1
+            dx = x1 - x0
+            dy = y1 - y0
+            length = (dx * dx + dy * dy) ** 0.5
+            half_width = width / 2
+            ux = dx / length
+            uy = dy / length
+            px = -uy * half_width
+            py = ux * half_width
+            ex = ux * half_width
+            ey = uy * half_width
+            return [
+                [x0 - ex + px, y0 - ey + py],
+                [x1 + ex + px, y1 + ey + py],
+                [x1 + ex - px, y1 + ey - py],
+                [x0 - ex - px, y0 - ey - py],
+            ]
 
         sketches = [
             row["params"] for row in commands
@@ -174,17 +195,23 @@ class FlexBenchDogTests(unittest.TestCase):
             all(row["plane"]["origin"] == [0, 0, 20] for row in sketches)
         )
 
-        slots = [
-            row["params"] for row in commands
-            if row["command"] == "sketch.slot.center_to_center"
-        ]
-        self.assertEqual(len(slots), 9)
-        for slot, (p0, p1) in zip(slots, expected):
-            self.assertEqual(slot["p0"], p0)
-            self.assertEqual(slot["p1"], p1)
-            self.assertEqual(slot["width"], 0.6)
+        self.assertFalse(
+            any(row["command"] == "sketch.slot.center_to_center" for row in commands)
+        )
 
-        self.assertFalse(any(row["command"] == "sketch.line" for row in commands))
+        lines = [
+            row["params"] for row in commands
+            if row["command"] == "sketch.line"
+        ]
+        self.assertEqual(len(lines), 9)
+        for line, segment in zip(lines, segments):
+            self.assertTrue(line["closed"])
+            self.assertEqual(line["ids"], ["a", "b", "c", "d"])
+            expected = strip_points(*segment)
+            self.assertEqual(len(line["points"]), 4)
+            for actual_point, expected_point in zip(line["points"], expected):
+                for actual_value, expected_value in zip(actual_point, expected_point):
+                    self.assertAlmostEqual(actual_value, expected_value, places=9)
 
         cuts = [
             row["params"] for row in commands

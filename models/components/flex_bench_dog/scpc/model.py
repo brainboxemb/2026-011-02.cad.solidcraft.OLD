@@ -3,6 +3,29 @@
 from scpc import Script
 
 
+def logo_strip_points(p0, p1, width):
+    """Return one square-ended polygon strip around a logo centreline."""
+    x0, y0 = p0
+    x1, y1 = p1
+    dx = x1 - x0
+    dy = y1 - y0
+    length = (dx * dx + dy * dy) ** 0.5
+    half_width = width / 2
+
+    ux = dx / length
+    uy = dy / length
+    px = -uy * half_width
+    py = ux * half_width
+    ex = ux * half_width
+    ey = uy * half_width
+
+    return [
+        [x0 - ex + px, y0 - ey + py],
+        [x1 + ex + px, y1 + ey + py],
+        [x1 + ex - px, y1 + ey - py],
+        [x0 - ex - px, y0 - ey - py],
+    ]
+
 
 script = Script()
 
@@ -128,13 +151,8 @@ script.add(
     edges=[[10, 0, 20]],
 )
 
-# Recessed BrainBox wireframe. Each visible cube edge is one independent
-# Slot profile in its own Sketch and one cut. The nine slots therefore never
-# intersect inside the same Sketch and cannot create filled cube-face regions.
-#
-# TEMPORARY compatibility workaround — CAD #348 / Forge #747.
-# The preferred final construction is one closed polygon strip per rib once
-# Forge can lower Polygon2D in an explicit/attached Sketch.
+# Recessed BrainBox wireframe. Each accepted centreline becomes one
+# square-ended closed polygon strip and one independent cut.
 LOGO_SEGMENTS = (
     ([0.0, 4.0], [3.5, 2.0]),
     ([3.5, 2.0], [3.5, -2.0]),
@@ -155,10 +173,10 @@ for index, (p0, p1) in enumerate(LOGO_SEGMENTS, start=1):
         name=name,
     )
     script.add(
-        "sketch.slot.center_to_center",
-        p0=p0,
-        p1=p1,
-        width=0.6,
+        "sketch.line",
+        points=logo_strip_points(p0, p1, 0.6),
+        closed=True,
+        ids=["a", "b", "c", "d"],
     )
     script.add("sketch.finish")
     script.add(
