@@ -1,5 +1,5 @@
 {
-  "forge_sha": "cd46d6797df319b9d13605c11568990113772700",
+  "forge_sha": "efc88bfcaf452051d721347f2e5ca561decad654",
   "independent_scpc_compared": true,
   "model": "plate",
   "runtime_image": "ghcr.io/brainboxemb/cad-solidcraft:v0.3.5",
@@ -9,5 +9,5 @@
   "solidcraft_built": true,
   "solidcraft_verified": true,
   "solidcraft_version": "0.48.1",
-  "source_sha": "5fcfe6836973e13b1d3372a151735af195f22a4d"
+  "source_sha": "0d3081a1b76148854d82e2bf0e1593571fb7fb60"
 }
