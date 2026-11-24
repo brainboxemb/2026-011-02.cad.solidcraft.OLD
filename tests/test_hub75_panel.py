@@ -145,9 +145,12 @@ class Hub75PanelTests(unittest.TestCase):
     def test_rear_taper_uses_editable_native_loft(self):
         commands = run_script(MODEL)["commands"]
         kinds = [c["command"] for c in commands]
-        self.assertEqual(kinds.count("solid.extrude"), 2)
+        self.assertEqual(kinds.count("solid.extrude"), 3)
         self.assertEqual(kinds.count("solid.loft"), 1)
-        self.assertEqual(kinds.count("sketch.rectangle.two_point"), 7)
+        self.assertEqual(kinds.count("sketch.rectangle.two_point"), 3)
+        self.assertEqual(kinds.count("sketch.rectangle.rounded"), 4)
+        self.assertEqual(kinds.count("sketch.line"), 51)
+        self.assertEqual(kinds.count("sketch.arc.center_point"), 16)
         loft = next(c["params"] for c in commands if c["command"] == "solid.loft")
         self.assertEqual(loft["operation"], "join")
         self.assertEqual(loft["targets"], ["Hub75Panel"])
@@ -156,25 +159,37 @@ class Hub75PanelTests(unittest.TestCase):
         planes = [c["params"] for c in commands if c["command"] == "sketch.create"]
         self.assertEqual(
             [p.get("offset", 0) for p in planes],
-            [0, "front_depth", "depth", 0],
+            [0, "front_depth", "depth", 0, 0],
         )
-        rear_bays = planes[-1]
+        rear_bays = next(
+            plane for plane in planes
+            if plane.get("name") == "Rear electronics bays"
+        )
         self.assertEqual(rear_bays["plane"]["body"], "Hub75Panel")
-        self.assertEqual(rear_bays["plane"]["face"], "$face_point_1")
-        self.assertEqual(rear_bays["plane"]["index"], "$face_index_1")
+        self.assertIn("face", rear_bays["plane"])
+        self.assertIn("index", rear_bays["plane"])
         self.assertFalse(rear_bays["project_edges"])
 
     @requires_detailed_panel_process
     def test_four_bays_are_one_rear_facing_native_sketch_cut(self):
-        from models.components.hub75_panel.detailed.scpf.model import Hub75Panel
+        from models.components.hub75_panel.detailed.scpf.model import (
+            Hub75Panel,
+            REAR_END_NARROW_LENGTH,
+            REAR_END_NARROW_WIDTH,
+            REAR_OPENING_CORNER_RADIUS,
+        )
 
         commands = run_script(MODEL)["commands"]
         named = [c for c in commands if c["command"] == "sketch.create"]
-        self.assertEqual([c["params"]["name"] for c in named][-1],
-                         "Rear electronics bays")
-        idx = next(i for i, c in enumerate(commands)
-                   if c["command"] == "sketch.create"
-                   and c["params"]["name"] == "Rear electronics bays")
+        self.assertIn(
+            "Rear electronics bays",
+            [c["params"]["name"] for c in named],
+        )
+        idx = next(
+            i for i, c in enumerate(commands)
+            if c["command"] == "sketch.create"
+            and c["params"]["name"] == "Rear electronics bays"
+        )
         self.assertNotIn("offset", commands[idx]["params"])
         self.assertEqual(
             commands[idx]["params"]["plane"],
@@ -187,42 +202,149 @@ class Hub75PanelTests(unittest.TestCase):
         self.assertFalse(commands[idx]["params"]["project_edges"])
         self.assertEqual(commands[idx - 1]["command"], "model.faces")
         self.assertEqual(commands[idx - 1]["params"]["body"], "Hub75Panel")
-        rectangles = []
+
+        sketch_ops = []
         for operation in commands[idx + 1:]:
             if operation["command"] == "sketch.finish":
                 break
-            self.assertEqual(operation["command"], "sketch.rectangle.two_point")
-            rectangles.append(operation["params"])
-        self.assertEqual(len(rectangles), 4)
-        cuts = [c["params"] for c in commands
-                if c["command"] == "solid.extrude"
-                and c["params"].get("operation") == "cut"]
-        self.assertEqual(len(cuts), 1)
-        self.assertEqual(cuts[0]["direction"], "negative")
-        self.assertEqual(cuts[0]["name"], "Rear electronics bays")
-        self.assertIn("depth", str(cuts[0]["distance"]))
-        self.assertIn("front_depth", str(cuts[0]["distance"]))
+            sketch_ops.append(operation)
 
-        # Drawing and STEP values; coordinates are measured, not guessed.
-        panel_class = Hub75Panel._scpf_component_class
-        self.assertEqual(panel_class.depth - panel_class.front_depth, 12.5)
-        side = 12.5 * 159.70 / 160.0
-        end = 10.75 * 319.71 / 320.0
-        crossbar = 20 * 319.71 / 320.0
-        actual_width = 159.70 - 2 * side
-        self.assertAlmostEqual(actual_width, 134.746875, places=5)
-        expected_bounds = [
-            (-319.71 / 2 + end, -319.71 / 4 - crossbar / 2),
-            (-319.71 / 4 + crossbar / 2, -crossbar / 2),
-            (crossbar / 2, 319.71 / 4 - crossbar / 2),
-            (319.71 / 4 + crossbar / 2, 319.71 / 2 - end),
+        lines = [
+            operation["params"] for operation in sketch_ops
+            if operation["command"] == "sketch.line"
         ]
-        # The SCPF compiler preserves symbolic param expressions: compare
-        # numeric drawing inputs rather than requiring hardcoded output strings.
-        self.assertEqual(len(expected_bounds), len(rectangles))
-        self.assertTrue(all(high > low for low, high in expected_bounds))
-        self.assertEqual(len([c for c in commands
-                              if c["command"] == "solid.hole"]), 24)
+        arcs = [
+            operation["params"] for operation in sketch_ops
+            if operation["command"] == "sketch.arc.center_point"
+        ]
+        self.assertEqual(len(lines), 48)
+        self.assertEqual(len(arcs), 16)
+        self.assertTrue(all(line["connect"] for line in lines))
+        self.assertTrue(all(arc["connect"] for arc in arcs))
+        self.assertTrue(all(not arc["clockwise"] for arc in arcs))
+
+        bay_cut = next(
+            c["params"] for c in commands
+            if c["command"] == "solid.extrude"
+            and c["params"].get("operation") == "cut"
+            and c["params"].get("name") == "Rear electronics bays"
+        )
+        self.assertEqual(bay_cut["direction"], "negative")
+        self.assertIn("depth", str(bay_cut["distance"]))
+        self.assertIn("front_depth", str(bay_cut["distance"]))
+
+        panel = Hub75Panel._scpf_component_class
+        side = panel.rear_side_rail * (159.70 / 160.0)
+        end_rail = panel.rear_end_rail * (319.71 / 320.0)
+        narrow_rail = REAR_END_NARROW_WIDTH * (319.71 / 320.0)
+        step_depth = end_rail - narrow_rail
+        narrow_length = REAR_END_NARROW_LENGTH * (159.70 / 160.0)
+        radius = REAR_OPENING_CORNER_RADIUS * (159.70 / 160.0)
+        crossbar = panel.rear_crossbar * (319.71 / 320.0)
+
+        self.assertAlmostEqual(side, 12.4765625, places=7)
+        self.assertAlmostEqual(step_depth, 2.99728125, places=7)
+        self.assertAlmostEqual(narrow_length, 29.94375, places=7)
+        self.assertAlmostEqual(radius, 4.990625, places=7)
+        self.assertAlmostEqual(
+            crossbar - 2 * step_depth,
+            13.9873125,
+            places=7,
+        )
+        self.assertAlmostEqual(
+            panel.width - 2 * side,
+            134.746875,
+            places=6,
+        )
+        self.assertEqual(
+            len([c for c in commands if c["command"] == "solid.hole"]),
+            24,
+        )
+
+    @requires_detailed_panel_process
+    def test_shallow_rear_rail_recess_matches_reference_contract(self):
+        from models.components.hub75_panel.detailed.scpf.model import (
+            Hub75Panel,
+            REAR_CROSSBAR_RECESS_MARGIN,
+            REAR_END_NARROW_LENGTH,
+            REAR_END_NARROW_WIDTH,
+            REAR_END_RECESS_MARGIN,
+            REAR_RECESS_CORNER_RADIUS,
+            REAR_RECESS_DEPTH,
+            REAR_SIDE_RECESS_MARGIN,
+        )
+
+        commands = run_script(MODEL)["commands"]
+        idx = next(
+            i for i, c in enumerate(commands)
+            if c["command"] == "sketch.create"
+            and c["params"]["name"] == "Rear rail recesses"
+        )
+        plane = commands[idx]["params"]["plane"]
+        self.assertEqual(plane["body"], "Hub75Panel")
+        self.assertIn("face", plane)
+        self.assertIn("index", plane)
+        self.assertFalse(commands[idx]["params"]["project_edges"])
+
+        sketch_ops = []
+        for operation in commands[idx + 1:]:
+            if operation["command"] == "sketch.finish":
+                break
+            sketch_ops.append(operation)
+
+        rounded = [
+            operation["params"] for operation in sketch_ops
+            if operation["command"] == "sketch.rectangle.rounded"
+        ]
+        crossbars = [
+            operation["params"] for operation in sketch_ops
+            if operation["command"] == "sketch.line"
+        ]
+        self.assertEqual(len(rounded), 4)
+        self.assertEqual(len(crossbars), 3)
+        self.assertTrue(all(row["closed"] for row in crossbars))
+        self.assertTrue(all(len(row["points"]) == 12 for row in crossbars))
+
+        recess_cut = next(
+            c["params"] for c in commands
+            if c["command"] == "solid.extrude"
+            and c["params"].get("name") == "Rear rail recesses"
+        )
+        self.assertEqual(recess_cut["operation"], "cut")
+        self.assertEqual(recess_cut["direction"], "negative")
+        self.assertEqual(recess_cut["distance"], REAR_RECESS_DEPTH)
+
+        panel = Hub75Panel._scpf_component_class
+        end_rail = panel.rear_end_rail * (319.71 / 320.0)
+        narrow_rail = REAR_END_NARROW_WIDTH * (319.71 / 320.0)
+        step_depth = end_rail - narrow_rail
+        cross_margin = REAR_CROSSBAR_RECESS_MARGIN * (319.71 / 320.0)
+        self.assertEqual(REAR_RECESS_DEPTH, 0.8)
+        self.assertEqual(REAR_SIDE_RECESS_MARGIN, 2.0)
+        self.assertEqual(REAR_END_RECESS_MARGIN, 2.0)
+        self.assertEqual(REAR_CROSSBAR_RECESS_MARGIN, 1.5)
+        self.assertEqual(REAR_RECESS_CORNER_RADIUS, 0.8)
+        self.assertAlmostEqual(
+            REAR_END_NARROW_LENGTH * (159.70 / 160.0),
+            29.94375,
+            places=7,
+        )
+        self.assertAlmostEqual(
+            panel.rear_crossbar * (319.71 / 320.0)
+            - 2 * step_depth
+            - 2 * cross_margin,
+            10.99003125,
+            places=7,
+        )
+
+        self.assertEqual(
+            len([c for c in commands if c["command"] == "solid.cylinder"]),
+            14,
+        )
+        self.assertEqual(
+            len([c for c in commands if c["command"] == "solid.hole"]),
+            24,
+        )
 
     def test_taper_rejects_invalid_dimensions(self):
         from scpf.core import Box
