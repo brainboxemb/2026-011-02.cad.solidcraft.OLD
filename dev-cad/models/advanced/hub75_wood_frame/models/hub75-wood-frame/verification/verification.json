@@ -5,8 +5,8 @@
         {
           "kind": "file",
           "path": "baseline/measurements.json",
-          "sha256": "0d4b8aba0ba906d9b5accb55d4d27ee1040e3e07d2c10b01d4f22d4f172f8feb",
-          "size": 29425
+          "sha256": "6dce563c6db96aeec0131e63ef36a01f7f1e656a2c3bcd58aeaf662e75fe433f",
+          "size": 29471
         }
       ],
       "error": null,
@@ -467,14 +467,14 @@
         {
           "kind": "file",
           "path": "saved_designs/frame_thickness_18/model.sc",
-          "sha256": "825dd0553edd6bfa7280fde811167db15740a4799619254d4ef58048d9c920d6",
-          "size": 974619
+          "sha256": "7d0cf61534e722a295ab07fed7fe731b26b1e3fab3664ff716c576ea04efd178",
+          "size": 974580
         },
         {
           "kind": "file",
           "path": "saved_designs/frame_thickness_18/measurements.json",
-          "sha256": "eec72aeded49dd1e05e628e8859227b339bfd578dbb43a142070fd70fd30e0d7",
-          "size": 29448
+          "sha256": "09d0860f2563ee7bc1ca98a467d7a7319ee4004b477f58497322d56fd4c6dc3e",
+          "size": 29456
         }
       ],
       "error": null,
@@ -927,6 +927,598 @@
         }
       },
       "id": "saved_design_frame_thickness_18",
+      "reason": null,
+      "status": "pass"
+    },
+    {
+      "artifacts": [
+        {
+          "kind": "file",
+          "path": "saved_designs/opening_width_1000/model.sc",
+          "sha256": "db8448c29f3be3040cf683f7853607fbe20957bebb782444a62ec5b6ef686c03",
+          "size": 1104377
+        },
+        {
+          "kind": "file",
+          "path": "saved_designs/opening_width_1000/measurements.json",
+          "sha256": "16585f8f9bfb6259dc58d3ad4cf2821f7f9cf202bc75c855f757cd479e788265",
+          "size": 29455
+        }
+      ],
+      "error": null,
+      "evidence": {
+        "body_groups": [
+          {
+            "body_envelopes": {
+              "actual_count": 8,
+              "expected_count": 8,
+              "kind": "body_envelopes",
+              "matched_pairs": [
+                {
+                  "actual": {
+                    "label": "CornerBracket",
+                    "max": [
+                      -452.0,
+                      24.0,
+                      398.00000000000006
+                    ],
+                    "min": [
+                      -524.0000000000001,
+                      0.0,
+                      326.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -452.0,
+                      24.0,
+                      398.0
+                    ],
+                    "min": [
+                      -524.0,
+                      0.0,
+                      326.0
+                    ]
+                  },
+                  "max_delta": 1.1368683772161603e-13
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:2)",
+                    "max": [
+                      -452.0,
+                      100.0,
+                      398.00000000000006
+                    ],
+                    "min": [
+                      -524.0000000000001,
+                      76.0,
+                      326.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -452.0,
+                      100.0,
+                      398.0
+                    ],
+                    "min": [
+                      -524.0,
+                      76.0,
+                      326.0
+                    ]
+                  },
+                  "max_delta": 1.1368683772161603e-13
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:3)",
+                    "max": [
+                      524.0000000000001,
+                      24.0,
+                      398.0000000000001
+                    ],
+                    "min": [
+                      452.0,
+                      0.0,
+                      326.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      524.0,
+                      24.0,
+                      398.0
+                    ],
+                    "min": [
+                      452.0,
+                      0.0,
+                      326.0
+                    ]
+                  },
+                  "max_delta": 1.1368683772161603e-13
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:4)",
+                    "max": [
+                      524.0000000000001,
+                      100.0,
+                      398.0000000000001
+                    ],
+                    "min": [
+                      452.0,
+                      76.0,
+                      326.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      524.0,
+                      100.0,
+                      398.0
+                    ],
+                    "min": [
+                      452.0,
+                      76.0,
+                      326.0
+                    ]
+                  },
+                  "max_delta": 1.1368683772161603e-13
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:5)",
+                    "max": [
+                      524.0000000000001,
+                      24.0,
+                      60.00000000000001
+                    ],
+                    "min": [
+                      452.0,
+                      0.0,
+                      -12.000000000000007
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      524.0,
+                      24.0,
+                      60.0
+                    ],
+                    "min": [
+                      452.0,
+                      0.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 1.1368683772161603e-13
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:6)",
+                    "max": [
+                      524.0000000000001,
+                      100.0,
+                      60.00000000000001
+                    ],
+                    "min": [
+                      452.0,
+                      76.0,
+                      -12.000000000000007
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      524.0,
+                      100.0,
+                      60.0
+                    ],
+                    "min": [
+                      452.0,
+                      76.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 1.1368683772161603e-13
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:7)",
+                    "max": [
+                      -452.0,
+                      24.0,
+                      60.0
+                    ],
+                    "min": [
+                      -524.0000000000001,
+                      0.0,
+                      -12.000000000000002
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -452.0,
+                      24.0,
+                      60.0
+                    ],
+                    "min": [
+                      -524.0,
+                      0.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 1.1368683772161603e-13
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:8)",
+                    "max": [
+                      -452.0,
+                      100.0,
+                      60.0
+                    ],
+                    "min": [
+                      -524.0000000000001,
+                      76.0,
+                      -12.000000000000002
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -452.0,
+                      100.0,
+                      60.0
+                    ],
+                    "min": [
+                      -524.0,
+                      76.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 1.1368683772161603e-13
+                }
+              ],
+              "pass": true,
+              "tolerance": 0.001,
+              "unmatched_actual": [],
+              "unmatched_expected": []
+            },
+            "count": {
+              "actual": 8,
+              "expected": 8,
+              "label": "CornerBracket body group count",
+              "pass": true
+            },
+            "matched_names": [
+              "CornerBracket",
+              "CornerBracket (CornerBrackets:1/CornerBracket:2)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:3)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:4)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:5)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:6)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:7)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:8)"
+            ],
+            "name_prefix": "CornerBracket"
+          }
+        ],
+        "parameters": {
+          "actual": {
+            "opening_width": 1000.0
+          },
+          "expected": {
+            "opening_width": 1000.0
+          },
+          "label": "SolidCraft parameters",
+          "pass": true
+        }
+      },
+      "id": "saved_design_opening_width_1000",
+      "reason": null,
+      "status": "pass"
+    },
+    {
+      "artifacts": [
+        {
+          "kind": "file",
+          "path": "saved_designs/opening_height_400/model.sc",
+          "sha256": "114dfd219d836c57fb00d00b32d1bb3bddee1ef9a51be6ff331f8302686ba40f",
+          "size": 1103670
+        },
+        {
+          "kind": "file",
+          "path": "saved_designs/opening_height_400/measurements.json",
+          "sha256": "e2925b8093ce2a73c75734b285d502d449d006bb300d16916abd7b5a9b604aa5",
+          "size": 29432
+        }
+      ],
+      "error": null,
+      "evidence": {
+        "body_groups": [
+          {
+            "body_envelopes": {
+              "actual_count": 8,
+              "expected_count": 8,
+              "kind": "body_envelopes",
+              "matched_pairs": [
+                {
+                  "actual": {
+                    "label": "CornerBracket",
+                    "max": [
+                      -374.0,
+                      24.0,
+                      436.00000000000006
+                    ],
+                    "min": [
+                      -446.00000000000006,
+                      0.0,
+                      364.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -374.0,
+                      24.0,
+                      436.0
+                    ],
+                    "min": [
+                      -446.0,
+                      0.0,
+                      364.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:2)",
+                    "max": [
+                      -374.0,
+                      100.0,
+                      436.00000000000006
+                    ],
+                    "min": [
+                      -446.00000000000006,
+                      76.0,
+                      364.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -374.0,
+                      100.0,
+                      436.0
+                    ],
+                    "min": [
+                      -446.0,
+                      76.0,
+                      364.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:3)",
+                    "max": [
+                      446.00000000000006,
+                      24.0,
+                      436.00000000000006
+                    ],
+                    "min": [
+                      374.0,
+                      0.0,
+                      364.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      446.0,
+                      24.0,
+                      436.0
+                    ],
+                    "min": [
+                      374.0,
+                      0.0,
+                      364.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:4)",
+                    "max": [
+                      446.00000000000006,
+                      100.0,
+                      436.00000000000006
+                    ],
+                    "min": [
+                      374.0,
+                      76.0,
+                      364.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      446.0,
+                      100.0,
+                      436.0
+                    ],
+                    "min": [
+                      374.0,
+                      76.0,
+                      364.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:5)",
+                    "max": [
+                      446.00000000000006,
+                      24.0,
+                      60.00000000000001
+                    ],
+                    "min": [
+                      374.0,
+                      0.0,
+                      -12.000000000000007
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      446.0,
+                      24.0,
+                      60.0
+                    ],
+                    "min": [
+                      374.0,
+                      0.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:6)",
+                    "max": [
+                      446.00000000000006,
+                      100.0,
+                      60.00000000000001
+                    ],
+                    "min": [
+                      374.0,
+                      76.0,
+                      -12.000000000000007
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      446.0,
+                      100.0,
+                      60.0
+                    ],
+                    "min": [
+                      374.0,
+                      76.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:7)",
+                    "max": [
+                      -374.0,
+                      24.0,
+                      60.0
+                    ],
+                    "min": [
+                      -446.00000000000006,
+                      0.0,
+                      -12.000000000000002
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -374.0,
+                      24.0,
+                      60.0
+                    ],
+                    "min": [
+                      -446.0,
+                      0.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:8)",
+                    "max": [
+                      -374.0,
+                      100.0,
+                      60.0
+                    ],
+                    "min": [
+                      -446.0000000000001,
+                      76.0,
+                      -12.000000000000002
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -374.0,
+                      100.0,
+                      60.0
+                    ],
+                    "min": [
+                      -446.0,
+                      76.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 1.1368683772161603e-13
+                }
+              ],
+              "pass": true,
+              "tolerance": 0.001,
+              "unmatched_actual": [],
+              "unmatched_expected": []
+            },
+            "count": {
+              "actual": 8,
+              "expected": 8,
+              "label": "CornerBracket body group count",
+              "pass": true
+            },
+            "matched_names": [
+              "CornerBracket",
+              "CornerBracket (CornerBrackets:1/CornerBracket:2)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:3)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:4)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:5)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:6)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:7)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:8)"
+            ],
+            "name_prefix": "CornerBracket"
+          }
+        ],
+        "parameters": {
+          "actual": {
+            "opening_height": 400.0
+          },
+          "expected": {
+            "opening_height": 400.0
+          },
+          "label": "SolidCraft parameters",
+          "pass": true
+        }
+      },
+      "id": "saved_design_opening_height_400",
       "reason": null,
       "status": "pass"
     }
