@@ -23,7 +23,7 @@ dev-ci
 Current permanent heads at this checkpoint:
 
 - `main`: `e2ceb6e3a6fef572d532996daf6293ed6ae7c7d7`;
-- `dev-cad`: `b9fd5b6062b3a6e399612fcf3b3f0b4006af4455`;
+- `dev-cad`: `5fcfe6836973e13b1d3372a151735af195f22a4d`;
 - `dev-ci`: `c3d46976c8810487b74a802faf1009cb8608e4b0`.
 
 Stable `main` includes the accepted #344/#350 model-detail presentation and
@@ -46,16 +46,30 @@ Pure repository-instruction/documentation corrections in `AGENTS.md` and
 work. Documentation belonging to a code/model change stays with that issue,
 branch and PR.
 
-CAD #388 is now the active runtime/Forge consumer acceptance. The owner-layer
-blocker is released: Forge v0.14.0 at exact source
-`cd46d6797df319b9d13605c11568990113772700` is qualified with immutable
-`docker.cad.solidcraft v0.3.5` / SolidCraft 0.48.1, and retains the
-component-local joined-Cylinder occurrence regression permanently. This CAD
-repository must adopt those exact released inputs and prove the five-panel
-`hub75-screen` has no detached rear-interface cylinders before #388 closes.
-No CAD-local geometry workaround is allowed.
+CAD #388 remains the active product acceptance. Released Forge v0.14.0 /
+runtime v0.3.5 / SolidCraft 0.48.1 was adopted as merge
+`5fcfe6836973e13b1d3372a151735af195f22a4d`, but its exact source-matched
+five-panel render still showed detached component-local Cylinder tools.
+
+Forge #753 has isolated the defect to missing active-component restoration
+between headless replay checkpoints. This temporary qualification branch pins
+the exact candidate Forge head `3b036d0590d7260c7134410effc957b52548a8ee` only to prove the owner fix
+against the real `hub75-screen`. It is evidence-only and must not merge to
+`dev-cad`; product CAD remains on released Forge until the fixed Forge release
+exists. No CAD-local geometry workaround is allowed.
 
 ## Current work order
+
+### #388 candidate replay-context qualification
+
+Status: **temporary evidence branch / do not merge**.
+
+Pin exact Forge candidate `3b036d0590d7260c7134410effc957b52548a8ee` while retaining runtime v0.3.5 /
+SolidCraft 0.48.1. Run the normal affected CAD graph and inspect the
+source-matched `hub75-screen` render. Acceptance requires the five intended
+panel occurrences with no detached Cylinder/tool geometry. This branch exists
+only to inform the Forge release decision; close it unmerged afterwards.
+
 
 ### 1. Finish current FlexBenchDog visual acceptance
 
