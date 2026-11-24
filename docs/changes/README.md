@@ -86,3 +86,4 @@ Current records:
 - [0054-hub75-corner-bracket-associativity.md](0054-hub75-corner-bracket-associativity.md) — natively verify all eight CornerBracket placements and handedness under opening-width/opening-height mutations (#77).
 - [0047-forge-0132-hub75-panel.md](0047-forge-0132-hub75-panel.md) — adopt Forge v0.13.2 and remove the temporary detailed hub75-panel process gate after #796 (#421).
 - [0055-forge-014-solidcraft-0481-hub75-occurrences.md](0055-forge-014-solidcraft-0481-hub75-occurrences.md) — adopt Forge v0.14.0 with runtime v0.3.5 / SolidCraft 0.48.1 to qualify the released component-local Cylinder occurrence fix (#388).
+- [0056-forge-015-hub75-replay-context.md](0056-forge-015-hub75-replay-context.md) — adopt exact Forge v0.15.0 for final durable HUB75 replay-context/render acceptance (#388).
