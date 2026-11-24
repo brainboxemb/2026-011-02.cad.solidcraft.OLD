@@ -1,0 +1,32 @@
+"""Native snapshot settings owned by the CornerBracket model."""
+
+SNAPSHOT_CAMERA = {
+    "target": [24, 0, -24],
+    "yaw": -0.45,
+    "pitch": 0.30,
+    "distance": 125,
+    "fov": 0,
+}
+
+EXTRA_SNAPSHOTS = (
+    {
+        "name": "horizontal-tip.png",
+        "camera": {
+            "target": [58, 0, 0],
+            "yaw": -0.65,
+            "pitch": 0.20,
+            "distance": 42,
+            "fov": 0,
+        },
+    },
+    {
+        "name": "vertical-tip.png",
+        "camera": {
+            "target": [0, 0, -58],
+            "yaw": -0.65,
+            "pitch": 0.20,
+            "distance": 42,
+            "fov": 0,
+        },
+    },
+)
