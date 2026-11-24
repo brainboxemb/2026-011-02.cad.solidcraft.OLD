@@ -94,13 +94,15 @@ newer Forge validator locally.
 
 Keep this on `dev-ci`, separate from model work.
 
-The current shared-tool interface is being reconsidered in `tool.cad.ci`.
-Do not patch the historical CAD workflow locally while that contract is still
-being corrected.
+`tool.cad.ci` Change 0001 is now accepted on main. The next gate is the
+living reference consumer in `tool.cad.ci.test` #261 / PR #262.
 
-When the shared interface is stable and externally accepted:
+Do not patch the historical CAD workflow locally while that reference consumer
+is still being accepted.
 
-1. migrate the CAD repository to it;
+After the reference consumer proves the PR, permanent-branch and manual routes:
+
+1. copy/align the same consumer structure into CAD;
 2. remove obsolete local generic orchestration;
 3. prove normal PR, branch and manual execution from the released shared path.
 
