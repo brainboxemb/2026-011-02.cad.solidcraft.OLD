@@ -53,7 +53,7 @@ five-panel render still showed detached component-local Cylinder tools.
 
 Forge #753 has isolated the defect to missing active-component restoration
 between headless replay checkpoints. This temporary qualification branch pins
-the exact candidate Forge head `3b036d0590d7260c7134410effc957b52548a8ee` only to prove the owner fix
+the exact candidate Forge head `5a1143e3f92136f880b14fe7f401f215391656cc` only to prove the owner fix
 against the real `hub75-screen`. It is evidence-only and must not merge to
 `dev-cad`; product CAD remains on released Forge until the fixed Forge release
 exists. No CAD-local geometry workaround is allowed.
@@ -64,7 +64,7 @@ exists. No CAD-local geometry workaround is allowed.
 
 Status: **temporary evidence branch / do not merge**.
 
-Pin exact Forge candidate `3b036d0590d7260c7134410effc957b52548a8ee` while retaining runtime v0.3.5 /
+Pin exact Forge candidate `5a1143e3f92136f880b14fe7f401f215391656cc` while retaining runtime v0.3.5 /
 SolidCraft 0.48.1. Run the normal affected CAD graph and inspect the
 source-matched `hub75-screen` render. Acceptance requires the five intended
 panel occurrences with no detached Cylinder/tool geometry. This branch exists
