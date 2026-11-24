@@ -318,9 +318,82 @@ class ParallelModelTests(unittest.TestCase):
                         len(scpf_sketch["points"]),
                     )
 
+                    def resolved(value, parameters):
+                        if isinstance(value, (int, float)):
+                            return float(value)
+                        expression = (
+                            value[:-3] if value.endswith(" mm") else value
+                        )
+                        return float(eval(
+                            expression,
+                            {"__builtins__": {}},
+                            parameters,
+                        ))
+
+                    scpc_params = parameter_map(scpc_doc)
+                    scpf_params = parameter_map(scpf_doc)
+                    names = {
+                        "Horizontal tip relief +Y",
+                        "Horizontal tip relief -Y",
+                        "Vertical tip relief +Y",
+                        "Vertical tip relief -Y",
+                    }
+                    scpc_frames = [
+                        row["params"] for row in scpc_doc["commands"]
+                        if row["command"] == "sketch.create"
+                        and row["params"]["name"] in names
+                    ]
+                    scpf_frames = [
+                        row["params"] for row in scpf_doc["commands"]
+                        if row["command"] == "sketch.create"
+                        and row["params"]["name"] in names
+                    ]
+                    self.assertEqual(
+                        [row["name"] for row in scpc_frames],
+                        [row["name"] for row in scpf_frames],
+                    )
+                    for scpc_frame, scpf_frame in zip(scpc_frames, scpf_frames):
+                        for key in ("x_dir", "y_dir"):
+                            for a, b in zip(
+                                scpc_frame["plane"][key],
+                                scpf_frame["plane"][key],
+                            ):
+                                self.assertAlmostEqual(a, b, places=9)
+                        for a, b in zip(
+                            scpc_frame["plane"]["origin"],
+                            scpf_frame["plane"]["origin"],
+                        ):
+                            self.assertAlmostEqual(
+                                resolved(a, scpc_params),
+                                resolved(b, scpf_params),
+                                places=9,
+                            )
+
+                    scpc_cuts = [
+                        row["params"] for row in scpc_doc["commands"]
+                        if row["command"] == "solid.extrude"
+                        and row["params"].get("operation") == "cut"
+                    ]
+                    scpf_cuts = [
+                        row["params"] for row in scpf_doc["commands"]
+                        if row["command"] == "solid.extrude"
+                        and row["params"].get("operation") == "cut"
+                    ]
+                    self.assertEqual(len(scpc_cuts), 4)
+                    self.assertEqual(
+                        [row["direction"] for row in scpc_cuts],
+                        [row["direction"] for row in scpf_cuts],
+                    )
+                    for scpc_cut, scpf_cut in zip(scpc_cuts, scpf_cuts):
+                        self.assertAlmostEqual(
+                            resolved(scpc_cut["distance"], scpc_params),
+                            resolved(scpf_cut["distance"], scpf_params),
+                            delta=1e-5,
+                        )
+
                 self.assertEqual(
                     len(scpc_doc["commands"]),
-                    9 if slug == "plate" else 42,
+                    9 if slug == "plate" else 58,
                 )
 
 
