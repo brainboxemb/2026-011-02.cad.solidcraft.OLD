@@ -75,12 +75,6 @@ script.add(
 # Reference pick points for the seven normal outside profile segments on each
 # broad face. The two 0.6 mm tip-relief diagonals are intentionally excluded:
 # a 2 mm chamfer on those tiny faces causes a native trim leak.
-#
-# TEMPORARY compatibility workaround — CAD #362 / Forge #750.
-# The preserved OpenSCAD model applies a separate locally rotated triangular
-# prism wedge at those arm-tip junctions. Released Forge v0.11 has no generic
-# standalone Shape transform for that 45-degree cutter, so SCPC mirrors the
-# same intentionally incomplete tip treatment until Forge #750 is consumable.
 outside_edges = [
     [60, -12, 4.8],
     [58.5, -12, 10.5],
@@ -109,6 +103,70 @@ script.add(
     distance="elephant_foot_relief",
     body="CornerBracket",
 )
+
+# OpenSCAD arm_tip_relief_cuts() expressed as four native rotated Sketch
+# cutters. The negative-Y copies use reflected local frames plus negative
+# extrusion, preserving the exact mirror without hand-expanding world points.
+s2 = 2 ** -0.5
+sqrt2 = 2 ** 0.5
+wedge_points = [
+    ["-(elephant_foot_relief) - 1", -1],
+    [1, -1],
+    [1, "elephant_foot_relief + 1"],
+]
+wedge_frames = (
+    (
+        "Horizontal tip relief +Y",
+        ["horizontal_arm_length - side_edge_chamfer - " + repr(s2),
+         "arm_width / 2 + " + repr(s2), 0],
+        [s2, s2, 0],
+        [0, 0, 1],
+        "positive",
+    ),
+    (
+        "Horizontal tip relief -Y",
+        ["horizontal_arm_length - side_edge_chamfer - " + repr(s2),
+         "-(arm_width / 2 + " + repr(s2) + ")", 0],
+        [s2, -s2, 0],
+        [0, 0, 1],
+        "negative",
+    ),
+    (
+        "Vertical tip relief +Y",
+        [0, "arm_width / 2 - side_edge_chamfer - " + repr(s2),
+         "-(vertical_arm_length) - " + repr(s2)],
+        [0, s2, -s2],
+        [-1, 0, 0],
+        "positive",
+    ),
+    (
+        "Vertical tip relief -Y",
+        [0, "-(arm_width / 2 - side_edge_chamfer - " + repr(s2) + ")",
+         "-(vertical_arm_length) - " + repr(s2)],
+        [0, -s2, -s2],
+        [-1, 0, 0],
+        "negative",
+    ),
+)
+for name, origin, x_dir, y_dir, direction in wedge_frames:
+    script.add(
+        "sketch.create",
+        plane={"origin": origin, "x_dir": x_dir, "y_dir": y_dir},
+        name=name,
+    )
+    script.add(
+        "sketch.line",
+        points=wedge_points,
+        closed=True,
+    )
+    script.add("sketch.finish")
+    script.add(
+        "solid.extrude",
+        distance="side_edge_chamfer * " + repr(sqrt2) + " + 2",
+        direction=direction,
+        operation="cut",
+        targets=["CornerBracket"],
+    )
 
 
 def add_bolt_seat(outside, direction, countersink_entry, inside, inside_direction):
