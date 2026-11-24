@@ -52,6 +52,28 @@ THICK_BRACKETS = (
     BodyEnvelope((-452.0, 76.0, -12.0), (-380.0, 100.0, 60.0)),
 )
 
+WIDE_BRACKETS = (
+    BodyEnvelope((-524.0, 0.0, 326.0), (-452.0, 24.0, 398.0)),
+    BodyEnvelope((-524.0, 76.0, 326.0), (-452.0, 100.0, 398.0)),
+    BodyEnvelope((452.0, 0.0, 326.0), (524.0, 24.0, 398.0)),
+    BodyEnvelope((452.0, 76.0, 326.0), (524.0, 100.0, 398.0)),
+    BodyEnvelope((452.0, 0.0, -12.0), (524.0, 24.0, 60.0)),
+    BodyEnvelope((452.0, 76.0, -12.0), (524.0, 100.0, 60.0)),
+    BodyEnvelope((-524.0, 0.0, -12.0), (-452.0, 24.0, 60.0)),
+    BodyEnvelope((-524.0, 76.0, -12.0), (-452.0, 100.0, 60.0)),
+)
+
+TALL_BRACKETS = (
+    BodyEnvelope((-446.0, 0.0, 364.0), (-374.0, 24.0, 436.0)),
+    BodyEnvelope((-446.0, 76.0, 364.0), (-374.0, 100.0, 436.0)),
+    BodyEnvelope((374.0, 0.0, 364.0), (446.0, 24.0, 436.0)),
+    BodyEnvelope((374.0, 76.0, 364.0), (446.0, 100.0, 436.0)),
+    BodyEnvelope((374.0, 0.0, -12.0), (446.0, 24.0, 60.0)),
+    BodyEnvelope((374.0, 76.0, -12.0), (446.0, 100.0, 60.0)),
+    BodyEnvelope((-446.0, 0.0, -12.0), (-374.0, 24.0, 60.0)),
+    BodyEnvelope((-446.0, 76.0, -12.0), (-374.0, 100.0, 60.0)),
+)
+
 
 def _groups(boards, brackets):
     return (
@@ -61,6 +83,17 @@ def _groups(boards, brackets):
             body_envelopes=boards,
             bounds_tolerance=0.001,
         ),
+        SolidCraftBodyGroupExpectation(
+            name_prefix="CornerBracket",
+            count=8,
+            body_envelopes=brackets,
+            bounds_tolerance=0.001,
+        ),
+    )
+
+
+def _brackets(brackets):
+    return (
         SolidCraftBodyGroupExpectation(
             name_prefix="CornerBracket",
             count=8,
@@ -85,6 +118,24 @@ VERIFICATION = SolidCraftVerification(
                 parameters={"frame_wood_thickness": 18.0},
                 parameter_match="subset",
                 body_groups=_groups(THICK_BOARDS, THICK_BRACKETS),
+            ),
+        ),
+        SolidCraftSavedDesign(
+            id="opening_width_1000",
+            command_path=ROOT / "opening-width-1000.json",
+            expectation=SolidCraftModelExpectation(
+                parameters={"opening_width": 1000.0},
+                parameter_match="subset",
+                body_groups=_brackets(WIDE_BRACKETS),
+            ),
+        ),
+        SolidCraftSavedDesign(
+            id="opening_height_400",
+            command_path=ROOT / "opening-height-400.json",
+            expectation=SolidCraftModelExpectation(
+                parameters={"opening_height": 400.0},
+                parameter_match="subset",
+                body_groups=_brackets(TALL_BRACKETS),
             ),
         ),
     ),
