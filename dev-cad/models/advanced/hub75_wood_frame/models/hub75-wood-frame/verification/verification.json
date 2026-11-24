@@ -1,0 +1,940 @@
+{
+  "checks": [
+    {
+      "artifacts": [
+        {
+          "kind": "file",
+          "path": "baseline/measurements.json",
+          "sha256": "0d4b8aba0ba906d9b5accb55d4d27ee1040e3e07d2c10b01d4f22d4f172f8feb",
+          "size": 29425
+        }
+      ],
+      "error": null,
+      "evidence": {
+        "body_groups": [
+          {
+            "body_envelopes": {
+              "actual_count": 5,
+              "expected_count": 5,
+              "kind": "body_envelopes",
+              "matched_pairs": [
+                {
+                  "actual": {
+                    "label": "Board",
+                    "max": [
+                      -422.0,
+                      100.0,
+                      374.0
+                    ],
+                    "min": [
+                      -434.0,
+                      0.0,
+                      12.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -422.0,
+                      100.0,
+                      374.0
+                    ],
+                    "min": [
+                      -434.0,
+                      0.0,
+                      12.0
+                    ]
+                  },
+                  "max_delta": 0.0
+                },
+                {
+                  "actual": {
+                    "label": "Board (WoodBoxFrame:1/Board:2)",
+                    "max": [
+                      434.0,
+                      100.0,
+                      374.0
+                    ],
+                    "min": [
+                      422.0,
+                      0.0,
+                      12.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      434.0,
+                      100.0,
+                      374.0
+                    ],
+                    "min": [
+                      422.0,
+                      0.0,
+                      12.0
+                    ]
+                  },
+                  "max_delta": 0.0
+                },
+                {
+                  "actual": {
+                    "label": "Board_2",
+                    "max": [
+                      434.0,
+                      100.0,
+                      12.0
+                    ],
+                    "min": [
+                      -434.0,
+                      0.0,
+                      0.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      434.0,
+                      100.0,
+                      12.0
+                    ],
+                    "min": [
+                      -434.0,
+                      0.0,
+                      0.0
+                    ]
+                  },
+                  "max_delta": 0.0
+                },
+                {
+                  "actual": {
+                    "label": "Board_3",
+                    "max": [
+                      434.0,
+                      110.00000000000006,
+                      386.0
+                    ],
+                    "min": [
+                      -434.0,
+                      -10.0,
+                      374.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      434.0,
+                      110.0,
+                      386.0
+                    ],
+                    "min": [
+                      -434.0,
+                      -10.0,
+                      374.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "Board_4",
+                    "max": [
+                      434.0,
+                      109.0,
+                      374.0
+                    ],
+                    "min": [
+                      -434.0,
+                      100.0,
+                      0.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      434.0,
+                      109.0,
+                      374.0
+                    ],
+                    "min": [
+                      -434.0,
+                      100.0,
+                      0.0
+                    ]
+                  },
+                  "max_delta": 0.0
+                }
+              ],
+              "pass": true,
+              "tolerance": 0.001,
+              "unmatched_actual": [],
+              "unmatched_expected": []
+            },
+            "count": {
+              "actual": 5,
+              "expected": 5,
+              "label": "Board body group count",
+              "pass": true
+            },
+            "matched_names": [
+              "Board",
+              "Board (WoodBoxFrame:1/Board:2)",
+              "Board_2",
+              "Board_3",
+              "Board_4"
+            ],
+            "name_prefix": "Board"
+          },
+          {
+            "body_envelopes": {
+              "actual_count": 8,
+              "expected_count": 8,
+              "kind": "body_envelopes",
+              "matched_pairs": [
+                {
+                  "actual": {
+                    "label": "CornerBracket",
+                    "max": [
+                      -374.0,
+                      24.0,
+                      398.00000000000006
+                    ],
+                    "min": [
+                      -446.00000000000006,
+                      0.0,
+                      326.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -374.0,
+                      24.0,
+                      398.0
+                    ],
+                    "min": [
+                      -446.0,
+                      0.0,
+                      326.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:2)",
+                    "max": [
+                      -374.0,
+                      100.0,
+                      398.00000000000006
+                    ],
+                    "min": [
+                      -446.00000000000006,
+                      76.0,
+                      326.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -374.0,
+                      100.0,
+                      398.0
+                    ],
+                    "min": [
+                      -446.0,
+                      76.0,
+                      326.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:3)",
+                    "max": [
+                      446.00000000000006,
+                      24.0,
+                      398.0000000000001
+                    ],
+                    "min": [
+                      374.0,
+                      0.0,
+                      326.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      446.0,
+                      24.0,
+                      398.0
+                    ],
+                    "min": [
+                      374.0,
+                      0.0,
+                      326.0
+                    ]
+                  },
+                  "max_delta": 1.1368683772161603e-13
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:4)",
+                    "max": [
+                      446.00000000000006,
+                      100.0,
+                      398.0000000000001
+                    ],
+                    "min": [
+                      374.0,
+                      76.0,
+                      326.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      446.0,
+                      100.0,
+                      398.0
+                    ],
+                    "min": [
+                      374.0,
+                      76.0,
+                      326.0
+                    ]
+                  },
+                  "max_delta": 1.1368683772161603e-13
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:5)",
+                    "max": [
+                      446.00000000000006,
+                      24.0,
+                      60.00000000000001
+                    ],
+                    "min": [
+                      374.0,
+                      0.0,
+                      -12.000000000000007
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      446.0,
+                      24.0,
+                      60.0
+                    ],
+                    "min": [
+                      374.0,
+                      0.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:6)",
+                    "max": [
+                      446.00000000000006,
+                      100.0,
+                      60.00000000000001
+                    ],
+                    "min": [
+                      374.0,
+                      76.0,
+                      -12.000000000000007
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      446.0,
+                      100.0,
+                      60.0
+                    ],
+                    "min": [
+                      374.0,
+                      76.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:7)",
+                    "max": [
+                      -374.0,
+                      24.0,
+                      60.0
+                    ],
+                    "min": [
+                      -446.00000000000006,
+                      0.0,
+                      -12.000000000000002
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -374.0,
+                      24.0,
+                      60.0
+                    ],
+                    "min": [
+                      -446.0,
+                      0.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:8)",
+                    "max": [
+                      -374.0,
+                      100.0,
+                      60.0
+                    ],
+                    "min": [
+                      -446.0000000000001,
+                      76.0,
+                      -12.000000000000002
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -374.0,
+                      100.0,
+                      60.0
+                    ],
+                    "min": [
+                      -446.0,
+                      76.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 1.1368683772161603e-13
+                }
+              ],
+              "pass": true,
+              "tolerance": 0.001,
+              "unmatched_actual": [],
+              "unmatched_expected": []
+            },
+            "count": {
+              "actual": 8,
+              "expected": 8,
+              "label": "CornerBracket body group count",
+              "pass": true
+            },
+            "matched_names": [
+              "CornerBracket",
+              "CornerBracket (CornerBrackets:1/CornerBracket:2)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:3)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:4)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:5)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:6)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:7)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:8)"
+            ],
+            "name_prefix": "CornerBracket"
+          }
+        ],
+        "parameters": {
+          "actual": {
+            "frame_wood_thickness": 12.0
+          },
+          "expected": {
+            "frame_wood_thickness": 12.0
+          },
+          "label": "SolidCraft parameters",
+          "pass": true
+        }
+      },
+      "id": "baseline",
+      "reason": null,
+      "status": "pass"
+    },
+    {
+      "artifacts": [
+        {
+          "kind": "file",
+          "path": "saved_designs/frame_thickness_18/model.sc",
+          "sha256": "825dd0553edd6bfa7280fde811167db15740a4799619254d4ef58048d9c920d6",
+          "size": 974619
+        },
+        {
+          "kind": "file",
+          "path": "saved_designs/frame_thickness_18/measurements.json",
+          "sha256": "eec72aeded49dd1e05e628e8859227b339bfd578dbb43a142070fd70fd30e0d7",
+          "size": 29448
+        }
+      ],
+      "error": null,
+      "evidence": {
+        "body_groups": [
+          {
+            "body_envelopes": {
+              "actual_count": 5,
+              "expected_count": 5,
+              "kind": "body_envelopes",
+              "matched_pairs": [
+                {
+                  "actual": {
+                    "label": "Board",
+                    "max": [
+                      -422.0,
+                      100.0,
+                      380.0
+                    ],
+                    "min": [
+                      -440.0,
+                      0.0,
+                      18.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -422.0,
+                      100.0,
+                      380.0
+                    ],
+                    "min": [
+                      -440.0,
+                      0.0,
+                      18.0
+                    ]
+                  },
+                  "max_delta": 0.0
+                },
+                {
+                  "actual": {
+                    "label": "Board (WoodBoxFrame:1/Board:2)",
+                    "max": [
+                      440.0,
+                      100.0,
+                      380.0
+                    ],
+                    "min": [
+                      422.0,
+                      0.0,
+                      18.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      440.0,
+                      100.0,
+                      380.0
+                    ],
+                    "min": [
+                      422.0,
+                      0.0,
+                      18.0
+                    ]
+                  },
+                  "max_delta": 0.0
+                },
+                {
+                  "actual": {
+                    "label": "Board_2",
+                    "max": [
+                      440.0,
+                      100.0,
+                      18.0
+                    ],
+                    "min": [
+                      -440.0,
+                      0.0,
+                      0.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      440.0,
+                      100.0,
+                      18.0
+                    ],
+                    "min": [
+                      -440.0,
+                      0.0,
+                      0.0
+                    ]
+                  },
+                  "max_delta": 0.0
+                },
+                {
+                  "actual": {
+                    "label": "Board_3",
+                    "max": [
+                      440.0,
+                      110.0,
+                      398.0
+                    ],
+                    "min": [
+                      -440.0,
+                      -10.0,
+                      380.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      440.0,
+                      110.0,
+                      398.0
+                    ],
+                    "min": [
+                      -440.0,
+                      -10.0,
+                      380.0
+                    ]
+                  },
+                  "max_delta": 0.0
+                },
+                {
+                  "actual": {
+                    "label": "Board_4",
+                    "max": [
+                      440.0,
+                      109.0,
+                      380.0
+                    ],
+                    "min": [
+                      -440.0,
+                      100.0,
+                      0.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      440.0,
+                      109.0,
+                      380.0
+                    ],
+                    "min": [
+                      -440.0,
+                      100.0,
+                      0.0
+                    ]
+                  },
+                  "max_delta": 0.0
+                }
+              ],
+              "pass": true,
+              "tolerance": 0.001,
+              "unmatched_actual": [],
+              "unmatched_expected": []
+            },
+            "count": {
+              "actual": 5,
+              "expected": 5,
+              "label": "Board body group count",
+              "pass": true
+            },
+            "matched_names": [
+              "Board",
+              "Board (WoodBoxFrame:1/Board:2)",
+              "Board_2",
+              "Board_3",
+              "Board_4"
+            ],
+            "name_prefix": "Board"
+          },
+          {
+            "body_envelopes": {
+              "actual_count": 8,
+              "expected_count": 8,
+              "kind": "body_envelopes",
+              "matched_pairs": [
+                {
+                  "actual": {
+                    "label": "CornerBracket",
+                    "max": [
+                      -380.0,
+                      24.0,
+                      410.00000000000006
+                    ],
+                    "min": [
+                      -452.0000000000001,
+                      0.0,
+                      338.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -380.0,
+                      24.0,
+                      410.0
+                    ],
+                    "min": [
+                      -452.0,
+                      0.0,
+                      338.0
+                    ]
+                  },
+                  "max_delta": 1.1368683772161603e-13
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:2)",
+                    "max": [
+                      -380.0,
+                      100.0,
+                      410.00000000000006
+                    ],
+                    "min": [
+                      -452.0000000000001,
+                      76.0,
+                      338.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -380.0,
+                      100.0,
+                      410.0
+                    ],
+                    "min": [
+                      -452.0,
+                      76.0,
+                      338.0
+                    ]
+                  },
+                  "max_delta": 1.1368683772161603e-13
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:3)",
+                    "max": [
+                      452.00000000000006,
+                      24.0,
+                      410.00000000000006
+                    ],
+                    "min": [
+                      380.0,
+                      0.0,
+                      338.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      452.0,
+                      24.0,
+                      410.0
+                    ],
+                    "min": [
+                      380.0,
+                      0.0,
+                      338.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:4)",
+                    "max": [
+                      452.00000000000006,
+                      100.0,
+                      410.00000000000006
+                    ],
+                    "min": [
+                      380.0,
+                      76.0,
+                      338.0
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      452.0,
+                      100.0,
+                      410.0
+                    ],
+                    "min": [
+                      380.0,
+                      76.0,
+                      338.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:5)",
+                    "max": [
+                      452.00000000000006,
+                      24.0,
+                      60.00000000000001
+                    ],
+                    "min": [
+                      380.0,
+                      0.0,
+                      -12.000000000000007
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      452.0,
+                      24.0,
+                      60.0
+                    ],
+                    "min": [
+                      380.0,
+                      0.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:6)",
+                    "max": [
+                      452.0,
+                      100.0,
+                      60.00000000000001
+                    ],
+                    "min": [
+                      380.0,
+                      76.0,
+                      -12.000000000000007
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      452.0,
+                      100.0,
+                      60.0
+                    ],
+                    "min": [
+                      380.0,
+                      76.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 7.105427357601002e-15
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:7)",
+                    "max": [
+                      -380.0,
+                      24.0,
+                      60.0
+                    ],
+                    "min": [
+                      -452.00000000000006,
+                      0.0,
+                      -12.000000000000002
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -380.0,
+                      24.0,
+                      60.0
+                    ],
+                    "min": [
+                      -452.0,
+                      0.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                },
+                {
+                  "actual": {
+                    "label": "CornerBracket (CornerBrackets:1/CornerBracket:8)",
+                    "max": [
+                      -380.0,
+                      100.0,
+                      60.0
+                    ],
+                    "min": [
+                      -452.00000000000006,
+                      76.0,
+                      -12.000000000000002
+                    ]
+                  },
+                  "expected": {
+                    "label": null,
+                    "max": [
+                      -380.0,
+                      100.0,
+                      60.0
+                    ],
+                    "min": [
+                      -452.0,
+                      76.0,
+                      -12.0
+                    ]
+                  },
+                  "max_delta": 5.684341886080802e-14
+                }
+              ],
+              "pass": true,
+              "tolerance": 0.001,
+              "unmatched_actual": [],
+              "unmatched_expected": []
+            },
+            "count": {
+              "actual": 8,
+              "expected": 8,
+              "label": "CornerBracket body group count",
+              "pass": true
+            },
+            "matched_names": [
+              "CornerBracket",
+              "CornerBracket (CornerBrackets:1/CornerBracket:2)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:3)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:4)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:5)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:6)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:7)",
+              "CornerBracket (CornerBrackets:1/CornerBracket:8)"
+            ],
+            "name_prefix": "CornerBracket"
+          }
+        ],
+        "parameters": {
+          "actual": {
+            "frame_wood_thickness": 18.0
+          },
+          "expected": {
+            "frame_wood_thickness": 18.0
+          },
+          "label": "SolidCraft parameters",
+          "pass": true
+        }
+      },
+      "id": "saved_design_frame_thickness_18",
+      "reason": null,
+      "status": "pass"
+    }
+  ],
+  "input": "/output/items/models/advanced/hub75_wood_frame/models/hub75-wood-frame/native/model.sc",
+  "metadata": {},
+  "schema": "cad-verification",
+  "schema_version": 1,
+  "status": "pass",
+  "verification_id": "hub75-wood-frame"
+}
