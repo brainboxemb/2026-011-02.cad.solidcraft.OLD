@@ -85,3 +85,4 @@ Current records:
 - [0053-hub75-frame-thickness-native-regression.md](0053-hub75-frame-thickness-native-regression.md) — add declarative 12→18 mm native frame-thickness regression for the five boards and eight CornerBrackets (#91).
 - [0054-hub75-corner-bracket-associativity.md](0054-hub75-corner-bracket-associativity.md) — natively verify all eight CornerBracket placements and handedness under opening-width/opening-height mutations (#77).
 - [0047-forge-0132-hub75-panel.md](0047-forge-0132-hub75-panel.md) — adopt Forge v0.13.2 and remove the temporary detailed hub75-panel process gate after #796 (#421).
+- [0055-forge-014-solidcraft-0481-hub75-occurrences.md](0055-forge-014-solidcraft-0481-hub75-occurrences.md) — adopt Forge v0.14.0 with runtime v0.3.5 / SolidCraft 0.48.1 to qualify the released component-local Cylinder occurrence fix (#388).
