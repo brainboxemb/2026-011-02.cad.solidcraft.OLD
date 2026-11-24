@@ -21,6 +21,7 @@ class ModelOwnedPresentationSettingsTests(unittest.TestCase):
             "hub75-wood-frame",
             "hub75-panel",
             "flex-bench-dog",
+            "corner-bracket",
         }
         actual = {slug for slug in MODELS if check_path(slug).is_file()}
         self.assertEqual(actual, expected)
@@ -45,6 +46,15 @@ class ModelOwnedPresentationSettingsTests(unittest.TestCase):
     def test_hub75_panel_owns_two_extra_face_views(self):
         views = extra_snapshots("hub75-panel")
         self.assertEqual([item["name"] for item in views], ["front.png", "rear.png"])
+        self.assertTrue(all(isinstance(item.get("camera"), dict) for item in views))
+
+
+    def test_corner_bracket_owns_two_arm_tip_review_views(self):
+        views = extra_snapshots("corner-bracket")
+        self.assertEqual(
+            [item["name"] for item in views],
+            ["horizontal-tip.png", "vertical-tip.png"],
+        )
         self.assertTrue(all(isinstance(item.get("camera"), dict) for item in views))
 
 
